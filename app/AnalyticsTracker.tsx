@@ -46,8 +46,8 @@ export default function AnalyticsTracker() {
       const target = event.target as HTMLElement | null;
       const element = target?.closest("a,button") as HTMLElement | null;
       if (!element) return;
-
       const label = (element.textContent || "").trim().slice(0, 120);
+
       if (element instanceof HTMLAnchorElement) {
         const href = element.getAttribute("href") || "";
         trackEvent(href.includes("t.me/") ? "telegram_click" : "link_click", { label, href });
@@ -74,9 +74,27 @@ export default function AnalyticsTracker() {
   if (!sent) return null;
 
   return (
-    <div className="success-toast" role="status" aria-live="polite">
+    <div
+      role="status"
+      aria-live="polite"
+      style={{
+        position: "fixed",
+        left: "50%",
+        bottom: 24,
+        transform: "translateX(-50%)",
+        zIndex: 100,
+        width: "min(620px, calc(100% - 30px))",
+        padding: "16px 20px",
+        background: "#ffffff",
+        color: "#0a1426",
+        border: "1px solid #d9e1eb",
+        boxShadow: "0 16px 44px rgba(8, 26, 51, .22)",
+        display: "grid",
+        gap: 3,
+      }}
+    >
       <strong>Сообщение отправлено.</strong>
-      <span>Спасибо. Обычно отвечаю в течение рабочего дня.</span>
+      <span style={{ color: "#536174", fontSize: 15 }}>Спасибо. Обычно отвечаю в течение рабочего дня.</span>
     </div>
   );
 }
