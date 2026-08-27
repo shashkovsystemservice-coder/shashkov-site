@@ -67,14 +67,28 @@ const situations: Situation[] = [
 
 export default function DiagnosticNavigator() {
   const [selected, setSelected] = useState(0);
+  const [changed, setChanged] = useState("");
+  const [explanation, setExplanation] = useState("");
+  const [evidence, setEvidence] = useState("");
+  const [showSummary, setShowSummary] = useState(false);
   const current = useMemo(() => situations[selected], [selected]);
+
+  const resetAnswers = (index: number) => {
+    setSelected(index);
+    setChanged("");
+    setExplanation("");
+    setEvidence("");
+    setShowSummary(false);
+  };
+
+  const hasEnough = changed.trim().length > 2 && explanation.trim().length > 2;
 
   return (
     <div className="diagnostic-wrap" id="diagnostic">
       <div className="diagnostic-head">
-        <p className="eyebrow">Попробуйте на своей ситуации</p>
-        <h2>Не спешите выбирать решение</h2>
-        <p>Выберите то, что ближе к вашей ситуации. Причину заранее знать не нужно.</p>
+        <p className="eyebrow">Мини-разбор</p>
+        <h2>Попробуйте отделить факт от предположения</h2>
+        <p>Выберите ситуацию и ответьте на три коротких вопроса. Сайт не ставит диагноз — он помогает увидеть, что уже известно, а что ещё нужно проверить.</p>
       </div>
 
       <div className="diagnostic-grid">
@@ -84,7 +98,7 @@ export default function DiagnosticNavigator() {
               className={`diagnostic-choice${selected === index ? " is-active" : ""}`}
               type="button"
               key={situation.title}
-              onClick={() => setSelected(index)}
+              onClick={() => resetAnswers(index)}
               aria-pressed={selected === index}
             >
               {situation.title}
@@ -93,17 +107,41 @@ export default function DiagnosticNavigator() {
         </div>
 
         <article className="diagnostic-result" aria-live="polite">
-          <p className="diagnostic-kicker">Если вы говорите: «{current.title}»</p>
-          <h3>Я бы не начинал с совета. Сначала задал бы несколько вопросов</h3>
-          <ol>
-            {current.questions.map((question) => <li key={question}>{question}</li>)}
-          </ol>
-          <div className="diagnostic-zones">
-            <span>Куда стоит посмотреть</span>
-            <p>{current.zones.join(" · ")}</p>
+          <p className="diagnostic-kicker">Вы выбрали: «{current.title}»</p>
+          <h3>Теперь немного конкретики про вашу ситуацию</h3>
+
+          <div className="diagnostic-form">
+            <label>
+              <span>1. Что изменилось или что вы наблюдаете?</span>
+              <textarea value={changed} onChange={(e) => setChanged(e.target.value)} placeholder="Например: обращений столько же, но покупают реже" />
+            </label>
+            <label>
+              <span>2. Как вы сами сейчас объясняете причину?</span>
+              <textarea value={explanation} onChange={(e) => setExplanation(e.target.value)} placeholder="Например: кажется, что реклама приводит не тех людей" />
+            </label>
+            <label>
+              <span>3. Что это подтверждает?</span>
+              <textarea value={evidence} onChange={(e) => setEvidence(e.target.value)} placeholder="Цифры, разговоры с клиентами, наблюдения — или пока ничего" />
+            </label>
+            <button className="button" type="button" disabled={!hasEnough} onClick={() => setShowSummary(true)}>Собрать промежуточный вывод</button>
           </div>
-          <p className="diagnostic-note"><strong>Это ещё не диагноз.</strong> Но уже видно, что нужно понять, прежде чем выбирать рекламу, сайт, нового специалиста или другое решение.</p>
-          <a className="text-link" href="#contact">Разобрать эту ситуацию вместе →</a>
+
+          {showSummary && (
+            <div className="diagnostic-summary">
+              <p className="diagnostic-summary-title">Что уже видно</p>
+              <div className="diagnostic-summary-grid">
+                <div><span>Наблюдение</span><p>{changed}</p></div>
+                <div><span>Ваша текущая версия</span><p>{explanation}</p></div>
+                <div><span>Подтверждение</span><p>{evidence.trim() || "Пока явного подтверждения нет — значит, это ещё версия, а не факт."}</p></div>
+                <div><span>Куда смотреть дальше</span><p>{current.zones.join(" · ")}</p></div>
+              </div>
+              <p className="diagnostic-note"><strong>Промежуточный вывод:</strong> у вас уже есть наблюдение и объяснение, но решение стоит выбирать только после проверки того, что действительно подтверждено. Для этой ситуации я бы начал с вопросов ниже.</p>
+              <ol>
+                {current.questions.map((question) => <li key={question}>{question}</li>)}
+              </ol>
+              <a className="text-link" href="#contact">Обсудить эту ситуацию →</a>
+            </div>
+          )}
         </article>
       </div>
     </div>
