@@ -61,6 +61,11 @@ export default function Home() {
               <a className="button" href="#situations">Узнать свою ситуацию</a>
               <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
             </div>
+            <div className="hero-trust" aria-label="Опыт Владимира Шашкова">
+              <span><strong>20+ лет</strong> в бизнесе и управлении</span>
+              <span><strong>Executive MBA</strong></span>
+              <span><strong>Инженерия → развитие → маркетинг</strong></span>
+            </div>
           </div>
           <figure className="hero-photo">
             <Image src="/vladimir-photo.jpg" alt="Владимир Шашков" width={1206} height={1210} priority />
@@ -109,6 +114,7 @@ export default function Home() {
               <label>Что происходит?<textarea name="situation" required placeholder="Например: нас видят, но почти не заказывают" /></label>
               <label>Как с вами связаться?<input name="contact" required placeholder="Email или Telegram" /></label>
               <button className="button button-light" type="submit">Описать ситуацию</button>
+              <p className="form-promise">Если есть смысл обсудить задачу, предложу короткий разговор на 20–30 минут. Бесплатно и без обязательства продолжать работу.</p>
             </form>
           </div>
         </div>
@@ -141,6 +147,7 @@ export default function Home() {
               <p><strong>Что нужно проверить первым</strong><span>до того, как тратить деньги на внедрение.</span></p>
               <p><strong>Какой следующий шаг разумен</strong><span>сделать самим, отдать исполнителю или вынести в отдельный разбор.</span></p>
             </div>
+            <p className="owner-competence-note">Вам не нужно становиться маркетологом. Достаточно понимать, какую задачу решаем, какого результата ждём и по каким признакам оценивать работу — чтобы не менять людей и инструменты вслепую.</p>
           </div>
         </div>
       </section>
@@ -228,16 +235,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="executor-stage compact-stage">
-        <div className="page-shell executor-grid">
-          <p className="eyebrow">Роль собственника</p>
-          <div>
-            <h2>Не становиться маркетологом. Стать компетентным заказчиком</h2>
-            <p>Собственнику не нужно самому настраивать рекламу или управлять каждым инструментом. Но важно понимать, какую задачу решаем, какого результата ждём и по каким признакам оценивать работу — чтобы не менять людей и инструменты вслепую.</p>
-          </div>
-        </div>
-      </section>
-
       <section className="depth-stage compact-stage" id="depth">
         <div className="page-shell depth-layout">
           <div className="depth-intro">
@@ -274,7 +271,7 @@ export default function Home() {
             <h2>Я пришёл к маркетингу изнутри бизнеса</h2>
           </div>
           <div className="about-copy">
-            <p className="about-lead">Математика и автоматизированные системы → инженерия → управление → Executive MBA → развитие бизнеса → стратегический маркетинг.</p>
+            <p className="about-lead">Более 20 лет в инженерном и управленческом бизнесе: математика и автоматизированные системы → инженерия → управление → Executive MBA → развитие бизнеса → стратегический маркетинг.</p>
             <p>Поэтому я рассматриваю маркетинг вместе с продуктом, продажами, сервисом и экономикой бизнеса. Мой основной управленческий опыт связан со сложным B2B, но сам способ анализа применим и к компаниям, которые работают с конечным потребителем.</p>
           </div>
         </div>
@@ -296,7 +293,7 @@ export default function Home() {
             <p className="eyebrow eyebrow-light">Первый шаг</p>
             <h2>Есть задача, но решение пока не очевидно?</h2>
             <p>Опишите, что происходит, своими словами. Не нужно заранее ставить диагноз или выбирать услугу.</p>
-            <p className="contact-note">Первый разговор нужен, чтобы понять задачу и решить, имеет ли смысл отдельный разбор. Можно не продолжать работу после него.</p>
+            <p className="contact-note"><strong>Первый разговор — 20–30 минут, бесплатно и без обязательства продолжать.</strong> Он нужен, чтобы понять задачу и решить, имеет ли смысл отдельный разбор.</p>
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Или написать напрямую в Telegram →</a>
           </div>
           <form className="contact-form" method="post" action="/api/contact">
@@ -305,9 +302,12 @@ export default function Home() {
             <label>Что уже пробовали?<textarea name="tried" placeholder="Если пробовали" /></label>
             <label>Email / Telegram<input name="contact" required /></label>
             <button className="button button-light" type="submit">Отправить</button>
+            <p className="form-promise">После сообщения я сначала посмотрю на задачу. Если вижу смысл в разговоре — предложу удобное время.</p>
           </form>
         </div>
       </section>
+
+      <a className="floating-cta" href="#contact" aria-label="Описать свою ситуацию">Описать ситуацию</a>
 
       <footer className="page-shell footer"><span>Владимир Шашков</span><a href="#top">Наверх ↑</a></footer>
     </main>
