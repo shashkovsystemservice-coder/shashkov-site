@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <rect width="1400" height="900" fill="#ffffff"/>
+  <style>
+    text{font-family:Arial,sans-serif;fill:#0f172a}.t{font-size:36px;font-weight:700}.s{font-size:22px;fill:#475569}.l{font-size:22px}.v{font-size:21px;font-weight:700;fill:#1d4ed8}
+  </style>
+  <text x="70" y="72" class="t">Какие области маркетинга встречаются в вакансиях HeadHunter</text>
+  <text x="70" y="112" class="s">Корпус: 6 503 вакансии · 13 исходных файлов · одна вакансия может относиться к нескольким областям</text>
+  <g transform="translate(70 180)">
+    <text y="0" class="l">Коммуникации</text><rect x="360" y="-24" width="760" height="28" fill="#1d4ed8"/><text x="1140" y="0" class="v">94,5%</text>
+    <text y="78" class="l">Эффективность</text><rect x="360" y="54" width="703" height="28" fill="#1d4ed8"/><text x="1083" y="78" class="v">87,4%</text>
+    <text y="156" class="l">Доступ / каналы</text><rect x="360" y="132" width="662" height="28" fill="#1d4ed8"/><text x="1042" y="156" class="v">82,3%</text>
+    <text y="234" class="l">Стратегия</text><rect x="360" y="210" width="499" height="28" fill="#1d4ed8"/><text x="879" y="234" class="v">62,0%</text>
+    <text y="312" class="l">Бренд</text><rect x="360" y="288" width="478" height="28" fill="#1d4ed8"/><text x="858" y="312" class="v">59,4%</text>
+    <text y="390" class="l">Рынок</text><rect x="360" y="366" width="439" height="28" fill="#1d4ed8"/><text x="819" y="390" class="v">54,6%</text>
+    <text y="468" class="l">Монетизация</text><rect x="360" y="444" width="415" height="28" fill="#1d4ed8"/><text x="795" y="468" class="v">51,6%</text>
+    <text y="546" class="l">Предложение</text><rect x="360" y="522" width="206" height="28" fill="#1d4ed8"/><text x="586" y="546" class="v">25,6%</text>
+    <text y="624" class="l">Исследования</text><rect x="360" y="600" width="184" height="28" fill="#1d4ed8"/><text x="564" y="624" class="v">22,9%</text>
+  </g>
+  <text x="70" y="850" class="s">Метод: поиск функций по описанию вакансии и навыкам; названия должностей не использовались как основание классификации.</text>
+</svg>
