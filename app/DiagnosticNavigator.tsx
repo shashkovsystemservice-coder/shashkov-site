@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { trackEvent } from "./AnalyticsTracker";
 
 type Situation = {
   title: string;
@@ -92,9 +93,18 @@ export default function DiagnosticNavigator() {
     setExplanation("");
     setEvidence("");
     setShowSummary(false);
+    trackEvent("diagnostic_select", { situation: situations[index].title });
   };
 
   const hasEnough = changed.trim().length > 2 && explanation.trim().length > 2;
+
+  const completeDiagnostic = () => {
+    setShowSummary(true);
+    trackEvent("diagnostic_complete", {
+      situation: current.title,
+      has_evidence: evidence.trim().length > 2,
+    });
+  };
 
   return (
     <div className="diagnostic-wrap" id="diagnostic">
@@ -107,13 +117,7 @@ export default function DiagnosticNavigator() {
       <div className="diagnostic-grid">
         <div className="diagnostic-choices" aria-label="Выберите ситуацию">
           {situations.map((situation, index) => (
-            <button
-              className={`diagnostic-choice${selected === index ? " is-active" : ""}`}
-              type="button"
-              key={situation.title}
-              onClick={() => resetAnswers(index)}
-              aria-pressed={selected === index}
-            >
+            <button className={`diagnostic-choice${selected === index ? " is-active" : ""}`} type="button" key={situation.title} onClick={() => resetAnswers(index)} aria-pressed={selected === index}>
               {situation.title}
             </button>
           ))}
@@ -122,39 +126,25 @@ export default function DiagnosticNavigator() {
         <article className="diagnostic-result" aria-live="polite">
           <p className="diagnostic-kicker">Вы выбрали: «{current.title}»</p>
           <h3>Теперь немного конкретики про вашу ситуацию</h3>
-
           <div className="diagnostic-form">
-            <label>
-              <span>1. Что изменилось или что вы наблюдаете?</span>
-              <textarea value={changed} onChange={(e) => setChanged(e.target.value)} placeholder="Например: обращений столько же, но покупают реже" />
-            </label>
-            <label>
-              <span>2. Как вы сами сейчас объясняете причину?</span>
-              <textarea value={explanation} onChange={(e) => setExplanation(e.target.value)} placeholder="Например: кажется, что реклама приводит не тех людей" />
-            </label>
-            <label>
-              <span>3. Что это подтверждает?</span>
-              <textarea value={evidence} onChange={(e) => setEvidence(e.target.value)} placeholder="Цифры, разговоры с клиентами, наблюдения — или пока ничего" />
-            </label>
-            <button className="button" type="button" disabled={!hasEnough} onClick={() => setShowSummary(true)}>Собрать промежуточный вывод</button>
+            <label><span>1. Что изменилось или что вы наблюдаете?</span><textarea value={changed} onChange={(e) => setChanged(e.target.value)} placeholder="Например: обращений столько же, но покупают реже" /></label>
+            <label><span>2. Как вы сами сейчас объясняете причину?</span><textarea value={explanation} onChange={(e) => setExplanation(e.target.value)} placeholder="Например: кажется, что реклама приводит не тех людей" /></label>
+            <label><span>3. Что это подтверждает?</span><textarea value={evidence} onChange={(e) => setEvidence(e.target.value)} placeholder="Цифры, разговоры с клиентами, наблюдения — или пока ничего" /></label>
+            <button className="button" type="button" disabled={!hasEnough} onClick={completeDiagnostic}>Собрать промежуточный вывод</button>
           </div>
 
-          {showSummary && (
-            <div className="diagnostic-summary">
-              <p className="diagnostic-summary-title">Что уже видно</p>
-              <div className="diagnostic-summary-grid">
-                <div><span>Наблюдение</span><p>{changed}</p></div>
-                <div><span>Ваша текущая версия</span><p>{explanation}</p></div>
-                <div><span>Подтверждение</span><p>{evidence.trim() || "Пока явного подтверждения нет — значит, это ещё версия, а не факт."}</p></div>
-                <div><span>Куда смотреть дальше</span><p>{current.zones.join(" · ")}</p></div>
-              </div>
-              <p className="diagnostic-note"><strong>Это ещё не диагноз.</strong> Ниже — вопросы именно для выбранной ситуации. Они нужны, чтобы проверить альтернативные объяснения до выбора решения.</p>
-              <ol>
-                {current.questions.map((question) => <li key={question}>{question}</li>)}
-              </ol>
-              <a className="text-link" href="#contact">Обсудить эту ситуацию →</a>
+          {showSummary && <div className="diagnostic-summary">
+            <p className="diagnostic-summary-title">Что уже видно</p>
+            <div className="diagnostic-summary-grid">
+              <div><span>Наблюдение</span><p>{changed}</p></div>
+              <div><span>Ваша текущая версия</span><p>{explanation}</p></div>
+              <div><span>Подтверждение</span><p>{evidence.trim() || "Пока явного подтверждения нет — значит, это ещё версия, а не факт."}</p></div>
+              <div><span>Куда смотреть дальше</span><p>{current.zones.join(" · ")}</p></div>
             </div>
-          )}
+            <p className="diagnostic-note"><strong>Это ещё не диагноз.</strong> Ниже — вопросы именно для выбранной ситуации. Они нужны, чтобы проверить альтернативные объяснения до выбора решения.</p>
+            <ol>{current.questions.map((question) => <li key={question}>{question}</li>)}</ol>
+            <a className="text-link" href="#contact">Обсудить эту ситуацию →</a>
+          </div>}
         </article>
       </div>
     </div>
