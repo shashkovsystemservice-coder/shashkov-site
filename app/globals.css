@@ -120,12 +120,46 @@ p { color: var(--muted); }
   font-weight: 870;
 }
 .lead-answer { max-width: 920px; margin: 34px 0 0; font-size: 21px; }
-.situation-columns { display: grid; grid-template-columns: 1.1fr .85fr 1.05fr; gap: 64px; padding: 82px 0 122px; }
+.situation-columns { display: grid; grid-template-columns: 1.1fr .85fr 1.05fr; gap: 64px; padding: 82px 0 96px; }
 .situation-column { position: relative; padding-top: 20px; border-top: 1px solid var(--line); }
 .column-index { display: block; margin-bottom: 32px; color: #9aa6b5; font-size: 13px; font-weight: 800; }
 .situation-column h3 { max-width: 360px; font-size: clamp(28px, 2.5vw, 38px); }
 .situation-list { margin-top: 30px; }
 .situation-list p { margin: 0; padding: 20px 0; border-bottom: 1px solid var(--line); color: var(--ink); font-size: clamp(21px, 1.8vw, 28px); line-height: 1.18; letter-spacing: -.02em; }
+
+.diagnostic-wrap { padding: 104px 0 118px; border-top: 1px solid var(--line); }
+.diagnostic-head { max-width: 900px; margin-bottom: 58px; }
+.diagnostic-head > p:last-child { max-width: 760px; font-size: 20px; }
+.diagnostic-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 76px; align-items: start; }
+.diagnostic-choices { display: grid; border-top: 2px solid var(--ink); }
+.diagnostic-choice {
+  width: 100%;
+  padding: 20px 42px 20px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  font-size: clamp(21px, 1.8vw, 28px);
+  line-height: 1.18;
+  font-weight: 760;
+  letter-spacing: -.02em;
+  cursor: pointer;
+  position: relative;
+}
+.diagnostic-choice::after { content: "→"; position: absolute; right: 0; color: #a6b0bd; }
+.diagnostic-choice.is-active { color: var(--blue); }
+.diagnostic-choice.is-active::after { color: var(--blue); }
+.diagnostic-result { padding: 42px 46px 48px; background: #f2f6fb; border-top: 3px solid var(--blue); }
+.diagnostic-kicker { margin-bottom: 16px; color: var(--blue); font-size: 13px; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+.diagnostic-result h3 { max-width: 760px; font-size: clamp(32px, 3vw, 48px); }
+.diagnostic-result ol { margin: 34px 0 34px; padding-left: 28px; }
+.diagnostic-result li { margin: 0 0 18px; padding-left: 8px; color: var(--ink); font-size: 20px; line-height: 1.38; }
+.diagnostic-zones { margin: 30px 0; padding: 24px 0; border-top: 1px solid #cad5e3; border-bottom: 1px solid #cad5e3; }
+.diagnostic-zones span { color: var(--muted); font-size: 12px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.diagnostic-zones p { margin: 10px 0 0; color: var(--ink); font-size: 20px; font-weight: 760; }
+.diagnostic-note { max-width: 720px; margin-bottom: 30px; font-size: 18px; }
+.diagnostic-note strong { color: var(--ink); }
 
 .capture-band { background: var(--navy); color: #fff; }
 .capture-grid { padding: 86px 0; display: grid; grid-template-columns: .9fr 1.1fr; gap: 110px; align-items: start; }
@@ -223,6 +257,7 @@ p { color: var(--muted); }
   .hero { grid-template-columns: 1.15fr .85fr; gap: 50px; }
   .situation-columns { grid-template-columns: 1fr 1fr; }
   .situation-column:last-child { grid-column: 1 / -1; }
+  .diagnostic-grid { gap: 48px; }
   .process-line { grid-template-columns: 1fr 1fr; }
   .process-item:nth-child(3) { border-left: 0; }
   .process-item:nth-child(3), .process-item:nth-child(4) { border-top: 1px solid var(--line); }
@@ -247,9 +282,15 @@ p { color: var(--muted); }
   .lead-situation { padding: 42px 0 50px; }
   .lead-situation blockquote { font-size: 37px; }
   .lead-answer { font-size: 18px; }
-  .situation-columns { grid-template-columns: 1fr; gap: 42px; padding: 56px 0 78px; }
+  .situation-columns { grid-template-columns: 1fr; gap: 42px; padding: 56px 0 66px; }
   .situation-column:last-child { grid-column: auto; }
   .situation-list p { font-size: 23px; }
+  .diagnostic-wrap { padding: 74px 0 82px; }
+  .diagnostic-head { margin-bottom: 40px; }
+  .diagnostic-grid { grid-template-columns: 1fr; gap: 36px; }
+  .diagnostic-choice { padding: 17px 34px 17px 0; font-size: 22px; }
+  .diagnostic-result { padding: 30px 24px 34px; }
+  .diagnostic-result li { font-size: 18px; }
   .capture-grid { padding: 62px 0; grid-template-columns: 1fr; gap: 44px; }
   .process-stage { padding: 92px 0 100px; }
   .process-line { grid-template-columns: 1fr; }
