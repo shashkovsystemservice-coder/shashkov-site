@@ -103,3 +103,5 @@ export async function POST(request: Request) {
   const url = new URL("/?sent=1#contact", request.url);
   return NextResponse.redirect(url, 303);
 }
+
+// Deployment refresh: Telegram secrets are injected by Vercel at runtime.
