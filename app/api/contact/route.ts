@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { Bot } from "grammy";
 
 const maxLen = 4000;
 const primaryEmail = "shashkov.systemservice@gmail.com";
@@ -33,7 +34,7 @@ function messageText(submission: {
   ].join("\n");
 }
 
-async function deliver(to: string[], text: string) {
+async function deliverEmail(to: string[], text: string) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) throw new Error("RESEND_API_KEY is not configured");
 
@@ -44,6 +45,19 @@ async function deliver(to: string[], text: string) {
     subject: "Новая заявка с сайта Владимира Шашкова",
     text,
   });
+}
+
+async function deliverTelegram(text: string) {
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+
+  if (!token || !chatId) {
+    console.info("TELEGRAM_DELIVERY_SKIPPED", "Bot token or chat id is not configured");
+    return;
+  }
+
+  const bot = new Bot(token);
+  await bot.api.sendMessage(chatId, `🔔 ${text}`);
 }
 
 export async function POST(request: Request) {
@@ -64,11 +78,11 @@ export async function POST(request: Request) {
   const text = messageText(submission);
 
   try {
-    let result = await deliver([primaryEmail, backupEmail], text);
+    let result = await deliverEmail([primaryEmail, backupEmail], text);
 
     if (result.error) {
       console.warn("RESEND_DUAL_DELIVERY_FAILED", result.error);
-      result = await deliver([primaryEmail], text);
+      result = await deliverEmail([primaryEmail], text);
     }
 
     if (result.error) {
@@ -78,6 +92,12 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("RESEND_DELIVERY_ERROR", error);
     return NextResponse.json({ ok: false, error: "email_delivery_failed" }, { status: 502 });
+  }
+
+  try {
+    await deliverTelegram(text);
+  } catch (error) {
+    console.error("TELEGRAM_DELIVERY_ERROR", error);
   }
 
   const url = new URL("/?sent=1#contact", request.url);
