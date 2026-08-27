@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
 const maxLen = 4000;
 const primaryEmail = "shashkov.systemservice@gmail.com";
@@ -32,28 +33,18 @@ function messageText(submission: {
   ].join("\n");
 }
 
-async function sendEmail(to: string[]) {
+async function deliver(to: string[], text: string) {
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    throw new Error("RESEND_API_KEY is not configured");
-  }
+  if (!apiKey) throw new Error("RESEND_API_KEY is not configured");
 
-  return fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: "Сайт Владимира Шашкова <onboarding@resend.dev>",
-      to,
-      subject: "Новая заявка с сайта Владимира Шашкова",
-      text: currentMessage,
-    }),
+  const resend = new Resend(apiKey);
+  return resend.emails.send({
+    from: "Сайт Владимира Шашкова <onboarding@resend.dev>",
+    to,
+    subject: "Новая заявка с сайта Владимира Шашкова",
+    text,
   });
 }
-
-let currentMessage = "";
 
 export async function POST(request: Request) {
   const form = await request.formData();
@@ -70,29 +61,23 @@ export async function POST(request: Request) {
   }
 
   console.log("CONTACT_SUBMISSION", JSON.stringify(submission));
-  currentMessage = messageText(submission);
+  const text = messageText(submission);
 
   try {
-    let response = await sendEmail([primaryEmail, backupEmail]);
+    let result = await deliver([primaryEmail, backupEmail], text);
 
-    // Resend's shared test sender may only allow the account owner's address.
-    // In that case we still deliver the lead to the primary mailbox.
-    if (!response.ok) {
-      const firstError = await response.text();
-      console.warn("RESEND_DUAL_DELIVERY_FAILED", response.status, firstError);
-      response = await sendEmail([primaryEmail]);
+    if (result.error) {
+      console.warn("RESEND_DUAL_DELIVERY_FAILED", result.error);
+      result = await deliver([primaryEmail], text);
     }
 
-    if (!response.ok) {
-      const error = await response.text();
-      console.error("RESEND_DELIVERY_FAILED", response.status, error);
+    if (result.error) {
+      console.error("RESEND_DELIVERY_FAILED", result.error);
       return NextResponse.json({ ok: false, error: "email_delivery_failed" }, { status: 502 });
     }
   } catch (error) {
     console.error("RESEND_DELIVERY_ERROR", error);
     return NextResponse.json({ ok: false, error: "email_delivery_failed" }, { status: 502 });
-  } finally {
-    currentMessage = "";
   }
 
   const url = new URL("/?sent=1#contact", request.url);
