@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { Bot } from "grammy";
 
 const maxLen = 4000;
 const primaryEmail = "shashkov.systemservice@gmail.com";
@@ -56,8 +55,22 @@ async function deliverTelegram(text: string) {
     return;
   }
 
-  const bot = new Bot(token);
-  await bot.api.sendMessage(chatId, `🔔 ${text}`);
+  const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text: `🔔 ${text}`,
+      disable_web_page_preview: true,
+    }),
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`Telegram API ${response.status}: ${error}`);
+  }
+
+  console.info("TELEGRAM_DELIVERY_OK");
 }
 
 export async function POST(request: Request) {
@@ -103,5 +116,3 @@ export async function POST(request: Request) {
   const url = new URL("/?sent=1#contact", request.url);
   return NextResponse.redirect(url, 303);
 }
-
-// Deployment refresh: Telegram secrets are injected by Vercel at runtime.
