@@ -36,6 +36,12 @@ const process = [
   ["04", "Фиксируем результат и следующий шаг", "Что именно должно измениться, какие объяснения пока остаются предположениями и что имеет смысл проверить или менять первым."],
 ] as const;
 
+const routes = [
+  ["01", "Сделать самим", "Если задача стала понятной и у команды есть ресурсы, вы получаете логику действий и критерии, по которым можно проверить результат."],
+  ["02", "Передать исполнителю", "Если нужен конкретный специалист или агентство, задача формулируется так, чтобы можно было выбрать исполнителя и оценить его работу."],
+  ["03", "Продолжить разбор со мной", "Если причина пока не ясна или решение требует отдельной проверки, можно перейти к платной диагностической работе по конкретной задаче."],
+] as const;
+
 export default function Home() {
   return (
     <main id="top">
@@ -114,7 +120,7 @@ export default function Home() {
               <label>Что происходит?<textarea name="situation" required placeholder="Например: нас видят, но почти не заказывают" /></label>
               <label>Как с вами связаться?<input name="contact" required placeholder="Email или Telegram" /></label>
               <button className="button button-light" type="submit">Описать ситуацию</button>
-              <p className="form-promise">Если есть смысл обсудить задачу, предложу короткий разговор на 20–30 минут. Бесплатно и без обязательства продолжать работу.</p>
+              <p className="form-promise">Если есть смысл обсудить задачу, предложу короткий разговор на 20–30 минут. Бесплатно и без обязательства продолжать работу. Обычно отвечаю в течение рабочего дня.</p>
             </form>
           </div>
         </div>
@@ -148,6 +154,23 @@ export default function Home() {
               <p><strong>Какой следующий шаг разумен</strong><span>сделать самим, отдать исполнителю или вынести в отдельный разбор.</span></p>
             </div>
             <p className="owner-competence-note">Вам не нужно становиться маркетологом. Достаточно понимать, какую задачу решаем, какого результата ждём и по каким признакам оценивать работу — чтобы не менять людей и инструменты вслепую.</p>
+          </div>
+
+          <div className="routes-block">
+            <div className="section-intro routes-intro">
+              <p className="eyebrow">Что бывает дальше</p>
+              <h2>Первый разговор не запускает большой проект автоматически</h2>
+              <p>После разбора может оказаться, что вам вообще не нужна дальнейшая работа со мной.</p>
+            </div>
+            <div className="routes-grid">
+              {routes.map(([number, title, text]) => (
+                <article className="route-card" key={number}>
+                  <span>{number}</span>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -287,6 +310,37 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="faq-stage">
+        <div className="page-shell faq-grid">
+          <div className="faq-intro">
+            <p className="eyebrow">Практические вопросы</p>
+            <h2>До того, как писать</h2>
+          </div>
+          <div className="faq-list">
+            <details open>
+              <summary>Сколько стоит первый разговор?</summary>
+              <p>Ничего. Первый разговор занимает 20–30 минут и нужен, чтобы понять задачу и решить, есть ли смысл двигаться дальше.</p>
+            </details>
+            <details>
+              <summary>Обязательно ли потом продолжать работу?</summary>
+              <p>Нет. После первого разговора можно остановиться. Если дальнейшая работа не нужна, я так и скажу.</p>
+            </details>
+            <details>
+              <summary>Что если проблема окажется не в маркетинге?</summary>
+              <p>Это нормальный результат диагностики. Причина может оказаться в продукте, продажах, сервисе, экономике, процессе выбора или вообще вне маркетинга.</p>
+            </details>
+            <details>
+              <summary>Сколько стоит полноценный разбор?</summary>
+              <p>Зависит от задачи, объёма данных и глубины проверки. Стоимость обсуждается только после того, как становится понятно, что именно нужно разбирать.</p>
+            </details>
+            <details>
+              <summary>Когда я получу ответ?</summary>
+              <p>Обычно отвечаю на новое сообщение в течение рабочего дня.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
       <section className="contact-stage" id="contact">
         <div className="page-shell contact-grid">
           <div className="contact-copy">
@@ -302,7 +356,7 @@ export default function Home() {
             <label>Что уже пробовали?<textarea name="tried" placeholder="Если пробовали" /></label>
             <label>Email / Telegram<input name="contact" required /></label>
             <button className="button button-light" type="submit">Отправить</button>
-            <p className="form-promise">После сообщения я сначала посмотрю на задачу. Если вижу смысл в разговоре — предложу удобное время.</p>
+            <p className="form-promise">После сообщения я сначала посмотрю на задачу. Если вижу смысл в разговоре — предложу удобное время. Обычно отвечаю в течение рабочего дня.</p>
           </form>
         </div>
       </section>
