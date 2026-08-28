@@ -2,56 +2,301 @@ import Image from "next/image";
 import DiagnosticNavigator from "./DiagnosticNavigator";
 
 const situationColumns = [
-  { label: "Когда не сходятся продажи", items: ["Нас не видят", "Нас видят, но не заказывают", "Нас сравнивают только по цене", "Заказывают, но повторно не заказывают"] },
-  { label: "Когда непонятно, что чинить", items: ["Маркетолог есть, но непонятно, что он реально даёт", "Меняли сайт, рекламу или подрядчиков, а яснее не стало", "Продукт хороший, но рынок как будто этого не понимает"] },
-  { label: "Когда нужен внешний взгляд", items: ["Хотим выйти на новый рынок, но не хотим строить решение на догадках", "Нужно понять, что делать, а внедрять будем сами", "Есть задача, но мы сами уже слишком близко к бизнесу, чтобы увидеть причину"] },
+  {
+    label: "Когда результат не сходится",
+    items: [
+      "Нас не видят",
+      "Нас видят, но не заказывают",
+      "Нас сравнивают только по цене",
+      "Клиенты приходят, но не возвращаются",
+    ],
+  },
+  {
+    label: "Когда непонятно, что менять",
+    items: [
+      "Маркетолог есть, но непонятно, что он реально даёт",
+      "Меняли сайт, рекламу или подрядчиков, а яснее не стало",
+      "Все советуют разное: рекламу, бренд, продажи, продукт",
+      "Не понимаю, нужен ли мне вообще новый специалист",
+    ],
+  },
+  {
+    label: "Когда вокруг слишком много инструментов",
+    items: [
+      "Все внедряют ИИ, ботов и автоматизацию — а мне это надо?",
+      "Не хочу отстать, но не хочу автоматизировать ненужное",
+      "Нужно понять, что делать, а внедрять будем сами",
+      "Есть задача, но мы сами уже слишком близко к бизнесу",
+    ],
+  },
 ] as const;
 
 const process = [
-  ["01", "Вы рассказываете, что происходит", "Двух-трёх предложений достаточно. Не нужно заранее понимать причину или выбирать услугу."],
-  ["02", "Мы разговариваем 20–30 минут", "Я уточняю, что уже пробовали, какие есть цифры и что сейчас больше всего беспокоит."],
-  ["03", "Я говорю, что вижу", "Отделяем то, что уже известно, от предположений и определяем, что разумно проверить или сделать первым."],
+  ["01", "Фиксируем вопрос", "Не «улучшить маркетинг вообще», а одно решение, которое собственнику действительно нужно принять."],
+  ["02", "Проверяем реальность", "Смотрим данные бизнеса, клиентов, сделки, рынок, конкурентов и то, что уже пробовали. Отделяем факты от версий."],
+  ["03", "Собираем решение", "Определяем, где находится проблема, что делать первым, что пока не делать и кто или какой инструмент для этого нужен."],
 ] as const;
 
-const routes = [
-  ["01", "Сделать самим", "Если стало понятно, что делать, вы получаете логику действий и можете внедрять решение самостоятельно."],
-  ["02", "Передать исполнителю", "Если нужен конкретный специалист или агентство, становится понятно, что именно им поручить и как проверить работу."],
-  ["03", "Продолжить разбор со мной", "Если причина пока не ясна или решение требует отдельной проверки, можно перейти к платной работе по конкретной задаче."],
+const deliverables = [
+  ["Постановка задачи", "Что именно происходит и какой вопрос действительно нужно решить."],
+  ["Факты и гипотезы", "Что подтверждено данными, что пока только версия и чего ещё не хватает."],
+  ["Приоритет действий", "Что проверять или менять первым — и на что пока не тратить деньги."],
+  ["Рабочая система", "Если полезно — таблица, модель, дашборд, реестр или AI-инструмент, которым можно пользоваться дальше."],
 ] as const;
 
-const cellStyle = { padding: "9px 10px", borderBottom: "1px solid rgba(20,25,30,.13)", verticalAlign: "top" as const };
-const mutedCellStyle = { ...cellStyle, color: "#66706d" };
+const evidence = [
+  {
+    label: "B2B / кейс",
+    title: "SLED Systems",
+    text: "Исходный запрос выглядел как задача получения большего числа входящих. Проверка данных показала, что принимать эту версию без дальнейшего разбора было нельзя.",
+    result: "Для собственника → сначала понять, как реально возникает продажа и где теряется возможность, а уже потом решать, нужен ли больший рекламный бюджет.",
+    href: "#sled",
+    link: "Посмотреть разбор ↓",
+  },
+  {
+    label: "B2C / исследование",
+    title: "Фитнес-бизнес",
+    text: "Рынок → выбор клиента → предложение → цена → привлечение → использование → удержание → экономика.",
+    result: "Для собственника → если клиенты приходят, но быстро уходят, увеличение привлечения может только ускорить потери.",
+    href: "/fitness-report.pdf",
+    link: "Открыть исследование →",
+  },
+  {
+    label: "Рынок / исследование",
+    title: "6 503 вакансии HeadHunter",
+    text: "Я исследовал не названия профессий, а то, за какую маркетинговую работу компании реально готовы платить: функции, задачи, KPI, инструменты и уровни ответственности.",
+    result: "Для собственника → рынок хорошо продаёт отдельные функции и исполнителей, а сама проблема бизнеса может быть системной.",
+    href: "#market-view",
+    link: "Зачем это важно ↓",
+  },
+] as const;
 
 export default function Home() {
   return <main id="top">
     <div className="page-shell">
-      <header className="site-nav"><a className="site-brand" href="#top">Владимир Шашков</a><nav aria-label="Основная навигация"><a href="#situations">С чем приходят</a><a href="#diagnostic">Мини-разбор</a><a href="#proof">Пример</a><a href="#work">Работа</a><a className="nav-cta" href="#contact">Написать</a></nav></header>
-      <section className="hero"><div className="hero-copy"><p className="eyebrow">Для собственников действующего бизнеса</p><h1>Не уверены, что именно сейчас нужно менять в бизнесе?</h1><p className="hero-lead">Продажи не растут, клиенты выбирают других, а внутри звучат разные версии: нужно больше рекламы, новый сайт, другой маркетолог, изменить продукт или продажи. Ошибка здесь стоит денег — можно снова вложиться в решение, которое не устраняет причину.</p><p className="hero-principle">Сначала разобраться, что происходит. Потом решить, что делать — и на что пока не тратить деньги.</p><div className="hero-actions"><a className="button" href="#situations">Узнать свою ситуацию</a><a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a></div><div className="hero-trust" aria-label="Опыт Владимира Шашкова"><span><strong>20+ лет</strong> в бизнесе и управлении</span><span><strong>Executive MBA</strong></span><span><strong>Инженерия → развитие → маркетинг</strong></span></div></div><figure className="hero-photo"><Image src="/vladimir-photo.jpg" alt="Владимир Шашков" width={1206} height={1210} priority /></figure></section>
+      <header className="site-nav">
+        <a className="site-brand" href="#top">Владимир Шашков</a>
+        <nav aria-label="Основная навигация">
+          <a href="#situations">Ситуации</a>
+          <a href="#product">Что я делаю</a>
+          <a href="#evidence">Примеры</a>
+          <a href="#about">Обо мне</a>
+          <a className="nav-cta" href="#contact">Написать</a>
+        </nav>
+      </header>
+
+      <section className="hero">
+        <div className="hero-copy">
+          <p className="eyebrow">Для собственников действующего бизнеса</p>
+          <h1>Сначала понять, что в бизнесе действительно нужно менять.</h1>
+          <p className="hero-lead">Когда продажи не растут или маркетинг не даёт ожидаемого результата, рынок быстро предлагает решение: новую рекламу, сайт, агентство, маркетолога, CRM или ИИ. Но хороший инструмент не поможет, если сначала неверно поставлена сама задача.</p>
+          <p className="hero-principle">Я помогаю разобраться, где находится реальная проблема, что стоит делать первым и на что пока не тратить деньги.</p>
+          <div className="hero-actions">
+            <a className="button" href="#situations">Посмотреть ситуации</a>
+            <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
+          </div>
+          <div className="hero-trust" aria-label="Опыт Владимира Шашкова">
+            <span><strong>20+ лет</strong> в бизнесе и управлении</span>
+            <span><strong>Executive MBA</strong></span>
+            <span><strong>Инженерия → развитие → маркетинг</strong></span>
+          </div>
+        </div>
+        <figure className="hero-photo"><Image src="/vladimir-photo.jpg" alt="Владимир Шашков" width={1206} height={1210} priority /></figure>
+      </section>
     </div>
 
-    <section className="situations-stage" id="situations"><div className="page-shell"><div className="section-intro situations-intro"><p className="eyebrow">Возможно, это про вас</p><h2>С какой проблемой вы сейчас живёте?</h2><p>Не нужно знать маркетинговый термин или заранее понимать причину. Достаточно узнать свою ситуацию.</p></div>
-      <article className="lead-situation"><p className="lead-label">Реальный запрос собственника</p><blockquote>«У меня нет бюджета на маркетинг, но я хочу, чтобы пришёл человек, сказал, что делать, а я сама сделаю»</blockquote><p className="lead-answer">Да, так тоже можно. Не обязательно нанимать маркетолога или агентство. Иногда нужен внешний разбор: понять приоритеты, а внедрять решение своими силами.</p></article>
-      <div className="situation-columns">{situationColumns.map((group,index)=><article className="situation-column" key={group.label}><span className="column-index">0{index+1}</span><h3>{group.label}</h3><div className="situation-list">{group.items.map(item=><p key={item}>«{item}»</p>)}</div></article>)}</div><DiagnosticNavigator /></div>
-      <div className="capture-band"><div className="page-shell capture-grid"><div className="capture-copy"><p className="eyebrow eyebrow-light">Если узнали свою ситуацию</p><h2>Можно просто написать, что происходит</h2><p>Двух-трёх предложений достаточно. Не нужно готовить бриф, выбирать услугу или правильно называть причину.</p></div><form className="quick-form" method="post" action="/api/contact"><input type="hidden" name="source" value="early-form" /><label>Что происходит?<textarea name="situation" required placeholder="Например: нас видят, но почти не заказывают" /></label><label>Как с вами связаться?<input name="contact" required placeholder="Email или Telegram" /></label><button className="button button-light" type="submit">Описать ситуацию</button><p className="form-promise">Если вижу, что могу быть полезен, предложу короткий разговор на 20–30 минут. Бесплатно и без обязательства продолжать. Обычно отвечаю в течение рабочего дня.</p></form></div></div>
+    <section className="situations-stage" id="situations">
+      <div className="page-shell">
+        <div className="section-intro situations-intro">
+          <p className="eyebrow">Возможно, это про вас</p>
+          <h2>С какой ситуацией вы сейчас живёте?</h2>
+          <p>Не нужно заранее знать причину и правильно называть маркетинговый термин. Достаточно узнать собственную ситуацию.</p>
+        </div>
+        <div className="situation-columns">
+          {situationColumns.map((group,index)=><article className="situation-column" key={group.label}>
+            <span className="column-index">0{index+1}</span>
+            <h3>{group.label}</h3>
+            <div className="situation-list">{group.items.map(item=><p key={item}>«{item}»</p>)}</div>
+          </article>)}
+        </div>
+        <article className="lead-situation">
+          <p className="lead-label">Реальный запрос собственника</p>
+          <blockquote>«У меня нет бюджета на маркетинг, но я хочу, чтобы пришёл человек, сказал, что делать, а я сама сделаю»</blockquote>
+          <p className="lead-answer">Это нормальный формат. Иногда бизнесу нужен не ещё один исполнитель, а профессиональный разбор задачи: понять приоритеты, а внедрять решение можно своими силами.</p>
+        </article>
+      </div>
+      <div className="capture-band">
+        <div className="page-shell capture-grid">
+          <div className="capture-copy">
+            <p className="eyebrow eyebrow-light">Если узнали свою ситуацию</p>
+            <h2>Можно просто написать, что происходит</h2>
+            <p>Двух-трёх предложений достаточно. Не нужно выбирать услугу или заранее знать, что именно вам нужно.</p>
+          </div>
+          <form className="quick-form" method="post" action="/api/contact">
+            <input type="hidden" name="source" value="early-form" />
+            <label>Что происходит?<textarea name="situation" required placeholder="Например: заявки есть, но продажи почти не растут" /></label>
+            <label>Как с вами связаться?<input name="contact" required placeholder="Email или Telegram" /></label>
+            <button className="button button-light" type="submit">Описать ситуацию</button>
+            <p className="form-promise">Если вижу, что могу быть полезен, предложу короткий разговор на 20–30 минут. Бесплатно и без обязательства продолжать.</p>
+          </form>
+        </div>
+      </div>
     </section>
 
-    <section className="process-stage" id="process"><div className="page-shell"><div className="section-intro process-intro"><p className="eyebrow">Что будет после сообщения</p><h2>Вы должны быстро понять, понял ли я вашу проблему</h2><p>Первый разговор нужен не для продажи большого проекта. Сначала я должен разобраться в вашей ситуации и показать, куда, по моему мнению, стоит смотреть.</p></div><div className="process-line">{process.map(([number,title,text])=><article className="process-item" key={number}><span className="process-number">{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div><div className="process-outcome"><p className="eyebrow">Что вы получаете</p><p className="outcome-statement">Ясность, что делать первым — и на что пока не тратить деньги.</p><div className="owner-result-list"><p><strong>Не переделывать всё подряд</strong><span>пока не понятно, где на самом деле проблема.</span></p><p><strong>Понимать, что требовать от маркетолога или подрядчика</strong><span>и как оценить, помогает ли его работа бизнесу.</span></p><p><strong>Отделить факты от догадок</strong><span>и проверить самое важное до больших затрат.</span></p><p><strong>Выбрать следующий шаг</strong><span>сделать самим, передать исполнителю или продолжить разбор.</span></p></div></div><div className="routes-block"><div className="section-intro routes-intro"><p className="eyebrow">Что бывает дальше</p><h2>Не обязательно продолжать работу со мной</h2><p>Если после разговора стало понятно, что делать, этого может быть достаточно.</p></div><div className="routes-grid">{routes.map(([number,title,text])=><article className="route-card" key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></div></section>
+    <section className="process-stage" id="product">
+      <div className="page-shell">
+        <div className="section-intro process-intro">
+          <p className="eyebrow">Что я делаю</p>
+          <h2>Диагностирую маркетинговую задачу до выбора решения</h2>
+          <p>Мой продукт — не реклама, не сайт и не «стратегия вообще». Я превращаю неясную проблему собственника в обоснованное решение: что происходит, что действительно нужно менять и каким способом.</p>
+        </div>
+        <div className="process-line">
+          {process.map(([number,title,text])=><article className="process-item" key={number}>
+            <span className="process-number">{number}</span><h3>{title}</h3><p>{text}</p>
+          </article>)}
+        </div>
+        <div className="process-outcome">
+          <p className="eyebrow">Что вы получаете</p>
+          <p className="outcome-statement">Не набор советов, а основание для следующего управленческого решения.</p>
+          <div className="owner-result-list">
+            {deliverables.map(([title,text])=><p key={title}><strong>{title}</strong><span>{text}</span></p>)}
+          </div>
+        </div>
+        <DiagnosticNavigator />
+      </div>
+    </section>
 
-    <section className="work-stage" id="artifacts"><div className="page-shell"><div className="section-intro"><p className="eyebrow">Что остаётся после работы</p><h2>Не презентация с общими словами, а рабочие материалы</h2><p>Ниже — сокращённые фрагменты реальных материалов проекта SLED. Они показывают сам принцип: у каждого вывода есть источник, статус и ограничение. Детали, которые не нужны для понимания метода, убраны.</p></div><div className="work-grid">
-      <article className="work-card"><p className="work-label">Реестр проверки фактов</p><h3>Когда две цифры выглядят как противоречие</h3><div style={{margin:"22px 0",border:"1px solid rgba(20,25,30,.14)",borderRadius:12,overflow:"hidden",fontSize:14}}><table style={{width:"100%",borderCollapse:"collapse"}}><tbody><tr><td style={mutedCellStyle}>76,02%</td><td style={cellStyle}>доля изделий</td></tr><tr><td style={mutedCellStyle}>84,18%</td><td style={cellStyle}>доля выручки</td></tr><tr><td style={mutedCellStyle}>Статус</td><td style={cellStyle}><strong>Расхождения нет</strong><br/>использованы разные знаменатели</td></tr></tbody></table></div><p>Зачем собственнику: не строить решение на цифрах, которые выглядят убедительно, но отвечают на разные вопросы.</p></article>
-      <article className="work-card"><p className="work-label">Карта статусов выводов</p><h3>Факт и гипотеза не смешиваются</h3><div style={{margin:"22px 0",border:"1px solid rgba(20,25,30,.14)",borderRadius:12,overflow:"hidden",fontSize:14}}><table style={{width:"100%",borderCollapse:"collapse"}}><tbody><tr><td style={mutedCellStyle}>Факт</td><td style={cellStyle}>сайт дал 1,16% выручки</td></tr><tr><td style={mutedCellStyle}>Вывод</td><td style={cellStyle}>сайт сейчас не является главным источником продаж</td></tr><tr><td style={mutedCellStyle}>Гипотеза</td><td style={cellStyle}>сайт может снижать недоверие до личного контакта</td></tr></tbody></table></div><p>Зачем собственнику: видеть, что уже доказано, а что ещё нельзя превращать в бюджет и план действий.</p></article>
-      <article className="work-card"><p className="work-label">Разбор источников продаж</p><h3>Откуда на самом деле приходят деньги</h3><div style={{margin:"22px 0",border:"1px solid rgba(20,25,30,.14)",borderRadius:12,overflow:"hidden",fontSize:14}}><table style={{width:"100%",borderCollapse:"collapse"}}><tbody><tr><td style={mutedCellStyle}>52,49%</td><td style={cellStyle}>повторные заказы · выручка</td></tr><tr><td style={mutedCellStyle}>30,18%</td><td style={cellStyle}>активная выездная работа · выручка</td></tr><tr><td style={mutedCellStyle}>1,16%</td><td style={cellStyle}>запросы с сайта · выручка</td></tr></tbody></table></div><p>Зачем собственнику: прежде чем «улучшать маркетинг», понять, какие механизмы уже создают результат и какой ценой.</p></article>
-    </div><div className="process-outcome" style={{marginTop:44}}><p className="eyebrow">Если нужен платный этап</p><p className="outcome-statement">Сначала фиксируем одну конкретную задачу — не покупаем «консалтинг вообще».</p><div className="owner-result-list"><p><strong>Что хотим понять</strong><span>один вопрос или управленческое решение, которое нужно принять.</span></p><p><strong>Что проверяем</strong><span>какие данные, сделки, рынок, клиенты или материалы действительно нужны.</span></p><p><strong>Что будет на выходе</strong><span>заранее понятный набор выводов и рабочих материалов.</span></p><p><strong>Продолжать или нет</strong><span>вы решаете после этого этапа, а не подписываетесь заранее на большой проект.</span></p></div></div></div></section>
+    <section className="work-stage" id="evidence">
+      <div className="page-shell">
+        <div className="section-intro">
+          <p className="eyebrow">Кейсы и исследования</p>
+          <h2>Не обязательно читать всё — выберите то, что ближе</h2>
+          <p>Каждый пример показывает одну и ту же вещь с другой стороны: как исходная версия проверяется данными и что это меняет для собственника.</p>
+        </div>
+        <div className="work-grid">
+          {evidence.map(item=><article className="work-card" key={item.title}>
+            <p className="work-label">{item.label}</p>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <p><strong>{item.result}</strong></p>
+            <a className="text-link" href={item.href} target={item.href.startsWith("/") ? "_blank" : undefined} rel={item.href.startsWith("/") ? "noreferrer" : undefined}>{item.link}</a>
+          </article>)}
+        </div>
+      </div>
+    </section>
 
-    <section className="proof-stage" id="proof"><div className="page-shell"><div className="section-intro proof-intro"><p className="eyebrow">Один реальный пример</p><h2>Как первоначальная версия проблемы меняется после проверки фактами</h2><p>SLED Systems — не доказательство того, что одна схема решает все ситуации выше. Это пример самого способа работы: исходный запрос проверяется данными, и решение меняется, если факты ведут в другую сторону.</p></div><article className="case-editorial"><div className="case-side"><p className="case-label">SLED Systems</p><span className="case-type">Проект в работе</span></div><div className="case-main"><div className="case-shift"><div><span>С чего начали</span><h3>Получать больше квалифицированных запросов за пределами домашнего региона</h3><p>На поверхности это выглядело как задача сайта, SEO, рекламы или лидогенерации.</p></div><div><span>Что показали данные</span><h3>Проблему нельзя было свести к «нужно больше трафика»</h3><p>В отгрузках за 2025 год сайт дал 1,16% выручки, активная выездная отработка — 30,18%, повторные заказы — 52,49%. Эти данные не доказывают проблему узнаваемости сами по себе. Они показали другое: исходную гипотезу «нужно просто больше входящих» нельзя было принимать без дальнейшей проверки.</p></div></div><div className="owner-result-list" style={{marginTop:42}}><p><strong>Обнаружили</strong><span>поздний вход в проект, дефицит доказательств надёжного выбора и зависимость продаж от личной инженерной проработки собственника.</span></p><p><strong>Изменили постановку задачи</strong><span>не «как купить больше входящих», а «как раньше попадать в проект, становиться безопасным вариантом и масштабировать доверие».</span></p><p><strong>Следующий выбор</strong><span>проверять ранний доступ к проектам, доказательную систему и экономику маршрутов, а не автоматически наращивать рекламу.</span></p><p><strong>Статус результата</strong><span>проект находится на этапе проверки стратегического выбора. Финансовый эффект пока не заявляю — он ещё не подтверждён внедрением.</span></p></div><p className="research-thesis">Для меня это и есть смысл диагностики: не красиво объяснить исходный запрос, а изменить решение, если факты показывают другую проблему.</p></div></article></div></section>
+    <section className="proof-stage" id="sled">
+      <div className="page-shell">
+        <div className="section-intro proof-intro">
+          <p className="eyebrow">B2B / кейс · SLED Systems</p>
+          <h2>Когда «нужно больше входящих» оказалось слишком ранним выводом</h2>
+          <p>Это не универсальная схема и не завершённая история с заявленным финансовым эффектом. Это пример того, как меняется постановка задачи после проверки фактами.</p>
+        </div>
+        <article className="case-editorial">
+          <div className="case-side"><p className="case-label">SLED Systems</p><span className="case-type">Проект в работе</span></div>
+          <div className="case-main">
+            <div className="case-shift">
+              <div><span>С чего начали</span><h3>Получать больше квалифицированных запросов за пределами домашнего региона</h3><p>На поверхности это выглядело как задача сайта, SEO, рекламы или лидогенерации.</p></div>
+              <div><span>Что показали данные</span><h3>Продажу создавали другие механизмы</h3><p>В отгрузках за 2025 год сайт дал 1,16% выручки, активная выездная работа — 30,18%, повторные заказы — 52,49%. Это не доказывает, что сайт не нужен. Но показывает, что «купить больше трафика» нельзя было принимать как готовое решение.</p></div>
+            </div>
+            <div className="owner-result-list" style={{marginTop:42}}>
+              <p><strong>Обнаружили</strong><span>поздний вход в проект, дефицит доказательств надёжного выбора и зависимость продаж от личной инженерной проработки собственника.</span></p>
+              <p><strong>Изменили постановку задачи</strong><span>не «как купить больше входящих», а «как раньше попадать в проект, становиться безопасным вариантом и масштабировать доверие».</span></p>
+              <p><strong>Что это меняет</strong><span>сначала проверять ранний доступ к проектам, доказательную систему и экономику маршрутов, а не автоматически наращивать рекламу.</span></p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
 
-    <section className="work-stage" id="work"><div className="page-shell"><div className="section-intro"><p className="eyebrow">Не один тип бизнеса</p><h2>Та же логика работает и там, где клиент — обычный человек</h2><p>Например, в исследовании фитнес-бизнеса вопрос раскладывался как рынок → выбор клиента → предложение → цена → привлечение → использование → удержание → экономика.</p></div><div className="work-grid"><article className="work-card"><p className="work-label">Исследование</p><h3>6 503 вакансии HeadHunter</h3><p>Не «что сейчас модно», а что реально требуют работодатели от маркетинга и где проходят границы ролей.</p></article><article className="work-card"><p className="work-label">B2C / фитнес</p><h3>От рынка до экономики</h3><p>Пример того, что диагностическая логика не ограничивается сложным B2B.</p><a className="text-link" href="/fitness-report.pdf" target="_blank" rel="noreferrer">Открыть PDF →</a></article><article className="work-card"><p className="work-label">Рабочая система</p><h3>Источники + данные + ИИ</h3><p>ИИ работает не вместо источников: я использую собственную базу из исследований, академических и практических материалов, а выводы отделяю от гипотез.</p></article></div></div></section>
+    <section className="work-stage" id="market-view">
+      <div className="page-shell">
+        <div className="section-intro">
+          <p className="eyebrow">Почему я не начинаю с инструмента</p>
+          <h2>Бизнес часто покупает маркетинг по частям. Проблема при этом может быть системной.</h2>
+          <p>Когда я строил карту маркетинга, мне было важно понять не только, как дисциплину описывают книги и школы, но и как её видит реальный рынок. Поэтому я исследовал 6 503 вакансии HeadHunter: задачи, функции, KPI, инструменты и уровни ответственности — независимо от названия должности.</p>
+        </div>
+        <div className="work-grid">
+          <article className="work-card">
+            <p className="work-label">Рынок труда</p>
+            <h3>Исполнителя купить проще, чем целостную диагностику</h3>
+            <p>Рынок хорошо формулирует отдельные задачи: коммуникации, трафик, каналы, аналитику, CRM, контент, performance. Более широкий взгляд появляется вместе с уровнем ответственности и организационной зрелостью.</p>
+          </article>
+          <article className="work-card">
+            <p className="work-label">Карта маркетинга</p>
+            <h3>Маркетинг не помещается в один любимый инструмент</h3>
+            <p>Рынок, спрос, клиент, предложение, цена, выбор, коммуникации, продажи, отношения, данные и экономика связаны между собой. Карта нужна мне как навигация, чтобы не пропустить возможную зону проблемы.</p>
+          </article>
+          <article className="work-card">
+            <p className="work-label">Практический вывод</p>
+            <h3>Сначала определить, что покупать</h3>
+            <p><strong>Можно нанять хорошего маркетолога, агентство или внедрить хороший AI-инструмент — и всё равно не решить исходную проблему, если неверно определена сама задача.</strong></p>
+          </article>
+        </div>
+        <p className="research-thesis">Именно этот разрыв я и стараюсь закрыть: дать собственнику глубину диагностики, которая помогает сначала принять правильное решение, а уже потом выбирать исполнение.</p>
+      </div>
+    </section>
 
-    <section className="about-stage"><div className="page-shell about-grid"><div><p className="eyebrow">Почему я так работаю</p><h2>Инженерный способ думать о маркетинге</h2></div><div className="about-copy"><p>Математическое и инженерное образование научило меня не принимать первое объяснение за причину. Более 20 лет в управлении и развитии бизнеса — смотреть на решение через результат компании, а не отдельной функции.</p><p>Executive MBA добавил язык стратегии и экономики. Маркетинг для меня — способ связать рынок, клиента, предложение, продажи и деньги в одну проверяемую систему.</p><p className="about-accent">ИИ здесь не «магия». Это рабочий слой поверх собственной базы знаний и реальных данных, который помогает быстрее сравнивать версии и находить противоречия.</p></div></div></section>
+    <section className="work-stage" id="artifacts">
+      <div className="page-shell">
+        <div className="section-intro">
+          <p className="eyebrow">Что остаётся после работы</p>
+          <h2>Не только разговор и рекомендации</h2>
+          <p>Если задачу имеет смысл контролировать дальше, результатом может стать рабочий инструмент, который остаётся внутри бизнеса.</p>
+        </div>
+        <div className="work-grid">
+          <article className="work-card"><p className="work-label">Аналитика</p><h3>Реестр фактов и гипотез</h3><p>Что уже подтверждено, что является интерпретацией, что нужно проверить и на каких данных основан вывод.</p></article>
+          <article className="work-card"><p className="work-label">Управление</p><h3>Модель или дашборд</h3><p>Если решение нужно отслеживать регулярно — можно оставить таблицу, модель показателей или другой рабочий контур.</p></article>
+          <article className="work-card"><p className="work-label">AI / автоматизация</p><h3>Инструмент под конкретную задачу</h3><p>Не «внедрить ИИ потому что надо». Если он действительно сокращает работу или улучшает решение, можно настроить процесс и оставить его заказчику.</p></article>
+        </div>
+      </div>
+    </section>
 
-    <section className="faq-stage"><div className="page-shell"><div className="section-intro"><p className="eyebrow">Практические вопросы</p><h2>До первого сообщения</h2></div><div className="faq-list"><details><summary>Сколько стоит первый разговор?</summary><p>Ничего. Первый разговор занимает около 20–30 минут и нужен, чтобы понять задачу и решить, есть ли смысл идти дальше.</p></details><details><summary>Обязательно ли продолжать работу после разговора?</summary><p>Нет. Иногда достаточно понять, что делать дальше своими силами. Иногда нужен конкретный исполнитель, а иногда есть смысл продолжить разбор со мной.</p></details><details><summary>Что если проблема окажется вообще не в маркетинге?</summary><p>Это нормальный результат. Лучше понять это до того, как вкладываться в новый сайт, рекламу или смену подрядчика.</p></details><details><summary>Что нужно подготовить?</summary><p>Для первого сообщения — ничего. Если для разговора понадобятся цифры, материалы или примеры сделок, я скажу, что именно стоит посмотреть.</p></details><details><summary>Сколько стоит полноценный разбор?</summary><p>Зависит от вопроса и объёма проверки. Сначала нужно понять, какая работа действительно нужна; после этого можно определить формат и стоимость.</p></details><details><summary>Когда вы ответите?</summary><p>Обычно в течение рабочего дня.</p></details></div></div></section>
+    <section className="about-stage" id="about">
+      <div className="page-shell about-grid">
+        <div><p className="eyebrow">Почему я так работаю</p><h2>Инженерный и управленческий взгляд на маркетинг</h2></div>
+        <div className="about-copy">
+          <p>Я пришёл в маркетинг из инженерии, управления и развития бизнеса. Поэтому смотрю на него не как на отдельный набор рекламных инструментов, а в связке с продуктом, продажами, сервисом, операционной моделью и экономикой.</p>
+          <p>Executive MBA добавил язык стратегии и финансов. Исследовательская работа — карту маркетинга, корпус источников и практические исследования рынка.</p>
+          <p className="about-accent">ИИ для меня — не источник истины и не отдельный товар. Это аналитический слой, который позволяет быстрее работать с данными, источниками и версиями и делать глубокий анализ доступнее для небольшой компании.</p>
+        </div>
+      </div>
+    </section>
 
-    <section className="contact-stage" id="contact"><div className="page-shell contact-grid"><div className="contact-copy"><p className="eyebrow eyebrow-light">Если есть задача, но решение пока не очевидно</p><h2>Расскажите, что происходит</h2><p>Не нужно готовить бриф. Напишите своими словами. Первый разговор — 20–30 минут, бесплатно и без обязательства продолжать.</p><div className="contact-links"><a href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Telegram · @ShashkovVlad</a><a href="mailto:shashkov.systemservice@gmail.com">shashkov.systemservice@gmail.com</a></div></div><form className="contact-form" method="post" action="/api/contact"><input type="hidden" name="source" value="final-form" /><label>Что происходит?<textarea name="situation" required placeholder="Двух-трёх предложений достаточно" /></label><label>Как с вами связаться?<input name="contact" required placeholder="Email или Telegram" /></label><button className="button button-light" type="submit">Отправить</button><p className="form-promise">Обычно отвечаю в течение рабочего дня. Если вижу, что сначала нужен не мой формат работы, скажу об этом прямо.</p></form></div></section>
+    <section className="faq-stage">
+      <div className="page-shell">
+        <div className="section-intro"><p className="eyebrow">Как начать</p><h2>Не нужно покупать «консалтинг вообще»</h2></div>
+        <div className="faq-list">
+          <details><summary>С чего начинается работа?</summary><p>С одного конкретного вопроса собственника. Сначала коротко разговариваем и определяем, действительно ли здесь нужна отдельная диагностика.</p></details>
+          <details><summary>Обязательно ли потом работать со мной дальше?</summary><p>Нет. Результатом может быть понимание, что делать самим, что передать исполнителю или какую задачу поставить существующей команде.</p></details>
+          <details><summary>Что если проблема окажется не в маркетинге?</summary><p>Это нормальный и полезный результат. Лучше увидеть это до того, как вкладываться в новую рекламу, сайт, подрядчика или автоматизацию.</p></details>
+          <details><summary>Что нужно подготовить?</summary><p>Для первого сообщения — ничего. Если для диагностики понадобятся сделки, цифры, CRM, интервью или другие материалы, я заранее скажу, что именно нужно.</p></details>
+          <details><summary>Сколько это стоит?</summary><p>Цена зависит от вопроса и объёма проверки. Сначала фиксируем задачу, данные и ожидаемый результат; только после этого можно честно определить стоимость.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section className="contact-stage" id="contact">
+      <div className="page-shell contact-grid">
+        <div className="contact-copy">
+          <p className="eyebrow eyebrow-light">Если проблема есть, а решение пока не очевидно</p>
+          <h2>Опишите ситуацию двумя-тремя предложениями</h2>
+          <p>Не нужно заранее знать, нужен ли вам маркетолог, реклама, стратегия или ИИ. Это как раз то, что сначала стоит выяснить.</p>
+          <div className="contact-links">
+            <a href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Telegram · @ShashkovVlad</a>
+            <a href="mailto:shashkov.systemservice@gmail.com">shashkov.systemservice@gmail.com</a>
+          </div>
+        </div>
+        <form className="contact-form" method="post" action="/api/contact">
+          <input type="hidden" name="source" value="final-form" />
+          <label>Что происходит?<textarea name="situation" required placeholder="Двух-трёх предложений достаточно" /></label>
+          <label>Как с вами связаться?<input name="contact" required placeholder="Email или Telegram" /></label>
+          <button className="button button-light" type="submit">Отправить</button>
+          <p className="form-promise">Первый разговор — 20–30 минут, бесплатно и без обязательства продолжать.</p>
+        </form>
+      </div>
+    </section>
+
     <a className="sticky-contact" href="#contact">Описать ситуацию</a>
   </main>;
 }
