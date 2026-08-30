@@ -9,12 +9,6 @@ const situations = [
   "Все говорят про ИИ и ботов, а я не понимаю, нужно ли это моему бизнесу",
 ] as const;
 
-const process = [
-  ["01", "Разбираемся, что происходит", "Начинаем не с инструмента, а с вашей ситуации и того, что уже пробовали."],
-  ["02", "Проверяем версии", "Смотрим данные, клиентов, рынок, продажи и экономику — только там, где это нужно для ответа."],
-  ["03", "Определяем, что делать первым", "Что менять, что ещё проверить и на что пока не тратить деньги."],
-] as const;
-
 export default function Home() {
   return <main id="top">
     <div className="page-shell">
@@ -22,7 +16,7 @@ export default function Home() {
         <a className="site-brand" href="#top">Владимир Шашков</a>
         <nav aria-label="Основная навигация">
           <a href="#situations">Ситуации</a>
-          <a href="#product">Как помогу</a>
+          <a href="#result">Что получите</a>
           <a href="#case">Кейс</a>
           <a className="nav-cta" href="#contact">Написать</a>
         </nav>
@@ -51,7 +45,7 @@ export default function Home() {
     <section className="situations-stage" id="situations">
       <div className="page-shell">
         <div className="section-intro situations-intro">
-          <p className="eyebrow">01 · Это про вас?</p>
+          <p className="eyebrow">01 · Узнали свою ситуацию?</p>
           <h2>С какой из этих ситуаций вы пришли?</h2>
         </div>
         <div className="situation-columns" style={{gridTemplateColumns:"1fr 1fr"}}>
@@ -65,9 +59,9 @@ export default function Home() {
           </article>
         </div>
         <article className="lead-situation">
-          <p className="lead-label">Реальный запрос собственника</p>
-          <blockquote>«У меня нет бюджета на маркетинг, но я хочу, чтобы пришёл человек, сказал, что делать, а я сама сделаю»</blockquote>
-          <p className="lead-answer">Именно так тоже можно работать: сначала понять, что делать, а внедрять решение своими силами или своей командой.</p>
+          <p className="lead-label">Ещё один реальный запрос собственника</p>
+          <blockquote>«Мне не нужен ещё один подрядчик. Мне нужно сначала понять, что вообще делать»</blockquote>
+          <p className="lead-answer">Можно начать именно с этого: разобраться в задаче, а внедрять решение потом — самостоятельно, своей командой или с тем исполнителем, который действительно нужен.</p>
         </article>
       </div>
 
@@ -89,25 +83,17 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="process-stage" id="product">
+    <section className="process-stage" id="result">
       <div className="page-shell">
         <div className="section-intro process-intro">
-          <p className="eyebrow">02 · Как я помогу</p>
-          <h2>Не начинаю с рекламы, сайта или ИИ</h2>
-          <p>Вы знаете свой бизнес изнутри. Я помогаю проверить ваши версии через данные, рынок, клиентов и экономику — и понять, какую проблему действительно нужно решать.</p>
+          <p className="eyebrow">02 · Что будет после разбора</p>
+          <h2>Понятно, что делать дальше — и почему.</h2>
+          <p>Я не начинаю с рекламы, сайта или ИИ. Сначала проверяем, какую проблему действительно нужно решать.</p>
         </div>
         <div className="process-line" style={{gridTemplateColumns:"repeat(3, 1fr)"}}>
-          {process.map(([number,title,text])=><article className="process-item" key={number}><span className="process-number">{number}</span><h3>{title}</h3><p>{text}</p></article>)}
-        </div>
-        <div className="process-outcome">
-          <p className="eyebrow">03 · Что вы получите</p>
-          <p className="outcome-statement">Понятно, что делать дальше — и почему.</p>
-          <div className="owner-result-list">
-            <p><strong>Что подтверждено</strong><span>На какие факты можно опираться.</span></p>
-            <p><strong>Что пока только версия</strong><span>Что ещё нужно проверить.</span></p>
-            <p><strong>Что делать первым</strong><span>Где сейчас приоритет.</span></p>
-            <p><strong>Кто должен делать</strong><span>Вы сами, команда, подрядчик — или я продолжаю работу.</span></p>
-          </div>
+          <article className="process-item"><span className="process-number">01</span><h3>Понятно, что происходит</h3><p>Какие версии подтверждаются фактами, а какие пока остаются предположениями.</p></article>
+          <article className="process-item"><span className="process-number">02</span><h3>Понятно, что делать первым</h3><p>Что менять, что ещё проверить и на что пока не тратить деньги.</p></article>
+          <article className="process-item"><span className="process-number">03</span><h3>Понятно, кто это может сделать</h3><p>Вы сами, ваша команда, подрядчик — или продолжаем работу вместе.</p></article>
         </div>
       </div>
     </section>
@@ -115,51 +101,29 @@ export default function Home() {
     <section className="proof-stage" id="case">
       <div className="page-shell">
         <div className="section-intro proof-intro">
-          <p className="eyebrow">04 · Кейс</p>
-          <h2>SLED Systems: пришли за входящими, а вопрос оказался шире</h2>
-          <p>Короткий пример того, почему исходный запрос не всегда стоит принимать за диагноз.</p>
-        </div>
-        <article className="case-editorial">
-          <div className="case-side"><p className="case-label">SLED Systems</p><span className="case-type">реальный клиентский проект</span></div>
-          <div className="case-main">
-            <div className="case-shift">
-              <div><span>С чем пришли</span><h3>Нужно больше квалифицированных входящих</h3><p>Первый очевидный ответ — увеличить привлечение.</p></div>
-              <div><span>Что показали данные</span><h3>Сайт давал 1,16% выручки</h3><p>Повторные продажи — 52,49%, активная полевая работа — 30,18%. Значит, просто наращивать трафик было недостаточно.</p></div>
-            </div>
-            <blockquote>Сначала понять, как на самом деле возникает продажа. Потом решать, что усиливать.</blockquote>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section className="work-stage" id="research">
-      <div className="page-shell">
-        <div className="section-intro work-intro">
-          <p className="eyebrow">05 · Если хотите посмотреть глубже</p>
-          <h2>Исследования и система анализа</h2>
-        </div>
-        <div className="work-grid">
-          <article className="work-card"><p className="work-label">Рынок маркетинга</p><h3>6 503 вакансии HeadHunter</h3><p>Как бизнес на практике покупает маркетинговую работу: функции, задачи, KPI и инструменты.</p></article>
-          <article className="work-card"><p className="work-label">B2C / исследование</p><h3>Фитнес-бизнес</h3><p>От привлечения до использования, удержания и экономики клиента.</p><a className="text-link" href="/fitness-report.pdf" target="_blank" rel="noreferrer">Открыть исследование →</a></article>
-          <article className="work-card"><p className="work-label">Навигация</p><h3>Карта мира маркетинга</h3><p>Помогает не сводить любую проблему к одному знакомому инструменту.</p></article>
+          <p className="eyebrow">03 · Как это выглядит на практике</p>
+          <h2>SLED Systems: пришли с вопросом «как получить больше входящих»</h2>
+          <p>Анализ показал, что сайт давал только 1,16% выручки, тогда как повторные продажи — 52,49%, а активная полевая работа — 30,18%. Поэтому прежде чем наращивать трафик, пришлось изменить сам вопрос: понять, как на самом деле возникает продажа и где компания теряет возможность.</p>
+          <a className="text-link" href="/sled">Посмотреть разбор →</a>
         </div>
       </div>
     </section>
 
     <section className="about-stage" id="about">
       <div className="page-shell about-grid">
-        <div><p className="eyebrow">06 · Обо мне</p><h2>Я пришёл в маркетинг из управления бизнесом</h2></div>
+        <div><p className="eyebrow">04 · Кто будет разбираться</p><h2>Я пришёл в маркетинг из управления бизнесом</h2></div>
         <div className="about-copy">
           <p>Мой путь — математика и автоматизация, инженерные системы, управление сервисом, проектами и развитием бизнеса.</p>
           <p>Поэтому я смотрю на маркетинг в связке с продуктом, продажами, сервисом и экономикой, а не как на отдельный набор инструментов.</p>
           <div className="about-facts"><span>20+ лет управленческого опыта</span><span>Executive MBA</span><span>Инженерный B2B · развитие · маркетинг</span></div>
+          <p><small>Если хотите посмотреть глубже: исследование 6 503 вакансий HeadHunter, исследование фитнес-бизнеса и карта мира маркетинга — это второй уровень материалов, а не обязательная часть главной.</small></p>
         </div>
       </div>
     </section>
 
     <section className="contact-stage" id="contact">
       <div className="page-shell contact-grid">
-        <div><p className="eyebrow eyebrow-light">07 · Следующий шаг</p><h2>Расскажите, что сейчас не получается</h2><p>Первый разговор нужен не для продажи услуги, а чтобы понять, есть ли здесь задача для совместного разбора.</p><a className="button button-light" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a></div>
+        <div><p className="eyebrow eyebrow-light">05 · Следующий шаг</p><h2>Расскажите, что сейчас не получается</h2><p>Первый разговор нужен не для продажи услуги, а чтобы понять, есть ли здесь задача для совместного разбора.</p><a className="button button-light" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a></div>
         <form className="contact-form" method="post" action="/api/contact">
           <label>Что сейчас происходит?<textarea name="situation" required placeholder="Коротко, своими словами" /></label>
           <label>Как с вами связаться?<input name="contact" required placeholder="Email или Telegram" /></label>
