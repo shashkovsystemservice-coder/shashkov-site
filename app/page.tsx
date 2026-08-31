@@ -26,7 +26,7 @@ export default function Home() {
           <p className="eyebrow">Стратегический маркетинг для собственников бизнеса</p>
           <h1>Не уверены, что именно сейчас нужно менять в бизнесе?</h1>
           <p className="hero-lead">Продажи не растут, клиенты выбирают других или маркетинг что-то делает, но непонятно, где настоящая проблема.</p>
-          <p className="hero-principle">Помогу понять, что действительно нужно менять — и что делать первым.</p>
+          <p className="hero-principle">Помогу понять, что действительно нужно менять, что делать первым — и на что пока не стоит тратить деньги.</p>
           <div className="hero-actions">
             <a className="button" href="#start">Описать ситуацию</a>
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
@@ -166,6 +166,10 @@ export default function Home() {
             <summary>Кто потом внедряет?</summary>
             <p>Вы сами, ваша команда, профильный подрядчик или мы продолжаем работу вместе — зависит от решения.</p>
           </details>
+          <details>
+            <summary>А если выяснится, что мне нужен просто SEO, реклама или новый сайт?</summary>
+            <p>Тогда это и будет полезным результатом: понять, какой именно инструмент нужен сейчас и почему — до того, как на него потрачены деньги.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -175,7 +179,11 @@ export default function Home() {
         <div>
           <p className="eyebrow eyebrow-light">06 · Следующий шаг</p>
           <h2>Понять, что действительно нужно менять — и что делать первым.</h2>
-          <p>Начнём с разговора на 20–30 минут. Вы расскажете, что происходит, а я помогу определить, какой следующий шаг имеет смысл.</p>
+          <p>Начнём с разговора на 20–30 минут.</p>
+          <div style={{margin:"22px 0 30px",display:"grid",gap:"10px"}}>
+            <p style={{margin:0}}><strong>Если нужно разобраться глубже</strong> — попрошу материалы или короткий бриф.</p>
+            <p style={{margin:0}}><strong>Если нужен проект</strong> — заранее согласуем задачу, объём работы и результат.</p>
+          </div>
           <a className="button button-light" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
         </div>
         <form className="contact-form" method="post" action="/api/contact">
