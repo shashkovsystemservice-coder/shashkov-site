@@ -76,14 +76,14 @@ export default function Home() {
           <div className="capture-copy">
             <p className="eyebrow eyebrow-light">Можно начать прямо сейчас</p>
             <h2>Опишите, что происходит, своими словами</h2>
-            <p>Не нужно заранее выбирать услугу или правильно называть проблему.</p>
+            <p>Не нужно заранее выбирать услугу или правильно называть проблему. Сначала разберёмся, какой вопрос вообще имеет смысл решать.</p>
           </div>
           <form className="quick-form" method="post" action="/api/contact">
             <input type="hidden" name="source" value="early-form" />
             <label>Что происходит?<textarea name="situation" required placeholder="Например: заявки есть, но продажи почти не растут" /></label>
             <label>Как с вами связаться?<input name="contact" required placeholder="Email или Telegram" /></label>
             <button className="button button-light" type="submit">Описать ситуацию</button>
-            <p className="form-promise">Если вижу, что могу быть полезен, предложу короткий разговор на 20–30 минут. Бесплатно и без обязательства продолжать.</p>
+            <p className="form-promise">Сначала — короткий разговор на 20–30 минут. Бесплатно и без обязательства продолжать.</p>
           </form>
         </div>
       </div>
@@ -92,9 +92,9 @@ export default function Home() {
     <section className="method-stage compact-method" id="product">
       <div className="page-shell">
         <div className="section-intro method-intro">
-          <p className="eyebrow">02 · Что я делаю</p>
-          <h2>Маркетинговая проработка бизнеса — нужной глубины.</h2>
-          <p>Небольшому бизнесу приходится принимать те же решения о рынке, клиенте, ценности и росте, что и крупному. Но для этого не обязательно сначала строить большой маркетинговый отдел.</p>
+          <p className="eyebrow">02 · Что именно можно получить</p>
+          <h2>Профессиональная маркетинговая проработка — в масштабе вашей задачи.</h2>
+          <p>Небольшому бизнесу приходится принимать те же решения о рынке, клиенте, ценности и росте, что и крупному. Для этого не обязательно сначала строить большой маркетинговый отдел.</p>
         </div>
 
         <div className="depth-result-grid product-depth-grid">
@@ -155,12 +155,39 @@ export default function Home() {
       </div>
     </section>
 
+    <section className="faq-stage" id="faq">
+      <div className="page-shell faq-grid">
+        <div className="faq-intro">
+          <p className="eyebrow">05 · Перед тем как написать</p>
+          <h2>Четыре нормальных вопроса</h2>
+        </div>
+        <div className="faq-list">
+          <details>
+            <summary>А если я сам пока не понимаю, в чём проблема?</summary>
+            <p>Это нормальная точка входа. Не нужно заранее правильно поставить маркетинговую задачу — с этого и начинается разбор.</p>
+          </details>
+          <details>
+            <summary>Нужно ли сразу заказывать большой проект?</summary>
+            <p>Нет. Сначала определяем задачу и нужную глубину. Если достаточно первичного разбора, нет смысла искусственно превращать его в большую стратегическую работу.</p>
+          </details>
+          <details>
+            <summary>Кто потом внедряет решение?</summary>
+            <p>По-разному: вы сами, ваша команда, профильный подрядчик или мы продолжаем работу вместе. Сначала важно понять, какой исполнитель вообще нужен.</p>
+          </details>
+          <details>
+            <summary>А если выяснится, что мне нужен просто SEO, реклама или новый сайт?</summary>
+            <p>Тогда это и будет полезным результатом: понять, что именно этот инструмент нужен сейчас и почему — до того, как на него потрачены деньги.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section className="contact-stage" id="contact">
       <div className="page-shell contact-grid">
         <div>
-          <p className="eyebrow eyebrow-light">05 · Следующий шаг</p>
+          <p className="eyebrow eyebrow-light">06 · Следующий шаг</p>
           <h2>Расскажите, что сейчас не получается</h2>
-          <p>Сначала — короткий разговор на 20–30 минут. Если достаточно первичного разбора, не будем искусственно превращать его в большой стратегический проект.</p>
+          <p>Сначала — короткий разговор на 20–30 минут. Его задача — понять, есть ли здесь вопрос для разбора и какой глубины работа нужна.</p>
           <div style={{margin:"28px 0 34px",display:"grid",gap:"12px"}}>
             <p style={{margin:0}}><strong>Если нужен контекст,</strong> попрошу материалы или короткий бриф.</p>
             <p style={{margin:0}}><strong>Если нужен полноценный проект,</strong> заранее согласуем вопрос, объём работы и ожидаемый результат.</p>
