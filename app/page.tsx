@@ -29,7 +29,7 @@ export default function Home() {
           <p className="hero-lead">Продажи не растут, клиенты выбирают других или маркетинг что-то делает, но непонятно, что именно менять.</p>
           <p className="hero-principle">Помогу разобраться, что происходит, что имеет смысл делать первым — и на что пока не стоит тратить деньги.</p>
           <div className="hero-actions">
-            <a className="button" href="#contact">Описать ситуацию</a>
+            <a className="button" href="#start">Описать ситуацию</a>
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
           </div>
           <div className="hero-trust" aria-label="Опыт Владимира Шашкова">
@@ -75,7 +75,7 @@ export default function Home() {
         </article>
       </div>
 
-      <div className="capture-band">
+      <div className="capture-band" id="start">
         <div className="page-shell capture-grid">
           <div className="capture-copy">
             <p className="eyebrow eyebrow-light">Можно начать прямо сейчас</p>
@@ -144,9 +144,9 @@ export default function Home() {
           <h2>Расскажите, что сейчас не получается</h2>
           <p>Первый разговор нужен не для продажи услуги, а чтобы понять, есть ли здесь задача для совместного разбора.</p>
           <div style={{margin:"30px 0 34px",display:"grid",gap:"14px"}}>
-            <p style={{margin:0}}><strong>Первый разговор — бесплатно.</strong> Обычно 20–30 минут.</p>
-            <p style={{margin:0}}><strong>Продолжать не обязательно.</strong> Если достаточно направления, на этом можно остановиться.</p>
-            <p style={{margin:0}}><strong>Если нужен полный разбор,</strong> сначала фиксируем вопрос, объём работы и ожидаемый результат.</p>
+            <p style={{margin:0}}><strong>Сначала — короткий разговор.</strong> 20–30 минут, бесплатно и без обязательства продолжать.</p>
+            <p style={{margin:0}}><strong>Если без контекста ответа мало,</strong> попрошу материалы или короткий бриф и скажу, как понимаю задачу и что имеет смысл проверять.</p>
+            <p style={{margin:0}}><strong>Полноценный разбор — только после согласования.</strong> Заранее фиксируем вопрос, объём работы и ожидаемый результат.</p>
           </div>
           <a className="button button-light" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
         </div>
