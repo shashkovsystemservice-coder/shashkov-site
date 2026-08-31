@@ -27,7 +27,7 @@ export default function Home() {
           <p className="eyebrow">Для собственников действующего бизнеса</p>
           <h1>Не уверены, что именно сейчас нужно менять в бизнесе?</h1>
           <p className="hero-lead">Продажи не растут, клиенты выбирают других или маркетинг что-то делает, но непонятно, что именно менять.</p>
-          <p className="hero-principle">Помогу разобраться, что происходит и что имеет смысл делать первым.</p>
+          <p className="hero-principle">Помогу разобраться, что происходит, что имеет смысл делать первым — и на что пока не стоит тратить деньги.</p>
           <div className="hero-actions">
             <a className="button" href="#contact">Описать ситуацию</a>
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
@@ -58,10 +58,20 @@ export default function Home() {
             <div className="situation-list">{situations.slice(3).map(item=><p key={item}>«{item}»</p>)}</div>
           </article>
         </div>
+
         <article className="lead-situation">
-          <p className="lead-label">Ещё один реальный запрос собственника</p>
-          <blockquote>«Мне не нужен ещё один подрядчик. Мне нужно сначала понять, что вообще делать»</blockquote>
-          <p className="lead-answer">Можно начать именно с этого: разобраться в задаче, а внедрять решение потом — самостоятельно, своей командой или с тем исполнителем, который действительно нужен.</p>
+          <p className="lead-label">Как начинается разбор</p>
+          <blockquote>«Нам нужно больше заявок» — это ещё не задача. Сначала надо понять, где именно теряется результат.</blockquote>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:"12px",marginTop:"34px"}}>
+            {[
+              ["01","Видимость"],
+              ["02","Выбор"],
+              ["03","Обращение"],
+              ["04","Продажа"],
+              ["05","Повторная покупка"],
+            ].map(([n,t])=><div key={n} style={{borderTop:"2px solid #0a1426",padding:"14px 0 0"}}><span style={{display:"block",fontSize:"12px",fontWeight:800,color:"#184ed8"}}>{n}</span><strong style={{display:"block",marginTop:"18px",fontSize:"18px"}}>{t}</strong></div>)}
+          </div>
+          <p className="lead-answer">Если проблема возникает не на входе, больше трафика может просто увеличить расходы. Поэтому сначала находим участок проблемы — и только потом выбираем инструмент.</p>
         </article>
       </div>
 
@@ -86,14 +96,15 @@ export default function Home() {
     <section className="process-stage" id="result">
       <div className="page-shell">
         <div className="section-intro process-intro">
-          <p className="eyebrow">02 · Что будет после разбора</p>
-          <h2>Понятно, что делать дальше — и почему.</h2>
-          <p>Я не начинаю с рекламы, сайта или ИИ. Сначала проверяем, какую проблему действительно нужно решать.</p>
+          <p className="eyebrow">02 · Что останется после разбора</p>
+          <h2>Карта решения, а не просто совет.</h2>
+          <p>Её задача — зафиксировать, что мы знаем, чего пока не знаем и почему следующий шаг именно такой.</p>
         </div>
-        <div className="process-line" style={{gridTemplateColumns:"repeat(3, 1fr)"}}>
-          <article className="process-item"><span className="process-number">01</span><h3>Понятно, что происходит</h3><p>Какие версии подтверждаются фактами, а какие пока остаются предположениями.</p></article>
-          <article className="process-item"><span className="process-number">02</span><h3>Понятно, что делать первым</h3><p>Что менять, что ещё проверить и на что пока не тратить деньги.</p></article>
-          <article className="process-item"><span className="process-number">03</span><h3>Понятно, кто это может сделать</h3><p>Вы сами, ваша команда, подрядчик — или продолжаем работу вместе.</p></article>
+        <div className="process-line" style={{gridTemplateColumns:"repeat(4, 1fr)"}}>
+          <article className="process-item"><span className="process-number">01</span><h3>Что известно</h3><p>Факты и данные, на которые можно опираться.</p></article>
+          <article className="process-item"><span className="process-number">02</span><h3>Что пока версия</h3><p>Предположения, которые ещё нужно проверить.</p></article>
+          <article className="process-item"><span className="process-number">03</span><h3>Что делать первым</h3><p>Приоритет действия или исследования — и что пока не делать.</p></article>
+          <article className="process-item"><span className="process-number">04</span><h3>Кто может сделать</h3><p>Вы сами, команда, подрядчик — или продолжаем работу вместе.</p></article>
         </div>
       </div>
     </section>
@@ -116,7 +127,7 @@ export default function Home() {
           <p>Мой путь — математика и автоматизация, инженерные системы, управление сервисом, проектами и развитием бизнеса.</p>
           <p>Поэтому я смотрю на маркетинг в связке с продуктом, продажами, сервисом и экономикой, а не как на отдельный набор инструментов.</p>
           <div className="about-facts"><span>20+ лет управленческого опыта</span><span>Executive MBA</span><span>Инженерный B2B · развитие · маркетинг</span></div>
-          <p><small>Если хотите посмотреть глубже: исследование 6 503 вакансий HeadHunter, исследование фитнес-бизнеса и карта мира маркетинга — это второй уровень материалов, а не обязательная часть главной.</small></p>
+          <p><small>Для исследований и анализа использую AI там, где он ускоряет работу с данными и источниками. Выводы и управленческие решения алгоритму не передаю.</small></p>
         </div>
       </div>
     </section>
