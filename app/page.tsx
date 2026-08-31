@@ -63,13 +63,7 @@ export default function Home() {
           <p className="lead-label">Как начинается разбор</p>
           <blockquote>«Нам нужно больше заявок» — это ещё не задача. Сначала надо понять, где именно теряется результат.</blockquote>
           <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:"12px",marginTop:"34px"}}>
-            {[
-              ["01","Видимость"],
-              ["02","Выбор"],
-              ["03","Обращение"],
-              ["04","Продажа"],
-              ["05","Повторная покупка"],
-            ].map(([n,t])=><div key={n} style={{borderTop:"2px solid #0a1426",padding:"14px 0 0"}}><span style={{display:"block",fontSize:"12px",fontWeight:800,color:"#184ed8"}}>{n}</span><strong style={{display:"block",marginTop:"18px",fontSize:"18px"}}>{t}</strong></div>)}
+            {[["01","Видимость"],["02","Выбор"],["03","Обращение"],["04","Продажа"],["05","Повторная покупка"]].map(([n,t])=><div key={n} style={{borderTop:"2px solid #0a1426",padding:"14px 0 0"}}><span style={{display:"block",fontSize:"12px",fontWeight:800,color:"#184ed8"}}>{n}</span><strong style={{display:"block",marginTop:"18px",fontSize:"18px"}}>{t}</strong></div>)}
           </div>
           <p className="lead-answer">Если проблема возникает не на входе, больше трафика может просто увеличить расходы. Поэтому сначала находим участок проблемы — и только потом выбираем инструмент.</p>
         </article>
@@ -116,6 +110,11 @@ export default function Home() {
           <h2>SLED Systems: пришли с вопросом «как получить больше входящих»</h2>
           <p>Анализ показал, что сайт давал только 1,16% выручки, тогда как повторные продажи — 52,49%, а активная полевая работа — 30,18%. Поэтому прежде чем наращивать трафик, пришлось изменить сам вопрос: понять, как на самом деле возникает продажа и где компания теряет возможность.</p>
           <a className="text-link" href="/sled">Посмотреть разбор →</a>
+          <div style={{marginTop:"46px",paddingTop:"28px",borderTop:"1px solid rgba(10,20,38,.18)",maxWidth:"820px"}}>
+            <p className="lead-label">Не только промышленный B2B</p>
+            <p style={{fontSize:"20px",lineHeight:1.55,margin:"10px 0 14px"}}>Та же логика применима там, где собственнику нужно понять, почему клиенты не приходят, не выбирают или не возвращаются — в услугах и B2C-бизнесе тоже.</p>
+            <a className="text-link" href="/fitness-report.pdf" target="_blank" rel="noreferrer">Посмотреть пример B2C-исследования →</a>
+          </div>
         </div>
       </div>
     </section>
@@ -134,12 +133,22 @@ export default function Home() {
 
     <section className="contact-stage" id="contact">
       <div className="page-shell contact-grid">
-        <div><p className="eyebrow eyebrow-light">05 · Следующий шаг</p><h2>Расскажите, что сейчас не получается</h2><p>Первый разговор нужен не для продажи услуги, а чтобы понять, есть ли здесь задача для совместного разбора.</p><a className="button button-light" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a></div>
+        <div>
+          <p className="eyebrow eyebrow-light">05 · Следующий шаг</p>
+          <h2>Расскажите, что сейчас не получается</h2>
+          <p>Первый разговор нужен не для продажи услуги, а чтобы понять, есть ли здесь задача для совместного разбора.</p>
+          <div style={{margin:"30px 0 34px",display:"grid",gap:"14px"}}>
+            <p style={{margin:0}}><strong>Первый разговор — бесплатно.</strong> Обычно 20–30 минут.</p>
+            <p style={{margin:0}}><strong>Продолжать не обязательно.</strong> Если достаточно направления, на этом можно остановиться.</p>
+            <p style={{margin:0}}><strong>Если нужен полный разбор,</strong> сначала фиксируем вопрос, объём работы и ожидаемый результат.</p>
+          </div>
+          <a className="button button-light" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
+        </div>
         <form className="contact-form" method="post" action="/api/contact">
           <label>Что сейчас происходит?<textarea name="situation" required placeholder="Коротко, своими словами" /></label>
           <label>Как с вами связаться?<input name="contact" required placeholder="Email или Telegram" /></label>
           <button className="button button-light" type="submit">Отправить</button>
-          <p className="form-promise">Первый разговор — 20–30 минут, бесплатно. Если нужен полноценный разбор, заранее зафиксируем вопрос и ожидаемый результат.</p>
+          <p className="form-promise">Можно просто описать ситуацию. Не нужно заранее понимать, какая услуга вам нужна.</p>
         </form>
       </div>
     </section>
