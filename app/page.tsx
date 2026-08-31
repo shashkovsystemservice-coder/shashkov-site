@@ -1,4 +1,5 @@
 import Image from "next/image";
+import "./method.css";
 
 const situations = [
   "Нас мало знают",
