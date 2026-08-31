@@ -132,9 +132,15 @@ export default function Home() {
           <h2>SLED Systems: пришли с вопросом «как получить больше входящих»</h2>
           <p>Анализ показал: сайт давал 1,16% выручки, повторные продажи — 52,49%, активная полевая работа — 30,18%. Поэтому вопрос пришлось изменить: не «как нарастить трафик», а «как на самом деле возникает продажа и где компания теряет возможность».</p>
           <a className="text-link" href="/sled">Посмотреть разбор →</a>
-          <div style={{marginTop:"34px",paddingTop:"24px",borderTop:"1px solid rgba(10,20,38,.18)",maxWidth:"820px"}}>
-            <p className="lead-label">Не только B2B</p>
-            <p style={{fontSize:"18px",lineHeight:1.55,margin:"8px 0 12px"}}>Та же логика работает в услугах и B2C — когда нужно понять, где именно теряется спрос, выбор или повторная покупка.</p>
+
+          <div style={{marginTop:"40px",paddingTop:"28px",borderTop:"1px solid rgba(10,20,38,.18)",maxWidth:"860px"}}>
+            <p className="lead-label">Смысл результата</p>
+            <p style={{fontSize:"20px",lineHeight:1.55,margin:"10px 0 0"}}>Не ещё одно мнение о маркетинге, а понятная логика: что известно, где искать причину, что нужно проверить и что делать первым.</p>
+          </div>
+
+          <div style={{marginTop:"34px",paddingTop:"28px",borderTop:"1px solid rgba(10,20,38,.18)",maxWidth:"860px"}}>
+            <p className="lead-label">Не только промышленный B2B</p>
+            <p style={{fontSize:"18px",lineHeight:1.55,margin:"10px 0 14px"}}>Та же логика применима в услугах и B2C — когда нужно понять, где теряется спрос, выбор клиента или повторная покупка.</p>
             <a className="text-link" href="/fitness-report.pdf" target="_blank" rel="noreferrer">Посмотреть пример B2C-исследования →</a>
           </div>
         </div>
