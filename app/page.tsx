@@ -35,7 +35,7 @@ export default function Home() {
           <div className="hero-trust" aria-label="Опыт Владимира Шашкова">
             <span><strong>20+ лет</strong> в бизнесе и управлении</span>
             <span><strong>Executive MBA</strong></span>
-            <span><strong>Инженерия → развитие → маркетинг</strong></span>
+            <span><strong>Управление → развитие → маркетинг</strong></span>
           </div>
         </div>
         <figure className="hero-photo"><Image src="/vladimir-photo.jpg" alt="Владимир Шашков" width={1206} height={1210} priority /></figure>
@@ -150,9 +150,9 @@ export default function Home() {
       <div className="page-shell about-grid">
         <div><p className="eyebrow">04 · Почему я</p><h2>Я пришёл в маркетинг из управления бизнесом</h2></div>
         <div className="about-copy">
-          <p>Мой путь — математика и автоматизация, инженерные системы, сервис, проекты и развитие бизнеса.</p>
+          <p>Мой путь — математика и автоматизация, управление, сервис, проекты и развитие бизнеса.</p>
           <p><strong>Поэтому для меня маркетинг — не отдельный канал и не набор инструментов.</strong> Я смотрю на него вместе с продуктом, продажами, сервисом и экономикой.</p>
-          <div className="about-facts"><span>20+ лет управленческого опыта</span><span>Executive MBA</span><span>Инженерный B2B · развитие · маркетинг</span></div>
+          <div className="about-facts"><span>20+ лет в бизнесе и управлении</span><span>Executive MBA</span><span>Управление · развитие · стратегический маркетинг</span></div>
         </div>
       </div>
     </section>
