@@ -2,10 +2,10 @@ import Image from "next/image";
 import "./method.css";
 
 const situations = [
-  "Нам нужны продажи, но я не уверен, что проблема в рекламе",
-  "Клиенты приходят, но почему-то выбирают других",
-  "Маркетинг что-то делает, но я не понимаю, что именно даёт результат",
-  "Каждый специалист предлагает своё — сайт, SEO, рекламу, AI. Не понимаю, что действительно нужно",
+  "Нас мало знают",
+  "Нас видят, но не заказывают",
+  "Покупают, но не возвращаются",
+  "Маркетинг что-то делает, но непонятно, что даёт результат",
 ] as const;
 
 export default function Home() {
@@ -45,8 +45,8 @@ export default function Home() {
     <section className="situations-stage" id="situations">
       <div className="page-shell">
         <div className="section-intro situations-intro">
-          <p className="eyebrow">01 · Узнали свою ситуацию?</p>
-          <h2>Когда понятно, что что-то не работает — но непонятно, что именно менять.</h2>
+          <p className="eyebrow">01 · Узнали себя?</p>
+          <h2>Иногда проблема звучит очень просто.</h2>
         </div>
 
         <div className="situation-columns" style={{gridTemplateColumns:"1fr 1fr"}}>
@@ -59,15 +59,15 @@ export default function Home() {
         <article className="lead-situation">
           <p className="lead-label">Реальный запрос собственника</p>
           <blockquote>«У меня нет бюджета на маркетинг, но я хочу, чтобы пришёл человек, сказал, что делать, а я сама сделаю»</blockquote>
-          <p className="lead-answer">Так тоже можно работать. Моя задача — сначала помочь понять, что действительно имеет смысл делать. Внедрять решение можно самостоятельно, своей командой или с нужным исполнителем.</p>
+          <p className="lead-answer">Так тоже можно. Сначала разбираемся, что действительно имеет смысл делать. Внедрять можно самостоятельно, своей командой или с нужным исполнителем.</p>
 
-          <div style={{marginTop:"58px",paddingTop:"32px",borderTop:"1px solid rgba(10,20,38,.18)"}}>
-            <p className="lead-label">Симптом — ещё не диагноз</p>
-            <blockquote style={{fontSize:"clamp(30px,3.5vw,52px)"}}>«Нам нужно больше заявок» ещё не означает, что проблема в привлечении.</blockquote>
+          <div style={{marginTop:"50px",paddingTop:"28px",borderTop:"1px solid rgba(10,20,38,.18)"}}>
+            <p className="lead-label">Симптом — ещё не причина</p>
+            <blockquote style={{fontSize:"clamp(28px,3.2vw,46px)"}}>«Нам нужно больше заявок» ещё не значит, что нужна реклама.</blockquote>
             <div className="funnel-line">
-              {[["01","Видимость"],["02","Выбор"],["03","Обращение"],["04","Продажа"],["05","Повторная покупка"]].map(([n,t])=><div key={n}><span>{n}</span><strong>{t}</strong></div>)}
+              {[["01","Видимость"],["02","Выбор"],["03","Обращение"],["04","Продажа"],["05","Повтор"]].map(([n,t])=><div key={n}><span>{n}</span><strong>{t}</strong></div>)}
             </div>
-            <p className="lead-answer">Сначала нужно понять, где именно теряется результат. И только потом выбирать рекламу, сайт, позиционирование, продажи или другой инструмент.</p>
+            <p className="lead-answer">Сначала находим, где теряется результат. Потом выбираем, что менять.</p>
           </div>
         </article>
       </div>
@@ -76,15 +76,15 @@ export default function Home() {
         <div className="page-shell capture-grid">
           <div className="capture-copy">
             <p className="eyebrow eyebrow-light">Можно начать прямо сейчас</p>
-            <h2>Опишите, что происходит, своими словами</h2>
-            <p>Не нужно заранее выбирать услугу или правильно называть проблему. Сначала разберёмся, какой вопрос вообще имеет смысл решать.</p>
+            <h2>Опишите ситуацию своими словами</h2>
+            <p>Не нужно заранее понимать, какая услуга вам нужна.</p>
           </div>
           <form className="quick-form" method="post" action="/api/contact">
             <input type="hidden" name="source" value="early-form" />
-            <label>Что происходит?<textarea name="situation" required placeholder="Например: заявки есть, но продажи почти не растут" /></label>
+            <label>Что происходит?<textarea name="situation" required placeholder="Например: заявки есть, а продажи почти не растут" /></label>
             <label>Как с вами связаться?<input name="contact" required placeholder="Email или Telegram" /></label>
             <button className="button button-light" type="submit">Описать ситуацию</button>
-            <p className="form-promise">Сначала — короткий разговор на 20–30 минут. Бесплатно и без обязательства продолжать.</p>
+            <p className="form-promise">Сначала — короткий разговор на 20–30 минут. Бесплатно и без обязательств.</p>
           </form>
         </div>
       </div>
@@ -93,65 +93,45 @@ export default function Home() {
     <section className="method-stage compact-method" id="product">
       <div className="page-shell">
         <div className="section-intro method-intro">
-          <p className="eyebrow">02 · Что именно можно получить</p>
-          <h2>Профессиональная маркетинговая проработка — в масштабе вашей задачи.</h2>
-          <p>Небольшому бизнесу приходится принимать те же решения о рынке, клиенте, ценности и росте, что и крупному. Для этого не обязательно сначала строить большой маркетинговый отдел.</p>
+          <p className="eyebrow">02 · Что можно получить</p>
+          <h2>Можно разобрать один вопрос. А если нужно — собрать маркетинг целиком.</h2>
+          <p>Один и тот же подход, но разная глубина работы.</p>
         </div>
 
         <div className="depth-result-grid product-depth-grid">
           <article className="depth-result-card">
             <span>Первичный разбор</span>
-            <h3>Понять, где искать проблему.</h3>
-            <p>Разбираем исходный вопрос, ключевые версии, имеющиеся факты и то, чего пока не хватает для решения.</p>
-            <div className="depth-result-output"><small>На выходе</small><strong>Что происходит → что проверить → что делать первым.</strong></div>
+            <h3>Понять, что происходит и что делать первым.</h3>
+            <p>Разбираем ваш вопрос, факты и основные версии. Определяем, чего не хватает и что стоит проверить.</p>
+            <div className="depth-result-output"><small>Результат</small><strong>Где искать причину → что проверить → какой следующий шаг.</strong></div>
           </article>
           <article className="depth-result-card depth-result-card-main">
             <span>Полноценный проект</span>
-            <h3>Собрать связанную маркетинговую картину бизнеса.</h3>
-            <p>Рынок, клиенты, сегменты, конкуренты, ценность, позиционирование, модель роста и приоритеты — настолько глубоко, насколько требует задача.</p>
-            <div className="depth-result-output"><small>На выходе</small><strong>Основанная на фактах система решений о том, где вы сейчас и куда двигаться дальше.</strong></div>
+            <h3>Понять маркетинг бизнеса как связанную систему.</h3>
+            <p>Кому продаём, почему выбирают или не выбирают, где теряем клиентов, чем отличаемся и где есть возможность роста.</p>
+            <div className="depth-result-output"><small>Результат</small><strong>Связанная картина рынка, клиента, ценности, позиции и приоритетов действий.</strong></div>
           </article>
         </div>
 
-        <div className="method-note compact-method-note">
-          <strong>Один подход — разная глубина.</strong>
-          <p>Даже небольшой разбор строится на принципах классического стратегического маркетинга. Если задача требует большего, та же логика разворачивается до полноценной маркетинговой проработки компании.</p>
-        </div>
-
         <div className="method-route compact-route" aria-label="Логика работы">
-          <span>Задача</span><b>→</b><span>Диагностика</span><b>→</b><span>Факты и гипотезы</span><b>→</b><span>Исследование</span><b>→</b><span>Альтернативы</span><b>→</b><span>Решение</span><b>→</b><span>Проверка</span>
+          <span>Задача</span><b>→</b><span>Причины</span><b>→</b><span>Факты и версии</span><b>→</b><span>Проверка</span><b>→</b><span>Решение</span>
         </div>
-        <p className="deliverables-note method-short-note">Я не начинаю с заранее выбранного инструмента. Сначала определяю реальную задачу, проверяю причины и только потом выбираю действие.</p>
+        <p className="deliverables-note method-short-note">Основа — классический стратегический маркетинг. Я не начинаю с заранее выбранного инструмента.</p>
       </div>
     </section>
 
     <section className="proof-stage" id="case">
       <div className="page-shell">
         <div className="section-intro proof-intro">
-          <p className="eyebrow">03 · Как это выглядит на практике</p>
-          <h2>SLED Systems: пришли с вопросом «как получить больше входящих»</h2>
-          <p>Анализ показал: сайт давал 1,16% выручки, повторные продажи — 52,49%, активная полевая работа — 30,18%. Поэтому вопрос пришлось изменить: не «как нарастить трафик», а «как на самом деле возникает продажа и где компания теряет возможность».</p>
+          <p className="eyebrow">03 · Пример</p>
+          <h2>SLED Systems: пришли за входящими заявками</h2>
+          <p>Сайт давал 1,16% выручки, повторные продажи — 52,49%, активная полевая работа — 30,18%. Поэтому вопрос изменился: не «как добавить трафик», а «как на самом деле возникает продажа и где теряется возможность».</p>
           <a className="text-link" href="/sled">Посмотреть разбор →</a>
 
-          <div style={{marginTop:"40px",paddingTop:"28px",borderTop:"1px solid rgba(10,20,38,.18)",maxWidth:"860px"}}>
-            <p className="lead-label">Смысл результата</p>
-            <p style={{fontSize:"20px",lineHeight:1.55,margin:"10px 0 0"}}>Не ещё одно мнение о маркетинге, а понятная логика: что известно, где искать причину, что нужно проверить и что делать первым.</p>
+          <div style={{marginTop:"28px",paddingTop:"22px",borderTop:"1px solid rgba(10,20,38,.18)",maxWidth:"820px"}}>
+            <p style={{fontSize:"17px",lineHeight:1.55,margin:"0 0 10px"}}><strong>Не только B2B.</strong> Та же логика работает в услугах и B2C.</p>
+            <a className="text-link" href="/fitness-report.pdf" target="_blank" rel="noreferrer">Пример B2C-исследования →</a>
           </div>
-
-          <div style={{marginTop:"34px",paddingTop:"28px",borderTop:"1px solid rgba(10,20,38,.18)",maxWidth:"860px"}}>
-            <p className="lead-label">Не только промышленный B2B</p>
-            <p style={{fontSize:"18px",lineHeight:1.55,margin:"10px 0 14px"}}>Та же логика применима в услугах и B2C — когда нужно понять, где теряется спрос, выбор клиента или повторная покупка.</p>
-            <a className="text-link" href="/fitness-report.pdf" target="_blank" rel="noreferrer">Посмотреть пример B2C-исследования →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section className="process-stage compact-result" id="result">
-      <div className="page-shell">
-        <div className="system-result compact-system-result">
-          <h3>После полноценной работы остаётся не набор советов, а маркетинговая система координат компании.</h3>
-          <p>Кому продаём → почему должны выбрать нас → где теряется результат → какую позицию занимаем → где возможность роста → что делаем дальше. В зависимости от задачи это материализуется в карте рынка, сегментации, позиционировании, evidence register, roadmap или рабочем инструменте.</p>
         </div>
       </div>
     </section>
@@ -160,8 +140,8 @@ export default function Home() {
       <div className="page-shell about-grid">
         <div><p className="eyebrow">04 · Почему я</p><h2>Я пришёл в маркетинг из управления бизнесом</h2></div>
         <div className="about-copy">
-          <p>Мой путь — математика и автоматизация, инженерные системы, управление сервисом, проектами и развитием бизнеса.</p>
-          <p>Поэтому я смотрю на маркетинг в связке с продуктом, продажами, сервисом и экономикой, а не как на отдельный набор инструментов.</p>
+          <p>Математика и автоматизация, инженерные системы, сервис, проекты и развитие бизнеса.</p>
+          <p>Поэтому я смотрю на маркетинг вместе с продуктом, продажами, сервисом и экономикой — а не как на отдельный набор инструментов.</p>
           <div className="about-facts"><span>20+ лет управленческого опыта</span><span>Executive MBA</span><span>Инженерный B2B · развитие · маркетинг</span></div>
         </div>
       </div>
@@ -170,25 +150,21 @@ export default function Home() {
     <section className="faq-stage" id="faq">
       <div className="page-shell faq-grid">
         <div className="faq-intro">
-          <p className="eyebrow">05 · Перед тем как написать</p>
-          <h2>Четыре нормальных вопроса</h2>
+          <p className="eyebrow">05 · Если остались вопросы</p>
+          <h2>Перед первым разговором</h2>
         </div>
         <div className="faq-list">
           <details>
-            <summary>А если я сам пока не понимаю, в чём проблема?</summary>
-            <p>Это нормальная точка входа. Не нужно заранее правильно поставить маркетинговую задачу — с этого и начинается разбор.</p>
+            <summary>А если я сам не понимаю, в чём проблема?</summary>
+            <p>Нормально. С этого и можно начать.</p>
           </details>
           <details>
             <summary>Нужно ли сразу заказывать большой проект?</summary>
-            <p>Нет. Сначала определяем задачу и нужную глубину. Если достаточно первичного разбора, нет смысла искусственно превращать его в большую стратегическую работу.</p>
+            <p>Нет. Сначала определяем задачу и нужную глубину работы.</p>
           </details>
           <details>
-            <summary>Кто потом внедряет решение?</summary>
-            <p>По-разному: вы сами, ваша команда, профильный подрядчик или мы продолжаем работу вместе. Сначала важно понять, какой исполнитель вообще нужен.</p>
-          </details>
-          <details>
-            <summary>А если выяснится, что мне нужен просто SEO, реклама или новый сайт?</summary>
-            <p>Тогда это и будет полезным результатом: понять, что именно этот инструмент нужен сейчас и почему — до того, как на него потрачены деньги.</p>
+            <summary>Кто потом внедряет?</summary>
+            <p>Вы сами, ваша команда, профильный подрядчик или мы продолжаем работу вместе — зависит от решения.</p>
           </details>
         </div>
       </div>
@@ -199,11 +175,7 @@ export default function Home() {
         <div>
           <p className="eyebrow eyebrow-light">06 · Следующий шаг</p>
           <h2>Расскажите, что сейчас не получается</h2>
-          <p>Сначала — короткий разговор на 20–30 минут. Его задача — понять, есть ли здесь вопрос для разбора и какой глубины работа нужна.</p>
-          <div style={{margin:"28px 0 34px",display:"grid",gap:"12px"}}>
-            <p style={{margin:0}}><strong>Если нужен контекст,</strong> попрошу материалы или короткий бриф.</p>
-            <p style={{margin:0}}><strong>Если нужен полноценный проект,</strong> заранее согласуем вопрос, объём работы и ожидаемый результат.</p>
-          </div>
+          <p>Первый разговор — 20–30 минут. Нужно понять, есть ли здесь задача для разбора и какой глубины работа нужна.</p>
           <a className="button button-light" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
         </div>
         <form className="contact-form" method="post" action="/api/contact">
