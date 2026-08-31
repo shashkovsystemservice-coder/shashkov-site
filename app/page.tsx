@@ -31,6 +31,7 @@ export default function Home() {
             <a className="button" href="#start">Описать ситуацию</a>
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
           </div>
+          <p style={{margin:"12px 0 0",fontSize:"14px",lineHeight:1.45,color:"#667085"}}>Первый разговор — 20–30 минут, бесплатно, без обязательств.</p>
           <div className="hero-trust" aria-label="Опыт Владимира Шашкова">
             <span><strong>20+ лет</strong> в бизнесе и управлении</span>
             <span><strong>Executive MBA</strong></span>
