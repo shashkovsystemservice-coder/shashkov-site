@@ -9,6 +9,16 @@ const situations = [
   "Все говорят про ИИ и ботов, а я не понимаю, нужно ли это моему бизнесу",
 ] as const;
 
+const method = [
+  ["01", "Определяем настоящую задачу", "Начинаем с результата для бизнеса, ограничений и решения, которое действительно предстоит принять.", "Формулировка задачи + ключевые вопросы"],
+  ["02", "Раскладываем проблему на причины", "Смотрим на рынок, клиента, продукт, продажи, каналы, удержание и экономику — но не исследуем всё подряд.", "Карта проблемы + исследовательный контур"],
+  ["03", "Отделяем факты от предположений", "Фиксируем, что известно, что является выводом, что пока гипотеза и чего мы ещё не знаем.", "Реестр фактов, выводов и гипотез"],
+  ["04", "Добираем необходимые доказательства", "Определяем, какие данные действительно изменят решение: продажи, интервью, рынок, конкуренты, Win/Loss или отдельное исследование.", "Исследовательская база + проверенные версии"],
+  ["05", "Формируем альтернативы", "Сравниваем несколько направлений и задаём вопрос: что должно оказаться правдой, чтобы каждый вариант сработал?", "Карта вариантов, оснований и рисков"],
+  ["06", "Делаем стратегический выбор", "Выбираем сегмент, ценность, позиционирование, модель роста или другой приоритет — и явно фиксируем, от чего отказываемся.", "Обоснованное стратегическое решение"],
+  ["07", "Переводим выбор в действия и проверки", "Определяем первый шаг, эксперименты, показатели и условия, при которых решение нужно пересмотреть.", "Roadmap + программа проверок"],
+] as const;
+
 export default function Home() {
   return <main id="top">
     <div className="page-shell">
@@ -16,7 +26,7 @@ export default function Home() {
         <a className="site-brand" href="#top">Владимир Шашков</a>
         <nav aria-label="Основная навигация">
           <a href="#situations">Ситуации</a>
-          <a href="#result">Что получите</a>
+          <a href="#method">Как работаю</a>
           <a href="#case">Кейс</a>
           <a className="nav-cta" href="#contact">Написать</a>
         </nav>
@@ -46,7 +56,7 @@ export default function Home() {
       <div className="page-shell">
         <div className="section-intro situations-intro">
           <p className="eyebrow">01 · Узнали свою ситуацию?</p>
-          <h2>С какой из этих ситуаций вы пришли?</h2>
+          <h2>Что сейчас происходит у вас?</h2>
         </div>
         <div className="situation-columns" style={{gridTemplateColumns:"1fr 1fr"}}>
           <article className="situation-column">
@@ -67,8 +77,8 @@ export default function Home() {
           <div style={{marginTop:"64px",paddingTop:"36px",borderTop:"1px solid rgba(10,20,38,.18)"}}>
             <p className="lead-label">А дальше — профессиональная проверка</p>
             <blockquote style={{fontSize:"clamp(30px,3.5vw,52px)"}}>«Нам нужно больше заявок» — это ещё не задача. Сначала надо понять, где именно теряется результат.</blockquote>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:"12px",marginTop:"34px"}}>
-              {[["01","Видимость"],["02","Выбор"],["03","Обращение"],["04","Продажа"],["05","Повторная покупка"]].map(([n,t])=><div key={n} style={{borderTop:"2px solid #0a1426",padding:"14px 0 0"}}><span style={{display:"block",fontSize:"12px",fontWeight:800,color:"#184ed8"}}>{n}</span><strong style={{display:"block",marginTop:"18px",fontSize:"18px"}}>{t}</strong></div>)}
+            <div className="funnel-line">
+              {[["01","Видимость"],["02","Выбор"],["03","Обращение"],["04","Продажа"],["05","Повторная покупка"]].map(([n,t])=><div key={n}><span>{n}</span><strong>{t}</strong></div>)}
             </div>
             <p className="lead-answer">Если проблема возникает не на входе, больше трафика может просто увеличить расходы. Поэтому сначала находим участок проблемы — и только потом выбираем инструмент.</p>
           </div>
@@ -93,26 +103,71 @@ export default function Home() {
       </div>
     </section>
 
+    <section className="method-stage" id="method">
+      <div className="page-shell">
+        <div className="section-intro method-intro">
+          <p className="eyebrow">02 · Как я работаю</p>
+          <h2>От бизнес-вопроса — к решению, которое можно объяснить и проверить.</h2>
+          <p>Основа — классическая логика стратегического маркетинга: бизнес и рынок, клиент и сегментация, ценность и позиционирование, затем программа действий. Но я не подгоняю задачу под заранее выбранный инструмент.</p>
+        </div>
+
+        <div className="method-route" aria-label="Логика работы">
+          <span>Задача</span><b>→</b><span>Диагностика</span><b>→</b><span>Доказательства</span><b>→</b><span>Исследование</span><b>→</b><span>Альтернативы</span><b>→</b><span>Выбор</span><b>→</b><span>Проверка</span>
+        </div>
+
+        <div className="method-grid">
+          {method.map(([n,title,body,artifact]) => <article className="method-item" key={n}>
+            <span className="method-number">{n}</span>
+            <h3>{title}</h3>
+            <p>{body}</p>
+            <div className="method-artifact"><small>Что остаётся на этом шаге</small><strong>{artifact}</strong></div>
+          </article>)}
+        </div>
+
+        <div className="method-note">
+          <strong>Не каждый проект проходит все семь этапов одинаково глубоко.</strong>
+          <p>Логика одна, а объём зависит от задачи. Иногда достаточно диагностики. Иногда нужно отдельное исследование рынка. Иногда решение уже понятно и важнее быстро проверить его в реальности.</p>
+        </div>
+
+        <div className="infrastructure-block">
+          <div className="infrastructure-head">
+            <p className="eyebrow">Что позволяет не начинать с нуля</p>
+            <h3>За работой стоит собственная исследовательская инфраструктура.</h3>
+          </div>
+          <div className="infrastructure-grid">
+            <article><strong>Система маркетингового знания</strong><p>Классические школы, профессиональная литература, исследования и собственные накопленные материалы.</p></article>
+            <article><strong>Несколько профессиональных линз</strong><p>Задача не подгоняется под один любимый фреймворк: подход выбирается под вопрос бизнеса.</p></article>
+            <article><strong>Данные под конкретную задачу</strong><p>Если готового массива нет, его можно собрать и структурировать специально: рынок, конкуренты, отзывы, вакансии, клиенты.</p></article>
+            <article><strong>AI как аналитический усилитель</strong><p>Помогает быстрее работать с большими массивами данных и источников, но не заменяет вывод и управленческое решение.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section className="process-stage" id="result">
       <div className="page-shell">
         <div className="section-intro process-intro">
-          <p className="eyebrow">02 · Что останется после разбора</p>
-          <h2>Карта решения, а не просто совет.</h2>
-          <p>Её задача — зафиксировать, что мы знаем, чего пока не знаем и почему следующий шаг именно такой.</p>
+          <p className="eyebrow">03 · Что получает клиент</p>
+          <h2>Не только рекомендацию в конце.</h2>
+          <p>Работа не устроена как «несколько недель анализа — потом финальная презентация». По ходу проекта появляются самостоятельные результаты, которые делают следующий шаг понятнее.</p>
         </div>
         <div className="process-line" style={{gridTemplateColumns:"repeat(4, 1fr)"}}>
-          <article className="process-item"><span className="process-number">01</span><h3>Что известно</h3><p>Факты и данные, на которые можно опираться.</p></article>
-          <article className="process-item"><span className="process-number">02</span><h3>Что пока версия</h3><p>Предположения, которые ещё нужно проверить.</p></article>
-          <article className="process-item"><span className="process-number">03</span><h3>Что делать первым</h3><p>Приоритет действия или исследования — и что пока не делать.</p></article>
-          <article className="process-item"><span className="process-number">04</span><h3>Кто может сделать</h3><p>Вы сами, команда, подрядчик — или продолжаем работу вместе.</p></article>
+          <article className="process-item"><span className="process-number">01</span><h3>Понимание ситуации</h3><p>Что действительно происходит и где находится проблема.</p></article>
+          <article className="process-item"><span className="process-number">02</span><h3>Основания решения</h3><p>Факты, данные, проверенные версии и честно обозначенное неизвестное.</p></article>
+          <article className="process-item"><span className="process-number">03</span><h3>Приоритет</h3><p>Что делать первым, что проверить и на что пока не тратить ресурсы.</p></article>
+          <article className="process-item"><span className="process-number">04</span><h3>Рабочие материалы</h3><p>Карта, модель, реестр, исследование, roadmap или инструмент — только если он нужен для решения.</p></article>
         </div>
+        <div className="deliverables-line">
+          <span>Карта проблемы</span><span>Реестр доказательств</span><span>Карта рынка</span><span>Сегментация</span><span>Ценностное предложение</span><span>Позиционирование</span><span>Карта альтернатив</span><span>Roadmap</span><span>Программа проверок</span><span>Dashboard / рабочий инструмент</span>
+        </div>
+        <p className="deliverables-note">Это не стандартный пакет из десяти документов. Артефакт появляется только тогда, когда он нужен для конкретного решения или следующего этапа.</p>
       </div>
     </section>
 
     <section className="proof-stage" id="case">
       <div className="page-shell">
         <div className="section-intro proof-intro">
-          <p className="eyebrow">03 · Как это выглядит на практике</p>
+          <p className="eyebrow">04 · Как это выглядит на практике</p>
           <h2>SLED Systems: пришли с вопросом «как получить больше входящих»</h2>
           <p>Анализ показал, что сайт давал только 1,16% выручки, тогда как повторные продажи — 52,49%, а активная полевая работа — 30,18%. Поэтому прежде чем наращивать трафик, пришлось изменить сам вопрос: понять, как на самом деле возникает продажа и где компания теряет возможность.</p>
           <a className="text-link" href="/sled">Посмотреть разбор →</a>
@@ -127,12 +182,11 @@ export default function Home() {
 
     <section className="about-stage" id="about">
       <div className="page-shell about-grid">
-        <div><p className="eyebrow">04 · Кто будет разбираться</p><h2>Я пришёл в маркетинг из управления бизнесом</h2></div>
+        <div><p className="eyebrow">05 · Кто будет разбираться</p><h2>Я пришёл в маркетинг из управления бизнесом</h2></div>
         <div className="about-copy">
           <p>Мой путь — математика и автоматизация, инженерные системы, управление сервисом, проектами и развитием бизнеса.</p>
           <p>Поэтому я смотрю на маркетинг в связке с продуктом, продажами, сервисом и экономикой, а не как на отдельный набор инструментов.</p>
           <div className="about-facts"><span>20+ лет управленческого опыта</span><span>Executive MBA</span><span>Инженерный B2B · развитие · маркетинг</span></div>
-          <p><small>Для исследований и анализа использую AI там, где он ускоряет работу с данными и источниками. Выводы и управленческие решения алгоритму не передаю.</small></p>
         </div>
       </div>
     </section>
@@ -140,7 +194,7 @@ export default function Home() {
     <section className="contact-stage" id="contact">
       <div className="page-shell contact-grid">
         <div>
-          <p className="eyebrow eyebrow-light">05 · Следующий шаг</p>
+          <p className="eyebrow eyebrow-light">06 · Следующий шаг</p>
           <h2>Расскажите, что сейчас не получается</h2>
           <p>Первый разговор нужен не для продажи услуги, а чтобы понять, есть ли здесь задача для совместного разбора.</p>
           <div style={{margin:"30px 0 34px",display:"grid",gap:"14px"}}>
