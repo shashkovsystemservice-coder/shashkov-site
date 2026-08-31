@@ -60,12 +60,18 @@ export default function Home() {
         </div>
 
         <article className="lead-situation">
-          <p className="lead-label">Как начинается разбор</p>
-          <blockquote>«Нам нужно больше заявок» — это ещё не задача. Сначала надо понять, где именно теряется результат.</blockquote>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:"12px",marginTop:"34px"}}>
-            {[["01","Видимость"],["02","Выбор"],["03","Обращение"],["04","Продажа"],["05","Повторная покупка"]].map(([n,t])=><div key={n} style={{borderTop:"2px solid #0a1426",padding:"14px 0 0"}}><span style={{display:"block",fontSize:"12px",fontWeight:800,color:"#184ed8"}}>{n}</span><strong style={{display:"block",marginTop:"18px",fontSize:"18px"}}>{t}</strong></div>)}
+          <p className="lead-label">Реальный запрос собственника</p>
+          <blockquote>«У меня нет бюджета на маркетинг, но я хочу, чтобы пришёл человек, сказал, что делать, а я сама сделаю»</blockquote>
+          <p className="lead-answer">Так тоже можно работать: сначала разобраться, что именно имеет смысл делать, а внедрять решение — самостоятельно, своей командой или с тем исполнителем, который действительно нужен.</p>
+
+          <div style={{marginTop:"64px",paddingTop:"36px",borderTop:"1px solid rgba(10,20,38,.18)"}}>
+            <p className="lead-label">А дальше — профессиональная проверка</p>
+            <blockquote style={{fontSize:"clamp(30px,3.5vw,52px)"}}>«Нам нужно больше заявок» — это ещё не задача. Сначала надо понять, где именно теряется результат.</blockquote>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:"12px",marginTop:"34px"}}>
+              {[["01","Видимость"],["02","Выбор"],["03","Обращение"],["04","Продажа"],["05","Повторная покупка"]].map(([n,t])=><div key={n} style={{borderTop:"2px solid #0a1426",padding:"14px 0 0"}}><span style={{display:"block",fontSize:"12px",fontWeight:800,color:"#184ed8"}}>{n}</span><strong style={{display:"block",marginTop:"18px",fontSize:"18px"}}>{t}</strong></div>)}
+            </div>
+            <p className="lead-answer">Если проблема возникает не на входе, больше трафика может просто увеличить расходы. Поэтому сначала находим участок проблемы — и только потом выбираем инструмент.</p>
           </div>
-          <p className="lead-answer">Если проблема возникает не на входе, больше трафика может просто увеличить расходы. Поэтому сначала находим участок проблемы — и только потом выбираем инструмент.</p>
         </article>
       </div>
 
