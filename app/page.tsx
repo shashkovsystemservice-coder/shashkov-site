@@ -5,7 +5,7 @@ const situations = [
   "Нас мало знают",
   "Нас видят, но не заказывают",
   "Покупают, но не возвращаются",
-  "Маркетинг что-то делает, но непонятно, что даёт результат",
+  "Все предлагают сайт, рекламу, SEO, AI — не понимаю, что мне действительно нужно",
 ] as const;
 
 export default function Home() {
@@ -23,10 +23,10 @@ export default function Home() {
 
       <section className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Для собственников действующего бизнеса</p>
+          <p className="eyebrow">Стратегический маркетинг для собственников бизнеса</p>
           <h1>Не уверены, что именно сейчас нужно менять в бизнесе?</h1>
           <p className="hero-lead">Продажи не растут, клиенты выбирают других или маркетинг что-то делает, но непонятно, где настоящая проблема.</p>
-          <p className="hero-principle">Помогу понять, что происходит, что менять первым — и на что пока не стоит тратить деньги.</p>
+          <p className="hero-principle">Помогу понять, что действительно нужно менять — и что делать первым.</p>
           <div className="hero-actions">
             <a className="button" href="#start">Описать ситуацию</a>
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
@@ -95,15 +95,15 @@ export default function Home() {
         <div className="section-intro method-intro">
           <p className="eyebrow">02 · Что можно получить</p>
           <h2>Можно разобрать один вопрос. А если нужно — собрать маркетинг целиком.</h2>
-          <p>Один и тот же подход, но разная глубина работы.</p>
+          <p>Один подход — разная глубина работы.</p>
         </div>
 
         <div className="depth-result-grid product-depth-grid">
           <article className="depth-result-card">
             <span>Первичный разбор</span>
-            <h3>Понять, что происходит и что делать первым.</h3>
+            <h3>Понять, что действительно нужно менять — и что делать первым.</h3>
             <p>Разбираем ваш вопрос, факты и основные версии. Определяем, чего не хватает и что стоит проверить.</p>
-            <div className="depth-result-output"><small>Результат</small><strong>Где искать причину → что проверить → какой следующий шаг.</strong></div>
+            <div className="depth-result-output"><small>Результат — три вещи</small><strong>Что происходит → что проверить → что делать первым.</strong></div>
           </article>
           <article className="depth-result-card depth-result-card-main">
             <span>Полноценный проект</span>
@@ -114,7 +114,7 @@ export default function Home() {
         </div>
 
         <div className="method-route compact-route" aria-label="Логика работы">
-          <span>Задача</span><b>→</b><span>Причины</span><b>→</b><span>Факты и версии</span><b>→</b><span>Проверка</span><b>→</b><span>Решение</span>
+          <span>Задача</span><b>→</b><span>Причины</span><b>→</b><span>Проверка</span><b>→</b><span>Решение</span>
         </div>
         <p className="deliverables-note method-short-note">Основа — классический стратегический маркетинг. Я не начинаю с заранее выбранного инструмента.</p>
       </div>
@@ -174,8 +174,8 @@ export default function Home() {
       <div className="page-shell contact-grid">
         <div>
           <p className="eyebrow eyebrow-light">06 · Следующий шаг</p>
-          <h2>Расскажите, что сейчас не получается</h2>
-          <p>Первый разговор — 20–30 минут. Нужно понять, есть ли здесь задача для разбора и какой глубины работа нужна.</p>
+          <h2>Понять, что действительно нужно менять — и что делать первым.</h2>
+          <p>Начнём с разговора на 20–30 минут. Вы расскажете, что происходит, а я помогу определить, какой следующий шаг имеет смысл.</p>
           <a className="button button-light" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
         </div>
         <form className="contact-form" method="post" action="/api/contact">
