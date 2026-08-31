@@ -117,6 +117,15 @@ export default function Home() {
           <span>Задача</span><b>→</b><span>Причины</span><b>→</b><span>Проверка</span><b>→</b><span>Решение</span>
         </div>
         <p className="deliverables-note method-short-note">Основа — классический стратегический маркетинг. Я не начинаю с заранее выбранного инструмента.</p>
+
+        <div style={{marginTop:"54px",paddingTop:"32px",borderTop:"1px solid rgba(10,20,38,.18)"}}>
+          <p className="eyebrow">Как я смотрю на маркетинг</p>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:"18px",marginTop:"20px"}}>
+            <div><strong style={{fontSize:"20px",lineHeight:1.3}}>Маркетинг — не реклама.</strong></div>
+            <div><strong style={{fontSize:"20px",lineHeight:1.3}}>Запрос собственника — ещё не диагноз.</strong></div>
+            <div><strong style={{fontSize:"20px",lineHeight:1.3}}>Инструмент выбирают после того, как понятна причина.</strong></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -125,6 +134,7 @@ export default function Home() {
         <div className="section-intro proof-intro">
           <p className="eyebrow">03 · Пример</p>
           <h2>SLED Systems: пришли за входящими заявками</h2>
+          <p><strong>Можно было сразу идти в рекламу. Сначала мы проверили, была ли проблема вообще в трафике.</strong></p>
           <p>Сайт давал 1,16% выручки, повторные продажи — 52,49%, активная полевая работа — 30,18%. Поэтому вопрос изменился: не «как добавить трафик», а «как на самом деле возникает продажа и где теряется возможность».</p>
           <a className="text-link" href="/sled">Посмотреть разбор →</a>
 
@@ -140,8 +150,8 @@ export default function Home() {
       <div className="page-shell about-grid">
         <div><p className="eyebrow">04 · Почему я</p><h2>Я пришёл в маркетинг из управления бизнесом</h2></div>
         <div className="about-copy">
-          <p>Математика и автоматизация, инженерные системы, сервис, проекты и развитие бизнеса.</p>
-          <p>Поэтому я смотрю на маркетинг вместе с продуктом, продажами, сервисом и экономикой — а не как на отдельный набор инструментов.</p>
+          <p>Мой путь — математика и автоматизация, инженерные системы, сервис, проекты и развитие бизнеса.</p>
+          <p><strong>Поэтому для меня маркетинг — не отдельный канал и не набор инструментов.</strong> Я смотрю на него вместе с продуктом, продажами, сервисом и экономикой.</p>
           <div className="about-facts"><span>20+ лет управленческого опыта</span><span>Executive MBA</span><span>Инженерный B2B · развитие · маркетинг</span></div>
         </div>
       </div>
