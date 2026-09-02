@@ -10,9 +10,9 @@
 .funnel-line span { display:block; font-size:12px; font-weight:800; color:var(--blue); }
 .funnel-line strong { display:block; margin-top:18px; font-size:18px; }
 
-.method-stage { padding:132px 0 138px; background:var(--paper); border-top:1px solid var(--line); }
+.method-stage { padding:132px 0 138px; background:#eef3fa; border-top:1px solid #d5deeb; border-bottom:1px solid #d5deeb; }
 .compact-method { padding:108px 0 116px; }
-.method-intro { margin-bottom:46px; }
+.method-intro { margin-bottom:46px; max-width:1120px; }
 .method-intro > p:last-child { max-width:900px; }
 .method-route { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:0 0 58px; padding:22px 0; border-top:2px solid var(--ink); border-bottom:1px solid var(--line); }
 .compact-route { margin:54px 0 0; }
@@ -23,16 +23,17 @@
 .method-note strong { display:block; margin-bottom:8px; color:var(--ink); font-size:22px; }
 .method-note p { margin:0; max-width:900px; }
 .method-short-note { margin-top:20px; max-width:880px; font-size:17px; }
-.method-choice-principle { margin-top:54px; padding-top:32px; border-top:1px solid rgba(10,20,38,.18); max-width:980px; }
+.method-choice-principle { position:relative; margin-top:54px; padding-top:32px; border-top:1px solid rgba(10,20,38,.18); max-width:980px; }
+.method-choice-principle::before { content:"Это может быть не маркетинг. Иногда причина оказывается в продукте, цене, продажах, сервисе или самом выборе рынка. Поэтому сначала — вопрос, потом инструмент."; display:block; margin:0 0 38px; padding:24px 26px; background:var(--ink); color:#fff; border-left:5px solid var(--blue); font-size:18px; line-height:1.5; font-weight:720; }
 .method-choice-principle > p:not(.eyebrow) { margin:18px 0 0; font-size:20px; line-height:1.55; color:var(--muted); }
 .method-choice-principle > p strong { color:var(--ink); }
 .method-choice-principle small { display:block; margin-top:22px; padding-top:18px; border-top:1px solid rgba(10,20,38,.12); font-size:14px; line-height:1.55; color:#667085; }
 
 .depth-result-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:54px; }
 .product-depth-grid { display:block; margin-top:34px; }
-.product-depth-grid .depth-result-card { position:relative; min-height:0; padding:42px 46px 44px; border:1px solid rgba(10,20,38,.16); border-top:4px solid var(--ink); background:#fff; }
+.product-depth-grid .depth-result-card { position:relative; min-height:0; padding:42px 46px 44px; border:1px solid #ccd7e5; border-top:4px solid var(--ink); background:#fff; box-shadow:0 14px 34px rgba(10,20,38,.045); }
 .product-depth-grid .depth-result-card:first-child::before { content:"Если у вас один неясный вопрос — можно начать отсюда"; display:block; margin-bottom:24px; color:#667085; font-size:13px; line-height:1.45; font-weight:750; }
-.product-depth-grid .depth-result-card-main { margin-top:72px; border-top-color:var(--blue); background:#eef3fa; }
+.product-depth-grid .depth-result-card-main { margin-top:72px; border-top-color:var(--blue); background:#fff; }
 .product-depth-grid .depth-result-card-main::before { content:"Если проблема шире — идём глубже"; display:block; margin-bottom:24px; color:#536174; font-size:13px; line-height:1.45; font-weight:750; }
 .depth-result-card { min-height:390px; padding:34px 36px 38px; border:1px solid var(--line); background:var(--paper); display:flex; flex-direction:column; }
 .depth-result-card > span { color:var(--blue); font-size:12px; font-weight:850; letter-spacing:.08em; text-transform:uppercase; }
@@ -42,11 +43,21 @@
 .depth-result-card > p { max-width:630px; font-size:18px; }
 .depth-result-card-main { border-top:4px solid var(--blue); }
 .depth-result-output { margin-top:auto; padding-top:24px; border-top:1px solid var(--line); }
-.product-depth-grid .depth-result-output { margin-top:34px; padding-top:24px; max-width:900px; }
+.product-depth-grid .depth-result-output { margin-top:34px; padding:24px 22px 8px; max-width:900px; border-top:1px solid #dce4ef; background:linear-gradient(180deg,rgba(238,243,250,.25),rgba(238,243,250,.82)); }
 .product-depth-grid .depth-result-output small { margin-bottom:10px; }
 .product-depth-grid .depth-result-output strong { font-size:22px; line-height:1.4; }
 .depth-result-output small { display:block; margin-bottom:8px; color:var(--blue); font-size:11px; font-weight:850; letter-spacing:.07em; text-transform:uppercase; }
 .depth-result-output strong { display:block; color:var(--ink); font-size:19px; line-height:1.35; }
+
+/* Existing tangible-output row becomes a deliberate artifact strip. */
+.product-depth-grid + div { margin-top:34px !important; padding:28px 30px !important; border:1px solid #ccd7e5 !important; border-top:3px solid var(--blue) !important; border-bottom:1px solid #ccd7e5 !important; background:#fff; }
+.product-depth-grid + div > p:first-child { color:var(--blue) !important; }
+.product-depth-grid + div > div > div { padding-right:18px; }
+.product-depth-grid + div > div > div + div { padding-left:18px; border-left:1px solid #dce4ef; }
+
+/* Proof sits where the visitor is deciding whether to contact. */
+.quick-form .form-promise::after { content:"24 года внутри сложного B2B и промышленного бизнеса · Executive MBA · Heidelberg · Nokian Tyres · Росатом · Роснано"; display:block; margin-top:18px; padding-top:16px; border-top:1px solid rgba(255,255,255,.22); font-size:12px; line-height:1.5; font-weight:700; letter-spacing:.01em; color:rgba(255,255,255,.78); }
+.contact-form .form-promise::after { content:"24 года в бизнесе и управлении · Executive MBA · опыт от технического блока и сервиса до развития и стратегического маркетинга"; display:block; margin-top:18px; padding-top:16px; border-top:1px solid rgba(255,255,255,.20); font-size:12px; line-height:1.5; font-weight:700; color:rgba(255,255,255,.76); }
 
 .proof-links { display:flex; flex-wrap:wrap; gap:14px 26px; align-items:center; margin-top:20px; }
 .proof-demo-link { color:#536174; }
@@ -82,10 +93,11 @@
   .method-route span { font-size:14px; }
   .method-note, .compact-method-note { margin-top:34px; padding:24px 22px; }
   .method-choice-principle { margin-top:38px; padding-top:26px; }
+  .method-choice-principle::before { margin-bottom:30px; padding:20px; font-size:16px; line-height:1.45; }
   .method-choice-principle > p:not(.eyebrow) { font-size:18px; }
   .depth-result-grid, .product-depth-grid { grid-template-columns:1fr; margin-top:28px; }
   .depth-result-card { min-height:auto; padding:28px 24px 30px; }
-  .product-depth-grid .depth-result-card { padding:30px 24px 32px; }
+  .product-depth-grid .depth-result-card { padding:30px 24px 32px; box-shadow:none; }
   .product-depth-grid .depth-result-card:first-child::before,
   .product-depth-grid .depth-result-card-main::before { margin-bottom:18px; font-size:12px; }
   .product-depth-grid .depth-result-card-main { margin-top:46px; }
@@ -94,7 +106,13 @@
   .product-depth-grid .depth-result-card > p { margin-top:18px; font-size:17px; line-height:1.55; }
   .depth-result-output,
   .product-depth-grid .depth-result-output { margin-top:28px; padding-top:22px; }
+  .product-depth-grid .depth-result-output { margin-left:-8px; margin-right:-8px; padding-left:16px; padding-right:16px; }
   .product-depth-grid .depth-result-output strong { font-size:19px; }
+  .product-depth-grid + div { margin-top:20px !important; padding:24px 22px !important; }
+  .product-depth-grid + div > div { display:block !important; }
+  .product-depth-grid + div > div > div { padding:16px 0 !important; border-left:0 !important; border-top:1px solid #dce4ef; }
+  .product-depth-grid + div > div > div:first-child { border-top:0; padding-top:4px !important; }
+  .quick-form .form-promise::after, .contact-form .form-promise::after { margin-top:14px; padding-top:13px; font-size:11px; }
   .proof-links { display:grid; gap:12px; }
   .proof-demo-note { font-size:13px; }
   .system-result, .compact-system-result { grid-template-columns:1fr; gap:18px; margin-top:0; padding-top:0; }
