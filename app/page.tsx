@@ -25,19 +25,19 @@ const currentProjects = [
     status: "Текущая работа",
     context: "Промышленное оборудование",
     question: "«Хотим продавать линии, а не отдельные станки»",
-    reframing: "Значит, нужно заново определить продукт, ценность и способ продажи сложного решения.",
+    reframing: "Сначала определяем, что именно продаём как решение, кому и за какую ценность — только потом выбираем способ продажи.",
   },
   {
     status: "Исследование",
     context: "Сеть фитнес-клубов",
     question: "«Хотим соединить Fitness × Boxing × Wellness»",
-    reframing: "Проверяем, есть ли здесь единая клиентская задача и новый продукт — или пока только набор услуг.",
+    reframing: "Сначала проверяем, есть ли здесь единая клиентская задача и новый продукт — или пока только набор услуг.",
   },
   {
     status: "Исследование",
     context: "Event-бизнес",
     question: "«Нужно улучшить сайт и предложение»",
-    reframing: "До редизайна разбираем категорию, продукт и причины выбора клиента.",
+    reframing: "Сначала разбираем категорию, продукт и причины выбора клиента — потом решаем, что менять на сайте.",
   },
 ] as const;
 
@@ -60,8 +60,8 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">Стратегический маркетинг для собственников бизнеса</p>
           <h1>Не уверены, что именно сейчас нужно менять в бизнесе?</h1>
-          <p className="hero-lead">Помогаю понять, где реальная проблема и что делать первым.</p>
-          <p className="hero-money-line">И на что пока не стоит тратить деньги.</p>
+          <p className="hero-lead">Сначала помогаю понять проблему. Потом — выбрать решение и первый шаг.</p>
+          <p className="hero-money-line">И понять, на что пока не стоит тратить деньги.</p>
           <div className="hero-actions">
             <a className="button" href="/diagnostic">Разобрать свою ситуацию</a>
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
@@ -105,23 +105,23 @@ export default function Home() {
         <article className="lead-situation">
           <p className="lead-label">Симптом — ещё не причина</p>
           <blockquote style={{fontSize:"clamp(28px,3.2vw,46px)"}}>«Нам нужно больше заявок» ещё не значит, что нужна реклама.</blockquote>
-          <p className="lead-answer"><strong>Сначала понять, где проблема. Затем — что менять. И только потом — чем это делать.</strong></p>
+          <p className="lead-answer"><strong>Сначала понять проблему. Потом выбирать решение. И только потом — инструмент.</strong></p>
         </article>
       </div>
     </section>
 
     <section className="method-stage compact-method" id="product">
       <div className="page-shell">
-        <div className="section-intro method-intro"><p className="eyebrow">02 · Что получите</p><h2>Не больше анализа. Больше ясности для решения.</h2></div>
+        <div className="section-intro method-intro"><p className="eyebrow">02 · Что получите</p><h2>От неясной проблемы — к обоснованному следующему шагу.</h2></div>
         <div className="depth-result-grid product-depth-grid">
-          <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, что проверять и что делать первым.</h3><div className="depth-result-output"><small>Результат</small><strong>Ясно, где искать причину и какой следующий шаг уже можно обосновать.</strong></div></article>
+          <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, в чём главный вопрос и что проверить первым.</h3><div className="depth-result-output"><small>Результат</small><strong>Ясно, где искать причину и какой следующий шаг уже можно обосновать.</strong></div></article>
           <article className="depth-result-card depth-result-card-main"><span>Полноценный проект</span><h3>Понять маркетинг бизнеса как связанную систему.</h3><div className="depth-result-output"><small>Результат</small><strong>Ясно, какие решения имеют приоритет и куда направлять ресурсы.</strong></div></article>
         </div>
 
         <div className="brief-entry" aria-label="Decision Brief">
           <div>
             <span>Decision Brief · 6 вопросов · без звонка</span>
-            <h3>Можно сначала попробовать саму логику работы.</h3>
+            <h3>Сначала понять проблему — потом выбирать решение.</h3>
             <p>На выходе — структура задачи, главный вопрос, что проверить первым и что пока рано делать. Результат можно сохранить в PDF.</p>
           </div>
           <a className="button" href="/diagnostic">Разобрать свою ситуацию</a>
@@ -137,10 +137,10 @@ export default function Home() {
         <p className="eyebrow">03 · Один пример</p>
         <h2>Пришли за заявками. После проверки изменился сам вопрос.</h2>
         <div className="proof-work-fragment">
-          <div><small>Запрос</small><strong>Нужны квалифицированные входящие заявки.</strong></div>
-          <div><small>Факты</small><p>Продажи опирались не только на сайт, но и на повторные сделки и личную работу с рынком.</p></div>
-          <div><small>Поворот</small><strong>Версия «нам просто нужно больше трафика» оказалась недостаточной.</strong></div>
-          <div className="proof-result-cell"><small>Что изменилось</small><p><strong>Фокус сместился с рекламного трафика на доверие и более ранний вход компании в проект клиента.</strong></p></div>
+          <div><small>С чем пришли</small><strong>«Нам нужны квалифицированные входящие заявки».</strong></div>
+          <div><small>Что увидели</small><p>Продажи опирались не только на сайт, но и на повторные сделки и личную работу с рынком.</p></div>
+          <div><small>Что перестало быть очевидным</small><strong>Что следующий правильный шаг — просто увеличить рекламный трафик.</strong></div>
+          <div className="proof-result-cell"><small>Что изменилось</small><p><strong>Фокус сместился на доверие и более ранний вход компании в проект клиента.</strong></p></div>
         </div>
         <div className="proof-links"><a className="text-link proof-demo-link" href="/diagnostic">Попробовать эту логику на своей ситуации →</a></div>
         <p className="proof-demo-note">Компания и коммерческие данные не раскрываются. Здесь важна логика работы, а не название клиента.</p>
@@ -151,7 +151,7 @@ export default function Home() {
       <div className="page-shell">
         <div className="project-spectrum-head">
           <p className="eyebrow">Разные бизнесы · один принцип</p>
-          <h2 id="project-spectrum-title">С чего начинается работа</h2>
+          <h2 id="project-spectrum-title">Сначала понять вопрос. Потом выбирать решение.</h2>
         </div>
         <div className="project-spectrum-grid">
           {currentProjects.map((project, index) => (
@@ -191,7 +191,7 @@ export default function Home() {
       <div className="page-shell contact-grid">
         <div>
           <p className="eyebrow eyebrow-light">06 · Следующий шаг</p>
-          <h2>Не уверены, что менять первым?</h2>
+          <h2>Сначала понять проблему. Потом выбирать решение.</h2>
           <p>Начните с Decision Brief. Если проще — просто напишите мне.</p>
           <div style={{display:"flex",flexWrap:"wrap",gap:"10px",alignItems:"center",marginTop:"24px"}} aria-label="Способы связи">
             <a className="button button-light" href="/diagnostic">Разобрать ситуацию</a>
