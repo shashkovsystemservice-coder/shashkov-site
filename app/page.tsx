@@ -66,7 +66,7 @@ export default function Home() {
           <p className="eyebrow">Стратегический маркетинг для собственников бизнеса</p>
           <h1>Не уверены, что именно сейчас нужно менять в бизнесе?</h1>
           <p className="hero-lead">Продажи не растут, клиенты выбирают других или маркетинг что-то делает, но непонятно, где настоящая проблема.</p>
-          <p className="hero-principle">Помогу понять, что действительно нужно менять, что делать первым — и на что пока не стоит тратить деньги.</p>
+          <p className="hero-principle">Помогу снизить неопределённость до уровня, на котором можно обоснованно решить, что менять, что делать первым — и на что пока не тратить деньги.</p>
           <div className="hero-actions">
             <a className="button" href="#start">Описать ситуацию</a>
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
@@ -123,7 +123,7 @@ export default function Home() {
 
     <section className="method-stage compact-method" id="product">
       <div className="page-shell">
-        <div className="section-intro method-intro"><p className="eyebrow">02 · Что можно получить</p><h2>Можно разобрать один вопрос. А если нужно — собрать маркетинг целиком.</h2><p>Один подход — разная глубина работы.</p></div>
+        <div className="section-intro method-intro"><p className="eyebrow">02 · Что можно получить</p><h2>Можно разобрать один вопрос. А если нужно — собрать маркетинг целиком.</h2><p>Цель — не максимум аналитики, а достаточная определённость для решения.</p></div>
         <div className="depth-result-grid product-depth-grid">
           <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, что действительно нужно менять — и что делать первым.</h3><p>Разбираем ваш вопрос, факты и основные версии. Определяем, чего не хватает и что стоит проверить.</p><div className="depth-result-output"><small>Результат</small><strong>Понятно, где искать причину, что проверить первым и какой следующий шаг уже можно обосновать.</strong></div></article>
           <article className="depth-result-card depth-result-card-main"><span>Полноценный проект</span><h3>Понять маркетинг бизнеса как связанную систему.</h3><p>Кому продаём, почему выбирают или не выбирают, где теряем клиентов, чем отличаемся и где есть возможность роста.</p><div className="depth-result-output"><small>Результат</small><strong>Понятно, где находится возможность роста, какие решения имеют приоритет и на что сейчас не стоит тратить ресурсы.</strong></div></article>
@@ -137,12 +137,12 @@ export default function Home() {
           </div>
         </div>
         <div className="method-route compact-route" aria-label="Логика работы"><span>Задача</span><b>→</b><span>Факты и версии</span><b>→</b><span>Проверка</span><b>→</b><span>Выбор</span><b>→</b><span>Действие</span></div>
-        <p className="deliverables-note method-short-note">Основа — классический стратегический маркетинг.</p>
+        <p className="deliverables-note method-short-note">Факты, интерпретации и выводы не смешиваются. Проверка нужна только там, где от ответа зависит решение.</p>
         <div className="method-choice-principle">
           <p className="eyebrow">Как я работаю</p>
           <p><strong>Не начинаю с рекламы, сайта, SEO или AI.</strong> Сначала определяю, где находится ограничение и какой вопрос действительно мешает принять решение.</p>
           <p><strong>Не исследую всё подряд.</strong> Выбираю те данные и проверки, которые способны подтвердить или опровергнуть критическую версию — и довожу анализ до выбора действия.</p>
-          <small>Разные вопросы требуют разных доказательств. Метод выбирается под проблему, а не проблема под любимый инструмент.</small>
+          <small>Активность сама по себе не равна прогрессу. Метод выбирается под вопрос, а результат проверки должен менять решение.</small>
           <a className="text-link" href="/work" style={{display:"inline-block",marginTop:"22px"}}>Как проходит работа — по шагам →</a>
         </div>
       </div>
