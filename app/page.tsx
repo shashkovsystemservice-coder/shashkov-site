@@ -147,7 +147,10 @@ export default function Home() {
           <div><small>Что перестало быть очевидным</small><strong>Что следующий правильный шаг — просто увеличить рекламный трафик.</strong></div>
           <div className="proof-result-cell"><small>Что изменилось</small><p><strong>Фокус сместился на доверие и более ранний вход компании в проект клиента.</strong></p></div>
         </div>
-        <div className="proof-links"><a className="text-link proof-demo-link" href="/diagnostic">Попробовать эту логику на своей ситуации →</a></div>
+        <div className="proof-links">
+          <a className="text-link proof-demo-link" href="/artifacts/task-map">Посмотреть реальный рабочий артефакт →</a>
+          <a className="text-link proof-demo-link" href="/diagnostic">Попробовать эту логику на своей ситуации →</a>
+        </div>
         <p className="proof-demo-note">Компания и коммерческие данные не раскрываются. Здесь важна логика работы, а не название клиента.</p>
       </div></div>
     </section>
