@@ -1,7 +1,9 @@
-.site-brand { display:grid; grid-template-columns:auto auto; grid-template-rows:auto auto; align-items:center; column-gap:24px; row-gap:3px; text-decoration:none; }
-.site-brand-mark { grid-column:1; grid-row:1; display:inline-block; font-family:Georgia,'Times New Roman',serif; font-size:25px; line-height:1; font-weight:700; letter-spacing:-.06em; color:var(--ink); }
-.site-brand::after { content:"Стратегический маркетинг"; grid-column:1; grid-row:2; display:block; color:var(--blue); font-size:10px; line-height:1.15; font-weight:850; letter-spacing:.075em; text-transform:uppercase; white-space:nowrap; }
-.site-brand > span:last-child { grid-column:2; grid-row:1 / span 2; align-self:center; padding-left:22px; border-left:1px solid rgba(10,20,38,.16); font-size:16px; font-weight:800; line-height:1.15; white-space:nowrap; }
+.site-brand { display:grid; grid-template-columns:auto auto; grid-template-rows:auto auto; align-items:center; column-gap:24px; row-gap:1px; text-decoration:none; }
+.site-brand-mark { grid-column:1; grid-row:1; display:inline-block; font-family:Georgia,'Times New Roman',serif; font-size:29px; line-height:.95; font-weight:700; letter-spacing:-.065em; color:var(--ink); }
+.site-brand::after { content:"Стратегический маркетинг"; grid-column:1; grid-row:2; display:block; color:var(--blue); font-size:9px; line-height:1.05; font-weight:850; letter-spacing:.065em; text-transform:uppercase; white-space:nowrap; }
+.site-brand > span:last-child { grid-column:2; grid-row:1 / span 2; align-self:center; padding-left:22px; border-left:1px solid rgba(10,20,38,.10); font-size:15px; font-weight:700; line-height:1.15; white-space:nowrap; }
+.hero-copy > .eyebrow { font-size:0; line-height:1; }
+.hero-copy > .eyebrow::after { content:"Для ситуаций, где решение не очевидно"; font-size:12px; line-height:1.25; }
 
 .funnel-line { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:34px; }
 .funnel-line > div { border-top:2px solid var(--ink); padding-top:14px; }
@@ -54,10 +56,12 @@
 }
 
 @media (max-width:760px) {
-  .site-brand { grid-template-columns:minmax(0,126px) auto; column-gap:12px; row-gap:2px; min-width:0; }
-  .site-brand-mark { font-size:23px; }
-  .site-brand::after { font-size:8px; line-height:1.1; letter-spacing:.055em; white-space:normal; max-width:126px; }
-  .site-brand > span:last-child { padding-left:11px; font-size:12px; line-height:1.12; white-space:normal; max-width:90px; }
+  .site-brand { grid-template-columns:minmax(0,126px) auto; column-gap:12px; row-gap:0; min-width:0; }
+  .site-brand-mark { font-size:26px; }
+  .site-brand::after { font-size:7.5px; line-height:1.02; letter-spacing:.05em; white-space:normal; max-width:126px; }
+  .site-brand > span:last-child { padding-left:10px; border-left-color:rgba(10,20,38,.09); font-size:11px; font-weight:680; line-height:1.1; white-space:normal; max-width:82px; }
+  .site-nav .nav-cta { padding:11px 15px; min-height:0; }
+  .hero-copy > .eyebrow::after { font-size:11px; }
   .funnel-line { grid-template-columns:1fr; gap:18px; }
   .funnel-line strong { margin-top:8px; }
   .method-stage, .compact-method { padding:82px 0 88px; }
