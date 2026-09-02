@@ -27,6 +27,13 @@ const exampleCase = {
   disproof: "Если разбор выигранных и проигранных разговоров покажет, что интерес после первого контакта сохраняется, значит место потери нужно искать на следующем этапе.",
 };
 
+const escapeHtml = (value: string) => value
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll('"', "&quot;")
+  .replaceAll("'", "&#039;");
+
 export default function DiagnosticClient() {
   const [changed, setChanged] = useState("");
   const [lossPoint, setLossPoint] = useState<LossPoint>("unknown");
@@ -65,7 +72,26 @@ export default function DiagnosticClient() {
     setEvidenceLevel(exampleCase.evidenceLevel);
     setEvidence(exampleCase.evidence);
     setDisproof(exampleCase.disproof);
-    setShowBrief(true);
+    setShowBrief(false);
+  };
+
+  const openDocument = () => {
+    const popup = window.open("", "_blank");
+    if (!popup) return;
+    const safeEvidence = evidence.trim() || evidenceLabels[evidenceLevel] + ".";
+    const rows = [
+      ["То, что вы наблюдаете", changed],
+      ["Ваша текущая гипотеза", currentTheory],
+      ["Что пока остаётся неизвестным", uncertainty],
+      ["Одно из возможных направлений проверки", nextCheck],
+      ["Что могло бы опровергнуть гипотезу", disproof],
+      ["Что было бы преждевременно делать", avoid],
+      ["То, на чём сейчас основана гипотеза", safeEvidence],
+    ];
+    popup.document.write(`<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Структура разбора — Владимир Шашков</title><style>
+      *{box-sizing:border-box}body{margin:0;background:#f4f1ea;color:#101828;font-family:Arial,sans-serif}.page{max-width:860px;margin:0 auto;padding:56px 42px 72px;background:#fff;min-height:100vh}.top{display:flex;justify-content:space-between;gap:20px;padding-bottom:18px;border-bottom:1px solid #d7dce2;font-size:13px}.eyebrow{margin:42px 0 12px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#667085}h1{font-family:Georgia,serif;font-size:48px;line-height:1.02;letter-spacing:-.03em;margin:0 0 18px}.lead{font-size:18px;line-height:1.55;color:#475467;margin:0 0 34px}.row{padding:22px 0;border-top:1px solid #e3e6ea}.row h2{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#667085;margin:0 0 9px}.row p{font-size:17px;line-height:1.5;margin:0}.note{margin-top:34px;padding:22px 0;border-top:2px solid #101828;font-size:15px;line-height:1.55}.actions{margin-top:30px}.actions button{background:#101828;color:#fff;border:0;padding:12px 16px;font-weight:700;cursor:pointer}@media print{body{background:#fff}.page{max-width:none;padding:20mm 16mm}.actions{display:none}}@media(max-width:600px){.page{padding:34px 20px 50px}h1{font-size:38px}.top{display:grid}}
+    </style></head><body><main class="page"><div class="top"><strong>Владимир Шашков</strong><span>Демонстрационная структура разбора</span></div><p class="eyebrow">Не диагноз и не рекомендация</p><h1>Как может быть структурирована задача до выбора решения</h1><p class="lead">Этот документ фиксирует наблюдение, рабочую гипотезу и направления проверки. Он не заменяет изучение контекста, данных и живой разбор ситуации.</p>${rows.map(([label, text]) => `<section class="row"><h2>${escapeHtml(label)}</h2><p>${escapeHtml(text)}</p></section>`).join("")}<p class="note"><strong>Здесь нет вывода о вашем бизнесе.</strong> Смысл структуры — отделить наблюдение от объяснения, увидеть неизвестное и сначала проверить критическую гипотезу.</p><div class="actions"><button onclick="window.print()">Печать / сохранить в PDF</button></div></main></body></html>`);
+    popup.document.close();
   };
 
   const reset = () => {
@@ -92,9 +118,9 @@ export default function DiagnosticClient() {
         <div className="diagnostic-example-bar">
           <div>
             <strong>Не хотите заполнять?</strong>
-            <span>Можно посмотреть, как эта логика работает на готовом условном примере.</span>
+            <span>Подставьте готовую условную ситуацию, посмотрите ответы и затем отдельно запустите разбор.</span>
           </div>
-          <button type="button" onClick={loadExample}>Посмотреть на примере</button>
+          <button type="button" onClick={loadExample}>Подставить пример</button>
         </div>
 
         <label className="diagnostic-field">
@@ -134,7 +160,7 @@ export default function DiagnosticClient() {
           <small>Здесь показан принцип: хорошая гипотеза должна допускать проверку, которая может её опровергнуть.</small>
         </label>
 
-        <button className="diagnostic-primary" type="button" disabled={!canBuild} onClick={() => setShowBrief(true)}>Показать пример структуры разбора</button>
+        <button className="diagnostic-primary" type="button" disabled={!canBuild} onClick={() => setShowBrief(true)}>Показать разбор</button>
       </div>
 
       {showBrief && (
@@ -158,7 +184,10 @@ export default function DiagnosticClient() {
           </div>
 
           <p className="decision-note"><strong>Здесь нет вывода о вашем бизнесе.</strong> Этот интерактив только показывает принцип моей работы: отделить наблюдение от объяснения, увидеть, чего не хватает для вывода, и сначала проверить критическую гипотезу. Реальная работа начинается с контекста, данных и дополнительных вопросов.</p>
-          <a className="diagnostic-contact" href="/#contact">Разобрать реальную ситуацию со мной →</a>
+          <div className="decision-actions">
+            <button type="button" onClick={openDocument}>Открыть как документ / PDF</button>
+            <a className="diagnostic-contact" href="/#contact">Разобрать реальную ситуацию со мной →</a>
+          </div>
         </section>
       )}
     </section>
