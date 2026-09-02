@@ -32,18 +32,25 @@
 .depth-result-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:54px; }
 .product-depth-grid { display:block; margin-top:34px; }
 .product-depth-grid .depth-result-card { position:relative; min-height:0; padding:42px 46px 44px; border:1px solid #ccd7e5; border-top:4px solid var(--ink); background:#fff; box-shadow:0 14px 34px rgba(10,20,38,.045); }
+.product-depth-grid .depth-result-card:first-child { width:min(78%,860px); }
 .product-depth-grid .depth-result-card:first-child::before { content:"Если у вас один неясный вопрос — можно начать отсюда"; display:block; margin-bottom:24px; color:#667085; font-size:13px; line-height:1.45; font-weight:750; }
-.product-depth-grid .depth-result-card-main { margin-top:72px; border-top-color:var(--blue); background:#fff; }
-.product-depth-grid .depth-result-card-main::before { content:"Если проблема шире — идём глубже"; display:block; margin-bottom:24px; color:#536174; font-size:13px; line-height:1.45; font-weight:750; }
+.product-depth-grid .depth-result-card-main { width:100%; margin-top:76px; padding:52px 56px 54px; border:0; border-top:5px solid var(--blue); background:var(--ink); color:#fff; box-shadow:0 18px 46px rgba(10,20,38,.14); }
+.product-depth-grid .depth-result-card-main::before { content:"Если проблема шире — идём глубже"; display:block; margin-bottom:26px; color:#b9c7d8; font-size:13px; line-height:1.45; font-weight:750; }
 .depth-result-card { min-height:390px; padding:34px 36px 38px; border:1px solid var(--line); background:var(--paper); display:flex; flex-direction:column; }
 .depth-result-card > span { color:var(--blue); font-size:12px; font-weight:850; letter-spacing:.08em; text-transform:uppercase; }
 .product-depth-grid .depth-result-card h3 { margin-top:28px; max-width:760px; font-size:clamp(34px,3.2vw,50px); }
 .product-depth-grid .depth-result-card > p { max-width:760px; margin-top:20px; font-size:19px; }
+.product-depth-grid .depth-result-card-main h3 { max-width:900px; color:#fff; font-size:clamp(40px,3.8vw,58px); }
+.product-depth-grid .depth-result-card-main > p { max-width:860px; color:#c5cfdb; }
+.product-depth-grid .depth-result-card-main > span { color:#88a8ff; }
 .depth-result-card h3 { margin-top:46px; max-width:560px; font-size:clamp(30px,2.8vw,44px); }
 .depth-result-card > p { max-width:630px; font-size:18px; }
 .depth-result-card-main { border-top:4px solid var(--blue); }
 .depth-result-output { margin-top:auto; padding-top:24px; border-top:1px solid var(--line); }
 .product-depth-grid .depth-result-output { margin-top:34px; padding:24px 22px 8px; max-width:900px; border-top:1px solid #dce4ef; background:linear-gradient(180deg,rgba(238,243,250,.25),rgba(238,243,250,.82)); }
+.product-depth-grid .depth-result-card-main .depth-result-output { max-width:100%; padding:26px 28px 18px; border-top:1px solid rgba(255,255,255,.20); background:rgba(255,255,255,.065); }
+.product-depth-grid .depth-result-card-main .depth-result-output small { color:#88a8ff; }
+.product-depth-grid .depth-result-card-main .depth-result-output strong { color:#fff; }
 .product-depth-grid .depth-result-output small { margin-bottom:10px; }
 .product-depth-grid .depth-result-output strong { font-size:22px; line-height:1.4; }
 .depth-result-output small { display:block; margin-bottom:8px; color:var(--blue); font-size:11px; font-weight:850; letter-spacing:.07em; text-transform:uppercase; }
@@ -98,15 +105,19 @@
   .depth-result-grid, .product-depth-grid { grid-template-columns:1fr; margin-top:28px; }
   .depth-result-card { min-height:auto; padding:28px 24px 30px; }
   .product-depth-grid .depth-result-card { padding:30px 24px 32px; box-shadow:none; }
+  .product-depth-grid .depth-result-card:first-child { width:92%; }
   .product-depth-grid .depth-result-card:first-child::before,
   .product-depth-grid .depth-result-card-main::before { margin-bottom:18px; font-size:12px; }
-  .product-depth-grid .depth-result-card-main { margin-top:46px; }
+  .product-depth-grid .depth-result-card-main { width:100%; margin-top:52px; padding:38px 28px 40px; box-shadow:0 14px 34px rgba(10,20,38,.12); }
   .depth-result-card h3,
   .product-depth-grid .depth-result-card h3 { margin-top:24px; font-size:31px; line-height:1.08; }
+  .product-depth-grid .depth-result-card-main h3 { font-size:36px; line-height:1.04; }
   .product-depth-grid .depth-result-card > p { margin-top:18px; font-size:17px; line-height:1.55; }
+  .product-depth-grid .depth-result-card-main > p { color:#c5cfdb; }
   .depth-result-output,
   .product-depth-grid .depth-result-output { margin-top:28px; padding-top:22px; }
   .product-depth-grid .depth-result-output { margin-left:-8px; margin-right:-8px; padding-left:16px; padding-right:16px; }
+  .product-depth-grid .depth-result-card-main .depth-result-output { margin-left:0; margin-right:0; padding:22px 20px 16px; }
   .product-depth-grid .depth-result-output strong { font-size:19px; }
   .product-depth-grid + div { margin-top:20px !important; padding:24px 22px !important; }
   .product-depth-grid + div > div { display:block !important; }
