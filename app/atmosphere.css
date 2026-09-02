@@ -1,0 +1,89 @@
+/* Subtle Mediterranean depth: atmosphere, not illustration. */
+
+.situations-stage {
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #ffffff 55%,
+      #f8fbfd 76%,
+      #eef7fb 100%
+    );
+}
+
+.method-stage {
+  position: relative;
+  background:
+    radial-gradient(
+      125% 34% at 50% 100%,
+      rgba(102, 184, 220, 0.18) 0%,
+      rgba(159, 207, 229, 0.10) 38%,
+      rgba(238, 247, 251, 0) 76%
+    ),
+    linear-gradient(
+      180deg,
+      #f3f7fb 0%,
+      #eef4f8 56%,
+      #eaf4f8 100%
+    );
+}
+
+.method-stage::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 150px;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(220, 241, 248, 0), rgba(204, 234, 245, 0.16));
+}
+
+.method-stage > .page-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.proof-stage {
+  background:
+    linear-gradient(
+      180deg,
+      #f5fafc 0%,
+      #fbfcfd 110px,
+      var(--paper) 260px,
+      var(--paper) 100%
+    );
+}
+
+@media (max-width: 760px) {
+  .situations-stage {
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #ffffff 48%,
+        #f7fbfd 72%,
+        #ebf5fa 100%
+      );
+  }
+
+  .method-stage {
+    background:
+      radial-gradient(
+        150% 26% at 50% 100%,
+        rgba(91, 177, 217, 0.20) 0%,
+        rgba(159, 207, 229, 0.10) 44%,
+        rgba(236, 246, 250, 0) 80%
+      ),
+      linear-gradient(
+        180deg,
+        #f2f7fb 0%,
+        #edf4f8 58%,
+        #e8f3f8 100%
+      );
+  }
+
+  .method-stage::after {
+    height: 110px;
+  }
+}
