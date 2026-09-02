@@ -12,7 +12,7 @@
 
 .method-stage { padding:132px 0 138px; background:var(--paper); border-top:1px solid var(--line); }
 .compact-method { padding:108px 0 116px; }
-.method-intro { margin-bottom:58px; }
+.method-intro { margin-bottom:46px; }
 .method-intro > p:last-child { max-width:900px; }
 .method-route { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:0 0 58px; padding:22px 0; border-top:2px solid var(--ink); border-bottom:1px solid var(--line); }
 .compact-route { margin:54px 0 0; }
@@ -29,13 +29,22 @@
 .method-choice-principle small { display:block; margin-top:22px; padding-top:18px; border-top:1px solid rgba(10,20,38,.12); font-size:14px; line-height:1.55; color:#667085; }
 
 .depth-result-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:54px; }
-.product-depth-grid { margin-top:44px; }
+.product-depth-grid { display:block; margin-top:34px; }
+.product-depth-grid .depth-result-card { position:relative; min-height:0; padding:42px 46px 44px; border:1px solid rgba(10,20,38,.16); border-top:4px solid var(--ink); background:#fff; }
+.product-depth-grid .depth-result-card:first-child::before { content:"Если у вас один неясный вопрос — можно начать отсюда"; display:block; margin-bottom:24px; color:#667085; font-size:13px; line-height:1.45; font-weight:750; }
+.product-depth-grid .depth-result-card-main { margin-top:72px; border-top-color:var(--blue); background:#eef3fa; }
+.product-depth-grid .depth-result-card-main::before { content:"Если проблема шире — идём глубже"; display:block; margin-bottom:24px; color:#536174; font-size:13px; line-height:1.45; font-weight:750; }
 .depth-result-card { min-height:390px; padding:34px 36px 38px; border:1px solid var(--line); background:var(--paper); display:flex; flex-direction:column; }
 .depth-result-card > span { color:var(--blue); font-size:12px; font-weight:850; letter-spacing:.08em; text-transform:uppercase; }
+.product-depth-grid .depth-result-card h3 { margin-top:28px; max-width:760px; font-size:clamp(34px,3.2vw,50px); }
+.product-depth-grid .depth-result-card > p { max-width:760px; margin-top:20px; font-size:19px; }
 .depth-result-card h3 { margin-top:46px; max-width:560px; font-size:clamp(30px,2.8vw,44px); }
 .depth-result-card > p { max-width:630px; font-size:18px; }
 .depth-result-card-main { border-top:4px solid var(--blue); }
 .depth-result-output { margin-top:auto; padding-top:24px; border-top:1px solid var(--line); }
+.product-depth-grid .depth-result-output { margin-top:34px; padding-top:24px; max-width:900px; }
+.product-depth-grid .depth-result-output small { margin-bottom:10px; }
+.product-depth-grid .depth-result-output strong { font-size:22px; line-height:1.4; }
 .depth-result-output small { display:block; margin-bottom:8px; color:var(--blue); font-size:11px; font-weight:850; letter-spacing:.07em; text-transform:uppercase; }
 .depth-result-output strong { display:block; color:var(--ink); font-size:19px; line-height:1.35; }
 
@@ -64,18 +73,28 @@
   .hero-copy > .eyebrow::after { font-size:11px; }
   .funnel-line { grid-template-columns:1fr; gap:18px; }
   .funnel-line strong { margin-top:8px; }
-  .method-stage, .compact-method { padding:82px 0 88px; }
-  .method-intro { margin-bottom:36px; }
+  .method-stage, .compact-method { padding:76px 0 82px; }
+  .method-intro { margin-bottom:28px; }
+  .method-intro h2 { font-size:clamp(38px,11vw,52px); line-height:1.02; }
+  .method-intro > p:last-child { margin-top:24px; font-size:18px; }
   .method-route { align-items:flex-start; gap:8px 10px; margin-bottom:0; }
   .compact-route { margin-top:38px; }
   .method-route span { font-size:14px; }
   .method-note, .compact-method-note { margin-top:34px; padding:24px 22px; }
   .method-choice-principle { margin-top:38px; padding-top:26px; }
   .method-choice-principle > p:not(.eyebrow) { font-size:18px; }
-  .depth-result-grid, .product-depth-grid { grid-template-columns:1fr; margin-top:34px; }
+  .depth-result-grid, .product-depth-grid { grid-template-columns:1fr; margin-top:28px; }
   .depth-result-card { min-height:auto; padding:28px 24px 30px; }
-  .depth-result-card h3 { margin-top:30px; font-size:31px; }
-  .depth-result-output { margin-top:30px; }
+  .product-depth-grid .depth-result-card { padding:30px 24px 32px; }
+  .product-depth-grid .depth-result-card:first-child::before,
+  .product-depth-grid .depth-result-card-main::before { margin-bottom:18px; font-size:12px; }
+  .product-depth-grid .depth-result-card-main { margin-top:46px; }
+  .depth-result-card h3,
+  .product-depth-grid .depth-result-card h3 { margin-top:24px; font-size:31px; line-height:1.08; }
+  .product-depth-grid .depth-result-card > p { margin-top:18px; font-size:17px; line-height:1.55; }
+  .depth-result-output,
+  .product-depth-grid .depth-result-output { margin-top:28px; padding-top:22px; }
+  .product-depth-grid .depth-result-output strong { font-size:19px; }
   .proof-links { display:grid; gap:12px; }
   .proof-demo-note { font-size:13px; }
   .system-result, .compact-system-result { grid-template-columns:1fr; gap:18px; margin-top:0; padding-top:0; }
