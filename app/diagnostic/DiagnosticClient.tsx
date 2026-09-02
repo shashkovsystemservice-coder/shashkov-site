@@ -3,14 +3,6 @@
 import { useMemo, useState } from "react";
 
 type EvidenceLevel = "data" | "signals" | "assumption";
-type LossPoint = "before" | "conversation" | "proposal" | "unknown";
-
-const lossLabels: Record<LossPoint, string> = {
-  before: "До обращения",
-  conversation: "После первого разговора",
-  proposal: "После предложения / расчёта",
-  unknown: "Пока не знаю",
-};
 
 const evidenceLabels: Record<EvidenceLevel, string> = {
   data: "Есть данные или цифры",
@@ -19,49 +11,50 @@ const evidenceLabels: Record<EvidenceLevel, string> = {
 };
 
 const exampleCase = {
-  changed: "Выручка отстаёт от плана, хотя поток обращений заметно не изменился.",
-  lossPoint: "conversation" as LossPoint,
-  currentTheory: "Возможно, клиенты приходят с ожиданием, которое не подтверждается в первом разговоре.",
+  situation: "Выручка отстаёт от плана, хотя поток обращений заметно не изменился.",
+  desired: "Понять, почему продажи просели, и вернуть предсказуемость без лишних расходов на привлечение.",
+  obstacle: "Кажется, клиенты приходят с ожиданием, которое не подтверждается в первом разговоре.",
+  intendedAction: "Есть идея увеличить рекламу и одновременно переделать сайт.",
   evidenceLevel: "signals" as EvidenceLevel,
   evidence: "В нескольких последних разговорах повторялись похожие вопросы о ценности и отличиях предложения.",
   disproof: "Если разбор выигранных и проигранных разговоров покажет, что интерес после первого контакта сохраняется, значит место потери нужно искать на следующем этапе.",
 };
 
 export default function DiagnosticClient() {
-  const [changed, setChanged] = useState("");
-  const [lossPoint, setLossPoint] = useState<LossPoint>("unknown");
-  const [currentTheory, setCurrentTheory] = useState("");
+  const [situation, setSituation] = useState("");
+  const [desired, setDesired] = useState("");
+  const [obstacle, setObstacle] = useState("");
+  const [intendedAction, setIntendedAction] = useState("");
   const [evidenceLevel, setEvidenceLevel] = useState<EvidenceLevel>("assumption");
   const [evidence, setEvidence] = useState("");
   const [disproof, setDisproof] = useState("");
   const [showBrief, setShowBrief] = useState(false);
 
-  const canBuild = changed.trim().length > 8 && currentTheory.trim().length > 8 && disproof.trim().length > 8;
-
-  const nextCheck = useMemo(() => {
-    if (lossPoint === "before") return "Если наблюдение верно и потеря действительно происходит до обращения, одним из разумных направлений проверки может быть разбор 5–10 недавних случаев: кто увидел предложение, что понял о ценности и почему не дошёл до контакта.";
-    if (lossPoint === "conversation") return "Если потеря действительно происходит после первого разговора, имеет смысл проверить несколько реальных разговоров и исходов: с каким ожиданием пришёл клиент, что услышал, какие вопросы или сомнения возникли и где интерес ослаб.";
-    if (lossPoint === "proposal") return "Если потеря действительно происходит после предложения, одним из направлений проверки может быть сравнение выигранных и проигранных случаев: цена, аргументы ценности, сроки, доверие, условия и причины отказа со слов клиентов.";
-    return "Пока место потери неизвестно. Поэтому первым шагом было бы не выбирать решение, а определить, на каком этапе чаще всего исчезает возможность: до обращения, после разговора или после предложения.";
-  }, [lossPoint]);
+  const canBuild = situation.trim().length > 8 && desired.trim().length > 8 && obstacle.trim().length > 8;
 
   const uncertainty = useMemo(() => {
-    if (evidenceLevel === "data") return "Есть данные, но по одному этому факту нельзя утверждать причину. Нужно проверить, действительно ли они подтверждают вашу гипотезу, а не только сам симптом.";
-    if (evidenceLevel === "signals") return "Есть сигналы, но пока неизвестно, насколько они типичны. Важно проверить, повторяется ли этот паттерн в достаточном числе случаев.";
-    return "Основание пока слабое: сейчас это рабочая гипотеза. Для вывода не хватает подтверждающих или опровергающих данных.";
+    if (evidenceLevel === "data") return "Есть данные, но пока неясно, подтверждают ли они именно предполагаемую причину, а не только симптом. Нужно проверить связь между наблюдением и объяснением.";
+    if (evidenceLevel === "signals") return "Есть повторяющиеся сигналы, но пока неизвестно, насколько они типичны. Нужно проверить, повторяется ли паттерн в достаточном числе случаев.";
+    return "Текущая причина пока является рабочей версией. Для вывода не хватает подтверждающих или опровергающих данных.";
   }, [evidenceLevel]);
 
+  const nextCheck = useMemo(() => {
+    const action = intendedAction.trim();
+    if (evidenceLevel === "data") return `Сначала проверить, действительно ли имеющиеся данные связывают наблюдаемую ситуацию с вашей версией причины. Затем сравнить случаи, где результат был хорошим и плохим, и посмотреть, что между ними различается.${action ? ` Только после этого возвращаться к варианту «${action}».` : ""}`;
+    if (evidenceLevel === "signals") return `Собрать несколько конкретных недавних случаев и проверить повторяемость сигнала: что происходило до результата, что говорил клиент, где менялся интерес и какие альтернативные объяснения возможны.${action ? ` До этого решение «${action}» лучше считать гипотезой действия, а не готовым планом.` : ""}`;
+    return `Сначала найти факты, которые могли бы подтвердить или опровергнуть текущую версию: реальные сделки, разговоры, причины отказов, поведение клиентов, данные по этапам пути. Затем уже выбирать решение.${action ? ` Вариант «${action}» пока рано считать обоснованным.` : ""}`;
+  }, [evidenceLevel, intendedAction]);
+
   const avoid = useMemo(() => {
-    if (lossPoint === "before") return "Было бы рано автоматически увеличивать рекламный бюджет или полностью переделывать сайт только на основании текущей версии. Сначала стоит проверить, почему уже увидевшие предложение не доходят до обращения.";
-    if (lossPoint === "conversation") return "Было бы рано считать, что нужен новый трафик, если потеря может происходить уже после первого контакта. Сначала стоит проверить сам разговор, ожидания клиента и аргументацию.";
-    if (lossPoint === "proposal") return "Было бы рано автоматически снижать цену или давать дополнительные скидки, пока не подтверждено, что именно цена является устойчивой причиной проигрыша.";
-    return "Было бы рано выбирать рекламу, SEO, новый сайт, скидки или нового подрядчика, пока не определено хотя бы место потери и не проверена исходная гипотеза.";
-  }, [lossPoint]);
+    if (!intendedAction.trim()) return "Пока рано выбирать конкретный инструмент только потому, что он кажется привычным или доступным. Сначала нужно уменьшить критическую неопределённость.";
+    return `Было бы преждевременно сразу переходить к решению «${intendedAction.trim()}», пока не проверено, связано ли оно с реальной причиной ситуации.`;
+  }, [intendedAction]);
 
   const loadExample = () => {
-    setChanged(exampleCase.changed);
-    setLossPoint(exampleCase.lossPoint);
-    setCurrentTheory(exampleCase.currentTheory);
+    setSituation(exampleCase.situation);
+    setDesired(exampleCase.desired);
+    setObstacle(exampleCase.obstacle);
+    setIntendedAction(exampleCase.intendedAction);
     setEvidenceLevel(exampleCase.evidenceLevel);
     setEvidence(exampleCase.evidence);
     setDisproof(exampleCase.disproof);
@@ -70,123 +63,69 @@ export default function DiagnosticClient() {
 
   const openDocument = () => {
     const payload = {
-      changed,
-      currentTheory,
+      situation,
+      desired,
+      currentTheory: obstacle,
+      intendedAction,
       uncertainty,
       nextCheck,
-      disproof,
+      disproof: disproof.trim() || "Пока не сформулировано. Это один из вопросов, который стоит уточнить до вывода.",
       avoid,
       evidence: evidence.trim() || evidenceLabels[evidenceLevel] + ".",
       createdAt: new Date().toISOString(),
     };
-
     const encoded = encodeURIComponent(JSON.stringify(payload));
-    const url = `/diagnostic/document#brief=${encoded}`;
-
     try {
       window.localStorage.setItem("shashkov-diagnostic-brief", JSON.stringify(payload));
-      window.location.href = url;
+      window.location.href = `/diagnostic/document#brief=${encoded}`;
     } catch {
-      window.location.href = url;
+      window.location.href = `/diagnostic/document#brief=${encoded}`;
     }
   };
 
   const reset = () => {
-    setChanged("");
-    setLossPoint("unknown");
-    setCurrentTheory("");
-    setEvidenceLevel("assumption");
-    setEvidence("");
-    setDisproof("");
-    setShowBrief(false);
+    setSituation(""); setDesired(""); setObstacle(""); setIntendedAction(""); setEvidenceLevel("assumption"); setEvidence(""); setDisproof(""); setShowBrief(false);
   };
+
+  const dirty = () => setShowBrief(false);
 
   return (
     <section className="diagnostic-workspace">
-      <div className="diagnostic-progress" aria-label="Логика демонстрационного разбора">
-        <span>01 Что происходит</span>
-        <span>02 Где теряется выбор</span>
-        <span>03 Что предполагаем</span>
-        <span>04 Чем подтверждаем</span>
-        <span>05 Как опровергнуть</span>
+      <div className="diagnostic-progress" aria-label="Логика Decision Brief">
+        <span>01 Ситуация</span><span>02 Результат</span><span>03 Что мешает</span><span>04 Что уже думаете делать</span><span>05 Факты или версия</span><span>06 Проверка</span>
       </div>
 
       <div className="diagnostic-form-card">
-        <div className="diagnostic-example-bar">
-          <div>
-            <strong>Не хотите заполнять?</strong>
-            <span>Подставьте готовую условную ситуацию, посмотрите ответы и затем отдельно запустите разбор.</span>
-          </div>
-          <button type="button" onClick={loadExample}>Подставить пример</button>
-        </div>
+        <div className="diagnostic-example-bar"><div><strong>Хотите сначала посмотреть, как это работает?</strong><span>Подставьте условный кейс. Ответы заполнятся автоматически, а разбор появится только после нажатия отдельной кнопки.</span></div><button type="button" onClick={loadExample}>Подставить пример</button></div>
 
-        <label className="diagnostic-field">
-          <span>1. Что изменилось или что вас беспокоит?</span>
-          <textarea value={changed} onChange={(e) => { setChanged(e.target.value); setShowBrief(false); }} placeholder="Например: посещаемость сайта примерно та же, но обращений стало меньше" />
-          <small>Опишите наблюдаемый факт, не объясняя причину.</small>
-        </label>
+        <label className="diagnostic-field"><span>1. Что сейчас происходит?</span><textarea value={situation} onChange={(e)=>{setSituation(e.target.value);dirty();}} placeholder="Например: выручка просела, хотя обращений примерно столько же"/><small>Сначала — наблюдаемая ситуация, без объяснения причины.</small></label>
+        <label className="diagnostic-field"><span>2. К какому результату вы хотите прийти?</span><textarea value={desired} onChange={(e)=>{setDesired(e.target.value);dirty();}} placeholder="Например: вернуть предсказуемые продажи без роста рекламного бюджета"/></label>
+        <label className="diagnostic-field"><span>3. Что, по вашему мнению, сейчас мешает?</span><textarea value={obstacle} onChange={(e)=>{setObstacle(e.target.value);dirty();}} placeholder="Например: кажется, клиент не понимает ценность предложения"/><small>Считаем это рабочей версией, пока она не проверена.</small></label>
+        <label className="diagnostic-field"><span>4. Что вы уже думаете делать?</span><textarea value={intendedAction} onChange={(e)=>{setIntendedAction(e.target.value);dirty();}} placeholder="Например: увеличить рекламу, переделать сайт, снизить цену"/><small>Это необязательный ответ. Он помогает увидеть, не выбран ли инструмент раньше причины.</small></label>
 
-        <fieldset className="diagnostic-field">
-          <legend>2. Где, по вашим наблюдениям, чаще всего теряется покупка?</legend>
-          <div className="diagnostic-options">
-            {(Object.keys(lossLabels) as LossPoint[]).map((key) => (
-              <button key={key} type="button" className={lossPoint === key ? "is-selected" : ""} onClick={() => { setLossPoint(key); setShowBrief(false); }}>{lossLabels[key]}</button>
-            ))}
-          </div>
-        </fieldset>
+        <fieldset className="diagnostic-field"><legend>5. На чём основана ваша версия?</legend><div className="diagnostic-options">{(Object.keys(evidenceLabels) as EvidenceLevel[]).map((key)=><button key={key} type="button" className={evidenceLevel===key?"is-selected":""} onClick={()=>{setEvidenceLevel(key);dirty();}}>{evidenceLabels[key]}</button>)}</div><textarea value={evidence} onChange={(e)=>{setEvidence(e.target.value);dirty();}} placeholder="Необязательно. Например: 8 из 12 потерянных клиентов назвали похожую причину"/></fieldset>
 
-        <label className="diagnostic-field">
-          <span>3. Как вы сейчас объясняете причину?</span>
-          <textarea value={currentTheory} onChange={(e) => { setCurrentTheory(e.target.value); setShowBrief(false); }} placeholder="Например: кажется, что клиент не понимает, чем мы отличаемся от других" />
-          <small>Это может оказаться верно. В этом примере считаем это рабочей версией, а не выводом.</small>
-        </label>
+        <label className="diagnostic-field"><span>6. Что показало бы, что эта версия неверна?</span><textarea value={disproof} onChange={(e)=>{setDisproof(e.target.value);dirty();}} placeholder="Например: если клиенты хорошо понимают ценность, но всё равно уходят после расчёта — причина, вероятно, в другом"/><small>Необязательно для первого прохода, но это делает гипотезу проверяемой.</small></label>
 
-        <fieldset className="diagnostic-field">
-          <legend>4. На чём основана эта версия?</legend>
-          <div className="diagnostic-options">
-            {(Object.keys(evidenceLabels) as EvidenceLevel[]).map((key) => (
-              <button key={key} type="button" className={evidenceLevel === key ? "is-selected" : ""} onClick={() => { setEvidenceLevel(key); setShowBrief(false); }}>{evidenceLabels[key]}</button>
-            ))}
-          </div>
-          <textarea value={evidence} onChange={(e) => { setEvidence(e.target.value); setShowBrief(false); }} placeholder="Необязательно. Например: 8 из 12 потерянных клиентов назвали одинаковую причину" />
-        </fieldset>
-
-        <label className="diagnostic-field">
-          <span>5. Что показало бы, что ваша версия неверна?</span>
-          <textarea value={disproof} onChange={(e) => { setDisproof(e.target.value); setShowBrief(false); }} placeholder="Например: если клиенты хорошо понимают наше отличие, но всё равно уходят после расчёта — причина, вероятно, в другом" />
-          <small>Здесь показан принцип: хорошая гипотеза должна допускать проверку, которая может её опровергнуть.</small>
-        </label>
-
-        <button className="diagnostic-primary" type="button" disabled={!canBuild} onClick={() => setShowBrief(true)}>Показать разбор</button>
+        <button className="diagnostic-primary" type="button" disabled={!canBuild} onClick={()=>setShowBrief(true)}>Собрать Decision Brief</button>
       </div>
 
-      {showBrief && (
-        <section className="decision-brief" aria-live="polite">
-          <div className="decision-brief-head">
-            <div><p>Демонстрационный результат</p><h2>Что здесь можно структурировать — без попытки поставить диагноз</h2></div>
-            <button type="button" onClick={reset}>Начать заново</button>
-          </div>
-
-          <div className="decision-grid">
-            <article><span>То, что вы наблюдаете</span><p>{changed}</p></article>
-            <article><span>Ваша текущая гипотеза</span><p>{currentTheory}</p></article>
-            <article><span>Что пока остаётся неизвестным</span><p>{uncertainty}</p></article>
-            <article><span>Одно из возможных направлений проверки</span><p>{nextCheck}</p></article>
-            <article className="decision-wide"><span>Что могло бы опровергнуть гипотезу</span><p>{disproof}</p></article>
-            <article className="decision-wide"><span>Что было бы преждевременно делать</span><p>{avoid}</p></article>
-          </div>
-
-          <div className="decision-evidence">
-            <strong>То, на чём сейчас основана гипотеза:</strong> {evidence.trim() || evidenceLabels[evidenceLevel] + "."}
-          </div>
-
-          <p className="decision-note"><strong>Здесь нет вывода о вашем бизнесе.</strong> Этот интерактив только показывает принцип моей работы: отделить наблюдение от объяснения, увидеть, чего не хватает для вывода, и сначала проверить критическую гипотезу. Реальная работа начинается с контекста, данных и дополнительных вопросов.</p>
-          <div className="decision-actions">
-            <button type="button" onClick={openDocument}>Открыть оформленный документ</button>
-            <a className="diagnostic-contact" href="/#contact">Разобрать реальную ситуацию со мной →</a>
-          </div>
-        </section>
-      )}
+      {showBrief && <section className="decision-brief" aria-live="polite">
+        <div className="decision-brief-head"><div><p>Первичный Decision Brief</p><h2>Что уже можно отделить от предположений</h2></div><button type="button" onClick={reset}>Начать заново</button></div>
+        <div className="decision-grid">
+          <article><span>Ситуация сейчас</span><p>{situation}</p></article>
+          <article><span>Желаемый результат</span><p>{desired}</p></article>
+          <article><span>Текущая версия причины</span><p>{obstacle}</p></article>
+          <article><span>Что вы уже думаете делать</span><p>{intendedAction.trim() || "Конкретное решение пока не выбрано."}</p></article>
+          <article className="decision-wide"><span>Критическая неопределённость</span><p>{uncertainty}</p></article>
+          <article className="decision-wide"><span>Что имеет смысл проверить первым</span><p>{nextCheck}</p></article>
+          <article className="decision-wide"><span>Что могло бы опровергнуть версию</span><p>{disproof.trim() || "Пока не сформулировано. Это стоит уточнить до вывода."}</p></article>
+          <article className="decision-wide"><span>Что пока рано делать</span><p>{avoid}</p></article>
+        </div>
+        <div className="decision-evidence"><strong>Основание текущей версии:</strong> {evidence.trim() || evidenceLabels[evidenceLevel] + "."}</div>
+        <p className="decision-note"><strong>Это не диагноз.</strong> Brief показывает структуру задачи на основании только ваших ответов. Реальная работа начинается там, где появляются контекст, данные, материалы, дополнительные вопросы и проверка нескольких конкурирующих версий.</p>
+        <div className="decision-actions"><button type="button" onClick={openDocument}>Открыть оформленный документ</button><a className="diagnostic-contact" href="/#contact">Обсудить ситуацию со мной →</a></div>
+      </section>}
     </section>
   );
 }
