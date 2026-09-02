@@ -150,6 +150,7 @@ export default function Home() {
         <div className="proof-links">
           <a className="text-link proof-demo-link" href="/artifacts/task-map">Карта задачи →</a>
           <a className="text-link proof-demo-link" href="/artifacts/market-choice">Карта рынка и выбора →</a>
+          <a className="text-link proof-demo-link" href="/artifacts/value-proof">Иерархия ценности и доказательств →</a>
           <a className="text-link proof-demo-link" href="/diagnostic">Попробовать эту логику на своей ситуации →</a>
         </div>
         <p className="proof-demo-note">Рабочие артефакты обезличены: названия компаний и коммерческие данные не раскрываются.</p>
