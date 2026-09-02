@@ -5,7 +5,7 @@ import "./projects.css";
 const situations = [
   "Нас мало знают",
   "Нас видят, но не заказывают",
-  "Продажи не растут, хотя маркетинг работает",
+  "Продажи не растут, хотя маркетинг вроде работает",
   "Все предлагают рекламу, сайт, SEO, AI — не понимаю, что реально нужно",
 ] as const;
 
@@ -48,7 +48,7 @@ export default function Home() {
         <a className="site-brand" href="#top"><span className="site-brand-mark" aria-hidden="true">ВШ</span><span>Владимир Шашков</span></a>
         <nav aria-label="Основная навигация">
           <a href="#situations">Ситуации</a>
-          <a href="#product">Что получите</a>
+          <a href="#product">Что станет понятно</a>
           <a href="#case">Пример</a>
           <a href="/work">Как работаю</a>
           <a href="#about">Обо мне</a>
@@ -71,6 +71,11 @@ export default function Home() {
             </button>
           </div>
           <p style={{margin:"12px 0 0",fontSize:"14px",lineHeight:1.45,color:"#667085"}}>Decision Brief — самостоятельно. Разговор — 20–30 минут, бесплатно.</p>
+          <div className="hero-paths" aria-label="С чего начать">
+            <a href="/diagnostic"><span>Не понимаю, в чём проблема</span><strong>Начать с 6 вопросов →</strong></a>
+            <a href="#case"><span>Хочу сначала посмотреть работу</span><strong>Открыть реальные артефакты →</strong></a>
+            <a href="#contact"><span>У меня уже есть конкретный вопрос</span><strong>Просто написать →</strong></a>
+          </div>
         </div>
         <figure className="hero-photo"><Image src="/vladimir-photo.jpg" alt="Владимир Шашков" width={1206} height={1210} priority /></figure>
       </section>
@@ -112,13 +117,13 @@ export default function Home() {
 
     <section className="method-stage compact-method" id="product">
       <div className="page-shell">
-        <div className="section-intro method-intro"><p className="eyebrow">02 · Что получите</p><h2>От неясной проблемы — к обоснованному следующему шагу.</h2></div>
+        <div className="section-intro method-intro"><p className="eyebrow">02 · Что должно стать понятно</p><h2>Что проверять первым — и что делать дальше.</h2></div>
         <div className="depth-result-grid product-depth-grid">
-          <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, в чём главный вопрос и что проверить первым.</h3><div className="depth-result-output"><small>Результат</small><strong>Ясно, где искать причину и какой следующий шаг уже можно обосновать.</strong></div></article>
+          <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, в чём главный вопрос и что проверить первым.</h3><div className="depth-result-output"><small>Результат</small><strong>Понятно, где искать причину и какой следующий шаг уже имеет смысл.</strong></div></article>
           <article className="depth-result-card depth-result-card-main">
             <span>Полноценный проект</span>
-            <h3>Понять маркетинг бизнеса как связанную систему.</h3>
-            <div className="depth-result-output"><small>Результат</small><strong>Ясно, какие решения имеют приоритет и куда направлять ресурсы.</strong></div>
+            <h3>Понять, где бизнес теряет рост и что менять в первую очередь.</h3>
+            <div className="depth-result-output"><small>Результат</small><strong>Понятно, какие решения приоритетны и куда направлять ресурсы.</strong></div>
             <p className="team-work-note">При необходимости — рабочие сессии с командой, чтобы решение стало понятной логикой действий, а не осталось только в документе.</p>
           </article>
         </div>
@@ -126,8 +131,8 @@ export default function Home() {
         <div className="brief-entry" aria-label="Decision Brief">
           <div>
             <span>Decision Brief · 6 вопросов · без звонка</span>
-            <h3>Сначала понять проблему — потом выбирать решение.</h3>
-            <p>На выходе — структура задачи, главный вопрос, что проверить первым и что пока рано делать. Результат можно сохранить в PDF.</p>
+            <h3>Можно сначала проверить свою формулировку задачи — ничего не покупая.</h3>
+            <p>На выходе — главный вопрос, что проверить первым и что пока рано делать. Результат можно сохранить в PDF.</p>
           </div>
           <a className="button" href="/diagnostic">Разобрать свою ситуацию</a>
         </div>
@@ -139,14 +144,15 @@ export default function Home() {
 
     <section className="proof-stage" id="case">
       <div className="page-shell"><div className="section-intro proof-intro">
-        <p className="eyebrow">03 · Один пример</p>
-        <h2>Пришли за заявками. После проверки изменился сам вопрос.</h2>
+        <p className="eyebrow">03 · Как меняется решение</p>
+        <h2>Казалось, что нужны заявки. Проблема оказалась раньше.</h2>
         <div className="proof-work-fragment">
           <div><small>С чем пришли</small><strong>«Нам нужны квалифицированные входящие заявки».</strong></div>
-          <div><small>Что увидели</small><p>Продажи опирались не только на сайт, но и на повторные сделки и личную работу с рынком.</p></div>
+          <div><small>Что было фактом</small><p>Продажи опирались не только на сайт, но и на повторные сделки и личную работу с рынком.</p></div>
           <div><small>Что перестало быть очевидным</small><strong>Что следующий правильный шаг — просто увеличить рекламный трафик.</strong></div>
-          <div className="proof-result-cell"><small>Что изменилось</small><p><strong>Фокус сместился на доверие и более ранний вход компании в проект клиента.</strong></p></div>
+          <div className="proof-result-cell"><small>Что изменилось в решении</small><p><strong>Фокус сместился на доверие и более ранний вход компании в проект клиента.</strong></p></div>
         </div>
+        <p className="proof-meaning"><strong>То есть результатом работы стал не «ещё один маркетинговый инструмент», а другое понимание того, что именно стоит менять.</strong></p>
         <div className="proof-links">
           <a className="text-link proof-demo-link" href="/artifacts/task-map">Карта задачи →</a>
           <a className="text-link proof-demo-link" href="/artifacts/market-choice">Карта рынка и выбора →</a>
@@ -160,7 +166,7 @@ export default function Home() {
     <section className="project-spectrum" aria-labelledby="project-spectrum-title">
       <div className="page-shell">
         <div className="project-spectrum-head">
-          <p className="eyebrow">Разные бизнесы · один принцип</p>
+          <p className="eyebrow">B2B и B2C · разные ситуации · один принцип</p>
           <h2 id="project-spectrum-title">Сначала понять вопрос. Потом выбирать решение.</h2>
         </div>
         <div className="project-spectrum-grid">
@@ -178,9 +184,9 @@ export default function Home() {
 
     <section className="about-stage compact-stage" id="about">
       <div className="page-shell about-grid">
-        <div><p className="eyebrow">04 · Обо мне</p><h2>В маркетинг я пришёл из управления бизнесом</h2></div>
+        <div><p className="eyebrow">04 · Почему такой взгляд</p><h2>В маркетинг я пришёл из управления бизнесом</h2></div>
         <div className="about-copy">
-          <p className="about-system-lead"><strong>Поэтому смотрю на маркетинг как на часть бизнес-системы — от причины проблемы до реализации решения.</strong></p>
+          <p className="about-system-lead"><strong>Поэтому смотрю не только на продвижение. Причина может быть в продукте, цене, продажах, сервисе, рынке или в том, как решение реализуется внутри компании.</strong></p>
           <div className="about-foundations" aria-label="Основа профессионального подхода">
             <div><small>Инженерная база</small><strong>Математика и автоматизация</strong><span>Привычка разбирать систему, зависимости и причины.</span></div>
             <div><small>Управленческая школа</small><strong>Executive MBA · качество · проекты · изменения</strong><span>Не только выбрать решение, но и сделать его управляемым.</span></div>
@@ -208,8 +214,8 @@ export default function Home() {
       <div className="page-shell contact-grid">
         <div>
           <p className="eyebrow eyebrow-light">06 · Следующий шаг</p>
-          <h2>Сначала понять проблему. Потом выбирать решение.</h2>
-          <p>Начните с Decision Brief. Если проще — просто напишите мне.</p>
+          <h2>Можно начать с самой ситуации.</h2>
+          <p>Не нужно заранее понимать, какая услуга вам нужна. Если вопрос уже есть — просто напишите его своими словами.</p>
           <div style={{display:"flex",flexWrap:"wrap",gap:"10px",alignItems:"center",marginTop:"24px"}} aria-label="Способы связи">
             <a className="button button-light" href="/diagnostic">Разобрать ситуацию</a>
             {contactChannels.map((channel) => channel.status === "active" ? <a key={channel.id} className="button button-light" href={channel.href} target="_blank" rel="noreferrer">Написать в {channel.label}</a> : <button key={channel.id} type="button" disabled aria-label="MAX — скоро" title="Канал MAX подключается" style={{display:"inline-flex",alignItems:"center",gap:"9px",minHeight:"48px",padding:"12px 16px",border:"1px solid rgba(255,255,255,.38)",background:"rgba(255,255,255,.07)",color:"rgba(255,255,255,.82)",font:"inherit",fontWeight:800,cursor:"default",opacity:.82}}><img src="https://max.ru/favicon.ico" alt="" width="22" height="22" loading="lazy" style={{display:"block",borderRadius:"5px"}}/><span>MAX</span><span style={{fontSize:"12px",fontWeight:750,opacity:.7}}>Скоро</span></button>)}
