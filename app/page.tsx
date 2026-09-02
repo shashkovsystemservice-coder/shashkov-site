@@ -139,6 +139,15 @@ export default function Home() {
           </article>
         </div>
 
+        <div style={{marginTop:"26px",padding:"22px 0",borderTop:"1px solid rgba(10,20,38,.18)",borderBottom:"1px solid rgba(10,20,38,.18)"}}>
+          <p style={{margin:"0 0 14px",fontSize:"14px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>После работы остаётся не только разговор</p>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:"18px"}}>
+            <div><strong style={{display:"block",fontSize:"18px",marginBottom:"5px"}}>Карта задачи</strong><span style={{fontSize:"15px",lineHeight:1.5,color:"#667085"}}>Что происходит и где искать причину.</span></div>
+            <div><strong style={{display:"block",fontSize:"18px",marginBottom:"5px"}}>Факты и версии</strong><span style={{fontSize:"15px",lineHeight:1.5,color:"#667085"}}>Что подтверждено, а что ещё нужно проверить.</span></div>
+            <div><strong style={{display:"block",fontSize:"18px",marginBottom:"5px"}}>Приоритет решения</strong><span style={{fontSize:"15px",lineHeight:1.5,color:"#667085"}}>Что делать первым — и на что пока не тратить ресурсы.</span></div>
+          </div>
+        </div>
+
         <div className="method-route compact-route" aria-label="Логика работы">
           <span>Задача</span><b>→</b><span>Причины</span><b>→</b><span>Проверка</span><b>→</b><span>Решение</span>
         </div>
