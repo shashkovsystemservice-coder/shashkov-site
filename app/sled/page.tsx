@@ -7,7 +7,7 @@ export default function SledCasePage() {
         <Link className="site-brand" href="/">Владимир Шашков</Link>
         <nav aria-label="Навигация">
           <Link href="/">На главную</Link>
-          <a className="nav-cta" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать</a>
+          <Link className="nav-cta" href="/#contact">Написать</Link>
         </nav>
       </header>
 
@@ -51,7 +51,21 @@ export default function SledCasePage() {
           <p className="eyebrow">Что важно</p>
           <p className="outcome-statement">Проект продолжается. Поэтому здесь нет выдуманного финансового эффекта.</p>
           <p>Кейс показывает другое: как отделяются факты от гипотез, как исходный запрос проверяется на данных и как после этого меняется приоритет действий.</p>
-          <div className="hero-actions"><Link className="button" href="/">Вернуться на главную</Link><a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Обсудить свою ситуацию</a></div>
+          <div className="hero-actions">
+            <Link className="button" href="/">Вернуться на главную</Link>
+            <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
+            <button
+              type="button"
+              disabled
+              aria-label="MAX — скоро"
+              title="Канал MAX подключается"
+              style={{display:"inline-flex",alignItems:"center",gap:"7px",padding:0,border:0,background:"transparent",color:"#667085",font:"inherit",fontWeight:800,cursor:"default",opacity:.8}}
+            >
+              <img src="https://max.ru/favicon.ico" alt="" width="18" height="18" loading="lazy" style={{display:"block",borderRadius:"4px"}} />
+              <span>MAX</span>
+              <span style={{fontSize:"12px",fontWeight:750,opacity:.75}}>Скоро</span>
+            </button>
+          </div>
         </div>
       </section>
     </div>
