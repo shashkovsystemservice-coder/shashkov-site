@@ -1,0 +1,11 @@
+.about-stage{background:#f4f7fb;color:#0a1426;border-top:1px solid #d9e1eb;border-bottom:1px solid #d9e1eb}
+.about-stage h2{color:#0a1426}
+.about-stage .eyebrow{color:#184ed8}
+.about-stage .about-system-lead{color:#0a1426!important}
+.about-stage .about-foundations{border-top-color:rgba(10,20,38,.20);border-bottom-color:rgba(10,20,38,.16)}
+.about-stage .about-foundations>div+div{border-left-color:rgba(10,20,38,.14)}
+.about-stage .about-foundations small{color:#184ed8}
+.about-stage .about-foundations strong{color:#0a1426}
+.about-stage .about-foundations span{color:#536174}
+.about-stage .about-capability,.about-stage .about-capability strong{color:#0a1426!important}
+@media(max-width:1050px){.about-stage .about-foundations>div,.about-stage .about-foundations>div+div{border-left:0;border-top-color:rgba(10,20,38,.14)}}
