@@ -21,6 +21,7 @@ export default function Home() {
         <nav aria-label="Основная навигация">
           <a href="#situations">Ситуации</a>
           <a href="#product">Что делаю</a>
+          <a href="/work">Как работаю</a>
           <a href="#case">Кейс</a>
           <a className="nav-cta" href="#contact">Написать</a>
         </nav>
@@ -90,24 +91,26 @@ export default function Home() {
       <div className="page-shell">
         <div className="section-intro method-intro"><p className="eyebrow">02 · Что можно получить</p><h2>Можно разобрать один вопрос. А если нужно — собрать маркетинг целиком.</h2><p>Один подход — разная глубина работы.</p></div>
         <div className="depth-result-grid product-depth-grid">
-          <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, что действительно нужно менять — и что делать первым.</h3><p>Разбираем ваш вопрос, факты и основные версии. Определяем, чего не хватает и что стоит проверить.</p><div className="depth-result-output"><small>Результат — три вещи</small><strong>Что происходит → что проверить → что делать первым.</strong></div></article>
-          <article className="depth-result-card depth-result-card-main"><span>Полноценный проект</span><h3>Понять маркетинг бизнеса как связанную систему.</h3><p>Кому продаём, почему выбирают или не выбирают, где теряем клиентов, чем отличаемся и где есть возможность роста.</p><div className="depth-result-output"><small>Результат</small><strong>Связанная картина рынка, клиента, ценности, позиции и приоритетов действий.</strong></div></article>
+          <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, что действительно нужно менять — и что делать первым.</h3><p>Разбираем ваш вопрос, факты и основные версии. Определяем, чего не хватает и что стоит проверить.</p><div className="depth-result-output"><small>Результат — три вещи</small><strong>Что происходит → что проверить → какой следующий шаг обоснован.</strong></div></article>
+          <article className="depth-result-card depth-result-card-main"><span>Полноценный проект</span><h3>Понять маркетинг бизнеса как связанную систему.</h3><p>Кому продаём, почему выбирают или не выбирают, где теряем клиентов, чем отличаемся и где есть возможность роста.</p><div className="depth-result-output"><small>Результат</small><strong>Связанная картина рынка, клиента, ценности, позиции — и обоснованный выбор приоритетов действий.</strong></div></article>
         </div>
         <div style={{marginTop:"26px",padding:"22px 0",borderTop:"1px solid rgba(10,20,38,.18)",borderBottom:"1px solid rgba(10,20,38,.18)"}}>
           <p style={{margin:"0 0 14px",fontSize:"14px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>После работы остаётся не только разговор</p>
           <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:"18px"}}>
-            <div><strong style={{display:"block",fontSize:"18px",marginBottom:"5px"}}>Карта задачи</strong><span style={{fontSize:"15px",lineHeight:1.5,color:"#667085"}}>Что происходит и где искать причину.</span></div>
-            <div><strong style={{display:"block",fontSize:"18px",marginBottom:"5px"}}>Факты и версии</strong><span style={{fontSize:"15px",lineHeight:1.5,color:"#667085"}}>Что подтверждено, а что ещё нужно проверить.</span></div>
-            <div><strong style={{display:"block",fontSize:"18px",marginBottom:"5px"}}>Приоритет решения</strong><span style={{fontSize:"15px",lineHeight:1.5,color:"#667085"}}>Что делать первым — и на что пока не тратить ресурсы.</span></div>
+            <div><strong style={{display:"block",fontSize:"18px",marginBottom:"5px"}}>Карта задачи</strong><span style={{fontSize:"15px",lineHeight:1.5,color:"#667085"}}>Что происходит и какой вопрос действительно нужно решить.</span></div>
+            <div><strong style={{display:"block",fontSize:"18px",marginBottom:"5px"}}>Факты и версии</strong><span style={{fontSize:"15px",lineHeight:1.5,color:"#667085"}}>Что подтверждено, что является гипотезой и чего ещё не хватает.</span></div>
+            <div><strong style={{display:"block",fontSize:"18px",marginBottom:"5px"}}>Приоритет решения</strong><span style={{fontSize:"15px",lineHeight:1.5,color:"#667085"}}>Что делать первым, что отложить и на что пока не тратить ресурсы.</span></div>
           </div>
         </div>
-        <div className="method-route compact-route" aria-label="Логика работы"><span>Задача</span><b>→</b><span>Причины</span><b>→</b><span>Проверка</span><b>→</b><span>Решение</span></div>
+        <div className="method-route compact-route" aria-label="Логика работы"><span>Задача</span><b>→</b><span>Факты и версии</span><b>→</b><span>Проверка</span><b>→</b><span>Выбор</span><b>→</b><span>Действие</span></div>
         <p className="deliverables-note method-short-note">Основа — классический стратегический маркетинг.</p>
         <div className="method-choice-principle">
           <p className="eyebrow">Как я работаю</p>
           <p><strong>Не начинаю с рекламы, сайта, SEO или AI.</strong> Сначала разбираю, где именно находится ограничение — в рынке, ценности, выборе клиента, продаже, повторной покупке или в другом месте.</p>
           <p><strong>И не исследую всё подряд.</strong> Сначала определяю вопрос, от которого зависит решение. Затем — какие факты, данные и проверки действительно нужны именно для него.</p>
+          <p><strong>Проверка — не финал.</strong> Её смысл в том, чтобы уменьшить неопределённость настолько, чтобы можно было выбрать: что делать сейчас, что отложить и кто должен это реализовать.</p>
           <small>Разные вопросы требуют разных доказательств. Метод выбирается под проблему, а не проблема под любимый инструмент.</small>
+          <a className="text-link" href="/work" style={{display:"inline-block",marginTop:"22px"}}>Как проходит работа — по шагам →</a>
         </div>
       </div>
     </section>
