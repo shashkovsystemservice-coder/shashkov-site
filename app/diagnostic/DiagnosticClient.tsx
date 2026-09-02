@@ -10,11 +10,17 @@ const evidenceLabels: Record<EvidenceLevel, string> = {
   assumption: "Пока это в основном предположение",
 };
 
+const evidenceMeaning: Record<EvidenceLevel, string> = {
+  data: "У версии уже есть опора на данные, но сами данные ещё не доказывают причинную связь.",
+  signals: "У версии есть повторяющиеся сигналы, но пока неизвестно, насколько они типичны для всей ситуации.",
+  assumption: "Версия пока в основном объясняет ситуацию, но ещё не подтверждена наблюдениями или данными.",
+};
+
 const exampleCase = {
   situation: "Выручка отстаёт от плана, хотя поток обращений заметно не изменился.",
   desired: "Понять, почему продажи просели, и вернуть предсказуемость без лишних расходов на привлечение.",
   obstacle: "Кажется, клиенты приходят с ожиданием, которое не подтверждается в первом разговоре.",
-  intendedAction: "Есть идея увеличить рекламу и одновременно переделать сайт.",
+  intendedAction: "Увеличить рекламу и одновременно переделать сайт.",
   evidenceLevel: "signals" as EvidenceLevel,
   evidence: "В нескольких последних разговорах повторялись похожие вопросы о ценности и отличиях предложения.",
   disproof: "Если разбор выигранных и проигранных разговоров покажет, что интерес после первого контакта сохраняется, значит место потери нужно искать на следующем этапе.",
@@ -32,22 +38,27 @@ export default function DiagnosticClient() {
 
   const canBuild = situation.trim().length > 8 && desired.trim().length > 8 && obstacle.trim().length > 8;
 
+  const reframing = useMemo(() => {
+    const action = intendedAction.trim();
+    return `Вы описываете ситуацию «${situation.trim()}» и хотите прийти к результату «${desired.trim()}». Сейчас вы объясняете происходящее через версию «${obstacle.trim()}». ${evidenceMeaning[evidenceLevel]}${action ? ` Поэтому решение «${action}» пока нельзя считать следствием доказанной причины.` : " Поэтому следующий шаг — не выбирать инструмент, а проверить саму версию причины."}`;
+  }, [situation, desired, obstacle, intendedAction, evidenceLevel]);
+
   const uncertainty = useMemo(() => {
-    if (evidenceLevel === "data") return "Есть данные, но пока неясно, подтверждают ли они именно предполагаемую причину, а не только симптом. Нужно проверить связь между наблюдением и объяснением.";
-    if (evidenceLevel === "signals") return "Есть повторяющиеся сигналы, но пока неизвестно, насколько они типичны. Нужно проверить, повторяется ли паттерн в достаточном числе случаев.";
-    return "Текущая причина пока является рабочей версией. Для вывода не хватает подтверждающих или опровергающих данных.";
+    if (evidenceLevel === "data") return "Есть данные, но пока неясно, подтверждают ли они именно предполагаемую причину, а не только симптом. Критический вопрос — есть ли связь между наблюдаемой ситуацией и вашим объяснением.";
+    if (evidenceLevel === "signals") return "Есть повторяющиеся сигналы, но пока неизвестно, насколько они типичны. Критический вопрос — повторяется ли этот паттерн в достаточном числе случаев и нет ли более сильного объяснения.";
+    return "Текущая причина пока является рабочей версией. Критический вопрос — какие факты могли бы подтвердить её или заставить искать причину в другом месте.";
   }, [evidenceLevel]);
 
   const nextCheck = useMemo(() => {
     const action = intendedAction.trim();
-    if (evidenceLevel === "data") return `Сначала проверить, действительно ли имеющиеся данные связывают наблюдаемую ситуацию с вашей версией причины. Затем сравнить случаи, где результат был хорошим и плохим, и посмотреть, что между ними различается.${action ? ` Только после этого возвращаться к варианту «${action}».` : ""}`;
-    if (evidenceLevel === "signals") return `Собрать несколько конкретных недавних случаев и проверить повторяемость сигнала: что происходило до результата, что говорил клиент, где менялся интерес и какие альтернативные объяснения возможны.${action ? ` До этого решение «${action}» лучше считать гипотезой действия, а не готовым планом.` : ""}`;
-    return `Сначала найти факты, которые могли бы подтвердить или опровергнуть текущую версию: реальные сделки, разговоры, причины отказов, поведение клиентов, данные по этапам пути. Затем уже выбирать решение.${action ? ` Вариант «${action}» пока рано считать обоснованным.` : ""}`;
+    if (evidenceLevel === "data") return `Проверить, действительно ли имеющиеся данные связывают наблюдаемую ситуацию с вашей версией причины. Сравнить случаи с хорошим и плохим результатом и посмотреть, что между ними системно различается.${action ? ` Только после этого возвращаться к варианту «${action}».` : ""}`;
+    if (evidenceLevel === "signals") return `Взять несколько конкретных недавних случаев и проверить повторяемость сигнала: что происходило до результата, что говорил клиент, где менялся интерес и какие альтернативные объяснения возможны.${action ? ` До этого решение «${action}» лучше считать гипотезой действия, а не готовым планом.` : ""}`;
+    return `Найти наблюдаемые факты, которые могли бы подтвердить или опровергнуть текущую версию: реальные сделки, разговоры, причины отказов, поведение клиентов или данные по этапам пути.${action ? ` Вариант «${action}» пока рано считать обоснованным.` : " Затем уже выбирать решение."}`;
   }, [evidenceLevel, intendedAction]);
 
   const avoid = useMemo(() => {
-    if (!intendedAction.trim()) return "Пока рано выбирать конкретный инструмент только потому, что он кажется привычным или доступным. Сначала нужно уменьшить критическую неопределённость.";
-    return `Было бы преждевременно сразу переходить к решению «${intendedAction.trim()}», пока не проверено, связано ли оно с реальной причиной ситуации.`;
+    if (!intendedAction.trim()) return "Выбирать конкретный инструмент только потому, что он привычен, доступен или первым пришёл в голову. Сначала нужно уменьшить критическую неопределённость.";
+    return `Сразу переходить к решению «${intendedAction.trim()}», пока не проверено, связано ли оно с реальной причиной ситуации.`;
   }, [intendedAction]);
 
   const loadExample = () => {
@@ -67,6 +78,7 @@ export default function DiagnosticClient() {
       desired,
       currentTheory: obstacle,
       intendedAction,
+      reframing,
       uncertainty,
       nextCheck,
       disproof: disproof.trim() || "Пока не сформулировано. Это один из вопросов, который стоит уточнить до вывода.",
@@ -111,19 +123,32 @@ export default function DiagnosticClient() {
       </div>
 
       {showBrief && <section className="decision-brief" aria-live="polite">
-        <div className="decision-brief-head"><div><p>Первичный Decision Brief</p><h2>Что уже можно отделить от предположений</h2></div><button type="button" onClick={reset}>Начать заново</button></div>
-        <div className="decision-grid">
-          <article><span>Ситуация сейчас</span><p>{situation}</p></article>
-          <article><span>Желаемый результат</span><p>{desired}</p></article>
-          <article><span>Текущая версия причины</span><p>{obstacle}</p></article>
-          <article><span>Что вы уже думаете делать</span><p>{intendedAction.trim() || "Конкретное решение пока не выбрано."}</p></article>
-          <article className="decision-wide"><span>Критическая неопределённость</span><p>{uncertainty}</p></article>
-          <article className="decision-wide"><span>Что имеет смысл проверить первым</span><p>{nextCheck}</p></article>
-          <article className="decision-wide"><span>Что могло бы опровергнуть версию</span><p>{disproof.trim() || "Пока не сформулировано. Это стоит уточнить до вывода."}</p></article>
-          <article className="decision-wide"><span>Что пока рано делать</span><p>{avoid}</p></article>
+        <div className="decision-brief-head"><div><p>Decision Brief · первичный разбор</p><h2>Где заканчиваются факты и начинается решение</h2></div><button type="button" onClick={reset}>Начать заново</button></div>
+
+        <div className="decision-reframe">
+          <span>Главный рефрейминг</span>
+          <p>{reframing}</p>
         </div>
+
+        <div className="decision-focus-grid">
+          <article><span>Критическая неопределённость</span><p>{uncertainty}</p></article>
+          <article><span>Что проверить первым</span><p>{nextCheck}</p></article>
+          <article><span>Что пока рано делать</span><p>{avoid}</p></article>
+        </div>
+
+        <details className="decision-details">
+          <summary>Показать структуру исходных ответов</summary>
+          <div className="decision-grid">
+            <article><span>Ситуация сейчас</span><p>{situation}</p></article>
+            <article><span>Желаемый результат</span><p>{desired}</p></article>
+            <article><span>Текущая версия причины</span><p>{obstacle}</p></article>
+            <article><span>Что вы уже думаете делать</span><p>{intendedAction.trim() || "Конкретное решение пока не выбрано."}</p></article>
+            <article className="decision-wide"><span>Что могло бы опровергнуть версию</span><p>{disproof.trim() || "Пока не сформулировано. Это стоит уточнить до вывода."}</p></article>
+          </div>
+        </details>
+
         <div className="decision-evidence"><strong>Основание текущей версии:</strong> {evidence.trim() || evidenceLabels[evidenceLevel] + "."}</div>
-        <p className="decision-note"><strong>Это не диагноз.</strong> Brief показывает структуру задачи на основании только ваших ответов. Реальная работа начинается там, где появляются контекст, данные, материалы, дополнительные вопросы и проверка нескольких конкурирующих версий.</p>
+        <p className="decision-note"><strong>Это не диагноз.</strong> Brief ничего не знает о вашем бизнесе кроме введённых ответов. Его задача — показать границу между наблюдением, объяснением и решением. Реальная работа начинается с контекста, данных, материалов и проверки нескольких конкурирующих версий.</p>
         <div className="decision-actions"><button type="button" onClick={openDocument}>Открыть оформленный документ</button><a className="diagnostic-contact" href="/#contact">Обсудить ситуацию со мной →</a></div>
       </section>}
     </section>
