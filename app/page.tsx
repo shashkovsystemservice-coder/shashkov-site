@@ -19,31 +19,31 @@ const currentProjects = [
     status: "Проект",
     context: "Производитель промышленного продукта",
     question: "«Нам нужно больше входящих заявок»",
-    reframing: "Сначала проверяем, действительно ли ограничение находится в привлечении — или вопрос лежит в доверии, выборе клиента и более раннем входе в проект.",
+    reframing: "Сначала проверяем, действительно ли ограничение находится во входящем потоке — или проблема возникает раньше, в выборе, доверии и входе в проект.",
   },
   {
     status: "Текущая работа",
     context: "Промышленное оборудование",
     question: "«Хотим продавать не отдельные станки, а производственные линии»",
-    reframing: "Нужно определить, что теперь является продуктом, какую производственную задачу покупает клиент и как меняется сама логика продажи.",
+    reframing: "Тогда меняется не только предложение. Нужно заново определить продукт, ценность для клиента, роли в выборе и сам способ продажи сложного решения.",
   },
   {
     status: "Исследование",
     context: "Сеть фитнес-клубов",
     question: "«Хотим соединить Fitness × Boxing × Wellness»",
-    reframing: "Проверяем, есть ли за сочетанием направлений единая клиентская потребность и новый продукт — или пока это только набор услуг рядом.",
+    reframing: "Проверяем, есть ли за сочетанием направлений единая клиентская задача и новый продукт — или это пока просто набор услуг рядом.",
   },
   {
     status: "Исследование",
     context: "Event-бизнес",
     question: "«Нужно улучшить сайт и предложение»",
-    reframing: "До правок сайта исследуем, как мировой рынок структурирует сам продукт, сервис, категории спроса и основания выбора клиента.",
+    reframing: "До редизайна полезнее понять, как устроена сама категория, как мировые компании формируют продукт и за что клиент действительно выбирает агентство.",
   },
   {
     status: "Предстоящий разбор",
     context: "Ресторан в центре Петербурга",
     question: "«Нужно посмотреть маркетинг ресторана»",
-    reframing: "Выводов пока нет — и это важно. Сначала предстоит понять, где именно находится ограничение и какой вопрос действительно стоит решать.",
+    reframing: "Здесь пока нет готового ответа — и это нормально. Первый шаг как раз в том, чтобы понять, где находится ограничение: выбор, поток гостей, повтор, предложение, видимость или другое место.",
   },
 ] as const;
 
@@ -125,24 +125,23 @@ export default function Home() {
       <div className="page-shell">
         <div className="section-intro method-intro"><p className="eyebrow">02 · Что можно получить</p><h2>Можно разобрать один вопрос. А если нужно — собрать маркетинг целиком.</h2><p>Один подход — разная глубина работы.</p></div>
         <div className="depth-result-grid product-depth-grid">
-          <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, что действительно нужно менять — и что делать первым.</h3><p>Разбираем ваш вопрос, факты и основные версии. Определяем, чего не хватает и что стоит проверить.</p><div className="depth-result-output"><small>Результат — три вещи</small><strong>Что происходит → что проверить → какой следующий шаг обоснован.</strong></div></article>
-          <article className="depth-result-card depth-result-card-main"><span>Полноценный проект</span><h3>Понять маркетинг бизнеса как связанную систему.</h3><p>Кому продаём, почему выбирают или не выбирают, где теряем клиентов, чем отличаемся и где есть возможность роста.</p><div className="depth-result-output"><small>Результат</small><strong>Связанная картина рынка, клиента, ценности, позиции — и обоснованный выбор приоритетов действий.</strong></div></article>
+          <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, что действительно нужно менять — и что делать первым.</h3><p>Разбираем ваш вопрос, факты и основные версии. Определяем, чего не хватает и что стоит проверить.</p><div className="depth-result-output"><small>Результат</small><strong>Понятно, где искать причину, что проверить первым и какой следующий шаг уже можно обосновать.</strong></div></article>
+          <article className="depth-result-card depth-result-card-main"><span>Полноценный проект</span><h3>Понять маркетинг бизнеса как связанную систему.</h3><p>Кому продаём, почему выбирают или не выбирают, где теряем клиентов, чем отличаемся и где есть возможность роста.</p><div className="depth-result-output"><small>Результат</small><strong>Понятно, где находится возможность роста, какие решения имеют приоритет и на что сейчас не стоит тратить ресурсы.</strong></div></article>
         </div>
-        <div style={{marginTop:"26px",padding:"22px 0",borderTop:"1px solid rgba(10,20,38,.18)",borderBottom:"1px solid rgba(10,20,38,.18)"}}>
-          <p style={{margin:"0 0 14px",fontSize:"14px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>После работы остаётся не только разговор</p>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:"18px"}}>
-            <div><strong style={{display:"block",fontSize:"18px",marginBottom:"5px"}}>Карта задачи</strong><span style={{fontSize:"15px",lineHeight:1.5,color:"#667085"}}>Что происходит и какой вопрос действительно нужно решить.</span></div>
-            <div><strong style={{display:"block",fontSize:"18px",marginBottom:"5px"}}>Факты и версии</strong><span style={{fontSize:"15px",lineHeight:1.5,color:"#667085"}}>Что подтверждено, что является гипотезой и чего ещё не хватает.</span></div>
-            <div><strong style={{display:"block",fontSize:"18px",marginBottom:"5px"}}>Приоритет решения</strong><span style={{fontSize:"15px",lineHeight:1.5,color:"#667085"}}>Что делать первым, что отложить и на что пока не тратить ресурсы.</span></div>
+        <div className="owner-outcomes">
+          <p className="owner-outcomes-label">После работы должно стать понятно</p>
+          <div className="owner-outcomes-grid">
+            <div><strong>Где искать причину</strong><span>Какой вопрос действительно нужно решить, а не только какой симптом виден снаружи.</span></div>
+            <div><strong>Что уже доказано</strong><span>Где факты, где рабочие версии и каких данных пока не хватает.</span></div>
+            <div><strong>Что делать первым</strong><span>Какой шаг имеет основания сейчас, что можно отложить и на что не тратить деньги преждевременно.</span></div>
           </div>
         </div>
         <div className="method-route compact-route" aria-label="Логика работы"><span>Задача</span><b>→</b><span>Факты и версии</span><b>→</b><span>Проверка</span><b>→</b><span>Выбор</span><b>→</b><span>Действие</span></div>
         <p className="deliverables-note method-short-note">Основа — классический стратегический маркетинг.</p>
         <div className="method-choice-principle">
           <p className="eyebrow">Как я работаю</p>
-          <p><strong>Не начинаю с рекламы, сайта, SEO или AI.</strong> Сначала разбираю, где именно находится ограничение — в рынке, ценности, выборе клиента, продаже, повторной покупке или в другом месте.</p>
-          <p><strong>И не исследую всё подряд.</strong> Сначала определяю вопрос, от которого зависит решение. Затем — какие факты, данные и проверки действительно нужны именно для него.</p>
-          <p><strong>Проверка — не финал.</strong> Её смысл в том, чтобы уменьшить неопределённость настолько, чтобы можно было выбрать: что делать сейчас, что отложить и кто должен это реализовать.</p>
+          <p><strong>Не начинаю с рекламы, сайта, SEO или AI.</strong> Сначала определяю, где находится ограничение и какой вопрос действительно мешает принять решение.</p>
+          <p><strong>Не исследую всё подряд.</strong> Выбираю те данные и проверки, которые способны подтвердить или опровергнуть критическую версию — и довожу анализ до выбора действия.</p>
           <small>Разные вопросы требуют разных доказательств. Метод выбирается под проблему, а не проблема под любимый инструмент.</small>
           <a className="text-link" href="/work" style={{display:"inline-block",marginTop:"22px"}}>Как проходит работа — по шагам →</a>
         </div>
@@ -151,18 +150,19 @@ export default function Home() {
 
     <section className="proof-stage" id="case">
       <div className="page-shell"><div className="section-intro proof-intro">
-        <p className="eyebrow">03 · Фрагмент рабочего разбора</p><h2>Запрос был про входящие заявки. После проверки вопрос изменился.</h2><p><strong>Можно было сразу идти в рекламу. Вместо этого сначала проверили, была ли проблема вообще в привлечении.</strong></p>
-        <div className="proof-work-fragment" aria-label="Как изменялась постановка задачи">
-          <div><small>01 · Исходный запрос</small><strong>Нужны квалифицированные входящие заявки.</strong></div>
-          <div><small>02 · Что уже было фактом</small><p>Продажи опирались не только на сайт: важную роль играли повторные сделки и активная работа с рынком.</p></div>
-          <div><small>03 · Что осталось версией</small><p>Недостаток входящего трафика мог быть частью проблемы, но данных было недостаточно, чтобы считать его главной причиной.</p></div>
-          <div><small>04 · Что нужно было проверить дальше</small><strong>Как возникает доверие, где клиент делает выбор и насколько системно компания входит в проект до финального запроса.</strong></div>
+        <p className="eyebrow">03 · Пример</p><h2>Производитель промышленного продукта: пришли за входящими заявками</h2><p><strong>Можно было сразу идти в рекламу. Сначала мы проверили, была ли проблема вообще во входящем потоке.</strong></p>
+        <div className="proof-risk"><span>Если принять запрос за диагноз</span><p>Можно было начать наращивать рекламный трафик и бюджет до того, как стало понятно, является ли нехватка входящих главным ограничением продаж. То есть инвестировать в решение раньше, чем проверена сама причина.</p></div>
+        <div style={{margin:"30px 0 26px",display:"grid",gridTemplateColumns:"repeat(4,minmax(0,1fr))",borderTop:"1px solid rgba(10,20,38,.18)",borderBottom:"1px solid rgba(10,20,38,.18)"}} aria-label="Как изменялась постановка задачи">
+          <div style={{padding:"22px 18px 22px 0"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>01 · Запрос</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Нужны квалифицированные входящие заявки.</strong></div>
+          <div style={{padding:"22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>02 · Факты</small><p style={{margin:0,fontSize:"16px",lineHeight:1.55}}>Продажи заметно опирались не только на сайт, но и на повторные сделки и личную работу с рынком.</p></div>
+          <div style={{padding:"22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>03 · Что это меняет</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Версия «нам просто нужно больше трафика» уже выглядит недостаточной.</strong></div>
+          <div style={{padding:"22px 0 22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>04 · Новый вопрос</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Как системно раньше входить в проект и формировать доверие — не полагаясь только на личный контакт?</strong></div>
         </div>
-        <p>Ценность такого разбора не в том, чтобы быстро назвать причину. Она в том, чтобы увидеть границу между фактом и объяснением — и изменить постановку задачи, если исходная версия не выдерживает проверку.</p>
+        <p>Вместо автоматического перехода к рекламе изменилась сама постановка задачи. Дальше нужно было исследовать уже не «трафик вообще», а то, как возникает доверие, как клиент выбирает и где компания может системно входить в проект раньше.</p>
         <div className="proof-links">
           <a className="text-link proof-demo-link" href="/diagnostic">Попробовать логику разбора на своей ситуации →</a>
         </div>
-        <p className="proof-demo-note">Компания и коммерческие данные не раскрываются. Здесь показан только принцип работы и обезличенный фрагмент логики.</p>
+        <p className="proof-demo-note">Название компании и коммерческие данные здесь не раскрываются. Важен не бренд клиента, а логика: первоначальный запрос ещё не является диагнозом.</p>
       </div></div>
     </section>
 
@@ -170,20 +170,20 @@ export default function Home() {
       <div className="page-shell">
         <div className="project-spectrum-head">
           <p className="eyebrow">Разные бизнесы · разные исходные вопросы</p>
-          <h2 id="project-spectrum-title">Первоначальный запрос — это ещё не постановка задачи</h2>
-          <p>Я не пытаюсь применять один и тот же ответ к разным отраслям. Общий принцип другой: сначала понять, какой вопрос действительно нужно решить и какие доказательства для этого нужны.</p>
+          <h2 id="project-spectrum-title">С чего начинается работа</h2>
+          <p>Отрасль меняется. Принцип остаётся: не принимать первое объяснение за готовое решение.</p>
         </div>
         <div className="project-spectrum-grid">
           {currentProjects.map((project, index) => (
-            <article className="project-spectrum-card" key={project.context}>
+            <article className="project-spectrum-card" key={project.question}>
               <div className="project-spectrum-meta"><span>0{index + 1}</span><em>{project.status}</em></div>
-              <p className="project-spectrum-context">{project.context}</p>
               <h3>{project.question}</h3>
+              <small className="project-spectrum-context">{project.context}</small>
               <p>{project.reframing}</p>
             </article>
           ))}
         </div>
-        <p className="project-spectrum-note"><strong>Отрасль меняется — логика остаётся.</strong> Не принимать первый запрос за диагноз, не подменять вопрос любимым инструментом и не делать вывод раньше доказательств.</p>
+        <p className="project-spectrum-note"><strong>Общее здесь не отрасль.</strong> Общее — способность отделить исходный запрос от причины, выбрать нужную проверку и только после этого определить действие.</p>
       </div>
     </section>
 
@@ -191,8 +191,8 @@ export default function Home() {
       <div className="page-shell about-grid">
         <div><p className="eyebrow">04 · Почему я</p><h2>Я пришёл в маркетинг из управления бизнесом</h2></div>
         <div className="about-copy">
-          <p>Мой путь — математика и автоматизация, управление, сервис, проекты и развитие бизнеса.</p>
-          <p><strong>Поэтому для меня маркетинг — не отдельный канал и не набор инструментов.</strong> Я смотрю на него вместе с продуктом, продажами, сервисом и экономикой.</p>
+          <p>До стратегического маркетинга я работал с техническими задачами, сервисом, проектами, управлением и развитием бизнеса.</p>
+          <p><strong>Поэтому я смотрю на маркетинговую задачу не только со стороны продвижения.</strong> Причина может находиться в продукте, цене, продажах, сервисе, выборе рынка, экономике или в том, как решение реализуется внутри компании.</p>
           <div style={{marginTop:"26px",paddingTop:"22px",borderTop:"1px solid rgba(255,255,255,.18)",display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:"18px"}} aria-label="Опыт Владимира Шашкова">
             <div><strong style={{display:"block",fontSize:"22px",lineHeight:1.25,marginBottom:"7px"}}>24 года</strong><span style={{fontSize:"15px",lineHeight:1.5}}>внутри сложного B2B и промышленного бизнеса — от сервиса и технического блока до развития.</span></div>
             <div><strong style={{display:"block",fontSize:"22px",lineHeight:1.25,marginBottom:"7px"}}>5% → 30%</strong><span style={{fontSize:"15px",lineHeight:1.5}}>рост доли платного сервиса в одном из управленческих периодов: пример того, как сервис становится частью коммерческой модели.</span></div>
