@@ -45,6 +45,17 @@ export default function Home() {
           <div className="hero-actions">
             <a className="button" href="#start">Описать ситуацию</a>
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
+            <button
+              type="button"
+              disabled
+              aria-label="MAX — скоро"
+              title="Канал MAX подключается"
+              style={{display:"inline-flex",alignItems:"center",gap:"7px",padding:0,border:0,background:"transparent",color:"#667085",font:"inherit",fontWeight:800,cursor:"default",opacity:.8}}
+            >
+              <img src="https://max.ru/favicon.ico" alt="" width="18" height="18" loading="lazy" style={{display:"block",borderRadius:"4px"}} />
+              <span>MAX</span>
+              <span style={{fontSize:"12px",fontWeight:750,opacity:.75}}>Скоро</span>
+            </button>
           </div>
           <p style={{margin:"12px 0 0",fontSize:"14px",lineHeight:1.45,color:"#667085"}}>Первый разговор — 20–30 минут, бесплатно, без обязательств.</p>
           <div className="hero-trust" aria-label="Опыт Владимира Шашкова">
