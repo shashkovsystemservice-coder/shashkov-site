@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type BriefPayload = {
   changed: string;
@@ -15,6 +15,13 @@ type BriefPayload = {
 
 const STORAGE_KEY = "shashkov-diagnostic-brief";
 
+const escapeHtml = (value: string) => value
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll('"', "&quot;")
+  .replaceAll("'", "&#039;");
+
 export default function DocumentClient() {
   const [brief, setBrief] = useState<BriefPayload | null>(null);
   const [shareStatus, setShareStatus] = useState("");
@@ -26,6 +33,7 @@ export default function DocumentClient() {
         const decoded = JSON.parse(decodeURIComponent(match[1]));
         setBrief(decoded);
         window.localStorage.setItem(STORAGE_KEY, JSON.stringify(decoded));
+        window.history.replaceState(null, "", "/diagnostic/document");
         return;
       }
       const raw = window.localStorage.getItem(STORAGE_KEY);
@@ -35,34 +43,97 @@ export default function DocumentClient() {
     }
   }, []);
 
-  const handlePrint = () => {
-    setShareStatus("");
-    window.setTimeout(() => window.print(), 50);
+  const date = useMemo(() => {
+    if (!brief) return "";
+    return new Date(brief.createdAt).toLocaleDateString("ru-RU", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
+  }, [brief]);
+
+  const sections = useMemo(() => {
+    if (!brief) return [];
+    return [
+      ["01", "Наблюдение", brief.changed],
+      ["02", "Рабочая гипотеза", brief.currentTheory],
+      ["03", "Что пока неизвестно", brief.uncertainty],
+      ["04", "Направление проверки", brief.nextCheck],
+      ["05", "Что может опровергнуть гипотезу", brief.disproof],
+      ["06", "Что пока преждевременно делать", brief.avoid],
+      ["07", "Основание гипотезы", brief.evidence],
+    ];
+  }, [brief]);
+
+  const buildDocumentFile = () => {
+    if (!brief) return null;
+    const sectionHtml = sections.map(([number, title, text]) => `
+      <section class="section"><div class="number">${escapeHtml(number)}</div><div><h2>${escapeHtml(title)}</h2><p>${escapeHtml(text)}</p></div></section>`).join("");
+
+    const html = `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Decision Brief — Владимир Шашков</title><style>
+      *{box-sizing:border-box}body{margin:0;background:#ece8df;color:#17191d;font-family:Arial,Helvetica,sans-serif}.page{width:min(900px,calc(100% - 24px));margin:24px auto;background:#fbfaf7;padding:54px 58px 46px}.head{background:#17191d;color:#fff;padding:22px 24px;display:flex;justify-content:space-between;gap:24px;align-items:center}.brand{display:flex;gap:14px;align-items:center}.mark{width:48px;height:48px;border:1px solid rgba(255,255,255,.7);display:grid;place-items:center;font-family:Georgia,serif;font-size:19px;font-weight:700}.brandtext{display:grid;gap:4px}.brandtext strong{font-size:16px}.brandtext span,.meta{font-size:12px;color:#d7dbe2}.meta{text-align:right}.title{padding:56px 0 38px}.kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8a5a43;font-weight:800}.title h1{font-family:Georgia,serif;font-size:58px;line-height:1;letter-spacing:-.04em;font-weight:500;margin:14px 0 22px}.lead{font-size:17px;line-height:1.6;color:#565e69}.sections{border-top:4px solid #17191d}.section{display:grid;grid-template-columns:54px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid #d8dadd}.number{font-size:11px;font-weight:800;letter-spacing:.1em;color:#8a5a43}.section h2{margin:0 0 9px;font-size:11px;letter-spacing:.075em;text-transform:uppercase;color:#676f7b}.section p{margin:0;font-family:Georgia,serif;font-size:19px;line-height:1.48}.note{margin-top:36px;padding:20px 22px;background:#eee9df;border-left:4px solid #8a5a43;font-size:14px;line-height:1.6;color:#515863}.footer{margin-top:56px;padding-top:18px;border-top:1px solid #cfd3d8;display:flex;justify-content:space-between;gap:20px;font-size:12px}.footer strong{display:block;margin-bottom:3px}.footer a{color:#17191d;font-weight:800;text-decoration:none}@media(max-width:640px){.page{width:100%;margin:0;padding:24px 20px 36px}.head{margin:-24px -20px 0;padding:20px}.head,.footer{display:grid}.meta{text-align:left}.title h1{font-size:42px}.section{grid-template-columns:34px 1fr;gap:10px}.section p{font-size:17px}}@media print{@page{size:A4;margin:14mm}body{background:#fff}.page{width:100%;margin:0;padding:0}.head{-webkit-print-color-adjust:exact;print-color-adjust:exact}.title{padding:18mm 0 10mm}.title h1{font-size:42pt}.section{break-inside:avoid}.note{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+    </style></head><body><main class="page"><header class="head"><div class="brand"><div class="mark">ВШ</div><div class="brandtext"><strong>Владимир Шашков</strong><span>Стратегический маркетинг для собственников бизнеса</span></div></div><div class="meta"><div>vshashkov.ru</div><div>${escapeHtml(date)}</div></div></header><section class="title"><div class="kicker">Decision Brief · демонстрационный документ</div><h1>Структура задачи до выбора решения</h1><p class="lead">Не диагноз и не готовая рекомендация. Документ показывает, как отделить наблюдение от объяснения, обозначить критическую неопределённость и определить, что имеет смысл проверить раньше, чем выбирать инструмент.</p></section><div class="sections">${sectionHtml}</div><aside class="note"><strong>Важно.</strong> Здесь нет вывода о вашем бизнесе. Это демонстрация принципа работы. В реальном проекте выводы появляются после изучения контекста, данных, материалов и проверки нескольких версий.</aside><footer class="footer"><div><strong>Владимир Шашков</strong><span>Стратегический маркетинг для собственников бизнеса</span></div><a href="https://vshashkov.ru">vshashkov.ru</a></footer></main></body></html>`;
+
+    return new File([html], "Decision-Brief-Vladimir-Shashkov.html", { type: "text/html" });
   };
 
   const handleShare = async () => {
     setShareStatus("");
-    const shareData = {
-      title: "Decision Brief — Владимир Шашков",
-      text: "Демонстрационный Decision Brief: структура задачи до выбора решения.",
-      url: window.location.href,
-    };
+    const file = buildDocumentFile();
+    if (!file) return;
 
     try {
-      if (navigator.share) {
-        await navigator.share(shareData);
+      const fileShare = { files: [file], title: "Decision Brief — Владимир Шашков", text: "Демонстрационный Decision Brief." };
+      if (navigator.share && navigator.canShare?.({ files: [file] })) {
+        await navigator.share(fileShare);
         return;
       }
-      await navigator.clipboard.writeText(window.location.href);
-      setShareStatus("Ссылка скопирована");
+      if (navigator.share) {
+        await navigator.share({
+          title: "Decision Brief — Владимир Шашков",
+          text: "Демонстрационный Decision Brief: структура задачи до выбора решения.\nhttps://vshashkov.ru",
+        });
+        return;
+      }
+      const url = URL.createObjectURL(file);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = file.name;
+      link.click();
+      URL.revokeObjectURL(url);
+      setShareStatus("Документ сохранён как файл");
     } catch (error) {
       if ((error as Error)?.name === "AbortError") return;
       try {
-        await navigator.clipboard.writeText(window.location.href);
-        setShareStatus("Ссылка скопирована");
+        await navigator.clipboard.writeText("Decision Brief — Владимир Шашков\nhttps://vshashkov.ru");
+        setShareStatus("Короткая ссылка скопирована");
       } catch {
         setShareStatus("Не удалось открыть меню отправки");
       }
+    }
+  };
+
+  const handleSave = () => {
+    setShareStatus("");
+    const file = buildDocumentFile();
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = file.name;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    setShareStatus("Документ подготовлен для сохранения");
+  };
+
+  const handlePrint = () => {
+    setShareStatus("");
+    try {
+      window.print();
+    } catch {
+      handleSave();
     }
   };
 
@@ -85,29 +156,14 @@ export default function DocumentClient() {
     );
   }
 
-  const date = new Date(brief.createdAt).toLocaleDateString("ru-RU", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
-
-  const sections = [
-    ["01", "Наблюдение", brief.changed],
-    ["02", "Рабочая гипотеза", brief.currentTheory],
-    ["03", "Что пока неизвестно", brief.uncertainty],
-    ["04", "Направление проверки", brief.nextCheck],
-    ["05", "Что может опровергнуть гипотезу", brief.disproof],
-    ["06", "Что пока преждевременно делать", brief.avoid],
-    ["07", "Основание гипотезы", brief.evidence],
-  ];
-
   return (
     <main className="brief-document-shell">
       <div className="brief-toolbar no-print">
         <a href="/diagnostic">← Вернуться к разбору</a>
         <div className="brief-toolbar-actions">
-          <button type="button" className="brief-share" onClick={handleShare}>↑ Поделиться</button>
-          <button type="button" onClick={handlePrint}>Печать / PDF</button>
+          <button type="button" className="brief-share" onClick={handleShare}>↑ Поделиться файлом</button>
+          <button type="button" onClick={handleSave}>Сохранить документ</button>
+          <button type="button" onClick={handlePrint}>Печать</button>
         </div>
         {shareStatus && <span className="brief-share-status">{shareStatus}</span>}
       </div>
