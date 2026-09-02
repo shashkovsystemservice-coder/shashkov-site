@@ -30,15 +30,9 @@ export default function DiagnosticClient() {
   const canBuild = changed.trim().length > 8 && currentTheory.trim().length > 8 && disproof.trim().length > 8;
 
   const nextCheck = useMemo(() => {
-    if (lossPoint === "before") {
-      return "Взять 5–10 недавних случаев и проверить три вещи: кто увидел предложение, что понял о ценности и почему не дошёл до обращения. Сначала разговоры и данные, потом изменение рекламы или сайта.";
-    }
-    if (lossPoint === "conversation") {
-      return "Разобрать 5–10 реальных разговоров и исходов: с каким ожиданием пришёл клиент, что услышал, какой вопрос или сомнение возникло и в какой момент интерес ослаб.";
-    }
-    if (lossPoint === "proposal") {
-      return "Сопоставить выигранные и проигранные предложения: цена, аргументы ценности, сроки, доверие и реальные причины отказа. Отдельно проверить, что клиенты сами называют причиной проигрыша.";
-    }
+    if (lossPoint === "before") return "Взять 5–10 недавних случаев и проверить три вещи: кто увидел предложение, что понял о ценности и почему не дошёл до обращения. Сначала разговоры и данные, потом изменение рекламы или сайта.";
+    if (lossPoint === "conversation") return "Разобрать 5–10 реальных разговоров и исходов: с каким ожиданием пришёл клиент, что услышал, какой вопрос или сомнение возникло и в какой момент интерес ослаб.";
+    if (lossPoint === "proposal") return "Сопоставить выигранные и проигранные предложения: цена, аргументы ценности, сроки, доверие и реальные причины отказа. Отдельно проверить, что клиенты сами называют причиной проигрыша.";
     return "Сначала разложить последние 10–20 потерянных возможностей по этапам: до обращения, после разговора, после предложения. Пока место потери неизвестно, выбирать инструмент рано.";
   }, [lossPoint]);
 
@@ -67,7 +61,7 @@ export default function DiagnosticClient() {
 
   return (
     <section className="diagnostic-workspace">
-      <div className="diagnostic-progress" aria-label="Логика мини-диагностики">
+      <div className="diagnostic-progress" aria-label="Логика демонстрационного разбора">
         <span>01 Что происходит</span>
         <span>02 Где теряется выбор</span>
         <span>03 Что предполагаем</span>
@@ -94,7 +88,7 @@ export default function DiagnosticClient() {
         <label className="diagnostic-field">
           <span>3. Как вы сейчас объясняете причину?</span>
           <textarea value={currentTheory} onChange={(e) => { setCurrentTheory(e.target.value); setShowBrief(false); }} placeholder="Например: кажется, что клиент не понимает, чем мы отличаемся от других" />
-          <small>Это может оказаться верно. Пока считаем это версией.</small>
+          <small>Это может оказаться верно. В этом примере считаем это рабочей версией, а не выводом.</small>
         </label>
 
         <fieldset className="diagnostic-field">
@@ -110,16 +104,16 @@ export default function DiagnosticClient() {
         <label className="diagnostic-field">
           <span>5. Что показало бы, что ваша версия неверна?</span>
           <textarea value={disproof} onChange={(e) => { setDisproof(e.target.value); setShowBrief(false); }} placeholder="Например: если клиенты хорошо понимают наше отличие, но всё равно уходят после расчёта — причина, вероятно, в другом" />
-          <small>Хорошая гипотеза должна допускать проверку, которая может её опровергнуть.</small>
+          <small>Здесь показан принцип: хорошая гипотеза должна допускать проверку, которая может её опровергнуть.</small>
         </label>
 
-        <button className="diagnostic-primary" type="button" disabled={!canBuild} onClick={() => setShowBrief(true)}>Собрать Decision Brief</button>
+        <button className="diagnostic-primary" type="button" disabled={!canBuild} onClick={() => setShowBrief(true)}>Показать пример структуры разбора</button>
       </div>
 
       {showBrief && (
         <section className="decision-brief" aria-live="polite">
           <div className="decision-brief-head">
-            <div><p>Decision Brief · карта следующего решения</p><h2>Что уже можно сказать без угадывания</h2></div>
+            <div><p>Демонстрационный результат</p><h2>Как может выглядеть первая структура задачи</h2></div>
             <button type="button" onClick={reset}>Начать заново</button>
           </div>
 
@@ -127,17 +121,17 @@ export default function DiagnosticClient() {
             <article><span>Наблюдаемый факт</span><p>{changed}</p></article>
             <article><span>Рабочая гипотеза</span><p>{currentTheory}</p></article>
             <article><span>Критическая неопределённость</span><p>{uncertainty}</p></article>
-            <article><span>Что проверить первым</span><p>{nextCheck}</p></article>
+            <article><span>Пример первого направления проверки</span><p>{nextCheck}</p></article>
             <article className="decision-wide"><span>Что может опровергнуть гипотезу</span><p>{disproof}</p></article>
-            <article className="decision-wide"><span>На что пока не стоит тратить деньги</span><p>{avoid}</p></article>
+            <article className="decision-wide"><span>Что в таком сценарии было бы рано делать</span><p>{avoid}</p></article>
           </div>
 
           <div className="decision-evidence">
             <strong>Основание гипотезы:</strong> {evidence.trim() || evidenceLabels[evidenceLevel] + "."}
           </div>
 
-          <p className="decision-note"><strong>Это ещё не диагноз.</strong> Но теперь видно не только, где заканчиваются факты и начинаются предположения, — понятно, какую гипотезу проверять и что должно заставить от неё отказаться.</p>
-          <a className="diagnostic-contact" href="/#contact">Обсудить эту ситуацию →</a>
+          <p className="decision-note"><strong>Этот результат не является диагнозом или рекомендацией по вашему бизнесу.</strong> Он только показывает принцип: сначала структурировать факты, версии и неизвестное. В реальной работе выводы появляются после изучения контекста и проверки данных.</p>
+          <a className="diagnostic-contact" href="/#contact">Разобрать реальную ситуацию со мной →</a>
         </section>
       )}
     </section>
