@@ -78,7 +78,10 @@ export default function TaskMapPage() {
 
     <footer className="artifact-footer">
       <span>Владимир Шашков · стратегический маркетинг</span>
-      <a href="/work">Как проходит работа →</a>
+      <div style={{display:"flex",gap:"18px",flexWrap:"wrap"}}>
+        <a href="/artifacts/market-choice">Карта рынка и выбора →</a>
+        <a href="/work">Как проходит работа →</a>
+      </div>
     </footer>
   </main>;
 }
