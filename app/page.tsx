@@ -163,6 +163,16 @@ export default function Home() {
       </div></div>
     </section>
 
+    <section aria-label="Отзыв собственника" style={{background:"#fff",padding:"0 0 112px"}}>
+      <div className="page-shell">
+        <div style={{maxWidth:"1100px",padding:"38px 42px 40px",borderTop:"3px solid #0a1426",borderBottom:"1px solid #d9e1eb",background:"#f8fafc"}}>
+          <p style={{margin:"0 0 18px",color:"#184ed8",fontSize:"11px",lineHeight:1.3,fontWeight:900,letterSpacing:".08em",textTransform:"uppercase"}}>Что изменилось после разбора</p>
+          <blockquote style={{margin:0,maxWidth:"980px",color:"#0a1426",fontSize:"clamp(28px,3vw,44px)",lineHeight:1.12,letterSpacing:"-.03em",fontWeight:790}}>«Разбор помог увидеть, что проблема была шире привлечения заявок. Стало понятно, что нужно доработать сегментацию, ценность и доказательную базу. После этого мы начали собирать кейсы и проверять проектный канал.»</blockquote>
+          <p style={{margin:"24px 0 0",color:"#667085",fontSize:"14px",lineHeight:1.45}}><strong style={{color:"#0a1426"}}>Собственник бизнеса</strong> · проект обезличен</p>
+        </div>
+      </div>
+    </section>
+
     <section className="project-spectrum" aria-labelledby="project-spectrum-title">
       <div className="page-shell">
         <div className="project-spectrum-head">
