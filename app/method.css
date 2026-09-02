@@ -1,3 +1,6 @@
+.site-brand { display:inline-flex; align-items:center; gap:11px; }
+.site-brand::before { content:"ВШ"; width:38px; height:38px; flex:0 0 38px; display:grid; place-items:center; border:1.5px solid var(--ink); font-family:Georgia,'Times New Roman',serif; font-size:15px; line-height:1; font-weight:700; letter-spacing:-.04em; }
+
 .funnel-line { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:34px; }
 .funnel-line > div { border-top:2px solid var(--ink); padding-top:14px; }
 .funnel-line span { display:block; font-size:12px; font-weight:800; color:var(--blue); }
@@ -41,6 +44,8 @@
 }
 
 @media (max-width:760px) {
+  .site-brand { gap:8px; font-size:15px; }
+  .site-brand::before { width:32px; height:32px; flex-basis:32px; font-size:13px; }
   .funnel-line { grid-template-columns:1fr; gap:18px; }
   .funnel-line strong { margin-top:8px; }
   .method-stage, .compact-method { padding:82px 0 88px; }
