@@ -17,9 +17,17 @@ const STORAGE_KEY = "shashkov-diagnostic-brief";
 
 export default function DocumentClient() {
   const [brief, setBrief] = useState<BriefPayload | null>(null);
+  const [shareStatus, setShareStatus] = useState("");
 
   useEffect(() => {
     try {
+      const match = window.location.hash.match(/^#brief=(.+)$/);
+      if (match) {
+        const decoded = JSON.parse(decodeURIComponent(match[1]));
+        setBrief(decoded);
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(decoded));
+        return;
+      }
       const raw = window.localStorage.getItem(STORAGE_KEY);
       if (raw) setBrief(JSON.parse(raw));
     } catch {
@@ -27,13 +35,47 @@ export default function DocumentClient() {
     }
   }, []);
 
+  const handlePrint = () => {
+    setShareStatus("");
+    window.setTimeout(() => window.print(), 50);
+  };
+
+  const handleShare = async () => {
+    setShareStatus("");
+    const shareData = {
+      title: "Decision Brief — Владимир Шашков",
+      text: "Демонстрационный Decision Brief: структура задачи до выбора решения.",
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+      await navigator.clipboard.writeText(window.location.href);
+      setShareStatus("Ссылка скопирована");
+    } catch (error) {
+      if ((error as Error)?.name === "AbortError") return;
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        setShareStatus("Ссылка скопирована");
+      } catch {
+        setShareStatus("Не удалось открыть меню отправки");
+      }
+    }
+  };
+
   if (!brief) {
     return (
       <main className="brief-document-shell">
         <section className="brief-document empty">
-          <div className="brief-brand">
-            <div className="brief-mark">ВШ</div>
-            <div><strong>Владимир Шашков</strong><span>Стратегический маркетинг</span></div>
+          <div className="brief-letterhead">
+            <div className="brief-brand">
+              <div className="brief-mark">ВШ</div>
+              <div><strong>Владимир Шашков</strong><span>Стратегический маркетинг</span></div>
+            </div>
+            <strong className="brief-site">vshashkov.ru</strong>
           </div>
           <h1>Разбор пока не сформирован</h1>
           <p>Сначала вернитесь к демонстрации, заполните или подставьте пример и нажмите «Показать разбор».</p>
@@ -63,21 +105,27 @@ export default function DocumentClient() {
     <main className="brief-document-shell">
       <div className="brief-toolbar no-print">
         <a href="/diagnostic">← Вернуться к разбору</a>
-        <button type="button" onClick={() => window.print()}>Печать / сохранить PDF</button>
+        <div className="brief-toolbar-actions">
+          <button type="button" className="brief-share" onClick={handleShare}>↑ Поделиться</button>
+          <button type="button" onClick={handlePrint}>Печать / PDF</button>
+        </div>
+        {shareStatus && <span className="brief-share-status">{shareStatus}</span>}
       </div>
 
       <article className="brief-document">
         <header className="brief-document-header">
-          <div className="brief-brand">
-            <div className="brief-mark">ВШ</div>
-            <div>
-              <strong>Владимир Шашков</strong>
-              <span>Стратегический маркетинг</span>
+          <div className="brief-letterhead">
+            <div className="brief-brand">
+              <div className="brief-mark" aria-label="Монограмма Владимир Шашков">ВШ</div>
+              <div>
+                <strong>Владимир Шашков</strong>
+                <span>Стратегический маркетинг для собственников бизнеса</span>
+              </div>
             </div>
-          </div>
-          <div className="brief-meta">
-            <a href="https://vshashkov.ru">vshashkov.ru</a>
-            <span>{date}</span>
+            <div className="brief-meta">
+              <a href="https://vshashkov.ru">vshashkov.ru</a>
+              <span>{date}</span>
+            </div>
           </div>
         </header>
 
