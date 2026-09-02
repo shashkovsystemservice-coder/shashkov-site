@@ -83,8 +83,8 @@ export default function Home() {
           <span>внутри сложного B2B и промышленного бизнеса</span>
         </div>
         <div className="proof-strip-item">
-          <strong>20+ моделей</strong>
-          <span>запуск новой продуктовой линейки, собственного бренда и продуктов совместного проекта с Philips</span>
+          <strong>5000+ специалистов</strong>
+          <span>обучено в партнёрской сети в 30+ городах; работа с руководителями, собственниками и командами</span>
         </div>
         <div className="proof-strip-item">
           <strong>Heidelberg · Nokian Tyres · Росатом · Роснано</strong>
@@ -115,7 +115,12 @@ export default function Home() {
         <div className="section-intro method-intro"><p className="eyebrow">02 · Что получите</p><h2>От неясной проблемы — к обоснованному следующему шагу.</h2></div>
         <div className="depth-result-grid product-depth-grid">
           <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, в чём главный вопрос и что проверить первым.</h3><div className="depth-result-output"><small>Результат</small><strong>Ясно, где искать причину и какой следующий шаг уже можно обосновать.</strong></div></article>
-          <article className="depth-result-card depth-result-card-main"><span>Полноценный проект</span><h3>Понять маркетинг бизнеса как связанную систему.</h3><div className="depth-result-output"><small>Результат</small><strong>Ясно, какие решения имеют приоритет и куда направлять ресурсы.</strong></div></article>
+          <article className="depth-result-card depth-result-card-main">
+            <span>Полноценный проект</span>
+            <h3>Понять маркетинг бизнеса как связанную систему.</h3>
+            <div className="depth-result-output"><small>Результат</small><strong>Ясно, какие решения имеют приоритет и куда направлять ресурсы.</strong></div>
+            <p className="team-work-note">При необходимости — рабочие сессии с командой, чтобы решение стало понятной логикой действий, а не осталось только в документе.</p>
+          </article>
         </div>
 
         <div className="brief-entry" aria-label="Decision Brief">
@@ -168,10 +173,15 @@ export default function Home() {
 
     <section className="about-stage compact-stage" id="about">
       <div className="page-shell about-grid">
-        <div><p className="eyebrow">04 · Обо мне</p><h2>Я пришёл в маркетинг из управления бизнесом</h2></div>
+        <div><p className="eyebrow">04 · Обо мне</p><h2>В маркетинг я пришёл из управления бизнесом</h2></div>
         <div className="about-copy">
-          <p><strong>Поэтому смотрю не только на продвижение, а на всю коммерческую систему.</strong> Причина может быть в продукте, цене, продажах, сервисе, рынке или реализации внутри компании.</p>
-          <div className="about-facts"><span>Executive MBA</span><span>Математика и автоматизация</span><span>Управление → развитие → маркетинг</span></div>
+          <p className="about-system-lead"><strong>Поэтому смотрю на маркетинг как на часть бизнес-системы — от причины проблемы до реализации решения.</strong></p>
+          <div className="about-foundations" aria-label="Основа профессионального подхода">
+            <div><small>Инженерная база</small><strong>Математика и автоматизация</strong><span>Привычка разбирать систему, зависимости и причины.</span></div>
+            <div><small>Управленческая школа</small><strong>Executive MBA · качество · проекты · изменения</strong><span>Не только выбрать решение, но и сделать его управляемым.</span></div>
+            <div><small>Практика</small><strong>Управление → развитие → стратегический маркетинг</strong><span>Опыт внутри бизнеса, а не только со стороны маркетинговой функции.</span></div>
+          </div>
+          <p className="about-capability"><strong>Диагностировать → спроектировать → организовать → передать команде.</strong></p>
         </div>
       </div>
     </section>
@@ -182,7 +192,7 @@ export default function Home() {
         <div className="faq-list">
           <details><summary>А если я сам не понимаю, в чём проблема?</summary><p>С этого и можно начать. Не нужно заранее знать правильный диагноз или нужную услугу.</p></details>
           <details><summary>Нужно ли сразу заказывать большой проект?</summary><p>Нет. Сначала можно разобрать один вопрос и определить нужную глубину работы.</p></details>
-          <details><summary>Кто потом внедряет?</summary><p>Вы сами, ваша команда, профильный подрядчик или мы продолжаем вместе — зависит от решения.</p></details>
+          <details><summary>Кто потом внедряет?</summary><p>Вы сами, ваша команда, профильный подрядчик или мы продолжаем вместе — зависит от решения. При необходимости я помогаю команде перевести решение в понятные действия.</p></details>
         </div>
       </div>
     </section>
