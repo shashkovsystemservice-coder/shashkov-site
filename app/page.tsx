@@ -93,7 +93,7 @@ export default function Home() {
             <div className="funnel-line">
               {[["01","Видимость"],["02","Выбор"],["03","Обращение"],["04","Продажа"],["05","Повтор"]].map(([n,t])=><div key={n}><span>{n}</span><strong>{t}</strong></div>)}
             </div>
-            <p className="lead-answer">Сначала находим, где теряется результат. Потом выбираем, что менять.</p>
+            <p className="lead-answer"><strong>Сначала понять, где проблема. Затем — что менять. И только потом — чем это делать.</strong></p>
           </div>
         </article>
       </div>
@@ -151,15 +151,11 @@ export default function Home() {
         <div className="method-route compact-route" aria-label="Логика работы">
           <span>Задача</span><b>→</b><span>Причины</span><b>→</b><span>Проверка</span><b>→</b><span>Решение</span>
         </div>
-        <p className="deliverables-note method-short-note">Основа — классический стратегический маркетинг. Я не начинаю с заранее выбранного инструмента.</p>
+        <p className="deliverables-note method-short-note">Основа — классический стратегический маркетинг.</p>
 
         <div style={{marginTop:"54px",paddingTop:"32px",borderTop:"1px solid rgba(10,20,38,.18)"}}>
-          <p className="eyebrow">Как я смотрю на маркетинг</p>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:"18px",marginTop:"20px"}}>
-            <div><strong style={{fontSize:"20px",lineHeight:1.3}}>Маркетинг — не реклама.</strong></div>
-            <div><strong style={{fontSize:"20px",lineHeight:1.3}}>Запрос собственника — ещё не диагноз.</strong></div>
-            <div><strong style={{fontSize:"20px",lineHeight:1.3}}>Инструмент выбирают после того, как понятна причина.</strong></div>
-          </div>
+          <p className="eyebrow">Как я работаю</p>
+          <p style={{maxWidth:"900px",margin:"18px 0 0",fontSize:"20px",lineHeight:1.55}}><strong>Не начинаю с рекламы, сайта, SEO или AI.</strong> Сначала разбираю, где именно находится ограничение — в рынке, ценности, выборе клиента, продаже, повторной покупке или в другом месте.</p>
         </div>
       </div>
     </section>
@@ -223,7 +219,7 @@ export default function Home() {
       <div className="page-shell contact-grid">
         <div>
           <p className="eyebrow eyebrow-light">06 · Следующий шаг</p>
-          <h2>Понять, что действительно нужно менять — и что делать первым.</h2>
+          <h2>Сначала понять, где проблема. Затем — что менять. И только потом — чем это делать.</h2>
           <p>Начнём с разговора на 20–30 минут.</p>
           <div style={{margin:"22px 0 30px",display:"grid",gap:"10px"}}>
             <p style={{margin:0}}><strong>Если нужно разобраться глубже</strong> — попрошу материалы или короткий бриф.</p>
