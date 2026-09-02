@@ -80,6 +80,7 @@ export default function TaskMapPage() {
       <span>Владимир Шашков · стратегический маркетинг</span>
       <div style={{display:"flex",gap:"18px",flexWrap:"wrap"}}>
         <a href="/artifacts/market-choice">Карта рынка и выбора →</a>
+        <a href="/artifacts/value-proof">Иерархия ценности и доказательств →</a>
         <a href="/work">Как проходит работа →</a>
       </div>
     </footer>
