@@ -36,6 +36,8 @@
 
 @media (max-width:1100px) {
   .system-result { gap:50px; }
+  .proof-intro > div[aria-label="Как изменялась постановка задачи в кейсе SLED Systems"] { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+  .about-copy > div[aria-label="Опыт Владимира Шашкова"] { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
 }
 
 @media (max-width:760px) {
@@ -54,4 +56,16 @@
   .system-result, .compact-system-result { grid-template-columns:1fr; gap:18px; margin-top:0; padding-top:0; }
   .system-result > p { font-size:18px; }
   .compact-result { padding:70px 0 76px; }
+
+  .proof-intro > div[aria-label="Как изменялась постановка задачи в кейсе SLED Systems"] { display:block !important; margin:24px 0 22px !important; }
+  .proof-intro > div[aria-label="Как изменялась постановка задачи в кейсе SLED Systems"] > div { padding:18px 0 !important; border-left:0 !important; border-top:1px solid rgba(10,20,38,.12); }
+  .proof-intro > div[aria-label="Как изменялась постановка задачи в кейсе SLED Systems"] > div:first-child { border-top:0; }
+  .proof-intro > div[aria-label="Как изменялась постановка задачи в кейсе SLED Systems"] strong { font-size:17px !important; }
+
+  .about-copy > div[aria-label="Опыт Владимира Шашкова"] { display:block !important; margin-top:22px !important; }
+  .about-copy > div[aria-label="Опыт Владимира Шашкова"] > div { padding:18px 0; border-top:1px solid rgba(255,255,255,.14); }
+  .about-copy > div[aria-label="Опыт Владимира Шашкова"] > div:first-child { border-top:0; }
+  .about-copy > div[aria-label="Опыт Владимира Шашкова"] strong { font-size:20px !important; }
+
+  .method-stage div[style*="grid-template-columns:repeat(3"] { grid-template-columns:1fr !important; gap:14px !important; }
 }
