@@ -17,28 +17,33 @@ const contactChannels = [
 const currentProjects = [
   {
     status: "Проект",
-    title: "Производитель промышленного продукта",
-    question: "От запроса на больше входящих — к вопросу о том, как раньше входить в проект и формировать доверие клиента.",
+    context: "Производитель промышленного продукта",
+    question: "«Нам нужно больше входящих заявок»",
+    reframing: "Сначала проверяем, действительно ли ограничение находится в привлечении — или вопрос лежит в доверии, выборе клиента и более раннем входе в проект.",
   },
   {
     status: "Текущая работа",
-    title: "Поставщик промышленного оборудования",
-    question: "Переход от продажи отдельных станков к интеграции производственных линий: что теперь является продуктом и как его продавать.",
+    context: "Промышленное оборудование",
+    question: "«Хотим продавать не отдельные станки, а производственные линии»",
+    reframing: "Нужно определить, что теперь является продуктом, какую производственную задачу покупает клиент и как меняется сама логика продажи.",
   },
   {
     status: "Исследование",
-    title: "Сеть фитнес-клубов",
-    question: "Проверка идеи Fitness × Boxing × Wellness: это набор услуг или новый понятный клиенту продукт.",
+    context: "Сеть фитнес-клубов",
+    question: "«Хотим соединить Fitness × Boxing × Wellness»",
+    reframing: "Проверяем, есть ли за сочетанием направлений единая клиентская потребность и новый продукт — или пока это только набор услуг рядом.",
   },
   {
     status: "Исследование",
-    title: "Event-бизнес",
-    question: "Как мировой рынок формирует продукт, сервис и предложение — и как это должно отражаться в сайте и спросе.",
+    context: "Event-бизнес",
+    question: "«Нужно улучшить сайт и предложение»",
+    reframing: "До правок сайта исследуем, как мировой рынок структурирует сам продукт, сервис, категории спроса и основания выбора клиента.",
   },
   {
     status: "Предстоящий разбор",
-    title: "Ресторан в центре Петербурга",
-    question: "Где реально находятся точки роста и что имеет смысл менять в первую очередь — до выбора рекламных инструментов.",
+    context: "Ресторан в центре Петербурга",
+    question: "«Нужно посмотреть маркетинг ресторана»",
+    reframing: "Выводов пока нет — и это важно. Сначала предстоит понять, где именно находится ограничение и какой вопрос действительно стоит решать.",
   },
 ] as const;
 
@@ -146,38 +151,39 @@ export default function Home() {
 
     <section className="proof-stage" id="case">
       <div className="page-shell"><div className="section-intro proof-intro">
-        <p className="eyebrow">03 · Пример</p><h2>Производитель промышленного продукта: пришли за входящими заявками</h2><p><strong>Можно было сразу идти в рекламу. Сначала мы проверили, была ли проблема вообще в трафике.</strong></p>
-        <div style={{margin:"30px 0 26px",display:"grid",gridTemplateColumns:"repeat(4,minmax(0,1fr))",borderTop:"1px solid rgba(10,20,38,.18)",borderBottom:"1px solid rgba(10,20,38,.18)"}} aria-label="Как изменялась постановка задачи">
-          <div style={{padding:"22px 18px 22px 0"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>01 · Запрос</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Нужны квалифицированные входящие заявки.</strong></div>
-          <div style={{padding:"22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>02 · Факты</small><p style={{margin:0,fontSize:"16px",lineHeight:1.55}}>Продажи заметно опирались не только на сайт, но и на повторные сделки и личную работу с рынком.</p></div>
-          <div style={{padding:"22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>03 · Что это меняет</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Версия «нам просто нужно больше трафика» уже выглядит недостаточной.</strong></div>
-          <div style={{padding:"22px 0 22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>04 · Новый вопрос</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Как системно раньше входить в проект и формировать доверие — не полагаясь только на личный контакт?</strong></div>
+        <p className="eyebrow">03 · Фрагмент рабочего разбора</p><h2>Запрос был про входящие заявки. После проверки вопрос изменился.</h2><p><strong>Можно было сразу идти в рекламу. Вместо этого сначала проверили, была ли проблема вообще в привлечении.</strong></p>
+        <div className="proof-work-fragment" aria-label="Как изменялась постановка задачи">
+          <div><small>01 · Исходный запрос</small><strong>Нужны квалифицированные входящие заявки.</strong></div>
+          <div><small>02 · Что уже было фактом</small><p>Продажи опирались не только на сайт: важную роль играли повторные сделки и активная работа с рынком.</p></div>
+          <div><small>03 · Что осталось версией</small><p>Недостаток входящего трафика мог быть частью проблемы, но данных было недостаточно, чтобы считать его главной причиной.</p></div>
+          <div><small>04 · Что нужно было проверить дальше</small><strong>Как возникает доверие, где клиент делает выбор и насколько системно компания входит в проект до финального запроса.</strong></div>
         </div>
-        <p>Вместо автоматического перехода к рекламе изменилась сама постановка задачи. Дальше нужно было исследовать уже не «трафик вообще», а то, как возникает доверие, как клиент выбирает и где компания может системно входить в проект раньше.</p>
+        <p>Ценность такого разбора не в том, чтобы быстро назвать причину. Она в том, чтобы увидеть границу между фактом и объяснением — и изменить постановку задачи, если исходная версия не выдерживает проверку.</p>
         <div className="proof-links">
           <a className="text-link proof-demo-link" href="/diagnostic">Попробовать логику разбора на своей ситуации →</a>
         </div>
-        <p className="proof-demo-note">Название компании и коммерческие данные здесь не раскрываются. Важен не бренд клиента, а логика: первоначальный запрос ещё не является диагнозом.</p>
+        <p className="proof-demo-note">Компания и коммерческие данные не раскрываются. Здесь показан только принцип работы и обезличенный фрагмент логики.</p>
       </div></div>
     </section>
 
     <section className="project-spectrum" aria-labelledby="project-spectrum-title">
       <div className="page-shell">
         <div className="project-spectrum-head">
-          <p className="eyebrow">Разные отрасли · одна логика</p>
-          <h2 id="project-spectrum-title">Другие задачи, с которыми я работаю</h2>
-          <p>Это не список «логотипов клиентов». Здесь важнее увидеть тип вопроса: в разных бизнесах сначала нужно понять, что именно требует решения.</p>
+          <p className="eyebrow">Разные бизнесы · разные исходные вопросы</p>
+          <h2 id="project-spectrum-title">Первоначальный запрос — это ещё не постановка задачи</h2>
+          <p>Я не пытаюсь применять один и тот же ответ к разным отраслям. Общий принцип другой: сначала понять, какой вопрос действительно нужно решить и какие доказательства для этого нужны.</p>
         </div>
         <div className="project-spectrum-grid">
           {currentProjects.map((project, index) => (
-            <article className="project-spectrum-card" key={project.title}>
+            <article className="project-spectrum-card" key={project.context}>
               <div className="project-spectrum-meta"><span>0{index + 1}</span><em>{project.status}</em></div>
-              <h3>{project.title}</h3>
-              <p>{project.question}</p>
+              <p className="project-spectrum-context">{project.context}</p>
+              <h3>{project.question}</h3>
+              <p>{project.reframing}</p>
             </article>
           ))}
         </div>
-        <p className="project-spectrum-note"><strong>Отрасли разные.</strong> Общая механика одна: не принимать первоначальный запрос за диагноз и не выбирать инструмент до того, как понятен вопрос.</p>
+        <p className="project-spectrum-note"><strong>Отрасль меняется — логика остаётся.</strong> Не принимать первый запрос за диагноз, не подменять вопрос любимым инструментом и не делать вывод раньше доказательств.</p>
       </div>
     </section>
 
@@ -212,7 +218,7 @@ export default function Home() {
     <section className="contact-stage" id="contact">
       <div className="page-shell contact-grid">
         <div>
-          <p className="eyebrow eyebrow-light">06 · Следующий шаг</p><h2>Сначала понять, где проблема. Затем — что менять. И только потом — чем это делать.</h2><p>Начнём с разговора на 20–30 минут.</p>
+          <p className="eyebrow eyebrow-light">06 · Следующий шаг</p><h2>Если решение не очевидно — можно начать с самой ситуации.</h2><p>Начнём с разговора на 20–30 минут.</p>
           <div style={{margin:"22px 0 30px",display:"grid",gap:"10px"}}><p style={{margin:0}}><strong>Если нужно разобраться глубже</strong> — попрошу материалы или короткий бриф.</p><p style={{margin:0}}><strong>Если нужен проект</strong> — заранее согласуем задачу, объём работы и результат.</p></div>
           <p style={{margin:"0 0 12px",fontSize:"14px",color:"#cbd7e6"}}>Выберите удобный способ связи</p>
           <div style={{display:"flex",flexWrap:"wrap",gap:"10px",alignItems:"center"}} aria-label="Способы связи">
