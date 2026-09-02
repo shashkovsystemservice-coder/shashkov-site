@@ -1,5 +1,6 @@
 import Image from "next/image";
 import "./method.css";
+import "./projects.css";
 
 const situations = [
   "Нас мало знают",
@@ -13,6 +14,34 @@ const contactChannels = [
   { id: "max", label: "MAX", status: "comingSoon", href: null },
 ] as const;
 
+const currentProjects = [
+  {
+    status: "Проект",
+    title: "Производитель промышленного продукта",
+    question: "От запроса на больше входящих — к вопросу о том, как раньше входить в проект и формировать доверие клиента.",
+  },
+  {
+    status: "Текущая работа",
+    title: "Поставщик промышленного оборудования",
+    question: "Переход от продажи отдельных станков к интеграции производственных линий: что теперь является продуктом и как его продавать.",
+  },
+  {
+    status: "Исследование",
+    title: "Сеть фитнес-клубов",
+    question: "Проверка идеи Fitness × Boxing × Wellness: это набор услуг или новый понятный клиенту продукт.",
+  },
+  {
+    status: "Исследование",
+    title: "Event-бизнес",
+    question: "Как мировой рынок формирует продукт, сервис и предложение — и как это должно отражаться в сайте и спросе.",
+  },
+  {
+    status: "Предстоящий разбор",
+    title: "Ресторан в центре Петербурга",
+    question: "Где реально находятся точки роста и что имеет смысл менять в первую очередь — до выбора рекламных инструментов.",
+  },
+] as const;
+
 export default function Home() {
   return <main id="top">
     <div className="page-shell">
@@ -22,7 +51,7 @@ export default function Home() {
           <a href="#situations">Ситуации</a>
           <a href="#product">Что делаю</a>
           <a href="/work">Как работаю</a>
-          <a href="#case">Кейс</a>
+          <a href="#case">Пример</a>
           <a className="nav-cta" href="#contact">Написать</a>
         </nav>
       </header>
@@ -117,21 +146,39 @@ export default function Home() {
 
     <section className="proof-stage" id="case">
       <div className="page-shell"><div className="section-intro proof-intro">
-        <p className="eyebrow">03 · Пример</p><h2>SLED Systems: пришли за входящими заявками</h2><p><strong>Можно было сразу идти в рекламу. Сначала мы проверили, была ли проблема вообще в трафике.</strong></p>
-        <div style={{margin:"30px 0 26px",display:"grid",gridTemplateColumns:"repeat(4,minmax(0,1fr))",borderTop:"1px solid rgba(10,20,38,.18)",borderBottom:"1px solid rgba(10,20,38,.18)"}} aria-label="Как изменялась постановка задачи в кейсе SLED Systems">
+        <p className="eyebrow">03 · Пример</p><h2>Производитель промышленного продукта: пришли за входящими заявками</h2><p><strong>Можно было сразу идти в рекламу. Сначала мы проверили, была ли проблема вообще в трафике.</strong></p>
+        <div style={{margin:"30px 0 26px",display:"grid",gridTemplateColumns:"repeat(4,minmax(0,1fr))",borderTop:"1px solid rgba(10,20,38,.18)",borderBottom:"1px solid rgba(10,20,38,.18)"}} aria-label="Как изменялась постановка задачи">
           <div style={{padding:"22px 18px 22px 0"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>01 · Запрос</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Нужны квалифицированные входящие заявки.</strong></div>
-          <div style={{padding:"22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>02 · Факты</small><p style={{margin:0,fontSize:"16px",lineHeight:1.55}}><strong>1,16%</strong> выручки — сайт<br/><strong>52,49%</strong> — повторные продажи<br/><strong>30,18%</strong> — полевая работа</p></div>
-          <div style={{padding:"22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>03 · Что это меняет</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Версия «нам просто нужно больше трафика» уже выглядит слабой.</strong></div>
-          <div style={{padding:"22px 0 22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>04 · Новый вопрос</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Как создать воспроизводимый ранний вход в проект и доверие — не полагаясь только на личный контакт?</strong></div>
+          <div style={{padding:"22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>02 · Факты</small><p style={{margin:0,fontSize:"16px",lineHeight:1.55}}>Продажи заметно опирались не только на сайт, но и на повторные сделки и личную работу с рынком.</p></div>
+          <div style={{padding:"22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>03 · Что это меняет</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Версия «нам просто нужно больше трафика» уже выглядит недостаточной.</strong></div>
+          <div style={{padding:"22px 0 22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>04 · Новый вопрос</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Как системно раньше входить в проект и формировать доверие — не полагаясь только на личный контакт?</strong></div>
         </div>
         <p>Вместо автоматического перехода к рекламе изменилась сама постановка задачи. Дальше нужно было исследовать уже не «трафик вообще», а то, как возникает доверие, как клиент выбирает и где компания может системно входить в проект раньше.</p>
         <div className="proof-links">
-          <a className="text-link" href="/sled">Посмотреть полный разбор →</a>
-          <a className="text-link proof-demo-link" href="/diagnostic">Посмотреть один принцип на интерактивном примере →</a>
+          <a className="text-link proof-demo-link" href="/diagnostic">Попробовать логику разбора на своей ситуации →</a>
         </div>
-        <p className="proof-demo-note">Интерактив — только демонстрация того, как предположение превращается в проверяемую гипотезу. Это не консультация и не автоматическая диагностика бизнеса.</p>
-        <div style={{marginTop:"28px",paddingTop:"22px",borderTop:"1px solid rgba(10,20,38,.18)",maxWidth:"820px"}}><p style={{fontSize:"17px",lineHeight:1.55,margin:"0 0 10px"}}><strong>Не только B2B.</strong> Та же логика работает в услугах и B2C.</p><a className="text-link" href="/fitness-report.pdf" target="_blank" rel="noreferrer">Пример B2C-исследования →</a></div>
+        <p className="proof-demo-note">Название компании и коммерческие данные здесь не раскрываются. Важен не бренд клиента, а логика: первоначальный запрос ещё не является диагнозом.</p>
       </div></div>
+    </section>
+
+    <section className="project-spectrum" aria-labelledby="project-spectrum-title">
+      <div className="page-shell">
+        <div className="project-spectrum-head">
+          <p className="eyebrow">Разные отрасли · одна логика</p>
+          <h2 id="project-spectrum-title">Другие задачи, с которыми я работаю</h2>
+          <p>Это не список «логотипов клиентов». Здесь важнее увидеть тип вопроса: в разных бизнесах сначала нужно понять, что именно требует решения.</p>
+        </div>
+        <div className="project-spectrum-grid">
+          {currentProjects.map((project, index) => (
+            <article className="project-spectrum-card" key={project.title}>
+              <div className="project-spectrum-meta"><span>0{index + 1}</span><em>{project.status}</em></div>
+              <h3>{project.title}</h3>
+              <p>{project.question}</p>
+            </article>
+          ))}
+        </div>
+        <p className="project-spectrum-note"><strong>Отрасли разные.</strong> Общая механика одна: не принимать первоначальный запрос за диагноз и не выбирать инструмент до того, как понятен вопрос.</p>
+      </div>
     </section>
 
     <section className="about-stage compact-stage" id="about">
