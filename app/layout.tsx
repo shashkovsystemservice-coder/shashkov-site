@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./atmosphere.css";
+import "./about-contrast.css";
 import { siteConfig } from "./site-config";
 import AnalyticsTracker from "./AnalyticsTracker";
 
