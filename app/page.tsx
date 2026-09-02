@@ -17,7 +17,7 @@ export default function Home() {
   return <main id="top">
     <div className="page-shell">
       <header className="site-nav">
-        <a className="site-brand" href="#top">Владимир Шашков</a>
+        <a className="site-brand" href="#top"><span className="site-brand-mark" aria-hidden="true">ВШ</span><span>Владимир Шашков</span></a>
         <nav aria-label="Основная навигация">
           <a href="#situations">Ситуации</a>
           <a href="#product">Что делаю</a>
@@ -103,7 +103,12 @@ export default function Home() {
         </div>
         <div className="method-route compact-route" aria-label="Логика работы"><span>Задача</span><b>→</b><span>Причины</span><b>→</b><span>Проверка</span><b>→</b><span>Решение</span></div>
         <p className="deliverables-note method-short-note">Основа — классический стратегический маркетинг.</p>
-        <div style={{marginTop:"54px",paddingTop:"32px",borderTop:"1px solid rgba(10,20,38,.18)"}}><p className="eyebrow">Как я работаю</p><p style={{maxWidth:"900px",margin:"18px 0 0",fontSize:"20px",lineHeight:1.55}}><strong>Не начинаю с рекламы, сайта, SEO или AI.</strong> Сначала разбираю, где именно находится ограничение — в рынке, ценности, выборе клиента, продаже, повторной покупке или в другом месте.</p></div>
+        <div className="method-choice-principle">
+          <p className="eyebrow">Как я работаю</p>
+          <p><strong>Не начинаю с рекламы, сайта, SEO или AI.</strong> Сначала разбираю, где именно находится ограничение — в рынке, ценности, выборе клиента, продаже, повторной покупке или в другом месте.</p>
+          <p><strong>И не исследую всё подряд.</strong> Сначала определяю вопрос, от которого зависит решение. Затем — какие факты, данные и проверки действительно нужны именно для него.</p>
+          <small>Разные вопросы требуют разных доказательств. Метод выбирается под проблему, а не проблема под любимый инструмент.</small>
+        </div>
       </div>
     </section>
 
@@ -111,13 +116,17 @@ export default function Home() {
       <div className="page-shell"><div className="section-intro proof-intro">
         <p className="eyebrow">03 · Пример</p><h2>SLED Systems: пришли за входящими заявками</h2><p><strong>Можно было сразу идти в рекламу. Сначала мы проверили, была ли проблема вообще в трафике.</strong></p>
         <div style={{margin:"30px 0 26px",display:"grid",gridTemplateColumns:"repeat(4,minmax(0,1fr))",borderTop:"1px solid rgba(10,20,38,.18)",borderBottom:"1px solid rgba(10,20,38,.18)"}} aria-label="Как изменялась постановка задачи в кейсе SLED Systems">
-          <div style={{padding:"22px 18px 22px 0"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>01 · Запрос</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Нужны входящие заявки.</strong></div>
+          <div style={{padding:"22px 18px 22px 0"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>01 · Запрос</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Нужны квалифицированные входящие заявки.</strong></div>
           <div style={{padding:"22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>02 · Факты</small><p style={{margin:0,fontSize:"16px",lineHeight:1.55}}><strong>1,16%</strong> выручки — сайт<br/><strong>52,49%</strong> — повторные продажи<br/><strong>30,18%</strong> — полевая работа</p></div>
           <div style={{padding:"22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>03 · Что это меняет</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Версия «нам просто нужно больше трафика» уже выглядит слабой.</strong></div>
-          <div style={{padding:"22px 0 22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>04 · Следующий вопрос</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Как на самом деле возникает продажа и где теряется возможность?</strong></div>
+          <div style={{padding:"22px 0 22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>04 · Новый вопрос</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Как создать воспроизводимый ранний вход в проект и доверие — не полагаясь только на личный контакт?</strong></div>
         </div>
-        <p>Вместо автоматического перехода к рекламе изменилась сама постановка задачи. Это и есть смысл диагностики: не подтвердить первое предположение, а проверить его фактами.</p>
-        <a className="text-link" href="/sled">Посмотреть полный разбор →</a>
+        <p>Вместо автоматического перехода к рекламе изменилась сама постановка задачи. Дальше нужно было исследовать уже не «трафик вообще», а то, как возникает доверие, как клиент выбирает и где компания может системно входить в проект раньше.</p>
+        <div className="proof-links">
+          <a className="text-link" href="/sled">Посмотреть полный разбор →</a>
+          <a className="text-link proof-demo-link" href="/diagnostic">Посмотреть один принцип на интерактивном примере →</a>
+        </div>
+        <p className="proof-demo-note">Интерактив — только демонстрация того, как предположение превращается в проверяемую гипотезу. Это не консультация и не автоматическая диагностика бизнеса.</p>
         <div style={{marginTop:"28px",paddingTop:"22px",borderTop:"1px solid rgba(10,20,38,.18)",maxWidth:"820px"}}><p style={{fontSize:"17px",lineHeight:1.55,margin:"0 0 10px"}}><strong>Не только B2B.</strong> Та же логика работает в услугах и B2C.</p><a className="text-link" href="/fitness-report.pdf" target="_blank" rel="noreferrer">Пример B2C-исследования →</a></div>
       </div></div>
     </section>
