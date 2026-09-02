@@ -8,6 +8,21 @@ const situations = [
   "Все предлагают сайт, рекламу, SEO, AI — не понимаю, что мне действительно нужно",
 ] as const;
 
+const contactChannels = [
+  {
+    id: "telegram",
+    label: "Telegram",
+    status: "active",
+    href: "https://t.me/ShashkovVlad",
+  },
+  {
+    id: "max",
+    label: "MAX",
+    status: "comingSoon",
+    href: null,
+  },
+] as const;
+
 export default function Home() {
   return <main id="top">
     <div className="page-shell">
@@ -194,9 +209,57 @@ export default function Home() {
             <p style={{margin:0}}><strong>Если нужно разобраться глубже</strong> — попрошу материалы или короткий бриф.</p>
             <p style={{margin:0}}><strong>Если нужен проект</strong> — заранее согласуем задачу, объём работы и результат.</p>
           </div>
-          <a className="button button-light" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
+
+          <p style={{margin:"0 0 12px",fontSize:"14px",color:"#cbd7e6"}}>Выберите удобный способ связи</p>
+          <div style={{display:"flex",flexWrap:"wrap",gap:"10px",alignItems:"center"}} aria-label="Способы связи">
+            {contactChannels.map((channel) => channel.status === "active" ? (
+              <a
+                key={channel.id}
+                className="button button-light"
+                href={channel.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Написать в {channel.label}
+              </a>
+            ) : (
+              <button
+                key={channel.id}
+                type="button"
+                disabled
+                aria-label="MAX — скоро"
+                title="Канал MAX подключается"
+                style={{
+                  display:"inline-flex",
+                  alignItems:"center",
+                  gap:"9px",
+                  minHeight:"48px",
+                  padding:"12px 16px",
+                  border:"1px solid rgba(255,255,255,.38)",
+                  background:"rgba(255,255,255,.07)",
+                  color:"rgba(255,255,255,.82)",
+                  font:"inherit",
+                  fontWeight:800,
+                  cursor:"default",
+                  opacity:.82,
+                }}
+              >
+                <img
+                  src="https://max.ru/favicon.ico"
+                  alt=""
+                  width="22"
+                  height="22"
+                  loading="lazy"
+                  style={{display:"block",borderRadius:"5px"}}
+                />
+                <span>MAX</span>
+                <span style={{fontSize:"12px",fontWeight:750,opacity:.7}}>Скоро</span>
+              </button>
+            ))}
+          </div>
         </div>
         <form className="contact-form" method="post" action="/api/contact">
+          <input type="hidden" name="source" value="contact-form" />
           <label>Что сейчас происходит?<textarea name="situation" required placeholder="Коротко, своими словами" /></label>
           <label>Как с вами связаться?<input name="contact" required placeholder="Email или Telegram" /></label>
           <button className="button button-light" type="submit">Отправить</button>
