@@ -39,13 +39,13 @@ const currentProjects = [
     question: "«Нужно улучшить сайт и предложение»",
     reframing: "До редизайна полезнее понять, как устроена сама категория, как мировые компании формируют продукт и за что клиент действительно выбирает агентство.",
   },
-  {
-    status: "Предстоящий разбор",
-    context: "Ресторан в центре Петербурга",
-    question: "«Нужно посмотреть маркетинг ресторана»",
-    reframing: "Здесь пока нет готового ответа — и это нормально. Первый шаг как раз в том, чтобы понять, где находится ограничение: выбор, поток гостей, повтор, предложение, видимость или другое место.",
-  },
 ] as const;
+
+const upcomingProject = {
+  context: "Ресторан в центре Петербурга",
+  question: "«Нужно посмотреть маркетинг ресторана»",
+  note: "Первичный разбор ещё впереди. Здесь пока нет готового ответа — сначала нужно понять, где находится ограничение: поток гостей, выбор, повтор, предложение, видимость или другое место.",
+} as const;
 
 export default function Home() {
   return <main id="top">
@@ -54,9 +54,10 @@ export default function Home() {
         <a className="site-brand" href="#top"><span className="site-brand-mark" aria-hidden="true">ВШ</span><span>Владимир Шашков</span></a>
         <nav aria-label="Основная навигация">
           <a href="#situations">Ситуации</a>
-          <a href="#product">Что делаю</a>
-          <a href="/work">Как работаю</a>
+          <a href="#product">Что получите</a>
           <a href="#case">Пример</a>
+          <a href="/work">Как работаю</a>
+          <a href="#about">Обо мне</a>
           <a className="nav-cta" href="#contact">Написать</a>
         </nav>
       </header>
@@ -66,16 +67,17 @@ export default function Home() {
           <p className="eyebrow">Стратегический маркетинг для собственников бизнеса</p>
           <h1>Не уверены, что именно сейчас нужно менять в бизнесе?</h1>
           <p className="hero-lead">Продажи не растут, клиенты выбирают других или маркетинг что-то делает, но непонятно, где настоящая проблема.</p>
-          <p className="hero-principle">Помогу снизить неопределённость до уровня, на котором можно обоснованно решить, что менять, что делать первым — и на что пока не тратить деньги.</p>
+          <p className="hero-principle">Помогу снизить неопределённость до уровня, на котором можно обоснованно решить, что менять и что делать первым.</p>
+          <p className="hero-money-line">И понять, на что пока не стоит тратить деньги.</p>
           <div className="hero-actions">
-            <a className="button" href="#start">Описать ситуацию</a>
+            <a className="button" href="/diagnostic">Разобрать свою ситуацию</a>
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
             <button type="button" disabled aria-label="MAX — скоро" title="Канал MAX подключается" style={{display:"inline-flex",alignItems:"center",gap:"7px",padding:0,border:0,background:"transparent",color:"#667085",font:"inherit",fontWeight:800,cursor:"default",opacity:.8}}>
               <img src="https://max.ru/favicon.ico" alt="" width="18" height="18" loading="lazy" style={{display:"block",borderRadius:"4px"}} />
               <span>MAX</span><span style={{fontSize:"12px",fontWeight:750,opacity:.75}}>Скоро</span>
             </button>
           </div>
-          <p style={{margin:"12px 0 0",fontSize:"14px",lineHeight:1.45,color:"#667085"}}>Первый разговор — 20–30 минут, бесплатно, без обязательств.</p>
+          <p style={{margin:"12px 0 0",fontSize:"14px",lineHeight:1.45,color:"#667085"}}>Decision Brief можно пройти самостоятельно. Если проще поговорить — первый разговор 20–30 минут, бесплатно, без обязательств.</p>
           <div className="hero-trust" aria-label="Опыт Владимира Шашкова">
             <span><strong>20+ лет</strong> в бизнесе и управлении</span>
             <span><strong>Executive MBA</strong></span>
@@ -159,6 +161,7 @@ export default function Home() {
           <div style={{padding:"22px 0 22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}><small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>04 · Новый вопрос</small><strong style={{fontSize:"18px",lineHeight:1.4}}>Как системно раньше входить в проект и формировать доверие — не полагаясь только на личный контакт?</strong></div>
         </div>
         <p>Вместо автоматического перехода к рекламе изменилась сама постановка задачи. Дальше нужно было исследовать уже не «трафик вообще», а то, как возникает доверие, как клиент выбирает и где компания может системно входить в проект раньше.</p>
+        <div className="proof-stage-result"><span>Результат этого этапа</span><p><strong>Задача сместилась с «увеличить поток заявок» на «системно раньше входить в проект и формировать доверие».</strong> Поэтому следующий анализ строился уже вокруг выбора клиента, точек входа и доказательств ценности, а не вокруг рекламного трафика.</p></div>
         <div className="proof-links">
           <a className="text-link proof-demo-link" href="/diagnostic">Попробовать логику разбора на своей ситуации →</a>
         </div>
@@ -182,6 +185,11 @@ export default function Home() {
               <p>{project.reframing}</p>
             </article>
           ))}
+        </div>
+        <div className="project-upcoming">
+          <div><span>Следующая ситуация · первичный разбор впереди</span><small>{upcomingProject.context}</small></div>
+          <h3>{upcomingProject.question}</h3>
+          <p>{upcomingProject.note}</p>
         </div>
         <p className="project-spectrum-note"><strong>Общее здесь не отрасль.</strong> Общее — способность отделить исходный запрос от причины, выбрать нужную проверку и только после этого определить действие.</p>
       </div>
