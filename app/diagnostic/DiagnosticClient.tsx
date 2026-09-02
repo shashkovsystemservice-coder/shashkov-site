@@ -56,6 +56,12 @@ export default function DiagnosticClient() {
     return `Найти наблюдаемые факты, которые могли бы подтвердить или опровергнуть текущую версию: реальные сделки, разговоры, причины отказов, поведение клиентов или данные по этапам пути.${action ? ` Вариант «${action}» пока рано считать обоснованным.` : " Затем уже выбирать решение."}`;
   }, [evidenceLevel, intendedAction]);
 
+  const decisionImpact = useMemo(() => {
+    const action = intendedAction.trim();
+    if (action) return `Проверка имеет смысл только если её результат изменит решение. Если версия причины получит достаточные подтверждения, к варианту «${action}» можно возвращаться уже с основаниями. Если версия не подтвердится, это действие теряет основание — и искать нужно другую причину или другой путь к результату «${desired.trim()}».`;
+    return `Результат проверки должен сузить выбор: либо дать достаточные основания для конкретного действия, либо показать, что текущую версию причины нужно отбросить. Критерий — помогает ли следующий шаг приблизиться к результату «${desired.trim()}», а не просто создаёт дополнительную активность.`;
+  }, [intendedAction, desired]);
+
   const avoid = useMemo(() => {
     if (!intendedAction.trim()) return "Выбирать конкретный инструмент только потому, что он привычен, доступен или первым пришёл в голову. Сначала нужно уменьшить критическую неопределённость.";
     return `Сразу переходить к решению «${intendedAction.trim()}», пока не проверено, связано ли оно с реальной причиной ситуации.`;
@@ -81,6 +87,7 @@ export default function DiagnosticClient() {
       reframing,
       uncertainty,
       nextCheck,
+      decisionImpact,
       disproof: disproof.trim() || "Пока не сформулировано. Это один из вопросов, который стоит уточнить до вывода.",
       avoid,
       evidence: evidence.trim() || evidenceLabels[evidenceLevel] + ".",
@@ -133,6 +140,7 @@ export default function DiagnosticClient() {
         <div className="decision-focus-grid">
           <article><span>Критическая неопределённость</span><p>{uncertainty}</p></article>
           <article><span>Что проверить первым</span><p>{nextCheck}</p></article>
+          <article><span>Как проверка должна изменить решение</span><p>{decisionImpact}</p></article>
           <article><span>Что пока рано делать</span><p>{avoid}</p></article>
         </div>
 
@@ -148,7 +156,7 @@ export default function DiagnosticClient() {
         </details>
 
         <div className="decision-evidence"><strong>Основание текущей версии:</strong> {evidence.trim() || evidenceLabels[evidenceLevel] + "."}</div>
-        <p className="decision-note"><strong>Это не диагноз.</strong> Brief ничего не знает о вашем бизнесе кроме введённых ответов. Его задача — показать границу между наблюдением, объяснением и решением. Реальная работа начинается с контекста, данных, материалов и проверки нескольких конкурирующих версий.</p>
+        <p className="decision-note"><strong>Факты ≠ интерпретация ≠ вывод.</strong> Это не диагноз: Brief ничего не знает о вашем бизнесе кроме введённых ответов. Его задача — показать, какой вопрос мешает решению и какая проверка действительно способна это решение изменить. Реальная работа начинается с контекста, данных, материалов и проверки нескольких конкурирующих версий.</p>
         <div className="decision-actions"><button type="button" onClick={openDocument}>Открыть оформленный документ</button><a className="diagnostic-contact" href="/#contact">Обсудить ситуацию со мной →</a></div>
       </section>}
     </section>
