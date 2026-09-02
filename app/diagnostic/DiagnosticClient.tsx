@@ -80,11 +80,14 @@ export default function DiagnosticClient() {
       createdAt: new Date().toISOString(),
     };
 
+    const encoded = encodeURIComponent(JSON.stringify(payload));
+    const url = `/diagnostic/document#brief=${encoded}`;
+
     try {
       window.localStorage.setItem("shashkov-diagnostic-brief", JSON.stringify(payload));
-      window.open("/diagnostic/document", "_blank", "noopener,noreferrer");
+      window.location.href = url;
     } catch {
-      window.location.href = "/diagnostic/document";
+      window.location.href = url;
     }
   };
 
