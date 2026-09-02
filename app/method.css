@@ -25,8 +25,8 @@
 .method-short-note { margin-top:20px; max-width:880px; font-size:17px; }
 .method-choice-principle { position:relative; margin-top:54px; padding-top:32px; border-top:1px solid rgba(10,20,38,.18); max-width:980px; counter-reset:principle; }
 .method-choice-principle::before { content:"Это может быть не маркетинг. Иногда причина оказывается в продукте, цене, продажах, сервисе или самом выборе рынка. Поэтому сначала — вопрос, потом инструмент."; display:block; margin:0 0 38px; padding:24px 26px; background:var(--ink); color:#fff; border-left:5px solid var(--blue); font-size:18px; line-height:1.5; font-weight:720; }
-.method-choice-principle > p:not(.eyebrow) { counter-increment:principle; position:relative; display:grid; grid-template-columns:44px minmax(0,1fr); gap:18px; margin:0; padding:24px 0; border-top:1px solid rgba(10,20,38,.12); font-size:20px; line-height:1.5; color:var(--muted); }
-.method-choice-principle > p:not(.eyebrow)::before { content:"0" counter(principle); color:var(--blue); font-size:12px; line-height:1.55; font-weight:850; letter-spacing:.06em; }
+.method-choice-principle > p:not(.eyebrow) { counter-increment:principle; position:relative; display:block; margin:0; padding:24px 0 24px 62px; border-top:1px solid rgba(10,20,38,.12); font-size:20px; line-height:1.5; color:var(--muted); }
+.method-choice-principle > p:not(.eyebrow)::before { content:"0" counter(principle); position:absolute; left:0; top:28px; color:var(--blue); font-size:12px; line-height:1.55; font-weight:850; letter-spacing:.06em; }
 .method-choice-principle > p strong { color:var(--ink); }
 .method-choice-principle small { display:block; margin-top:4px; padding:20px 0 0 62px; border-top:1px solid rgba(10,20,38,.12); font-size:14px; line-height:1.55; color:#667085; }
 
@@ -57,13 +57,11 @@
 .depth-result-output small { display:block; margin-bottom:8px; color:var(--blue); font-size:11px; font-weight:850; letter-spacing:.07em; text-transform:uppercase; }
 .depth-result-output strong { display:block; color:var(--ink); font-size:19px; line-height:1.35; }
 
-/* Existing tangible-output row becomes a deliberate artifact strip. */
 .product-depth-grid + div { margin-top:34px !important; padding:28px 30px !important; border:1px solid #ccd7e5 !important; border-top:3px solid var(--blue) !important; border-bottom:1px solid #ccd7e5 !important; background:#fff; }
 .product-depth-grid + div > p:first-child { color:var(--blue) !important; }
 .product-depth-grid + div > div > div { padding-right:18px; }
 .product-depth-grid + div > div > div + div { padding-left:18px; border-left:1px solid #dce4ef; }
 
-/* Proof sits where the visitor is deciding whether to contact. */
 .quick-form .form-promise::after { content:"24 года внутри сложного B2B и промышленного бизнеса · Executive MBA · Heidelberg · Nokian Tyres · Росатом · Роснано"; display:block; margin-top:18px; padding-top:16px; border-top:1px solid rgba(255,255,255,.22); font-size:12px; line-height:1.5; font-weight:700; letter-spacing:.01em; color:rgba(255,255,255,.78); }
 .contact-form .form-promise::after { content:"24 года в бизнесе и управлении · Executive MBA · опыт от технического блока и сервиса до развития и стратегического маркетинга"; display:block; margin-top:18px; padding-top:16px; border-top:1px solid rgba(255,255,255,.20); font-size:12px; line-height:1.5; font-weight:700; color:rgba(255,255,255,.76); }
 
@@ -79,11 +77,13 @@
 
 @media (max-width:1100px) {
   .system-result { gap:50px; }
-  .proof-intro > div[aria-label="Как изменялась постановка задачи в кейсе SLED Systems"] { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+  .proof-intro > div[aria-label="Как изменялась постановка задачи в кейсе SLED Systems"],
+  .proof-intro > div[aria-label="Как изменялась постановка задачи"] { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
   .about-copy > div[aria-label="Опыт Владимира Шашкова"] { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
 }
 
 @media (max-width:760px) {
+  html, body { overflow-x:clip; }
   .site-brand { grid-template-columns:minmax(0,126px) auto; column-gap:12px; row-gap:0; min-width:0; }
   .site-brand-mark { font-size:26px; }
   .site-brand::after { font-size:7.5px; line-height:1.02; letter-spacing:.05em; white-space:normal; max-width:126px; }
@@ -102,8 +102,8 @@
   .method-note, .compact-method-note { margin-top:34px; padding:24px 22px; }
   .method-choice-principle { margin-top:38px; padding-top:26px; }
   .method-choice-principle::before { margin-bottom:26px; padding:20px; font-size:16px; line-height:1.45; }
-  .method-choice-principle > p:not(.eyebrow) { grid-template-columns:32px minmax(0,1fr); gap:10px; padding:18px 0; font-size:17px; line-height:1.48; }
-  .method-choice-principle > p:not(.eyebrow)::before { font-size:10px; padding-top:3px; }
+  .method-choice-principle > p:not(.eyebrow) { display:block; padding:18px 0 18px 42px; font-size:17px; line-height:1.48; overflow-wrap:break-word; word-break:normal; }
+  .method-choice-principle > p:not(.eyebrow)::before { left:0; top:22px; font-size:10px; padding-top:0; }
   .method-choice-principle small { margin-top:0; padding:17px 0 0 42px; font-size:13px; }
   .depth-result-grid, .product-depth-grid { grid-template-columns:1fr; margin-top:28px; }
   .depth-result-card { min-height:auto; padding:28px 24px 30px; }
@@ -133,10 +133,14 @@
   .system-result > p { font-size:18px; }
   .compact-result { padding:70px 0 76px; }
 
-  .proof-intro > div[aria-label="Как изменялась постановка задачи в кейсе SLED Systems"] { display:block !important; margin:24px 0 22px !important; }
-  .proof-intro > div[aria-label="Как изменялась постановка задачи в кейсе SLED Systems"] > div { padding:18px 0 !important; border-left:0 !important; border-top:1px solid rgba(10,20,38,.12); }
-  .proof-intro > div[aria-label="Как изменялась постановка задачи в кейсе SLED Systems"] > div:first-child { border-top:0; }
-  .proof-intro > div[aria-label="Как изменялась постановка задачи в кейсе SLED Systems"] strong { font-size:17px !important; }
+  .proof-intro > div[aria-label="Как изменялась постановка задачи в кейсе SLED Systems"],
+  .proof-intro > div[aria-label="Как изменялась постановка задачи"] { display:block !important; margin:24px 0 22px !important; width:100% !important; }
+  .proof-intro > div[aria-label="Как изменялась постановка задачи в кейсе SLED Systems"] > div,
+  .proof-intro > div[aria-label="Как изменялась постановка задачи"] > div { padding:18px 0 !important; border-left:0 !important; border-top:1px solid rgba(10,20,38,.12); min-width:0; }
+  .proof-intro > div[aria-label="Как изменялась постановка задачи in кейсе SLED Systems"] > div:first-child,
+  .proof-intro > div[aria-label="Как изменялась постановка задачи"] > div:first-child { border-top:0; }
+  .proof-intro > div[aria-label="Как изменялась постановка задачи in кейсе SLED Systems"] strong,
+  .proof-intro > div[aria-label="Как изменялась постановка задачи"] strong { font-size:17px !important; line-height:1.4 !important; }
 
   .about-copy > div[aria-label="Опыт Владимира Шашкова"] { display:block !important; margin-top:22px !important; }
   .about-copy > div[aria-label="Опыт Владимира Шашкова"] > div { padding:18px 0; border-top:1px solid rgba(255,255,255,.14); }
