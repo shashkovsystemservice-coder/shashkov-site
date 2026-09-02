@@ -18,6 +18,15 @@ const evidenceLabels: Record<EvidenceLevel, string> = {
   assumption: "Пока это в основном предположение",
 };
 
+const exampleCase = {
+  changed: "Выручка отстаёт от плана, хотя поток обращений заметно не изменился.",
+  lossPoint: "conversation" as LossPoint,
+  currentTheory: "Возможно, клиенты приходят с ожиданием, которое не подтверждается в первом разговоре.",
+  evidenceLevel: "signals" as EvidenceLevel,
+  evidence: "В нескольких последних разговорах повторялись похожие вопросы о ценности и отличиях предложения.",
+  disproof: "Если разбор выигранных и проигранных разговоров покажет, что интерес после первого контакта сохраняется, значит место потери нужно искать на следующем этапе.",
+};
+
 export default function DiagnosticClient() {
   const [changed, setChanged] = useState("");
   const [lossPoint, setLossPoint] = useState<LossPoint>("unknown");
@@ -49,6 +58,16 @@ export default function DiagnosticClient() {
     return "Было бы рано выбирать рекламу, SEO, новый сайт, скидки или нового подрядчика, пока не определено хотя бы место потери и не проверена исходная гипотеза.";
   }, [lossPoint]);
 
+  const loadExample = () => {
+    setChanged(exampleCase.changed);
+    setLossPoint(exampleCase.lossPoint);
+    setCurrentTheory(exampleCase.currentTheory);
+    setEvidenceLevel(exampleCase.evidenceLevel);
+    setEvidence(exampleCase.evidence);
+    setDisproof(exampleCase.disproof);
+    setShowBrief(true);
+  };
+
   const reset = () => {
     setChanged("");
     setLossPoint("unknown");
@@ -70,6 +89,14 @@ export default function DiagnosticClient() {
       </div>
 
       <div className="diagnostic-form-card">
+        <div className="diagnostic-example-bar">
+          <div>
+            <strong>Не хотите заполнять?</strong>
+            <span>Можно посмотреть, как эта логика работает на готовом условном примере.</span>
+          </div>
+          <button type="button" onClick={loadExample}>Посмотреть на примере</button>
+        </div>
+
         <label className="diagnostic-field">
           <span>1. Что изменилось или что вас беспокоит?</span>
           <textarea value={changed} onChange={(e) => { setChanged(e.target.value); setShowBrief(false); }} placeholder="Например: посещаемость сайта примерно та же, но обращений стало меньше" />
