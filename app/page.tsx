@@ -166,8 +166,28 @@ export default function Home() {
           <p className="eyebrow">03 · Пример</p>
           <h2>SLED Systems: пришли за входящими заявками</h2>
           <p><strong>Можно было сразу идти в рекламу. Сначала мы проверили, была ли проблема вообще в трафике.</strong></p>
-          <p>Сайт давал 1,16% выручки, повторные продажи — 52,49%, активная полевая работа — 30,18%. Поэтому вопрос изменился: не «как добавить трафик», а «как на самом деле возникает продажа и где теряется возможность».</p>
-          <a className="text-link" href="/sled">Посмотреть разбор →</a>
+
+          <div style={{margin:"30px 0 26px",display:"grid",gridTemplateColumns:"repeat(4,minmax(0,1fr))",borderTop:"1px solid rgba(10,20,38,.18)",borderBottom:"1px solid rgba(10,20,38,.18)"}} aria-label="Как изменялась постановка задачи в кейсе SLED Systems">
+            <div style={{padding:"22px 18px 22px 0"}}>
+              <small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>01 · Запрос</small>
+              <strong style={{fontSize:"18px",lineHeight:1.4}}>Нужны входящие заявки.</strong>
+            </div>
+            <div style={{padding:"22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}>
+              <small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>02 · Факты</small>
+              <p style={{margin:0,fontSize:"16px",lineHeight:1.55}}><strong>1,16%</strong> выручки — сайт<br/><strong>52,49%</strong> — повторные продажи<br/><strong>30,18%</strong> — полевая работа</p>
+            </div>
+            <div style={{padding:"22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}>
+              <small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>03 · Что это меняет</small>
+              <strong style={{fontSize:"18px",lineHeight:1.4}}>Версия «нам просто нужно больше трафика» уже выглядит слабой.</strong>
+            </div>
+            <div style={{padding:"22px 0 22px 18px",borderLeft:"1px solid rgba(10,20,38,.12)"}}>
+              <small style={{display:"block",marginBottom:"9px",fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",color:"#667085"}}>04 · Следующий вопрос</small>
+              <strong style={{fontSize:"18px",lineHeight:1.4}}>Как на самом деле возникает продажа и где теряется возможность?</strong>
+            </div>
+          </div>
+
+          <p>Вместо автоматического перехода к рекламе изменилась сама постановка задачи. Это и есть смысл диагностики: не подтвердить первое предположение, а проверить его фактами.</p>
+          <a className="text-link" href="/sled">Посмотреть полный разбор →</a>
 
           <div style={{marginTop:"28px",paddingTop:"22px",borderTop:"1px solid rgba(10,20,38,.18)",maxWidth:"820px"}}>
             <p style={{fontSize:"17px",lineHeight:1.55,margin:"0 0 10px"}}><strong>Не только B2B.</strong> Та же логика работает в услугах и B2C.</p>
