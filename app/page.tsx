@@ -71,15 +71,18 @@ export default function Home() {
             </button>
           </div>
           <p style={{margin:"12px 0 0",fontSize:"14px",lineHeight:1.45,color:"#667085"}}>Decision Brief — самостоятельно. Разговор — 20–30 минут, бесплатно.</p>
-          <div className="hero-trust" aria-label="Опыт Владимира Шашкова">
-            <span><strong>24 года</strong> в бизнесе</span>
-            <span><strong>Executive MBA</strong></span>
-            <span><strong>Управление → развитие → маркетинг</strong></span>
-          </div>
         </div>
         <figure className="hero-photo"><Image src="/vladimir-photo.jpg" alt="Владимир Шашков" width={1206} height={1210} priority /></figure>
       </section>
     </div>
+
+    <section className="proof-strip" aria-label="Основания доверия">
+      <div className="page-shell proof-strip-grid">
+        <div><strong>24 года</strong><span>в бизнесе и управлении</span></div>
+        <div><strong>5% → 30%</strong><span>рост доли платного сервиса в одном из управленческих периодов</span></div>
+        <div><strong>Heidelberg · Nokian Tyres · Росатом · Роснано</strong><span>опыт в сложных B2B и промышленных средах</span></div>
+      </div>
+    </section>
 
     <section className="situations-stage" id="situations">
       <div className="page-shell">
@@ -105,6 +108,16 @@ export default function Home() {
           <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, что проверять и что делать первым.</h3><div className="depth-result-output"><small>Результат</small><strong>Ясно, где искать причину и какой следующий шаг уже можно обосновать.</strong></div></article>
           <article className="depth-result-card depth-result-card-main"><span>Полноценный проект</span><h3>Понять маркетинг бизнеса как связанную систему.</h3><div className="depth-result-output"><small>Результат</small><strong>Ясно, какие решения имеют приоритет и куда направлять ресурсы.</strong></div></article>
         </div>
+
+        <div className="brief-entry" aria-label="Decision Brief">
+          <div>
+            <span>Decision Brief · 6 вопросов · без звонка</span>
+            <h3>Можно сначала попробовать саму логику работы.</h3>
+            <p>На выходе — структура задачи, главный вопрос, что проверить первым и что пока рано делать. Результат можно сохранить в PDF.</p>
+          </div>
+          <a className="button" href="/diagnostic">Разобрать свою ситуацию</a>
+        </div>
+
         <div className="method-route compact-route" aria-label="Логика работы"><span>Задача</span><b>→</b><span>Проверка</span><b>→</b><span>Выбор</span><b>→</b><span>Действие</span></div>
         <a className="text-link" href="/work" style={{display:"inline-block",marginTop:"24px"}}>Как проходит работа — по шагам →</a>
       </div>
@@ -118,7 +131,7 @@ export default function Home() {
           <div><small>Запрос</small><strong>Нужны квалифицированные входящие заявки.</strong></div>
           <div><small>Факты</small><p>Продажи опирались не только на сайт, но и на повторные сделки и личную работу с рынком.</p></div>
           <div><small>Поворот</small><strong>Версия «нам просто нужно больше трафика» оказалась недостаточной.</strong></div>
-          <div><small>Результат этапа</small><p>Фокус сместился на доверие и более ранний вход компании в проект клиента.</p></div>
+          <div className="proof-result-cell"><small>Что изменилось</small><p><strong>Фокус сместился с рекламного трафика на доверие и более ранний вход компании в проект клиента.</strong></p></div>
         </div>
         <div className="proof-links"><a className="text-link proof-demo-link" href="/diagnostic">Попробовать эту логику на своей ситуации →</a></div>
         <p className="proof-demo-note">Компания и коммерческие данные не раскрываются. Здесь важна логика работы, а не название клиента.</p>
@@ -141,11 +154,6 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <div className="project-upcoming">
-          <div><span>Следующий разбор</span><small>Ресторан в центре Петербурга</small></div>
-          <h3>«Нужно посмотреть маркетинг ресторана»</h3>
-          <p>Готового ответа пока нет — сначала нужно понять, где находится ограничение.</p>
-        </div>
       </div>
     </section>
 
@@ -153,12 +161,8 @@ export default function Home() {
       <div className="page-shell about-grid">
         <div><p className="eyebrow">04 · Обо мне</p><h2>Я пришёл в маркетинг из управления бизнесом</h2></div>
         <div className="about-copy">
-          <p><strong>Поэтому смотрю не только на продвижение, а на всю коммерческую систему.</strong></p>
-          <div style={{marginTop:"26px",paddingTop:"22px",borderTop:"1px solid rgba(255,255,255,.18)",display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:"18px"}} aria-label="Опыт Владимира Шашкова">
-            <div><strong style={{display:"block",fontSize:"22px",lineHeight:1.25,marginBottom:"7px"}}>24 года</strong><span style={{fontSize:"15px",lineHeight:1.5}}>в бизнесе и управлении.</span></div>
-            <div><strong style={{display:"block",fontSize:"22px",lineHeight:1.25,marginBottom:"7px"}}>Heidelberg · Nokian Tyres · Росатом · Роснано</strong><span style={{fontSize:"15px",lineHeight:1.5}}>опыт в сложных B2B и промышленных средах.</span></div>
-            <div><strong style={{display:"block",fontSize:"22px",lineHeight:1.25,marginBottom:"7px"}}>Executive MBA</strong><span style={{fontSize:"15px",lineHeight:1.5}}>математика и автоматизация → управление → развитие → маркетинг.</span></div>
-          </div>
+          <p><strong>Поэтому смотрю не только на продвижение, а на всю коммерческую систему.</strong> Причина может быть в продукте, цене, продажах, сервисе, рынке или реализации внутри компании.</p>
+          <div className="about-facts"><span>Executive MBA</span><span>Математика и автоматизация</span><span>Управление → развитие → маркетинг</span></div>
         </div>
       </div>
     </section>
@@ -179,7 +183,7 @@ export default function Home() {
         <div>
           <p className="eyebrow eyebrow-light">06 · Следующий шаг</p>
           <h2>Не уверены, что менять первым?</h2>
-          <p>Можно начать с Decision Brief или просто написать мне.</p>
+          <p>Начните с Decision Brief. Если проще — просто напишите мне.</p>
           <div style={{display:"flex",flexWrap:"wrap",gap:"10px",alignItems:"center",marginTop:"24px"}} aria-label="Способы связи">
             <a className="button button-light" href="/diagnostic">Разобрать ситуацию</a>
             {contactChannels.map((channel) => channel.status === "active" ? <a key={channel.id} className="button button-light" href={channel.href} target="_blank" rel="noreferrer">Написать в {channel.label}</a> : <button key={channel.id} type="button" disabled aria-label="MAX — скоро" title="Канал MAX подключается" style={{display:"inline-flex",alignItems:"center",gap:"9px",minHeight:"48px",padding:"12px 16px",border:"1px solid rgba(255,255,255,.38)",background:"rgba(255,255,255,.07)",color:"rgba(255,255,255,.82)",font:"inherit",fontWeight:800,cursor:"default",opacity:.82}}><img src="https://max.ru/favicon.ico" alt="" width="22" height="22" loading="lazy" style={{display:"block",borderRadius:"5px"}}/><span>MAX</span><span style={{fontSize:"12px",fontWeight:750,opacity:.7}}>Скоро</span></button>)}
