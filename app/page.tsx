@@ -78,9 +78,18 @@ export default function Home() {
 
     <section className="proof-strip" aria-label="Основания доверия">
       <div className="page-shell proof-strip-grid">
-        <div><strong>24 года</strong><span>в бизнесе и управлении</span></div>
-        <div><strong>5% → 30%</strong><span>рост доли платного сервиса в одном из управленческих периодов</span></div>
-        <div><strong>Heidelberg · Nokian Tyres · Росатом · Роснано</strong><span>опыт в сложных B2B и промышленных средах</span></div>
+        <div className="proof-strip-item">
+          <strong>24 года</strong>
+          <span>внутри сложного B2B и промышленного бизнеса</span>
+        </div>
+        <div className="proof-strip-item">
+          <strong>20+ моделей</strong>
+          <span>запуск новой продуктовой линейки, собственного бренда и продуктов совместного проекта с Philips</span>
+        </div>
+        <div className="proof-strip-item">
+          <strong>Heidelberg · Nokian Tyres · Росатом · Роснано</strong>
+          <span>опыт от международного производителя и технологического стартапа до инженерного B2B</span>
+        </div>
       </div>
     </section>
 
