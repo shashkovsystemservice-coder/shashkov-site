@@ -74,7 +74,7 @@ export default function Home() {
           <span>участие в запуске продуктовой линейки — под собственным брендом и в совместном предприятии с Philips</span>
         </div>
         <div className="proof-strip-item">
-          <strong>Heidelberg · Nokian Tyres · Росатом · Роснано</strong>
+          <strong>Heidelberg · Nokian Tyres · Роснано · Росатом</strong>
           <span>опыт от промышленного оборудования и инженерных проектов до потребительского бренда, продукта и сервисной модели</span>
         </div>
       </div>
