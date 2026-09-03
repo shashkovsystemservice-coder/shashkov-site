@@ -9,6 +9,12 @@
   white-space: nowrap;
 }
 
+/* Kill the legacy subtitle injected by method.css. The descriptor lives only under the name. */
+.site-brand::after {
+  content: none !important;
+  display: none !important;
+}
+
 .site-brand-mark {
   position: relative;
   display: inline-flex;
@@ -37,7 +43,8 @@
 .site-brand > span:last-child {
   position: relative;
   display: block;
-  padding-bottom: 15px;
+  padding: 0 0 15px 0 !important;
+  border-left: 0 !important;
   color: var(--ink);
   font-size: 14px;
   line-height: 1.05;
@@ -69,7 +76,7 @@
   }
 
   .site-brand > span:last-child {
-    padding-bottom: 13px;
+    padding: 0 0 13px 0 !important;
     font-size: 12px;
   }
 
