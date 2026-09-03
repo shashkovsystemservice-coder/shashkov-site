@@ -20,13 +20,23 @@
   /* Calm secondary section headings. */
   .method-stage h2,
   .proof-stage h2,
-  .project-spectrum h2,
-  .about-stage h2,
   .faq-stage h2,
   .contact-stage h2 {
     font-size: clamp(34px, 9.4vw, 44px) !important;
     line-height: 1.02 !important;
     letter-spacing: -.045em !important;
+  }
+
+  /* These two headings were still reading like second heroes on a phone. */
+  .project-spectrum h2 {
+    font-size: clamp(31px, 8.5vw, 39px) !important;
+    line-height: 1.03 !important;
+    letter-spacing: -.043em !important;
+  }
+  .about-stage h2 {
+    font-size: clamp(31px, 8.3vw, 39px) !important;
+    line-height: 1.03 !important;
+    letter-spacing: -.043em !important;
   }
 
   /* Reduce vertical travel on a phone. */
@@ -47,6 +57,18 @@
   .method-intro,
   .situations-intro {
     margin-bottom: 30px !important;
+  }
+
+  /* Give the late-page section changes a clearer breath than their internal rows. */
+  .project-spectrum {
+    padding-bottom: 76px !important;
+  }
+  .about-stage {
+    padding-top: 72px !important;
+    padding-bottom: 78px !important;
+  }
+  .faq-stage {
+    padding-top: 72px !important;
   }
 
   /* Four owner situations read faster as one editorial column on a phone. */
@@ -112,8 +134,13 @@
     padding: 24px 0 26px !important;
   }
   .brief-entry h3 {
-    font-size: clamp(28px, 7.8vw, 35px) !important;
-    line-height: 1.06 !important;
+    font-size: clamp(27px, 7.4vw, 33px) !important;
+    line-height: 1.07 !important;
+  }
+  .brief-entry .button {
+    min-height: 46px !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
   }
 
   /* Testimonial is proof, not another hero. */
@@ -135,36 +162,53 @@
     min-height: 48px;
   }
 
-  /* Compact the project cards and about section. */
+  /* The case already has a CTA; make it easy to notice without turning it into a sticky sales control. */
+  .proof-links .proof-demo-link:nth-child(4) {
+    margin-top: 20px !important;
+    padding: 20px 0 10px !important;
+    font-size: 17px !important;
+    line-height: 1.25 !important;
+    font-weight: 780 !important;
+  }
+
+  /* Compact intermediate bold headlines so section title and item title do not have equal weight. */
   .project-spectrum-card {
     min-height: 0 !important;
     padding-top: 22px !important;
     padding-bottom: 26px !important;
   }
   .project-spectrum-card h3 {
-    font-size: clamp(27px, 7.6vw, 34px) !important;
-    line-height: 1.08 !important;
+    font-size: clamp(25px, 7vw, 31px) !important;
+    line-height: 1.09 !important;
+  }
+  .about-system-lead,
+  .about-capability {
+    font-size: 17px !important;
+    line-height: 1.48 !important;
   }
   .about-foundations > div {
     padding-top: 20px !important;
     padding-bottom: 20px !important;
   }
 
-  /* Better readability on the dark conversion section. */
+  /* Better readability and separation in the dark conversion section. */
   .contact-stage .contact-grid > div > p:not(.eyebrow) {
     color: #c8d5e7 !important;
   }
   .contact-stage .contact-grid > div > p strong {
     color: #ffffff !important;
   }
+  .contact-stage .contact-form {
+    margin-top: 34px !important;
+  }
 
-  /* FAQ already works well; only tighten the spacing slightly. */
+  /* FAQ is already an accordion; make the closed list lighter and faster to scan. */
   .faq-list details {
-    padding-top: 20px !important;
-    padding-bottom: 20px !important;
+    padding-top: 19px !important;
+    padding-bottom: 19px !important;
   }
   .faq-list summary {
-    font-size: clamp(22px, 6.4vw, 28px) !important;
-    line-height: 1.18 !important;
+    font-size: clamp(21px, 6vw, 26px) !important;
+    line-height: 1.2 !important;
   }
 }
