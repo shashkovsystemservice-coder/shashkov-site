@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./brand.css";
 import "./atmosphere.css";
 import "./about-contrast.css";
 import "./conversion-paths.css";
