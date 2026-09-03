@@ -1,0 +1,167 @@
+/* Editorial refinement pass: preserve the cool palette, reduce UI-card weight. */
+
+/* Product / depth section: make it read like an editorial spread, not a pricing UI. */
+.product-depth-grid .depth-result-card,
+.product-depth-grid .depth-result-card:first-child {
+  width: min(86%, 940px);
+  padding: 34px 0 38px;
+  border: 0;
+  border-top: 2px solid var(--ink);
+  background: transparent;
+  box-shadow: none;
+}
+.product-depth-grid .depth-result-card:first-child::before {
+  margin-bottom: 20px;
+}
+.product-depth-grid .depth-result-card-main {
+  width: 100%;
+  margin-top: 58px;
+  padding: 42px 0 46px;
+  border: 0;
+  border-top: 3px solid var(--blue);
+  background: transparent;
+  color: var(--ink);
+  box-shadow: none;
+}
+.product-depth-grid .depth-result-card-main::before { color: #667085; }
+.product-depth-grid .depth-result-card-main > span { color: var(--blue); }
+.product-depth-grid .depth-result-card-main h3 { color: var(--ink); }
+.product-depth-grid .depth-result-card-main > p { color: var(--muted); }
+.product-depth-grid .depth-result-output,
+.product-depth-grid .depth-result-card-main .depth-result-output {
+  max-width: 940px;
+  margin-top: 28px;
+  padding: 22px 0 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+}
+.product-depth-grid .depth-result-card-main .depth-result-output small { color: var(--blue); }
+.product-depth-grid .depth-result-card-main .depth-result-output strong { color: var(--ink); }
+.team-work-note {
+  max-width: 860px;
+  margin-top: 26px !important;
+  padding: 20px 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted) !important;
+}
+.team-work-note strong { color: var(--ink); }
+
+/* Strategic outputs: typography and whitespace do the grouping. */
+#product > .page-shell > div[aria-label="Что может остаться после стратегического проекта"] {
+  column-gap: 34px !important;
+  row-gap: 24px !important;
+  margin-top: 8px !important;
+  padding: 28px 0 30px !important;
+  border-top: 1px solid var(--line) !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+#product > .page-shell > div[aria-label="Что может остаться после стратегического проекта"] > div {
+  padding: 0 18px 0 0;
+}
+#product > .page-shell > div[aria-label="Что может остаться после стратегического проекта"] strong {
+  max-width: 300px;
+  font-size: 16px;
+  line-height: 1.48 !important;
+  font-weight: 700;
+}
+
+/* B2C example becomes a margin note rather than another card. */
+#product div[aria-label="Пример B2C-ситуации"] {
+  width: min(82%, 940px);
+  margin-top: 34px !important;
+  padding: 24px 0 0 22px !important;
+  border-top: 1px solid var(--line) !important;
+  border-left: 2px solid var(--blue);
+}
+
+/* Decision Brief: keep it important without another bordered rectangle. */
+.brief-entry {
+  margin-top: 46px;
+  padding: 32px 0;
+  border: 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+}
+
+/* Proof / artifacts: retain evidence, remove dashboard-card appearance. */
+.proof-links {
+  margin-top: 38px;
+  padding: 0;
+  border: 0;
+  border-top: 2px solid var(--ink);
+  background: transparent;
+  gap: 0;
+}
+.proof-links::before {
+  padding: 18px 0 14px;
+  margin: 0;
+  border-bottom: 1px solid var(--line);
+}
+.proof-links .proof-demo-link {
+  min-height: 150px;
+  padding: 48px 22px 22px !important;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+}
+.proof-links .proof-demo-link + .proof-demo-link {
+  border-left: 1px solid var(--line);
+}
+.proof-links .proof-demo-link:nth-child(4) {
+  margin-top: 18px;
+  border: 0;
+  border-left: 0;
+  background: transparent;
+  color: var(--blue) !important;
+  text-align: left;
+  justify-content: flex-start;
+  padding: 14px 0 !important;
+}
+
+/* Testimonial: quote is proof, not a second hero. */
+.proof-stage div[aria-label="Отзыв собственника — часть кейса"] {
+  background: transparent !important;
+  border-top-color: var(--ink) !important;
+  border-bottom-color: var(--line) !important;
+}
+
+/* Situations and project spectrum stay line-based: slightly more air, less UI density. */
+.situation-column { padding-top: 24px; }
+.project-spectrum-card { min-height: 270px; }
+
+/* Proof strip remains compact and factual. */
+.proof-strip-item { min-height: 126px; }
+.proof-strip strong { letter-spacing: -.02em; }
+
+@media (max-width: 760px) {
+  .product-depth-grid .depth-result-card,
+  .product-depth-grid .depth-result-card:first-child,
+  .product-depth-grid .depth-result-card-main {
+    width: 100%;
+    margin-top: 36px;
+    padding: 28px 0 30px;
+  }
+  .product-depth-grid .depth-result-card:first-child { margin-top: 0; }
+  .product-depth-grid .depth-result-output,
+  .product-depth-grid .depth-result-card-main .depth-result-output {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px 0 0;
+  }
+  #product div[aria-label="Пример B2C-ситуации"] {
+    width: 100%;
+    padding-left: 16px !important;
+  }
+  .brief-entry { padding: 26px 0; }
+  .proof-links { padding: 0; }
+  .proof-links .proof-demo-link,
+  .proof-links .proof-demo-link + .proof-demo-link {
+    min-height: auto;
+    border-left: 0;
+    padding: 42px 0 20px !important;
+  }
+  .proof-links .proof-demo-link::before { left: 0; }
+}
