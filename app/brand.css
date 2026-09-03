@@ -44,16 +44,16 @@
   transform-origin: left bottom;
 }
 
-/* Long architectural signature rule. It intentionally stops short of the descriptor end. */
+/* Long architectural signature rule aligned with the full descriptor width. */
 .site-brand-mark::after {
   content: "";
   position: absolute;
   left: 0;
-  width: 160px;
+  width: 178px;
   bottom: 1px;
   height: 1px;
-  background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 88%, rgba(10,20,38,.08) 100%);
-  transform: rotate(-.12deg);
+  background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 96%, rgba(10,20,38,.18) 100%);
+  transform: rotate(-.08deg);
   transform-origin: left center;
 }
 
@@ -148,7 +148,7 @@
   }
 
   .site-brand-mark::after {
-    width: 132px;
+    width: 158px;
     bottom: 1px;
   }
 
