@@ -1,6 +1,7 @@
 import Image from "next/image";
 import "./method.css";
 import "./projects.css";
+import "./editorial-pass.css";
 
 const situations = [
   "Нас мало знают",
