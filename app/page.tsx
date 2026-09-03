@@ -19,25 +19,25 @@ const currentProjects = [
     status: "Проект",
     context: "Промышленный продукт",
     question: "«Нам нужно больше входящих заявок»",
-    reframing: "Проверили, действительно ли ограничение во входящем потоке — и изменили сам вопрос.",
+    reframing: "Вместо простого увеличения трафика фокус сместился на доверие, доказательства и более ранний вход в проект клиента.",
   },
   {
     status: "Текущая работа",
     context: "Промышленное оборудование",
     question: "«Хотим продавать линии, а не отдельные станки»",
-    reframing: "Сначала определяем, что именно продаём как решение, кому и за какую ценность — только потом выбираем способ продажи.",
+    reframing: "Вопрос о продажах превратился в вопрос о новом продукте: составе решения, ответственности, ценности и доказательствах.",
   },
   {
     status: "Исследование",
     context: "Сеть фитнес-клубов",
     question: "«Хотим соединить Fitness × Boxing × Wellness»",
-    reframing: "Сначала проверяем, есть ли здесь единая клиентская задача и новый продукт — или пока только набор услуг.",
+    reframing: "Проверка сместилась с набора услуг на единую клиентскую задачу: есть ли здесь новый продукт вообще.",
   },
   {
     status: "Исследование",
     context: "Event-бизнес",
     question: "«Нужно улучшить сайт и предложение»",
-    reframing: "Сначала разбираем категорию, продукт и причины выбора клиента — потом решаем, что менять на сайте.",
+    reframing: "Редизайн перестал быть отправной точкой: сначала разбираем, что именно выбирает клиент и почему.",
   },
 ] as const;
 
@@ -65,12 +65,7 @@ export default function Home() {
           <div className="hero-actions">
             <a className="button" href="/diagnostic">Разобрать свою ситуацию</a>
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
-            <button type="button" disabled aria-label="MAX — скоро" title="Канал MAX подключается" style={{display:"inline-flex",alignItems:"center",gap:"7px",padding:0,border:0,background:"transparent",color:"#667085",font:"inherit",fontWeight:800,cursor:"default",opacity:.8}}>
-              <img src="https://max.ru/favicon.ico" alt="" width="18" height="18" loading="lazy" style={{display:"block",borderRadius:"4px"}} />
-              <span>MAX</span><span style={{fontSize:"12px",fontWeight:750,opacity:.75}}>Скоро</span>
-            </button>
           </div>
-          <p style={{margin:"12px 0 0",fontSize:"14px",lineHeight:1.45,color:"#667085"}}>Decision Brief — самостоятельно. Разговор — 20–30 минут, бесплатно.</p>
           <div className="hero-paths" aria-label="С чего начать">
             <a href="/diagnostic"><span>Не понимаю, в чём проблема</span><strong>Начать с 6 вопросов →</strong></a>
             <a href="#case"><span>Хочу сначала посмотреть работу</span><strong>Открыть реальные артефакты →</strong></a>
@@ -119,11 +114,11 @@ export default function Home() {
       <div className="page-shell">
         <div className="section-intro method-intro"><p className="eyebrow">02 · Что должно стать понятно</p><h2>Что проверять первым — и что делать дальше.</h2></div>
         <div className="depth-result-grid product-depth-grid">
-          <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, в чём главный вопрос и что проверить первым.</h3><div className="depth-result-output"><small>Результат</small><strong>Понятно, где искать причину и какой следующий шаг уже имеет смысл.</strong></div></article>
+          <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, в чём главный вопрос и что проверить первым.</h3><div className="depth-result-output"><small>Результат</small><strong>Понятно, где искать причину, что проверить и какое решение пока рано принимать.</strong></div></article>
           <article className="depth-result-card depth-result-card-main">
             <span>Полноценный проект</span>
             <h3>Понять, где бизнес теряет рост и что менять в первую очередь.</h3>
-            <div className="depth-result-output"><small>Результат</small><strong>Понятно, какие решения приоритетны и куда направлять ресурсы.</strong></div>
+            <div className="depth-result-output"><small>Результат</small><strong>Приоритеты, критерии выбора и понятный следующий ход для собственника и команды.</strong></div>
             <p className="team-work-note">При необходимости — рабочие сессии с командой, чтобы решение стало понятной логикой действий, а не осталось только в документе.</p>
           </article>
         </div>
@@ -152,7 +147,7 @@ export default function Home() {
           <div><small>Что перестало быть очевидным</small><strong>Что следующий правильный шаг — просто увеличить рекламный трафик.</strong></div>
           <div className="proof-result-cell"><small>Что изменилось в решении</small><p><strong>Фокус сместился на доверие и более ранний вход компании в проект клиента.</strong></p></div>
         </div>
-        <p className="proof-meaning"><strong>То есть результатом работы стал не «ещё один маркетинговый инструмент», а другое понимание того, что именно стоит менять.</strong></p>
+        <p className="proof-meaning"><strong>Изменилось не только понимание проблемы, но и действия: собственник уточнил сегментацию и ценность, начал собирать кейсы и проверять проектный канал.</strong></p>
         <div className="proof-links">
           <a className="text-link proof-demo-link" href="/artifacts/task-map">Карта задачи →</a>
           <a className="text-link proof-demo-link" href="/artifacts/market-choice">Карта рынка и выбора →</a>
@@ -176,8 +171,8 @@ export default function Home() {
     <section className="project-spectrum" aria-labelledby="project-spectrum-title">
       <div className="page-shell">
         <div className="project-spectrum-head">
-          <p className="eyebrow">B2B и B2C · разные ситуации · один принцип</p>
-          <h2 id="project-spectrum-title">Сначала понять вопрос. Потом выбирать решение.</h2>
+          <p className="eyebrow">B2B и B2C · разные ситуации</p>
+          <h2 id="project-spectrum-title">Что меняется, когда не принимать первый запрос за диагноз.</h2>
         </div>
         <div className="project-spectrum-grid">
           {currentProjects.map((project, index) => (
