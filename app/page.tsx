@@ -23,12 +23,6 @@ const currentProjects = [
   },
   {
     status: "Исследование",
-    context: "Сеть фитнес-клубов",
-    question: "«Хотим соединить Fitness × Boxing × Wellness»",
-    reframing: "Проверка сместилась с набора услуг на единую клиентскую задачу: есть ли здесь новый продукт вообще.",
-  },
-  {
-    status: "Исследование",
     context: "Event-бизнес",
     question: "«Нужно улучшить сайт и предложение»",
     reframing: "Редизайн перестал быть отправной точкой: сначала разбираем, что именно выбирает клиент и почему.",
@@ -112,15 +106,21 @@ export default function Home() {
             <span>Полноценный стратегический проект</span>
             <h3>Когда вопрос затрагивает не один инструмент, а рынок, продукт, продажи, сервис или исполнение.</h3>
             <div className="depth-result-output"><small>Результат</small><strong>Согласованная архитектура решения: что менять, для кого, какой продукт, что обещать, чем доказать, как продавать и что должна изменить команда.</strong></div>
-            <p className="team-work-note">Глубина зависит от задачи: не каждый проект требует всех контуров. Собирается только то, что нужно для обоснованного решения и его реализации.</p>
+            <p className="team-work-note"><strong>Глубина зависит не от размера компании, а от вопроса.</strong> Иногда достаточно разобраться с одной проблемой. Иногда изменение затрагивает продукт, продажи, сервис и продвижение одновременно.</p>
           </article>
         </div>
 
         <div aria-label="Что может остаться после стратегического проекта" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(210px,1fr))",gap:"1px",marginTop:"1px",background:"#d9e1eb",border:"1px solid #d9e1eb"}}>
           <div style={{background:"#fff",padding:"24px 22px"}}><small style={{display:"block",marginBottom:"9px",color:"#667085",fontWeight:800}}>Рынок и выбор</small><strong style={{display:"block",lineHeight:1.35}}>Кто клиент, что он выбирает, какие альтернативы и критерии решают выбор.</strong></div>
           <div style={{background:"#fff",padding:"24px 22px"}}><small style={{display:"block",marginBottom:"9px",color:"#667085",fontWeight:800}}>Продукт и ценность</small><strong style={{display:"block",lineHeight:1.35}}>Что бизнес реально способен дать клиенту и где проходят границы ответственности.</strong></div>
-          <div style={{background:"#fff",padding:"24px 22px"}}><small style={{display:"block",marginBottom:"9px",color:"#667085",fontWeight:800}}>Позиционирование и proof</small><strong style={{display:"block",lineHeight:1.35}}>Что можно честно обещать рынку — и какими фактами это подтверждать.</strong></div>
+          <div style={{background:"#fff",padding:"24px 22px"}}><small style={{display:"block",marginBottom:"9px",color:"#667085",fontWeight:800}}>Позиционирование и доказательства</small><strong style={{display:"block",lineHeight:1.35}}>Что можно честно обещать рынку — и какими фактами это подтверждать.</strong></div>
           <div style={{background:"#fff",padding:"24px 22px"}}><small style={{display:"block",marginBottom:"9px",color:"#667085",fontWeight:800}}>Решения и исполнение</small><strong style={{display:"block",lineHeight:1.35}}>Что менять в продажах, маркетинге, сервисе и работе команды, чтобы стратегия заработала.</strong></div>
+        </div>
+
+        <div aria-label="Пример B2C-ситуации" style={{marginTop:"28px",padding:"26px 28px",border:"1px solid #d9e1eb",background:"#f8fafc"}}>
+          <small style={{display:"block",marginBottom:"10px",color:"#184ed8",fontWeight:900,letterSpacing:".06em",textTransform:"uppercase"}}>Пример из B2C-исследования · сеть фитнес-клубов</small>
+          <strong style={{display:"block",fontSize:"clamp(22px,2.2vw,30px)",lineHeight:1.2,letterSpacing:"-.02em"}}>«Хотим соединить Fitness × Boxing × Wellness»</strong>
+          <p style={{maxWidth:"820px",margin:"14px 0 0",color:"#475467",fontSize:"16px",lineHeight:1.6}}>Вопрос быстро сместился с продвижения трёх направлений на более базовый: есть ли здесь единая клиентская задача и новый продукт вообще.</p>
         </div>
 
         <div className="brief-entry" aria-label="Decision Brief">
