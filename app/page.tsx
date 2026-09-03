@@ -25,7 +25,7 @@ const currentProjects = [
     status: "Текущая работа",
     context: "Промышленное оборудование",
     question: "«Хотим продавать линии, а не отдельные станки»",
-    reframing: "Вопрос о продажах превратился в вопрос о новом продукте: составе решения, ответственности, ценности и доказательствах.",
+    reframing: "Вопрос о продажах оказался вопросом о самой модели: что считать продуктом, за что отвечать, как это доказать, продавать и поддерживать.",
   },
   {
     status: "Исследование",
@@ -115,11 +115,18 @@ export default function Home() {
         <div className="depth-result-grid product-depth-grid">
           <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, в чём главный вопрос и что проверить первым.</h3><div className="depth-result-output"><small>Результат</small><strong>Понятно, где искать причину, что проверить и какое решение пока рано принимать.</strong></div></article>
           <article className="depth-result-card depth-result-card-main">
-            <span>Полноценный проект</span>
-            <h3>Понять, где бизнес теряет рост и что менять в первую очередь.</h3>
-            <div className="depth-result-output"><small>Результат</small><strong>Приоритеты, критерии выбора и понятный следующий ход для собственника и команды.</strong></div>
-            <p className="team-work-note">При необходимости — рабочие сессии с командой, чтобы решение стало понятной логикой действий, а не осталось только в документе.</p>
+            <span>Полноценный стратегический проект</span>
+            <h3>Когда вопрос затрагивает не один инструмент, а рынок, продукт, продажи, сервис или исполнение.</h3>
+            <div className="depth-result-output"><small>Результат</small><strong>Согласованная архитектура решения: что менять, для кого, какой продукт, что обещать, чем доказать, как продавать и что должна изменить команда.</strong></div>
+            <p className="team-work-note">Глубина зависит от задачи: не каждый проект требует всех контуров. Собирается только то, что нужно для обоснованного решения и его реализации.</p>
           </article>
+        </div>
+
+        <div aria-label="Что может остаться после стратегического проекта" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(210px,1fr))",gap:"1px",marginTop:"1px",background:"#d9e1eb",border:"1px solid #d9e1eb"}}>
+          <div style={{background:"#fff",padding:"24px 22px"}}><small style={{display:"block",marginBottom:"9px",color:"#667085",fontWeight:800}}>Рынок и выбор</small><strong style={{display:"block",lineHeight:1.35}}>Кто клиент, что он выбирает, какие альтернативы и критерии решают выбор.</strong></div>
+          <div style={{background:"#fff",padding:"24px 22px"}}><small style={{display:"block",marginBottom:"9px",color:"#667085",fontWeight:800}}>Продукт и ценность</small><strong style={{display:"block",lineHeight:1.35}}>Что бизнес реально способен дать клиенту и где проходят границы ответственности.</strong></div>
+          <div style={{background:"#fff",padding:"24px 22px"}}><small style={{display:"block",marginBottom:"9px",color:"#667085",fontWeight:800}}>Позиционирование и proof</small><strong style={{display:"block",lineHeight:1.35}}>Что можно честно обещать рынку — и какими фактами это подтверждать.</strong></div>
+          <div style={{background:"#fff",padding:"24px 22px"}}><small style={{display:"block",marginBottom:"9px",color:"#667085",fontWeight:800}}>Решения и исполнение</small><strong style={{display:"block",lineHeight:1.35}}>Что менять в продажах, маркетинге, сервисе и работе команды, чтобы стратегия заработала.</strong></div>
         </div>
 
         <div className="brief-entry" aria-label="Decision Brief">
@@ -190,6 +197,7 @@ export default function Home() {
         <div><p className="eyebrow">04 · Почему такой взгляд</p><h2>В маркетинг я пришёл из управления бизнесом</h2></div>
         <div className="about-copy">
           <p className="about-system-lead"><strong>Поэтому смотрю не только на продвижение. Причина может быть в продукте, цене, продажах, сервисе, рынке или в том, как решение реализуется внутри компании.</strong></p>
+          <p>Поэтому работа иногда заканчивается не маркетинговой рекомендацией, а изменением самой модели продукта, продаж, сервиса или принятия решений внутри компании.</p>
           <div className="about-foundations" aria-label="Основа профессионального подхода">
             <div><small>Инженерная база</small><strong>Математика и автоматизация</strong><span>Привычка разбирать систему, зависимости и причины.</span></div>
             <div><small>Управленческая школа</small><strong>Executive MBA · качество · проекты · изменения</strong><span>Не только выбрать решение, но и сделать его управляемым.</span></div>
