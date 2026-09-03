@@ -71,7 +71,7 @@ export default function Home() {
         </div>
         <div className="proof-strip-item">
           <strong>20+ продуктовых моделей</strong>
-          <span>опыт создания и вывода продуктовой линейки: от требований рынка и ценности для клиента до запуска — под собственным брендом и совместно с Philips</span>
+          <span>от требований рынка до запуска — собственный бренд и совместный проект с Philips</span>
         </div>
         <div className="proof-strip-item">
           <strong>Heidelberg · Nokian Tyres · Роснано · Росатом</strong>
@@ -110,17 +110,17 @@ export default function Home() {
           </article>
         </div>
 
-        <div aria-label="Что может остаться после стратегического проекта" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(210px,1fr))",gap:"1px",marginTop:"1px",background:"#d9e1eb",border:"1px solid #d9e1eb"}}>
-          <div style={{background:"#fff",padding:"24px 22px"}}><small style={{display:"block",marginBottom:"9px",color:"#667085",fontWeight:800}}>Рынок и выбор</small><strong style={{display:"block",lineHeight:1.35}}>Кто клиент, что он выбирает, какие альтернативы и критерии решают выбор.</strong></div>
-          <div style={{background:"#fff",padding:"24px 22px"}}><small style={{display:"block",marginBottom:"9px",color:"#667085",fontWeight:800}}>Продукт и ценность</small><strong style={{display:"block",lineHeight:1.35}}>Что бизнес реально способен дать клиенту и где проходят границы ответственности.</strong></div>
-          <div style={{background:"#fff",padding:"24px 22px"}}><small style={{display:"block",marginBottom:"9px",color:"#667085",fontWeight:800}}>Позиционирование и доказательства</small><strong style={{display:"block",lineHeight:1.35}}>Что можно честно обещать рынку — и какими фактами это подтверждать.</strong></div>
-          <div style={{background:"#fff",padding:"24px 22px"}}><small style={{display:"block",marginBottom:"9px",color:"#667085",fontWeight:800}}>Решения и исполнение</small><strong style={{display:"block",lineHeight:1.35}}>Что менять в продажах, маркетинге, сервисе и работе команды, чтобы стратегия заработала.</strong></div>
+        <div aria-label="Что может остаться после стратегического проекта" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(210px,1fr))",columnGap:"28px",rowGap:"20px",marginTop:"18px",padding:"24px 0",borderTop:"1px solid #d9e1eb",borderBottom:"1px solid #d9e1eb"}}>
+          <div><small style={{display:"block",marginBottom:"8px",color:"#667085",fontWeight:800}}>Рынок и выбор</small><strong style={{display:"block",lineHeight:1.4}}>Кто клиент, что он выбирает, какие альтернативы и критерии решают выбор.</strong></div>
+          <div><small style={{display:"block",marginBottom:"8px",color:"#667085",fontWeight:800}}>Продукт и ценность</small><strong style={{display:"block",lineHeight:1.4}}>Что бизнес реально способен дать клиенту и где проходят границы ответственности.</strong></div>
+          <div><small style={{display:"block",marginBottom:"8px",color:"#667085",fontWeight:800}}>Позиционирование и доказательства</small><strong style={{display:"block",lineHeight:1.4}}>Что можно честно обещать рынку — и какими фактами это подтверждать.</strong></div>
+          <div><small style={{display:"block",marginBottom:"8px",color:"#667085",fontWeight:800}}>Решения и исполнение</small><strong style={{display:"block",lineHeight:1.4}}>Что менять в продажах, маркетинге, сервисе и работе команды, чтобы стратегия заработала.</strong></div>
         </div>
 
-        <div aria-label="Пример B2C-ситуации" style={{marginTop:"28px",padding:"26px 28px",border:"1px solid #d9e1eb",background:"#f8fafc"}}>
-          <small style={{display:"block",marginBottom:"10px",color:"#184ed8",fontWeight:900,letterSpacing:".06em",textTransform:"uppercase"}}>Пример из B2C-исследования · сеть фитнес-клубов</small>
-          <strong style={{display:"block",fontSize:"clamp(22px,2.2vw,30px)",lineHeight:1.2,letterSpacing:"-.02em"}}>«Хотим соединить Fitness × Boxing × Wellness»</strong>
-          <p style={{maxWidth:"820px",margin:"14px 0 0",color:"#475467",fontSize:"16px",lineHeight:1.6}}>Вопрос быстро сместился с продвижения трёх направлений на более базовый: есть ли здесь единая клиентская задача и новый продукт вообще.</p>
+        <div aria-label="Пример B2C-ситуации" style={{marginTop:"28px",paddingTop:"22px",borderTop:"1px solid #d9e1eb"}}>
+          <small style={{display:"block",marginBottom:"9px",color:"#184ed8",fontWeight:900,letterSpacing:".06em",textTransform:"uppercase"}}>B2C-исследование · сеть фитнес-клубов</small>
+          <strong style={{display:"block",fontSize:"clamp(21px,2vw,28px)",lineHeight:1.2,letterSpacing:"-.02em"}}>«Хотим соединить Fitness × Boxing × Wellness»</strong>
+          <p style={{maxWidth:"820px",margin:"12px 0 0",color:"#475467",fontSize:"16px",lineHeight:1.6}}>Вопрос быстро сместился с продвижения трёх направлений на более базовый: есть ли здесь единая клиентская задача и новый продукт вообще.</p>
         </div>
 
         <div className="brief-entry" aria-label="Decision Brief">
@@ -157,14 +157,10 @@ export default function Home() {
           <p className="proof-demo-note">Рабочие артефакты обезличены: названия компаний и коммерческие данные не раскрываются.</p>
         </div>
 
-        <div aria-label="Отзыв собственника — часть кейса" style={{maxWidth:"1100px",marginTop:"48px",padding:"38px 42px 40px",borderTop:"3px solid #0a1426",borderBottom:"1px solid #d9e1eb",background:"#f8fafc"}}>
-          <p style={{margin:"0 0 18px",color:"#184ed8",fontSize:"11px",lineHeight:1.3,fontWeight:900,letterSpacing:".08em",textTransform:"uppercase"}}>Отзыв по этому проекту</p>
-          <blockquote style={{margin:0,maxWidth:"980px",color:"#0a1426",fontSize:"clamp(28px,3vw,44px)",lineHeight:1.12,letterSpacing:"-.03em",fontWeight:790}}>«Разбор помог увидеть, что проблема была шире привлечения заявок. Стало понятно, что нужно доработать сегментацию, ценность и доказательную базу. После этого мы начали собирать кейсы и проверять проектный канал.»</blockquote>
-          <p style={{margin:"24px 0 0",color:"#667085",fontSize:"14px",lineHeight:1.45}}><strong style={{color:"#0a1426"}}>Собственник бизнеса</strong> · проект обезличен</p>
-        </div>
-
-        <div style={{marginTop:"72px",paddingTop:"28px",borderTop:"1px solid #d9e1eb"}} aria-label="Конец кейса">
-          <p style={{margin:0,color:"#667085",fontSize:"13px",fontWeight:800,letterSpacing:".06em",textTransform:"uppercase"}}>Конец кейса</p>
+        <div aria-label="Отзыв собственника — часть кейса" style={{maxWidth:"1040px",marginTop:"44px",padding:"30px 34px 32px",borderTop:"2px solid #0a1426",borderBottom:"1px solid #d9e1eb",background:"#f8fafc"}}>
+          <p style={{margin:"0 0 16px",color:"#184ed8",fontSize:"11px",lineHeight:1.3,fontWeight:900,letterSpacing:".08em",textTransform:"uppercase"}}>Отзыв по этому проекту</p>
+          <blockquote style={{margin:0,maxWidth:"920px",color:"#0a1426",fontSize:"clamp(24px,2.25vw,34px)",lineHeight:1.2,letterSpacing:"-.025em",fontWeight:760}}>«Разбор помог увидеть, что проблема была шире привлечения заявок. Стало понятно, что нужно доработать сегментацию, ценность и доказательную базу. После этого мы начали собирать кейсы и проверять проектный канал.»</blockquote>
+          <p style={{margin:"20px 0 0",color:"#667085",fontSize:"14px",lineHeight:1.45}}><strong style={{color:"#0a1426"}}>Собственник бизнеса</strong> · проект обезличен</p>
         </div>
       </div>
     </section>
@@ -194,7 +190,7 @@ export default function Home() {
         <div><p className="eyebrow">05 · Почему такой взгляд</p><h2>В маркетинг я пришёл из управления бизнесом</h2></div>
         <div className="about-copy">
           <p className="about-system-lead"><strong>Поэтому смотрю не только на продвижение. Причина может быть в продукте, цене, продажах, сервисе, рынке или в том, как решение реализуется внутри компании.</strong></p>
-          <p>Поэтому работа иногда заканчивается не маркетинговой рекомендацией, а изменением самой модели продукта, продаж, сервиса или принятия решений внутри компании.</p>
+          <p>Иногда результат работы — не маркетинговая рекомендация, а изменение продукта, продаж, сервиса или самого способа принятия решений.</p>
           <div className="about-foundations" aria-label="Основа профессионального подхода">
             <div><small>Инженерная база</small><strong>Математика и автоматизация</strong><span>Привычка разбирать систему, зависимости и причины.</span></div>
             <div><small>Управленческая школа</small><strong>Executive MBA · качество · проекты · изменения</strong><span>Не только выбрать решение, но и сделать его управляемым.</span></div>
