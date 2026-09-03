@@ -1,0 +1,115 @@
+/* Mobile-only refinement pass: reduce scroll fatigue without changing desktop. */
+@media (max-width: 760px) {
+  /* Keep the hero strong; calm secondary section headings. */
+  .method-stage h2,
+  .proof-stage h2,
+  .project-spectrum h2,
+  .about-stage h2,
+  .faq-stage h2,
+  .contact-stage h2 {
+    font-size: clamp(34px, 9.4vw, 44px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -.045em !important;
+  }
+
+  /* Reduce vertical travel on a phone. */
+  .method-stage,
+  .compact-method,
+  .proof-stage,
+  .project-spectrum,
+  .about-stage,
+  .faq-stage,
+  .contact-stage {
+    padding-top: 64px !important;
+    padding-bottom: 70px !important;
+  }
+  .project-spectrum-head,
+  .proof-intro,
+  .faq-intro,
+  .method-intro {
+    margin-bottom: 34px !important;
+  }
+
+  /* Strategic outputs should read as an editorial list, not one big card. */
+  #product > .page-shell > div[aria-label="Что может остаться после стратегического проекта"] {
+    display: block !important;
+    margin-top: 8px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-top: 1px solid var(--line) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  #product > .page-shell > div[aria-label="Что может остаться после стратегического проекта"] > div {
+    padding: 22px 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--line) !important;
+    background: transparent !important;
+  }
+  #product > .page-shell > div[aria-label="Что может остаться после стратегического проекта"] small {
+    margin-bottom: 7px !important;
+  }
+  #product > .page-shell > div[aria-label="Что может остаться после стратегического проекта"] strong {
+    max-width: none !important;
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+  }
+
+  /* B2C note and Decision Brief: keep hierarchy, reduce bulk. */
+  #product div[aria-label="Пример B2C-ситуации"] {
+    margin-top: 28px !important;
+    padding-top: 20px !important;
+  }
+  .brief-entry {
+    margin-top: 34px !important;
+    padding: 26px 0 28px !important;
+  }
+  .brief-entry h3 {
+    font-size: clamp(29px, 8.2vw, 37px) !important;
+    line-height: 1.05 !important;
+  }
+
+  /* Testimonial is proof, not another hero. */
+  .proof-stage div[aria-label="Отзыв собственника — часть кейса"] {
+    margin-top: 34px !important;
+    padding: 24px 0 26px !important;
+  }
+  .proof-stage div[aria-label="Отзыв собственника — часть кейса"] blockquote {
+    font-size: clamp(25px, 7.1vw, 30px) !important;
+    line-height: 1.16 !important;
+    letter-spacing: -.025em !important;
+  }
+
+  /* Compact the project cards and about section. */
+  .project-spectrum-card {
+    min-height: 0 !important;
+    padding-top: 24px !important;
+    padding-bottom: 28px !important;
+  }
+  .project-spectrum-card h3 {
+    font-size: clamp(28px, 8vw, 36px) !important;
+    line-height: 1.07 !important;
+  }
+  .about-foundations > div {
+    padding-top: 22px !important;
+    padding-bottom: 22px !important;
+  }
+
+  /* Better readability on the dark conversion section. */
+  .contact-stage .contact-grid > div > p:not(.eyebrow) {
+    color: #c8d5e7 !important;
+  }
+  .contact-stage .contact-grid > div > p strong {
+    color: #ffffff !important;
+  }
+
+  /* FAQ already works well; only tighten the spacing slightly. */
+  .faq-list details {
+    padding-top: 22px !important;
+    padding-bottom: 22px !important;
+  }
+  .faq-list summary {
+    font-size: clamp(22px, 6.8vw, 30px) !important;
+    line-height: 1.18 !important;
+  }
+}
