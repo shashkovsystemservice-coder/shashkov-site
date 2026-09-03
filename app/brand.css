@@ -3,7 +3,7 @@
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
   align-items: center;
-  column-gap: 18px;
+  column-gap: 14px;
   row-gap: 1px;
   text-decoration: none;
   letter-spacing: 0;
@@ -17,10 +17,10 @@
   grid-row: 2;
   display: block !important;
   color: #315eb7;
-  font-size: 8.5px;
+  font-size: 8px;
   line-height: 1.05;
-  font-weight: 800;
-  letter-spacing: .045em;
+  font-weight: 780;
+  letter-spacing: .035em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -36,24 +36,24 @@
   padding: 0 0 8px;
   color: var(--ink);
   font-family: "Times New Roman", Georgia, serif;
-  font-size: 35px;
-  line-height: .82;
+  font-size: 36px;
+  line-height: .8;
   font-weight: 400;
-  letter-spacing: .015em;
-  transform: scaleX(.9);
+  letter-spacing: .018em;
+  transform: scaleX(.88);
   transform-origin: left bottom;
 }
 
-/* Long, quiet signature rule connecting the monogram with its descriptor. */
+/* Long, quiet signature rule: architectural, not decorative. */
 .site-brand-mark::after {
   content: "";
   position: absolute;
   left: 0;
-  width: 145px;
+  width: 142px;
   bottom: 1px;
   height: 1px;
-  background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 88%, rgba(10,20,38,.12) 100%);
-  transform: rotate(-.35deg);
+  background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 84%, rgba(10,20,38,.10) 100%);
+  transform: rotate(-.2deg);
   transform-origin: left center;
 }
 
@@ -63,13 +63,25 @@
   align-self: center;
   position: relative;
   display: block;
-  padding: 0 0 0 18px !important;
-  border-left: 1px solid rgba(10,20,38,.08) !important;
+  padding: 0 0 0 14px !important;
+  border-left: 0 !important;
   color: var(--ink);
   font-size: 16px;
   line-height: 1.05;
-  font-weight: 820;
+  font-weight: 810;
   letter-spacing: -.025em;
+}
+
+/* A short divider binds the mark and the name without splitting them into two brands. */
+.site-brand > span:last-child::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1px;
+  height: 30px;
+  background: rgba(10,20,38,.10);
+  transform: translateY(-50%);
 }
 
 .site-brand > span:last-child::after {
@@ -115,52 +127,71 @@
 }
 
 @media (max-width: 760px) {
+  .site-nav {
+    min-height: 68px;
+    gap: 8px;
+  }
+
   .site-brand {
-    grid-template-columns: minmax(0, 122px) auto;
-    column-gap: 10px;
+    grid-template-columns: minmax(0, 116px) auto;
+    column-gap: 7px;
     row-gap: 0;
     min-width: 0;
   }
 
   .site-brand-mark {
-    min-width: 41px;
-    font-size: 31px;
+    min-width: 40px;
+    font-size: 33px;
+    line-height: .8;
     padding-bottom: 7px;
+    transform: scaleX(.86);
   }
 
   .site-brand-mark::after {
-    width: 108px;
+    width: 112px;
     bottom: 1px;
   }
 
   .site-brand::after {
-    font-size: 7px;
+    font-size: 6.5px;
     line-height: 1.02;
-    letter-spacing: .035em;
-    white-space: normal;
-    max-width: 122px;
+    font-weight: 760;
+    letter-spacing: .025em;
+    white-space: nowrap;
+    max-width: 116px;
   }
 
   .site-brand > span:last-child {
     padding-left: 9px !important;
-    border-left-color: rgba(10,20,38,.07) !important;
-    font-size: 11.5px;
-    font-weight: 720;
-    line-height: 1.1;
+    font-size: 11px;
+    font-weight: 760;
+    line-height: 1.06;
     white-space: normal;
-    max-width: 92px;
+    max-width: 72px;
   }
 
-  .site-nav {
-    min-height: 72px;
+  .site-brand > span:last-child::before {
+    height: 28px;
+    background: rgba(10,20,38,.095);
+  }
+
+  .site-nav nav {
+    gap: 0 !important;
+  }
+
+  .site-nav .nav-cta {
+    min-height: 42px !important;
+    padding: 9px 12px !important;
+    font-size: 12.5px !important;
+    line-height: 1 !important;
   }
 
   .hero {
-    padding-top: 44px;
+    padding-top: 40px;
   }
 
   .hero-actions::after {
-    margin-top: -8px;
+    margin-top: -7px;
     font-size: 11px;
   }
 }
