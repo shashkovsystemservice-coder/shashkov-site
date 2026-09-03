@@ -3,7 +3,7 @@
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
   align-items: center;
-  column-gap: 24px;
+  column-gap: 18px;
   row-gap: 1px;
   text-decoration: none;
   letter-spacing: 0;
@@ -16,11 +16,11 @@
   grid-column: 1;
   grid-row: 2;
   display: block !important;
-  color: var(--blue);
-  font-size: 9px;
+  color: #315eb7;
+  font-size: 8.5px;
   line-height: 1.05;
-  font-weight: 850;
-  letter-spacing: .065em;
+  font-weight: 800;
+  letter-spacing: .045em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -32,23 +32,23 @@
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  min-width: 46px;
+  min-width: 44px;
   padding: 0 0 5px;
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 30px;
+  font-size: 28px;
   line-height: .92;
   font-weight: 700;
-  letter-spacing: -.055em;
+  letter-spacing: -.05em;
 }
 
 .site-brand-mark::after {
   content: "";
   position: absolute;
   left: 1px;
-  right: 3px;
+  width: 30px;
   bottom: 0;
-  height: 2px;
+  height: 1.5px;
   background: var(--blue);
 }
 
@@ -58,13 +58,13 @@
   align-self: center;
   position: relative;
   display: block;
-  padding: 0 0 0 22px !important;
-  border-left: 1px solid rgba(10,20,38,.10) !important;
+  padding: 0 0 0 18px !important;
+  border-left: 1px solid rgba(10,20,38,.08) !important;
   color: var(--ink);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.05;
-  font-weight: 850;
-  letter-spacing: -.02em;
+  font-weight: 820;
+  letter-spacing: -.025em;
 }
 
 .site-brand > span:last-child::after {
@@ -72,34 +72,62 @@
   display: none !important;
 }
 
+/* Keep the header and the first editorial cue visually connected. */
+.site-nav {
+  min-height: 76px;
+  border-bottom-color: rgba(10,20,38,.08);
+}
+
+.hero {
+  padding-top: 56px;
+}
+
+.hero-copy > .eyebrow::after {
+  color: #315eb7;
+  font-weight: 800;
+  letter-spacing: .085em;
+}
+
 @media (max-width: 760px) {
   .site-brand {
-    grid-template-columns: minmax(0, 126px) auto;
-    column-gap: 12px;
+    grid-template-columns: minmax(0, 122px) auto;
+    column-gap: 10px;
     row-gap: 0;
     min-width: 0;
   }
 
   .site-brand-mark {
-    min-width: 39px;
-    font-size: 26px;
+    min-width: 37px;
+    font-size: 25px;
+  }
+
+  .site-brand-mark::after {
+    width: 27px;
   }
 
   .site-brand::after {
-    font-size: 7.5px;
+    font-size: 7px;
     line-height: 1.02;
-    letter-spacing: .05em;
+    letter-spacing: .035em;
     white-space: normal;
-    max-width: 126px;
+    max-width: 122px;
   }
 
   .site-brand > span:last-child {
-    padding-left: 10px !important;
-    border-left-color: rgba(10,20,38,.09) !important;
-    font-size: 11px;
-    font-weight: 700;
+    padding-left: 9px !important;
+    border-left-color: rgba(10,20,38,.07) !important;
+    font-size: 11.5px;
+    font-weight: 720;
     line-height: 1.1;
     white-space: normal;
-    max-width: 88px;
+    max-width: 92px;
+  }
+
+  .site-nav {
+    min-height: 72px;
+  }
+
+  .hero {
+    padding-top: 44px;
   }
 }
