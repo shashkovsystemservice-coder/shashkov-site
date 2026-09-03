@@ -12,7 +12,7 @@
 
 /* Descriptor belongs to the monogram, not to the personal name. */
 .site-brand::after {
-  content: "Стратегический маркетинг" !important;
+  content: "Маркетинг и рост бизнеса" !important;
   grid-column: 1;
   grid-row: 2;
   display: block !important;
