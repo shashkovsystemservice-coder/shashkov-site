@@ -149,6 +149,13 @@ export default function WorkPage() {
         </div>
       </section>
 
+      <section style={{width:"min(calc(100% - 72px),1240px)",margin:"0 auto",padding:"96px 0",borderTop:"1px solid #d9e1eb"}} aria-label="Пример полноценного стратегического проекта">
+        <p className="work-eyebrow">Кейс 02 · проект обезличен</p>
+        <h2 style={{maxWidth:"1000px"}}>Хотели продавать линии. Пришлось сначала спроектировать, что именно компания продаёт.</h2>
+        <p style={{maxWidth:"880px",fontSize:"19px"}}>Инженерная B2B-компания переходила от поставки оборудования к комплексной автоматизации. Вопрос о позиционировании раскрыл более глубокую задачу: продукт, границы ответственности, proof, коммерческая модель и исполнение внутри компании.</p>
+        <a className="work-link" href="/cases/integrator-model">Открыть полный разбор проекта →</a>
+      </section>
+
       <section className="work-cta">
         <p className="work-eyebrow">Начать можно без готового ТЗ</p>
         <h2>Достаточно описать, что сейчас происходит</h2>
