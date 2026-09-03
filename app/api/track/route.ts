@@ -7,8 +7,16 @@ const allowedEvents = new Set([
   "button_click",
   "form_submit_start",
   "lead_success",
+  "hero_diagnostic_click",
+  "hero_artifacts_click",
+  "hero_contact_click",
+  "artifact_open",
+  "case_open",
+  "diagnostic_start",
   "diagnostic_select",
   "diagnostic_complete",
+  "contact_form_submit",
+  "scroll_depth",
 ]);
 
 export async function POST(request: Request) {
