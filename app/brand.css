@@ -33,7 +33,7 @@
   align-items: flex-end;
   justify-content: flex-start;
   min-width: 48px;
-  padding: 0 0 7px;
+  padding: 0 0 8px;
   color: var(--ink);
   font-family: "Times New Roman", Georgia, serif;
   font-size: 35px;
@@ -44,16 +44,16 @@
   transform-origin: left bottom;
 }
 
-/* A restrained ink-like stroke: longer than the monogram, dark, slightly lifted at the end. */
+/* Thin architectural ink stroke: longer than the monogram, with a subtle lifted finish. */
 .site-brand-mark::after {
   content: "";
   position: absolute;
-  left: 1px;
-  width: 38px;
+  left: 0;
+  width: 44px;
   bottom: 1px;
   height: 1px;
-  background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 76%, rgba(10,20,38,.18) 100%);
-  transform: rotate(-1.2deg);
+  background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 82%, rgba(10,20,38,.16) 100%);
+  transform: rotate(-1deg);
   transform-origin: left center;
 }
 
@@ -104,11 +104,11 @@
   .site-brand-mark {
     min-width: 41px;
     font-size: 31px;
-    padding-bottom: 6px;
+    padding-bottom: 7px;
   }
 
   .site-brand-mark::after {
-    width: 33px;
+    width: 38px;
     bottom: 1px;
   }
 
