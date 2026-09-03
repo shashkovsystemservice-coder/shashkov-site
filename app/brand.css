@@ -19,8 +19,8 @@
   color: #315eb7;
   font-size: 8px;
   line-height: 1.05;
-  font-weight: 780;
-  letter-spacing: .035em;
+  font-weight: 760;
+  letter-spacing: .028em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -44,16 +44,16 @@
   transform-origin: left bottom;
 }
 
-/* Long, quiet signature rule: architectural, not decorative. */
+/* Long architectural signature rule. It intentionally stops short of the descriptor end. */
 .site-brand-mark::after {
   content: "";
   position: absolute;
   left: 0;
-  width: 142px;
+  width: 160px;
   bottom: 1px;
   height: 1px;
-  background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 84%, rgba(10,20,38,.10) 100%);
-  transform: rotate(-.2deg);
+  background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 88%, rgba(10,20,38,.08) 100%);
+  transform: rotate(-.12deg);
   transform-origin: left center;
 }
 
@@ -66,8 +66,8 @@
   padding: 0 0 0 14px !important;
   border-left: 0 !important;
   color: var(--ink);
-  font-size: 16px;
-  line-height: 1.05;
+  font-size: 16.5px;
+  line-height: 1.04;
   font-weight: 810;
   letter-spacing: -.025em;
 }
@@ -79,8 +79,8 @@
   left: 0;
   top: 50%;
   width: 1px;
-  height: 30px;
-  background: rgba(10,20,38,.10);
+  height: 29px;
+  background: rgba(10,20,38,.14);
   transform: translateY(-50%);
 }
 
@@ -102,7 +102,7 @@
 .hero-copy > .eyebrow::after {
   color: #315eb7;
   font-weight: 800;
-  letter-spacing: .085em;
+  letter-spacing: .07em;
 }
 
 /* Make the first diagnostic click concrete without adding another CTA. */
@@ -128,13 +128,13 @@
 
 @media (max-width: 760px) {
   .site-nav {
-    min-height: 68px;
+    min-height: 66px;
     gap: 8px;
   }
 
   .site-brand {
-    grid-template-columns: minmax(0, 116px) auto;
-    column-gap: 7px;
+    grid-template-columns: minmax(0, 124px) auto;
+    column-gap: 6px;
     row-gap: 0;
     min-width: 0;
   }
@@ -148,31 +148,31 @@
   }
 
   .site-brand-mark::after {
-    width: 112px;
+    width: 132px;
     bottom: 1px;
   }
 
   .site-brand::after {
-    font-size: 6.5px;
+    font-size: 6.35px;
     line-height: 1.02;
-    font-weight: 760;
-    letter-spacing: .025em;
+    font-weight: 750;
+    letter-spacing: .018em;
     white-space: nowrap;
-    max-width: 116px;
+    max-width: 124px;
   }
 
   .site-brand > span:last-child {
     padding-left: 9px !important;
-    font-size: 11px;
-    font-weight: 760;
-    line-height: 1.06;
+    font-size: 11.8px;
+    font-weight: 770;
+    line-height: 1.05;
     white-space: normal;
-    max-width: 72px;
+    max-width: 76px;
   }
 
   .site-brand > span:last-child::before {
-    height: 28px;
-    background: rgba(10,20,38,.095);
+    height: 27px;
+    background: rgba(10,20,38,.13);
   }
 
   .site-nav nav {
@@ -180,14 +180,18 @@
   }
 
   .site-nav .nav-cta {
-    min-height: 42px !important;
-    padding: 9px 12px !important;
-    font-size: 12.5px !important;
+    min-height: 39px !important;
+    padding: 8px 11px !important;
+    font-size: 12px !important;
     line-height: 1 !important;
   }
 
   .hero {
-    padding-top: 40px;
+    padding-top: 38px;
+  }
+
+  .hero-copy > .eyebrow::after {
+    letter-spacing: .055em;
   }
 
   .hero-actions::after {
