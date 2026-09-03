@@ -1,6 +1,13 @@
 /* Mobile-only refinement pass: reduce scroll fatigue without changing desktop. */
 @media (max-width: 760px) {
-  /* Keep the hero strong; calm secondary section headings. */
+  /* Keep the hero strong, but stop it from swallowing the whole viewport. */
+  .hero h1 {
+    font-size: clamp(50px, 13vw, 60px) !important;
+    line-height: .94 !important;
+    letter-spacing: -.06em !important;
+  }
+
+  /* Calm secondary section headings. */
   .method-stage h2,
   .proof-stage h2,
   .project-spectrum h2,
@@ -13,6 +20,7 @@
   }
 
   /* Reduce vertical travel on a phone. */
+  .situations-stage,
   .method-stage,
   .compact-method,
   .proof-stage,
@@ -20,14 +28,43 @@
   .about-stage,
   .faq-stage,
   .contact-stage {
-    padding-top: 64px !important;
-    padding-bottom: 70px !important;
+    padding-top: 58px !important;
+    padding-bottom: 64px !important;
   }
   .project-spectrum-head,
   .proof-intro,
   .faq-intro,
-  .method-intro {
-    margin-bottom: 34px !important;
+  .method-intro,
+  .situations-intro {
+    margin-bottom: 30px !important;
+  }
+
+  /* Four owner situations read faster as one editorial column on a phone. */
+  .situation-columns {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    padding-top: 28px !important;
+    padding-bottom: 44px !important;
+  }
+  .situation-column {
+    padding: 18px 0 20px !important;
+    border-top: 1px solid var(--line) !important;
+  }
+  .situation-column .column-index {
+    margin-bottom: 10px !important;
+  }
+  .situation-list {
+    margin-top: 0 !important;
+  }
+  .situation-list p {
+    padding: 8px 0 2px !important;
+    border-bottom: 0 !important;
+    font-size: clamp(22px, 6.5vw, 29px) !important;
+    line-height: 1.14 !important;
+  }
+  .lead-situation {
+    padding-top: 38px !important;
+    padding-bottom: 42px !important;
   }
 
   /* Strategic outputs should read as an editorial list, not one big card. */
@@ -41,7 +78,7 @@
     box-shadow: none !important;
   }
   #product > .page-shell > div[aria-label="Что может остаться после стратегического проекта"] > div {
-    padding: 22px 0 !important;
+    padding: 20px 0 !important;
     border: 0 !important;
     border-bottom: 1px solid var(--line) !important;
     background: transparent !important;
@@ -57,42 +94,42 @@
 
   /* B2C note and Decision Brief: keep hierarchy, reduce bulk. */
   #product div[aria-label="Пример B2C-ситуации"] {
-    margin-top: 28px !important;
-    padding-top: 20px !important;
+    margin-top: 26px !important;
+    padding-top: 18px !important;
   }
   .brief-entry {
-    margin-top: 34px !important;
-    padding: 26px 0 28px !important;
+    margin-top: 30px !important;
+    padding: 24px 0 26px !important;
   }
   .brief-entry h3 {
-    font-size: clamp(29px, 8.2vw, 37px) !important;
-    line-height: 1.05 !important;
+    font-size: clamp(28px, 7.8vw, 35px) !important;
+    line-height: 1.06 !important;
   }
 
   /* Testimonial is proof, not another hero. */
   .proof-stage div[aria-label="Отзыв собственника — часть кейса"] {
-    margin-top: 34px !important;
-    padding: 24px 0 26px !important;
+    margin-top: 30px !important;
+    padding: 22px 0 24px !important;
   }
   .proof-stage div[aria-label="Отзыв собственника — часть кейса"] blockquote {
-    font-size: clamp(25px, 7.1vw, 30px) !important;
-    line-height: 1.16 !important;
-    letter-spacing: -.025em !important;
+    font-size: clamp(23px, 6.4vw, 27px) !important;
+    line-height: 1.17 !important;
+    letter-spacing: -.02em !important;
   }
 
   /* Compact the project cards and about section. */
   .project-spectrum-card {
     min-height: 0 !important;
-    padding-top: 24px !important;
-    padding-bottom: 28px !important;
+    padding-top: 22px !important;
+    padding-bottom: 26px !important;
   }
   .project-spectrum-card h3 {
-    font-size: clamp(28px, 8vw, 36px) !important;
-    line-height: 1.07 !important;
+    font-size: clamp(27px, 7.6vw, 34px) !important;
+    line-height: 1.08 !important;
   }
   .about-foundations > div {
-    padding-top: 22px !important;
-    padding-bottom: 22px !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
   }
 
   /* Better readability on the dark conversion section. */
@@ -105,11 +142,11 @@
 
   /* FAQ already works well; only tighten the spacing slightly. */
   .faq-list details {
-    padding-top: 22px !important;
-    padding-bottom: 22px !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
   }
   .faq-list summary {
-    font-size: clamp(22px, 6.8vw, 30px) !important;
+    font-size: clamp(22px, 6.4vw, 28px) !important;
     line-height: 1.18 !important;
   }
 }
