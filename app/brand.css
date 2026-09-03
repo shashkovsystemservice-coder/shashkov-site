@@ -30,25 +30,27 @@
   grid-column: 1;
   grid-row: 1;
   display: inline-flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-start;
-  min-width: 44px;
-  padding: 0 0 5px;
+  min-width: 48px;
+  padding: 0 0 6px;
   color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 28px;
-  line-height: .92;
-  font-weight: 700;
-  letter-spacing: -.05em;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 35px;
+  line-height: .82;
+  font-weight: 400;
+  letter-spacing: .015em;
+  transform: scaleX(.9);
+  transform-origin: left bottom;
 }
 
 .site-brand-mark::after {
   content: "";
   position: absolute;
   left: 1px;
-  width: 30px;
+  width: 27px;
   bottom: 0;
-  height: 1.5px;
+  height: 1px;
   background: var(--blue);
 }
 
@@ -97,12 +99,13 @@
   }
 
   .site-brand-mark {
-    min-width: 37px;
-    font-size: 25px;
+    min-width: 41px;
+    font-size: 31px;
+    padding-bottom: 5px;
   }
 
   .site-brand-mark::after {
-    width: 27px;
+    width: 24px;
   }
 
   .site-brand::after {
