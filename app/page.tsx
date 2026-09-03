@@ -73,7 +73,7 @@ export default function Home() {
       <div className="page-shell proof-strip-grid">
         <div className="proof-strip-item">
           <strong>24 года</strong>
-          <span>внутри сложного B2B и промышленного бизнеса</span>
+          <span>внутри бизнеса: управление, развитие, продукт, сервис и маркетинг</span>
         </div>
         <div className="proof-strip-item">
           <strong>20+ моделей</strong>
