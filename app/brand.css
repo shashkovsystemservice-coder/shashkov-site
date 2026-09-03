@@ -1,0 +1,80 @@
+.site-brand {
+  display: inline-grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto;
+  align-items: center;
+  column-gap: 14px;
+  text-decoration: none;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.site-brand-mark {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 46px;
+  padding: 0 0 5px;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  line-height: .92;
+  font-weight: 700;
+  letter-spacing: -.055em;
+}
+
+.site-brand-mark::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  right: 3px;
+  bottom: 0;
+  height: 2px;
+  background: var(--blue);
+}
+
+.site-brand > span:last-child {
+  position: relative;
+  display: block;
+  padding-bottom: 15px;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.05;
+  font-weight: 850;
+  letter-spacing: -.02em;
+}
+
+.site-brand > span:last-child::after {
+  content: "Стратегический маркетинг";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: var(--blue);
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 850;
+  letter-spacing: .085em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .site-brand {
+    column-gap: 10px;
+  }
+
+  .site-brand-mark {
+    min-width: 39px;
+    font-size: 26px;
+  }
+
+  .site-brand > span:last-child {
+    padding-bottom: 13px;
+    font-size: 12px;
+  }
+
+  .site-brand > span:last-child::after {
+    font-size: 7px;
+    letter-spacing: .065em;
+  }
+}
