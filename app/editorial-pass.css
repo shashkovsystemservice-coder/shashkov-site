@@ -1,3 +1,5 @@
+@import "./mobile-refine.css";
+
 /* Editorial refinement pass: preserve the cool palette, reduce UI-card weight. */
 
 /* Product / depth section: make it read like an editorial spread, not a pricing UI. */
