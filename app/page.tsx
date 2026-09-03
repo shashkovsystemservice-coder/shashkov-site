@@ -67,7 +67,6 @@ export default function Home() {
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
           </div>
           <div className="hero-paths" aria-label="С чего начать">
-            <a href="/diagnostic"><span>Не понимаю, в чём проблема</span><strong>Начать с 6 вопросов →</strong></a>
             <a href="#case"><span>Хочу сначала посмотреть работу</span><strong>Открыть реальные артефакты →</strong></a>
             <a href="#contact"><span>У меня уже есть конкретный вопрос</span><strong>Просто написать →</strong></a>
           </div>
@@ -132,7 +131,6 @@ export default function Home() {
           <a className="button" href="/diagnostic">Разобрать свою ситуацию</a>
         </div>
 
-        <div className="method-route compact-route" aria-label="Логика работы"><span>Задача</span><b>→</b><span>Проверка</span><b>→</b><span>Выбор</span><b>→</b><span>Действие</span></div>
         <a className="text-link" href="/work" style={{display:"inline-block",marginTop:"24px"}}>Как проходит работа — по шагам →</a>
       </div>
     </section>
