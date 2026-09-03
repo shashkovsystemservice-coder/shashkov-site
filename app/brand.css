@@ -44,16 +44,16 @@
   transform-origin: left bottom;
 }
 
-/* Thin architectural ink stroke: longer than the monogram, with a subtle lifted finish. */
+/* Long, quiet signature rule connecting the monogram with its descriptor. */
 .site-brand-mark::after {
   content: "";
   position: absolute;
   left: 0;
-  width: 44px;
+  width: 145px;
   bottom: 1px;
   height: 1px;
-  background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 82%, rgba(10,20,38,.16) 100%);
-  transform: rotate(-1deg);
+  background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 88%, rgba(10,20,38,.12) 100%);
+  transform: rotate(-.35deg);
   transform-origin: left center;
 }
 
@@ -108,7 +108,7 @@
   }
 
   .site-brand-mark::after {
-    width: 38px;
+    width: 108px;
     bottom: 1px;
   }
 
