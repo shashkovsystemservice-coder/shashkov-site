@@ -7,6 +7,16 @@
     letter-spacing: -.06em !important;
   }
 
+  /* Small labels should feel editorial, not like UI tags. */
+  .eyebrow,
+  .lead-label,
+  .project-spectrum-meta em,
+  .project-spectrum-context,
+  .proof-work-fragment small,
+  .about-foundations small {
+    letter-spacing: .065em !important;
+  }
+
   /* Calm secondary section headings. */
   .method-stage h2,
   .proof-stage h2,
@@ -115,6 +125,14 @@
     font-size: clamp(23px, 6.4vw, 27px) !important;
     line-height: 1.17 !important;
     letter-spacing: -.02em !important;
+  }
+
+  /* Links and CTAs share one quieter rhythm. */
+  .text-link {
+    text-underline-offset: 4px;
+  }
+  .button {
+    min-height: 48px;
   }
 
   /* Compact the project cards and about section. */
