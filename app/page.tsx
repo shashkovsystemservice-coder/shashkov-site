@@ -81,7 +81,7 @@ export default function Home() {
         </div>
         <div className="proof-strip-item">
           <strong>Heidelberg · Nokian Tyres · Росатом · Роснано</strong>
-          <span>опыт от международного производителя и технологического стартапа до инженерного B2B</span>
+          <span>опыт от промышленного оборудования и инженерных проектов до потребительского бренда, продукта и сервисной модели</span>
         </div>
       </div>
     </section>
