@@ -123,6 +123,11 @@ export default function Home() {
           <p>На выходе — главный вопрос, критическая неопределённость, что проверить первым и что пока рано делать. Результат можно сохранить в PDF. Ни к чему не обязывает.</p>
           <a className="button" href="/diagnostic">Собрать Decision Brief</a>
         </div>
+        <div className="work-grid" aria-label="Как может продолжиться работа">
+          <article><p className="eyebrow">1 · Самостоятельно</p><h3>Decision Brief</h3><p>Сформулировать вопрос, отделить факты от версии и увидеть, что стоит проверить первым.</p></article>
+          <article><p className="eyebrow">2 · Вместе</p><h3>Диагностический разбор</h3><p>Если вопрос упирается в контекст и данные, разбираем конкурирующие версии и определяем решение.</p></article>
+          <article><p className="eyebrow">3 · При необходимости</p><h3>Стратегический проект</h3><p>Если задача системная, идём глубже: рынок, клиент, продукт, ценность, продажи и исполнение — только в нужном объёме.</p></article>
+        </div>
       </div>
     </section>
 
@@ -196,7 +201,7 @@ export default function Home() {
           <label><span>Что сейчас происходит?</span><textarea name="situation" placeholder="Коротко, своими словами" required /></label>
           <label><span>Как с вами связаться?</span><input type="text" name="contact" placeholder="Email или Telegram" required /></label>
           <button className="button button-light" type="submit">Отправить</button>
-          <p>Можно просто описать ситуацию. Не нужно заранее выбирать услугу или формат работы.</p>
+          <p>Я сам прочитаю сообщение и отвечу, вижу ли здесь задачу для разбора и какой первый шаг имеет смысл. Обязательного созвона нет.</p>
         </form>
       </div>
     </section>
