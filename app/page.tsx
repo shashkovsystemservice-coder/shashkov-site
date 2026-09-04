@@ -60,7 +60,7 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">Для ситуаций, где решение не очевидно</p>
           <h1>Не уверены, что именно сейчас нужно менять в бизнесе?</h1>
-          <p className="hero-lead">Сначала помогаю понять проблему. Потом — выбрать решение и первый шаг.</p>
+          <p className="hero-lead">Помогаю собственникам понять проблему, выбрать решение и первый шаг.</p>
           <p className="hero-money-line">И понять, на что пока не стоит тратить деньги.</p>
           <div className="hero-actions">
             <a className="button" href="/diagnostic">Разобрать свою ситуацию</a>
@@ -118,7 +118,7 @@ export default function Home() {
         <div className="brief-card">
           <p className="eyebrow">Decision Brief · 6 вопросов · без звонка</p>
           <h3>Проверьте, насколько ваша текущая версия проблемы уже обоснована.</h3>
-          <p>На выходе — главный вопрос, критическая неопределённость, что проверить первым и что пока рано делать. Результат можно сохранить в PDF.</p>
+          <p>На выходе — главный вопрос, критическая неопределённость, что проверить первым и что пока рано делать. Результат можно сохранить в PDF. Ни к чему не обязывает.</p>
           <a className="button" href="/diagnostic">Собрать Decision Brief</a>
         </div>
       </div>
@@ -126,7 +126,7 @@ export default function Home() {
 
     <section id="case" className="case-stage">
       <div className="page-shell case-shell">
-        <p className="eyebrow eyebrow-light">03 · Как меняется решение · проект обезличен</p>
+        <p className="eyebrow">03 · Как меняется решение · проект обезличен</p>
         <h2>Пришли за заявками. Изменился сам вопрос.</h2>
         <div className="case-steps">
           <div><span>Запрос</span><h3>«Нам нужны квалифицированные входящие заявки».</h3></div>
@@ -186,6 +186,7 @@ export default function Home() {
           <p className="eyebrow eyebrow-light">08 · Написать</p>
           <h2>Можно начать с самой ситуации.</h2>
           <p>Не нужно заранее понимать, какая услуга вам нужна. Если вопрос уже есть — просто напишите его своими словами.</p>
+          <p>Сначала посмотрю на саму ситуацию. Если отдельный проект не нужен, на этом можно остановиться.</p>
           <p className="contact-legal"><strong>Работаю как ИП.</strong> Договор, счёт и закрывающие документы.</p>
           <div className="contact-actions"><a className="button button-light" href="/diagnostic">Разобрать ситуацию</a>{contactChannels.map((channel) => <a key={channel.id} className="button button-light" href={channel.href} target="_blank" rel="noreferrer">Написать в {channel.label}</a>)}</div>
         </div>
@@ -193,10 +194,9 @@ export default function Home() {
           <label><span>Что сейчас происходит?</span><textarea name="situation" placeholder="Коротко, своими словами" required /></label>
           <label><span>Как с вами связаться?</span><input type="text" name="contact" placeholder="Email или Telegram" required /></label>
           <button className="button button-light" type="submit">Отправить</button>
-          <p>Не нужно заранее понимать, какая услуга вам нужна.</p>
+          <p>Можно просто описать ситуацию. Не нужно заранее выбирать услугу или формат работы.</p>
         </form>
       </div>
-      <div className="page-shell contact-foot"><strong>24 года в бизнесе и управлении · Executive MBA · опыт от технического блока и сервиса до развития и стратегического маркетинга</strong></div>
     </section>
   </main>;
 }
