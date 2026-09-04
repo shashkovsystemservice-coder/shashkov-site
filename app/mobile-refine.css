@@ -253,4 +253,75 @@
     font-size: clamp(21px, 6vw, 26px) !important;
     line-height: 1.2 !important;
   }
+
+  /* Final conversion pass: factual proof should not cost almost a full screen. */
+  .proof-strip-grid {
+    display: block !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+  .proof-strip-item {
+    min-height: 0 !important;
+    padding: 18px 0 20px !important;
+  }
+  .proof-strip-item strong {
+    font-size: clamp(22px, 6vw, 27px) !important;
+    line-height: 1.08 !important;
+  }
+  .proof-strip-item span {
+    margin-top: 7px !important;
+    font-size: 15px !important;
+    line-height: 1.42 !important;
+  }
+
+  /* The dark case is the main proof, but its internal cards should move faster on a phone. */
+  #case > .page-shell > div:first-child {
+    padding: 28px 22px 30px !important;
+  }
+  #case > .page-shell > div:first-child > h2 {
+    font-size: clamp(36px, 10vw, 46px) !important;
+    line-height: 1.01 !important;
+  }
+  #case > .page-shell > div:first-child > div:nth-of-type(1) {
+    margin-top: 26px !important;
+  }
+  #case > .page-shell > div:first-child > div:nth-of-type(1) > div {
+    padding: 17px 18px !important;
+  }
+  #case > .page-shell > div:first-child > div:nth-of-type(1) small {
+    margin-bottom: 7px !important;
+  }
+  #case > .page-shell > div:first-child > div:nth-of-type(1) strong {
+    font-size: 17px !important;
+    line-height: 1.35 !important;
+  }
+  #case > .page-shell > div:first-child > div:nth-of-type(1) p {
+    font-size: 16px !important;
+    line-height: 1.42 !important;
+  }
+  #case > .page-shell > div:first-child > p:nth-of-type(2) {
+    margin-top: 22px !important;
+    font-size: 19px !important;
+    line-height: 1.36 !important;
+  }
+
+  /* Keep the operating principle important, but clearly below the section headline. */
+  .product-depth-grid .depth-result-card h3 {
+    font-size: clamp(29px, 8vw, 36px) !important;
+    line-height: 1.06 !important;
+  }
+  .product-depth-grid .depth-result-card-main h3 {
+    font-size: clamp(30px, 8.2vw, 37px) !important;
+    line-height: 1.06 !important;
+  }
+
+  /* FAQ questions are decisions, not section headlines. */
+  .faq-list summary {
+    font-size: clamp(20px, 5.5vw, 24px) !important;
+    line-height: 1.18 !important;
+  }
+  .faq-list details {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
 }
