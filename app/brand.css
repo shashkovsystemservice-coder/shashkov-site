@@ -140,11 +140,12 @@
 
 @media (max-width: 760px) {
   .site-nav {
-    min-height: 60px;
+    min-height: 64px !important;
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) auto !important;
     align-items: center !important;
-    gap: 10px !important;
+    column-gap: 14px !important;
+    border-bottom-color: rgba(10,20,38,.055) !important;
   }
 
   .site-brand {
@@ -152,55 +153,68 @@
     grid-template-columns: none !important;
     grid-template-rows: none !important;
     justify-content: flex-start !important;
-    justify-self: center !important;
+    justify-self: start !important;
     align-items: center !important;
     gap: 8px !important;
-    flex: 0 0 auto !important;
+    flex: 0 1 auto !important;
     width: auto !important;
+    max-width: 100% !important;
     margin: 0 !important;
   }
 
   .site-brand-mark {
-    min-width: 44px !important;
-    font-size: 36px !important;
-    line-height: .82;
-    transform: scaleX(.93);
+    min-width: 38px !important;
+    font-size: 31px !important;
+    line-height: .84 !important;
+    font-weight: 500 !important;
+    transform: scaleX(.94);
   }
 
   .site-brand-copy {
     display: grid !important;
-    gap: 2px;
+    gap: 3px !important;
+    min-width: 0 !important;
   }
 
   .site-brand-name {
-    font-size: 15.5px !important;
-    line-height: 1;
+    font-size: 16px !important;
+    line-height: .98 !important;
     font-weight: 760 !important;
-    letter-spacing: -.022em;
+    letter-spacing: -.024em !important;
     white-space: nowrap !important;
   }
 
   .site-brand-tagline {
-    font-size: 9.2px !important;
-    line-height: 1.05;
-    font-weight: 560 !important;
-    letter-spacing: 0;
+    font-size: 9.5px !important;
+    line-height: 1.08 !important;
+    font-weight: 540 !important;
+    letter-spacing: .005em !important;
     white-space: nowrap !important;
+  }
+
+  .site-brand-tagline em {
+    font-weight: 540 !important;
   }
 
   .site-nav nav {
     gap: 0 !important;
-    flex: 0 0 auto;
+    flex: 0 0 auto !important;
     justify-self: end !important;
   }
 
   .site-nav .nav-cta {
     min-height: auto !important;
-    padding: 5px 0 !important;
+    padding: 6px 0 !important;
     border: 0 !important;
-    font-size: 11.5px !important;
+    font-size: 12.5px !important;
     line-height: 1 !important;
-    font-weight: 620 !important;
+    font-weight: 650 !important;
+    letter-spacing: -.01em !important;
+    white-space: nowrap !important;
+  }
+
+  .site-nav .nav-cta::after {
+    margin-left: 2px;
   }
 
   .hero {
