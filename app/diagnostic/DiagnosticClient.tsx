@@ -37,7 +37,8 @@ export default function DiagnosticClient() {
   const [disproof, setDisproof] = useState("");
   const [showBrief, setShowBrief] = useState(false);
 
-  const canBuild = situation.trim().length > 8 && desired.trim().length > 8 && obstacle.trim().length > 8 && disproof.trim().length > 8;
+  const canBuild = situation.trim().length > 8 && desired.trim().length > 8 && obstacle.trim().length > 8;
+  const hasDisproof = disproof.trim().length > 8;
 
   const reframing = useMemo(() => {
     const action = intendedAction.trim();
@@ -45,15 +46,20 @@ export default function DiagnosticClient() {
   }, [situation, desired, obstacle, intendedAction, evidenceLevel]);
 
   const uncertainty = useMemo(() => {
-    if (evidenceLevel === "data") return "Есть данные, но пока неясно, подтверждают ли они именно предполагаемую причину, а не только симптом. Критический вопрос — есть ли связь между наблюдаемой ситуацией и вашим объяснением.";
-    if (evidenceLevel === "signals") return "Есть повторяющиеся сигналы, но пока неизвестно, насколько они типичны. Критический вопрос — повторяется ли этот паттерн в достаточном числе случаев и нет ли более сильного объяснения.";
-    return "Текущая причина пока является рабочей версией. Критический вопрос — какие факты могли бы подтвердить её или заставить искать причину в другом месте.";
-  }, [evidenceLevel]);
+    const testability = hasDisproof
+      ? " У версии уже есть условие, которое может заставить от неё отказаться."
+      : " Дополнительная неопределённость: пока не задано условие, при котором вы откажетесь от этой версии — значит, она ещё не стала проверяемой гипотезой.";
+    if (evidenceLevel === "data") return "Есть данные, но пока неясно, подтверждают ли они именно предполагаемую причину, а не только симптом. Критический вопрос — есть ли связь между наблюдаемой ситуацией и вашим объяснением." + testability;
+    if (evidenceLevel === "signals") return "Есть повторяющиеся сигналы, но пока неизвестно, насколько они типичны. Критический вопрос — повторяется ли этот паттерн в достаточном числе случаев и нет ли более сильного объяснения." + testability;
+    return "Текущая причина пока является рабочей версией. Критический вопрос — какие факты могли бы подтвердить её или заставить искать причину в другом месте." + testability;
+  }, [evidenceLevel, hasDisproof]);
 
   const nextCheck = useMemo(() => {
     const action = intendedAction.trim();
     const rejection = disproof.trim();
-    const rejectionLine = rejection ? ` Критерий, который должен уметь опровергнуть версию: «${rejection}».` : "";
+    const rejectionLine = rejection
+      ? ` Критерий, который должен уметь опровергнуть версию: «${rejection}».`
+      : " Перед проверкой сформулируйте один наблюдаемый результат, при котором вы скажете: «моя версия причины неверна». Это не формальность — без такого условия легко замечать только подтверждения своей идеи.";
     if (evidenceLevel === "data") return `Проверить, действительно ли имеющиеся данные связывают наблюдаемую ситуацию с вашей версией причины. Сравнить случаи с хорошим и плохим результатом и посмотреть, что между ними системно различается.${rejectionLine}${action ? ` Только после этого возвращаться к варианту «${action}».` : ""}`;
     if (evidenceLevel === "signals") return `Взять несколько конкретных недавних случаев и проверить повторяемость сигнала: что происходило до результата, что говорил клиент, где менялся интерес и какие альтернативные объяснения возможны.${rejectionLine}${action ? ` До этого решение «${action}» лучше считать гипотезой действия, а не готовым планом.` : ""}`;
     return `Найти наблюдаемые факты, которые могли бы подтвердить или опровергнуть текущую версию: реальные сделки, разговоры, причины отказов, поведение клиентов или данные по этапам пути.${rejectionLine}${action ? ` Вариант «${action}» пока рано считать обоснованным.` : " Затем уже выбирать решение."}`;
@@ -61,9 +67,14 @@ export default function DiagnosticClient() {
 
   const decisionImpact = useMemo(() => {
     const action = intendedAction.trim();
+    if (!hasDisproof) {
+      return action
+        ? `Пока у версии нет условия отказа, проверка может превратиться в поиск подтверждений. Сначала задайте критерий, который способен отменить версию причины. Только затем результат проверки сможет дать основание вернуться к варианту «${action}» или отказаться от него.`
+        : `Пока у версии нет условия отказа, невозможно понять, какой результат проверки действительно изменит решение. Сначала задайте наблюдаемый критерий, который способен отменить текущую версию причины.`;
+    }
     if (action) return `Проверка имеет смысл только если её результат изменит решение. Если версия причины получит достаточные подтверждения, к варианту «${action}» можно возвращаться уже с основаниями. Если версия не подтвердится по заданному вами критерию, это действие теряет основание — и искать нужно другую причину или другой путь к результату «${desired.trim()}».`;
     return `Результат проверки должен сузить выбор: либо дать достаточные основания для конкретного действия, либо показать, что текущую версию причины нужно отбросить. Критерий — помогает ли следующий шаг приблизиться к результату «${desired.trim()}», а не просто создаёт дополнительную активность.`;
-  }, [intendedAction, desired]);
+  }, [intendedAction, desired, hasDisproof]);
 
   const avoid = useMemo(() => {
     if (!intendedAction.trim()) return "Выбирать конкретный инструмент только потому, что он привычен, доступен или первым пришёл в голову. Сначала нужно уменьшить критическую неопределённость.";
@@ -88,7 +99,7 @@ export default function DiagnosticClient() {
       evidence_level: evidenceLevel,
       has_intended_action: intendedAction.trim().length > 2,
       has_evidence_text: evidence.trim().length > 2,
-      has_disproof: disproof.trim().length > 8,
+      has_disproof: hasDisproof,
     });
   };
 
@@ -102,7 +113,7 @@ export default function DiagnosticClient() {
       uncertainty,
       nextCheck,
       decisionImpact,
-      disproof: disproof.trim(),
+      disproof: hasDisproof ? disproof.trim() : "Критерий опровержения пока не сформулирован. Это часть критической неопределённости.",
       avoid,
       evidence: evidence.trim() || evidenceLabels[evidenceLevel] + ".",
       createdAt: new Date().toISOString(),
@@ -110,6 +121,7 @@ export default function DiagnosticClient() {
     trackEvent("diagnostic_document_open", {
       evidence_level: evidenceLevel,
       has_intended_action: intendedAction.trim().length > 2,
+      has_disproof: hasDisproof,
     });
     const encoded = encodeURIComponent(JSON.stringify(payload));
     try {
@@ -143,7 +155,7 @@ export default function DiagnosticClient() {
 
         <fieldset className="diagnostic-field"><legend>5. На чём основана ваша версия?</legend><div className="diagnostic-options">{(Object.keys(evidenceLabels) as EvidenceLevel[]).map((key)=><button key={key} type="button" className={evidenceLevel===key?"is-selected":""} onClick={()=>{setEvidenceLevel(key);dirty();trackEvent("diagnostic_evidence_level",{level:key});}}>{evidenceLabels[key]}</button>)}</div><textarea value={evidence} onChange={(e)=>{setEvidence(e.target.value);dirty();}} placeholder="Необязательно. Например: 8 из 12 потерянных клиентов назвали похожую причину"/></fieldset>
 
-        <label className="diagnostic-field"><span>6. Что заставило бы вас признать, что эта версия неверна?</span><textarea value={disproof} onChange={(e)=>{setDisproof(e.target.value);dirty();}} placeholder="Например: если клиенты хорошо понимают ценность, но всё равно уходят после расчёта — причина, вероятно, в другом"/><small>Это обязательная часть Brief. Если версия не может быть опровергнута, её нельзя нормально проверить.</small></label>
+        <label className="diagnostic-field"><span>6. Что заставило бы вас признать, что эта версия неверна?</span><textarea value={disproof} onChange={(e)=>{setDisproof(e.target.value);dirty();}} placeholder="Если пока не знаете — оставьте пустым. Brief покажет, почему это важно."/><small>Необязательно. Если ответа пока нет, это само по себе важный результат: версия ещё не стала проверяемой гипотезой.</small></label>
 
         <button className="diagnostic-primary" type="button" disabled={!canBuild} onClick={buildBrief}>Собрать Decision Brief</button>
       </div>
@@ -170,13 +182,13 @@ export default function DiagnosticClient() {
             <article><span>Желаемый результат</span><p>{desired}</p></article>
             <article><span>Текущая версия причины</span><p>{obstacle}</p></article>
             <article><span>Что вы уже думаете делать</span><p>{intendedAction.trim() || "Конкретное решение пока не выбрано."}</p></article>
-            <article className="decision-wide"><span>Что могло бы опровергнуть версию</span><p>{disproof.trim()}</p></article>
+            <article className="decision-wide"><span>Что могло бы опровергнуть версию</span><p>{hasDisproof ? disproof.trim() : "Пока не сформулировано. Значит, версия ещё не стала полностью проверяемой гипотезой."}</p></article>
           </div>
         </details>
 
         <div className="decision-evidence"><strong>Основание текущей версии:</strong> {evidence.trim() || evidenceLabels[evidenceLevel] + "."}</div>
         <p className="decision-note"><strong>Факты ≠ интерпретация ≠ вывод.</strong> Это не диагноз: Brief ничего не знает о вашем бизнесе кроме введённых ответов. Его задача — показать, какой вопрос мешает решению и какая проверка действительно способна это решение изменить. Реальная работа начинается с контекста, данных, материалов и проверки нескольких конкурирующих версий.</p>
-        <div className="decision-actions"><button type="button" onClick={openDocument}>Открыть оформленный документ</button><a className="diagnostic-contact" href="/#contact" onClick={()=>trackEvent("diagnostic_contact_click",{source:"decision_brief"})}>Обсудить ситуацию со мной →</a></div>
+        <div className="decision-actions"><button type="button" onClick={openDocument}>Открыть оформленный документ</button><a className="diagnostic-contact" href="/#contact" onClick={()=>trackEvent("diagnostic_contact_click",{source:"decision_brief",has_disproof:hasDisproof})}>Обсудить ситуацию со мной →</a></div>
       </section>}
     </section>
   );
