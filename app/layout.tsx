@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     images: [
       {
-        url: "/api/og?v=2",
+        url: "/api/og?v=3",
         width: 1200,
         height: 630,
-        alt: "Владимир Шашков — диагностика маркетинга и роста",
+        alt: "Владимир Шашков — маркетинг и рост бизнеса",
       },
     ],
   },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: ["/api/og?v=2"],
+    images: ["/api/og?v=3"],
   },
 };
 
