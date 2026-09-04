@@ -1,42 +1,30 @@
 .site-brand {
   display: inline-flex;
   align-items: center;
+  gap: 14px;
   min-width: 0;
   text-decoration: none;
   letter-spacing: 0;
 }
 
-/* The territory belongs to the centered personal identity, not to the monogram. */
 .site-brand::after {
-  content: "Маркетинг и рост бизнеса" !important;
-  position: absolute;
-  left: 50%;
-  top: 49px;
-  transform: translateX(-50%);
-  display: block !important;
-  color: #315eb7;
-  font-size: 10px;
-  line-height: 1;
-  font-weight: 760;
-  letter-spacing: .025em;
-  text-transform: none;
-  white-space: nowrap;
-  pointer-events: none;
+  content: none !important;
+  display: none !important;
 }
 
-/* Monogram is a clean signature on the left — no line, no subtitle, no divider. */
 .site-brand-mark {
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  min-width: 68px;
+  flex: 0 0 auto;
+  min-width: 74px;
   padding: 0;
   color: var(--ink);
   font-family: "Times New Roman", Georgia, serif;
-  font-size: 47px;
+  font-size: 50px;
   line-height: .82;
   font-weight: 400;
-  letter-spacing: -.04em;
+  letter-spacing: -.045em;
   transform: scaleX(.9);
   transform-origin: left center;
 }
@@ -46,22 +34,27 @@
   display: none !important;
 }
 
-/* Name is the stable visual center of the header. */
+.site-brand-tagline {
+  display: grid;
+  gap: 2px;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.03;
+  font-weight: 800;
+  letter-spacing: -.015em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.site-brand-tagline span:last-child {
+  color: #315eb7;
+}
+
 .site-brand > span:last-child {
-  position: absolute;
-  left: 50%;
-  top: 23px;
-  transform: translateX(-50%);
-  display: block;
+  position: static;
+  transform: none;
   padding: 0 !important;
   border-left: 0 !important;
-  color: var(--ink);
-  font-size: 17px;
-  line-height: 1;
-  font-weight: 840;
-  letter-spacing: -.03em;
-  white-space: nowrap;
-  text-align: center;
 }
 
 .site-brand > span:last-child::before,
@@ -71,17 +64,16 @@
 }
 
 .site-nav {
-  min-height: 78px;
+  min-height: 76px;
   border-bottom-color: rgba(10,20,38,.08);
 }
 
-/* CTA is an action, not a boxed logo competing with the identity. */
 .site-nav .nav-cta {
   min-height: auto;
   padding: 8px 0 7px;
   border: 0 !important;
-  border-bottom: 1px solid rgba(10,20,38,.28) !important;
   background: transparent !important;
+  color: var(--ink);
   font-size: 14px;
   line-height: 1;
   font-weight: 820;
@@ -127,27 +119,23 @@
     gap: 10px;
   }
 
+  .site-brand {
+    gap: 8px;
+  }
+
   .site-brand-mark {
-    min-width: 50px;
+    min-width: 49px;
     font-size: 38px;
     line-height: .82;
     transform: scaleX(.9);
   }
 
-  .site-brand > span:last-child {
-    top: 19px;
-    font-size: 14px;
-    font-weight: 820;
-    line-height: 1;
-    letter-spacing: -.025em;
-  }
-
-  .site-brand::after {
-    top: 41px;
-    font-size: 7.8px;
-    line-height: 1;
-    font-weight: 740;
-    letter-spacing: .012em;
+  .site-brand-tagline {
+    gap: 1px;
+    font-size: 8.2px;
+    line-height: 1.02;
+    font-weight: 800;
+    letter-spacing: -.005em;
   }
 
   .site-nav nav {
@@ -158,7 +146,6 @@
     min-height: auto !important;
     padding: 7px 0 6px !important;
     border: 0 !important;
-    border-bottom: 1px solid rgba(10,20,38,.24) !important;
     font-size: 12px !important;
     line-height: 1 !important;
     font-weight: 820 !important;
