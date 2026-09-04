@@ -16,28 +16,22 @@ const contactChannels = [
 
 const currentProjects = [
   {
-    status: "Текущая работа",
     context: "Промышленное оборудование",
     question: "«Хотим продавать линии, а не отдельные станки»",
-    reframing: "Вопрос о продажах стал вопросом о самой модели: что считать продуктом, за что отвечать и чем это доказать.",
+    reframing: "Продажи → модель продукта, ответственность и доказательства.",
     href: "/cases/integrator-model",
-    linkLabel: "Открыть кейс →",
   },
   {
-    status: "Исследование",
     context: "Fitness × Boxing × Wellness",
     question: "«Хотим соединить три направления»",
-    reframing: "Сначала проверяем, есть ли здесь единая клиентская задача и новый продукт вообще.",
+    reframing: "Продвижение → есть ли единая клиентская задача и новый продукт.",
     href: null,
-    linkLabel: null,
   },
   {
-    status: "Исследование",
     context: "Event-бизнес",
     question: "«Нужно улучшить сайт и предложение»",
-    reframing: "Редизайн перестал быть отправной точкой: сначала разбираем, что именно выбирает клиент и почему.",
+    reframing: "Редизайн → что именно выбирает клиент и почему.",
     href: null,
-    linkLabel: null,
   },
 ] as const;
 
@@ -128,28 +122,26 @@ export default function Home() {
 
     <section className="proof-stage" id="case">
       <div className="page-shell">
-        <div className="section-intro proof-intro">
-          <p className="eyebrow">03 · Как меняется решение · проект обезличен</p>
-          <h2>Пришли за заявками. Изменился сам вопрос.</h2>
-          <div className="proof-work-fragment">
-            <div><small>С чем пришли</small><strong>«Нам нужны квалифицированные входящие заявки».</strong></div>
-            <div><small>Что было фактом</small><p>Продажи опирались не только на сайт, но и на повторные сделки и личную работу с рынком.</p></div>
-            <div><small>Что перестало быть очевидным</small><strong>Что следующий правильный шаг — просто увеличить рекламный трафик.</strong></div>
-            <div className="proof-result-cell"><small>Что изменилось в решении</small><p><strong>Фокус сместился на доверие и более ранний вход компании в проект клиента.</strong></p></div>
+        <div style={{background:"#0a1426",color:"#fff",padding:"clamp(30px,4.5vw,58px)",margin:"0",boxShadow:"0 18px 50px rgba(10,20,38,.10)"}}>
+          <p style={{margin:"0 0 18px",color:"#8fb3ff",fontSize:"11px",fontWeight:900,letterSpacing:".09em",textTransform:"uppercase"}}>03 · Как меняется решение · проект обезличен</p>
+          <h2 style={{margin:"0",maxWidth:"920px",color:"#fff",fontSize:"clamp(38px,5vw,68px)",lineHeight:1.02,letterSpacing:"-.045em"}}>Пришли за заявками.<br/>Изменился сам вопрос.</h2>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(210px,1fr))",gap:"1px",marginTop:"clamp(28px,4vw,46px)",background:"rgba(255,255,255,.14)",border:"1px solid rgba(255,255,255,.14)"}}>
+            <div style={{background:"#0a1426",padding:"24px"}}><small style={{display:"block",marginBottom:"10px",color:"#8fb3ff",fontWeight:800}}>01 · Запрос</small><strong style={{display:"block",fontSize:"20px",lineHeight:1.35}}>«Нам нужны квалифицированные входящие заявки».</strong></div>
+            <div style={{background:"#0a1426",padding:"24px"}}><small style={{display:"block",marginBottom:"10px",color:"#8fb3ff",fontWeight:800}}>02 · Что выяснили</small><p style={{margin:0,color:"#dce6f5",fontSize:"17px",lineHeight:1.5}}>Продажи опирались не только на сайт: важны повторные сделки и личная работа с рынком.</p></div>
+            <div style={{background:"#0a1426",padding:"24px"}}><small style={{display:"block",marginBottom:"10px",color:"#8fb3ff",fontWeight:800}}>03 · Что изменилось</small><strong style={{display:"block",fontSize:"20px",lineHeight:1.35}}>Фокус сместился с трафика на доверие и более ранний вход в проект клиента.</strong></div>
           </div>
-          <p className="proof-meaning"><strong>После разбора собственник уточнил сегментацию и ценность, начал собирать кейсы и проверять проектный канал.</strong></p>
-          <div className="proof-links">
-            <a className="text-link proof-demo-link" href="/artifacts/task-map">Карта задачи →</a>
-            <a className="text-link proof-demo-link" href="/artifacts/market-choice">Карта рынка и выбора →</a>
-            <a className="text-link proof-demo-link" href="/diagnostic">Попробовать эту логику на своей ситуации →</a>
+          <p style={{maxWidth:"900px",margin:"30px 0 0",color:"#fff",fontSize:"clamp(21px,2.1vw,28px)",lineHeight:1.35,fontWeight:750}}>После разбора собственник уточнил сегментацию и ценность, начал собирать кейсы и проверять проектный канал.</p>
+          <div style={{display:"flex",flexWrap:"wrap",gap:"18px 28px",marginTop:"26px"}}>
+            <a href="/artifacts/task-map" style={{color:"#fff",fontWeight:800,textDecoration:"underline",textUnderlineOffset:"5px"}}>Карта задачи →</a>
+            <a href="/artifacts/market-choice" style={{color:"#fff",fontWeight:800,textDecoration:"underline",textUnderlineOffset:"5px"}}>Карта рынка и выбора →</a>
+            <a href="/diagnostic" style={{color:"#8fb3ff",fontWeight:900,textDecoration:"underline",textUnderlineOffset:"5px"}}>Попробовать на своей ситуации →</a>
           </div>
-          <p className="proof-demo-note">Рабочие артефакты обезличены: названия компаний и коммерческие данные не раскрываются.</p>
         </div>
 
-        <div aria-label="Отзыв собственника — часть кейса" style={{maxWidth:"1040px",marginTop:"40px",padding:"28px 32px 30px",borderTop:"2px solid #0a1426",borderBottom:"1px solid #d9e1eb",background:"#f8fafc"}}>
-          <p style={{margin:"0 0 14px",color:"#184ed8",fontSize:"11px",lineHeight:1.3,fontWeight:900,letterSpacing:".08em",textTransform:"uppercase"}}>Отзыв по этому проекту</p>
-          <blockquote style={{margin:0,maxWidth:"920px",color:"#0a1426",fontSize:"clamp(23px,2.1vw,32px)",lineHeight:1.2,letterSpacing:"-.025em",fontWeight:760}}>«Разбор помог увидеть, что проблема была шире привлечения заявок. Стало понятно, что нужно доработать сегментацию, ценность и доказательную базу. После этого мы начали собирать кейсы и проверять проектный канал.»</blockquote>
-          <p style={{margin:"18px 0 0",color:"#667085",fontSize:"14px",lineHeight:1.45}}><strong style={{color:"#0a1426"}}>Собственник бизнеса</strong> · проект обезличен</p>
+        <div aria-label="Отзыв собственника — часть кейса" style={{maxWidth:"980px",margin:"0 auto",padding:"30px 32px 32px",borderBottom:"1px solid #d9e1eb",background:"#f8fafc"}}>
+          <p style={{margin:"0 0 12px",color:"#184ed8",fontSize:"11px",lineHeight:1.3,fontWeight:900,letterSpacing:".08em",textTransform:"uppercase"}}>Отзыв собственника</p>
+          <blockquote style={{margin:0,color:"#0a1426",fontSize:"clamp(22px,2vw,30px)",lineHeight:1.25,letterSpacing:"-.02em",fontWeight:720}}>«Разбор помог увидеть, что проблема была шире привлечения заявок. Стало понятно, что нужно доработать сегментацию, ценность и доказательную базу.»</blockquote>
+          <p style={{margin:"16px 0 0",color:"#667085",fontSize:"14px"}}>Собственник бизнеса · проект обезличен</p>
         </div>
       </div>
     </section>
@@ -177,14 +169,17 @@ export default function Home() {
     </section>
 
     <section className="about-stage compact-stage" id="about">
-      <div className="page-shell about-grid">
-        <div><p className="eyebrow">05 · Почему такой взгляд</p><h2>В маркетинг я пришёл из управления бизнесом</h2></div>
-        <div className="about-copy">
-          <p className="about-system-lead"><strong>Поэтому смотрю не только на продвижение. Причина может быть в продукте, цене, продажах, сервисе, рынке или в том, как решение реализуется внутри компании.</strong></p>
-          <div className="about-foundations" aria-label="Основа профессионального подхода">
-            <div><small>Инженерная база</small><strong>Математика и автоматизация</strong><span>Разбирать систему, зависимости и причины.</span></div>
-            <div><small>Управленческая школа</small><strong>Executive MBA · качество · проекты · изменения</strong><span>Не только выбрать решение, но и сделать его управляемым.</span></div>
-            <div><small>Практика</small><strong>Управление → развитие → стратегический маркетинг</strong><span>Опыт внутри бизнеса, а не только со стороны маркетинговой функции.</span></div>
+      <div className="page-shell">
+        <p className="eyebrow">05 · Почему такой взгляд</p>
+        <div style={{display:"grid",gridTemplateColumns:"minmax(0,1.15fr) minmax(280px,.85fr)",gap:"clamp(34px,6vw,86px)",alignItems:"start"}}>
+          <div>
+            <h2 style={{margin:"0",maxWidth:"760px",fontSize:"clamp(42px,5.3vw,72px)",lineHeight:1.02,letterSpacing:"-.045em"}}>В маркетинг я пришёл из управления бизнесом.</h2>
+            <p style={{maxWidth:"720px",margin:"26px 0 0",color:"#475467",fontSize:"clamp(19px,1.8vw,24px)",lineHeight:1.5}}><strong style={{color:"#0a1426"}}>Поэтому смотрю не только на продвижение.</strong> Причина может быть в продукте, цене, продажах, сервисе, рынке или в том, как решение реализуется внутри компании.</p>
+          </div>
+          <div style={{borderTop:"2px solid #0a1426"}}>
+            <div style={{padding:"20px 0",borderBottom:"1px solid #d9e1eb"}}><small style={{display:"block",marginBottom:"7px",color:"#184ed8",fontWeight:900}}>Инженерная база</small><strong style={{display:"block",fontSize:"20px"}}>Математика и автоматизация</strong><span style={{display:"block",marginTop:"6px",color:"#667085",lineHeight:1.45}}>Разбирать систему, зависимости и причины.</span></div>
+            <div style={{padding:"20px 0",borderBottom:"1px solid #d9e1eb"}}><small style={{display:"block",marginBottom:"7px",color:"#184ed8",fontWeight:900}}>Управленческая школа</small><strong style={{display:"block",fontSize:"20px"}}>Executive MBA · качество · проекты · изменения</strong><span style={{display:"block",marginTop:"6px",color:"#667085",lineHeight:1.45}}>Не только выбрать решение, но и сделать его управляемым.</span></div>
+            <div style={{padding:"20px 0",borderBottom:"1px solid #d9e1eb"}}><small style={{display:"block",marginBottom:"7px",color:"#184ed8",fontWeight:900}}>Практика</small><strong style={{display:"block",fontSize:"20px"}}>Управление → развитие → стратегический маркетинг</strong><span style={{display:"block",marginTop:"6px",color:"#667085",lineHeight:1.45}}>Опыт внутри бизнеса, а не только со стороны маркетинговой функции.</span></div>
           </div>
         </div>
       </div>
@@ -192,18 +187,16 @@ export default function Home() {
 
     <section className="project-spectrum" aria-labelledby="project-spectrum-title">
       <div className="page-shell">
-        <div className="project-spectrum-head">
-          <p className="eyebrow">06 · Другие ситуации в работе</p>
-          <h2 id="project-spectrum-title">Первый запрос не всегда оказывается правильным вопросом.</h2>
+        <div style={{display:"flex",justifyContent:"space-between",gap:"24px",alignItems:"end",marginBottom:"24px"}}>
+          <div><p className="eyebrow">06 · Ещё три примера</p><h2 id="project-spectrum-title" style={{marginBottom:0}}>Первый запрос часто меняется после разбора.</h2></div>
         </div>
-        <div className="project-spectrum-grid">
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(230px,1fr))",borderTop:"1px solid #cfd8e5",borderBottom:"1px solid #cfd8e5"}}>
           {currentProjects.map((project, index) => (
-            <article className="project-spectrum-card" key={project.question}>
-              <div className="project-spectrum-meta"><span>0{index + 1}</span><em>{project.status}</em></div>
-              <h3>{project.question}</h3>
-              <small className="project-spectrum-context">{project.context}</small>
-              <p>{project.reframing}</p>
-              {project.href && project.linkLabel ? <a className="text-link" href={project.href} style={{display:"inline-block",marginTop:"16px"}}>{project.linkLabel}</a> : null}
+            <article key={project.question} style={{padding:"24px 24px 24px 0",borderRight:index < currentProjects.length - 1 ? "1px solid #d9e1eb" : "none",marginRight:index < currentProjects.length - 1 ? "24px" : "0"}}>
+              <small style={{display:"block",marginBottom:"10px",color:"#184ed8",fontWeight:900,letterSpacing:".04em"}}>0{index + 1} · {project.context}</small>
+              <strong style={{display:"block",fontSize:"19px",lineHeight:1.35}}>{project.question}</strong>
+              <p style={{margin:"10px 0 0",color:"#667085",fontSize:"15px",lineHeight:1.5}}>{project.reframing}</p>
+              {project.href ? <a className="text-link" href={project.href} style={{display:"inline-block",marginTop:"12px"}}>Открыть кейс →</a> : null}
             </article>
           ))}
         </div>
