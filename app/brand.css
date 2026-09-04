@@ -87,8 +87,21 @@
 }
 
 .site-nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 50% !important;
+  width: min(calc(100% - 72px), 1460px) !important;
+  transform: translateX(-50%) !important;
   min-height: 66px;
+  z-index: 100 !important;
   border-bottom-color: rgba(10,20,38,.08);
+  background: color-mix(in srgb, var(--bg) 95%, transparent) !important;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+main#top > .page-shell:first-child {
+  padding-top: 66px;
 }
 
 .site-nav .nav-cta {
@@ -140,12 +153,17 @@
 
 @media (max-width: 760px) {
   .site-nav {
+    width: calc(100% - 48px) !important;
     min-height: 64px !important;
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) auto !important;
     align-items: center !important;
     column-gap: 14px !important;
     border-bottom-color: rgba(10,20,38,.055) !important;
+  }
+
+  main#top > .page-shell:first-child {
+    padding-top: 64px;
   }
 
   .site-brand {
