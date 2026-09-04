@@ -3,43 +3,45 @@
   grid-template-columns: auto minmax(0, 1fr);
   grid-template-rows: auto auto;
   align-items: center;
-  column-gap: 12px;
-  row-gap: 2px;
+  column-gap: 15px;
+  row-gap: 3px;
   min-width: 0;
   text-decoration: none;
   letter-spacing: 0;
 }
 
-/* Category belongs to the personal brand, not to the monogram. */
+/* A compact descriptor under the name: territory, not a second slogan. */
 .site-brand::after {
-  content: "Стратегический маркетинг для собственников бизнеса" !important;
+  content: "Маркетинг и рост бизнеса" !important;
   grid-column: 2;
   grid-row: 2;
   display: block !important;
-  color: #667085;
-  font-size: 9px;
-  line-height: 1.2;
-  font-weight: 700;
-  letter-spacing: .01em;
+  color: #315eb7;
+  font-size: 10.5px;
+  line-height: 1.15;
+  font-weight: 780;
+  letter-spacing: .035em;
   text-transform: none;
   white-space: nowrap;
 }
 
+/* The monogram is the visual anchor; no decorative rules or dividers. */
 .site-brand-mark {
   grid-column: 1;
   grid-row: 1 / span 2;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-width: 42px;
+  justify-content: flex-start;
+  min-width: 58px;
   padding: 0;
   color: var(--ink);
   font-family: "Times New Roman", Georgia, serif;
-  font-size: 29px;
-  line-height: .9;
-  font-weight: 500;
-  letter-spacing: -.025em;
-  transform: none;
+  font-size: 42px;
+  line-height: .84;
+  font-weight: 400;
+  letter-spacing: -.035em;
+  transform: scaleX(.9);
+  transform-origin: left center;
 }
 
 .site-brand-mark::after {
@@ -55,10 +57,10 @@
   padding: 0 !important;
   border-left: 0 !important;
   color: var(--ink);
-  font-size: 15px;
-  line-height: 1.05;
-  font-weight: 820;
-  letter-spacing: -.025em;
+  font-size: 17px;
+  line-height: 1.02;
+  font-weight: 840;
+  letter-spacing: -.03em;
   white-space: nowrap;
 }
 
@@ -68,18 +70,18 @@
   display: none !important;
 }
 
-/* Quiet editorial header: brand supports the page instead of competing with it. */
 .site-nav {
-  min-height: 70px;
+  min-height: 76px;
   border-bottom-color: rgba(10,20,38,.08);
 }
 
 .site-nav .nav-cta {
-  min-height: 38px;
-  padding: 8px 12px;
-  border-color: rgba(10,20,38,.35);
-  font-size: 13px;
+  min-height: 44px;
+  padding: 10px 18px;
+  border-color: rgba(10,20,38,.42);
+  font-size: 14px;
   line-height: 1;
+  font-weight: 820;
 }
 
 .hero {
@@ -92,7 +94,6 @@
   letter-spacing: .07em;
 }
 
-/* Make the first diagnostic click concrete without adding another CTA. */
 .hero-actions {
   flex-wrap: wrap;
 }
@@ -108,47 +109,43 @@
   letter-spacing: .015em;
 }
 
-/* Do not expose an unfinished communication channel in the conversion zone. */
 .contact-stage button[aria-label="MAX — скоро"] {
   display: none !important;
 }
 
 @media (max-width: 760px) {
   .site-nav {
-    min-height: 64px;
-    gap: 10px;
+    min-height: 68px;
+    gap: 9px;
   }
 
   .site-brand {
     grid-template-columns: auto minmax(0, 1fr);
-    column-gap: 9px;
+    column-gap: 8px;
     row-gap: 2px;
     min-width: 0;
   }
 
   .site-brand-mark {
-    min-width: 34px;
-    font-size: 25px;
-    line-height: .9;
+    min-width: 45px;
+    font-size: 35px;
+    line-height: .84;
+    transform: scaleX(.9);
   }
 
   .site-brand::after {
-    max-width: 190px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 7.2px;
-    line-height: 1.15;
-    font-weight: 700;
-    letter-spacing: 0;
+    font-size: 8px;
+    line-height: 1.08;
+    font-weight: 760;
+    letter-spacing: .012em;
     white-space: nowrap;
   }
 
   .site-brand > span:last-child {
-    max-width: none;
     padding-left: 0 !important;
-    font-size: 12.5px;
-    font-weight: 800;
-    line-height: 1.03;
+    font-size: 13.5px;
+    font-weight: 820;
+    line-height: 1.02;
     white-space: nowrap;
   }
 
@@ -157,11 +154,12 @@
   }
 
   .site-nav .nav-cta {
-    min-height: 36px !important;
-    padding: 7px 10px !important;
-    border-color: rgba(10,20,38,.28) !important;
-    font-size: 11.5px !important;
+    min-height: 40px !important;
+    padding: 8px 12px !important;
+    border-color: rgba(10,20,38,.38) !important;
+    font-size: 12px !important;
     line-height: 1 !important;
+    font-weight: 820 !important;
   }
 
   .hero {
