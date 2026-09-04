@@ -4,9 +4,9 @@ import "./projects.css";
 import "./editorial-pass.css";
 
 const situations = [
-  "Нас мало знают",
-  "Нас видят, но не заказывают",
   "Продажи не растут, хотя маркетинг вроде работает",
+  "Нас видят, но не заказывают",
+  "Команда предлагает несколько решений — не понимаю, что действительно связано с причиной",
   "Все предлагают рекламу, сайт, SEO, AI — не понимаю, что реально нужно",
 ] as const;
 
@@ -19,9 +19,17 @@ const currentProjects = [
     status: "Текущая работа",
     context: "Промышленное оборудование",
     question: "«Хотим продавать линии, а не отдельные станки»",
-    reframing: "Вопрос о продажах оказался вопросом о самой модели: что считать продуктом, за что отвечать, как это доказать, продавать и поддерживать.",
+    reframing: "Вопрос о продажах стал вопросом о самой модели: что считать продуктом, за что отвечать и чем это доказать.",
     href: "/cases/integrator-model",
     linkLabel: "Открыть кейс →",
+  },
+  {
+    status: "Исследование",
+    context: "Fitness × Boxing × Wellness",
+    question: "«Хотим соединить три направления»",
+    reframing: "Сначала проверяем, есть ли здесь единая клиентская задача и новый продукт вообще.",
+    href: null,
+    linkLabel: null,
   },
   {
     status: "Исследование",
@@ -40,7 +48,7 @@ export default function Home() {
         <a className="site-brand" href="#top"><span className="site-brand-mark" aria-hidden="true">ВШ</span><span>Владимир Шашков</span></a>
         <nav aria-label="Основная навигация">
           <a href="#situations">Ситуации</a>
-          <a href="#product">Что станет понятно</a>
+          <a href="#brief">Разбор</a>
           <a href="#case">Пример</a>
           <a href="/work">Как работаю</a>
           <a href="#about">Обо мне</a>
@@ -59,7 +67,7 @@ export default function Home() {
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
           </div>
           <div className="hero-paths" aria-label="С чего начать">
-            <a href="#case"><span>Хочу сначала посмотреть работу</span><strong>Открыть реальные артефакты →</strong></a>
+            <a href="#case"><span>Хочу сначала посмотреть работу</span><strong>Открыть реальный пример →</strong></a>
             <a href="#contact"><span>У меня уже есть конкретный вопрос</span><strong>Просто написать →</strong></a>
           </div>
         </div>
@@ -79,7 +87,7 @@ export default function Home() {
         </div>
         <div className="proof-strip-item">
           <strong>Heidelberg · Nokian Tyres · Роснано · Росатом</strong>
-          <span>опыт от промышленного оборудования и инженерных проектов до потребительского бренда, продукта и сервисной модели</span>
+          <span>опыт внутри сложного бизнеса, продукта и сервисной модели</span>
         </div>
       </div>
     </section>
@@ -88,7 +96,7 @@ export default function Home() {
       <div className="page-shell">
         <div className="section-intro situations-intro">
           <p className="eyebrow">01 · Узнали себя?</p>
-          <h2>Проблема часто звучит просто.</h2>
+          <h2>Проблема часто звучит просто. Решение — уже нет.</h2>
         </div>
         <div className="situation-columns" style={{gridTemplateColumns:"1fr 1fr"}}>
           {situations.map((item, index) => <article className="situation-column" key={item}><span className="column-index">0{index + 1}</span><div className="situation-list"><p>«{item}»</p></div></article>)}
@@ -101,70 +109,83 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="method-stage compact-method" id="product">
+    <section className="method-stage compact-method" id="brief">
       <div className="page-shell">
-        <div className="section-intro method-intro"><p className="eyebrow">02 · Что должно стать понятно</p><h2>Что проверять первым — и что делать дальше.</h2></div>
-        <div className="depth-result-grid product-depth-grid">
-          <article className="depth-result-card"><span>Первичный разбор</span><h3>Понять, в чём главный вопрос и что проверить первым.</h3><div className="depth-result-output"><small>Результат</small><strong>Понятно, где искать причину, что проверить и какое решение пока рано принимать.</strong></div></article>
-          <article className="depth-result-card depth-result-card-main">
-            <span>Полноценный стратегический проект</span>
-            <h3>Когда вопрос затрагивает не один инструмент, а рынок, продукт, продажи, сервис или исполнение.</h3>
-            <div className="depth-result-output"><small>Результат</small><strong>Согласованная архитектура решения: что менять, для кого, какой продукт, что обещать, чем доказать, как продавать и что должна изменить команда.</strong></div>
-            <p className="team-work-note"><strong>Глубина зависит не от размера компании, а от вопроса.</strong> Иногда достаточно разобраться с одной проблемой. Иногда изменение затрагивает продукт, продажи, сервис и продвижение одновременно.</p>
-          </article>
+        <div className="section-intro method-intro">
+          <p className="eyebrow">02 · Проверить на своей ситуации</p>
+          <h2>Не читать о методе — попробовать его на своём вопросе.</h2>
         </div>
-
-        <div aria-label="Что может остаться после стратегического проекта" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(210px,1fr))",columnGap:"28px",rowGap:"20px",marginTop:"18px",padding:"24px 0",borderTop:"1px solid #d9e1eb",borderBottom:"1px solid #d9e1eb"}}>
-          <div><small style={{display:"block",marginBottom:"8px",color:"#667085",fontWeight:800}}>Рынок и выбор</small><strong style={{display:"block",lineHeight:1.4}}>Кто клиент, что он выбирает, какие альтернативы и критерии решают выбор.</strong></div>
-          <div><small style={{display:"block",marginBottom:"8px",color:"#667085",fontWeight:800}}>Продукт и ценность</small><strong style={{display:"block",lineHeight:1.4}}>Что бизнес реально способен дать клиенту и где проходят границы ответственности.</strong></div>
-          <div><small style={{display:"block",marginBottom:"8px",color:"#667085",fontWeight:800}}>Позиционирование и доказательства</small><strong style={{display:"block",lineHeight:1.4}}>Что можно честно обещать рынку — и какими фактами это подтверждать.</strong></div>
-          <div><small style={{display:"block",marginBottom:"8px",color:"#667085",fontWeight:800}}>Решения и исполнение</small><strong style={{display:"block",lineHeight:1.4}}>Что менять в продажах, маркетинге, сервисе и работе команды, чтобы стратегия заработала.</strong></div>
-        </div>
-
-        <div aria-label="Пример B2C-ситуации" style={{marginTop:"28px",paddingTop:"22px",borderTop:"1px solid #d9e1eb"}}>
-          <small style={{display:"block",marginBottom:"9px",color:"#184ed8",fontWeight:900,letterSpacing:".06em",textTransform:"uppercase"}}>B2C-исследование · сеть фитнес-клубов</small>
-          <strong style={{display:"block",fontSize:"clamp(21px,2vw,28px)",lineHeight:1.2,letterSpacing:"-.02em"}}>«Хотим соединить Fitness × Boxing × Wellness»</strong>
-          <p style={{maxWidth:"820px",margin:"12px 0 0",color:"#475467",fontSize:"16px",lineHeight:1.6}}>Вопрос быстро сместился с продвижения трёх направлений на более базовый: есть ли здесь единая клиентская задача и новый продукт вообще.</p>
-        </div>
-
         <div className="brief-entry" aria-label="Decision Brief">
           <div>
             <span>Decision Brief · 6 вопросов · без звонка</span>
-            <h3>Можно сначала проверить свою формулировку задачи — ничего не покупая.</h3>
-            <p>На выходе — главный вопрос, что проверить первым и что пока рано делать. Результат можно сохранить в PDF.</p>
+            <h3>Проверьте, насколько ваша текущая версия проблемы уже обоснована.</h3>
+            <p>На выходе — главный вопрос, критическая неопределённость, что проверить первым и что пока рано делать. Результат можно сохранить в PDF.</p>
           </div>
           <a className="button" href="/diagnostic">Разобрать свою ситуацию</a>
         </div>
-
-        <a className="text-link" href="/work" style={{display:"inline-block",marginTop:"24px"}}>Как проходит работа — по шагам →</a>
       </div>
     </section>
 
     <section className="proof-stage" id="case">
       <div className="page-shell">
         <div className="section-intro proof-intro">
-          <p className="eyebrow">03 · Кейс · проект обезличен</p>
-          <h2>Казалось, что нужны заявки. Проблема оказалась раньше.</h2>
+          <p className="eyebrow">03 · Как меняется решение · проект обезличен</p>
+          <h2>Пришли за заявками. Изменился сам вопрос.</h2>
           <div className="proof-work-fragment">
             <div><small>С чем пришли</small><strong>«Нам нужны квалифицированные входящие заявки».</strong></div>
             <div><small>Что было фактом</small><p>Продажи опирались не только на сайт, но и на повторные сделки и личную работу с рынком.</p></div>
             <div><small>Что перестало быть очевидным</small><strong>Что следующий правильный шаг — просто увеличить рекламный трафик.</strong></div>
             <div className="proof-result-cell"><small>Что изменилось в решении</small><p><strong>Фокус сместился на доверие и более ранний вход компании в проект клиента.</strong></p></div>
           </div>
-          <p className="proof-meaning"><strong>Изменилось не только понимание проблемы, но и действия: собственник уточнил сегментацию и ценность, начал собирать кейсы и проверять проектный канал.</strong></p>
+          <p className="proof-meaning"><strong>После разбора собственник уточнил сегментацию и ценность, начал собирать кейсы и проверять проектный канал.</strong></p>
           <div className="proof-links">
             <a className="text-link proof-demo-link" href="/artifacts/task-map">Карта задачи →</a>
             <a className="text-link proof-demo-link" href="/artifacts/market-choice">Карта рынка и выбора →</a>
-            <a className="text-link proof-demo-link" href="/artifacts/value-proof">Иерархия ценности и доказательств →</a>
             <a className="text-link proof-demo-link" href="/diagnostic">Попробовать эту логику на своей ситуации →</a>
           </div>
           <p className="proof-demo-note">Рабочие артефакты обезличены: названия компаний и коммерческие данные не раскрываются.</p>
         </div>
 
-        <div aria-label="Отзыв собственника — часть кейса" style={{maxWidth:"1040px",marginTop:"44px",padding:"30px 34px 32px",borderTop:"2px solid #0a1426",borderBottom:"1px solid #d9e1eb",background:"#f8fafc"}}>
-          <p style={{margin:"0 0 16px",color:"#184ed8",fontSize:"11px",lineHeight:1.3,fontWeight:900,letterSpacing:".08em",textTransform:"uppercase"}}>Отзыв по этому проекту</p>
-          <blockquote style={{margin:0,maxWidth:"920px",color:"#0a1426",fontSize:"clamp(24px,2.25vw,34px)",lineHeight:1.2,letterSpacing:"-.025em",fontWeight:760}}>«Разбор помог увидеть, что проблема была шире привлечения заявок. Стало понятно, что нужно доработать сегментацию, ценность и доказательную базу. После этого мы начали собирать кейсы и проверять проектный канал.»</blockquote>
-          <p style={{margin:"20px 0 0",color:"#667085",fontSize:"14px",lineHeight:1.45}}><strong style={{color:"#0a1426"}}>Собственник бизнеса</strong> · проект обезличен</p>
+        <div aria-label="Отзыв собственника — часть кейса" style={{maxWidth:"1040px",marginTop:"40px",padding:"28px 32px 30px",borderTop:"2px solid #0a1426",borderBottom:"1px solid #d9e1eb",background:"#f8fafc"}}>
+          <p style={{margin:"0 0 14px",color:"#184ed8",fontSize:"11px",lineHeight:1.3,fontWeight:900,letterSpacing:".08em",textTransform:"uppercase"}}>Отзыв по этому проекту</p>
+          <blockquote style={{margin:0,maxWidth:"920px",color:"#0a1426",fontSize:"clamp(23px,2.1vw,32px)",lineHeight:1.2,letterSpacing:"-.025em",fontWeight:760}}>«Разбор помог увидеть, что проблема была шире привлечения заявок. Стало понятно, что нужно доработать сегментацию, ценность и доказательную базу. После этого мы начали собирать кейсы и проверять проектный канал.»</blockquote>
+          <p style={{margin:"18px 0 0",color:"#667085",fontSize:"14px",lineHeight:1.45}}><strong style={{color:"#0a1426"}}>Собственник бизнеса</strong> · проект обезличен</p>
+        </div>
+      </div>
+    </section>
+
+    <section className="method-stage compact-method" id="product">
+      <div className="page-shell">
+        <div className="section-intro method-intro">
+          <p className="eyebrow">04 · Как работаю</p>
+          <h2>От неясной задачи — к проверяемому решению.</h2>
+        </div>
+        <div className="depth-result-grid product-depth-grid">
+          <article className="depth-result-card">
+            <span>Логика работы</span>
+            <h3>Задача → факты → версии → критическая неопределённость → проверка → выбор.</h3>
+            <div className="depth-result-output"><small>Первый результат</small><strong>Понятно, какой вопрос действительно нужно решать и что проверить первым.</strong></div>
+          </article>
+          <article className="depth-result-card depth-result-card-main">
+            <span>Если вопрос глубже</span>
+            <h3>Работа может затронуть рынок, продукт, позиционирование, продажи, сервис и исполнение.</h3>
+            <div className="depth-result-output"><small>Но не обязательно</small><strong>Глубина определяется вопросом, а не желанием продать большой проект.</strong></div>
+          </article>
+        </div>
+        <a className="text-link" href="/work" style={{display:"inline-block",marginTop:"24px"}}>Как проходит работа — по шагам →</a>
+      </div>
+    </section>
+
+    <section className="about-stage compact-stage" id="about">
+      <div className="page-shell about-grid">
+        <div><p className="eyebrow">05 · Почему такой взгляд</p><h2>В маркетинг я пришёл из управления бизнесом</h2></div>
+        <div className="about-copy">
+          <p className="about-system-lead"><strong>Поэтому смотрю не только на продвижение. Причина может быть в продукте, цене, продажах, сервисе, рынке или в том, как решение реализуется внутри компании.</strong></p>
+          <div className="about-foundations" aria-label="Основа профессионального подхода">
+            <div><small>Инженерная база</small><strong>Математика и автоматизация</strong><span>Разбирать систему, зависимости и причины.</span></div>
+            <div><small>Управленческая школа</small><strong>Executive MBA · качество · проекты · изменения</strong><span>Не только выбрать решение, но и сделать его управляемым.</span></div>
+            <div><small>Практика</small><strong>Управление → развитие → стратегический маркетинг</strong><span>Опыт внутри бизнеса, а не только со стороны маркетинговой функции.</span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -172,9 +193,8 @@ export default function Home() {
     <section className="project-spectrum" aria-labelledby="project-spectrum-title">
       <div className="page-shell">
         <div className="project-spectrum-head">
-          <p className="eyebrow">04 · Другие ситуации в работе</p>
-          <h2 id="project-spectrum-title">Другие бизнес-ситуации, где первый запрос меняется после разбора.</h2>
-          <p style={{maxWidth:"780px",margin:"18px 0 0",color:"#667085",fontSize:"16px",lineHeight:1.6}}>Это текущие проекты и исследования, а не завершённые кейсы. Здесь показан только сдвиг вопроса — без обещания результата, которого ещё нет.</p>
+          <p className="eyebrow">06 · Другие ситуации в работе</p>
+          <h2 id="project-spectrum-title">Первый запрос не всегда оказывается правильным вопросом.</h2>
         </div>
         <div className="project-spectrum-grid">
           {currentProjects.map((project, index) => (
@@ -190,25 +210,9 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="about-stage compact-stage" id="about">
-      <div className="page-shell about-grid">
-        <div><p className="eyebrow">05 · Почему такой взгляд</p><h2>В маркетинг я пришёл из управления бизнесом</h2></div>
-        <div className="about-copy">
-          <p className="about-system-lead"><strong>Поэтому смотрю не только на продвижение. Причина может быть в продукте, цене, продажах, сервисе, рынке или в том, как решение реализуется внутри компании.</strong></p>
-          <p>Иногда результат работы — не маркетинговая рекомендация, а изменение продукта, продаж, сервиса или самого способа принятия решений.</p>
-          <div className="about-foundations" aria-label="Основа профессионального подхода">
-            <div><small>Инженерная база</small><strong>Математика и автоматизация</strong><span>Привычка разбирать систему, зависимости и причины.</span></div>
-            <div><small>Управленческая школа</small><strong>Executive MBA · качество · проекты · изменения</strong><span>Не только выбрать решение, но и сделать его управляемым.</span></div>
-            <div><small>Практика</small><strong>Управление → развитие → стратегический маркетинг</strong><span>Опыт внутри бизнеса, а не только со стороны маркетинговой функции.</span></div>
-          </div>
-          <p className="about-capability"><strong>Диагностировать → спроектировать → организовать → передать команде.</strong></p>
-        </div>
-      </div>
-    </section>
-
     <section className="faq-stage" id="faq">
       <div className="page-shell faq-grid">
-        <div className="faq-intro"><p className="eyebrow">06 · Перед первым шагом</p><h2>Пять коротких ответов</h2></div>
+        <div className="faq-intro"><p className="eyebrow">07 · Перед первым шагом</p><h2>Пять коротких ответов</h2></div>
         <div className="faq-list">
           <details><summary>А если я сам не понимаю, в чём проблема?</summary><p>С этого и можно начать. Не нужно заранее знать правильный диагноз или нужную услугу.</p></details>
           <details><summary>Нужно ли сразу заказывать большой проект?</summary><p>Нет. Сначала можно разобрать один вопрос и определить нужную глубину работы.</p></details>
@@ -222,7 +226,7 @@ export default function Home() {
     <section className="contact-stage" id="contact">
       <div className="page-shell contact-grid">
         <div>
-          <p className="eyebrow eyebrow-light">07 · Следующий шаг</p>
+          <p className="eyebrow eyebrow-light">08 · Следующий шаг</p>
           <h2>Можно начать с самой ситуации.</h2>
           <p>Не нужно заранее понимать, какая услуга вам нужна. Если вопрос уже есть — просто напишите его своими словами.</p>
           <p style={{margin:"18px 0 0",color:"#dce6f5",fontSize:"15px",lineHeight:1.5,fontWeight:700}}><strong style={{color:"#fff"}}>Работаю как ИП.</strong> Договор, счёт и закрывающие документы.</p>
