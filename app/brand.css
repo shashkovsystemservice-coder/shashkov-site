@@ -1,98 +1,85 @@
 .site-brand {
   display: inline-grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto minmax(0, 1fr);
   grid-template-rows: auto auto;
   align-items: center;
-  column-gap: 14px;
-  row-gap: 1px;
+  column-gap: 12px;
+  row-gap: 2px;
+  min-width: 0;
   text-decoration: none;
   letter-spacing: 0;
-  white-space: nowrap;
 }
 
-/* Descriptor belongs to the monogram, not to the personal name. */
+/* Category belongs to the personal brand, not to the monogram. */
 .site-brand::after {
-  content: "Маркетинг и рост бизнеса" !important;
-  grid-column: 1;
+  content: "Стратегический маркетинг для собственников бизнеса" !important;
+  grid-column: 2;
   grid-row: 2;
   display: block !important;
-  color: #315eb7;
-  font-size: 8px;
-  line-height: 1.05;
-  font-weight: 760;
-  letter-spacing: .028em;
-  text-transform: uppercase;
+  color: #667085;
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: .01em;
+  text-transform: none;
   white-space: nowrap;
 }
 
 .site-brand-mark {
-  position: relative;
   grid-column: 1;
-  grid-row: 1;
+  grid-row: 1 / span 2;
   display: inline-flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  min-width: 48px;
-  padding: 0 0 8px;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  padding: 0;
   color: var(--ink);
   font-family: "Times New Roman", Georgia, serif;
-  font-size: 36px;
-  line-height: .8;
-  font-weight: 400;
-  letter-spacing: .018em;
-  transform: scaleX(.88);
-  transform-origin: left bottom;
+  font-size: 29px;
+  line-height: .9;
+  font-weight: 500;
+  letter-spacing: -.025em;
+  transform: none;
 }
 
-/* Long architectural signature rule aligned with the full descriptor width. */
 .site-brand-mark::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 178px;
-  bottom: 1px;
-  height: 1px;
-  background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 96%, rgba(10,20,38,.18) 100%);
-  transform: rotate(-.08deg);
-  transform-origin: left center;
+  content: none !important;
+  display: none !important;
 }
 
 .site-brand > span:last-child {
   grid-column: 2;
-  grid-row: 1 / span 2;
-  align-self: center;
-  position: relative;
+  grid-row: 1;
+  align-self: end;
   display: block;
-  padding: 0 0 0 14px !important;
+  padding: 0 !important;
   border-left: 0 !important;
   color: var(--ink);
-  font-size: 16.5px;
-  line-height: 1.04;
-  font-weight: 810;
+  font-size: 15px;
+  line-height: 1.05;
+  font-weight: 820;
   letter-spacing: -.025em;
+  white-space: nowrap;
 }
 
-/* A short divider binds the mark and the name without splitting them into two brands. */
-.site-brand > span:last-child::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 1px;
-  height: 29px;
-  background: rgba(10,20,38,.14);
-  transform: translateY(-50%);
-}
-
+.site-brand > span:last-child::before,
 .site-brand > span:last-child::after {
   content: none !important;
   display: none !important;
 }
 
-/* Keep the header and the first editorial cue visually connected. */
+/* Quiet editorial header: brand supports the page instead of competing with it. */
 .site-nav {
-  min-height: 76px;
+  min-height: 70px;
   border-bottom-color: rgba(10,20,38,.08);
+}
+
+.site-nav .nav-cta {
+  min-height: 38px;
+  padding: 8px 12px;
+  border-color: rgba(10,20,38,.35);
+  font-size: 13px;
+  line-height: 1;
 }
 
 .hero {
@@ -128,51 +115,41 @@
 
 @media (max-width: 760px) {
   .site-nav {
-    min-height: 66px;
-    gap: 8px;
+    min-height: 64px;
+    gap: 10px;
   }
 
   .site-brand {
-    grid-template-columns: minmax(0, 124px) auto;
-    column-gap: 6px;
-    row-gap: 0;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 9px;
+    row-gap: 2px;
     min-width: 0;
   }
 
   .site-brand-mark {
-    min-width: 40px;
-    font-size: 33px;
-    line-height: .8;
-    padding-bottom: 7px;
-    transform: scaleX(.86);
-  }
-
-  .site-brand-mark::after {
-    width: 158px;
-    bottom: 1px;
+    min-width: 34px;
+    font-size: 25px;
+    line-height: .9;
   }
 
   .site-brand::after {
-    font-size: 6.35px;
-    line-height: 1.02;
-    font-weight: 750;
-    letter-spacing: .018em;
+    max-width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 7.2px;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: 0;
     white-space: nowrap;
-    max-width: 124px;
   }
 
   .site-brand > span:last-child {
-    padding-left: 9px !important;
-    font-size: 11.8px;
-    font-weight: 770;
-    line-height: 1.05;
-    white-space: normal;
-    max-width: 76px;
-  }
-
-  .site-brand > span:last-child::before {
-    height: 27px;
-    background: rgba(10,20,38,.13);
+    max-width: none;
+    padding-left: 0 !important;
+    font-size: 12.5px;
+    font-weight: 800;
+    line-height: 1.03;
+    white-space: nowrap;
   }
 
   .site-nav nav {
@@ -180,9 +157,10 @@
   }
 
   .site-nav .nav-cta {
-    min-height: 39px !important;
-    padding: 8px 11px !important;
-    font-size: 12px !important;
+    min-height: 36px !important;
+    padding: 7px 10px !important;
+    border-color: rgba(10,20,38,.28) !important;
+    font-size: 11.5px !important;
     line-height: 1 !important;
   }
 
