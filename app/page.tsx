@@ -134,7 +134,7 @@ export default function Home() {
           <div><span>Что изменилось</span><h3>Фокус сместился с трафика на доверие и более ранний вход в проект клиента.</h3></div>
         </div>
         <p className="case-action"><strong>После разбора собственник уточнил сегментацию и ценность, начал собирать кейсы и проверять проектный канал.</strong></p>
-        <div className="case-links"><a href="/artifacts/task-map">Карта задачи →</a><a href="/artifacts/market-choice">Карта выбора рынка →</a><a href="/diagnostic">Разобрать свою ситуацию →</a></div>
+        <div className="case-links"><a className="proof-demo-link" href="/artifacts/task-map">Карта задачи →</a><a className="proof-demo-link" href="/artifacts/market-choice">Карта выбора рынка →</a><a className="proof-demo-link" href="/artifacts/value-proof">Иерархия ценности и доказательств →</a><a className="proof-demo-link" href="/diagnostic">Разобрать свою ситуацию →</a></div>
         <blockquote>«Разбор помог увидеть, что проблема была шире привлечения заявок. Стало понятно, что нужно доработать сегментацию, ценность и доказательную базу.»</blockquote>
         <p className="case-attribution">Собственник бизнеса · проект обезличен</p>
       </div>
