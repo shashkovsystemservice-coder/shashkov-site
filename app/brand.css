@@ -1,45 +1,42 @@
 .site-brand {
-  display: inline-grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  grid-template-rows: auto auto;
+  display: inline-flex;
   align-items: center;
-  column-gap: 15px;
-  row-gap: 3px;
   min-width: 0;
   text-decoration: none;
   letter-spacing: 0;
 }
 
-/* A compact descriptor under the name: territory, not a second slogan. */
+/* The territory belongs to the centered personal identity, not to the monogram. */
 .site-brand::after {
   content: "Маркетинг и рост бизнеса" !important;
-  grid-column: 2;
-  grid-row: 2;
+  position: absolute;
+  left: 50%;
+  top: 49px;
+  transform: translateX(-50%);
   display: block !important;
   color: #315eb7;
-  font-size: 10.5px;
-  line-height: 1.15;
-  font-weight: 780;
-  letter-spacing: .035em;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 760;
+  letter-spacing: .025em;
   text-transform: none;
   white-space: nowrap;
+  pointer-events: none;
 }
 
-/* The monogram is the visual anchor; no decorative rules or dividers. */
+/* Monogram is a clean signature on the left — no line, no subtitle, no divider. */
 .site-brand-mark {
-  grid-column: 1;
-  grid-row: 1 / span 2;
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  min-width: 58px;
+  min-width: 68px;
   padding: 0;
   color: var(--ink);
   font-family: "Times New Roman", Georgia, serif;
-  font-size: 42px;
-  line-height: .84;
+  font-size: 47px;
+  line-height: .82;
   font-weight: 400;
-  letter-spacing: -.035em;
+  letter-spacing: -.04em;
   transform: scaleX(.9);
   transform-origin: left center;
 }
@@ -49,19 +46,22 @@
   display: none !important;
 }
 
+/* Name is the stable visual center of the header. */
 .site-brand > span:last-child {
-  grid-column: 2;
-  grid-row: 1;
-  align-self: end;
+  position: absolute;
+  left: 50%;
+  top: 23px;
+  transform: translateX(-50%);
   display: block;
   padding: 0 !important;
   border-left: 0 !important;
   color: var(--ink);
   font-size: 17px;
-  line-height: 1.02;
+  line-height: 1;
   font-weight: 840;
   letter-spacing: -.03em;
   white-space: nowrap;
+  text-align: center;
 }
 
 .site-brand > span:last-child::before,
@@ -71,17 +71,25 @@
 }
 
 .site-nav {
-  min-height: 76px;
+  min-height: 78px;
   border-bottom-color: rgba(10,20,38,.08);
 }
 
+/* CTA is an action, not a boxed logo competing with the identity. */
 .site-nav .nav-cta {
-  min-height: 44px;
-  padding: 10px 18px;
-  border-color: rgba(10,20,38,.42);
+  min-height: auto;
+  padding: 8px 0 7px;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(10,20,38,.28) !important;
+  background: transparent !important;
   font-size: 14px;
   line-height: 1;
   font-weight: 820;
+}
+
+.site-nav .nav-cta::after {
+  content: " →";
+  color: #315eb7;
 }
 
 .hero {
@@ -115,38 +123,31 @@
 
 @media (max-width: 760px) {
   .site-nav {
-    min-height: 68px;
-    gap: 9px;
-  }
-
-  .site-brand {
-    grid-template-columns: auto minmax(0, 1fr);
-    column-gap: 8px;
-    row-gap: 2px;
-    min-width: 0;
+    min-height: 70px;
+    gap: 10px;
   }
 
   .site-brand-mark {
-    min-width: 45px;
-    font-size: 35px;
-    line-height: .84;
+    min-width: 50px;
+    font-size: 38px;
+    line-height: .82;
     transform: scaleX(.9);
   }
 
-  .site-brand::after {
-    font-size: 8px;
-    line-height: 1.08;
-    font-weight: 760;
-    letter-spacing: .012em;
-    white-space: nowrap;
+  .site-brand > span:last-child {
+    top: 19px;
+    font-size: 14px;
+    font-weight: 820;
+    line-height: 1;
+    letter-spacing: -.025em;
   }
 
-  .site-brand > span:last-child {
-    padding-left: 0 !important;
-    font-size: 13.5px;
-    font-weight: 820;
-    line-height: 1.02;
-    white-space: nowrap;
+  .site-brand::after {
+    top: 41px;
+    font-size: 7.8px;
+    line-height: 1;
+    font-weight: 740;
+    letter-spacing: .012em;
   }
 
   .site-nav nav {
@@ -154,9 +155,10 @@
   }
 
   .site-nav .nav-cta {
-    min-height: 40px !important;
-    padding: 8px 12px !important;
-    border-color: rgba(10,20,38,.38) !important;
+    min-height: auto !important;
+    padding: 7px 0 6px !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(10,20,38,.24) !important;
     font-size: 12px !important;
     line-height: 1 !important;
     font-weight: 820 !important;
