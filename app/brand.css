@@ -1,9 +1,10 @@
 .site-brand {
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
+  justify-content: flex-start !important;
+  gap: 10px !important;
   min-width: 0;
+  width: auto !important;
   text-decoration: none;
   letter-spacing: 0;
 }
@@ -14,10 +15,10 @@
 }
 
 .site-brand-mark {
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center;
   justify-content: flex-start;
-  flex: 0 0 auto;
+  flex: 0 0 auto !important;
   min-width: 58px;
   padding: 0;
   color: var(--ink);
@@ -36,7 +37,7 @@
 }
 
 .site-brand-copy {
-  display: grid;
+  display: grid !important;
   gap: 3px;
   min-width: 0;
   align-content: center;
@@ -140,24 +141,34 @@
 @media (max-width: 760px) {
   .site-nav {
     min-height: 60px;
-    gap: 8px;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 10px !important;
   }
 
   .site-brand {
+    display: inline-flex !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
     justify-content: flex-start !important;
-    gap: 4px;
-    flex: 1 1 auto;
-    margin-left: 5px;
+    justify-self: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    margin: 0 !important;
   }
 
   .site-brand-mark {
-    min-width: 39px;
-    font-size: 34px;
+    min-width: 44px !important;
+    font-size: 36px !important;
     line-height: .82;
     transform: scaleX(.93);
   }
 
   .site-brand-copy {
+    display: grid !important;
     gap: 2px;
   }
 
@@ -166,6 +177,7 @@
     line-height: 1;
     font-weight: 760 !important;
     letter-spacing: -.022em;
+    white-space: nowrap !important;
   }
 
   .site-brand-tagline {
@@ -173,11 +185,13 @@
     line-height: 1.05;
     font-weight: 560 !important;
     letter-spacing: 0;
+    white-space: nowrap !important;
   }
 
   .site-nav nav {
     gap: 0 !important;
     flex: 0 0 auto;
+    justify-self: end !important;
   }
 
   .site-nav .nav-cta {
