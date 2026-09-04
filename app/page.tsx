@@ -43,7 +43,7 @@ export default function Home() {
           <span className="site-brand-mark" aria-hidden="true">ВШ</span>
           <span className="site-brand-copy" aria-hidden="true">
             <span className="site-brand-name">Владимир Шашков</span>
-            <span className="site-brand-tagline">Маркетинг и рост бизнеса</span>
+            <span className="site-brand-tagline">Маркетинг и <em>рост</em> бизнеса</span>
           </span>
         </a>
         <nav aria-label="Основная навигация">
@@ -175,17 +175,28 @@ export default function Home() {
           <details><summary>Обязательно ли это будет большой проект?</summary><p>Нет. Первый шаг должен иметь самостоятельную ценность и закончиться ясным следующим решением — даже если продолжение не требуется.</p></details>
           <details><summary>А если выяснится, что маркетинговый проект вообще не нужен?</summary><p>Это нормальный результат. Задача разбора — понять, что действительно стоит менять, а не обязательно продать маркетинговый проект.</p></details>
           <details><summary>Нужно заранее собрать много данных?</summary><p>Нет. Начать можно с того, что уже известно. В ходе разбора станет видно, каких фактов действительно не хватает.</p></details>
-          <details><summary>Кто потом реализует решение?</summary><p>Зависит от задачи: ваша команда, профильный подрядчик или совместная работа. Я подключаюсь к исполнению там, где это необходимо для качества решения.</p></details>
+          <details><summary>Кто потом реализует решение?</summary><p>Зависит от задачи: ваша команда, профильный подрядчик или совместная работа. Я подключаюсь к исполнению там, где это влияет на качество решения.</p></details>
         </div>
       </div>
     </section>
 
     <section id="contact" className="contact-stage">
       <div className="page-shell contact-grid">
-        <div><p className="eyebrow eyebrow-light">08 · Написать</p><h2>Можно начать с самой ситуации.</h2><p>Не нужно заранее понимать, какая услуга вам нужна. Если вопрос уже есть — просто напишите его своими словами.</p><p><strong>Работаю как ИП.</strong> Договор, счёт и закрывающие документы.</p><div className="contact-actions"><a className="button button-light" href="/diagnostic">Разобрать ситуацию</a><a className="button button-light" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a></div></div>
-        <form className="contact-form" action="/api/contact" method="post"><label><span>Что сейчас происходит?</span><textarea name="situation" placeholder="Коротко, своими словами" required /></label><label><span>Как с вами связаться?</span><input name="contact" placeholder="Email или Telegram" required /></label><button className="button button-light" type="submit">Отправить</button><p>Не нужно заранее понимать, какая услуга вам нужна.</p></form>
+        <div>
+          <p className="eyebrow eyebrow-light">08 · Написать</p>
+          <h2>Можно начать с самой ситуации.</h2>
+          <p>Не нужно заранее понимать, какая услуга вам нужна. Если вопрос уже есть — просто напишите его своими словами.</p>
+          <p className="contact-legal"><strong>Работаю как ИП.</strong> Договор, счёт и закрывающие документы.</p>
+          <div className="contact-actions"><a className="button button-light" href="/diagnostic">Разобрать ситуацию</a>{contactChannels.map((channel) => <a key={channel.id} className="button button-light" href={channel.href} target="_blank" rel="noreferrer">Написать в {channel.label}</a>)}</div>
+        </div>
+        <form className="contact-form" action="/api/contact" method="post">
+          <label><span>Что сейчас происходит?</span><textarea name="situation" placeholder="Коротко, своими словами" required /></label>
+          <label><span>Как с вами связаться?</span><input type="text" name="contact" placeholder="Email или Telegram" required /></label>
+          <button className="button button-light" type="submit">Отправить</button>
+          <p>Не нужно заранее понимать, какая услуга вам нужна.</p>
+        </form>
       </div>
-      <div className="page-shell contact-proof">24 года в бизнесе и управлении · Executive MBA · опыт от технического блока и сервиса до развития и стратегического маркетинга</div>
+      <div className="page-shell contact-foot"><strong>24 года в бизнесе и управлении · Executive MBA · опыт от технического блока и сервиса до развития и стратегического маркетинга</strong></div>
     </section>
   </main>;
 }
