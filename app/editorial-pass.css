@@ -2,6 +2,16 @@
 
 /* Editorial refinement pass: preserve the cool palette, reduce UI-card weight. */
 
+/* Hero eyebrow is real content now; disable the legacy pseudo-copy from method.css. */
+.hero-copy > .eyebrow {
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+}
+.hero-copy > .eyebrow::after {
+  content: none !important;
+  display: none !important;
+}
+
 /* Product / depth section: make it read like an editorial spread, not a pricing UI. */
 .product-depth-grid .depth-result-card,
 .product-depth-grid .depth-result-card:first-child {
