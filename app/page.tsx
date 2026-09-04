@@ -58,7 +58,7 @@ export default function Home() {
 
       <section className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Стратегический маркетинг для собственников бизнеса</p>
+          <p className="eyebrow">Для ситуаций, где решение не очевидно</p>
           <h1>Не уверены, что именно сейчас нужно менять в бизнесе?</h1>
           <p className="hero-lead">Сначала помогаю понять проблему. Потом — выбрать решение и первый шаг.</p>
           <p className="hero-money-line">И понять, на что пока не стоит тратить деньги.</p>
@@ -129,9 +129,9 @@ export default function Home() {
         <p className="eyebrow eyebrow-light">03 · Как меняется решение · проект обезличен</p>
         <h2>Пришли за заявками. Изменился сам вопрос.</h2>
         <div className="case-steps">
-          <div><span>01 · Запрос</span><h3>«Нам нужны квалифицированные входящие заявки».</h3></div>
-          <div><span>02 · Что выяснили</span><p>Продажи опирались не только на сайт: важны повторные сделки и личная работа с рынком.</p></div>
-          <div><span>03 · Что изменилось</span><h3>Фокус сместился с трафика на доверие и более ранний вход в проект клиента.</h3></div>
+          <div><span>Запрос</span><h3>«Нам нужны квалифицированные входящие заявки».</h3></div>
+          <div><span>Что выяснили</span><p>Продажи опирались не только на сайт: важны повторные сделки и личная работа с рынком.</p></div>
+          <div><span>Что изменилось</span><h3>Фокус сместился с трафика на доверие и более ранний вход в проект клиента.</h3></div>
         </div>
         <p className="case-action"><strong>После разбора собственник уточнил сегментацию и ценность, начал собирать кейсы и проверять проектный канал.</strong></p>
         <div className="case-links"><a href="/artifacts/task-map">Карта задачи →</a><a href="/artifacts/market-choice">Карта выбора рынка →</a><a href="/diagnostic">Разобрать свою ситуацию →</a></div>
@@ -163,7 +163,7 @@ export default function Home() {
     <section className="projects-stage">
       <div className="page-shell">
         <div className="section-intro"><p className="eyebrow">06 · Ещё три примера</p><h2>Первый запрос часто меняется после разбора.</h2></div>
-        <div className="project-list">{currentProjects.map((p, i) => <article key={p.context}><span>{String(i + 1).padStart(2, "0")} · {p.context}</span><h3>{p.question}</h3><p>{p.reframing}</p>{p.href && <a className="text-link" href={p.href}>Открыть кейс →</a>}</article>)}</div>
+        <div className="project-list">{currentProjects.map((p, i) => <article key={p.context}><span><b>{String(i + 1).padStart(2, "0")}</b><em>{p.context}</em></span><h3>{p.question}</h3><p>{p.reframing}</p>{p.href && <a className="text-link" href={p.href}>Открыть кейс →</a>}</article>)}</div>
       </div>
     </section>
 
