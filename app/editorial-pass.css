@@ -156,6 +156,9 @@
 .contact-stage .contact-grid > div > p strong {
   color: #ffffff !important;
 }
+.contact-form > p {
+  color: #c8d5e7 !important;
+}
 .contact-actions {
   display: flex !important;
   align-items: center !important;
