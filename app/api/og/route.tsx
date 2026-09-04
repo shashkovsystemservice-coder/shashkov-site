@@ -18,16 +18,16 @@ export async function GET() {
     >
       <div
         style={{
-          width: "66%",
+          width: "60%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: "58px 54px 54px 68px",
+          padding: "58px 42px 54px 68px",
           zIndex: 2,
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
           <div
             style={{
               color: "#315EB7",
@@ -45,10 +45,10 @@ export async function GET() {
           <div
             style={{
               marginTop: "30px",
-              maxWidth: "700px",
-              fontSize: "62px",
-              lineHeight: 0.98,
-              letterSpacing: "-3.6px",
+              maxWidth: "575px",
+              fontSize: "56px",
+              lineHeight: 0.99,
+              letterSpacing: "-3.1px",
               fontWeight: 800,
               display: "flex",
               flexDirection: "column",
@@ -60,7 +60,7 @@ export async function GET() {
           <div
             style={{
               marginTop: "28px",
-              maxWidth: "640px",
+              maxWidth: "555px",
               color: "#536174",
               fontSize: "25px",
               lineHeight: 1.32,
@@ -141,11 +141,11 @@ export async function GET() {
       <div
         style={{
           position: "absolute",
-          right: "37%",
+          right: "39%",
           top: 0,
-          width: "88px",
+          width: "54px",
           height: "100%",
-          background: "linear-gradient(90deg, #F6F8FB 0%, rgba(246,248,251,.88) 40%, rgba(246,248,251,0) 100%)",
+          background: "linear-gradient(90deg, #F6F8FB 0%, rgba(246,248,251,.78) 45%, rgba(246,248,251,0) 100%)",
           zIndex: 1,
           display: "flex",
         }}
