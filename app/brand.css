@@ -97,10 +97,11 @@
   padding-left: max(36px, calc((100vw - 1460px) / 2)) !important;
   padding-right: max(36px, calc((100vw - 1460px) / 2)) !important;
   z-index: 100 !important;
-  border-bottom-color: rgba(10,20,38,.08);
-  background: color-mix(in srgb, var(--bg) 95%, transparent) !important;
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(10,20,38,.07) !important;
+  background: rgba(238,243,249,.82) !important;
+  -webkit-backdrop-filter: saturate(118%) blur(18px);
+  backdrop-filter: saturate(118%) blur(18px);
+  box-shadow: 0 6px 18px rgba(10,20,38,.035);
 }
 
 main#top > .page-shell:first-child {
@@ -163,7 +164,11 @@ main#top > .page-shell:first-child {
     grid-template-columns: minmax(0, 1fr) auto !important;
     align-items: center !important;
     column-gap: 14px !important;
-    border-bottom-color: rgba(10,20,38,.055) !important;
+    border-bottom: 1px solid rgba(10,20,38,.065) !important;
+    background: rgba(238,243,249,.84) !important;
+    -webkit-backdrop-filter: saturate(118%) blur(18px);
+    backdrop-filter: saturate(118%) blur(18px);
+    box-shadow: 0 5px 16px rgba(10,20,38,.032);
   }
 
   main#top > .page-shell:first-child {
