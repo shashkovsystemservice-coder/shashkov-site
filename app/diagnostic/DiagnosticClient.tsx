@@ -188,7 +188,8 @@ export default function DiagnosticClient() {
 
         <div className="decision-evidence"><strong>Основание текущей версии:</strong> {evidence.trim() || evidenceLabels[evidenceLevel] + "."}</div>
         <p className="decision-note"><strong>Факты ≠ интерпретация ≠ вывод.</strong> Это не диагноз: Brief ничего не знает о вашем бизнесе кроме введённых ответов. Его задача — показать, какой вопрос мешает решению и какая проверка действительно способна это решение изменить. Реальная работа начинается с контекста, данных, материалов и проверки нескольких конкурирующих версий.</p>
-        <div className="decision-actions"><button type="button" onClick={openDocument}>Открыть оформленный документ</button><a className="diagnostic-contact" href="/#contact" onClick={()=>trackEvent("diagnostic_contact_click",{source:"decision_brief",has_disproof:hasDisproof})}>Обсудить ситуацию со мной →</a></div>
+        <p className="decision-note"><strong>Когда имеет смысл идти дальше.</strong> Если для следующего решения уже недостаточно ваших текущих данных или нужно проверить несколько конкурирующих причин, можно передать мне этот Brief. Я сначала посмотрю саму ситуацию и скажу, имеет ли смысл отдельный диагностический разбор; обязательного большого проекта из этого не следует.</p>
+        <div className="decision-actions"><button type="button" onClick={openDocument}>Открыть оформленный документ</button><a className="diagnostic-contact" href="/#contact" onClick={()=>trackEvent("diagnostic_contact_click",{source:"decision_brief",has_disproof:hasDisproof})}>Передать Brief и обсудить следующую проверку →</a></div>
       </section>}
     </section>
   );
