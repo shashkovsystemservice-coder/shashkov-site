@@ -89,10 +89,13 @@
 .site-nav {
   position: fixed !important;
   top: 0 !important;
-  left: 50% !important;
-  width: min(calc(100% - 72px), 1460px) !important;
-  transform: translateX(-50%) !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  transform: none !important;
   min-height: 66px;
+  padding-left: max(36px, calc((100vw - 1460px) / 2)) !important;
+  padding-right: max(36px, calc((100vw - 1460px) / 2)) !important;
   z-index: 100 !important;
   border-bottom-color: rgba(10,20,38,.08);
   background: color-mix(in srgb, var(--bg) 95%, transparent) !important;
@@ -153,8 +156,9 @@ main#top > .page-shell:first-child {
 
 @media (max-width: 760px) {
   .site-nav {
-    width: calc(100% - 48px) !important;
     min-height: 64px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) auto !important;
     align-items: center !important;
