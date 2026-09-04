@@ -148,6 +148,39 @@
 .proof-strip-item { min-height: 126px; }
 .proof-strip strong { letter-spacing: -.02em; }
 
+/* Final conversion block: one primary action, one clearly secondary route. */
+#contact { scroll-margin-top: 84px; }
+.contact-stage .contact-grid > div > p:not(.eyebrow) {
+  color: #c8d5e7 !important;
+}
+.contact-stage .contact-grid > div > p strong {
+  color: #ffffff !important;
+}
+.contact-actions {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 14px 18px !important;
+  margin-top: 30px !important;
+}
+.contact-actions .button-light {
+  margin: 0 !important;
+}
+.contact-actions .button-light:first-child {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #0a1426 !important;
+}
+.contact-actions .button-light:not(:first-child) {
+  background: transparent !important;
+  border-color: rgba(255,255,255,.38) !important;
+  color: #e5edf7 !important;
+}
+.contact-actions .button-light:not(:first-child):hover {
+  border-color: rgba(255,255,255,.66) !important;
+  background: rgba(255,255,255,.06) !important;
+}
+
 /* Desktop hierarchy: keep the hero dominant and let later sections breathe. */
 @media (min-width: 901px) {
   .hero {
@@ -215,4 +248,26 @@
     padding: 42px 0 20px !important;
   }
   .proof-links .proof-demo-link::before { left: 0; }
+
+  .contact-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    margin-top: 28px !important;
+  }
+  .contact-actions .button-light {
+    width: 100% !important;
+    min-height: 52px !important;
+  }
+  .contact-actions .button-light:not(:first-child) {
+    justify-content: flex-start !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,.34) !important;
+    border-radius: 0 !important;
+    min-height: 44px !important;
+  }
 }
