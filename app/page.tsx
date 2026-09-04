@@ -72,8 +72,8 @@ export default function Home() {
     <section className="proof-strip" aria-label="Основания доверия">
       <div className="page-shell proof-strip-grid">
         <div className="proof-strip-item">
-          <strong>24 года</strong>
-          <span>внутри бизнеса: управление, развитие, продукт, сервис и маркетинг</span>
+          <strong>24 года внутри бизнеса</strong>
+          <span>продукт, продажи, инженерия, сервис, качество, развитие и маркетинг</span>
         </div>
         <div className="proof-strip-item">
           <strong>20+ продуктовых моделей</strong>
@@ -81,7 +81,7 @@ export default function Home() {
         </div>
         <div className="proof-strip-item">
           <strong>Heidelberg · Nokian Tyres · Роснано · Росатом</strong>
-          <span>опыт внутри сложного бизнеса, продукта и сервисной модели</span>
+          <span>от международных производителей до технологических и инженерных компаний</span>
         </div>
       </div>
     </section>
@@ -159,9 +159,9 @@ export default function Home() {
             <div className="depth-result-output"><small>Первый результат</small><strong>Понятно, какой вопрос действительно нужно решать и что проверить первым.</strong></div>
           </article>
           <article className="depth-result-card depth-result-card-main">
-            <span>Если вопрос глубже</span>
-            <h3>Работа может затронуть рынок, продукт, позиционирование, продажи, сервис и исполнение.</h3>
-            <div className="depth-result-output"><small>Но не обязательно</small><strong>Глубина определяется вопросом, а не желанием продать большой проект.</strong></div>
+            <span>Рынок и исполнение должны сходиться</span>
+            <h3>Проверяю не только, что обещать рынку, но и способен ли бизнес это реально продать, выполнить и поддерживать.</h3>
+            <div className="depth-result-output"><small>Если вопрос затрагивает систему</small><strong>Работа может выйти в продукт, продажи, сервис, качество и организацию исполнения — только там, где это действительно влияет на решение.</strong></div>
           </article>
         </div>
         <a className="text-link" href="/work" style={{display:"inline-block",marginTop:"24px"}}>Как проходит работа — по шагам →</a>
@@ -174,12 +174,12 @@ export default function Home() {
         <div style={{display:"grid",gridTemplateColumns:"minmax(0,1.15fr) minmax(280px,.85fr)",gap:"clamp(34px,6vw,86px)",alignItems:"start"}}>
           <div>
             <h2 style={{margin:"0",maxWidth:"760px",fontSize:"clamp(42px,5.3vw,72px)",lineHeight:1.02,letterSpacing:"-.045em"}}>В маркетинг я пришёл из управления бизнесом.</h2>
-            <p style={{maxWidth:"720px",margin:"26px 0 0",color:"#475467",fontSize:"clamp(19px,1.8vw,24px)",lineHeight:1.5}}><strong style={{color:"#0a1426"}}>Поэтому смотрю не только на продвижение.</strong> Причина может быть в продукте, цене, продажах, сервисе, рынке или в том, как решение реализуется внутри компании.</p>
+            <p style={{maxWidth:"720px",margin:"26px 0 0",color:"#475467",fontSize:"clamp(19px,1.8vw,24px)",lineHeight:1.5}}><strong style={{color:"#0a1426"}}>Поэтому я не отделяю рыночное решение от того, как бизнес его выполнит.</strong> Обещание рынку должно сходиться с продуктом, продажами, сервисом, качеством и реальными возможностями команды.</p>
           </div>
           <div style={{borderTop:"2px solid #0a1426"}}>
             <div style={{padding:"20px 0",borderBottom:"1px solid #d9e1eb"}}><small style={{display:"block",marginBottom:"7px",color:"#184ed8",fontWeight:900}}>Инженерная база</small><strong style={{display:"block",fontSize:"20px"}}>Математика и автоматизация</strong><span style={{display:"block",marginTop:"6px",color:"#667085",lineHeight:1.45}}>Разбирать систему, зависимости и причины.</span></div>
             <div style={{padding:"20px 0",borderBottom:"1px solid #d9e1eb"}}><small style={{display:"block",marginBottom:"7px",color:"#184ed8",fontWeight:900}}>Управленческая школа</small><strong style={{display:"block",fontSize:"20px"}}>Executive MBA · качество · проекты · изменения</strong><span style={{display:"block",marginTop:"6px",color:"#667085",lineHeight:1.45}}>Не только выбрать решение, но и сделать его управляемым.</span></div>
-            <div style={{padding:"20px 0",borderBottom:"1px solid #d9e1eb"}}><small style={{display:"block",marginBottom:"7px",color:"#184ed8",fontWeight:900}}>Практика</small><strong style={{display:"block",fontSize:"20px"}}>Управление → развитие → стратегический маркетинг</strong><span style={{display:"block",marginTop:"6px",color:"#667085",lineHeight:1.45}}>Опыт внутри бизнеса, а не только со стороны маркетинговой функции.</span></div>
+            <div style={{padding:"20px 0",borderBottom:"1px solid #d9e1eb"}}><small style={{display:"block",marginBottom:"7px",color:"#184ed8",fontWeight:900}}>Практика</small><strong style={{display:"block",fontSize:"20px"}}>Продукт · продажи · инженерия · сервис · качество</strong><span style={{display:"block",marginTop:"6px",color:"#667085",lineHeight:1.45}}>24 года работы на стыке функций — от международных производителей и технологических компаний до инженерного B2B.</span></div>
           </div>
         </div>
       </div>
