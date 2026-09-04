@@ -11,8 +11,7 @@ const situations = [
 ] as const;
 
 const contactChannels = [
-  { id: "telegram", label: "Telegram", status: "active", href: "https://t.me/ShashkovVlad" },
-  { id: "max", label: "MAX", status: "comingSoon", href: null },
+  { id: "telegram", label: "Telegram", href: "https://t.me/ShashkovVlad" },
 ] as const;
 
 const currentProjects = [
@@ -21,12 +20,16 @@ const currentProjects = [
     context: "Промышленное оборудование",
     question: "«Хотим продавать линии, а не отдельные станки»",
     reframing: "Вопрос о продажах оказался вопросом о самой модели: что считать продуктом, за что отвечать, как это доказать, продавать и поддерживать.",
+    href: "/cases/integrator-model",
+    linkLabel: "Открыть кейс →",
   },
   {
     status: "Исследование",
     context: "Event-бизнес",
     question: "«Нужно улучшить сайт и предложение»",
     reframing: "Редизайн перестал быть отправной точкой: сначала разбираем, что именно выбирает клиент и почему.",
+    href: null,
+    linkLabel: null,
   },
 ] as const;
 
@@ -180,6 +183,7 @@ export default function Home() {
               <h3>{project.question}</h3>
               <small className="project-spectrum-context">{project.context}</small>
               <p>{project.reframing}</p>
+              {project.href && project.linkLabel ? <a className="text-link" href={project.href} style={{display:"inline-block",marginTop:"16px"}}>{project.linkLabel}</a> : null}
             </article>
           ))}
         </div>
@@ -224,7 +228,7 @@ export default function Home() {
           <p style={{margin:"18px 0 0",color:"#dce6f5",fontSize:"15px",lineHeight:1.5,fontWeight:700}}><strong style={{color:"#fff"}}>Работаю как ИП.</strong> Договор, счёт и закрывающие документы.</p>
           <div style={{display:"flex",flexWrap:"wrap",gap:"10px",alignItems:"center",marginTop:"24px"}} aria-label="Способы связи">
             <a className="button button-light" href="/diagnostic">Разобрать ситуацию</a>
-            {contactChannels.map((channel) => channel.status === "active" ? <a key={channel.id} className="button button-light" href={channel.href} target="_blank" rel="noreferrer">Написать в {channel.label}</a> : <button key={channel.id} type="button" disabled aria-label="MAX — скоро" title="Канал MAX подключается" style={{display:"inline-flex",alignItems:"center",gap:"9px",minHeight:"48px",padding:"12px 16px",border:"1px solid rgba(255,255,255,.38)",background:"rgba(255,255,255,.07)",color:"rgba(255,255,255,.82)",font:"inherit",fontWeight:800,cursor:"default",opacity:.82}}><img src="https://max.ru/favicon.ico" alt="" width="22" height="22" loading="lazy" style={{display:"block",borderRadius:"5px"}}/><span>MAX</span><span style={{fontSize:"12px",fontWeight:750,opacity:.7}}>Скоро</span></button>)}
+            {contactChannels.map((channel) => <a key={channel.id} className="button button-light" href={channel.href} target="_blank" rel="noreferrer">Написать в {channel.label}</a>)}
           </div>
         </div>
         <form className="contact-form" method="post" action="/api/contact">
