@@ -63,7 +63,7 @@
 }
 
 .site-brand-tagline em {
-  color: #315eb7;
+  color: inherit;
   font-family: inherit !important;
   font-size: inherit;
   font-weight: 700;
