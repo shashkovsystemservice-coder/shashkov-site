@@ -122,9 +122,9 @@ export default function Home() {
         </div>
         <p className="brief-continuation-label">Как можно продолжить</p>
         <div className="work-grid work-grid-returned" aria-label="Как может продолжиться работа">
-          <article><p className="eyebrow">1 · Самостоятельно</p><h3>Decision Brief</h3><p>Сформулировать вопрос и увидеть, что стоит проверить первым.</p></article>
-          <article><p className="eyebrow">2 · Вместе</p><h3>Диагностический разбор</h3><p>Разобрать контекст, факты и конкурирующие версии, если вопрос требует глубины.</p></article>
-          <article><p className="eyebrow">3 · Если задача требует глубины</p><h3>Стратегический проект</h3><p>Рынок, клиент, продукт, ценность, продажи и исполнение — только там, где это действительно нужно.</p></article>
+          <article><p className="eyebrow">1 · Самостоятельно</p><h3>Decision Brief</h3><p>Сформулировать вопрос и увидеть, что стоит проверить первым.</p><a className="service-route service-route-primary" href="/diagnostic">Собрать Decision Brief →</a></article>
+          <article><p className="eyebrow">2 · Вместе</p><h3>Диагностический разбор</h3><p>Разобрать контекст, факты и конкурирующие версии, если вопрос требует глубины.</p><a className="service-route" href="#contact">Обсудить разбор →</a></article>
+          <article><p className="eyebrow">3 · Если задача требует глубины</p><h3>Стратегический проект</h3><p>Рынок, клиент, продукт, ценность, продажи и исполнение — только там, где это действительно нужно.</p><a className="service-route" href="/work">Посмотреть, как проходит работа →</a></article>
         </div>
       </div>
     </section>
