@@ -4,11 +4,11 @@ import "./projects.css";
 import "./editorial-pass.css";
 
 const situations = [
-  "Продажи перестали расти. Команда предлагает увеличить рекламу, но непонятно, ограничение ли это вообще",
-  "Клиенты интересуются, но до сделки не доходят — непонятно, проблема в ценности, цене, продажах или мы не там ищем причину",
-  "Клиенты всё чаще сравнивают по цене — непонятно, действительно ли мы слишком дорогие или нас просто не с чем больше сравнивать",
-  "Хотим выйти на новый рынок или запустить новый продукт — непонятно, переносится ли туда нынешняя ценность и модель продаж",
-  "Все предлагают рекламу, сайт, SEO, AI — не понимаю, что реально нужно",
+  "Продажи перестали расти. Команда предлагает больше рекламы — но непонятно, в ней ли проблема",
+  "Клиенты интересуются, но не покупают — непонятно, дело в ценности, цене, продажах или причина вообще в другом",
+  "Клиенты всё чаще сравнивают по цене — непонятно, мы действительно дороги или нас просто больше не с чем сравнивать",
+  "Хотим выйти на новый рынок или запустить продукт — непонятно, сработают ли там нынешняя ценность и модель продаж",
+  "Все предлагают рекламу, сайт, SEO, AI — не понимаю, что действительно нужно",
 ] as const;
 
 const contactChannels = [
@@ -119,11 +119,7 @@ export default function Home() {
           <p>На выходе — главный вопрос, критическая неопределённость, что проверить первым и что пока рано делать. Результат можно сохранить в PDF. Ни к чему не обязывает.</p>
           <a className="button" href="/diagnostic">Собрать Decision Brief</a>
         </div>
-        <div className="work-grid" aria-label="Как может продолжиться работа">
-          <article><p className="eyebrow">1 · Самостоятельно</p><h3>Decision Brief</h3><p>Сформулировать вопрос, отделить факты от версии и увидеть, что стоит проверить первым.</p></article>
-          <article><p className="eyebrow">2 · Вместе</p><h3>Диагностический разбор</h3><p>Если вопрос упирается в контекст и данные, разбираем конкурирующие версии и определяем решение.</p></article>
-          <article><p className="eyebrow">3 · При необходимости</p><h3>Стратегический проект</h3><p>Если задача системная, идём глубже: рынок, клиент, продукт, ценность, продажи и исполнение — только в нужном объёме.</p></article>
-        </div>
+        <p className="brief-followup">Если после Brief окажется, что вопрос требует контекста и данных, его можно разобрать вместе.</p>
       </div>
     </section>
 
@@ -140,16 +136,17 @@ export default function Home() {
         <div className="case-links"><a className="proof-demo-link" href="/artifacts/task-map">Карта задачи →</a><a className="proof-demo-link" href="/artifacts/market-choice">Карта выбора рынка →</a><a className="proof-demo-link" href="/artifacts/value-proof">Иерархия ценности и доказательств →</a><a className="proof-demo-link" href="/diagnostic">Разобрать свою ситуацию →</a></div>
         <blockquote>«Разбор помог увидеть, что проблема была шире привлечения заявок. Стало понятно, что нужно доработать сегментацию, ценность и доказательную базу.»</blockquote>
         <p className="case-attribution">Собственник бизнеса · проект обезличен</p>
+        <div className="case-next-step">
+          <div><span>Есть похожая неопределённость?</span><strong>Соберите свой Decision Brief — 6 вопросов, без звонка.</strong></div>
+          <a className="button" href="/diagnostic">Разобрать свою ситуацию</a>
+        </div>
       </div>
     </section>
 
-    <section className="work-stage" id="work">
+    <section className="work-stage work-stage-compact" id="work">
       <div className="page-shell">
-        <div className="section-intro work-intro">
-          <p className="eyebrow">04 · Как работаю</p>
-          <h2>От неясной задачи — к проверяемому решению.</h2>
-          <p>Задача → факты → версии → критическая неопределённость → проверка → выбор. Проверяю не только, что обещать рынку, но и способен ли бизнес это реально продать, выполнить и поддерживать.</p>
-        </div>
+        <p className="eyebrow">04 · Как принимаю решение</p>
+        <p className="work-logic"><strong>Задача → факты → версии → критическая неопределённость → проверка → выбор.</strong> Проверяю не только, что обещать рынку, но и способен ли бизнес это реально продать, выполнить и поддерживать.</p>
         <a className="text-link" href="/work">Подробнее о подходе →</a>
       </div>
     </section>
@@ -167,10 +164,10 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="projects-stage">
+    <section className="projects-stage projects-stage-compact">
       <div className="page-shell">
-        <div className="section-intro"><p className="eyebrow">06 · Ещё три примера</p><h2>Тот же принцип — в разных бизнес-ситуациях.</h2></div>
-        <div className="project-list">{currentProjects.map((p, i) => <article key={p.context}><span><b>{String(i + 1).padStart(2, "0")}</b><em>{p.context}</em></span><h3>{p.question}</h3><p>{p.reframing}</p>{p.href && <a className="text-link" href={p.href}>Открыть кейс →</a>}</article>)}</div>
+        <div className="section-intro"><p className="eyebrow">06 · Ещё примеры</p><h2>Тот же принцип — в разных бизнес-ситуациях.</h2></div>
+        <div className="project-list">{currentProjects.map((p, i) => <article key={p.context}><span><b>{String(i + 1).padStart(2, "0")}</b><em>{p.context}</em></span><h3>{p.question}</h3><p>{p.reframing}</p><a className="text-link" href={p.href}>Открыть кейс →</a></article>)}</div>
       </div>
     </section>
 
@@ -191,8 +188,8 @@ export default function Home() {
       <div className="page-shell contact-grid">
         <div>
           <p className="eyebrow eyebrow-light">08 · Следующий шаг</p>
-          <h2>Для холодного входа — сначала Decision Brief.</h2>
-          <p>Он помогает сформулировать вопрос без звонка и понять, что имеет смысл проверять первым. Если вопрос уже конкретный — можно сразу написать.</p>
+          <h2>Можно начать без звонка — с Decision Brief.</h2>
+          <p>За 6 вопросов он помогает сформулировать, что именно стоит проверить первым. Если вопрос уже конкретный — можно сразу написать.</p>
           <p className="contact-legal"><strong>Работаю как ИП.</strong> Договор, счёт и закрывающие документы.</p>
           <div className="contact-actions"><a className="button button-light" href="/diagnostic">Собрать Decision Brief</a>{contactChannels.map((channel) => <a key={channel.id} className="button button-light" href={channel.href} target="_blank" rel="noreferrer">Написать в {channel.label}</a>)}</div>
         </div>
