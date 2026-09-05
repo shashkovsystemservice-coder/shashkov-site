@@ -29,7 +29,7 @@
 
 .decision-method-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 2px solid var(--ink);
   border-bottom: 1px solid var(--line);
 }
@@ -80,6 +80,14 @@
 
 .continuation-intro {
   margin-bottom: 24px;
+}
+
+.continuation-reassurance {
+  max-width: 720px;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.5;
 }
 
 .work-grid-returned {
@@ -202,19 +210,18 @@
 
 @media (max-width: 900px) {
   .decision-method-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .decision-method-grid article,
   .decision-method-grid article + article {
-    padding: 22px 18px 22px 0;
+    padding: 22px 0;
     border-left: 0;
     border-bottom: 1px solid var(--line);
   }
 
-  .decision-method-grid article:nth-child(even) {
-    padding-left: 18px;
-    border-left: 1px solid var(--line);
+  .decision-method-grid article:last-child {
+    border-bottom: 0;
   }
 
   .artifact-preview-head {
@@ -257,20 +264,9 @@
     font-size: 16px;
   }
 
-  .decision-method-grid {
-    grid-template-columns: 1fr;
-  }
-
   .decision-method-grid article,
-  .decision-method-grid article + article,
-  .decision-method-grid article:nth-child(even) {
+  .decision-method-grid article + article {
     padding: 20px 0 21px;
-    border-left: 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .decision-method-grid article:last-child {
-    border-bottom: 0;
   }
 
   .decision-method-grid span {
@@ -288,6 +284,10 @@
 
   .continuation-stage {
     padding: 52px 0 42px;
+  }
+
+  .continuation-reassurance {
+    font-size: 16px;
   }
 
   .work-grid-returned article {
