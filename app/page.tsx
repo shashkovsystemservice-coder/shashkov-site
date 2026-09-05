@@ -83,8 +83,8 @@ export default function Home() {
           <span>продукт, продажи, инженерия, сервис, качество, развитие и маркетинг</span>
         </div>
         <div className="proof-strip-item">
-          <strong>20+ продуктовых моделей</strong>
-          <span>от требований рынка до запуска — собственный бренд и совместный проект с Philips</span>
+          <strong>20+ моделей в продуктовой линейке</strong>
+          <span>участие в запуске линейки под собственным брендом и в совместном предприятии с Philips</span>
         </div>
         <div className="proof-strip-item">
           <strong>Heidelberg · Nokian Tyres · Роснано · Росатом</strong>
