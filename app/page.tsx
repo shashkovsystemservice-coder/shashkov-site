@@ -242,7 +242,7 @@ export default function Home() {
           <div className="contact-actions"><a className="button button-light" href="/diagnostic">Разобрать свою ситуацию</a>{contactChannels.map((channel) => <a key={channel.id} className="button button-light" href={channel.href} target="_blank" rel="noreferrer">Написать в {channel.label}</a>)}</div>
         </div>
         <form className="contact-form" action="/api/contact" method="post">
-          <input type="hidden" name="source" value="homepage-contact" />
+          <input type="hidden" name="source" value="contact-form" />
           <p className="contact-form-reassurance">Сообщение прочитаю сам. Обязательного созвона нет.</p>
           <label><span>Если удобнее формой: что сейчас происходит?</span><textarea name="situation" placeholder="Коротко, своими словами" required /></label>
           <label><span>Как с вами связаться?</span><input type="text" name="contact" placeholder="Email или Telegram" required /></label>
