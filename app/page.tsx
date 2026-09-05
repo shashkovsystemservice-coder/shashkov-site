@@ -149,7 +149,7 @@ export default function Home() {
         </div>
         <div className="brief-card">
           <p className="eyebrow">Decision Brief · 6 вопросов · без звонка</p>
-          <h3>Проверьте, насколько ваша текущая версия проблемы уже обоснована.</h3>
+          <h3>Посмотрите, что в вашей текущей версии уже понятно — и чего пока не хватает для решения.</h3>
           <p>На выходе — главный вопрос, критическая неопределённость, что проверить первым и что пока рано делать. Результат можно сохранить в PDF. Ни к чему не обязывает.</p>
           <a className="button" href="/diagnostic">Собрать Decision Brief</a>
         </div>
@@ -208,13 +208,13 @@ export default function Home() {
           <p>Мой путь начался с математики и автоматизации. Дальше были производство, продукт, качество, сервис, проекты и развитие бизнеса. Поэтому я привык смотреть не на отдельную функцию, а на решение целиком: что нужно рынку, что компания обещает, как это продаётся — и может ли бизнес это реально создать, выполнить и поддерживать.</p>
           <div className="about-foundations">
             <div><strong>Инженерная и управленческая база</strong><span>Математика и автоматизация · производство · качество · проекты · Executive MBA.</span></div>
-            <div><strong>Практика продукта и рынка</strong><span>24 года внутри бизнеса; участие в запуске линейки 20+ моделей, включая совместное предприятие с Philips.</span></div>
+            <div><strong>Практика продукта и рынка</strong><span>Участие в запуске линейки 20+ моделей, включая совместное предприятие с Philips.</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section className="projects-stage projects-stage-compact">
+    <section className="projects-stage projects-stage-compact projects-stage-memory-pass">
       <div className="page-shell">
         <div className="section-intro"><p className="eyebrow">07 · Ещё примеры</p><h2>Тот же принцип — в разных бизнес-ситуациях.</h2></div>
         <div className="project-list">{currentProjects.map((p, i) => <article key={p.context}><span><b>{String(i + 1).padStart(2, "0")}</b><em>{p.context}</em></span><h3>{p.question}</h3><p>{p.reframing}</p><a className="text-link" href={p.href}>Открыть кейс →</a></article>)}</div>
