@@ -208,6 +208,29 @@
   line-height: 1.45;
 }
 
+.projects-stage-memory-pass {
+  padding-top: 58px !important;
+  padding-bottom: 58px !important;
+}
+
+.projects-stage-memory-pass .section-intro {
+  margin-bottom: 20px !important;
+}
+
+.projects-stage-memory-pass .project-list article {
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
+}
+
+.projects-stage-memory-pass .project-list h3 {
+  margin-top: 8px;
+  margin-bottom: 6px;
+}
+
+.projects-stage-memory-pass .project-list p {
+  margin-bottom: 8px;
+}
+
 @media (max-width: 900px) {
   .decision-method-grid {
     grid-template-columns: 1fr;
@@ -319,5 +342,15 @@
 
   .about-inside-business strong {
     font-size: 17px;
+  }
+
+  .projects-stage-memory-pass {
+    padding-top: 44px !important;
+    padding-bottom: 44px !important;
+  }
+
+  .projects-stage-memory-pass .project-list article {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
   }
 }
