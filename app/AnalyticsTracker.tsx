@@ -47,6 +47,10 @@ export default function AnalyticsTracker() {
       utm_campaign: params.get("utm_campaign"),
     });
 
+    if (window.location.pathname === "/diagnostic/document") {
+      trackEvent("diagnostic_document_view");
+    }
+
     if (isSent) trackEvent("lead_success", { source: "contact_form" });
 
     const startDiagnostic = (source: "manual" | "example") => {
@@ -67,6 +71,16 @@ export default function AnalyticsTracker() {
           startDiagnostic("manual");
           trackEvent("diagnostic_complete", { source: "decision_brief" });
           return;
+        }
+      }
+
+      if (window.location.pathname === "/diagnostic/document" && element instanceof HTMLButtonElement) {
+        if (label.includes("Скачать PDF") || label.includes("Готовлю")) {
+          trackEvent("diagnostic_pdf_download", { label });
+        } else if (label.includes("Поделиться PDF")) {
+          trackEvent("diagnostic_pdf_share", { label });
+        } else if (label.includes("Печать")) {
+          trackEvent("diagnostic_print", { label });
         }
       }
 
@@ -103,7 +117,8 @@ export default function AnalyticsTracker() {
     const onSubmit = (event: SubmitEvent) => {
       const form = event.target as HTMLFormElement | null;
       if (!form) return;
-      const source = form.querySelector<HTMLInputElement>('input[name="source"]')?.value || "unknown";
+      const explicitSource = form.querySelector<HTMLInputElement>('input[name="source"]')?.value;
+      const source = explicitSource || (form.classList.contains("contact-form") ? "contact-form" : "unknown");
       trackEvent("form_submit_start", { source });
       if (source === "contact-form") trackEvent("contact_form_submit", { source });
     };
