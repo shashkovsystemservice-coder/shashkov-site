@@ -17,7 +17,7 @@ function messageText(submission: {
   receivedAt: string;
 }) {
   return [
-    "Новая заявка с shashkov-site.vercel.app",
+    "Новая заявка с vshashkov.ru",
     "",
     `Источник формы: ${submission.source || "не указан"}`,
     `Получено: ${submission.receivedAt}`,
