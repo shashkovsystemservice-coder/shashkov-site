@@ -37,6 +37,14 @@ const currentProjects = [
   },
 ] as const;
 
+const decisionLogic = [
+  { n: "01", title: "Отделяю запрос от проблемы", text: "То, что звучит как «нужны заявки», ещё не обязательно означает проблему привлечения." },
+  { n: "02", title: "Отделяю факты от версий", text: "Что мы действительно знаем, а что пока только предполагаем." },
+  { n: "03", title: "Ищу критическую неопределённость", text: "Какой неизвестный фактор сильнее всего меняет выбор решения." },
+  { n: "04", title: "Проверяю альтернативы", text: "Как меняется выбор, если проблема в рынке, продукте, продажах, цене или исполнении." },
+  { n: "05", title: "Выбираю первый проверяемый шаг", text: "Не полный план ради плана, а действие, которое уменьшает неопределённость." },
+] as const;
+
 export default function Home() {
   return <main id="top">
     <div className="page-shell">
@@ -50,9 +58,9 @@ export default function Home() {
         </a>
         <nav aria-label="Основная навигация">
           <a href="#situations">Ситуации</a>
+          <a href="#method">Подход</a>
           <a href="#brief">Разбор</a>
           <a href="#case">Пример</a>
-          <a href="/work">Как работаю</a>
           <a href="#about">Обо мне</a>
           <a className="nav-cta" href="#contact">Написать</a>
         </nav>
@@ -108,11 +116,26 @@ export default function Home() {
       </div>
     </section>
 
+    <section id="method" className="decision-method-stage">
+      <div className="page-shell">
+        <div className="section-intro decision-method-intro">
+          <p className="eyebrow">02 · Как разбираю неочевидную задачу</p>
+          <h2>Не начинаю с готового решения. Сначала уменьшаю неопределённость.</h2>
+          <p>Логика одна: задача → факты → версии → критическая неопределённость → проверка → выбор.</p>
+        </div>
+        <div className="decision-method-grid">
+          {decisionLogic.map((step) => <article key={step.n}><span>{step.n}</span><h3>{step.title}</h3><p>{step.text}</p></article>)}
+        </div>
+        <p className="decision-method-note"><strong>Проверяю не только, что обещать рынку, но и способен ли бизнес это реально продать, выполнить и поддерживать.</strong></p>
+        <a className="text-link" href="/work">Подробнее о подходе →</a>
+      </div>
+    </section>
+
     <section id="brief" className="brief-stage">
       <div className="page-shell">
         <div className="section-intro brief-intro">
-          <p className="eyebrow">02 · Проверить на своей ситуации</p>
-          <h2>Не читать о методе — попробовать его на своём вопросе.</h2>
+          <p className="eyebrow">03 · Проверить эту логику на своей ситуации</p>
+          <h2>Не просто читать — пройти те же шаги на своём вопросе.</h2>
         </div>
         <div className="brief-card">
           <p className="eyebrow">Decision Brief · 6 вопросов · без звонка</p>
@@ -120,18 +143,12 @@ export default function Home() {
           <p>На выходе — главный вопрос, критическая неопределённость, что проверить первым и что пока рано делать. Результат можно сохранить в PDF. Ни к чему не обязывает.</p>
           <a className="button" href="/diagnostic">Собрать Decision Brief</a>
         </div>
-        <p className="brief-continuation-label">Как можно продолжить</p>
-        <div className="work-grid work-grid-returned" aria-label="Как может продолжиться работа">
-          <article><p className="eyebrow">1 · Самостоятельно</p><h3>Decision Brief</h3><p>Сформулировать вопрос и увидеть, что стоит проверить первым.</p><a className="service-route service-route-primary" href="/diagnostic">Собрать Decision Brief →</a></article>
-          <article><p className="eyebrow">2 · Вместе</p><h3>Диагностический разбор</h3><p>Разобрать контекст, факты и конкурирующие версии, если вопрос требует глубины.</p><a className="service-route" href="#contact">Обсудить разбор →</a></article>
-          <article><p className="eyebrow">3 · Если задача требует глубины</p><h3>Стратегический проект</h3><p>Рынок, клиент, продукт, ценность, продажи и исполнение — только там, где это действительно нужно.</p><a className="service-route" href="/work">Посмотреть, как проходит работа →</a></article>
-        </div>
       </div>
     </section>
 
     <section id="case" className="case-stage">
       <div className="page-shell case-shell">
-        <p className="eyebrow">03 · Как меняется решение · проект обезличен</p>
+        <p className="eyebrow">04 · Как меняется решение · проект обезличен</p>
         <h2>Пришли за заявками. Изменился сам вопрос.</h2>
         <div className="case-steps">
           <div><span>Запрос</span><h3>«Нам нужны квалифицированные входящие заявки».</h3></div>
@@ -152,27 +169,29 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="case-links"><a className="proof-demo-link" href="/artifacts/task-map">Карта задачи →</a><a className="proof-demo-link" href="/artifacts/market-choice">Карта выбора рынка →</a><a className="proof-demo-link" href="/artifacts/value-proof">Иерархия ценности и доказательств →</a><a className="proof-demo-link" href="/diagnostic">Разобрать свою ситуацию →</a></div>
+        <div className="case-links"><a className="proof-demo-link" href="/artifacts/task-map">Карта задачи →</a><a className="proof-demo-link" href="/artifacts/market-choice">Карта выбора рынка →</a><a className="proof-demo-link" href="/artifacts/value-proof">Иерархия ценности и доказательств →</a></div>
         <blockquote>«Разбор помог увидеть, что проблема была шире привлечения заявок. Стало понятно, что нужно доработать сегментацию, ценность и доказательную базу.»</blockquote>
         <p className="case-attribution">Собственник бизнеса · проект обезличен</p>
-        <div className="case-next-step">
-          <div><span>Есть похожая неопределённость?</span><strong>Соберите свой Decision Brief — 6 вопросов, без звонка.</strong></div>
-          <a className="button" href="/diagnostic">Разобрать свою ситуацию</a>
-        </div>
       </div>
     </section>
 
-    <section className="work-stage work-stage-compact" id="work">
+    <section className="continuation-stage" aria-labelledby="continuation-title">
       <div className="page-shell">
-        <p className="eyebrow">04 · Как принимаю решение</p>
-        <p className="work-logic"><strong>Задача → факты → версии → критическая неопределённость → проверка → выбор.</strong> Проверяю не только, что обещать рынку, но и способен ли бизнес это реально продать, выполнить и поддерживать.</p>
-        <a className="text-link" href="/work">Подробнее о подходе →</a>
+        <div className="section-intro continuation-intro">
+          <p className="eyebrow">05 · Как можно продолжить</p>
+          <h2 id="continuation-title">Глубина работы зависит от задачи.</h2>
+        </div>
+        <div className="work-grid work-grid-returned" aria-label="Как может продолжиться работа">
+          <article><p className="eyebrow">1 · Самостоятельно</p><h3>Decision Brief</h3><p>Сформулировать вопрос и увидеть, что стоит проверить первым.</p><a className="service-route service-route-primary" href="/diagnostic">Собрать Decision Brief →</a></article>
+          <article><p className="eyebrow">2 · Вместе</p><h3>Диагностический разбор</h3><p>Разобрать контекст, факты и конкурирующие версии, если вопрос требует глубины.</p><a className="service-route" href="#contact">Обсудить разбор →</a></article>
+          <article><p className="eyebrow">3 · Если задача требует глубины</p><h3>Стратегический проект</h3><p>Рынок, клиент, продукт, ценность, продажи и исполнение — только там, где это действительно нужно.</p><a className="service-route" href="/work">Посмотреть, как проходит работа →</a></article>
+        </div>
       </div>
     </section>
 
     <section id="about" className="about-stage">
       <div className="page-shell about-grid">
-        <div><p className="eyebrow">05 · Обо мне</p><h2>К маркетингу я пришёл через инженерные и управленческие задачи.</h2></div>
+        <div><p className="eyebrow">06 · Обо мне</p><h2>К маркетингу я пришёл через инженерные и управленческие задачи.</h2></div>
         <div className="about-copy">
           <p className="about-inside-business"><strong>Мой опыт сформирован внутри бизнеса — там, где рыночное обещание нужно не только придумать, но и выполнить.</strong></p>
           <p>Мой путь начался с математики и автоматизации. Дальше были производство, продукт, качество, сервис, проекты и развитие бизнеса. Поэтому я привык смотреть не на отдельную функцию, а на решение целиком: что нужно рынку, что компания обещает, как это продаётся — и может ли бизнес это реально создать, выполнить и поддерживать.</p>
@@ -186,14 +205,14 @@ export default function Home() {
 
     <section className="projects-stage projects-stage-compact">
       <div className="page-shell">
-        <div className="section-intro"><p className="eyebrow">06 · Ещё примеры</p><h2>Тот же принцип — в разных бизнес-ситуациях.</h2></div>
+        <div className="section-intro"><p className="eyebrow">07 · Ещё примеры</p><h2>Тот же принцип — в разных бизнес-ситуациях.</h2></div>
         <div className="project-list">{currentProjects.map((p, i) => <article key={p.context}><span><b>{String(i + 1).padStart(2, "0")}</b><em>{p.context}</em></span><h3>{p.question}</h3><p>{p.reframing}</p><a className="text-link" href={p.href}>Открыть кейс →</a></article>)}</div>
       </div>
     </section>
 
     <section className="faq-stage">
       <div className="page-shell">
-        <div className="section-intro"><p className="eyebrow">07 · Перед первым шагом</p><h2>Пять коротких ответов.</h2></div>
+        <div className="section-intro"><p className="eyebrow">08 · Перед первым шагом</p><h2>Пять коротких ответов.</h2></div>
         <div className="faq-list">
           <details><summary>Я сам не понимаю, в чём проблема. Можно обращаться?</summary><p>Да. Это как раз типичная ситуация для первого разбора: не выбирать услугу заранее, а сначала сформулировать вопрос.</p></details>
           <details><summary>Обязательно ли это будет большой проект?</summary><p>Нет. Первый шаг должен иметь самостоятельную ценность и закончиться ясным следующим решением — даже если продолжение не требуется.</p></details>
@@ -207,7 +226,7 @@ export default function Home() {
     <section id="contact" className="contact-stage">
       <div className="page-shell contact-grid">
         <div>
-          <p className="eyebrow eyebrow-light">08 · Следующий шаг</p>
+          <p className="eyebrow eyebrow-light">09 · Следующий шаг</p>
           <h2>Можно начать без звонка — с Decision Brief.</h2>
           <p>За 6 вопросов он помогает сформулировать, что именно стоит проверить первым. Если вопрос уже конкретный — можно сразу написать.</p>
           <p className="contact-legal"><strong>Работаю как ИП.</strong> Договор, счёт и закрывающие документы.</p>
