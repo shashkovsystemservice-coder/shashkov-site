@@ -131,7 +131,6 @@ export default function Home() {
         <div className="section-intro decision-method-intro">
           <p className="eyebrow">02 · Как разбираю неочевидную задачу</p>
           <h2>Не начинаю с готового решения. Сначала выясняю, от чего оно зависит.</h2>
-          <p>Главный принцип: не выбирать решение раньше, чем стало понятнее, от чего оно зависит.</p>
         </div>
         <div className="decision-method-grid">
           {decisionLogic.map((step) => <article key={step.n}><span>{step.n}</span><h3>{step.title}</h3><p>{step.text}</p></article>)}
@@ -151,7 +150,7 @@ export default function Home() {
           <p className="eyebrow">Decision Brief · 6 вопросов · без звонка</p>
           <h3>Посмотрите, что в вашей текущей версии уже понятно — и чего пока не хватает для решения.</h3>
           <p>На выходе — главный вопрос, что пока остаётся неясным, что проверить первым и что пока рано делать. Результат можно сохранить в PDF. Ни к чему не обязывает.</p>
-          <a className="button" href="/diagnostic">Собрать Decision Brief</a>
+          <a className="button" href="/diagnostic">Пройти 6 вопросов</a>
         </div>
       </div>
     </section>
@@ -179,7 +178,6 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="case-links"><a className="proof-demo-link" href="/artifacts/task-map">Карта задачи →</a><a className="proof-demo-link" href="/artifacts/market-choice">Карта выбора рынка →</a><a className="proof-demo-link" href="/artifacts/value-proof">Иерархия ценности и доказательств →</a></div>
         <blockquote>«Разбор помог увидеть, что проблема была шире привлечения заявок. Стало понятно, что нужно доработать сегментацию, ценность и доказательную базу.»</blockquote>
         <p className="case-attribution">Собственник бизнеса · проект обезличен</p>
       </div>
@@ -244,10 +242,10 @@ export default function Home() {
           <div className="contact-actions"><a className="button button-light" href="/diagnostic">Разобрать свою ситуацию</a>{contactChannels.map((channel) => <a key={channel.id} className="button button-light" href={channel.href} target="_blank" rel="noreferrer">Написать в {channel.label}</a>)}</div>
         </div>
         <form className="contact-form" action="/api/contact" method="post">
+          <p className="contact-form-reassurance">Сообщение прочитаю сам. Обязательного созвона нет.</p>
           <label><span>Если удобнее формой: что сейчас происходит?</span><textarea name="situation" placeholder="Коротко, своими словами" required /></label>
           <label><span>Как с вами связаться?</span><input type="text" name="contact" placeholder="Email или Telegram" required /></label>
           <button className="button button-light" type="submit">Отправить</button>
-          <p>Я сам прочитаю сообщение и отвечу, вижу ли здесь задачу для разбора и какой первый шаг имеет смысл. Обязательного созвона нет.</p>
         </form>
       </div>
     </section>
