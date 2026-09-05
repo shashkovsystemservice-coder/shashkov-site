@@ -23,10 +23,10 @@ const currentProjects = [
     href: "/cases/integrator-model",
   },
   {
-    context: "Новый продукт / новый рынок · Fitness × Boxing × Wellness",
-    question: "«Хотим соединить три направления»",
-    reframing: "Продвижение → есть ли единая клиентская задача, отдельный продукт и понятный рынок выбора.",
-    href: null,
+    context: "IBA Wellness · новый продукт / новый рынок",
+    question: "«Хотим соединить boxing, fitness и wellness»",
+    reframing: "Упаковка → единая клиентская задача, продукт, удержание и воспроизводимая модель.",
+    href: "/cases/iba-wellness",
   },
   {
     context: "Event-бизнес",
