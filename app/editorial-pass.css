@@ -85,7 +85,7 @@
 }
 
 /* B2C example becomes a margin note rather than another card. */
-#product div[aria-label="Пример B2C-situation"] {
+#product div[aria-label="Пример B2C-ситуации"] {
   width: min(82%, 940px);
   margin-top: 34px !important;
   padding: 24px 0 0 22px !important;
@@ -352,7 +352,7 @@
     margin-right: 0;
     padding: 20px 0 0;
   }
-  #product div[aria-label="Пример B2C-situation"] {
+  #product div[aria-label="Пример B2C-ситуации"] {
     width: 100%;
     padding-left: 16px !important;
   }
