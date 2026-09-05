@@ -70,7 +70,7 @@ export default function DiagnosticClient() {
     if (!hasDisproof) {
       return action
         ? `Пока у версии нет условия отказа, проверка может превратиться в поиск подтверждений. Сначала задайте критерий, который способен отменить версию причины. Только затем результат проверки сможет дать основание вернуться к варианту «${action}» или отказаться от него.`
-        : `Пока у версии нет условия отказа, невозможно понять, какой результат проверки действительно изменит решение. Сначала задайте наблюдаемый критерий, который способен отменить текущую версию причины.`;
+        : "Пока у версии нет условия отказа, невозможно понять, какой результат проверки действительно изменит решение. Сначала задайте наблюдаемый критерий, который способен отменить текущую версию причины.";
     }
     if (action) return `Проверка имеет смысл только если её результат изменит решение. Если версия причины получит достаточные подтверждения, к варианту «${action}» можно возвращаться уже с основаниями. Если версия не подтвердится по заданному вами критерию, это действие теряет основание — и искать нужно другую причину или другой путь к результату «${desired.trim()}».`;
     return `Результат проверки должен сузить выбор: либо дать достаточные основания для конкретного действия, либо показать, что текущую версию причины нужно отбросить. Критерий — помогает ли следующий шаг приблизиться к результату «${desired.trim()}», а не просто создаёт дополнительную активность.`;
@@ -142,7 +142,7 @@ export default function DiagnosticClient() {
   return (
     <section className="diagnostic-workspace">
       <div className="diagnostic-progress" aria-label="Логика Decision Brief">
-        <span>01 Ситуация</span><span>02 Результат</span><span>03 Что мешает</span><span>04 Что уже думаете делать</span><span>05 Факты или версия</span><span>06 Проверка</span>
+        <span>01 Ситуация</span><span>02 Результат</span><span>03 Версия причины</span><span>04 Решение</span><span>05 Основания</span><span>06 Проверка</span>
       </div>
 
       <div className="diagnostic-form-card">
@@ -150,29 +150,29 @@ export default function DiagnosticClient() {
 
         <label className="diagnostic-field"><span>1. Что сейчас происходит?</span><textarea value={situation} onChange={(e)=>{setSituation(e.target.value);dirty();}} placeholder="Например: выручка просела, хотя обращений примерно столько же"/><small>Сначала — наблюдаемая ситуация, без объяснения причины.</small></label>
         <label className="diagnostic-field"><span>2. К какому результату вы хотите прийти?</span><textarea value={desired} onChange={(e)=>{setDesired(e.target.value);dirty();}} placeholder="Например: вернуть предсказуемые продажи без роста рекламного бюджета"/></label>
-        <label className="diagnostic-field"><span>3. Что, по вашему мнению, сейчас мешает?</span><textarea value={obstacle} onChange={(e)=>{setObstacle(e.target.value);dirty();}} placeholder="Например: кажется, клиент не понимает ценность предложения"/><small>Считаем это рабочей версией, пока она не проверена.</small></label>
-        <label className="diagnostic-field"><span>4. Что вы уже думаете делать?</span><textarea value={intendedAction} onChange={(e)=>{setIntendedAction(e.target.value);dirty();}} placeholder="Например: увеличить рекламу, переделать сайт, снизить цену"/><small>Это необязательный ответ. Он помогает увидеть, не выбран ли инструмент раньше причины.</small></label>
+        <label className="diagnostic-field"><span>3. Что, по вашему мнению, сейчас мешает?</span><textarea value={obstacle} onChange={(e)=>{setObstacle(e.target.value);dirty();}} placeholder="Например: кажется, клиент не понимает ценность предложения"/><small>Это не диагноз. Пока считаем ответ рабочей версией причины.</small></label>
+        <label className="diagnostic-field"><span>4. Что вы уже думаете делать?</span><textarea value={intendedAction} onChange={(e)=>{setIntendedAction(e.target.value);dirty();}} placeholder="Например: увеличить рекламу, переделать сайт, снизить цену"/><small>Необязательно. Ответ помогает увидеть, не выбран ли инструмент раньше причины.</small></label>
 
         <fieldset className="diagnostic-field"><legend>5. На чём основана ваша версия?</legend><div className="diagnostic-options">{(Object.keys(evidenceLabels) as EvidenceLevel[]).map((key)=><button key={key} type="button" className={evidenceLevel===key?"is-selected":""} onClick={()=>{setEvidenceLevel(key);dirty();trackEvent("diagnostic_evidence_level",{level:key});}}>{evidenceLabels[key]}</button>)}</div><textarea value={evidence} onChange={(e)=>{setEvidence(e.target.value);dirty();}} placeholder="Необязательно. Например: 8 из 12 потерянных клиентов назвали похожую причину"/></fieldset>
 
-        <label className="diagnostic-field"><span>6. Что заставило бы вас признать, что эта версия неверна?</span><textarea value={disproof} onChange={(e)=>{setDisproof(e.target.value);dirty();}} placeholder="Если пока не знаете — оставьте пустым. Brief покажет, почему это важно."/><small>Необязательно. Если ответа пока нет, это само по себе важный результат: версия ещё не стала проверяемой гипотезой.</small></label>
+        <label className="diagnostic-field"><span>6. Что заставило бы вас признать, что эта версия неверна?</span><textarea value={disproof} onChange={(e)=>{setDisproof(e.target.value);dirty();}} placeholder="Если пока не знаете — оставьте пустым. Brief покажет, почему это важно."/><small>Необязательно. Отсутствие ответа — тоже результат: версия пока не стала проверяемой гипотезой.</small></label>
 
-        <button className="diagnostic-primary" type="button" disabled={!canBuild} onClick={buildBrief}>Собрать Decision Brief</button>
+        <button className="diagnostic-primary" type="button" disabled={!canBuild} onClick={buildBrief}>Получить короткий разбор</button>
       </div>
 
       {showBrief && <section className="decision-brief" aria-live="polite">
-        <div className="decision-brief-head"><div><p>Decision Brief · первичный разбор</p><h2>Где заканчиваются факты и начинается решение</h2></div><button type="button" onClick={reset}>Начать заново</button></div>
+        <div className="decision-brief-head"><div><p>Decision Brief · ваш первый результат</p><h2>Что уже понятно — и что мешает принять решение</h2></div><button type="button" onClick={reset}>Начать заново</button></div>
 
         <div className="decision-reframe">
-          <span>Главный рефрейминг</span>
+          <span>Что изменилось после 6 вопросов</span>
           <p>{reframing}</p>
         </div>
 
         <div className="decision-focus-grid">
-          <article><span>Критическая неопределённость</span><p>{uncertainty}</p></article>
+          <article><span>Главная неопределённость</span><p>{uncertainty}</p></article>
           <article><span>Что проверить первым</span><p>{nextCheck}</p></article>
           <article><span>Как проверка должна изменить решение</span><p>{decisionImpact}</p></article>
-          <article><span>Что пока рано делать</span><p>{avoid}</p></article>
+          <article><span>На что пока не стоит тратить деньги и усилия</span><p>{avoid}</p></article>
         </div>
 
         <details className="decision-details">
@@ -187,9 +187,10 @@ export default function DiagnosticClient() {
         </details>
 
         <div className="decision-evidence"><strong>Основание текущей версии:</strong> {evidence.trim() || evidenceLabels[evidenceLevel] + "."}</div>
-        <p className="decision-note"><strong>Факты ≠ интерпретация ≠ вывод.</strong> Это не диагноз: Brief ничего не знает о вашем бизнесе кроме введённых ответов. Его задача — показать, какой вопрос мешает решению и какая проверка действительно способна это решение изменить. Реальная работа начинается с контекста, данных, материалов и проверки нескольких конкурирующих версий.</p>
-        <p className="decision-note"><strong>Когда имеет смысл идти дальше.</strong> Если для следующего решения уже недостаточно ваших текущих данных или нужно проверить несколько конкурирующих причин, можно передать мне этот Brief. Я сначала посмотрю саму ситуацию и скажу, имеет ли смысл отдельный диагностический разбор; обязательного большого проекта из этого не следует.</p>
-        <div className="decision-actions"><button type="button" onClick={openDocument}>Открыть оформленный документ</button><a className="diagnostic-contact" href="/#contact" onClick={()=>trackEvent("diagnostic_contact_click",{source:"decision_brief",has_disproof:hasDisproof})}>Передать Brief и обсудить следующую проверку →</a></div>
+        <p className="decision-note"><strong>Факты ≠ интерпретация ≠ вывод.</strong> Brief ничего не знает о вашем бизнесе кроме введённых ответов, поэтому не выдаёт автоматический диагноз. Его самостоятельная ценность — отделить текущую версию от фактов, назвать критическую неопределённость и дать первый проверяемый шаг.</p>
+        <p className="decision-note"><strong>Можно закончить на этом.</strong> Сохраните результат и проведите проверку самостоятельно. Если для решения нужно изучить данные, материалы и несколько конкурирующих причин, тогда имеет смысл отдельный диагностический разбор. Продолжение не обязательно.</p>
+        <p className="decision-note"><strong>Ваши ответы не отправлены мне.</strong> Они остаются в этом браузере. Если решите написать, вы сами выбираете, какую часть Brief передать и каким способом.</p>
+        <div className="decision-actions"><button type="button" onClick={openDocument}>Сохранить оформленный Brief</button><a className="diagnostic-contact" href="/#contact" onClick={()=>trackEvent("diagnostic_contact_click",{source:"decision_brief",has_disproof:hasDisproof})}>Хочу проверить ситуацию глубже →</a></div>
       </section>}
     </section>
   );
