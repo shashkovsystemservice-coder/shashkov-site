@@ -38,11 +38,21 @@ const currentProjects = [
 ] as const;
 
 const decisionLogic = [
-  { n: "01", title: "Отделяю запрос от проблемы", text: "То, что звучит как «нужны заявки», ещё не обязательно означает проблему привлечения." },
-  { n: "02", title: "Отделяю факты от версий", text: "Что мы действительно знаем, а что пока только предполагаем." },
-  { n: "03", title: "Ищу критическую неопределённость", text: "Какой неизвестный фактор сильнее всего меняет выбор решения." },
-  { n: "04", title: "Проверяю альтернативы", text: "Как меняется выбор, если проблема в рынке, продукте, продажах, цене или исполнении." },
-  { n: "05", title: "Выбираю первый проверяемый шаг", text: "Не полный план ради плана, а действие, которое уменьшает неопределённость." },
+  {
+    n: "01",
+    title: "Понять, что реально происходит",
+    text: "Отделяю исходный запрос от самой проблемы и факты — от предположений.",
+  },
+  {
+    n: "02",
+    title: "Найти, от чего зависит выбор",
+    text: "Ищу критическую неопределённость и сравниваю реальные альтернативы решения.",
+  },
+  {
+    n: "03",
+    title: "Проверить первый шаг",
+    text: "Выбираю действие, которое быстрее всего уменьшит неопределённость — без полного плана ради плана.",
+  },
 ] as const;
 
 export default function Home() {
@@ -121,12 +131,12 @@ export default function Home() {
         <div className="section-intro decision-method-intro">
           <p className="eyebrow">02 · Как разбираю неочевидную задачу</p>
           <h2>Не начинаю с готового решения. Сначала уменьшаю неопределённость.</h2>
-          <p>Логика одна: задача → факты → версии → критическая неопределённость → проверка → выбор.</p>
+          <p>Главный принцип: не выбирать решение раньше, чем стало понятнее, от чего оно зависит.</p>
         </div>
         <div className="decision-method-grid">
           {decisionLogic.map((step) => <article key={step.n}><span>{step.n}</span><h3>{step.title}</h3><p>{step.text}</p></article>)}
         </div>
-        <p className="decision-method-note"><strong>Проверяю не только, что обещать рынку, но и способен ли бизнес это реально продать, выполнить и поддерживать.</strong></p>
+        <p className="decision-method-note"><strong>И проверяю не только, что обещать рынку, но и способен ли бизнес это реально продать, выполнить и поддерживать.</strong></p>
         <a className="text-link" href="/work">Подробнее о подходе →</a>
       </div>
     </section>
@@ -180,9 +190,10 @@ export default function Home() {
         <div className="section-intro continuation-intro">
           <p className="eyebrow">05 · Как можно продолжить</p>
           <h2 id="continuation-title">Глубина работы зависит от задачи.</h2>
+          <p className="continuation-reassurance">Это не лестница: можно остановиться после любого шага.</p>
         </div>
         <div className="work-grid work-grid-returned" aria-label="Как может продолжиться работа">
-          <article><p className="eyebrow">1 · Самостоятельно</p><h3>Decision Brief</h3><p>Сформулировать вопрос и увидеть, что стоит проверить первым.</p><a className="service-route service-route-primary" href="/diagnostic">Собрать Decision Brief →</a></article>
+          <article><p className="eyebrow">1 · Самостоятельно</p><h3>Разобрать вопрос самостоятельно</h3><p>Сформулировать вопрос и увидеть, что стоит проверить первым.</p><a className="service-route service-route-primary" href="/diagnostic">Пройти 6 вопросов →</a></article>
           <article><p className="eyebrow">2 · Вместе</p><h3>Диагностический разбор</h3><p>Разобрать контекст, факты и конкурирующие версии, если вопрос требует глубины.</p><a className="service-route" href="#contact">Обсудить разбор →</a></article>
           <article><p className="eyebrow">3 · Если задача требует глубины</p><h3>Стратегический проект</h3><p>Рынок, клиент, продукт, ценность, продажи и исполнение — только там, где это действительно нужно.</p><a className="service-route" href="/work">Посмотреть, как проходит работа →</a></article>
         </div>
@@ -227,10 +238,10 @@ export default function Home() {
       <div className="page-shell contact-grid">
         <div>
           <p className="eyebrow eyebrow-light">09 · Следующий шаг</p>
-          <h2>Можно начать без звонка — с Decision Brief.</h2>
-          <p>За 6 вопросов он помогает сформулировать, что именно стоит проверить первым. Если вопрос уже конкретный — можно сразу написать.</p>
+          <h2>Можно начать с самой ситуации — без обязательного звонка.</h2>
+          <p>Если вопрос пока неясный — можно пройти 6 вопросов и получить краткий разбор. Если уже конкретный — просто написать.</p>
           <p className="contact-legal"><strong>Работаю как ИП.</strong> Договор, счёт и закрывающие документы.</p>
-          <div className="contact-actions"><a className="button button-light" href="/diagnostic">Собрать Decision Brief</a>{contactChannels.map((channel) => <a key={channel.id} className="button button-light" href={channel.href} target="_blank" rel="noreferrer">Написать в {channel.label}</a>)}</div>
+          <div className="contact-actions"><a className="button button-light" href="/diagnostic">Разобрать свою ситуацию</a>{contactChannels.map((channel) => <a key={channel.id} className="button button-light" href={channel.href} target="_blank" rel="noreferrer">Написать в {channel.label}</a>)}</div>
         </div>
         <form className="contact-form" action="/api/contact" method="post">
           <label><span>Если удобнее формой: что сейчас происходит?</span><textarea name="situation" placeholder="Коротко, своими словами" required /></label>
