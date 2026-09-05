@@ -145,8 +145,12 @@
 .project-spectrum-card { min-height: 270px; }
 
 /* Proof strip remains compact and factual. */
+.proof-strip-grid { grid-template-columns: .85fr 1.65fr; }
 .proof-strip-item { min-height: 126px; }
 .proof-strip strong { letter-spacing: -.02em; }
+
+/* About is now a two-part explanation rather than a resume grid. */
+.about-foundations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 /* Final conversion block: one primary action, one clearly secondary route. */
 #contact { scroll-margin-top: 84px; }
@@ -223,6 +227,16 @@
   }
 }
 
+@media (max-width: 900px) and (min-width: 761px) {
+  .proof-strip-grid { grid-template-columns: .9fr 1.4fr; }
+  .proof-strip-item:last-child {
+    grid-column: auto;
+    border-top: 0;
+    border-left: 1px solid #d9e1eb;
+    padding-left: 32px;
+  }
+}
+
 @media (max-width: 760px) {
   .product-depth-grid .depth-result-card,
   .product-depth-grid .depth-result-card:first-child,
@@ -251,6 +265,15 @@
     padding: 42px 0 20px !important;
   }
   .proof-links .proof-demo-link::before { left: 0; }
+
+  .proof-strip-grid { grid-template-columns: 1fr; }
+  .proof-strip-item:last-child {
+    grid-column: auto;
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid #d9e1eb;
+  }
+  .about-foundations { grid-template-columns: 1fr; }
 
   .contact-actions {
     display: grid !important;
