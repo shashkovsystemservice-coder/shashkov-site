@@ -1,0 +1,160 @@
+/* CRO proof pass: keep the restored depth visible without making it feel like pricing cards. */
+.brief-continuation-label {
+  margin: 34px 0 14px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.work-grid-returned {
+  margin-top: 0 !important;
+  border-top: 2px solid var(--ink);
+}
+
+.work-grid-returned article {
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+}
+
+.work-grid-returned article .eyebrow {
+  margin-bottom: 12px;
+}
+
+.work-grid-returned article h3 {
+  margin-bottom: 10px;
+}
+
+.artifact-preview {
+  margin-top: 36px;
+  padding: 24px 0 0;
+  border-top: 2px solid var(--ink);
+}
+
+.artifact-preview-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.artifact-preview-head span,
+.artifact-preview-head strong {
+  display: block;
+}
+
+.artifact-preview-head span {
+  margin-bottom: 7px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.artifact-preview-head strong {
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.artifact-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.artifact-preview-grid > div {
+  min-height: 150px;
+  padding: 22px 24px 24px 0;
+}
+
+.artifact-preview-grid > div + div {
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+}
+
+.artifact-preview-grid small,
+.artifact-preview-grid strong {
+  display: block;
+}
+
+.artifact-preview-grid small {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+
+.artifact-preview-grid strong {
+  font-size: 19px;
+  line-height: 1.35;
+}
+
+.about-inside-business {
+  margin-bottom: 18px !important;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.about-inside-business strong {
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .artifact-preview-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .artifact-preview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .artifact-preview-grid > div,
+  .artifact-preview-grid > div + div {
+    min-height: 0;
+    padding: 19px 0 20px;
+    border-left: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .artifact-preview-grid > div:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .brief-continuation-label {
+    margin-top: 28px;
+  }
+
+  .work-grid-returned article {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .artifact-preview {
+    margin-top: 30px;
+    padding-top: 20px;
+  }
+
+  .artifact-preview-head strong {
+    font-size: 19px;
+  }
+
+  .artifact-preview-grid strong {
+    font-size: 17px;
+  }
+
+  .about-inside-business strong {
+    font-size: 17px;
+  }
+}
