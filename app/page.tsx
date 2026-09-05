@@ -2,6 +2,7 @@ import Image from "next/image";
 import "./method.css";
 import "./projects.css";
 import "./editorial-pass.css";
+import "./cro-proof.css";
 
 const situations = [
   "Продажи перестали расти. Команда предлагает больше рекламы — но непонятно, в ней ли проблема",
