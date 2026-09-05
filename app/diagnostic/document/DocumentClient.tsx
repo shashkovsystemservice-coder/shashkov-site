@@ -118,7 +118,7 @@ async function renderBriefPdf(brief: BriefPayload, date: string) {
     if (first) {
       ctx.fillStyle = "#17191d"; ctx.fillRect(0, 0, PAGE_W, 166);
       ctx.fillStyle = "#ffffff"; ctx.font = "700 30px Arial, sans-serif"; ctx.fillText("ВШ   Владимир Шашков", 100, 72);
-      ctx.fillStyle = "#d4d8dd"; ctx.font = "400 20px Arial, sans-serif"; ctx.fillText("Стратегический маркетинг для собственников бизнеса", 100, 112);
+      ctx.fillStyle = "#d4d8dd"; ctx.font = "400 20px Arial, sans-serif"; ctx.fillText("Маркетинг и рост бизнеса", 100, 112);
       ctx.textAlign = "right"; ctx.fillText("vshashkov.ru", PAGE_W - 100, 70); ctx.fillText(date, PAGE_W - 100, 108); ctx.textAlign = "left";
       y = 242;
     } else {
@@ -188,7 +188,7 @@ async function renderBriefPdf(brief: BriefPayload, date: string) {
     ["06", "Что проверить первым", brief.nextCheck],
     ["07", "Как проверка должна изменить решение", brief.decisionImpact || "Результат проверки должен либо дать основания для действия, либо показать, что текущую версию причины нужно отбросить."],
     ["08", "Что может опровергнуть версию", brief.disproof],
-    ["09", "Что пока преждевременно делать", brief.avoid],
+    ["09", "На что пока не стоит тратить деньги и усилия", brief.avoid],
     ["10", "Основание текущей версии", brief.evidence],
   ];
   sections.forEach(([n, title, text]) => drawSection(n, title, text));
@@ -230,7 +230,7 @@ export default function DocumentClient() {
     ["06", "Что проверить первым", brief.nextCheck],
     ["07", "Как проверка должна изменить решение", brief.decisionImpact || "Результат проверки должен либо дать основания для действия, либо показать, что текущую версию причины нужно отбросить."],
     ["08", "Что может опровергнуть версию", brief.disproof],
-    ["09", "Что пока преждевременно делать", brief.avoid],
+    ["09", "На что пока не стоит тратить деньги и усилия", brief.avoid],
     ["10", "Основание текущей версии", brief.evidence],
   ] : [], [brief]);
 
@@ -265,7 +265,7 @@ export default function DocumentClient() {
 
   const handlePrint = () => { setShareStatus(""); try { window.print(); } catch { void handlePdfSave(); } };
 
-  if (!brief) return <main className="brief-document-shell"><section className="brief-document empty"><div className="brief-letterhead"><div className="brief-brand"><div className="brief-mark">ВШ</div><div><strong>Владимир Шашков</strong><span>Стратегический маркетинг</span></div></div><strong className="brief-site">vshashkov.ru</strong></div><h1>Decision Brief пока не сформирован</h1><p>Вернитесь к первичному разбору, заполните ответы или подставьте пример и нажмите «Собрать Decision Brief».</p><a href="/diagnostic">Вернуться к разбору →</a></section></main>;
+  if (!brief) return <main className="brief-document-shell"><section className="brief-document empty"><div className="brief-letterhead"><div className="brief-brand"><div className="brief-mark">ВШ</div><div><strong>Владимир Шашков</strong><span>Маркетинг и рост бизнеса</span></div></div><strong className="brief-site">vshashkov.ru</strong></div><h1>Decision Brief пока не сформирован</h1><p>Вернитесь к первичному разбору, заполните ответы или подставьте пример и нажмите «Получить короткий разбор».</p><a href="/diagnostic">Вернуться к разбору →</a></section></main>;
 
   return <main className="brief-document-shell">
     <div className="brief-toolbar no-print">
@@ -278,13 +278,13 @@ export default function DocumentClient() {
       {shareStatus && <span className="brief-share-status">{shareStatus}</span>}
     </div>
     <article className="brief-document">
-      <header className="brief-document-header"><div className="brief-letterhead"><div className="brief-brand"><div className="brief-mark" aria-label="Монограмма Владимир Шашков">ВШ</div><div><strong>Владимир Шашков</strong><span>Стратегический маркетинг для собственников бизнеса</span></div></div><div className="brief-meta"><a href="https://vshashkov.ru">vshashkov.ru</a><span>{date}</span></div></div></header>
+      <header className="brief-document-header"><div className="brief-letterhead"><div className="brief-brand"><div className="brief-mark" aria-label="Монограмма Владимир Шашков">ВШ</div><div><strong>Владимир Шашков</strong><span>Маркетинг и рост бизнеса</span></div></div><div className="brief-meta"><a href="https://vshashkov.ru">vshashkov.ru</a><span>{date}</span></div></div></header>
       <section className="brief-title-block"><p className="brief-kicker">Decision Brief · первичный разбор</p><h1>Структура задачи до выбора решения</h1><p className="brief-lead">Не максимум аналитики, а достаточная определённость, чтобы понять, какое решение имеет основания — и какое пока рано принимать.</p></section>
       {brief.reframing && <aside className="brief-caveat"><strong>Главный рефрейминг</strong><p>{brief.reframing}</p></aside>}
       <div className="brief-rule"/>
       <section className="brief-sections">{sections.map(([number,title,text]) => <section className="brief-section" key={number}><div className="brief-section-number">{number}</div><div><h2>{title}</h2><p>{text}</p></div></section>)}</section>
       <aside className="brief-caveat"><strong>Важно</strong><p>Это не автоматический диагноз и не готовая рекомендация. Документ построен только на введённых вами ответах. В реальной работе выводы появляются после изучения контекста, данных, материалов и проверки нескольких версий.</p></aside>
-      <footer className="brief-footer"><div><strong>Владимир Шашков</strong><span>Стратегический маркетинг для собственников бизнеса</span></div><a href="https://vshashkov.ru">vshashkov.ru</a></footer>
+      <footer className="brief-footer"><div><strong>Владимир Шашков</strong><span>Маркетинг и рост бизнеса</span></div><a href="https://vshashkov.ru">vshashkov.ru</a></footer>
     </article>
   </main>;
 }
