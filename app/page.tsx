@@ -119,7 +119,12 @@ export default function Home() {
           <p>На выходе — главный вопрос, критическая неопределённость, что проверить первым и что пока рано делать. Результат можно сохранить в PDF. Ни к чему не обязывает.</p>
           <a className="button" href="/diagnostic">Собрать Decision Brief</a>
         </div>
-        <p className="brief-followup">Если после Brief окажется, что вопрос требует контекста и данных, его можно разобрать вместе.</p>
+        <p className="brief-continuation-label">Как можно продолжить</p>
+        <div className="work-grid work-grid-returned" aria-label="Как может продолжиться работа">
+          <article><p className="eyebrow">1 · Самостоятельно</p><h3>Decision Brief</h3><p>Сформулировать вопрос и увидеть, что стоит проверить первым.</p></article>
+          <article><p className="eyebrow">2 · Вместе</p><h3>Диагностический разбор</h3><p>Разобрать контекст, факты и конкурирующие версии, если вопрос требует глубины.</p></article>
+          <article><p className="eyebrow">3 · Если задача требует глубины</p><h3>Стратегический проект</h3><p>Рынок, клиент, продукт, ценность, продажи и исполнение — только там, где это действительно нужно.</p></article>
+        </div>
       </div>
     </section>
 
@@ -130,9 +135,22 @@ export default function Home() {
         <div className="case-steps">
           <div><span>Запрос</span><h3>«Нам нужны квалифицированные входящие заявки».</h3></div>
           <div><span>Что выяснили</span><p>Продажи опирались не только на сайт: важны повторные сделки и личная работа с рынком.</p></div>
-          <div><span>Что изменилось</span><h3>Фокус сместился с трафика на доверие и более ранний вход в проект клиента.</h3></div>
+          <div><span>Что изменилось в решении</span><h3>Увеличение рекламного бюджета перестало быть автоматическим следующим шагом. Фокус сместился на сегментацию, доказательства ценности и более ранний вход в проект клиента.</h3></div>
         </div>
         <p className="case-action"><strong>После разбора собственник уточнил сегментацию и ценность, начал собирать кейсы и проверять проектный канал.</strong></p>
+
+        <div className="artifact-preview" aria-label="Фрагмент реальной карты задачи">
+          <div className="artifact-preview-head">
+            <div><span>Фрагмент рабочего артефакта</span><strong>Карта задачи · обезличенный реальный проект</strong></div>
+            <a className="text-link" href="/artifacts/task-map">Открыть полностью →</a>
+          </div>
+          <div className="artifact-preview-grid">
+            <div><small>01 · Исходный запрос</small><strong>Нужны более квалифицированные входящие заявки</strong></div>
+            <div><small>03 · Что стало версией</small><strong>Ограничение может находиться раньше трафика</strong></div>
+            <div><small>05 · Как изменился вопрос</small><strong>Не «как дать больше рекламы», а «как раньше попадать в выбор клиента»</strong></div>
+          </div>
+        </div>
+
         <div className="case-links"><a className="proof-demo-link" href="/artifacts/task-map">Карта задачи →</a><a className="proof-demo-link" href="/artifacts/market-choice">Карта выбора рынка →</a><a className="proof-demo-link" href="/artifacts/value-proof">Иерархия ценности и доказательств →</a><a className="proof-demo-link" href="/diagnostic">Разобрать свою ситуацию →</a></div>
         <blockquote>«Разбор помог увидеть, что проблема была шире привлечения заявок. Стало понятно, что нужно доработать сегментацию, ценность и доказательную базу.»</blockquote>
         <p className="case-attribution">Собственник бизнеса · проект обезличен</p>
@@ -155,6 +173,7 @@ export default function Home() {
       <div className="page-shell about-grid">
         <div><p className="eyebrow">05 · Обо мне</p><h2>К маркетингу я пришёл через инженерные и управленческие задачи.</h2></div>
         <div className="about-copy">
+          <p className="about-inside-business"><strong>Мой опыт сформирован внутри бизнеса — там, где рыночное обещание нужно не только придумать, но и выполнить.</strong></p>
           <p>Мой путь начался с математики и автоматизации. Дальше были производство, продукт, качество, сервис, проекты и развитие бизнеса. Поэтому я привык смотреть не на отдельную функцию, а на решение целиком: что нужно рынку, что компания обещает, как это продаётся — и может ли бизнес это реально создать, выполнить и поддерживать.</p>
           <div className="about-foundations">
             <div><strong>Инженерная и управленческая база</strong><span>Математика и автоматизация · производство · качество · проекты · Executive MBA.</span></div>
