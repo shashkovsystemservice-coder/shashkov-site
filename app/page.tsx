@@ -83,10 +83,6 @@ export default function Home() {
           <span>продукт, продажи, инженерия, сервис, качество, развитие и маркетинг</span>
         </div>
         <div className="proof-strip-item">
-          <strong>20+ моделей в продуктовой линейке</strong>
-          <span>участие в запуске линейки под собственным брендом и в совместном предприятии с Philips</span>
-        </div>
-        <div className="proof-strip-item">
           <strong>Heidelberg · Nokian Tyres · Роснано · Росатом</strong>
           <span>от международных производителей до технологических и инженерных компаний</span>
         </div>
@@ -149,10 +145,10 @@ export default function Home() {
 
     <section className="work-stage" id="work">
       <div className="page-shell">
-        <div className="section-intro work-intro"><p className="eyebrow">04 · Как работаю</p><h2>От неясной задачи — к проверяемому решению.</h2></div>
-        <div className="work-grid">
-          <article><p className="eyebrow">Логика решения</p><h3>Задача → факты → версии → критическая неопределённость → проверка → выбор.</h3><p>Понятно, какой вопрос действительно нужно решать и что проверить первым.</p></article>
-          <article><p className="eyebrow">Рынок и исполнение должны сходиться</p><h3>Проверяю не только, что обещать рынку, но и способен ли бизнес это реально продать, выполнить и поддерживать.</h3><p>Продукт, продажи, сервис, качество и исполнение — только там, где это влияет на решение.</p></article>
+        <div className="section-intro work-intro">
+          <p className="eyebrow">04 · Как работаю</p>
+          <h2>От неясной задачи — к проверяемому решению.</h2>
+          <p>Задача → факты → версии → критическая неопределённость → проверка → выбор. Проверяю не только, что обещать рынку, но и способен ли бизнес это реально продать, выполнить и поддерживать.</p>
         </div>
         <a className="text-link" href="/work">Подробнее о подходе →</a>
       </div>
@@ -161,15 +157,19 @@ export default function Home() {
     <section id="about" className="about-stage">
       <div className="page-shell about-grid">
         <div><p className="eyebrow">05 · Обо мне</p><h2>В маркетинг я пришёл из управления бизнесом.</h2></div>
-        <div className="about-copy"><p>Поэтому я не отделяю рыночное решение от того, как бизнес его выполнит. Обещание рынку должно сходиться с продуктом, продажами, сервисом, качеством и реальными возможностями команды.</p>
-          <div className="about-foundations"><div><strong>Инженерная база</strong><span>Математика и автоматизация — системы, зависимости и причины.</span></div><div><strong>Управленческая школа</strong><span>Executive MBA · качество · проекты · изменения — не только выбрать, но и сделать управляемым.</span></div><div><strong>Практика</strong><span>Продукт · продажи · инженерия · сервис · качество — 24 года внутри разных функций бизнеса.</span></div></div>
+        <div className="about-copy">
+          <p>Мой путь начался с математики, автоматизации и инженерных систем, а дальше прошёл через продукт, сервис, качество, проекты и развитие бизнеса. Поэтому я привык смотреть не на отдельную функцию, а на всю систему решения: что нужно рынку, что мы обещаем, как это продаётся и способен ли бизнес это выполнить.</p>
+          <div className="about-foundations">
+            <div><strong>Инженерная и управленческая база</strong><span>Математика и автоматизация · Executive MBA · качество · проекты · изменения.</span></div>
+            <div><strong>Практика продукта и рынка</strong><span>24 года внутри бизнеса; участие в запуске линейки 20+ моделей, включая совместное предприятие с Philips.</span></div>
+          </div>
         </div>
       </div>
     </section>
 
     <section className="projects-stage">
       <div className="page-shell">
-        <div className="section-intro"><p className="eyebrow">06 · Ещё три примера</p><h2>Первый запрос часто меняется после разбора.</h2></div>
+        <div className="section-intro"><p className="eyebrow">06 · Ещё три примера</p><h2>Тот же принцип — в разных бизнес-ситуациях.</h2></div>
         <div className="project-list">{currentProjects.map((p, i) => <article key={p.context}><span><b>{String(i + 1).padStart(2, "0")}</b><em>{p.context}</em></span><h3>{p.question}</h3><p>{p.reframing}</p>{p.href && <a className="text-link" href={p.href}>Открыть кейс →</a>}</article>)}</div>
       </div>
     </section>
@@ -190,15 +190,14 @@ export default function Home() {
     <section id="contact" className="contact-stage">
       <div className="page-shell contact-grid">
         <div>
-          <p className="eyebrow eyebrow-light">08 · Написать</p>
-          <h2>Можно начать с самой ситуации.</h2>
-          <p>Не нужно заранее понимать, какая услуга вам нужна. Если вопрос уже есть — просто напишите его своими словами.</p>
-          <p>Сначала посмотрю на саму ситуацию. Если отдельный проект не нужен, на этом можно остановиться.</p>
+          <p className="eyebrow eyebrow-light">08 · Следующий шаг</p>
+          <h2>Для холодного входа — сначала Decision Brief.</h2>
+          <p>Он помогает сформулировать вопрос без звонка и понять, что имеет смысл проверять первым. Если вопрос уже конкретный — можно сразу написать.</p>
           <p className="contact-legal"><strong>Работаю как ИП.</strong> Договор, счёт и закрывающие документы.</p>
-          <div className="contact-actions"><a className="button button-light" href="/diagnostic">Разобрать ситуацию</a>{contactChannels.map((channel) => <a key={channel.id} className="button button-light" href={channel.href} target="_blank" rel="noreferrer">Написать в {channel.label}</a>)}</div>
+          <div className="contact-actions"><a className="button button-light" href="/diagnostic">Собрать Decision Brief</a>{contactChannels.map((channel) => <a key={channel.id} className="button button-light" href={channel.href} target="_blank" rel="noreferrer">Написать в {channel.label}</a>)}</div>
         </div>
         <form className="contact-form" action="/api/contact" method="post">
-          <label><span>Что сейчас происходит?</span><textarea name="situation" placeholder="Коротко, своими словами" required /></label>
+          <label><span>Если удобнее формой: что сейчас происходит?</span><textarea name="situation" placeholder="Коротко, своими словами" required /></label>
           <label><span>Как с вами связаться?</span><input type="text" name="contact" placeholder="Email или Telegram" required /></label>
           <button className="button button-light" type="submit">Отправить</button>
           <p>Я сам прочитаю сообщение и отвечу, вижу ли здесь задачу для разбора и какой первый шаг имеет смысл. Обязательного созвона нет.</p>
