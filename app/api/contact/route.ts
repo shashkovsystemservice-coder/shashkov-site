@@ -5,8 +5,69 @@ const maxLen = 4000;
 const primaryEmail = "shashkov.systemservice@gmail.com";
 const backupEmail = "shashkov75@inbox.ru";
 
+const rateLimitWindowMs = 10 * 60 * 1000;
+const rateLimitMax = 3;
+const submissionsByIp = new Map<string, number[]>();
+
 function clean(value: FormDataEntryValue | null) {
   return typeof value === "string" ? value.trim().slice(0, maxLen) : "";
+}
+
+function clientIp(request: Request) {
+  const forwarded = request.headers.get("x-forwarded-for");
+  return forwarded?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "unknown";
+}
+
+function isRateLimited(ip: string) {
+  const now = Date.now();
+  const recent = (submissionsByIp.get(ip) || []).filter((ts) => now - ts < rateLimitWindowMs);
+  if (recent.length >= rateLimitMax) return true;
+  recent.push(now);
+  submissionsByIp.set(ip, recent);
+  return false;
+}
+
+function spamReason(submission: {
+  source: string;
+  situation: string;
+  tried: string;
+  contact: string;
+  website: string;
+}) {
+  if (submission.website) return "honeypot";
+
+  const text = `${submission.situation}\n${submission.tried}\n${submission.contact}`.toLowerCase();
+
+  const hardPatterns: Array<[RegExp, string]> = [
+    [/searchregister\.live/i, "searchregister"],
+    [/search-vshashkov\.ru/i, "fake_domain_contact"],
+    [/google'?s\s+search\s+index/i, "google_index_spam"],
+    [/displayed\s+in\s+google\s+search\s+results/i, "google_results_spam"],
+    [/add\s+vshashkov\.ru\s+today/i, "domain_submission_spam"],
+    [/передават\S*\s+вам\s+клиент\S*\s+за\s+процент/i, "lead_broker_spam"],
+    [/готов\S*\s+передават\S*\s+.*клиент\S*\s+за\s+процент/i, "lead_broker_spam"],
+  ];
+
+  for (const [pattern, reason] of hardPatterns) {
+    if (pattern.test(text)) return reason;
+  }
+
+  const links = text.match(/https?:\/\/|www\.|t\.me\//gi)?.length || 0;
+  const promoSignals = [
+    /seo/i,
+    /backlink/i,
+    /guest\s+post/i,
+    /rank\s+(your|in)\s+google/i,
+    /first\s+page\s+of\s+google/i,
+    /traffic\s+to\s+your\s+site/i,
+    /лид\S*\s+за\s+процент/i,
+    /клиент\S*\s+за\s+процент/i,
+  ].filter((pattern) => pattern.test(text)).length;
+
+  if (links >= 2 && promoSignals >= 1) return "promotional_link_spam";
+  if (links >= 3) return "too_many_links";
+
+  return "";
 }
 
 function messageText(submission: {
@@ -80,6 +141,7 @@ export async function POST(request: Request) {
     situation: clean(form.get("situation")),
     tried: clean(form.get("tried")),
     contact: clean(form.get("contact")),
+    website: clean(form.get("website")),
     receivedAt: new Date().toISOString(),
   };
 
@@ -87,7 +149,24 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "missing_required_fields" }, { status: 400 });
   }
 
-  console.log("CONTACT_SUBMISSION", JSON.stringify(submission));
+  const ip = clientIp(request);
+  const reason = spamReason(submission);
+  const limited = isRateLimited(ip);
+
+  if (reason || limited) {
+    console.info("CONTACT_SPAM_BLOCKED", JSON.stringify({ reason: reason || "rate_limit", source: submission.source || "unknown" }));
+    const url = new URL("/?sent=1#contact", request.url);
+    return NextResponse.redirect(url, 303);
+  }
+
+  console.log("CONTACT_SUBMISSION", JSON.stringify({
+    source: submission.source,
+    situation: submission.situation,
+    tried: submission.tried,
+    contact: submission.contact,
+    receivedAt: submission.receivedAt,
+  }));
+
   const text = messageText(submission);
 
   try {
