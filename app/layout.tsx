@@ -6,6 +6,7 @@ import "./about-contrast.css";
 import "./conversion-paths.css";
 import "./final-close-polish.css";
 import "./about-photo.css";
+import "./about-photo-fix.css";
 import { siteConfig } from "./site-config";
 import AnalyticsTracker from "./AnalyticsTracker";
 
