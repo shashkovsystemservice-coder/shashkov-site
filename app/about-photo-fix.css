@@ -1,0 +1,4 @@
+/* Load the About portrait through a real image response instead of a huge CSS data URI. */
+.about-stage .about-grid::after {
+  background-image: url("/api/about-photo") !important;
+}
