@@ -254,6 +254,21 @@ export default function Home() {
           <button className="button button-light" type="submit">Отправить</button>
         </form>
       </div>
+      <footer className="brand-close page-shell" aria-label="Финал страницы">
+        <div className="brand-close-main">
+          <a className="brand-close-identity" href="#top" aria-label="Владимир Шашков — наверх">
+            <span className="brand-close-mark" aria-hidden="true">ВШ</span>
+            <span><strong>Владимир Шашков</strong><small>Маркетинг и рост бизнеса</small></span>
+          </a>
+          <p className="brand-close-principle">Сначала понять проблему.<br />Потом выбирать решение.<br />И только потом — инструмент.</p>
+        </div>
+        <nav className="brand-close-nav" aria-label="Навигация в конце страницы">
+          <a href="#top">vshashkov.ru</a>
+          <a href="#method">Подход</a>
+          <a href="#case">Примеры</a>
+          <a href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Telegram</a>
+        </nav>
+      </footer>
     </section>
   </main>;
 }
