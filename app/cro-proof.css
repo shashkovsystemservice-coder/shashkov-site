@@ -231,6 +231,61 @@
   margin-bottom: 8px;
 }
 
+/* Final CTA should read as the culmination of the argument, not as a technical footer. */
+.contact-stage {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 12% 18%, rgba(24,78,216,.18), transparent 36%);
+}
+
+.contact-stage .contact-grid {
+  position: relative;
+  z-index: 1;
+  gap: clamp(56px, 7vw, 112px);
+  padding-top: 104px;
+  padding-bottom: 108px;
+}
+
+.contact-stage h2 {
+  max-width: 880px;
+  color: #fff !important;
+  font-size: clamp(52px, 5vw, 78px);
+  line-height: .98;
+  letter-spacing: -.055em;
+}
+
+.contact-stage .contact-grid > div > p:not(.eyebrow) {
+  max-width: 760px;
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+.contact-actions .button-light:first-child {
+  min-height: 58px !important;
+  padding: 16px 24px !important;
+  box-shadow: 0 10px 28px rgba(0,0,0,.16);
+}
+
+.contact-form {
+  padding-top: 26px;
+  border-top: 1px solid rgba(255,255,255,.24);
+}
+
+.contact-form label > span {
+  color: #e8eef7 !important;
+}
+
+.contact-form button {
+  min-height: 56px;
+}
+
 @media (max-width: 900px) {
   .decision-method-grid {
     grid-template-columns: 1fr;
@@ -352,5 +407,23 @@
   .projects-stage-memory-pass .project-list article {
     padding-top: 15px !important;
     padding-bottom: 15px !important;
+  }
+
+  .contact-stage .contact-grid {
+    gap: 42px;
+    padding-top: 72px;
+    padding-bottom: 76px;
+  }
+
+  .contact-stage h2 {
+    font-size: clamp(42px, 12vw, 56px);
+  }
+
+  .contact-stage .contact-grid > div > p:not(.eyebrow) {
+    font-size: 17px;
+  }
+
+  .contact-form {
+    padding-top: 22px;
   }
 }
