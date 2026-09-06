@@ -235,6 +235,7 @@
 .contact-stage {
   position: relative;
   overflow: hidden;
+  min-height: 100svh;
 }
 
 .contact-stage::before {
@@ -250,7 +251,7 @@
   z-index: 1;
   gap: clamp(56px, 7vw, 112px);
   padding-top: 104px;
-  padding-bottom: 108px;
+  padding-bottom: 76px;
 }
 
 .contact-stage h2 {
@@ -284,6 +285,99 @@
 
 .contact-form button {
   min-height: 56px;
+}
+
+/* Brand close: a semantic full-stop after conversion, not another CTA. */
+.brand-close {
+  position: relative;
+  z-index: 1;
+  padding-top: 58px;
+  padding-bottom: max(42px, env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(255,255,255,.18);
+  color: #fff;
+}
+
+.brand-close-main {
+  display: grid;
+  grid-template-columns: minmax(260px, .7fr) minmax(420px, 1.3fr);
+  gap: 70px;
+  align-items: end;
+}
+
+.brand-close-identity {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.brand-close-mark {
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(255,255,255,.72);
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -.03em;
+}
+
+.brand-close-identity > span:last-child {
+  display: grid;
+  gap: 3px;
+}
+
+.brand-close-identity strong {
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.brand-close-identity small {
+  color: #aebed2;
+  font-size: 12px;
+}
+
+.brand-close-principle {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(30px, 3vw, 48px);
+  line-height: 1.04;
+  letter-spacing: -.04em;
+  font-weight: 820;
+}
+
+.brand-close-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  margin-top: 46px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+.brand-close-nav a {
+  color: #b9c8da;
+  font-size: 13px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.brand-close-nav a:hover { color: #fff; }
+
+/* Proof hierarchy: changed decision and artifact remain primary; testimonial supports them. */
+.case-shell blockquote {
+  max-width: 920px;
+  font-size: clamp(27px, 2.6vw, 40px) !important;
+  line-height: 1.12 !important;
+  font-weight: 760 !important;
+}
+
+.case-attribution {
+  color: var(--muted) !important;
+  font-size: 13px !important;
 }
 
 @media (max-width: 900px) {
@@ -323,6 +417,11 @@
   .artifact-preview-grid > div:last-child {
     border-bottom: 0;
   }
+
+  .brand-close-main {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
 }
 
 @media (max-width: 760px) {
@@ -360,21 +459,98 @@
     font-size: 17px;
   }
 
+  /* Secondary hero routes should read as quiet navigation, not competing CTAs. */
+  .hero-paths {
+    margin-top: 26px !important;
+    display: grid !important;
+    gap: 0 !important;
+    border-top: 1px solid var(--line);
+  }
+
+  .hero-paths a {
+    min-height: 0 !important;
+    padding: 14px 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--line) !important;
+    background: transparent !important;
+  }
+
+  .hero-paths a span {
+    color: var(--muted) !important;
+    font-size: 12px !important;
+  }
+
+  .hero-paths a strong {
+    margin-top: 2px !important;
+    font-size: 14px !important;
+  }
+
+  /* Keep the portrait human and present, but stop it becoming a separate full screen. */
+  .hero-photo {
+    margin-top: 28px !important;
+  }
+
+  .hero-photo img {
+    width: 100% !important;
+    height: min(78vw, 500px) !important;
+    min-height: 0 !important;
+    object-fit: cover !important;
+    object-position: 50% 22% !important;
+  }
+
+  /* Stronger mobile credibility hierarchy without turning it into a logo wall. */
+  .proof-strip-item strong {
+    display: block;
+    font-size: 19px !important;
+    line-height: 1.22 !important;
+  }
+
+  .proof-strip-item span {
+    display: block;
+    margin-top: 7px;
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+  }
+
   .continuation-stage {
-    padding: 52px 0 42px;
+    padding: 52px 0 46px;
   }
 
   .continuation-reassurance {
     font-size: 16px;
   }
 
-  .work-grid-returned article {
-    padding-top: 20px !important;
-    padding-bottom: 20px !important;
+  /* On mobile this is a progression in depth, not three plan cards. */
+  .work-grid-returned {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    border-top: 0 !important;
+    border-left: 2px solid var(--ink);
+    padding-left: 20px;
+  }
+
+  .work-grid-returned article,
+  .work-grid-returned article + article {
+    position: relative;
+    padding: 5px 0 28px !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  .work-grid-returned article::before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--blue);
+    box-shadow: 0 0 0 5px #fff;
   }
 
   .work-grid-returned article:last-child {
-    padding-bottom: 8px !important;
+    padding-bottom: 4px !important;
   }
 
   .service-route {
@@ -409,10 +585,15 @@
     padding-bottom: 15px !important;
   }
 
+  .contact-stage {
+    min-height: 100svh;
+    background: var(--navy);
+  }
+
   .contact-stage .contact-grid {
     gap: 42px;
     padding-top: 72px;
-    padding-bottom: 76px;
+    padding-bottom: 58px;
   }
 
   .contact-stage h2 {
@@ -425,5 +606,38 @@
 
   .contact-form {
     padding-top: 22px;
+  }
+
+  .brand-close {
+    width: min(calc(100% - 48px), 1460px);
+    padding-top: 42px;
+    padding-bottom: max(36px, env(safe-area-inset-bottom));
+  }
+
+  .brand-close-main {
+    gap: 30px;
+  }
+
+  .brand-close-mark {
+    width: 50px;
+    height: 50px;
+    font-size: 19px;
+  }
+
+  .brand-close-principle {
+    font-size: clamp(29px, 8.4vw, 40px);
+    line-height: 1.06;
+  }
+
+  .brand-close-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 18px;
+    margin-top: 34px;
+  }
+
+  .case-shell blockquote {
+    font-size: 25px !important;
+    line-height: 1.16 !important;
   }
 }
