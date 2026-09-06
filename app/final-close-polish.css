@@ -105,8 +105,16 @@
   }
 }
 
-/* Keep the closing section legible in print/PDF exports as well. */
+/* Print/PDF fixes: the fixed header must not reappear mid-page, and text shadows must not create duplicate text layers. */
 @media print {
+  .site-nav {
+    display: none !important;
+  }
+
+  main#top > .page-shell:first-child {
+    padding-top: 0 !important;
+  }
+
   .contact-stage {
     background: #0b1d33 !important;
     color: #fff !important;
@@ -122,6 +130,10 @@
   .brand-close-identity strong,
   .brand-close-principle {
     color: #fff !important;
+  }
+
+  .brand-close-principle {
+    text-shadow: none !important;
   }
 
   .brand-close-identity small,
