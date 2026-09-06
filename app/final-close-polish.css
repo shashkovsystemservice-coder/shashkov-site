@@ -1,0 +1,137 @@
+/* Final close polish: make the closing principle feel intentional and keep the mobile ending compact. */
+.contact-stage {
+  background: var(--navy);
+}
+
+.brand-close {
+  color: #fff;
+  padding-top: 44px;
+  padding-bottom: max(30px, env(safe-area-inset-bottom));
+}
+
+.brand-close-identity,
+.brand-close-identity:visited {
+  color: #fff;
+}
+
+.brand-close-mark {
+  color: #fff;
+  border-color: rgba(255,255,255,.82);
+}
+
+.brand-close-identity strong {
+  color: #fff;
+  font-weight: 820;
+}
+
+.brand-close-identity small {
+  color: rgba(255,255,255,.68);
+}
+
+.brand-close-principle {
+  color: #fff !important;
+  opacity: 1 !important;
+  text-wrap: balance;
+  text-shadow: 0 1px 0 rgba(0,0,0,.08);
+}
+
+.brand-close-nav {
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top-color: rgba(255,255,255,.18);
+}
+
+.brand-close-nav a,
+.brand-close-nav a:visited {
+  color: rgba(255,255,255,.72);
+}
+
+.brand-close-nav a:hover,
+.brand-close-nav a:focus-visible {
+  color: #fff;
+}
+
+@media (max-width: 760px) {
+  .contact-stage {
+    min-height: 0 !important;
+  }
+
+  .contact-stage .contact-grid {
+    padding-bottom: 46px !important;
+  }
+
+  .brand-close {
+    width: min(calc(100% - 48px), 1460px);
+    padding-top: 34px !important;
+    padding-bottom: max(24px, env(safe-area-inset-bottom)) !important;
+  }
+
+  .brand-close-main {
+    gap: 24px !important;
+  }
+
+  .brand-close-identity {
+    gap: 14px;
+  }
+
+  .brand-close-mark {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .brand-close-identity strong {
+    font-size: 16px;
+  }
+
+  .brand-close-identity small {
+    font-size: 11px;
+  }
+
+  .brand-close-principle {
+    font-size: clamp(30px, 8.8vw, 39px) !important;
+    line-height: 1.03 !important;
+    letter-spacing: -.045em !important;
+    font-weight: 850 !important;
+  }
+
+  .brand-close-nav {
+    margin-top: 24px !important;
+    padding-top: 16px !important;
+    gap: 10px 18px !important;
+  }
+
+  .brand-close-nav a {
+    font-size: 13px;
+  }
+}
+
+/* Keep the closing section legible in print/PDF exports as well. */
+@media print {
+  .contact-stage {
+    background: #0b1d33 !important;
+    color: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .contact-stage h2,
+  .contact-stage p,
+  .contact-stage label > span,
+  .brand-close,
+  .brand-close-identity,
+  .brand-close-identity strong,
+  .brand-close-principle {
+    color: #fff !important;
+  }
+
+  .brand-close-identity small,
+  .brand-close-nav a {
+    color: #d5deea !important;
+  }
+
+  .brand-close {
+    break-inside: avoid;
+    padding-top: 28px;
+    padding-bottom: 24px;
+  }
+}
