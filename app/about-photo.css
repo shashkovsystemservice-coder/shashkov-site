@@ -26,16 +26,16 @@
   margin: 30px 0 0;
   overflow: hidden;
   border: 1px solid var(--line);
-  background-image: url("/086C4548-D484-4910-8500-B66E0FDB0E62.png");
-  background-size: cover;
-  background-position: center 32%;
-  background-repeat: no-repeat;
+  background: transparent;
 }
 
-/* The Next image optimizer is unreliable for this uploaded PNG on iOS Safari.
-   Use the public asset directly as the visible image instead. */
 .about-photo img {
-  display: none !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  object-position: center 32% !important;
 }
 
 @media (max-width: 900px) {
