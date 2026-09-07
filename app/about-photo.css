@@ -81,6 +81,11 @@
     margin-top: 0 !important;
   }
 
+  /*
+   * Chromium can start print capture before Next/Image's optimized request
+   * has painted. Use the original static asset as a print-only background
+   * so the PDF always gets the portrait even if the optimized <img> is late.
+   */
   .about-photo {
     display: block !important;
     width: 100% !important;
@@ -91,16 +96,18 @@
     page-break-inside: avoid !important;
     overflow: hidden !important;
     border: 1px solid #d9e1eb !important;
+    background-color: #eef3f8 !important;
+    background-image: url('/086C4548-D484-4910-8500-B66E0FDB0E62.png') !important;
+    background-size: cover !important;
+    background-position: center 32% !important;
+    background-repeat: no-repeat !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   .about-photo img {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center 32% !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
   }
 
   /* The decorative radial layer can render as a giant curved shape in PDF engines. */
