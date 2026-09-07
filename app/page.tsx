@@ -3,6 +3,7 @@ import "./method.css";
 import "./projects.css";
 import "./editorial-pass.css";
 import "./cro-proof.css";
+import "./role-audit-pass.css";
 
 const situations = [
   "Продажи перестали расти. Команда предлагает больше рекламы — но непонятно, в ней ли проблема",
@@ -18,9 +19,9 @@ const contactChannels = [
 
 const currentProjects = [
   {
-    context: "Промышленное оборудование",
+    context: "Основной кейс · промышленное оборудование",
     question: "«Хотим продавать линии, а не отдельные станки»",
-    reframing: "Продажи → модель продукта, ответственность и доказательства.",
+    reframing: "Продажи → модель продукта, ответственность, proof и коммерческая модель.",
     href: "/cases/integrator-model",
   },
   {
@@ -87,7 +88,7 @@ export default function Home() {
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
           </div>
           <div className="hero-paths" aria-label="С чего начать">
-            <a href="#case"><span>Хочу сначала посмотреть работу</span><strong>Открыть реальный пример →</strong></a>
+            <a href="/cases/integrator-model"><span>Хочу сначала посмотреть серьёзную работу</span><strong>Открыть основной B2B-кейс →</strong></a>
             <a href="#contact"><span>У меня уже есть конкретный вопрос</span><strong>Просто написать →</strong></a>
           </div>
         </div>
@@ -137,7 +138,10 @@ export default function Home() {
           {decisionLogic.map((step) => <article key={step.n}><span>{step.n}</span><h3>{step.title}</h3><p>{step.text}</p></article>)}
         </div>
         <p className="decision-method-note"><strong>И проверяю не только, что обещать рынку, но и способен ли бизнес это реально продать, выполнить и поддерживать.</strong></p>
-        <a className="text-link" href="/work">Подробнее о подходе →</a>
+        <div className="decision-method-routes">
+          <a className="text-link" href="/work">Посмотреть весь процесс работы →</a>
+          <a className="text-link" href="/cases/integrator-model">Увидеть эту логику в сложном B2B-проекте →</a>
+        </div>
       </div>
     </section>
 
@@ -184,6 +188,15 @@ export default function Home() {
 
         <blockquote>«Разбор помог увидеть, что проблема была шире привлечения заявок. Стало понятно, что нужно доработать сегментацию, ценность и доказательную базу.»</blockquote>
         <p className="case-attribution">Собственник бизнеса · проект обезличен</p>
+
+        <div className="featured-proof-route">
+          <div>
+            <span>Нужен пример глубже?</span>
+            <h3>Сложный B2B-кейс: от «хотим продавать линии» до продуктовой архитектуры, proof и коммерческой модели.</h3>
+            <p>Этот проект показывает не только изменение вопроса, но и то, как стратегическое решение затронуло продукт, ответственность, продажи, сервис и границы обещания рынку.</p>
+          </div>
+          <a className="button" href="/cases/integrator-model">Открыть основной кейс</a>
+        </div>
       </div>
     </section>
 
@@ -196,7 +209,18 @@ export default function Home() {
         </div>
         <div className="work-grid work-grid-returned" aria-label="Как может продолжиться работа">
           <article><p className="eyebrow">1 · Самостоятельно</p><h3>Разобрать вопрос самостоятельно</h3><p>Сформулировать вопрос и увидеть, что стоит проверить первым.</p><a className="service-route service-route-primary" href="/diagnostic">Пройти 6 вопросов →</a></article>
-          <article><p className="eyebrow">2 · Вместе</p><h3>Диагностический разбор</h3><p>Разобрать контекст, факты и конкурирующие версии, если вопрос требует глубины.</p><a className="service-route" href="#contact">Обсудить разбор →</a></article>
+          <article className="diagnostic-product-card">
+            <p className="eyebrow">2 · Вместе</p>
+            <h3>Диагностический разбор</h3>
+            <p>Для одного неясного управленческого вопроса: разбираем контекст, отделяем факты от версий и определяем, что действительно нужно проверить до решения.</p>
+            <ul className="diagnostic-product-points">
+              <li><strong>Вход:</strong> ситуация и то, что уже известно.</li>
+              <li><strong>Работа:</strong> критический вопрос, версии, недостающие факты и варианты.</li>
+              <li><strong>Выход:</strong> обоснованный первый шаг, что отложить и что пока не делать.</li>
+              <li><strong>Граница:</strong> разбор имеет самостоятельную ценность; большой проект не обязателен.</li>
+            </ul>
+            <a className="service-route" href="/work#diagnostic-review">Посмотреть, как проходит разбор →</a>
+          </article>
           <article><p className="eyebrow">3 · Если задача требует глубины</p><h3>Стратегический проект</h3><p>Рынок, клиент, продукт, ценность, продажи и исполнение — только там, где это действительно нужно.</p><a className="service-route" href="/work">Посмотреть, как проходит работа →</a></article>
         </div>
       </div>
@@ -225,7 +249,7 @@ export default function Home() {
     <section className="projects-stage projects-stage-compact projects-stage-memory-pass">
       <div className="page-shell">
         <div className="section-intro"><p className="eyebrow">07 · Ещё примеры</p><h2>Тот же принцип — в разных бизнес-ситуациях.</h2></div>
-        <div className="project-list">{currentProjects.map((p, i) => <article key={p.context}><span><b>{String(i + 1).padStart(2, "0")}</b><em>{p.context}</em></span><h3>{p.question}</h3><p>{p.reframing}</p><a className="text-link" href={p.href}>Открыть кейс →</a></article>)}</div>
+        <div className="project-list">{currentProjects.map((p, i) => <article key={p.context} className={i === 0 ? "project-featured" : undefined}><span><b>{String(i + 1).padStart(2, "0")}</b><em>{p.context}</em></span><h3>{p.question}</h3><p>{p.reframing}</p><a className="text-link" href={p.href}>{i === 0 ? "Открыть основной кейс →" : "Открыть кейс →"}</a></article>)}</div>
       </div>
     </section>
 
