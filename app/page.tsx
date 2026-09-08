@@ -21,7 +21,7 @@ const currentProjects = [
   {
     context: "Основной кейс · промышленное оборудование",
     question: "«Хотим продавать линии, а не отдельные станки»",
-    reframing: "Продажи → модель продукта, ответственность, proof и коммерческая модель.",
+    reframing: "Продажи → модель продукта, ответственность, доказательства ценности и коммерческая модель.",
     href: "/cases/integrator-model",
   },
   {
@@ -88,7 +88,7 @@ export default function Home() {
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
           </div>
           <div className="hero-paths" aria-label="С чего начать">
-            <a href="/cases/integrator-model"><span>Хочу сначала посмотреть серьёзную работу</span><strong>Открыть основной B2B-кейс →</strong></a>
+            <a href="/cases/integrator-model"><span>Хочу увидеть, как это работает на реальной задаче</span><strong>Посмотреть кейс →</strong></a>
             <a href="#contact"><span>У меня уже есть конкретный вопрос</span><strong>Просто написать →</strong></a>
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function Home() {
         <p className="decision-method-note"><strong>И проверяю не только, что обещать рынку, но и способен ли бизнес это реально продать, выполнить и поддерживать.</strong></p>
         <div className="decision-method-routes">
           <a className="text-link" href="/work">Посмотреть весь процесс работы →</a>
-          <a className="text-link" href="/cases/integrator-model">Увидеть эту логику в сложном B2B-проекте →</a>
+          <a className="text-link" href="/cases/integrator-model">Увидеть эту логику в реальном проекте →</a>
         </div>
       </div>
     </section>
@@ -192,7 +192,7 @@ export default function Home() {
         <div className="featured-proof-route">
           <div>
             <span>Нужен пример глубже?</span>
-            <h3>Сложный B2B-кейс: от «хотим продавать линии» до продуктовой архитектуры, proof и коммерческой модели.</h3>
+            <h3>Кейс глубже: от «хотим продавать линии» до продуктовой архитектуры, доказательств ценности и коммерческой модели.</h3>
             <p>Этот проект показывает не только изменение вопроса, но и то, как стратегическое решение затронуло продукт, ответственность, продажи, сервис и границы обещания рынку.</p>
           </div>
           <a className="button" href="/cases/integrator-model">Открыть основной кейс</a>
