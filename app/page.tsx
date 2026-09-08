@@ -19,12 +19,6 @@ const contactChannels = [
 
 const currentProjects = [
   {
-    context: "Главный кейс · производственная компания",
-    question: "«Нам нужны более квалифицированные входящие заявки»",
-    reframing: "Привлечение → ранний выбор клиента, доказательства ценности и воспроизводимая система продаж.",
-    href: "/cases/market-choice-system",
-  },
-  {
     context: "Промышленное оборудование",
     question: "«Хотим продавать линии, а не отдельные станки»",
     reframing: "Продажи → модель продукта, ответственность, доказательства ценности и коммерческая модель.",
@@ -35,6 +29,12 @@ const currentProjects = [
     question: "«Хотим соединить boxing, fitness и wellness»",
     reframing: "Упаковка → единая клиентская задача, продукт, удержание и воспроизводимая модель.",
     href: "/cases/iba-wellness",
+  },
+  {
+    context: "Event-бизнес",
+    question: "«Нужно улучшить сайт и предложение»",
+    reframing: "Редизайн → что именно выбирает клиент и почему.",
+    href: "/cases/prime-event",
   },
 ] as const;
 
@@ -163,25 +163,24 @@ export default function Home() {
     <section id="case" className="case-stage">
       <div className="page-shell case-shell">
         <p className="eyebrow">04 · Главный proof-кейс · проект обезличен</p>
-        <h2>Пришли за заявками. В итоге пришлось изменить саму систему выбора клиента.</h2>
+        <h2>Пришли за заявками. Изменился сам механизм выбора клиента.</h2>
         <div className="case-steps">
           <div><span>Запрос</span><h3>«Нам нужны более квалифицированные входящие заявки».</h3></div>
-          <div><span>Что оказалось важнее</span><p>Ограничение могло находиться раньше трафика: в моменте входа в проект, доверии, сегментации, доказательствах и зависимости продаж от личной работы собственника.</p></div>
-          <div><span>Как изменился вопрос</span><h3>Не «как дать больше рекламы», а «как раньше попадать в выбор клиента, становиться безопасным вариантом и доказывать ценность».</h3></div>
+          <div><span>Что оказалось важнее</span><p>Ограничение могло находиться раньше трафика: в моменте входа в проект, доверии и доказательствах ценности.</p></div>
+          <div><span>Как изменился вопрос</span><h3>Не «как дать больше рекламы», а «как раньше попадать в выбор клиента и становиться доказуемо сильным вариантом».</h3></div>
         </div>
         <div className="case-action">
           <span>Что произошло дальше</span>
-          <p><strong>Собственник уточнил сегментацию и ценностную логику, начал систематизировать кейсы и доказательства, практически полностью пересобрал команду продаж и переводит найденную логику в рабочую систему для новой команды.</strong></p>
+          <p><strong>Собственник уточнил сегментацию и ценностную логику, начал систематизировать доказательства и пересобрал команду продаж под практическую проверку новой логики.</strong></p>
         </div>
 
         <div className="artifact-preview" aria-label="Фрагменты реальной работы">
           <div className="artifact-preview-head">
-            <div><span>Фрагменты рабочего подхода</span><strong>Не обещания о «системности», а наблюдаемые решения</strong></div>
+            <div><span>Фрагменты рабочего подхода</span><strong>Что можно увидеть в работе, а не только прочитать в обещании</strong></div>
             <a className="text-link" href="/cases/market-choice-system">Открыть весь кейс →</a>
           </div>
           <div className="artifact-preview-grid">
             <div><small>Факт / версия / проверка</small><strong>Правдоподобная гипотеза не становится фактом без отдельной проверки</strong></div>
-            <div><small>Один продукт — разные причины выбора</small><strong>Собственник, техдиректор, проектировщик и монтажник оценивают проект по разным критериям</strong></div>
             <div><small>Стратегия → продажа</small><strong>Объект → участник → риск → вопрос → решение → выгода → доказательство → следующий шаг</strong></div>
           </div>
         </div>
@@ -193,8 +192,7 @@ export default function Home() {
         <div className="featured-proof-route">
           <div>
             <span>Посмотреть всю логику решения</span>
-            <h3>От исходного запроса — к проверке гипотез, доказательствам и системе продаж.</h3>
-            <p>В полном кейсе видно, что было данными, что оставалось версией, какие выводы пришлось ограничить и как менялись решения собственника.</p>
+            <h3>Что было данными, что оставалось версией и как менялись решения собственника.</h3>
           </div>
           <a className="button" href="/cases/market-choice-system">Открыть главный кейс</a>
         </div>
@@ -253,7 +251,7 @@ export default function Home() {
     <section className="projects-stage projects-stage-compact projects-stage-memory-pass">
       <div className="page-shell">
         <div className="section-intro"><p className="eyebrow">07 · Ещё примеры</p><h2>Тот же принцип — в разных бизнес-ситуациях.</h2></div>
-        <div className="project-list">{currentProjects.map((p, i) => <article key={p.context} className={i === 0 ? "project-featured" : undefined}><span><b>{String(i + 1).padStart(2, "0")}</b><em>{p.context}</em></span><h3>{p.question}</h3><p>{p.reframing}</p><a className="text-link" href={p.href}>{i === 0 ? "Открыть главный кейс →" : "Открыть кейс →"}</a></article>)}</div>
+        <div className="project-list">{currentProjects.map((p, i) => <article key={p.context}><span><b>{String(i + 1).padStart(2, "0")}</b><em>{p.context}</em></span><h3>{p.question}</h3><p>{p.reframing}</p><a className="text-link" href={p.href}>Открыть кейс →</a></article>)}</div>
       </div>
     </section>
 
