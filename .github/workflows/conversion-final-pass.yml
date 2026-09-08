@@ -1,0 +1,112 @@
+name: Conversion final pass
+
+on:
+  push:
+    paths:
+      - '.github/workflows/conversion-final-pass.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Refine conversion copy and print layout
+        shell: python
+        run: |
+          from pathlib import Path
+
+          page = Path('app/page.tsx')
+          text = page.read_text(encoding='utf-8')
+
+          replacements = {
+              'Хочу увидеть, как это работает на реальной задаче': 'Хочу увидеть, как меняется решение на реальной задаче',
+              '<span>Нужен пример глубже?</span>': '<span>Хотите увидеть более сложное решение?</span>',
+              '<h3>Кейс глубже: от «хотим продавать линии» до продуктовой архитектуры, доказательств ценности и коммерческой модели.</h3>': '<h3>От «хотим продавать линии» — к продуктовой архитектуре, доказательствам ценности и коммерческой модели.</h3>',
+          }
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f'Missing expected text: {old}')
+              text = text.replace(old, new, 1)
+
+          old_card = '''            <ul className="diagnostic-product-points">
+              <li><strong>Вход:</strong> ситуация и то, что уже известно.</li>
+              <li><strong>Работа:</strong> критический вопрос, версии, недостающие факты и варианты.</li>
+              <li><strong>Выход:</strong> обоснованный первый шаг, что отложить и что пока не делать.</li>
+              <li><strong>Граница:</strong> разбор имеет самостоятельную ценность; большой проект не обязателен.</li>
+            </ul>
+            <a className="service-route" href="/work#diagnostic-review">Посмотреть, как проходит разбор →</a>'''
+          new_card = '''            <ul className="diagnostic-product-points">
+              <li><strong>Чтобы начать:</strong> достаточно описать ситуацию и прислать то, что уже есть. Полный пакет данных заранее не нужен.</li>
+              <li><strong>Работа:</strong> критический вопрос, версии, недостающие факты и варианты.</li>
+              <li><strong>На выходе:</strong> обоснованный первый шаг, что проверить, что отложить и что пока не делать.</li>
+              <li><strong>Граница:</strong> разбор имеет самостоятельную ценность; большой проект не обязателен.</li>
+            </ul>
+            <a className="service-route" href="/work#diagnostic-review">Посмотреть формат разбора →</a>'''
+          if old_card not in text:
+              raise SystemExit('Diagnostic product card block not found')
+          text = text.replace(old_card, new_card, 1)
+          page.write_text(text, encoding='utf-8')
+
+          work = Path('app/work/page.tsx')
+          w = work.read_text(encoding='utf-8')
+          old_work = '''          <p><strong>С чем приходят.</strong> Есть ситуация, в которой уже хочется действовать, но неясно, верно ли поставлен сам вопрос и какой следующий шаг действительно обоснован.</p>
+          <p><strong>Что происходит.</strong> Разбираем контекст, отделяем факты от интерпретаций, фиксируем конкурирующие версии и определяем, каких данных достаточно, чтобы сделать выбор.</p>
+          <p><strong>Что остаётся на выходе.</strong> Главный вопрос, проверенные и непроверенные версии, что стоит проверить первым, какие варианты сейчас разумны и что пока преждевременно делать.</p>
+          <p><strong>Где заканчивается.</strong> Разбор имеет самостоятельную ценность. Если для решения достаточно одного шага, полноценный стратегический проект не нужен.</p>'''
+          new_work = '''          <p><strong>С чем приходят.</strong> Есть ситуация, в которой уже хочется действовать, но неясно, верно ли поставлен сам вопрос и какой следующий шаг действительно обоснован.</p>
+          <p><strong>Что нужно для старта.</strong> Достаточно описать ситуацию и прислать то, что уже есть. Полный пакет данных и готовое ТЗ заранее не нужны.</p>
+          <p><strong>Что происходит.</strong> Разбираем контекст, отделяем факты от интерпретаций, фиксируем конкурирующие версии и определяем, каких данных достаточно, чтобы сделать выбор.</p>
+          <p><strong>Что остаётся на выходе.</strong> Главный вопрос, проверенные и непроверенные версии, что стоит проверить первым, какие варианты сейчас разумны и что пока преждевременно делать.</p>
+          <p><strong>Где заканчивается.</strong> Разбор имеет самостоятельную ценность. Если для решения достаточно одного шага, полноценный стратегический проект не нужен.</p>
+          <p><a className="work-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Обсудить диагностический разбор →</a></p>'''
+          if old_work not in w:
+              raise SystemExit('Diagnostic review block not found on work page')
+          w = w.replace(old_work, new_work, 1)
+          work.write_text(w, encoding='utf-8')
+
+          css = Path('app/role-audit-pass.css')
+          c = css.read_text(encoding='utf-8')
+          print_fix = '''
+
+/* Print/PDF: keep FAQ answers visible and avoid an empty trailing page. */
+@media print {
+  .faq-list details > p {
+    display: block !important;
+  }
+
+  .contact-stage {
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .contact-stage::before {
+    display: none !important;
+  }
+
+  .brand-close {
+    padding-bottom: 18px !important;
+  }
+}
+'''
+          if 'Print/PDF: keep FAQ answers visible' not in c:
+              c += print_fix
+          css.write_text(c, encoding='utf-8')
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/page.tsx app/work/page.tsx app/role-audit-pass.css
+          git commit -m "Усилить конверсию и исправить PDF"
+          git push
