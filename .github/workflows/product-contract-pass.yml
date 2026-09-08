@@ -18,40 +18,71 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - name: Add diagnostic product terms
+      - name: Add reliable print FAQ and pagination
         run: |
           python - <<'PY'
           from pathlib import Path
 
           p = Path('app/page.tsx')
           s = p.read_text(encoding='utf-8')
-          marker = '<li><strong>Чтобы начать:</strong> достаточно описать ситуацию и прислать то, что уже есть. Полный пакет данных заранее не нужен.</li>'
-          if marker not in s:
-              raise SystemExit('Homepage start marker not found')
-          s = s.replace(marker, '<li><strong>Срок:</strong> до 3 рабочих дней.</li>\n              <li><strong>Формат:</strong> одна встреча + самостоятельный анализ с моей стороны.</li>\n              ' + marker, 1)
-          cost_anchor = '<li><strong>Граница:</strong> разбор имеет самостоятельную ценность; большой проект не обязателен.</li>'
-          if cost_anchor not in s:
-              raise SystemExit('Homepage boundary marker not found')
-          s = s.replace(cost_anchor, '<li><strong>Стоимость:</strong> сообщаю до начала работы после короткого описания ситуации.</li>\n              ' + cost_anchor, 1)
-          p.write_text(s, encoding='utf-8')
+          if 'className="faq-print"' not in s:
+              anchor = '''        <div className="faq-list">
+          <details><summary>Я сам не понимаю, в чём проблема. Можно обращаться?</summary><p>Да. Это как раз типичная ситуация для первого разбора: не выбирать услугу заранее, а сначала сформулировать вопрос.</p></details>
+          <details><summary>Обязательно ли это будет большой проект?</summary><p>Нет. Первый шаг должен иметь самостоятельную ценность и закончиться ясным следующим решением — даже если продолжение не требуется.</p></details>
+          <details><summary>А если выяснится, что маркетинговый проект вообще не нужен?</summary><p>Это нормальный результат. Задача разбора — понять, что действительно стоит менять, а не обязательно продать маркетинговый проект.</p></details>
+          <details><summary>Почему не решить это внутри команды или с AI?</summary><p>Команда и AI могут помогать искать варианты и собирать информацию. Внешний разбор нужен не потому, что они «не справятся», а когда неясно, какой вопрос проверять, какие факты действительно меняют решение и где полезна независимая проверка исходной версии.</p></details>
+          <details><summary>Нужно заранее собрать много данных?</summary><p>Нет. Начать можно с того, что уже известно. В ходе разбора станет видно, каких фактов действительно не хватает.</p></details>
+          <details><summary>Кто потом реализует решение?</summary><p>Зависит от задачи: ваша команда, профильный подрядчик или совместная работа. Я подключаюсь к исполнению там, где это влияет на качество решения.</p></details>
+        </div>'''
+              extra = anchor + '''
+        <div className="faq-print" aria-hidden="true">
+          <div><strong>Я сам не понимаю, в чём проблема. Можно обращаться?</strong><p>Да. Это как раз типичная ситуация для первого разбора: не выбирать услугу заранее, а сначала сформулировать вопрос.</p></div>
+          <div><strong>Обязательно ли это будет большой проект?</strong><p>Нет. Первый шаг должен иметь самостоятельную ценность и закончиться ясным следующим решением — даже если продолжение не требуется.</p></div>
+          <div><strong>А если выяснится, что маркетинговый проект вообще не нужен?</strong><p>Это нормальный результат. Задача разбора — понять, что действительно стоит менять, а не обязательно продать маркетинговый проект.</p></div>
+          <div><strong>Почему не решить это внутри команды или с AI?</strong><p>Команда и AI могут помогать искать варианты и собирать информацию. Внешний разбор нужен не потому, что они «не справятся», а когда неясно, какой вопрос проверять, какие факты действительно меняют решение и где полезна независимая проверка исходной версии.</p></div>
+          <div><strong>Нужно заранее собрать много данных?</strong><p>Нет. Начать можно с того, что уже известно. В ходе разбора станет видно, каких фактов действительно не хватает.</p></div>
+          <div><strong>Кто потом реализует решение?</strong><p>Зависит от задачи: ваша команда, профильный подрядчик или совместная работа. Я подключаюсь к исполнению там, где это влияет на качество решения.</p></div>
+        </div>'''
+              if anchor not in s:
+                  raise SystemExit('FAQ block not found')
+              s = s.replace(anchor, extra, 1)
+              p.write_text(s, encoding='utf-8')
 
-          p = Path('app/work/page.tsx')
+          p = Path('app/role-audit-pass.css')
           s = p.read_text(encoding='utf-8')
-          start = '<p><strong>Что нужно для старта.</strong> Достаточно описать ситуацию и прислать то, что уже есть. Полный пакет данных и готовое ТЗ заранее не нужны.</p>'
-          if start not in s:
-              raise SystemExit('Work start marker not found')
-          s = s.replace(start, start + '\n          <p><strong>Формат.</strong> Одна встреча, затем самостоятельный анализ с моей стороны.</p>\n          <p><strong>Срок.</strong> До 3 рабочих дней.</p>', 1)
-          boundary = '<p><strong>Где заканчивается.</strong> Разбор имеет самостоятельную ценность. Если для решения достаточно одного шага, полноценный стратегический проект не нужен.</p>'
-          if boundary not in s:
-              raise SystemExit('Work boundary marker not found')
-          s = s.replace(boundary, '<p><strong>Стоимость.</strong> Сообщаю до начала работы после короткого описания ситуации. Сначала скажу, достаточно ли вообще диагностического разбора.</p>\n          ' + boundary, 1)
-          p.write_text(s, encoding='utf-8')
+          if 'Reliable screen/print split for FAQ' not in s:
+              s += '''
+
+/* Reliable screen/print split for FAQ and diagnostic product pagination. */
+.faq-print { display: none; }
+
+@media print {
+  .faq-list { display: none !important; }
+  .faq-print { display: block !important; }
+  .faq-print > div {
+    padding: 14px 0 16px;
+    border-top: 1px solid var(--line);
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .faq-print > div:last-child { border-bottom: 1px solid var(--line); }
+  .faq-print strong { display: block; margin-bottom: 7px; color: var(--ink); font-size: 16px; line-height: 1.3; }
+  .faq-print p { display: block !important; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.45; }
+  .diagnostic-product-card {
+    break-before: page;
+    page-break-before: always;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+}
+'''
+              p.write_text(s, encoding='utf-8')
           PY
       - name: Commit changes
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add app/page.tsx app/work/page.tsx
+          git add app/page.tsx app/role-audit-pass.css
           git diff --cached --quiet && exit 0
-          git commit -m 'Зафиксировать формат диагностического разбора'
+          git commit -m 'Исправить FAQ и разрыв карточки в PDF'
           git push
