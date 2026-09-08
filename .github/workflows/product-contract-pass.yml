@@ -1,0 +1,76 @@
+name: Product contract pass
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/product-contract-pass.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-product:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Add diagnostic product terms
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('app/page.tsx')
+          s = p.read_text(encoding='utf-8')
+          old = '''            <ul className="diagnostic-product-points">
+              <li><strong>Чтобы начать:</strong> достаточно описать ситуацию и прислать то, что уже есть. Полный пакет данных заранее не нужен.</li>
+              <li><strong>Работа:</strong> критический вопрос, версии, недостающие факты и варианты.</li>
+              <li><strong>На выходе:</strong> обоснованный первый шаг, что проверить, что отложить и что пока не делать.</li>
+              <li><strong>Граница:</strong> разбор имеет самостоятельную ценность; большой проект не обязателен.</li>
+            </ul>
+            <a className="service-route" href="/work#diagnostic-review">Посмотреть формат разбора →</a>'''
+          new = '''            <ul className="diagnostic-product-points">
+              <li><strong>Срок:</strong> до 3 рабочих дней.</li>
+              <li><strong>Формат:</strong> одна встреча + самостоятельный анализ с моей стороны.</li>
+              <li><strong>Чтобы начать:</strong> достаточно описать ситуацию и прислать то, что уже есть. Полный пакет данных заранее не нужен.</li>
+              <li><strong>На выходе:</strong> обоснованный первый шаг, что проверить, что отложить и что пока не делать.</li>
+              <li><strong>Стоимость:</strong> сообщаю до начала работы после короткого описания ситуации.</li>
+              <li><strong>Граница:</strong> разбор имеет самостоятельную ценность; большой проект не обязателен.</li>
+            </ul>
+            <a className="service-route" href="/work#diagnostic-review">Посмотреть формат разбора →</a>'''
+          if old not in s:
+              raise SystemExit('Homepage diagnostic block not found')
+          s = s.replace(old, new, 1)
+          p.write_text(s, encoding='utf-8')
+
+          p = Path('app/work/page.tsx')
+          s = p.read_text(encoding='utf-8')
+          old = '''          <p><strong>Что нужно для старта.</strong> Достаточно описать ситуацию и прислать то, что уже есть. Полный пакет данных и готовое ТЗ заранее не нужны.</p>
+          <p><strong>Что происходит.</strong> Разбираем контекст, отделяем факты от интерпретаций, фиксируем конкурирующие версии и определяем, каких данных достаточно, чтобы сделать выбор.</p>
+          <p><strong>Что остаётся на выходе.</strong> Главный вопрос, проверенные и непроверенные версии, что стоит проверить первым, какие варианты сейчас разумны и что пока преждевременно делать.</p>
+          <p><strong>Где заканчивается.</strong> Разбор имеет самостоятельную ценность. Если для решения достаточно одного шага, полноценный стратегический проект не нужен.</p>
+          <p><a className="work-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Обсудить диагностический разбор →</a></p>'''
+          new = '''          <p><strong>Что нужно для старта.</strong> Достаточно описать ситуацию и прислать то, что уже есть. Полный пакет данных и готовое ТЗ заранее не нужны.</p>
+          <p><strong>Формат.</strong> Одна встреча, затем самостоятельный анализ с моей стороны.</p>
+          <p><strong>Срок.</strong> До 3 рабочих дней.</p>
+          <p><strong>Что происходит.</strong> Разбираем контекст, отделяем факты от интерпретаций, фиксируем конкурирующие версии и определяем, каких данных достаточно, чтобы сделать выбор.</p>
+          <p><strong>Что остаётся на выходе.</strong> Главный вопрос, проверенные и непроверенные версии, что стоит проверить первым, какие варианты сейчас разумны и что пока преждевременно делать.</p>
+          <p><strong>Стоимость.</strong> Сообщаю до начала работы после короткого описания ситуации. Сначала скажу, достаточно ли вообще диагностического разбора.</p>
+          <p><strong>Где заканчивается.</strong> Разбор имеет самостоятельную ценность. Если для решения достаточно одного шага, полноценный стратегический проект не нужен.</p>
+          <p><a className="work-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Обсудить диагностический разбор →</a></p>'''
+          if old not in s:
+              raise SystemExit('Work diagnostic block not found')
+          s = s.replace(old, new, 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/page.tsx app/work/page.tsx
+          git diff --cached --quiet && exit 0
+          git commit -m 'Зафиксировать формат диагностического разбора'
+          git push
