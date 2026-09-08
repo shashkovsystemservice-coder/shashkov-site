@@ -103,3 +103,12 @@
     padding-right: 12px !important;
   }
 }
+
+
+/* Print/PDF: keep FAQ answers visible and avoid an empty trailing page. */
+@media print {
+  .faq-list details > p { display: block !important; }
+  .contact-stage { min-height: 0 !important; overflow: visible !important; }
+  .contact-stage::before { display: none !important; }
+  .brand-close { padding-bottom: 18px !important; }
+}
