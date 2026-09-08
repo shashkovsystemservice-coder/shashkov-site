@@ -56,16 +56,7 @@ jobs:
           p = Path('app/role-audit-pass.css')
           s = p.read_text()
           if 'Print/PDF: keep FAQ answers visible' not in s:
-              s += '''
-
-/* Print/PDF: keep FAQ answers visible and avoid an empty trailing page. */
-@media print {
-  .faq-list details > p { display: block !important; }
-  .contact-stage { min-height: 0 !important; overflow: visible !important; }
-  .contact-stage::before { display: none !important; }
-  .brand-close { padding-bottom: 18px !important; }
-}
-'''
+              s += '\n\n/* Print/PDF: keep FAQ answers visible and avoid an empty trailing page. */\n@media print {\n  .faq-list details > p { display: block !important; }\n  .contact-stage { min-height: 0 !important; overflow: visible !important; }\n  .contact-stage::before { display: none !important; }\n  .brand-close { padding-bottom: 18px !important; }\n}\n'
           p.write_text(s)
           PY
       - name: Commit changes
