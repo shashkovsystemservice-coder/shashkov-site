@@ -1,0 +1,105 @@
+name: Print FAQ and layout fix
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/print-faq-layout-fix.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix-print:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Add reliable print-only FAQ and page break
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          page = Path('app/page.tsx')
+          s = page.read_text(encoding='utf-8')
+
+          marker = '''        <div className="faq-list">
+          <details><summary>Я сам не понимаю, в чём проблема. Можно обращаться?</summary><p>Да. Это как раз типичная ситуация для первого разбора: не выбирать услугу заранее, а сначала сформулировать вопрос.</p></details>
+          <details><summary>Обязательно ли это будет большой проект?</summary><p>Нет. Первый шаг должен иметь самостоятельную ценность и закончиться ясным следующим решением — даже если продолжение не требуется.</p></details>
+          <details><summary>А если выяснится, что маркетинговый проект вообще не нужен?</summary><p>Это нормальный результат. Задача разбора — понять, что действительно стоит менять, а не обязательно продать маркетинговый проект.</p></details>
+          <details><summary>Почему не решить это внутри команды или с AI?</summary><p>Команда и AI могут помогать искать варианты и собирать информацию. Внешний разбор нужен не потому, что они «не справятся», а когда неясно, какой вопрос проверять, какие факты действительно меняют решение и где полезна независимая проверка исходной версии.</p></details>
+          <details><summary>Нужно заранее собрать много данных?</summary><p>Нет. Начать можно с того, что уже известно. В ходе разбора станет видно, каких фактов действительно не хватает.</p></details>
+          <details><summary>Кто потом реализует решение?</summary><p>Зависит от задачи: ваша команда, профильный подрядчик или совместная работа. Я подключаюсь к исполнению там, где это влияет на качество решения.</p></details>
+        </div>'''
+
+          replacement = marker + '''
+        <div className="faq-print" aria-hidden="true">
+          <div><strong>Я сам не понимаю, в чём проблема. Можно обращаться?</strong><p>Да. Это как раз типичная ситуация для первого разбора: не выбирать услугу заранее, а сначала сформулировать вопрос.</p></div>
+          <div><strong>Обязательно ли это будет большой проект?</strong><p>Нет. Первый шаг должен иметь самостоятельную ценность и закончиться ясным следующим решением — даже если продолжение не требуется.</p></div>
+          <div><strong>А если выяснится, что маркетинговый проект вообще не нужен?</strong><p>Это нормальный результат. Задача разбора — понять, что действительно стоит менять, а не обязательно продать маркетинговый проект.</p></div>
+          <div><strong>Почему не решить это внутри команды или с AI?</strong><p>Команда и AI могут помогать искать варианты и собирать информацию. Внешний разбор нужен не потому, что они «не справятся», а когда неясно, какой вопрос проверять, какие факты действительно меняют решение и где полезна независимая проверка исходной версии.</p></div>
+          <div><strong>Нужно заранее собрать много данных?</strong><p>Нет. Начать можно с того, что уже известно. В ходе разбора станет видно, каких фактов действительно не хватает.</p></div>
+          <div><strong>Кто потом реализует решение?</strong><p>Зависит от задачи: ваша команда, профильный подрядчик или совместная работа. Я подключаюсь к исполнению там, где это влияет на качество решения.</p></div>
+        </div>'''
+
+          if 'className="faq-print"' not in s:
+              if marker not in s:
+                  raise SystemExit('FAQ marker not found')
+              s = s.replace(marker, replacement, 1)
+          page.write_text(s, encoding='utf-8')
+
+          css = Path('app/role-audit-pass.css')
+          c = css.read_text(encoding='utf-8')
+          block = '''
+
+/* Reliable screen/print split for FAQ and diagnostic product pagination. */
+.faq-print { display: none; }
+
+@media print {
+  .faq-list { display: none !important; }
+  .faq-print { display: block !important; }
+  .faq-print > div {
+    padding: 14px 0 16px;
+    border-top: 1px solid var(--line);
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .faq-print > div:last-child { border-bottom: 1px solid var(--line); }
+  .faq-print strong {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  .faq-print p {
+    display: block !important;
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .diagnostic-product-card {
+    break-before: page;
+    page-break-before: always;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+}
+'''
+          if 'Reliable screen/print split for FAQ' not in c:
+              c += block
+          css.write_text(c, encoding='utf-8')
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/page.tsx app/role-audit-pass.css
+          git diff --cached --quiet && exit 0
+          git commit -m 'Исправить FAQ и разрыв карточки в PDF'
+          git push
