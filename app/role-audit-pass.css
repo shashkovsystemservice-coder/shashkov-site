@@ -104,11 +104,40 @@
   }
 }
 
-
-/* Print/PDF: keep FAQ answers visible and avoid an empty trailing page. */
+/* Print/PDF: show closed FAQ answers, keep the paid-first-step card together,
+   and prevent an empty trailing page after the final CTA. */
 @media print {
-  .faq-list details > p { display: block !important; }
-  .contact-stage { min-height: 0 !important; overflow: visible !important; }
-  .contact-stage::before { display: none !important; }
-  .brand-close { padding-bottom: 18px !important; }
+  .faq-list details,
+  .faq-list details[open] {
+    display: block !important;
+  }
+
+  .faq-list details > summary {
+    display: block !important;
+  }
+
+  .faq-list details:not([open]) > :not(summary),
+  .faq-list details > p {
+    display: block !important;
+    visibility: visible !important;
+    content-visibility: visible !important;
+  }
+
+  .diagnostic-product-card {
+    break-inside: avoid-page !important;
+    page-break-inside: avoid !important;
+  }
+
+  .contact-stage {
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .contact-stage::before {
+    display: none !important;
+  }
+
+  .brand-close {
+    padding-bottom: 18px !important;
+  }
 }
