@@ -19,7 +19,13 @@ const contactChannels = [
 
 const currentProjects = [
   {
-    context: "Основной кейс · промышленное оборудование",
+    context: "Главный кейс · производственная компания",
+    question: "«Нам нужны более квалифицированные входящие заявки»",
+    reframing: "Привлечение → ранний выбор клиента, доказательства ценности и воспроизводимая система продаж.",
+    href: "/cases/market-choice-system",
+  },
+  {
+    context: "Промышленное оборудование",
     question: "«Хотим продавать линии, а не отдельные станки»",
     reframing: "Продажи → модель продукта, ответственность, доказательства ценности и коммерческая модель.",
     href: "/cases/integrator-model",
@@ -29,12 +35,6 @@ const currentProjects = [
     question: "«Хотим соединить boxing, fitness и wellness»",
     reframing: "Упаковка → единая клиентская задача, продукт, удержание и воспроизводимая модель.",
     href: "/cases/iba-wellness",
-  },
-  {
-    context: "Event-бизнес",
-    question: "«Нужно улучшить сайт и предложение»",
-    reframing: "Редизайн → что именно выбирает клиент и почему.",
-    href: "/cases/prime-event",
   },
 ] as const;
 
@@ -79,7 +79,7 @@ export default function Home() {
 
       <section className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Для ситуаций, где решение не очевидно</p>
+          <p className="eyebrow">Независимый консультант по маркетингу и росту · для собственников бизнеса</p>
           <h1>Не уверены, что именно сейчас нужно менять в бизнесе?</h1>
           <p className="hero-lead">Помогаю собственникам понять проблему, выбрать решение и первый шаг.</p>
           <p className="hero-money-line">И понять, на что пока не стоит тратить деньги.</p>
@@ -88,7 +88,7 @@ export default function Home() {
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
           </div>
           <div className="hero-paths" aria-label="С чего начать">
-            <a href="/cases/integrator-model"><span>Хочу увидеть, как меняется решение на реальной задаче</span><strong>Посмотреть кейс →</strong></a>
+            <a href="/cases/market-choice-system"><span>Хочу увидеть, как меняется решение на реальной задаче</span><strong>Посмотреть кейс →</strong></a>
             <a href="#contact"><span>У меня уже есть конкретный вопрос</span><strong>Просто написать →</strong></a>
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function Home() {
         <p className="decision-method-note"><strong>И проверяю не только, что обещать рынку, но и способен ли бизнес это реально продать, выполнить и поддерживать.</strong></p>
         <div className="decision-method-routes">
           <a className="text-link" href="/work">Посмотреть весь процесс работы →</a>
-          <a className="text-link" href="/cases/integrator-model">Увидеть эту логику в реальном проекте →</a>
+          <a className="text-link" href="/cases/market-choice-system">Увидеть эту логику в реальном проекте →</a>
         </div>
       </div>
     </section>
@@ -162,40 +162,41 @@ export default function Home() {
 
     <section id="case" className="case-stage">
       <div className="page-shell case-shell">
-        <p className="eyebrow">04 · Как меняется решение · проект обезличен</p>
-        <h2>Пришли за заявками. Изменился сам вопрос.</h2>
+        <p className="eyebrow">04 · Главный proof-кейс · проект обезличен</p>
+        <h2>Пришли за заявками. В итоге пришлось изменить саму систему выбора клиента.</h2>
         <div className="case-steps">
-          <div><span>Запрос</span><h3>«Нам нужны квалифицированные входящие заявки».</h3></div>
-          <div><span>Что выяснили</span><p>Продажи опирались не только на сайт: важны повторные сделки и личная работа с рынком.</p></div>
-          <div><span>Что изменилось в решении</span><h3>Увеличение рекламного бюджета перестало быть автоматическим следующим шагом. Фокус сместился на сегментацию, доказательства ценности и более ранний вход в проект клиента.</h3></div>
+          <div><span>Запрос</span><h3>«Нам нужны более квалифицированные входящие заявки».</h3></div>
+          <div><span>Что оказалось важнее</span><p>Ограничение могло находиться раньше трафика: в моменте входа в проект, доверии, сегментации, доказательствах и зависимости продаж от личной работы собственника.</p></div>
+          <div><span>Как изменился вопрос</span><h3>Не «как дать больше рекламы», а «как раньше попадать в выбор клиента, становиться безопасным вариантом и доказывать ценность».</h3></div>
         </div>
         <div className="case-action">
-          <span>Что произошло после решения</span>
-          <p><strong>Собственник уточнил сегментацию и ценность, начал собирать кейсы и проверять проектный канал.</strong></p>
+          <span>Что произошло дальше</span>
+          <p><strong>Собственник уточнил сегментацию и ценностную логику, начал систематизировать кейсы и доказательства, практически полностью пересобрал команду продаж и переводит найденную логику в рабочую систему для новой команды.</strong></p>
         </div>
 
-        <div className="artifact-preview" aria-label="Фрагмент реальной карты задачи">
+        <div className="artifact-preview" aria-label="Фрагменты реальной работы">
           <div className="artifact-preview-head">
-            <div><span>Фрагмент рабочего артефакта</span><strong>Карта задачи · обезличенный реальный проект</strong></div>
-            <a className="text-link" href="/artifacts/task-map">Открыть полностью →</a>
+            <div><span>Фрагменты рабочего подхода</span><strong>Не обещания о «системности», а наблюдаемые решения</strong></div>
+            <a className="text-link" href="/cases/market-choice-system">Открыть весь кейс →</a>
           </div>
           <div className="artifact-preview-grid">
-            <div><small>01 · Исходный запрос</small><strong>Нужны более квалифицированные входящие заявки</strong></div>
-            <div><small>03 · Что стало версией</small><strong>Ограничение может находиться раньше трафика</strong></div>
-            <div><small>05 · Как изменился вопрос</small><strong>Не «как дать больше рекламы», а «как раньше попадать в выбор клиента»</strong></div>
+            <div><small>Факт / версия / проверка</small><strong>Правдоподобная гипотеза не становится фактом без отдельной проверки</strong></div>
+            <div><small>Один продукт — разные причины выбора</small><strong>Собственник, техдиректор, проектировщик и монтажник оценивают проект по разным критериям</strong></div>
+            <div><small>Стратегия → продажа</small><strong>Объект → участник → риск → вопрос → решение → выгода → доказательство → следующий шаг</strong></div>
           </div>
         </div>
 
-        <blockquote>«Разбор помог увидеть, что проблема была шире привлечения заявок. Стало понятно, что нужно доработать сегментацию, ценность и доказательную базу.»</blockquote>
-        <p className="case-attribution">Собственник бизнеса · проект обезличен</p>
+        <blockquote>«Мне очень нравится это направление приложения наших усилий.»</blockquote>
+        <p className="case-attribution">Собственник компании · проект обезличен</p>
+        <p className="case-status-note">Проект продолжается. Финансовый эффект новой системы продаж пока не заявляется.</p>
 
         <div className="featured-proof-route">
           <div>
-            <span>Хотите увидеть более сложное решение?</span>
-            <h3>От «хотим продавать линии» — к продуктовой архитектуре, доказательствам ценности и коммерческой модели.</h3>
-            <p>Этот проект показывает не только изменение вопроса, но и то, как стратегическое решение затронуло продукт, ответственность, продажи, сервис и границы обещания рынку.</p>
+            <span>Посмотреть всю логику решения</span>
+            <h3>От исходного запроса — к проверке гипотез, доказательствам и системе продаж.</h3>
+            <p>В полном кейсе видно, что было данными, что оставалось версией, какие выводы пришлось ограничить и как менялись решения собственника.</p>
           </div>
-          <a className="button" href="/cases/integrator-model">Открыть основной кейс</a>
+          <a className="button" href="/cases/market-choice-system">Открыть главный кейс</a>
         </div>
       </div>
     </section>
@@ -214,7 +215,7 @@ export default function Home() {
             <h3>Диагностический разбор</h3>
             <p>Для одного неясного управленческого вопроса: разбираем контекст, отделяем факты от версий и определяем, что действительно нужно проверить до решения.</p>
             <ul className="diagnostic-product-points">
-              <li><strong>Срок:</strong> до 3 рабочих дней.</li>
+              <li><strong>Срок:</strong> 3 дня.</li>
               <li><strong>Формат:</strong> одна встреча + самостоятельный анализ с моей стороны.</li>
               <li><strong>Чтобы начать:</strong> достаточно описать ситуацию и прислать то, что уже есть. Полный пакет данных заранее не нужен.</li>
               <li><strong>Работа:</strong> критический вопрос, версии, недостающие факты и варианты.</li>
@@ -252,7 +253,7 @@ export default function Home() {
     <section className="projects-stage projects-stage-compact projects-stage-memory-pass">
       <div className="page-shell">
         <div className="section-intro"><p className="eyebrow">07 · Ещё примеры</p><h2>Тот же принцип — в разных бизнес-ситуациях.</h2></div>
-        <div className="project-list">{currentProjects.map((p, i) => <article key={p.context} className={i === 0 ? "project-featured" : undefined}><span><b>{String(i + 1).padStart(2, "0")}</b><em>{p.context}</em></span><h3>{p.question}</h3><p>{p.reframing}</p><a className="text-link" href={p.href}>{i === 0 ? "Открыть основной кейс →" : "Открыть кейс →"}</a></article>)}</div>
+        <div className="project-list">{currentProjects.map((p, i) => <article key={p.context} className={i === 0 ? "project-featured" : undefined}><span><b>{String(i + 1).padStart(2, "0")}</b><em>{p.context}</em></span><h3>{p.question}</h3><p>{p.reframing}</p><a className="text-link" href={p.href}>{i === 0 ? "Открыть главный кейс →" : "Открыть кейс →"}</a></article>)}</div>
       </div>
     </section>
 
