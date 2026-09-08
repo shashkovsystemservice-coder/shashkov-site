@@ -97,7 +97,7 @@
     overflow: hidden !important;
     border: 1px solid #d9e1eb !important;
     background-color: #eef3f8 !important;
-    background-image: url('/086C4548-D484-4910-8500-B66E0FDB0E62.png') !important;
+    background-image: url('/about-photo.webp') !important;
     background-size: cover !important;
     background-position: center 32% !important;
     background-repeat: no-repeat !important;
@@ -106,8 +106,8 @@
   }
 
   .about-photo img {
-    opacity: 0 !important;
-    visibility: hidden !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   /* The decorative radial layer can render as a giant curved shape in PDF engines. */

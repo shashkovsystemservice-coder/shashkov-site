@@ -232,7 +232,7 @@ export default function Home() {
           <p className="eyebrow">06 · Обо мне</p>
           <h2>К маркетингу я пришёл через инженерные и управленческие задачи.</h2>
           <figure className="about-photo">
-            <Image src="/086C4548-D484-4910-8500-B66E0FDB0E62.png" alt="Владимир Шашков в рабочей среде" width={632} height={632} />
+            <img src="/about-photo.webp" alt="Владимир Шашков в рабочей среде" width="960" height="960" loading="eager" decoding="async" />
           </figure>
         </div>
         <div className="about-copy">
