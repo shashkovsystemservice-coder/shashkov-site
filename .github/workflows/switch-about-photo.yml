@@ -1,0 +1,45 @@
+name: Switch about photo
+
+on:
+  push:
+    paths:
+      - '.github/workflows/switch-about-photo.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  switch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Switch site to optimized WebP
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          page = Path('app/page.tsx')
+          text = page.read_text()
+          old = '<Image src="/086C4548-D484-4910-8500-B66E0FDB0E62.png" alt="Владимир Шашков в рабочей среде" width={632} height={632} />'
+          new = '<img src="/about-photo.webp" alt="Владимир Шашков в рабочей среде" width="960" height="960" loading="eager" decoding="async" />'
+          if old not in text:
+              raise SystemExit('Expected About image markup not found')
+          page.write_text(text.replace(old, new))
+
+          css = Path('app/about-photo.css')
+          css_text = css.read_text()
+          css_text = css_text.replace("background-image: url('/086C4548-D484-4910-8500-B66E0FDB0E62.png') !important;", "background-image: url('/about-photo.webp') !important;")
+          css_text = css_text.replace('opacity: 0 !important;\n    visibility: hidden !important;', 'opacity: 1 !important;\n    visibility: visible !important;')
+          css.write_text(css_text)
+          PY
+
+      - name: Commit switched assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/page.tsx app/about-photo.css
+          git commit -m "Переключить блок Обо мне на облегчённое фото"
+          git push
