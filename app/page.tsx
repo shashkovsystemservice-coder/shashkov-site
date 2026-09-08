@@ -86,10 +86,6 @@ export default function Home() {
             <a className="button" href="/diagnostic">Разобрать свою ситуацию</a>
             <a className="text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a>
           </div>
-          <div className="hero-paths" aria-label="С чего начать">
-            <a href="/cases/market-choice-system"><span>Хочу увидеть, как меняется решение на реальной задаче</span><strong>Посмотреть кейс →</strong></a>
-            <a href="#contact"><span>У меня уже есть конкретный вопрос</span><strong>Просто написать →</strong></a>
-          </div>
         </div>
         <figure className="hero-photo"><Image src="/vladimir-photo.jpg" alt="Владимир Шашков" width={1206} height={1210} priority /></figure>
       </section>
@@ -185,14 +181,6 @@ export default function Home() {
         <blockquote>«Мне очень нравится это направление приложения наших усилий.»</blockquote>
         <p className="case-attribution">Собственник компании · проект обезличен</p>
         <p className="case-status-note">Проект продолжается. Финансовый эффект новой системы продаж пока не заявляется.</p>
-
-        <div className="featured-proof-route">
-          <div>
-            <span>Полный кейс</span>
-            <h3>Данные, версии и изменившиеся решения собственника.</h3>
-          </div>
-          <a className="button" href="/cases/market-choice-system">Открыть кейс</a>
-        </div>
       </div>
     </section>
 
@@ -212,10 +200,8 @@ export default function Home() {
             <ul className="diagnostic-product-points">
               <li><strong>Срок:</strong> 3 дня.</li>
               <li><strong>Формат:</strong> одна встреча + самостоятельный анализ с моей стороны.</li>
-              <li><strong>Чтобы начать:</strong> достаточно описать ситуацию и прислать то, что уже есть.</li>
               <li><strong>На выходе:</strong> обоснованный первый шаг, что проверить и что пока не делать.</li>
               <li><strong>Стоимость:</strong> сообщаю до начала работы после короткого описания ситуации.</li>
-              <li><strong>Граница:</strong> большой проект не обязателен.</li>
             </ul>
             <a className="service-route" href="/work#diagnostic-review">Посмотреть формат разбора →</a>
           </article>
@@ -253,15 +239,13 @@ export default function Home() {
 
     <section className="faq-stage">
       <div className="page-shell">
-        <div className="section-intro"><p className="eyebrow">08 · Перед первым шагом</p><h2>Четыре коротких ответа.</h2></div>
+        <div className="section-intro"><p className="eyebrow">08 · Перед первым шагом</p><h2>Три коротких ответа.</h2></div>
         <div className="faq-list">
-          <details><summary>Я сам не понимаю, в чём проблема. Можно обращаться?</summary><p>Да. Первый разбор как раз помогает сначала сформулировать вопрос, а не выбирать услугу заранее.</p></details>
           <details><summary>А если маркетинговый проект вообще не нужен?</summary><p>Это нормальный результат. Задача разбора — понять, что действительно стоит менять, а не обязательно продать проект.</p></details>
           <details><summary>Почему не решить это внутри команды или с AI?</summary><p>Команда и AI хорошо помогают искать варианты. Внешний разбор полезен, когда неясно, какой вопрос проверять и какие факты действительно меняют решение.</p></details>
           <details><summary>Нужно заранее собрать много данных?</summary><p>Нет. Начать можно с того, что уже известно. В ходе разбора станет видно, каких фактов не хватает.</p></details>
         </div>
         <div className="faq-print" aria-hidden="true">
-          <div><strong>Я сам не понимаю, в чём проблема. Можно обращаться?</strong><p>Да. Первый разбор как раз помогает сначала сформулировать вопрос, а не выбирать услугу заранее.</p></div>
           <div><strong>А если маркетинговый проект вообще не нужен?</strong><p>Это нормальный результат. Задача разбора — понять, что действительно стоит менять, а не обязательно продать проект.</p></div>
           <div><strong>Почему не решить это внутри команды или с AI?</strong><p>Команда и AI хорошо помогают искать варианты. Внешний разбор полезен, когда неясно, какой вопрос проверять и какие факты действительно меняют решение.</p></div>
           <div><strong>Нужно заранее собрать много данных?</strong><p>Нет. Начать можно с того, что уже известно. В ходе разбора станет видно, каких фактов не хватает.</p></div>
