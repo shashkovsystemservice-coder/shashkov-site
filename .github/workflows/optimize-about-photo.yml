@@ -1,0 +1,52 @@
+name: Optimize about photo
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/optimize-about-photo.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Sharp
+        run: npm install --no-save --ignore-scripts=false sharp@0.34.5
+
+      - name: Generate optimized WebP
+        run: |
+          node --input-type=module <<'EOF'
+          import sharp from 'sharp';
+          await sharp('public/086C4548-D484-4910-8500-B66E0FDB0E62.png')
+            .rotate()
+            .resize({ width: 960, withoutEnlargement: true })
+            .webp({ quality: 82, effort: 6 })
+            .toFile('public/about-photo.webp');
+          EOF
+          ls -lh public/about-photo.webp
+
+      - name: Commit optimized image
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/about-photo.webp
+          if git diff --cached --quiet; then
+            echo "No image changes"
+            exit 0
+          fi
+          git commit -m "Добавить облегчённое фото для блока Обо мне"
+          git push
