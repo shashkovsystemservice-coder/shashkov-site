@@ -18,8 +18,9 @@ jobs:
           fetch-depth: 0
 
       - name: Refine conversion copy and print layout
-        shell: python
+        shell: bash
         run: |
+          python - <<'PY'
           from pathlib import Path
 
           page = Path('app/page.tsx')
@@ -98,8 +99,10 @@ jobs:
           if 'Print/PDF: keep FAQ answers visible' not in c:
               c += print_fix
           css.write_text(c, encoding='utf-8')
+          PY
 
       - name: Commit changes
+        shell: bash
         run: |
           if git diff --quiet; then
             echo "No changes"
