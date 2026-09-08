@@ -31,9 +31,9 @@ const currentProjects = [
     href: "/cases/iba-wellness",
   },
   {
-    context: "Event-бизнес",
-    question: "«Нужно улучшить сайт и предложение»",
-    reframing: "Редизайн → что именно выбирает клиент и почему.",
+    context: "Event-бизнес · AI и внутренняя система",
+    question: "«Как превратить разрозненную базу ресурсов в рабочий AI-инструмент для команды?»",
+    reframing: "AI-идея → рабочий процесс → структура данных → bot-ready схема для Telegram + AI + Google Sheets.",
     href: "/cases/prime-event",
   },
 ] as const;
