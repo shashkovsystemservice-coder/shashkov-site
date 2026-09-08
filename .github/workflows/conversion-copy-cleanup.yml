@@ -1,0 +1,61 @@
+name: Conversion copy cleanup
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/conversion-copy-cleanup.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Update homepage and work copy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('app/page.tsx')
+          s = p.read_text()
+          replacements = {
+              'Хочу сначала посмотреть серьёзную работу': 'Хочу увидеть, как это работает на реальной задаче',
+              'Открыть основной B2B-кейс →': 'Посмотреть кейс →',
+              'Увидеть эту логику в сложном B2B-проекте →': 'Увидеть эту логику в реальном проекте →',
+              'Сложный B2B-кейс: от «хотим продавать линии» до продуктовой архитектуры, proof и коммерческой модели.': 'Кейс глубже: от «хотим продавать линии» до продуктовой архитектуры, доказательств ценности и коммерческой модели.',
+              'Продажи → модель продукта, ответственность, proof и коммерческая модель.': 'Продажи → модель продукта, ответственность, доказательства ценности и коммерческая модель.',
+          }
+          for old, new in replacements.items():
+              if old not in s:
+                  raise SystemExit(f'Missing homepage text: {old}')
+              s = s.replace(old, new)
+          p.write_text(s)
+
+          p = Path('app/work/page.tsx')
+          s = p.read_text()
+          replacements = {
+              'Позиционирование и proof': 'Позиционирование и доказательства',
+              'продукт, границы ответственности, proof, коммерческая модель и исполнение внутри компании.': 'продукт, границы ответственности, доказательства ценности, коммерческая модель и исполнение внутри компании.',
+              '<strong>Первичный разбор</strong> — когда есть один неясный вопрос и нужно понять следующий обоснованный шаг.': '<strong>Диагностический разбор</strong> — когда есть один неясный вопрос и нужно понять следующий обоснованный шаг.',
+          }
+          for old, new in replacements.items():
+              if old not in s:
+                  raise SystemExit(f'Missing work text: {old}')
+              s = s.replace(old, new)
+          p.write_text(s)
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/page.tsx app/work/page.tsx
+          git diff --cached --quiet && exit 0
+          git commit -m 'Уточнить маршруты и язык доказательств'
+          git push
