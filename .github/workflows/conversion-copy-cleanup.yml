@@ -26,36 +26,53 @@ jobs:
           p = Path('app/page.tsx')
           s = p.read_text()
           replacements = {
-              'Хочу сначала посмотреть серьёзную работу': 'Хочу увидеть, как это работает на реальной задаче',
-              'Открыть основной B2B-кейс →': 'Посмотреть кейс →',
-              'Увидеть эту логику в сложном B2B-проекте →': 'Увидеть эту логику в реальном проекте →',
-              'Сложный B2B-кейс: от «хотим продавать линии» до продуктовой архитектуры, proof и коммерческой модели.': 'Кейс глубже: от «хотим продавать линии» до продуктовой архитектуры, доказательств ценности и коммерческой модели.',
-              'Продажи → модель продукта, ответственность, proof и коммерческая модель.': 'Продажи → модель продукта, ответственность, доказательства ценности и коммерческая модель.',
+              'Хочу увидеть, как это работает на реальной задаче': 'Хочу увидеть, как меняется решение на реальной задаче',
+              '<span>Нужен пример глубже?</span>': '<span>Хотите увидеть более сложное решение?</span>',
+              '<h3>Кейс глубже: от «хотим продавать линии» до продуктовой архитектуры, доказательств ценности и коммерческой модели.</h3>': '<h3>От «хотим продавать линии» — к продуктовой архитектуре, доказательствам ценности и коммерческой модели.</h3>',
+              '<li><strong>Вход:</strong> ситуация и то, что уже известно.</li>': '<li><strong>Чтобы начать:</strong> достаточно описать ситуацию и прислать то, что уже есть. Полный пакет данных заранее не нужен.</li>',
+              '<li><strong>Выход:</strong> обоснованный первый шаг, что отложить и что пока не делать.</li>': '<li><strong>На выходе:</strong> обоснованный первый шаг, что проверить, что отложить и что пока не делать.</li>',
+              'Посмотреть, как проходит разбор →': 'Посмотреть формат разбора →',
           }
           for old, new in replacements.items():
               if old not in s:
                   raise SystemExit(f'Missing homepage text: {old}')
-              s = s.replace(old, new)
+              s = s.replace(old, new, 1)
           p.write_text(s)
 
           p = Path('app/work/page.tsx')
           s = p.read_text()
-          replacements = {
-              'Позиционирование и proof': 'Позиционирование и доказательства',
-              'продукт, границы ответственности, proof, коммерческая модель и исполнение внутри компании.': 'продукт, границы ответственности, доказательства ценности, коммерческая модель и исполнение внутри компании.',
-              '<strong>Первичный разбор</strong> — когда есть один неясный вопрос и нужно понять следующий обоснованный шаг.': '<strong>Диагностический разбор</strong> — когда есть один неясный вопрос и нужно понять следующий обоснованный шаг.',
-          }
-          for old, new in replacements.items():
-              if old not in s:
-                  raise SystemExit(f'Missing work text: {old}')
-              s = s.replace(old, new)
+          old = '<p><strong>С чем приходят.</strong> Есть ситуация, в которой уже хочется действовать, но неясно, верно ли поставлен сам вопрос и какой следующий шаг действительно обоснован.</p>'
+          new = old + '\n          <p><strong>Что нужно для старта.</strong> Достаточно описать ситуацию и прислать то, что уже есть. Полный пакет данных и готовое ТЗ заранее не нужны.</p>'
+          if old not in s:
+              raise SystemExit('Missing work start block')
+          s = s.replace(old, new, 1)
+          old = '<p><strong>Где заканчивается.</strong> Разбор имеет самостоятельную ценность. Если для решения достаточно одного шага, полноценный стратегический проект не нужен.</p>'
+          new = old + '\n          <p><a className="work-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Обсудить диагностический разбор →</a></p>'
+          if old not in s:
+              raise SystemExit('Missing work end block')
+          s = s.replace(old, new, 1)
+          p.write_text(s)
+
+          p = Path('app/role-audit-pass.css')
+          s = p.read_text()
+          if 'Print/PDF: keep FAQ answers visible' not in s:
+              s += '''
+
+/* Print/PDF: keep FAQ answers visible and avoid an empty trailing page. */
+@media print {
+  .faq-list details > p { display: block !important; }
+  .contact-stage { min-height: 0 !important; overflow: visible !important; }
+  .contact-stage::before { display: none !important; }
+  .brand-close { padding-bottom: 18px !important; }
+}
+'''
           p.write_text(s)
           PY
       - name: Commit changes
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add app/page.tsx app/work/page.tsx
+          git add app/page.tsx app/work/page.tsx app/role-audit-pass.css
           git diff --cached --quiet && exit 0
-          git commit -m 'Уточнить маршруты и язык доказательств'
+          git commit -m 'Усилить конверсию и исправить PDF'
           git push
