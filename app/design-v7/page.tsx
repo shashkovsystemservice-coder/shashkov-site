@@ -4,181 +4,219 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import "./design-v7.css";
 
-const evidence = [
-  { src: "/marketing-system-11.png", label: "Рабочая система · маркетинговая модель", rotate: -7 },
-  { src: "/fitness-report-cover.png", label: "Исследование · новый продукт / новый рынок", rotate: 5 },
-  { src: "/technograv-preview.png", label: "Проект · промышленный рынок", rotate: -3 },
-];
+const experience = [
+  ["24 ГОДА", "внутри бизнеса"],
+  ["РЫНОК", "→ продукт"],
+  ["ОБЕЩАНИЕ", "→ исполнение"],
+  ["ФАКТЫ", "→ решение"],
+] as const;
+
+const process = [
+  {
+    n: "01",
+    title: "Понять",
+    text: "Отделяю проблему от версии и факты — от предположений.",
+    image: "/marketing-system-11.png",
+    caption: "Рабочая маркетинговая модель",
+    className: "a",
+  },
+  {
+    n: "02",
+    title: "Найти",
+    text: "Выясняю, какие факторы действительно меняют решение и где находится главное ограничение.",
+    image: "/about-photo.webp",
+    caption: "Обсуждение и рабочий контекст",
+    className: "b",
+  },
+  {
+    n: "03",
+    title: "Проверить",
+    text: "Выбираю проверку, которая даст больше ясности до больших затрат.",
+    image: "/fitness-report-cover.png",
+    caption: "Исследование нового продукта / рынка",
+    className: "c",
+  },
+] as const;
 
 export default function DesignV7() {
+  const heroRef = useRef<HTMLElement>(null);
   const processRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: processRef, offset: ["start end", "end start"] });
-  const driftA = useTransform(scrollYProgress, [0, 1], [70, -60]);
-  const driftB = useTransform(scrollYProgress, [0, 1], [-30, 80]);
-  const turnA = useTransform(scrollYProgress, [0, 1], [-8, 4]);
-  const turnB = useTransform(scrollYProgress, [0, 1], [6, -4]);
+  const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const { scrollYProgress: processScroll } = useScroll({ target: processRef, offset: ["start end", "end start"] });
+
+  const heroPhotoY = useTransform(heroScroll, [0, 1], [0, 120]);
+  const heroPhotoR = useTransform(heroScroll, [0, 1], [-3.5, 2]);
+  const driftLeft = useTransform(processScroll, [0, 1], [80, -70]);
+  const driftRight = useTransform(processScroll, [0, 1], [-55, 80]);
 
   return (
     <main className="v7" id="top">
       <header className="v7-nav">
         <a href="#top" className="v7-wordmark">Владимир Шашков</a>
-        <div className="v7-nav-meta">Независимый консультант<br/>по маркетингу и росту</div>
+        <p>Маркетинг и рост бизнеса</p>
         <nav>
+          <a href="#experience">Опыт</a>
           <a href="#process">Как работаю</a>
           <a href="#proof">Кейс</a>
-          <a href="/diagnostic">6 вопросов ↗</a>
+          <a className="v7-nav-cta" href="/diagnostic">6 вопросов ↗</a>
         </nav>
       </header>
 
-      <section className="v7-hero">
-        <div className="v7-hero-kicker">Для собственников бизнеса · Санкт-Петербург / remote</div>
+      <section className="v7-hero" ref={heroRef}>
+        <div className="v7-hero-label">Независимый консультант · для собственников бизнеса</div>
         <h1>
           <span>Не уверены,</span>
           <span>что именно сейчас</span>
-          <span className="v7-hero-line-accent">нужно менять?</span>
+          <span>нужно <em>менять?</em></span>
         </h1>
 
-        <div className="v7-hero-bottom">
+        <div className="v7-hero-compose">
           <div className="v7-hero-copy">
             <p>Помогаю собственникам понять проблему, выбрать решение и первый шаг.</p>
             <strong>И понять, на что пока не стоит тратить деньги.</strong>
             <div className="v7-actions">
-              <a className="v7-button" href="/diagnostic">Разобрать ситуацию</a>
-              <a className="v7-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Telegram ↗</a>
+              <a className="v7-button" href="/diagnostic">Разобрать ситуацию ↗</a>
+              <a className="v7-text-link" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Telegram ↗</a>
             </div>
           </div>
 
-          <motion.figure
-            className="v7-portrait-card"
-            initial={{ rotate: 4, y: 28, opacity: 0 }}
-            animate={{ rotate: -2.6, y: 0, opacity: 1 }}
-            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ rotate: 1.2, scale: 1.015 }}
-          >
+          <motion.figure className="v7-hero-photo" style={{ y: heroPhotoY, rotate: heroPhotoR }} whileHover={{ rotate: 0, scale: 1.01 }}>
             <img src="/vladimir-photo.jpg" alt="Владимир Шашков" />
-            <figcaption>
-              <span>24 года внутри бизнеса</span>
-              <small>рынок · продукт · продажи · исполнение</small>
-            </figcaption>
+            <figcaption><span>Владимир Шашков</span><small>24 года внутри бизнеса</small></figcaption>
           </motion.figure>
+
+          <motion.div className="v7-hero-note" initial={{ opacity: 0, rotate: -8, y: 20 }} animate={{ opacity: 1, rotate: -5, y: 0 }} transition={{ duration: .8, delay: .25 }}>
+            <small>Принцип</small>
+            <b>Симптом<br/>≠ причина</b>
+          </motion.div>
         </div>
 
-        <div className="v7-authority-strip">
+        <div className="v7-clients">
           <span>Heidelberg</span><span>Nokian Tyres</span><span>Роснано</span><span>Росатом</span>
           <p>Опыт там, где рыночное обещание нужно не только сформулировать, но и реально выполнить.</p>
         </div>
       </section>
 
+      <section className="v7-experience" id="experience">
+        <div className="v7-section-kicker">I · Experience</div>
+        <div className="v7-experience-marquee" aria-label="Ключевой опыт">
+          {experience.map(([big, small]) => (
+            <div className="v7-exp-row" key={big}>
+              <strong>{big}</strong><span>{small}</span>
+            </div>
+          ))}
+        </div>
+        <div className="v7-experience-gallery">
+          <motion.figure className="v7-polaroid v7-polaroid-1" whileHover={{ rotate: -1, y: -8 }}>
+            <img src="/about-photo.webp" alt="Владимир Шашков в рабочей среде" />
+            <figcaption>Работа внутри бизнеса</figcaption>
+          </motion.figure>
+          <motion.figure className="v7-polaroid v7-polaroid-2" whileHover={{ rotate: 0, y: -8 }}>
+            <img src="/marketing-system-11.png" alt="Фрагмент маркетинговой системы" />
+            <figcaption>Система: факты → гипотезы → проверки</figcaption>
+          </motion.figure>
+          <motion.figure className="v7-polaroid v7-polaroid-3" whileHover={{ rotate: 1, y: -8 }}>
+            <img src="/technograv-preview.png" alt="Фрагмент промышленного проекта" />
+            <figcaption>Промышленный рынок / новый продукт</figcaption>
+          </motion.figure>
+        </div>
+      </section>
+
       <section className="v7-reframe">
-        <p className="v7-index">01 · Симптом — ещё не причина</p>
+        <div className="v7-section-kicker">II · Reframe</div>
         <div className="v7-reframe-grid">
           <h2>«Нам нужно больше заявок» ещё не значит, что нужна реклама.</h2>
           <div>
             <p>Цена ошибки — месяцами улучшать рекламу, сайт или продажи не там, где находится реальное ограничение.</p>
-            <strong>Сначала понять проблему. Потом выбирать решение. И только потом — инструмент.</strong>
+            <strong>Сначала понять проблему.<br/>Потом выбирать решение.<br/>И только потом — инструмент.</strong>
           </div>
         </div>
       </section>
 
       <section className="v7-process" id="process" ref={processRef}>
-        <div className="v7-process-heading">
-          <p className="v7-index">02 · Как выглядит работа</p>
-          <h2>Сначала выясняю,<br/>что действительно<br/><em>меняет решение.</em></h2>
+        <div className="v7-section-kicker v7-light">III · Approach</div>
+        <div className="v7-process-head">
+          <h2>Как выглядит<br/><em>сама работа.</em></h2>
+          <p>Не «магия стратегии», а последовательность наблюдений, материалов, разговоров и проверок.</p>
         </div>
 
-        <div className="v7-process-stage">
-          <motion.article className="v7-process-card v7-process-card-a" style={{ y: driftA, rotate: turnA }}>
-            <span>01</span>
-            <h3>Понять, что происходит на самом деле</h3>
-            <p>Отделяю проблему от версии и факты — от предположений.</p>
-          </motion.article>
-
-          <motion.figure className="v7-work-photo v7-work-photo-a" style={{ y: driftB, rotate: turnB }} whileHover={{ scale: 1.025, rotate: 0 }}>
-            <img src="/marketing-system-11.png" alt="Фрагмент рабочей маркетинговой системы" />
-            <figcaption>реальный рабочий материал / система</figcaption>
-          </motion.figure>
-
-          <motion.article className="v7-process-card v7-process-card-b" style={{ y: driftB }}>
-            <span>02</span>
-            <h3>Найти главное ограничение</h3>
-            <p>Выясняю, какие факторы действительно меняют решение и где находится главное ограничение.</p>
-          </motion.article>
-
-          <motion.figure className="v7-work-photo v7-work-photo-b" style={{ y: driftA }} whileHover={{ rotate: -1, scale: 1.025 }}>
-            <img src="/about-photo.webp" alt="Владимир Шашков в рабочей среде" />
-            <figcaption>работа / обсуждение / контекст</figcaption>
-          </motion.figure>
-
-          <motion.article className="v7-process-card v7-process-card-c" style={{ y: driftA }}>
-            <span>03</span>
-            <h3>Проверить коротким способом</h3>
-            <p>Выбираю проверку, которая даст больше ясности до больших затрат.</p>
-          </motion.article>
-
-          <motion.figure className="v7-work-photo v7-work-photo-c" style={{ y: driftB, rotate: turnA }} whileHover={{ rotate: 1, scale: 1.02 }}>
-            <img src="/fitness-report-cover.png" alt="Фрагмент исследования нового продукта" />
-            <figcaption>исследование / решение / следующий шаг</figcaption>
-          </motion.figure>
+        <div className="v7-process-collage">
+          {process.map((item, i) => (
+            <motion.article
+              key={item.n}
+              className={`v7-process-piece v7-process-${item.className}`}
+              style={{ y: i % 2 === 0 ? driftLeft : driftRight }}
+            >
+              <figure>
+                <img src={item.image} alt={item.caption} />
+                <figcaption>{item.caption}</figcaption>
+              </figure>
+              <div className="v7-process-copy">
+                <span>{item.n}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            </motion.article>
+          ))}
         </div>
 
-        <div className="v7-process-note">
-          <span>И ещё</span>
-          <p>Проверяю, способен ли бизнес реально <strong>продать, выполнить и поддерживать</strong> то, что обещает рынку.</p>
+        <div className="v7-process-rule">
+          <small>Проверяю ещё одно</small>
+          <p>Способен ли бизнес реально <strong>продать, выполнить и поддерживать</strong> то, что обещает рынку.</p>
         </div>
       </section>
 
       <section className="v7-proof" id="proof">
-        <p className="v7-index">03 · Реальный проект · обезличен</p>
-        <div className="v7-proof-title">
-          <h2>Пришли<br/>за заявками.</h2>
-          <p>Изменился вопрос:</p>
-          <h2 className="v7-proof-shift">как попадать<br/>в выбор клиента?</h2>
+        <div className="v7-section-kicker">IV · Selected work</div>
+        <header className="v7-proof-head">
+          <p>Реальный проект · обезличен</p>
+          <h2>Пришли за заявками.<br/><em>Изменился сам вопрос.</em></h2>
+        </header>
+
+        <div className="v7-proof-story">
+          <div className="v7-proof-before">
+            <small>Запрос</small>
+            <p>«Нам нужны более квалифицированные входящие заявки».</p>
+          </div>
+          <div className="v7-proof-shift">
+            <small>Что оказалось важнее</small>
+            <p>Ограничение могло находиться раньше трафика: в моменте входа в проект, доверии и доказательствах ценности.</p>
+          </div>
+          <div className="v7-proof-after">
+            <small>Новый вопрос</small>
+            <p>Как раньше попадать в выбор клиента и становиться доказуемо сильным вариантом?</p>
+          </div>
         </div>
 
-        <div className="v7-proof-flow">
-          <article>
-            <span>Запрос</span>
-            <h3>«Нам нужны более квалифицированные входящие заявки».</h3>
-          </article>
-          <div className="v7-proof-arrow">↘</div>
-          <article>
-            <span>Что оказалось важнее</span>
-            <p>Ограничение могло быть раньше трафика: в моменте входа в проект, доверии и доказательствах ценности.</p>
-          </article>
-          <div className="v7-proof-arrow">↘</div>
-          <article className="v7-proof-answer">
-            <span>Новый вопрос</span>
-            <h3>Как раньше попадать в выбор клиента и становиться доказуемо сильным вариантом?</h3>
-          </article>
+        <div className="v7-proof-wall">
+          <motion.figure className="v7-work v7-work-1" whileHover={{ rotate: 0, scale: 1.02 }}>
+            <img src="/marketing-system-11.png" alt="Маркетинговая система" />
+            <figcaption>Факт / версия / проверка</figcaption>
+          </motion.figure>
+          <motion.figure className="v7-work v7-work-2" whileHover={{ rotate: 0, scale: 1.02 }}>
+            <img src="/technograv-preview.png" alt="Рабочий материал проекта" />
+            <figcaption>Рабочий материал проекта</figcaption>
+          </motion.figure>
+          <motion.div className="v7-quote" whileHover={{ rotate: 0 }}>
+            <blockquote>«Мне очень нравится это направление приложения наших усилий.»</blockquote>
+            <small>Собственник компании · проект обезличен</small>
+          </motion.div>
+          <motion.figure className="v7-work v7-work-3" whileHover={{ rotate: 0, scale: 1.02 }}>
+            <img src="/fitness-report-cover.png" alt="Пример исследовательского материала" />
+            <figcaption>Исследование / решение / следующий шаг</figcaption>
+          </motion.figure>
         </div>
 
-        <div className="v7-proof-materials">
-          {evidence.map((item, i) => (
-            <motion.figure
-              key={item.src}
-              className={`v7-evidence v7-evidence-${i + 1}`}
-              initial={{ opacity: 0, y: 45, rotate: item.rotate * 1.7 }}
-              whileInView={{ opacity: 1, y: 0, rotate: item.rotate }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.65, delay: i * 0.08 }}
-              whileHover={{ rotate: 0, y: -8, scale: 1.025, zIndex: 6 }}
-            >
-              <img src={item.src} alt={item.label} />
-              <figcaption>{item.label}</figcaption>
-            </motion.figure>
-          ))}
-          <blockquote>«Мне очень нравится это направление приложения наших усилий.»<small>Собственник компании · проект обезличен</small></blockquote>
-        </div>
-
-        <div className="v7-proof-footer">
+        <div className="v7-proof-outcome">
           <p><strong>Что произошло дальше:</strong> собственник уточнил сегментацию и ценностную логику, начал систематизировать доказательства, а найденную логику начали переводить в работу новой команды продаж.</p>
           <a href="/cases/market-choice-system">Открыть весь кейс ↗</a>
         </div>
       </section>
 
       <footer className="v7-footer">
-        <p>Это art-direction prototype: hero + process + proof. Production-сайт не изменён.</p>
-        <a href="/">Вернуться на production-view ↗</a>
+        <div><strong>Владимир Шашков</strong><span>Маркетинг и рост бизнеса</span></div>
+        <p>Prototype v7.2 · production не изменён.</p>
+        <a href="/diagnostic">Начать с 6 вопросов ↗</a>
       </footer>
     </main>
   );
