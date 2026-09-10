@@ -32,17 +32,23 @@ export default function ArtDirection2026() {
       <section className="ad26-hero">
         <div className="ad26-hero-copy">
           <p className="ad26-kicker">Независимый консультант · для собственников бизнеса</p>
-          <h1>Не уверены,<br/>что именно<br/><em>сейчас</em> нужно<br/>менять в бизнесе?</h1>
+          <h1>Не уверены,<br/>что именно<br/>сейчас нужно<br/>менять в бизнесе?</h1>
           <div className="ad26-hero-bottom">
-            <p>Помогаю понять проблему, выбрать решение и первый шаг — <strong>и на что пока не стоит тратить деньги.</strong></p>
+            <div>
+              <p className="ad26-hero-thesis">Симптом ≠ причина.</p>
+              <p>Помогаю понять проблему, выбрать решение и первый шаг — <strong>и на что пока не стоит тратить деньги.</strong></p>
+            </div>
             <a className="ad26-primary" href="/diagnostic">Разобрать свою ситуацию <span>↗</span></a>
           </div>
+          <div className="ad26-hero-proof" aria-label="Основания доверия">
+            <span>24 года внутри бизнеса</span>
+            <span>Heidelberg · Nokian Tyres · Роснано · Росатом</span>
+          </div>
         </div>
-        <figure className="ad26-portrait">
-          <Image src="/vladimir-photo.jpg" alt="Владимир Шашков" fill priority sizes="(max-width: 820px) 100vw, 42vw" />
-          <figcaption>24 года внутри бизнеса<br/>Heidelberg · Nokian Tyres · Роснано · Росатом</figcaption>
+        <figure className="ad26-portrait ad26-portrait-editorial">
+          <Image src="/about-photo.webp" alt="Владимир Шашков за работой" fill priority sizes="(max-width: 900px) 100vw, 43vw" />
+          <figcaption>Не продавать инструмент до диагноза.</figcaption>
         </figure>
-        <div className="ad26-hero-index" aria-hidden="true">01 / 09</div>
       </section>
 
       <section className="ad26-recognition" id="situations">
@@ -88,10 +94,11 @@ export default function ArtDirection2026() {
 
       <section className="ad26-brief">
         <div className="ad26-brief-number">03</div>
-        <div>
+        <div className="ad26-brief-copy">
           <p className="ad26-kicker">Decision Brief · без звонка</p>
           <h2>6 вопросов, чтобы понять,<br/>что проверить первым.</h2>
           <p>Главный вопрос, недостающие факты, первый шаг и что пока рано делать. Результат можно сохранить в PDF.</p>
+          <div className="ad26-brief-output"><span>На выходе</span><strong>Вопрос → факты → первая проверка → следующий шаг</strong></div>
         </div>
         <a className="ad26-primary ad26-primary-dark" href="/diagnostic">Пройти 6 вопросов <span>↗</span></a>
       </section>
@@ -99,12 +106,13 @@ export default function ArtDirection2026() {
       <section className="ad26-case" id="case">
         <div className="ad26-section-label ad26-section-label-light">04 · Proof case · проект обезличен</div>
         <div className="ad26-case-title">
-          <p>Пришли за</p><h2>заявками.</h2><p>Изменился вопрос:</p><h2>как попадать<br/>в выбор клиента.</h2>
+          <span>Пришли за заявками.</span>
+          <h2>Изменился вопрос:<br/>как попадать в выбор клиента.</h2>
         </div>
         <div className="ad26-case-flow">
-          <article><span>Запрос</span><h3>«Нам нужны более квалифицированные входящие заявки».</h3></article>
-          <article><span>Что оказалось важнее</span><p>Ограничение могло быть раньше трафика: в моменте входа в проект, доверии и доказательствах ценности.</p></article>
-          <article className="ad26-case-shift"><span>Новый вопрос</span><h3>Как раньше попадать в выбор клиента и становиться доказуемо сильным вариантом?</h3></article>
+          <article><span>ORIGINAL QUESTION</span><h3>«Нам нужны более квалифицированные входящие заявки».</h3></article>
+          <article><span>WHAT CHANGED</span><p>Ограничение могло быть раньше трафика: в моменте входа в проект, доверии и доказательствах ценности.</p></article>
+          <article className="ad26-case-shift"><span>REAL QUESTION</span><h3>Как раньше попадать в выбор клиента и становиться доказуемо сильным вариантом?</h3></article>
         </div>
         <blockquote>«Мне очень нравится это направление приложения наших усилий.»<small>Собственник компании · проект обезличен</small></blockquote>
       </section>
@@ -112,8 +120,14 @@ export default function ArtDirection2026() {
       <section className="ad26-about">
         <div className="ad26-section-label">06 · Обо мне</div>
         <div className="ad26-about-grid">
-          <h2>Смотрю на<br/>маркетинг<br/>через весь<br/>бизнес.</h2>
-          <figure><Image src="/vladimir-photo.jpg" alt="Владимир Шашков" fill sizes="(max-width: 820px) 100vw, 30vw" /></figure>
+          <div className="ad26-about-title">
+            <h2>Смотрю на<br/>маркетинг<br/>через весь<br/>бизнес.</h2>
+            <p>Рынок → продукт → продажи → исполнение.</p>
+          </div>
+          <figure className="ad26-about-portrait">
+            <Image src="/vladimir-photo.jpg" alt="Владимир Шашков" fill sizes="(max-width: 900px) 100vw, 28vw" />
+            <figcaption>24 года внутри бизнеса</figcaption>
+          </figure>
           <div className="ad26-about-copy">
             <p><strong>Маркетинг для меня — связь рынка, ценности, продукта, продаж и способности бизнеса выполнить обещание клиенту.</strong></p>
             <p>Большую часть карьеры я работал внутри бизнеса — поэтому проверяю не только обещание рынку, но и способность его продать, выполнить и поддерживать.</p>
