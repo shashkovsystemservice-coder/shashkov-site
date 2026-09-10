@@ -1,5 +1,6 @@
 import Image from "next/image";
 import "./art-direction.css";
+import "./reasoning-system.css";
 
 const situations = [
   ["01", "Продажи перестали расти", "Команда предлагает больше рекламы — но непонятно, в ней ли проблема"],
