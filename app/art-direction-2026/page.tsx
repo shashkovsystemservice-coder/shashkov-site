@@ -2,10 +2,10 @@ import Image from "next/image";
 import "./art-direction.css";
 
 const situations = [
-  ["01", "Продажи перестали расти. Команда предлагает больше рекламы — но непонятно, в ней ли проблема"],
-  ["02", "Клиенты интересуются, но не покупают — непонятно, дело в ценности, цене, продажах или причина вообще в другом"],
-  ["03", "Хотим выйти на новый рынок или запустить продукт — непонятно, сработают ли нынешняя ценность и модель продаж"],
-  ["04", "Все предлагают рекламу, сайт, SEO, AI — не понимаю, что действительно нужно"],
+  ["01", "Продажи перестали расти", "Команда предлагает больше рекламы — но непонятно, в ней ли проблема"],
+  ["02", "Клиенты интересуются, но не покупают", "Непонятно, дело в ценности, цене, продажах или причина вообще в другом"],
+  ["03", "Новый рынок или новый продукт", "Непонятно, сработают ли нынешняя ценность и модель продаж"],
+  ["04", "Все предлагают инструменты", "Реклама, сайт, SEO, AI — но непонятно, что действительно нужно"],
 ] as const;
 
 const steps = [
@@ -14,12 +14,13 @@ const steps = [
   ["TEST", "Что проверить", "Выбрать короткую проверку, которая действительно изменит решение."],
 ] as const;
 
+const logic = ["SIGNAL", "FACT", "VERSION", "TEST", "DECISION"] as const;
+
 export default function ArtDirection2026() {
   return (
     <main className="ad26" id="top">
       <header className="ad26-nav">
         <a href="#top" className="ad26-brand" aria-label="Владимир Шашков">
-          <span className="ad26-mark">ВШ</span>
           <span><strong>Владимир Шашков</strong><small>strategy / market / growth</small></span>
         </a>
         <nav>
@@ -51,6 +52,10 @@ export default function ArtDirection2026() {
         </figure>
       </section>
 
+      <div className="ad26-logic-rail" aria-label="Логика работы">
+        {logic.map((item, i) => <span key={item}><b>0{i + 1}</b>{item}</span>)}
+      </div>
+
       <section className="ad26-recognition" id="situations">
         <div className="ad26-section-label">01 · Узнали себя?</div>
         <div className="ad26-recognition-head">
@@ -58,14 +63,19 @@ export default function ArtDirection2026() {
           <p>Решение — уже нет.</p>
         </div>
         <div className="ad26-situations">
-          {situations.map(([n, text]) => (
-            <article key={n}><span>{n}</span><p>«{text}»</p></article>
+          {situations.map(([n, title, text]) => (
+            <article key={n}>
+              <span>{n}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
           ))}
         </div>
       </section>
 
       <section className="ad26-statement">
-        <div className="ad26-statement-meta">SYMPTOM ≠ CAUSE</div>
+        <div className="ad26-pivot-mark" aria-hidden="true"><span>SYMPTOM</span><i>≠</i><span>CAUSE</span></div>
+        <div className="ad26-statement-meta">REFRAME / смена уровня анализа</div>
         <h2>«Нам нужно больше заявок»<br/><em>ещё не значит,</em><br/>что нужна реклама.</h2>
         <div className="ad26-statement-foot">
           <p>Цена ошибки — месяцами улучшать рекламу, сайт или продажи не там, где находится реальное ограничение.</p>
@@ -81,7 +91,7 @@ export default function ArtDirection2026() {
         </div>
         <div className="ad26-signature">
           {steps.map(([code, title, text], i) => (
-            <article key={code}>
+            <article key={code} data-step={code.toLowerCase()}>
               <span className="ad26-step-no">0{i + 1}</span>
               <strong>{code}</strong>
               <h3>{title}</h3>
@@ -98,6 +108,11 @@ export default function ArtDirection2026() {
           <p className="ad26-kicker">Decision Brief · без звонка</p>
           <h2>6 вопросов, чтобы понять,<br/>что проверить первым.</h2>
           <p>Главный вопрос, недостающие факты, первый шаг и что пока рано делать. Результат можно сохранить в PDF.</p>
+          <div className="ad26-brief-map" aria-label="Как устроен Decision Brief">
+            <span><small>INPUT</small>6 вопросов</span>
+            <span><small>PROCESS</small>FACT → VERSION → TEST</span>
+            <span><small>OUTPUT</small>Следующий шаг</span>
+          </div>
           <div className="ad26-brief-output"><span>На выходе</span><strong>Вопрос → факты → первая проверка → следующий шаг</strong></div>
         </div>
         <a className="ad26-primary ad26-primary-dark" href="/diagnostic">Пройти 6 вопросов <span>↗</span></a>
@@ -111,6 +126,7 @@ export default function ArtDirection2026() {
         </div>
         <div className="ad26-case-flow">
           <article><span>ORIGINAL QUESTION</span><h3>«Нам нужны более квалифицированные входящие заявки».</h3></article>
+          <div className="ad26-case-shift-marker" aria-hidden="true"><b>SHIFT</b><i>→</i></div>
           <article><span>WHAT CHANGED</span><p>Ограничение могло быть раньше трафика: в моменте входа в проект, доверии и доказательствах ценности.</p></article>
           <article className="ad26-case-shift"><span>REAL QUESTION</span><h3>Как раньше попадать в выбор клиента и становиться доказуемо сильным вариантом?</h3></article>
         </div>
@@ -144,7 +160,7 @@ export default function ArtDirection2026() {
           <a className="ad26-primary ad26-primary-light" href="/diagnostic">Разобрать свою ситуацию <span>↗</span></a>
           <a href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram →</a>
         </div>
-        <footer><span>ВШ</span><p>Сначала понять проблему.<br/>Потом выбирать решение.<br/>И только потом — инструмент.</p></footer>
+        <footer><strong>Владимир Шашков</strong><p>Сначала понять проблему.<br/>Потом выбирать решение.<br/>И только потом — инструмент.</p></footer>
       </section>
     </main>
   );
