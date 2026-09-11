@@ -4,6 +4,7 @@ import "./art-direction.css";
 import "./high-craft-pass.css";
 import "./experience-2026.css";
 import "./refinement-pass.css";
+import "./director-pass.css";
 
 const situations = [
   ["01", "Продажи перестали расти", "Команда предлагает больше рекламы — но непонятно, в ней ли проблема"],
@@ -26,6 +27,9 @@ function DiagnosticField() {
           <path d="M46 64H594M46 180H594M46 296H594" />
           <path d="M160 40V320M320 40V320M480 40V320" />
         </g>
+        <text className="df-caption" x="70" y="44">Сигналы</text>
+        <text className="df-caption df-caption-focus" x="282" y="44">Фокус</text>
+        <text className="df-caption df-caption-output" x="502" y="44">Ограничение</text>
         <g className="df-inputs">
           <path className="df-route df-route-a" d="M70 82C178 84 238 112 304 171" />
           <path className="df-route df-route-b" d="M70 180C177 180 237 180 304 180" />
@@ -40,7 +44,6 @@ function DiagnosticField() {
           <circle className="df-focus-halo" cx="320" cy="180" r="58" />
           <circle className="df-focus-ring" cx="320" cy="180" r="30" />
           <circle className="df-focus-core" cx="320" cy="180" r="9" />
-          <path className="df-scan" d="M320 112A68 68 0 0 1 388 180" />
         </g>
         <g className="df-points">
           <circle cx="70" cy="82" r="5" />
@@ -109,9 +112,13 @@ export default function ArtDirection2026() {
       </section>
 
       <section className="ad26-brief">
-        <div className="ad26-brief-number">6</div>
-        <div className="ad26-brief-copy"><p className="ad26-kicker">Decision Brief · без звонка</p><h2>6 вопросов, чтобы понять,<br/>что проверить первым.</h2><p>Главный вопрос, недостающие факты, первый шаг и что пока рано делать. Результат можно сохранить в PDF.</p><div className="ad26-brief-output"><span>На выходе</span><strong>Вопрос → факты → первая проверка → следующий шаг</strong></div></div>
-        <a className="ad26-primary ad26-primary-dark" href="/diagnostic">Пройти 6 вопросов <span>↗</span></a>
+        <div className="ad26-brief-copy"><p className="ad26-kicker">Decision Brief · без звонка</p><h2>6 вопросов, чтобы понять,<br/>что проверить первым.</h2><p>Главный вопрос, недостающие факты, первый шаг и что пока рано делать. Результат можно сохранить в PDF.</p><div className="ad26-brief-output"><span>На выходе</span><strong>Вопрос → факты → первая проверка → следующий шаг</strong></div><a className="ad26-primary ad26-primary-dark" href="/diagnostic">Пройти 6 вопросов <span>↗</span></a></div>
+        <div className="ad26-brief-product" aria-label="Пример структуры Decision Brief">
+          <div className="ad26-brief-row"><span>Вопрос</span><strong>Что на самом деле ограничивает рост?</strong></div>
+          <div className="ad26-brief-row"><span>Факты</span><strong>Что уже подтверждено, а чего пока не знаем</strong></div>
+          <div className="ad26-brief-row"><span>Проверка</span><strong>Какой тест даст новую информацию быстрее всего</strong></div>
+          <div className="ad26-brief-row"><span>Шаг</span><strong>Что делать следующим — и что пока не делать</strong></div>
+        </div>
       </section>
 
       <section className="ad26-case" id="case">
