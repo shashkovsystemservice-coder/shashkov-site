@@ -18,7 +18,6 @@ const sections: Array<[string, string]> = [
 const progressMap: Array<[string, string]> = [
   [".ad26-hero", "--scene-progress"],
   [".ad26-recognition", "--signal-progress"],
-  [".ad26-statement", "--diagnosis-progress"],
   [".ad26-method", "--method-progress"],
   [".ad26-brief", "--brief-progress"],
   [".ad26-case", "--case-progress"],
@@ -79,7 +78,20 @@ export default function ArtDirectionMotion() {
       cleanup.push(() => trigger.kill());
     });
 
-    // Active evidence states change emphasis only; no geometry changes.
+    // Diagnosis is deliberately different: one viewport composition evolves over a long scroll span.
+    const diagnosis = document.querySelector<HTMLElement>(".ad26-statement");
+    if (diagnosis) {
+      const diagnosisTrigger = ScrollTrigger.create({
+        trigger: diagnosis,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+        onUpdate: (self) => root.style.setProperty("--diagnosis-progress", self.progress.toFixed(4)),
+      });
+      cleanup.push(() => diagnosisTrigger.kill());
+    }
+
+    // Evidence states alter emphasis only. They never alter text geometry.
     [".ad26-situations article", ".ad26-signature article", ".ad26-case-flow article"].forEach((selector) => {
       gsap.utils.toArray<HTMLElement>(selector).forEach((item) => {
         const trigger = ScrollTrigger.create({
@@ -95,7 +107,6 @@ export default function ArtDirectionMotion() {
     if (!reducedMotion) {
       const mm = gsap.matchMedia();
 
-      // Desktop: restrained editorial motion. Text can breathe, but never snaps between states.
       mm.add("(min-width: 901px)", () => {
         const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
         intro
@@ -140,8 +151,7 @@ export default function ArtDirectionMotion() {
         });
       });
 
-      // Mobile: the page is animated, but the reading geometry is sacred.
-      // Motion lives in imagery, the focus lens, field and progress-driven surfaces.
+      // Mobile keeps native scrolling. Only image/focus environment moves; copy remains fixed in layout.
       mm.add("(max-width: 900px)", () => {
         if (portrait && lens) {
           const heroTrigger = ScrollTrigger.create({
@@ -158,17 +168,6 @@ export default function ArtDirectionMotion() {
           cleanup.push(() => heroTrigger.kill());
         }
 
-        // A single calm reveal on the key conceptual transition.
-        gsap.fromTo(".ad26-reframe-assumption i",
-          { scaleX: 0, transformOrigin: "left center" },
-          {
-            scaleX: 1,
-            ease: "none",
-            scrollTrigger: { trigger: ".ad26-reframe", start: "top 72%", end: "bottom 42%", scrub: 0.5 },
-          }
-        );
-
-        // Photos carry motion; text does not.
         gsap.to(".ad26-about-portrait img", {
           scale: 1.04,
           ease: "none",
