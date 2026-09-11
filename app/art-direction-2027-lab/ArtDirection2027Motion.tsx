@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "./production-map.css";
 
 export default function ArtDirection2027Motion() {
   useEffect(() => {
@@ -37,13 +38,7 @@ export default function ArtDirection2027Motion() {
       }
 
       gsap.utils.toArray<HTMLElement>(".ad27-situation-list article").forEach((el, i) => {
-        gsap.from(el, {
-          y: 18,
-          opacity: 0,
-          duration: .65,
-          delay: i * .02,
-          scrollTrigger: { trigger: el, start: "top 84%" },
-        });
+        gsap.from(el, { y: 18, opacity: 0, duration: .65, delay: i * .02, scrollTrigger: { trigger: el, start: "top 84%" } });
       });
 
       gsap.from(".ad27-brief-lines", {
@@ -71,12 +66,7 @@ export default function ArtDirection2027Motion() {
     mm.add("(max-width: 900px)", () => {
       gsap.from(".ad27-hero h1", { opacity: 0, y: 16, duration: .65, ease: "power2.out" });
       gsap.utils.toArray<HTMLElement>(".ad27-situation-list article,.ad27-approach-steps article").forEach(el => {
-        gsap.from(el, {
-          opacity: 0,
-          y: 12,
-          duration: .45,
-          scrollTrigger: { trigger: el, start: "top 88%" },
-        });
+        gsap.from(el, { opacity: 0, y: 12, duration: .45, scrollTrigger: { trigger: el, start: "top 88%" } });
       });
       gsap.from(".ad27-case-lead h2", {
         clipPath: "inset(0 0 100% 0)",
