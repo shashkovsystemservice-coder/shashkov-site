@@ -34,13 +34,10 @@ export default function ArtDirectionMotion() {
     const nav = document.querySelector<HTMLElement>(".ad26-nav");
     const rail = gsap.utils.toArray<HTMLElement>(".ad26-progress-rail span");
     const portrait = document.querySelector<HTMLElement>(".ad26-portrait");
-    const lens = document.querySelector<HTMLElement>(".ad26-lens");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
     if (!root) return;
 
     const cleanup: Array<() => void> = [];
-
     const onScroll = () => nav?.classList.toggle("is-scrolled", window.scrollY > 36);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -78,7 +75,6 @@ export default function ArtDirectionMotion() {
       cleanup.push(() => trigger.kill());
     });
 
-    // Diagnosis is deliberately different: one viewport composition evolves over a long scroll span.
     const diagnosis = document.querySelector<HTMLElement>(".ad26-statement");
     if (diagnosis) {
       const diagnosisTrigger = ScrollTrigger.create({
@@ -91,47 +87,56 @@ export default function ArtDirectionMotion() {
       cleanup.push(() => diagnosisTrigger.kill());
     }
 
-    // Evidence states alter emphasis only. They never alter text geometry.
-    [".ad26-situations article", ".ad26-signature article", ".ad26-case-flow article"].forEach((selector) => {
-      gsap.utils.toArray<HTMLElement>(selector).forEach((item) => {
-        const trigger = ScrollTrigger.create({
-          trigger: item,
-          start: "top 68%",
-          end: "bottom 34%",
-          onToggle: (self) => item.classList.toggle("is-active", self.isActive),
-        });
-        cleanup.push(() => trigger.kill());
-      });
-    });
-
     if (!reducedMotion) {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 901px)", () => {
         const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
         intro
-          .from(".ad26-nav", { y: -16, opacity: 0, duration: 0.45 })
-          .from(".ad26-hero .ad26-kicker", { y: 10, opacity: 0, duration: 0.35 }, "-=.14")
-          .from(".ad26-hero h1", { y: 18, opacity: 0, duration: 0.62 }, "-=.16")
-          .from(".ad26-hero-bottom", { y: 12, opacity: 0, duration: 0.5 }, "-=.28")
-          .from(".ad26-hero-proof", { y: 8, opacity: 0, duration: 0.38 }, "-=.23")
-          .from(".ad26-portrait", { opacity: 0, clipPath: "polygon(12% 8%,94% 0,100% 88%,5% 96%,0 14%)", duration: 0.85 }, 0.1);
+          .from(".ad26-nav", { y: -18, opacity: 0, duration: 0.5 })
+          .from(".ad26-hero .ad26-kicker", { clipPath: "inset(0 0 100% 0)", duration: 0.42 }, "-=.12")
+          .from(".ad26-hero h1", { clipPath: "inset(0 0 100% 0)", duration: 0.75 }, "-=.18")
+          .from(".ad26-hero-bottom", { clipPath: "inset(0 0 100% 0)", duration: 0.62 }, "-=.34")
+          .from(".ad26-hero-proof", { opacity: 0, duration: 0.46 }, "-=.2")
+          .from(".ad26-portrait", { opacity: 0, clipPath: "inset(9% 13% 13% 9% round 0px)", duration: 0.95 }, 0.08);
 
-        gsap.from(".ad26-brief-product", {
-          opacity: 0,
-          x: 22,
-          duration: 0.7,
-          ease: "power3.out",
-          scrollTrigger: { trigger: ".ad26-brief", start: "top 78%", toggleActions: "play none none reverse" },
+        gsap.to(".ad26-portrait", {
+          clipPath: "inset(0% 0% 0% 0% round 0px)",
+          ease: "none",
+          scrollTrigger: { trigger: ".ad26-hero", start: "35% top", end: "bottom top", scrub: 0.8 },
         });
 
-        gsap.from(".ad26-about-portrait", {
-          opacity: 0,
-          clipPath: "polygon(0 8%,88% 0,100% 100%,8% 94%)",
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: { trigger: ".ad26-about", start: "top 74%" },
+        gsap.utils.toArray<HTMLElement>(".ad26-situations article").forEach((item) => {
+          gsap.fromTo(item,
+            { clipPath: "inset(0 0 100% 0)", opacity: 0.22 },
+            { clipPath: "inset(0 0 0% 0)", opacity: 1, ease: "none", scrollTrigger: { trigger: item, start: "top 88%", end: "top 58%", scrub: 0.55 } }
+          );
         });
+
+        gsap.utils.toArray<HTMLElement>(".ad26-signature article").forEach((item, i) => {
+          gsap.fromTo(item,
+            { clipPath: "inset(0 0 100% 0)", opacity: 0.18 },
+            { clipPath: "inset(0 0 0% 0)", opacity: 1, ease: "none", scrollTrigger: { trigger: item, start: `top ${88 - i * 3}%`, end: "top 56%", scrub: 0.6 } }
+          );
+        });
+
+        gsap.fromTo(".ad26-brief-product",
+          { clipPath: "inset(0 0 100% 0)", opacity: 0.28 },
+          { clipPath: "inset(0 0 0% 0)", opacity: 1, ease: "none", scrollTrigger: { trigger: ".ad26-brief", start: "top 78%", end: "top 30%", scrub: 0.7 } }
+        );
+
+        const caseTl = gsap.timeline({
+          scrollTrigger: { trigger: ".ad26-case", start: "top 78%", end: "bottom 28%", scrub: 0.8 },
+        });
+        caseTl
+          .fromTo(".ad26-case-title", { clipPath: "inset(0 0 100% 0)", opacity: 0.18 }, { clipPath: "inset(0 0 0% 0)", opacity: 1, duration: 0.28 })
+          .fromTo(".ad26-case-flow article", { clipPath: "inset(0 0 100% 0)", opacity: 0.12 }, { clipPath: "inset(0 0 0% 0)", opacity: 1, stagger: 0.12, duration: 0.38 }, "-=.02")
+          .fromTo(".ad26-case blockquote", { clipPath: "inset(0 0 100% 0)", opacity: 0 }, { clipPath: "inset(0 0 0% 0)", opacity: 1, duration: 0.24 });
+
+        gsap.fromTo(".ad26-about-portrait",
+          { clipPath: "inset(10% 12% 10% 8%)", opacity: 0.35 },
+          { clipPath: "inset(0% 0% 0% 0%)", opacity: 1, ease: "none", scrollTrigger: { trigger: ".ad26-about", start: "top 82%", end: "top 36%", scrub: 0.75 } }
+        );
 
         const buttons = gsap.utils.toArray<HTMLElement>(".ad26-primary, .ad26-nav-cta");
         buttons.forEach((button) => {
@@ -151,47 +156,67 @@ export default function ArtDirectionMotion() {
         });
       });
 
-      // Mobile keeps native scrolling. Only image/focus environment moves; copy remains fixed in layout.
       mm.add("(max-width: 900px)", () => {
-        if (portrait && lens) {
-          const heroTrigger = ScrollTrigger.create({
-            trigger: ".ad26-hero",
-            start: "top top",
-            end: "bottom top",
-            scrub: 0.55,
-            onUpdate: (self) => {
-              const p = self.progress;
-              lens.style.left = `${60 - p * 8}%`;
-              lens.style.top = `${35 + p * 15}%`;
-            },
-          });
-          cleanup.push(() => heroTrigger.kill());
+        /* Mobile uses native scroll. Nothing moves the reading geometry; motion is mask-, image- and surface-based. */
+        if (portrait) {
+          gsap.fromTo(portrait,
+            { clipPath: "inset(10% 6% 12% 6%)", opacity: 0.42 },
+            { clipPath: "inset(0% 0% 0% 0%)", opacity: 1, ease: "none", scrollTrigger: { trigger: portrait, start: "top 92%", end: "top 48%", scrub: 0.7 } }
+          );
+          gsap.fromTo(".ad26-portrait img",
+            { scale: 1.12 },
+            { scale: 1.015, ease: "none", scrollTrigger: { trigger: portrait, start: "top 92%", end: "bottom 20%", scrub: 0.9 } }
+          );
         }
 
-        gsap.to(".ad26-about-portrait img", {
-          scale: 1.04,
-          ease: "none",
-          scrollTrigger: { trigger: ".ad26-about", start: "top bottom", end: "bottom top", scrub: 0.8 },
+        gsap.utils.toArray<HTMLElement>(".ad26-situations article").forEach((item) => {
+          gsap.fromTo(item,
+            { clipPath: "inset(0 0 100% 0)", opacity: 0.18 },
+            { clipPath: "inset(0 0 0% 0)", opacity: 1, ease: "none", scrollTrigger: { trigger: item, start: "top 92%", end: "top 62%", scrub: 0.65 } }
+          );
         });
+
+        gsap.utils.toArray<HTMLElement>(".ad26-signature article").forEach((item) => {
+          gsap.fromTo(item,
+            { clipPath: "inset(0 0 100% 0)", opacity: 0.16 },
+            { clipPath: "inset(0 0 0% 0)", opacity: 1, ease: "none", scrollTrigger: { trigger: item, start: "top 92%", end: "top 62%", scrub: 0.65 } }
+          );
+        });
+
+        gsap.fromTo(".ad26-brief-product",
+          { clipPath: "inset(0 0 100% 0)", opacity: 0.2 },
+          { clipPath: "inset(0 0 0% 0)", opacity: 1, ease: "none", scrollTrigger: { trigger: ".ad26-brief-product", start: "top 92%", end: "top 48%", scrub: 0.75 } }
+        );
+        gsap.utils.toArray<HTMLElement>(".ad26-brief-row").forEach((row, i) => {
+          gsap.fromTo(row,
+            { clipPath: "inset(0 0 100% 0)", opacity: 0.08 },
+            { clipPath: "inset(0 0 0% 0)", opacity: 1, ease: "none", scrollTrigger: { trigger: row, start: `top ${94 - i}%`, end: "top 66%", scrub: 0.55 } }
+          );
+        });
+
+        gsap.fromTo(".ad26-case-title",
+          { clipPath: "inset(0 0 100% 0)", opacity: 0.18 },
+          { clipPath: "inset(0 0 0% 0)", opacity: 1, ease: "none", scrollTrigger: { trigger: ".ad26-case-title", start: "top 92%", end: "top 58%", scrub: 0.7 } }
+        );
+        gsap.utils.toArray<HTMLElement>(".ad26-case-flow article").forEach((item) => {
+          gsap.fromTo(item,
+            { clipPath: "inset(0 0 100% 0)", opacity: 0.12 },
+            { clipPath: "inset(0 0 0% 0)", opacity: 1, ease: "none", scrollTrigger: { trigger: item, start: "top 92%", end: "top 61%", scrub: 0.65 } }
+          );
+        });
+
+        gsap.fromTo(".ad26-about-portrait",
+          { clipPath: "inset(8% 7% 10% 7%)", opacity: 0.35 },
+          { clipPath: "inset(0% 0% 0% 0%)", opacity: 1, ease: "none", scrollTrigger: { trigger: ".ad26-about-portrait", start: "top 92%", end: "top 48%", scrub: 0.8 } }
+        );
+        gsap.fromTo(".ad26-about-portrait img",
+          { scale: 1.10 },
+          { scale: 1.02, ease: "none", scrollTrigger: { trigger: ".ad26-about", start: "top bottom", end: "bottom top", scrub: 0.9 } }
+        );
       });
 
       cleanup.push(() => mm.revert());
     }
-
-    const onPortraitMove = (event: PointerEvent) => {
-      if (!portrait || !lens || window.matchMedia("(pointer: coarse)").matches) return;
-      const rect = portrait.getBoundingClientRect();
-      const x = Math.max(14, Math.min(86, ((event.clientX - rect.left) / rect.width) * 100));
-      const y = Math.max(12, Math.min(88, ((event.clientY - rect.top) / rect.height) * 100));
-      gsap.to(lens, { left: `${x}%`, top: `${y}%`, duration: 0.4, ease: "power3.out", overwrite: true });
-    };
-    const onPortraitLeave = () => lens && gsap.to(lens, { left: "61%", top: "36%", duration: 0.65, ease: "power3.out" });
-    portrait?.addEventListener("pointermove", onPortraitMove);
-    portrait?.addEventListener("pointerleave", onPortraitLeave);
-    cleanup.push(() => {
-      portrait?.removeEventListener("pointermove", onPortraitMove);
-      portrait?.removeEventListener("pointerleave", onPortraitLeave);
-    });
 
     root.dataset.section = "00 · Ввод";
     rail[0]?.classList.add("is-active");
