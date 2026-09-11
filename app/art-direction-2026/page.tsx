@@ -12,6 +12,7 @@ import "./award-system.css";
 import "./v3-system.css";
 import "./v6-mobile-stability.css";
 import "./v7-flow-qa.css";
+import "./v7-flow-polish.css";
 
 const situations = [
   ["01", "Продажи перестали расти", "Команда предлагает больше рекламы — но непонятно, в ней ли проблема"],
