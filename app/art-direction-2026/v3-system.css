@@ -1,3 +1,5 @@
+@import "./v4-signature.css";
+
 /* V3: diagnostic-field art direction. One visual world, fewer card-like objects. */
 .ad26{position:relative;isolation:isolate;background:#f3f5f6}
 .ad26>*:not(.ad26-diagnostic-field):not(.ad26-constraint){position:relative;z-index:2}
@@ -7,7 +9,6 @@
 .ad26[data-section*="Обо мне"] .ad26-diagnostic-field{opacity:.045}
 .ad26-constraint{opacity:.16!important}
 
-/* Hero behaves as a field, not two boxes. */
 @media(min-width:901px){
   .ad26-hero{max-width:none!important;margin:0!important;grid-template-columns:minmax(0,1.08fr) minmax(440px,.92fr)!important;min-height:calc(100svh - 68px)!important;background:linear-gradient(90deg,rgba(246,248,249,.96) 0 57%,rgba(238,242,245,.79) 57% 100%)!important}
   .ad26-hero-copy{padding-left:max(5.2vw,56px)!important;padding-right:clamp(34px,4vw,70px)!important}
@@ -18,7 +19,6 @@
   .ad26-recognition{margin-top:-11svh!important;padding-top:23svh!important}
 }
 
-/* Recognition feels like observations emerging from one environment. */
 .ad26-recognition{background:rgba(247,249,250,.88)!important;backdrop-filter:blur(1px)}
 .ad26-situations article{background:transparent!important}
 .ad26-situations article.is-active{background:transparent!important}
@@ -29,7 +29,6 @@
   .ad26-situations article:after{display:none!important}
 }
 
-/* Dark diagnosis is the key conceptual scene. */
 .ad26-statement{background:linear-gradient(180deg,rgba(9,17,27,.97),rgba(12,22,34,.985))!important;overflow:hidden}
 .ad26-statement-copy,.ad26-reframe{z-index:3}
 .ad26-reframe{border-left:0!important;padding-left:0!important}
@@ -39,7 +38,6 @@
 .ad26-reframe-shift span{font-size:0}
 .ad26-reframe-shift span:after{content:"RE-FRAME";font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.62}
 
-/* Method turns into three states, not three slides. */
 .ad26-method{background:rgba(243,246,248,.91)!important}
 @media(min-width:901px){
   .ad26-signature article{opacity:.30;transform:translateX(0);transition:opacity .35s ease,transform .45s cubic-bezier(.2,.8,.2,1)!important}
@@ -48,7 +46,6 @@
   .ad26-signature article:not(.is-active) h3{color:rgba(15,20,27,.52)}
 }
 
-/* Decision Brief: remove card-on-card artifact and make it an interface surface. */
 .ad26-brief{background:rgba(255,255,255,.94)!important;overflow:hidden}
 .ad26-brief-product{transform:none!important;box-shadow:none!important;border:1px solid rgba(15,20,27,.18)!important;background:rgba(255,255,255,.84)!important;backdrop-filter:blur(18px);isolation:isolate;contain:paint}
 .ad26-brief-product:after{display:none!important}
@@ -61,7 +58,6 @@
   .ad26-brief-product{min-height:610px;padding:44px 48px!important}
 }
 
-/* Case: transformation, not report layout. */
 .ad26-case{overflow:hidden;background:linear-gradient(180deg,rgba(11,21,32,.985),rgba(13,24,37,.99))!important}
 .ad26-case-title>span{font-size:15px!important;text-transform:uppercase;letter-spacing:.12em}
 .ad26-case-title h2{font-size:clamp(54px,5.2vw,84px)!important;line-height:.92!important;letter-spacing:-.058em!important}
@@ -71,7 +67,6 @@
   .ad26-case blockquote{max-width:520px}
 }
 
-/* About is a quiet reset. */
 .ad26-about{background:#f7f8f8!important}
 .ad26-about-copy{backdrop-filter:none!important;background:transparent!important}
 @media(min-width:901px){
@@ -79,12 +74,10 @@
   .ad26-about-portrait{min-height:82svh!important;clip-path:polygon(0 0,100% 0,94% 100%,0 100%)}
 }
 
-/* CTA resolves the field into a precise action. */
 .ad26-contact{background:linear-gradient(180deg,#0a1420,#0b1724)!important}
 .ad26-contact h2{font-weight:520!important;letter-spacing:-.055em!important}
 .ad26-contact-actions:before{width:42px!important;left:-58px!important}
 
-/* Mobile is independently art-directed and avoids desktop artefacts. */
 @media(max-width:900px){
   .ad26-diagnostic-field,.ad26-constraint,.ad26-lens{display:none!important}
   .ad26-nav{min-height:72px!important;padding:10px 18px!important}
