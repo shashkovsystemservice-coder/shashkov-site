@@ -1,0 +1,85 @@
+/* V7: continuity polish. Remove section curtains, preserve one continuous reading flow. */
+
+@media(max-width:900px){
+  .ad26{background:#f4f6f7!important}
+  .ad26 section{margin:0!important;box-shadow:none!important;border-radius:0!important}
+  .ad26-hero,.ad26-recognition,.ad26-method,.ad26-brief,.ad26-about{background:#f4f6f7!important}
+  .ad26-statement,.ad26-case,.ad26-contact{background:#0b1420!important}
+
+  /* Remove curtain-like section edges introduced by earlier passes. */
+  .ad26-hero:after,.ad26-recognition:before,.ad26-recognition:after,.ad26-brief:before,.ad26-brief:after,.ad26-about:before,.ad26-about:after{display:none!important}
+  .ad26-statement,.ad26-case,.ad26-contact{clip-path:none!important;mask:none!important;-webkit-mask:none!important}
+  .ad26-statement{border-top:0!important}
+
+  /* Keep the signal map decorative; it must never consume layout space. */
+  .ad26-signal-map{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;pointer-events:none!important;opacity:.32!important;z-index:1!important}
+  .ad26-hero-copy,.ad26-portrait{position:relative!important;z-index:4!important}
+  .ad26-hero-copy{padding-top:42px!important}
+
+  /* Make scene boundaries intentional rather than gradient separators. */
+  .ad26-recognition,.ad26-method,.ad26-brief,.ad26-about{border-top:1px solid rgba(14,20,28,.055)!important}
+  .ad26-statement,.ad26-case,.ad26-contact{border-top:1px solid rgba(255,255,255,.055)!important}
+
+  /* Give dark scenes clean readable contrast. */
+  .ad26-statement,.ad26-case,.ad26-contact,
+  .ad26-statement h2,.ad26-case h2,.ad26-case h3,.ad26-case blockquote,.ad26-contact h2{color:#f7f9fa!important}
+  .ad26-statement p,.ad26-case p,.ad26-contact>p,.ad26-case blockquote small{color:#c3ced6!important}
+  .ad26-statement-label,.ad26-case .ad26-section-label,.ad26-contact .ad26-kicker{color:#91a6b6!important}
+
+  /* Reduce decorative overlays so typography remains the visual authority. */
+  .ad26-statement:after,.ad26-case:after,.ad26-contact:after{opacity:.22!important}
+  .ad26-method:after{opacity:.20!important}
+  .ad26-diagnostic-field{opacity:.085!important}
+  .ad26-constraint{opacity:.08!important}
+
+  /* Prevent animated inline states from producing white/blank curtains on Safari. */
+  .ad26-statement,.ad26-brief,.ad26-case,.ad26-about,.ad26-contact{
+    transform:none!important;
+    filter:none!important;
+  }
+  .ad26-statement-copy,.ad26-reframe,.ad26-brief-copy,.ad26-brief-product,.ad26-case-title,.ad26-case-flow,.ad26-case blockquote,.ad26-about-grid,.ad26-contact>*{
+    clip-path:none!important;
+    -webkit-clip-path:none!important;
+  }
+
+  /* Consistent cadence between major thoughts. */
+  .ad26-recognition,.ad26-method,.ad26-brief,.ad26-about{padding-top:76px!important;padding-bottom:84px!important}
+  .ad26-statement,.ad26-case{padding-top:82px!important;padding-bottom:90px!important}
+  .ad26-contact{padding-top:84px!important}
+}
+
+@media(max-width:430px){
+  .ad26-hero-copy{padding-top:34px!important}
+  .ad26-recognition,.ad26-method,.ad26-brief,.ad26-about{padding-top:68px!important;padding-bottom:76px!important}
+  .ad26-statement,.ad26-case{padding-top:74px!important;padding-bottom:82px!important}
+}
+
+/* Browser print is a separate editorial layout: no web-only atmosphere or forced trailing page. */
+@media print{
+  @page{size:A4;margin:10mm}
+  html,body,.ad26{background:#fff!important;height:auto!important;min-height:0!important;overflow:visible!important}
+  .ad26-nav,.ad26-progress-rail,.ad26-diagnostic-field,.ad26-constraint,.ad26-signal-map,.ad26-lens{display:none!important}
+  .ad26 section,.ad26-hero,.ad26-recognition,.ad26-statement,.ad26-method,.ad26-brief,.ad26-case,.ad26-about,.ad26-contact{
+    display:block!important;
+    position:relative!important;
+    min-height:0!important;
+    height:auto!important;
+    margin:0!important;
+    padding:8mm 0!important;
+    background:#fff!important;
+    color:#111!important;
+    box-shadow:none!important;
+    border:0!important;
+    clip-path:none!important;
+    -webkit-clip-path:none!important;
+    break-after:auto!important;
+    page-break-after:auto!important;
+  }
+  .ad26 section:before,.ad26 section:after,.ad26-brief-product:after,.ad26-about-portrait:after{display:none!important}
+  .ad26 h1,.ad26 h2,.ad26 h3,.ad26 p,.ad26 span,.ad26 strong,.ad26 small,.ad26 blockquote{color:#111!important;text-shadow:none!important}
+  .ad26-portrait,.ad26-about-portrait{position:relative!important;min-height:72mm!important;height:72mm!important;overflow:hidden!important;box-shadow:none!important;break-inside:avoid!important}
+  .ad26-situations article,.ad26-signature article,.ad26-case-flow article,.ad26-brief-product,.ad26-about-grid,.ad26-contact footer{break-inside:avoid!important;page-break-inside:avoid!important}
+  .ad26-statement,.ad26-brief,.ad26-case,.ad26-about,.ad26-contact{break-before:auto!important;page-break-before:auto!important}
+  .ad26-contact{break-after:auto!important;page-break-after:auto!important;padding-bottom:0!important}
+  .ad26-contact footer{margin-bottom:0!important;padding-bottom:0!important}
+}
