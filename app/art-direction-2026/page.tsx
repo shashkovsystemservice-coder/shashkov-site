@@ -20,24 +20,32 @@ const steps = [
 function DiagnosticField() {
   return (
     <div className="ad26-diagnostic-field" aria-hidden="true">
-      <svg viewBox="0 0 560 560" role="presentation">
-        <g className="df-grid">
-          <path d="M40 110H520M40 220H520M40 330H520M40 440H520" />
-          <path d="M120 40V520M240 40V520M360 40V520M480 40V520" />
+      <svg viewBox="0 0 640 360" role="presentation">
+        <g className="df-frame">
+          <path d="M46 64H594M46 180H594M46 296H594" />
+          <path d="M160 40V320M320 40V320M480 40V320" />
         </g>
-        <g className="df-routes">
-          <path className="df-route df-route-a" d="M78 116C167 154 204 190 258 250S353 337 454 410" />
-          <path className="df-route df-route-b" d="M88 424C172 391 223 357 274 301S357 226 474 134" />
-          <path className="df-route df-route-c" d="M118 270C194 255 244 262 284 286S367 326 438 314" />
+        <g className="df-inputs">
+          <path className="df-route df-route-a" d="M70 82C178 84 238 112 304 171" />
+          <path className="df-route df-route-b" d="M70 180C177 180 237 180 304 180" />
+          <path className="df-route df-route-c" d="M70 278C177 274 238 245 304 189" />
         </g>
-        <g className="df-nodes">
-          <circle className="df-node df-node-muted" cx="78" cy="116" r="7" />
-          <circle className="df-node df-node-muted" cx="88" cy="424" r="7" />
-          <circle className="df-node df-node-muted" cx="118" cy="270" r="7" />
-          <circle className="df-node df-node-muted" cx="474" cy="134" r="7" />
-          <circle className="df-node df-node-muted" cx="454" cy="410" r="7" />
-          <circle className="df-node df-node-focus" cx="284" cy="286" r="13" />
-          <circle className="df-node-ring" cx="284" cy="286" r="34" />
+        <g className="df-output">
+          <path className="df-route df-route-main" d="M336 180C414 180 485 180 574 180" />
+          <path className="df-route df-route-ghost" d="M336 180C410 158 476 116 554 92" />
+          <path className="df-route df-route-ghost" d="M336 180C410 202 476 244 554 268" />
+        </g>
+        <g className="df-aperture">
+          <circle className="df-focus-halo" cx="320" cy="180" r="58" />
+          <circle className="df-focus-ring" cx="320" cy="180" r="30" />
+          <circle className="df-focus-core" cx="320" cy="180" r="9" />
+          <path className="df-scan" d="M320 112A68 68 0 0 1 388 180" />
+        </g>
+        <g className="df-points">
+          <circle cx="70" cy="82" r="5" />
+          <circle cx="70" cy="180" r="5" />
+          <circle cx="70" cy="278" r="5" />
+          <circle className="df-point-output" cx="574" cy="180" r="6" />
         </g>
       </svg>
     </div>
