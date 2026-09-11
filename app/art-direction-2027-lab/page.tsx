@@ -5,6 +5,7 @@ import "./production-fidelity-pass.css";
 import "./worldclass-polish.css";
 import "./mobile-qa-fix.css";
 import "./brand-proof-pass.css";
+import "./russian-studio-art-pass.css";
 
 const situations = [
   "Продажи перестали расти. Команда предлагает больше рекламы — но непонятно, в ней ли проблема",
