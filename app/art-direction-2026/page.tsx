@@ -3,6 +3,7 @@ import ArtDirectionMotion from "./ArtDirectionMotion";
 import "./art-direction.css";
 import "./high-craft-pass.css";
 import "./experience-2026.css";
+import "./refinement-pass.css";
 
 const situations = [
   ["01", "Продажи перестали расти", "Команда предлагает больше рекламы — но непонятно, в ней ли проблема"],
