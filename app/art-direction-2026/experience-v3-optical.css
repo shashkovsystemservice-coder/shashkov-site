@@ -35,7 +35,7 @@
 .ad26-situations{padding-left:0!important}
 .ad26-situations article{padding-right:0!important;transform:none!important}
 
-/* DIAGNOSIS — one pinned optical environment. */
+/* DIAGNOSIS — one pinned optical environment on larger screens. */
 .ad26-statement{min-height:225svh!important;background:#090d13!important}
 .ad26-statement-stage{
   position:sticky!important;top:0;height:100svh!important;overflow:hidden!important;
@@ -105,22 +105,69 @@
 
 @media (max-width:900px){
   .ad26-hero{gap:12px!important}
-  .ad26-statement{min-height:210svh!important}
-  .ad26-statement-stage{top:58px!important;height:calc(100svh - 58px)!important;padding:30px 20px 24px!important}
-  .ad26-statement-stage::before{inset:-12% -68%;transform:translate3d(calc(-24vw + var(--diagnosis-progress) * 24vw),calc(7vh - var(--diagnosis-progress) * 7vh),0) skewX(calc(-7deg + var(--diagnosis-progress) * 7deg));opacity:calc(.44 + var(--diagnosis-progress) * .24)}
-  .ad26-statement-copy{max-width:100%!important}
+
+  /* Mobile diagnosis is not a long pinned void. It remains a real scene, but scrolls as one composed block. */
+  .ad26-statement{
+    min-height:auto!important;
+    padding:0!important;
+    background:#090d13!important;
+  }
+  .ad26-statement-stage{
+    position:relative!important;
+    top:auto!important;
+    height:auto!important;
+    min-height:calc(100svh - 58px)!important;
+    padding:56px 20px 48px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:space-between!important;
+    gap:42px!important;
+    overflow:hidden!important;
+  }
+  .ad26-statement-stage::before{
+    inset:-18% -74%;
+    transform:translate3d(calc(-18vw + var(--diagnosis-progress) * 36vw),calc(4vh - var(--diagnosis-progress) * 8vh),0) skewX(calc(-6deg + var(--diagnosis-progress) * 6deg));
+    opacity:calc(.34 + var(--diagnosis-progress) * .22);
+  }
+  .ad26-statement-copy{
+    max-width:100%!important;
+    opacity:1!important;
+    filter:none!important;
+  }
   .ad26-statement h2{font-size:clamp(33px,8.4vw,45px)!important;line-height:1.01!important}
-  .ad26-statement-foot{margin-top:17px!important;padding-top:12px!important}
+  .ad26-statement-foot{
+    margin-top:22px!important;
+    padding-top:16px!important;
+    opacity:.82!important;
+  }
   .ad26-statement-foot p{font-size:12.5px!important}
   .ad26-rule{font-size:14.5px!important}
-  .ad26-optical-plane{left:-72%;width:244%;height:34%;filter:blur(calc(28px - var(--diagnosis-progress) * 20px))}
-  .ad26-optical-plane-a{top:29%}.ad26-optical-plane-b{top:41%}.ad26-optical-plane-c{top:52%;height:24%}
-  .ad26-optical-focus{top:50%;width:132vw;height:66vw}
-  .ad26-optical-sheen{top:50%}
-  .ad26-reframe{grid-template-columns:1fr!important;gap:17px!important;margin-top:auto!important;padding-top:15px!important}
+
+  .ad26-optical-field{opacity:.72!important}
+  .ad26-optical-plane{left:-72%;width:244%;height:34%;filter:blur(calc(28px - var(--diagnosis-progress) * 20px));opacity:calc(.28 + var(--diagnosis-progress) * .12)}
+  .ad26-optical-plane-a{top:32%}.ad26-optical-plane-b{top:43%}.ad26-optical-plane-c{top:54%;height:22%}
+  .ad26-optical-focus{top:49%;width:132vw;height:66vw;opacity:calc(.18 + var(--diagnosis-progress) * .32)}
+  .ad26-optical-sheen{top:50%;opacity:calc(.12 + var(--diagnosis-progress) * .24)}
+
+  .ad26-reframe{
+    grid-template-columns:1fr!important;
+    gap:18px!important;
+    margin-top:0!important;
+    padding-top:18px!important;
+    border-top:1px solid rgba(255,255,255,.14)!important;
+  }
   .ad26-reframe span{font-size:8px!important;margin-bottom:7px!important}
   .ad26-reframe strong{font-size:clamp(22px,5.8vw,28px)!important}
-  .ad26-reframe-assumption{max-width:88%}.ad26-reframe-question{max-width:100%}
+  .ad26-reframe-assumption{
+    max-width:88%;
+    opacity:calc(.74 - var(--diagnosis-progress) * .18)!important;
+    filter:blur(calc(var(--diagnosis-progress) * .8px))!important;
+  }
+  .ad26-reframe-question{
+    max-width:100%;
+    opacity:calc(.62 + var(--diagnosis-progress) * .38)!important;
+    filter:blur(calc((1 - var(--diagnosis-progress)) * 1.2px))!important;
+  }
   .ad26-statement-copy,.ad26-reframe,.ad26-reframe-assumption,.ad26-reframe-question{transform:none!important;translate:none!important;scale:1!important}
 
   .ad26-brief{padding-bottom:72px!important}
