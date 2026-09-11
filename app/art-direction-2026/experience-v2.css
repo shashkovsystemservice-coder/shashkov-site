@@ -44,47 +44,47 @@
 .ad26-portrait img{transform:scale(1.035);will-change:transform}
 .ad26-lens{position:absolute;left:61%;top:36%;width:180px;height:180px;border-radius:50%;border:1px solid rgba(255,255,255,.78);box-shadow:0 0 0 999px rgba(11,20,30,.08),0 16px 48px rgba(0,0,0,.13);backdrop-filter:contrast(1.08) saturate(1.08);transform:translate(-50%,-50%);pointer-events:none;opacity:.72}
 
-/* Recognition = signals. A continuous rail connects evidence without moving the words. */
+/* Recognition = evidence entering one field, not an editorial stepper. */
 .ad26-recognition{position:relative;background:#fbfcfc}
-.ad26-recognition:before{content:"SIGNALS";position:absolute;right:var(--pad);top:86px;font-size:clamp(44px,8vw,128px);font-weight:760;letter-spacing:-.075em;color:rgba(17,24,33,.025);pointer-events:none}
-.ad26-situations{position:relative;margin-top:8px;padding-left:24px}
-.ad26-situations:before{content:"";position:absolute;left:3px;top:18px;bottom:18px;width:1px;background:rgba(52,95,221,.14)}
-.ad26-situations:after{content:"";position:absolute;left:2px;top:18px;width:3px;height:calc(var(--signal-progress) * 100%);max-height:calc(100% - 36px);background:linear-gradient(180deg,rgba(52,95,221,.15),rgba(52,95,221,.95));box-shadow:0 0 18px rgba(52,95,221,.25);transform-origin:top}
-.ad26-situations article{position:relative;opacity:.88}
-.ad26-situations article:before{content:"";position:absolute;left:-25px;top:37px;width:7px;height:7px;border-radius:50%;background:#b9c1cb;box-shadow:0 0 0 5px #fbfcfc}
+.ad26-recognition:before{display:none}
+.ad26-situations{position:relative;margin-top:8px;padding-left:0}
+.ad26-situations:before,.ad26-situations:after{display:none}
+.ad26-situations article{position:relative;opacity:.94}
+.ad26-situations article:before{content:"";position:absolute;right:4px;top:34px;width:7px;height:7px;border-radius:50%;background:rgba(52,95,221,.34);box-shadow:0 0 0 7px rgba(52,95,221,.04),0 0 28px rgba(52,95,221,.14)}
 
-/* Diagnosis = first cinematic scene. The viewport stays; the model changes. */
-.ad26-statement{min-height:220svh;padding:0;background:#0d1722;color:#fff;isolation:isolate}
-.ad26-statement-stage{position:sticky;top:0;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(76px,8vw,122px) var(--pad);overflow:hidden;background:
-  radial-gradient(circle at 50% 48%,rgba(87,118,228,calc(.04 + var(--diagnosis-progress) * .11)) 0,rgba(13,23,34,0) 31%),
-  #0d1722}
-.ad26-statement-stage:after{content:"≠";position:absolute;right:-.04em;top:.16em;z-index:0;font-size:min(42vw,620px);font-weight:800;line-height:.7;color:rgba(112,143,255,.055);letter-spacing:-.08em;transform:translate3d(calc(var(--diagnosis-progress) * -2vw),calc(var(--diagnosis-progress) * 1.5vw),0) rotate(calc(var(--diagnosis-progress) * -3deg));pointer-events:none}
-.ad26-statement-copy,.ad26-reframe,.ad26-diagnosis-meter{position:relative;z-index:3}
-.ad26-statement-copy{max-width:1180px}
-.ad26-statement h2{opacity:calc(1 - var(--diagnosis-progress) * .12)}
+/* Diagnosis = first cinematic scene. The viewport stays while the mental model changes. */
+.ad26-statement{min-height:240svh;padding:0;background:#0a1420;color:#fff;isolation:isolate}
+.ad26-statement-stage{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;padding:clamp(62px,7vw,104px) var(--pad) clamp(52px,6vw,82px);overflow:hidden;background:
+  radial-gradient(circle at 50% 53%,rgba(82,116,235,calc(.04 + var(--diagnosis-progress) * .15)) 0,rgba(10,20,32,0) 34%),
+  linear-gradient(180deg,#0a1420 0%,#0b1622 100%)}
+.ad26-statement-stage:after{content:"≠";position:absolute;right:-.05em;top:.10em;z-index:0;font-size:min(42vw,620px);font-weight:800;line-height:.7;color:rgba(112,143,255,.035);letter-spacing:-.08em;pointer-events:none}
+.ad26-statement-copy,.ad26-reframe{position:relative;z-index:4}
+.ad26-statement-copy{max-width:1180px;opacity:clamp(.18,calc(1 - var(--diagnosis-progress) * 1.05),1)}
+.ad26-statement h2{opacity:1}
+.ad26-statement-foot{opacity:clamp(.08,calc(1 - var(--diagnosis-progress) * 1.4),1)}
 
-.ad26-diagnosis-visual{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-.ad26-diagnosis-node,.ad26-diagnosis-core{position:absolute;border-radius:50%;background:#8fa7ff;box-shadow:0 0 0 1px rgba(143,167,255,.38),0 0 30px rgba(88,119,232,.24)}
-.ad26-diagnosis-node{width:9px;height:9px;opacity:calc(.78 - var(--diagnosis-progress) * .4)}
-.ad26-diagnosis-node-a{left:calc(13% + var(--diagnosis-progress) * 36%);top:calc(24% + var(--diagnosis-progress) * 23%)}
-.ad26-diagnosis-node-b{left:calc(78% - var(--diagnosis-progress) * 29%);top:calc(30% + var(--diagnosis-progress) * 17%)}
-.ad26-diagnosis-node-c{left:calc(25% + var(--diagnosis-progress) * 24%);top:calc(76% - var(--diagnosis-progress) * 29%)}
-.ad26-diagnosis-core{left:49%;top:47%;width:calc(10px + var(--diagnosis-progress) * 18px);height:calc(10px + var(--diagnosis-progress) * 18px);opacity:calc(.18 + var(--diagnosis-progress) * .82);transform:translate(-50%,-50%);box-shadow:0 0 0 calc(var(--diagnosis-progress) * 26px) rgba(108,139,244,.06),0 0 calc(30px + var(--diagnosis-progress) * 75px) rgba(94,126,238,.30)}
-.ad26-diagnosis-trace{position:absolute;left:49%;top:47%;width:52vw;max-width:760px;height:1px;background:linear-gradient(90deg,transparent,rgba(126,151,255,.48),transparent);transform-origin:center;opacity:calc(.18 + var(--diagnosis-progress) * .45)}
-.ad26-diagnosis-trace-a{transform:translate(-50%,-50%) rotate(calc(-26deg + var(--diagnosis-progress) * 26deg)) scaleX(calc(.5 + var(--diagnosis-progress) * .5))}
-.ad26-diagnosis-trace-b{transform:translate(-50%,-50%) rotate(calc(19deg - var(--diagnosis-progress) * 19deg)) scaleX(calc(.55 + var(--diagnosis-progress) * .45))}
-.ad26-diagnosis-trace-c{transform:translate(-50%,-50%) rotate(calc(71deg - var(--diagnosis-progress) * 71deg)) scaleX(calc(.42 + var(--diagnosis-progress) * .58))}
+.ad26-diagnosis-visual{position:absolute;left:0;right:0;top:25%;bottom:20%;z-index:2;pointer-events:none;overflow:visible}
+.ad26-diagnosis-network{width:100%;height:100%;overflow:visible}
+.ad26-network-lines path{fill:none;stroke:rgba(137,160,255,.68);stroke-width:1.35;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--diagnosis-progress));opacity:calc(.18 + var(--diagnosis-progress) * .75)}
+.ad26-network-orbits circle{fill:none;stroke:rgba(137,160,255,.14);stroke-width:1;vector-effect:non-scaling-stroke;transform-origin:500px 320px;transform:scale(calc(.72 + var(--diagnosis-progress) * .28));opacity:calc(.12 + var(--diagnosis-progress) * .34)}
+.ad26-network-nodes circle{fill:#8ea8ff;transform-box:fill-box;transform-origin:center;opacity:clamp(.16,calc(.92 - var(--diagnosis-progress) * .62),.92)}
+.ad26-network-nodes .n1{transform:translate(calc(var(--diagnosis-progress) * 410px),calc(var(--diagnosis-progress) * 210px))}
+.ad26-network-nodes .n2{transform:translate(calc(var(--diagnosis-progress) * 380px),calc(var(--diagnosis-progress) * -10px))}
+.ad26-network-nodes .n3{transform:translate(calc(var(--diagnosis-progress) * 330px),calc(var(--diagnosis-progress) * -235px))}
+.ad26-network-nodes .n4{transform:translate(calc(var(--diagnosis-progress) * -390px),calc(var(--diagnosis-progress) * 200px))}
+.ad26-network-nodes .n5{transform:translate(calc(var(--diagnosis-progress) * -400px),calc(var(--diagnosis-progress) * -150px))}
+.ad26-network-nodes .n6{transform:translate(calc(var(--diagnosis-progress) * -260px),calc(var(--diagnosis-progress) * -265px))}
+.ad26-network-core-halo{opacity:calc(.08 + var(--diagnosis-progress) * .92);transform-origin:500px 320px;transform:scale(calc(.35 + var(--diagnosis-progress) * 1.45))}
+.ad26-network-core{fill:#a9b9ff;opacity:calc(.18 + var(--diagnosis-progress) * .82);transform-origin:500px 320px;transform:scale(calc(.55 + var(--diagnosis-progress) * 1.25));filter:drop-shadow(0 0 12px rgba(126,151,255,.85))}
 
-.ad26-reframe{display:grid;grid-template-columns:1fr auto 1.15fr;gap:34px;align-items:center;margin-top:58px;padding-top:28px;border-top:1px solid rgba(255,255,255,.16)}
+.ad26-reframe{display:grid;grid-template-columns:1fr auto 1.15fr;gap:34px;align-items:center;margin-top:auto;padding-top:28px;border-top:1px solid rgba(255,255,255,.16)}
 .ad26-reframe span{display:block;margin-bottom:11px;color:#8fa5c0;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.13em}
 .ad26-reframe strong{display:block;color:#fff;font-size:clamp(22px,2.1vw,34px);line-height:1.08;letter-spacing:-.035em}
-.ad26-reframe-assumption{position:relative;opacity:calc(.96 - (var(--diagnosis-progress) * .66));filter:blur(calc(var(--diagnosis-progress) * 1.2px))}
+.ad26-reframe-assumption{position:relative;opacity:clamp(.16,calc(.96 - var(--diagnosis-progress) * .86),.96);filter:blur(calc(var(--diagnosis-progress) * 1.7px))}
 .ad26-reframe-assumption i{position:absolute;left:0;right:8%;top:58%;height:1.5px;background:#93a9ff;transform-origin:left;transform:scaleX(var(--diagnosis-progress));opacity:.95}
-.ad26-reframe-shift{font-size:28px;color:#90a6ff;opacity:calc(.25 + var(--diagnosis-progress) * .55)}
-.ad26-reframe-question{opacity:calc(.22 + var(--diagnosis-progress) * .78);filter:blur(calc((1 - var(--diagnosis-progress)) * 4px))}
-.ad26-reframe-question strong{text-shadow:0 0 calc(var(--diagnosis-progress) * 26px) rgba(119,147,255,.2)}
-.ad26-diagnosis-meter{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;margin-top:28px;color:#7f94ad;font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.15em}
-.ad26-diagnosis-meter i{height:1px;background:linear-gradient(90deg,rgba(132,153,186,.18),rgba(134,158,255,.9));transform:scaleX(var(--diagnosis-progress));transform-origin:left;box-shadow:0 0 12px rgba(105,137,247,.2)}
+.ad26-reframe-shift{font-size:28px;color:#90a6ff;opacity:calc(.18 + var(--diagnosis-progress) * .68)}
+.ad26-reframe-question{opacity:clamp(.12,calc(.14 + var(--diagnosis-progress) * 1.08),1);filter:blur(calc((1 - var(--diagnosis-progress)) * 5px))}
+.ad26-reframe-question strong{text-shadow:0 0 calc(var(--diagnosis-progress) * 34px) rgba(119,147,255,.25)}
 
 /* Method = filtration: noise -> hypothesis -> test. Stable typography, animated evidence rail. */
 .ad26-method{position:relative;background:#f4f6f7}
@@ -133,7 +133,7 @@
   .ad26-about-portrait img{transform:scale(calc(1.02 + var(--about-progress) * .035))}
 }
 
-/* Mobile is its own direction: text is fixed, motion lives around it. */
+/* Mobile is its own direction: text stays fixed; the field carries the motion. */
 @media (max-width:900px){
   .ad26{--pad:20px}
   .ad26-progress-rail{display:none}
@@ -143,38 +143,44 @@
   .ad26-nav-cta{padding:9px 11px;font-size:11px!important}
 
   .ad26-diagnostic-field{opacity:.15;mix-blend-mode:multiply}
-  .ad26-hero{padding-top:42px;gap:34px}
+  .ad26-hero{padding-top:42px;gap:20px}
   .ad26-signal-map{inset:4% -24% auto 20%;width:110%;opacity:.42;transform:rotate(calc(var(--scene-progress) * 7deg)) scale(calc(1 + var(--scene-progress) * .06))}
   .ad26-hero h1{font-size:clamp(46px,12.1vw,66px);line-height:.96}
   .ad26-hero-bottom{gap:24px;margin-top:34px}
-  .ad26-portrait{min-height:62svh;clip-path:polygon(5% 0,100% 0,100% 94%,0 100%,0 7%)}
+  .ad26-hero-proof{margin-top:22px}
+  .ad26-portrait{min-height:58svh;margin-top:0;clip-path:polygon(5% 0,100% 0,100% 94%,0 100%,0 7%)}
   .ad26-portrait img{transform:scale(calc(1.025 + var(--scene-progress) * .045))}
   .ad26-lens{width:38vw;height:38vw;max-width:170px;max-height:170px;left:calc(60% - var(--scene-progress) * 10%);top:calc(35% + var(--scene-progress) * 18%);opacity:.7}
 
-  .ad26-recognition,.ad26-method,.ad26-about{padding-top:88px;padding-bottom:88px}
-  .ad26-recognition:before{top:58px;right:10px;font-size:22vw}
+  .ad26-recognition,.ad26-method,.ad26-about{padding-top:82px;padding-bottom:82px}
   .ad26-recognition-head,.ad26-method-head{gap:16px}
   .ad26-recognition-head h2,.ad26-method h2,.ad26-about h2{font-size:clamp(42px,10.8vw,58px)}
-  .ad26-situations{padding-left:18px}
-  .ad26-situations article{grid-template-columns:38px 1fr;gap:12px;padding:24px 0;opacity:.92}
-  .ad26-situations article:before{left:-19px;top:31px}
+  .ad26-situations{padding-left:0}
+  .ad26-situations article{grid-template-columns:38px 1fr;gap:12px;padding:24px 24px 24px 0;opacity:.96}
+  .ad26-situations article:before{right:2px;top:32px}
   .ad26-situations h3{font-size:clamp(26px,7.3vw,35px)}
 
-  .ad26-statement{min-height:190svh}
-  .ad26-statement-stage{top:58px;min-height:calc(100svh - 58px);justify-content:flex-start;padding:46px 20px 28px}
-  .ad26-statement h2{font-size:clamp(38px,9.4vw,52px);line-height:.99}
-  .ad26-statement-stage:after{font-size:88vw;right:-.25em;top:.28em}
-  .ad26-statement-foot{gap:16px;margin-top:26px;padding-top:16px}
-  .ad26-statement-foot p{font-size:14px;line-height:1.45}
-  .ad26-rule{font-size:17px!important;line-height:1.4!important}
-  .ad26-reframe{grid-template-columns:1fr;gap:14px;margin-top:24px;padding-top:18px}
-  .ad26-reframe-shift{transform:none!important;width:max-content;font-size:20px}
+  .ad26-statement{min-height:225svh}
+  .ad26-statement-stage{top:58px;height:calc(100svh - 58px);padding:34px 20px 26px}
+  .ad26-statement-stage:after{display:none}
+  .ad26-statement-copy{max-width:100%}
+  .ad26-statement-label{font-size:9px}
+  .ad26-statement h2{font-size:clamp(34px,8.7vw,46px);line-height:1.01;margin-top:18px}
+  .ad26-statement-foot{gap:12px;margin-top:20px;padding-top:14px}
+  .ad26-statement-foot p{font-size:13px;line-height:1.4}
+  .ad26-rule{font-size:15px!important;line-height:1.36!important}
+
+  .ad26-diagnosis-visual{top:29%;bottom:25%;left:-20%;right:-20%}
+  .ad26-network-lines path{stroke-width:1.65;opacity:calc(.2 + var(--diagnosis-progress) * .8)}
+  .ad26-network-orbits circle{stroke:rgba(137,160,255,.18)}
+  .ad26-network-nodes circle{filter:drop-shadow(0 0 8px rgba(126,151,255,.55))}
+  .ad26-network-core{filter:drop-shadow(0 0 18px rgba(126,151,255,.95))}
+
+  .ad26-reframe{grid-template-columns:1fr;gap:12px;margin-top:auto;padding-top:16px}
+  .ad26-reframe-shift{transform:none!important;width:max-content;font-size:18px}
   .ad26-reframe strong{font-size:clamp(21px,5.8vw,28px)}
-  .ad26-diagnosis-trace{width:120vw;opacity:calc(.12 + var(--diagnosis-progress) * .34)}
-  .ad26-diagnosis-node-a{left:calc(8% + var(--diagnosis-progress) * 41%)}
-  .ad26-diagnosis-node-b{left:calc(88% - var(--diagnosis-progress) * 39%)}
-  .ad26-diagnosis-node-c{left:calc(18% + var(--diagnosis-progress) * 31%)}
-  .ad26-diagnosis-meter{margin-top:18px}
+  .ad26-reframe-assumption{max-width:88%}
+  .ad26-reframe-question{max-width:96%}
 
   .ad26-signature{margin-top:44px}
   .ad26-signature article{opacity:.94;background:transparent!important}
@@ -200,7 +206,7 @@
   .ad26-contact h2{font-size:clamp(48px,12vw,66px)}
   .ad26-contact:before{top:34%}
 
-  /* hard guarantee: no scroll state can ever move or reflow reading text */
+  /* Hard guarantee: no scroll state can move or reflow reading text. */
   .ad26 h1,.ad26 h2,.ad26 h3,.ad26 p,.ad26 strong,.ad26 span,
   .ad26-hero-copy,.ad26-hero-bottom,.ad26-hero-proof,
   .ad26-recognition-head,.ad26-method-head,
@@ -221,13 +227,13 @@
 @media (prefers-reduced-motion:reduce){
   .ad26-diagnostic-field,.ad26-signal-map,.ad26-lens,.ad26-diagnosis-visual{display:none!important}
   .ad26-statement{min-height:auto!important}
-  .ad26-statement-stage{position:relative!important;top:auto!important;min-height:auto!important}
+  .ad26-statement-stage{position:relative!important;top:auto!important;height:auto!important;min-height:auto!important}
   .ad26 *{animation:none!important;transition:none!important;transform:none!important}
 }
 
 @media print{
-  .ad26-diagnostic-field,.ad26-signal-map,.ad26-lens,.ad26-progress-rail,.ad26-diagnosis-visual,.ad26-diagnosis-meter{display:none!important}
+  .ad26-diagnostic-field,.ad26-signal-map,.ad26-lens,.ad26-progress-rail,.ad26-diagnosis-visual{display:none!important}
   .ad26-statement{min-height:auto!important}
-  .ad26-statement-stage{position:relative!important;top:auto!important;min-height:auto!important}
+  .ad26-statement-stage{position:relative!important;top:auto!important;height:auto!important;min-height:auto!important}
   .ad26>section{break-inside:avoid;background:#fff!important;color:#111!important}
 }
