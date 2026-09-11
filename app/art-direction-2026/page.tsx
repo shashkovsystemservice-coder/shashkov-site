@@ -1,7 +1,8 @@
 import Image from "next/image";
+import ArtDirectionMotion from "./ArtDirectionMotion";
 import "./art-direction.css";
 import "./high-craft-pass.css";
-import "./award-pass.css";
+import "./experience-2026.css";
 
 const situations = [
   ["01", "Продажи перестали расти", "Команда предлагает больше рекламы — но непонятно, в ней ли проблема"],
@@ -19,6 +20,7 @@ const steps = [
 export default function ArtDirection2026() {
   return (
     <main className="ad26" id="top">
+      <ArtDirectionMotion />
       <header className="ad26-nav">
         <a href="#top" className="ad26-brand" aria-label="Владимир Шашков — маркетинг и рост бизнеса">
           <span className="ad26-brand-mark" aria-hidden="true">ВШ</span>
@@ -28,6 +30,14 @@ export default function ArtDirection2026() {
       </header>
 
       <section className="ad26-hero">
+        <svg className="ad26-signal-map" viewBox="0 0 720 720" aria-hidden="true">
+          <path className="signal-orbit signal-orbit-a" d="M74 433C155 273 290 187 458 197c90 6 151 42 191 107" />
+          <path className="signal-orbit signal-orbit-b" d="M86 497c137-104 265-122 383-70 63 28 111 73 145 137" />
+          <path className="signal-orbit signal-orbit-c" d="M147 228c85 39 157 102 217 190 48 69 79 139 94 211" />
+          <circle className="signal-node signal-node-a" cx="458" cy="197" r="5" />
+          <circle className="signal-node signal-node-b" cx="364" cy="418" r="7" />
+          <circle className="signal-node signal-node-c" cx="614" cy="564" r="4" />
+        </svg>
         <div className="ad26-hero-copy">
           <p className="ad26-kicker">Независимый консультант · для собственников бизнеса</p>
           <h1>Не уверены,<br/>что именно сейчас<br/>нужно менять<br/>в бизнесе?</h1>
