@@ -1,27 +1,23 @@
 .ad26{--steel:#586c7d;--steel-soft:#8fa0ad;--hair:rgba(15,20,27,.11)}
 
-/* Keep the visual system purposeful: less decoration, more state change. */
-.ad26-diagnostic-field{border:0;background:transparent;overflow:visible}
-.ad26-diagnostic-field svg{overflow:visible}
-.df-frame path{stroke:rgba(255,255,255,.045)}
-.df-route{stroke:#8193a2;stroke-width:1.35}
-.df-route-b{stroke:#9aa9b5}.df-route-c{stroke:#647685}
-.df-route-main{stroke:#dbe3e8;stroke-width:2.2}
-.df-route-ghost{stroke:rgba(219,227,232,.13)}
-.df-focus-halo{fill:none;stroke:rgba(219,227,232,.12)}
-.df-focus-ring{fill:none;stroke:rgba(219,227,232,.66)}
-.df-focus-core{fill:#dbe3e8;stroke:#fff}
-.df-scan{display:none}
-.df-points circle{fill:#0d1724;stroke:#91a1ad}
-.df-point-output{fill:#dbe3e8!important;stroke:#fff!important}
-.df-caption{font-family:inherit;font-size:13px;letter-spacing:.06em;text-transform:uppercase;fill:rgba(235,240,244,.68)}
-.df-caption-focus{fill:#fff}.df-caption-output{fill:#dbe3e8}
-
 /* Recognition becomes a selective reading surface instead of a static list. */
 .ad26-situations article{opacity:.52;transform-origin:left center;transition:opacity .35s ease,transform .35s ease,background .35s ease}
 .ad26-situations article.is-active{opacity:1;transform:translateX(8px)}
 .ad26-situations article.is-active h3{letter-spacing:-.035em}
 .ad26-situations article.is-active:before{content:"";position:absolute;left:-18px;top:34px;width:4px;height:4px;border-radius:50%;background:var(--steel)}
+
+/* The dark pivot now explains a cognitive shift instead of showing abstract data-art. */
+.ad26-statement{align-items:center}
+.ad26-reframe{width:min(36vw,520px);margin-left:auto;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.12);padding:28px 0 30px;color:#f5f7f9}
+.ad26-reframe-assumption,.ad26-reframe-question{position:relative;padding:0 2px}
+.ad26-reframe span{display:block;margin-bottom:10px;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(235,240,244,.54)}
+.ad26-reframe strong{display:block;font-size:clamp(22px,2vw,31px);line-height:1.08;letter-spacing:-.035em;font-weight:540}
+.ad26-reframe-assumption strong{color:rgba(245,247,249,.55)}
+.ad26-reframe-assumption i{position:absolute;left:0;top:58%;height:1px;width:0;background:rgba(245,247,249,.72);transform-origin:left center}
+.ad26-reframe-shift{height:54px;display:flex;align-items:center;justify-content:flex-start;color:rgba(245,247,249,.42);overflow:hidden}
+.ad26-reframe-shift span{margin:0;font-size:20px;line-height:1;color:inherit;transform:translateY(-8px);opacity:0}
+.ad26-reframe-question{opacity:.22;transform:translateY(14px)}
+.ad26-reframe-question strong{color:#fff}
 
 /* Method behaves as a sequence with a living progress rail. */
 .ad26-signature{position:relative}
@@ -30,7 +26,7 @@
 .ad26-signature article{opacity:.48;transition:opacity .35s ease,transform .35s ease,background .35s ease}
 .ad26-signature article.is-active{opacity:1;transform:translateX(7px);background:linear-gradient(90deg,rgba(88,108,125,.055),transparent 70%)}
 
-/* Decision Brief now previews the actual output rather than behaving as a generic CTA. */
+/* Decision Brief previews the actual output rather than behaving as a generic CTA. */
 .ad26-brief{grid-template-columns:minmax(0,.95fr) minmax(360px,.7fr);gap:clamp(54px,7vw,112px);align-items:center}
 .ad26-brief-number{display:none}
 .ad26-brief-copy{max-width:760px}
@@ -68,17 +64,19 @@
   .ad26-case-flow:before,.ad26-case-flow:after{left:7px}
   .ad26-case-flow article.is-active{transform:none}
   .ad26-hero-copy:after{display:none}
-  .ad26-diagnostic-field{margin-top:26px}
-  .df-caption{font-size:12px}
+  .ad26-reframe{width:100%;margin:40px 0 0}
+  .ad26-reframe strong{font-size:clamp(24px,6.5vw,31px)}
 }
 
 @media(max-width:560px){
   .ad26-brief-product{margin-left:-4px;margin-right:-4px}
   .ad26-brief-row strong{font-size:14px}
-  .df-caption{font-size:11px}
+  .ad26-reframe{margin-top:32px;padding-top:22px;padding-bottom:24px}
+  .ad26-reframe-shift{height:42px}
 }
 
 @media print{
+  .ad26-reframe{display:none!important}
   .ad26-brief-product{display:block!important;border:1px solid #bbb!important;box-shadow:none!important;margin-top:6mm!important;break-inside:avoid!important}
   .ad26-brief-row{opacity:1!important;transform:none!important}
 }
