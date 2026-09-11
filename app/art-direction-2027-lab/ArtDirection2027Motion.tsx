@@ -19,7 +19,7 @@ const topCases = [
 function TopCaseReel() {
   return (
     <section className="ad27-topcase-reel" aria-label="Избранные кейсы">
-      <div className="ad27-topcase-head"><strong>Кейсы</strong><span>Листайте · нажмите, чтобы открыть</span></div>
+      <div className="ad27-topcase-head"><strong>Кейсы</strong><span>Листайте · нажмите, чтобы открыть</span><a href="/art-direction-2027-lab/analytics">Аналитика →</a></div>
       <div className="ad27-topcase-track">
         {topCases.map((item) => {
           const className = [
@@ -46,8 +46,6 @@ export default function ArtDirection2027Motion() {
 
     gsap.registerPlugin(ScrollTrigger);
     const mm = gsap.matchMedia();
-
-    gsap.from(".ad27-topcase-card", { y: 10, opacity: 0, duration: .45, stagger: .045, ease: "power2.out" });
 
     mm.add("(min-width: 901px)", () => {
       const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
