@@ -17,6 +17,33 @@ const steps = [
   ["ПРОВЕРКА", "Что проверить", "Выбрать короткую проверку, которая действительно изменит решение."],
 ] as const;
 
+function DiagnosticField() {
+  return (
+    <div className="ad26-diagnostic-field" aria-hidden="true">
+      <svg viewBox="0 0 560 560" role="presentation">
+        <g className="df-grid">
+          <path d="M40 110H520M40 220H520M40 330H520M40 440H520" />
+          <path d="M120 40V520M240 40V520M360 40V520M480 40V520" />
+        </g>
+        <g className="df-routes">
+          <path className="df-route df-route-a" d="M78 116C167 154 204 190 258 250S353 337 454 410" />
+          <path className="df-route df-route-b" d="M88 424C172 391 223 357 274 301S357 226 474 134" />
+          <path className="df-route df-route-c" d="M118 270C194 255 244 262 284 286S367 326 438 314" />
+        </g>
+        <g className="df-nodes">
+          <circle className="df-node df-node-muted" cx="78" cy="116" r="7" />
+          <circle className="df-node df-node-muted" cx="88" cy="424" r="7" />
+          <circle className="df-node df-node-muted" cx="118" cy="270" r="7" />
+          <circle className="df-node df-node-muted" cx="474" cy="134" r="7" />
+          <circle className="df-node df-node-muted" cx="454" cy="410" r="7" />
+          <circle className="df-node df-node-focus" cx="284" cy="286" r="13" />
+          <circle className="df-node-ring" cx="284" cy="286" r="34" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
 export default function ArtDirection2026() {
   return (
     <main className="ad26" id="top">
@@ -57,9 +84,12 @@ export default function ArtDirection2026() {
       </section>
 
       <section className="ad26-statement">
-        <p className="ad26-statement-label">Симптом ≠ причина</p>
-        <h2>«Нам нужно больше заявок»<br/>ещё не значит, что нужна реклама.</h2>
-        <div className="ad26-statement-foot"><p>Цена ошибки — месяцами улучшать рекламу, сайт или продажи не там, где находится реальное ограничение.</p><p className="ad26-rule">Сначала понять проблему.<br/>Потом выбирать решение.<br/>И только потом — инструмент.</p></div>
+        <div className="ad26-statement-copy">
+          <p className="ad26-statement-label">Симптом ≠ причина</p>
+          <h2>«Нам нужно больше заявок»<br/>ещё не значит, что нужна реклама.</h2>
+          <div className="ad26-statement-foot"><p>Цена ошибки — месяцами улучшать рекламу, сайт или продажи не там, где находится реальное ограничение.</p><p className="ad26-rule">Сначала понять проблему.<br/>Потом выбирать решение.<br/>И только потом — инструмент.</p></div>
+        </div>
+        <DiagnosticField />
       </section>
 
       <section className="ad26-method" id="method">
