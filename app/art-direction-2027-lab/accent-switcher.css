@@ -1,0 +1,28 @@
+.ad27{--studio-blue:#2457ff;--accent-soft:#7f95ff;--accent-rgb:36,87,255}
+.ad27[data-accent="red"]{--studio-blue:#e20d0d;--accent-soft:#ff6a6a;--accent-rgb:226,13,13}
+.ad27[data-accent="green"]{--studio-blue:#0a8f38;--accent-soft:#58c878;--accent-rgb:10,143,56}
+
+.ad27-accent-switcher{position:fixed;z-index:80;top:20px;right:118px;width:24px;height:24px;padding:0;border:1px solid rgba(17,19,24,.22);border-radius:50%;background:rgba(244,244,240,.96);display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.ad27-accent-switcher:hover{transform:scale(1.08);border-color:rgba(17,19,24,.38)}
+.ad27-accent-switcher:active{transform:scale(.94)}
+.ad27-accent-switcher span{width:11px;height:11px;border-radius:50%;background:var(--studio-blue);box-shadow:0 0 0 2px rgba(255,255,255,.85);transition:background .28s ease,transform .28s ease}
+.ad27-accent-switcher:focus-visible{outline:2px solid var(--studio-blue);outline-offset:3px}
+
+/* Keep every intentional accent tied to the selected color. */
+.ad27-case-steps article span,
+.ad27-case-action>span,
+.ad27-artifact span,
+.ad27-continuation-grid article:nth-child(2)>span,
+.ad27-projects .ad27-section-no::before,
+.ad27-project-list b{color:var(--accent-soft)!important}
+.ad27-projects .ad27-section-no::before{background:var(--accent-soft)!important}
+.ad27-situation-list article:hover{background:rgba(var(--accent-rgb),.035)!important}
+
+@media(max-width:900px){
+  .ad27-accent-switcher{top:17px;right:108px;width:24px;height:24px}
+}
+
+@media(max-width:390px){
+  .ad27-accent-switcher{right:102px;width:22px;height:22px}
+  .ad27-accent-switcher span{width:10px;height:10px}
+}
