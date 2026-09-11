@@ -23,110 +23,86 @@ float hash(vec2 p){
   p+=dot(p,p+45.32);
   return fract(p.x*p.y);
 }
-float band(float v,float w){return 1.0-smoothstep(0.0,w,abs(v));}
-float ring(vec2 p,vec2 c,float r,float w){return band(length(p-c)-r,w);}
-float dotf(vec2 p,vec2 c,float r){return 1.0-smoothstep(r,r*1.55,length(p-c));}
-float lineSeg(vec2 p,vec2 a,vec2 b,float w){
-  vec2 pa=p-a,ba=b-a;
-  float h=clamp(dot(pa,ba)/dot(ba,ba),0.0,1.0);
-  return 1.0-smoothstep(w,w*1.8,length(pa-ba*h));
+float noise(vec2 p){
+  vec2 i=floor(p),f=fract(p);
+  f=f*f*(3.0-2.0*f);
+  return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.,1.)),f.x),f.y);
 }
+float fbm(vec2 p){
+  float v=0.0,a=.5;
+  mat2 m=mat2(1.62,1.17,-1.17,1.62);
+  for(int i=0;i<4;i++){v+=a*noise(p);p=m*p+0.13;a*=.48;}
+  return v;
+}
+float ridge(float v,float w){return 1.0-smoothstep(w,w*2.2,abs(v));}
 
 void main(){
   vec2 uv=gl_FragCoord.xy/u_resolution.xy;
   vec2 p=uv-.5;
   p.x*=u_resolution.x/u_resolution.y;
 
+  float t=u_time*.10;
+  float vel=min(abs(u_velocity),1.0);
   vec2 pointer=u_pointer-.5;
   pointer.x*=u_resolution.x/u_resolution.y;
-  vec2 baseFocus=mix(vec2(.20,.10),vec2(.46,.02),smoothstep(0.0,1.0,u_scroll));
-  vec2 focus=mix(baseFocus,pointer,mix(.34,.08,u_mobile));
 
-  float t=u_time*.09;
-  float vel=min(abs(u_velocity),1.0);
-  float d=length(p-focus);
-  float ang=atan(p.y-focus.y,p.x-focus.x);
-  float warp=sin(ang*3.0+t*2.2+d*12.0)*(.028+vel*.038);
+  float sceneNorm=clamp(u_scene/7.0,0.0,1.0);
+  vec2 drift=vec2(sin(t*.7+sceneNorm*2.4),cos(t*.53-sceneNorm*1.7))*.055;
+  vec2 q=p+drift;
 
-  float hero = ring(p,focus,.12+warp,.018)
-             + ring(p,focus,.23+warp,.012)*.62
-             + ring(p,focus,.36+warp,.009)*.30
-             + dotf(p,focus,.020)*1.1;
+  float n1=fbm(q*2.15+vec2(t*.22,-t*.14));
+  float n2=fbm((q+vec2(n1*.22,-n1*.18))*3.25-vec2(t*.12,t*.16));
+  float texture=ridge(n2-.52,.105);
 
-  vec2 s1=vec2(-.42,.24),s2=vec2(-.18,-.18),s3=vec2(.16,.16),s4=vec2(.40,-.16);
-  float situations = dotf(p,s1,.018)+dotf(p,s2,.018)+dotf(p,s3,.018)+dotf(p,s4,.018)
-                   + lineSeg(p,s1,focus,.008)*.42+lineSeg(p,s2,focus,.008)*.42
-                   + lineSeg(p,s3,focus,.008)*.42+lineSeg(p,s4,focus,.008)*.42;
+  /* Optical instability: the medium is misregistered, then settles during diagnosis. */
+  vec2 center=vec2(0.0,0.015);
+  float dc=length(p-center);
+  float focusMask=1.0-smoothstep(.16,.58,dc);
+  float settle=mix(1.0,.18,u_diag*focusMask);
+  float waveA=sin((p.x*4.2+p.y*1.7+n1*.85+t)*3.14159);
+  float waveB=sin((p.y*5.1-p.x*1.15+n2*.72-t*.72)*3.14159);
+  float interference=ridge(waveA*.62+waveB*.38,.20)*settle;
 
-  /* Diagnosis physically converges from plausible signals into one constraint. */
-  vec2 core=vec2(.00,.02);
-  vec2 d1=mix(vec2(-.58,.28),core,u_diag*.88);
-  vec2 d2=mix(vec2(-.55,.02),core,u_diag*.92);
-  vec2 d3=mix(vec2(-.52,-.25),core,u_diag*.86);
-  vec2 d4=mix(vec2(.46,.27),core,u_diag*.82);
-  float diagNoise=(
-      ring(p,vec2(-.32,.18),.16+sin(t*1.7)*.02,.008)
-     +ring(p,vec2(.27,-.18),.23+sin(t*1.2)*.025,.007)
-     +band(sin(p.x*10.0+p.y*7.0+t*2.0),.035)*.23
-    )*(1.0-u_diag)*.55;
-  float converge = lineSeg(p,d1,core,.009)
-                 + lineSeg(p,d2,core,.009)
-                 + lineSeg(p,d3,core,.009)
-                 + lineSeg(p,d4,core,.008)*.75
-                 + lineSeg(p,core,vec2(.58,.02),.012)*mix(.35,1.45,u_diag)
-                 + dotf(p,core,mix(.018,.036,u_diag))*mix(.75,1.55,u_diag)
-                 + ring(p,core,mix(.30,.12,u_diag),mix(.012,.007,u_diag))*mix(.22,.82,u_diag)
-                 + diagNoise;
+  float directional=ridge(sin((p.x*.78+p.y*.22+n1*.20+t*.12)*9.0),.22);
+  float flow=mix(texture*.48+directional*.18,interference*.54+texture*.26,u_diag);
 
-  float x1=band(p.x+.32,.012),x2=band(p.x,.012),x3=band(p.x-.32,.012);
-  float method=(x1+x2+x3)*.34
-             + dotf(p,vec2(-.32,.18),.019)+dotf(p,vec2(.0,.0),.019)+dotf(p,vec2(.32,-.18),.019)
-             + lineSeg(p,vec2(-.32,.18),vec2(.0,.0),.009)*.7
-             + lineSeg(p,vec2(.0,.0),vec2(.32,-.18),.009)*.7;
+  /* Hero responds to pointer as a soft refractive pressure, never a literal node. */
+  float pointerField=1.0-smoothstep(.08,.52,length(p-pointer));
+  flow+=pointerField*(1.0-u_mobile)*.12;
 
-  vec2 gp=(p+vec2(.8))/vec2(.12,.10);
-  float grid=(band(fract(gp.x)-.5,.035)+band(fract(gp.y)-.5,.035))*.18;
-  float scan=band(p.y-sin(t+u_scroll*7.0)*.18,.016)*.60;
-  float brief=grid+scan+dotf(p,vec2(.30,.12),.024)+ring(p,vec2(.30,.12),.16,.010)*.48;
+  /* Later scenes change material character, not diagram topology. */
+  float methodPhase=smoothstep(2.35,3.05,u_scene)*(1.0-smoothstep(3.35,4.0,u_scene));
+  float briefPhase=smoothstep(3.35,4.05,u_scene)*(1.0-smoothstep(4.35,5.0,u_scene));
+  float casePhase=smoothstep(4.35,5.05,u_scene)*(1.0-smoothstep(5.35,6.0,u_scene));
+  float quietPhase=smoothstep(5.35,6.15,u_scene);
 
-  vec2 cA=vec2(-.48,.24),cB=vec2(-.05,.03),cC=vec2(.46,-.19);
-  float caseField=lineSeg(p,cA,cB,.012)+lineSeg(p,cB,cC,.012)
-                 +dotf(p,cA,.022)+dotf(p,cB,.026)*1.25+dotf(p,cC,.022)
-                 +ring(p,cB,.16+sin(t)*.01,.010)*.55;
+  float lamina=ridge(sin((p.y+n1*.075+t*.08)*22.0),.28)*.18;
+  float scan=ridge(p.y-(sin(t*.9+u_scroll*8.0)*.12),.035)*.18;
+  flow=mix(flow,flow*.62+lamina,methodPhase*.62);
+  flow=mix(flow,flow*.46+scan,briefPhase*.52);
+  flow=mix(flow,flow*.74+ridge(sin((p.x-p.y*.38+n2*.08)*11.0+t*.16),.25)*.14,casePhase*.55);
+  flow*=mix(1.0,.52,quietPhase);
 
-  float aboutField=ring(p,vec2(.18,.02),.34,.006)*.28+dotf(p,vec2(.18,.02),.014)*.35;
-  float cta=lineSeg(p,vec2(-.56,.0),vec2(.40,.0),.012)+dotf(p,vec2(.40,.0),.032)*1.4+ring(p,vec2(.40,.0),.18,.010)*.55;
+  /* Scroll velocity adds a fleeting shear, not particles. */
+  float shear=ridge(sin((p.x*3.8+p.y*2.1+t+u_scroll*2.0+n1*.3)*4.4),.22)*vel*.16;
+  flow+=shear;
 
-  float s=u_scene;
-  float field=hero;
-  field=mix(field,situations,smoothstep(.35,1.0,s));
-  field=mix(field,converge,smoothstep(1.35,2.0,s));
-  field=mix(field,method,smoothstep(2.35,3.0,s));
-  field=mix(field,brief,smoothstep(3.35,4.0,s));
-  field=mix(field,caseField,smoothstep(4.35,5.0,s));
-  field=mix(field,aboutField,smoothstep(5.35,6.0,s));
-  field=mix(field,cta,smoothstep(6.35,7.0,s));
+  float grain=(hash(gl_FragCoord.xy+u_time)-.5)*.022;
+  float vignette=smoothstep(1.18,.12,length(p));
+  flow=(flow+grain)*vignette;
 
-  vec2 q=p;
-  q.y+=sin(q.x*5.2+t)*(.028+vel*.055);
-  q.x+=sin(q.y*4.1-t*.75)*(.018+vel*.035);
-  float velocityTrace=band(sin(q.x*4.1+q.y*2.1+t+u_scroll*2.2),.050)*vel*.42;
-  float grain=(hash(gl_FragCoord.xy+u_time)-.5)*.032;
-  field += velocityTrace;
-  field *= smoothstep(1.20,.10,length(p));
-
-  float darkScene = smoothstep(1.35,1.85,s)*(1.0-smoothstep(2.15,2.65,s))
-                  + smoothstep(4.35,4.85,s)*(1.0-smoothstep(5.15,5.65,s))
-                  + smoothstep(6.35,6.85,s);
-  vec3 lightInk=vec3(.08,.17,.24);
-  vec3 darkInk=vec3(.74,.83,.88);
-  vec3 diagnosisInk=vec3(.48,.62,1.0);
+  float darkScene = smoothstep(1.35,1.85,u_scene)*(1.0-smoothstep(2.15,2.65,u_scene))
+                  + smoothstep(4.35,4.85,u_scene)*(1.0-smoothstep(5.15,5.65,u_scene))
+                  + smoothstep(6.35,6.85,u_scene);
+  vec3 lightInk=vec3(.11,.19,.27);
+  vec3 darkInk=vec3(.72,.80,.90);
+  vec3 clarityInk=vec3(.50,.61,.98);
   vec3 col=mix(lightInk,darkInk,clamp(darkScene,0.0,1.0));
-  float diagScene=smoothstep(1.55,1.92,s)*(1.0-smoothstep(2.08,2.42,s));
-  col=mix(col,diagnosisInk,diagScene*(.18+.34*u_diag));
+  float diagScene=smoothstep(1.50,1.88,u_scene)*(1.0-smoothstep(2.10,2.45,u_scene));
+  col=mix(col,clarityInk,diagScene*(.10+.26*u_diag));
 
-  float gain=mix(.66,.52,u_mobile);
-  float alpha=clamp(field+grain,0.0,1.0)*gain;
+  float gain=mix(.46,.38,u_mobile);
+  float alpha=clamp(flow,0.0,1.0)*gain;
   gl_FragColor=vec4(col,alpha);
 }`;
 
