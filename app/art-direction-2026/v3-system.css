@@ -1,0 +1,125 @@
+/* V3: diagnostic-field art direction. One visual world, fewer card-like objects. */
+.ad26{position:relative;isolation:isolate;background:#f3f5f6}
+.ad26>*:not(.ad26-diagnostic-field):not(.ad26-constraint){position:relative;z-index:2}
+.ad26-diagnostic-field{position:fixed;inset:0;z-index:1;width:100vw;height:100vh;pointer-events:none;opacity:.16;mix-blend-mode:multiply;transition:opacity .55s ease,filter .55s ease}
+.ad26[data-section*="Диагноз"] .ad26-diagnostic-field,.ad26[data-section*="Кейс"] .ad26-diagnostic-field,.ad26[data-section*="Следующий"] .ad26-diagnostic-field{mix-blend-mode:screen;opacity:.24}
+.ad26[data-section*="Decision"] .ad26-diagnostic-field{opacity:.10}
+.ad26[data-section*="Обо мне"] .ad26-diagnostic-field{opacity:.045}
+.ad26-constraint{opacity:.16!important}
+
+/* Hero behaves as a field, not two boxes. */
+@media(min-width:901px){
+  .ad26-hero{max-width:none!important;margin:0!important;grid-template-columns:minmax(0,1.08fr) minmax(440px,.92fr)!important;min-height:calc(100svh - 68px)!important;background:linear-gradient(90deg,rgba(246,248,249,.96) 0 57%,rgba(238,242,245,.79) 57% 100%)!important}
+  .ad26-hero-copy{padding-left:max(5.2vw,56px)!important;padding-right:clamp(34px,4vw,70px)!important}
+  .ad26-portrait{min-height:calc(100svh - 68px)!important;clip-path:polygon(8% 0,100% 0,100% 100%,0 100%,4% 66%,0 33%);box-shadow:-42px 28px 110px rgba(15,20,27,.09)!important}
+  .ad26-portrait:before{left:4%!important;top:7%!important;bottom:7%!important;opacity:.55}
+  .ad26-hero h1{font-size:clamp(68px,6.5vw,108px)!important;line-height:.91!important;letter-spacing:-.064em!important;max-width:940px}
+  .ad26-hero-bottom{max-width:940px;grid-template-columns:minmax(0,1fr) 250px!important}
+  .ad26-recognition{margin-top:-11svh!important;padding-top:23svh!important}
+}
+
+/* Recognition feels like observations emerging from one environment. */
+.ad26-recognition{background:rgba(247,249,250,.88)!important;backdrop-filter:blur(1px)}
+.ad26-situations article{background:transparent!important}
+.ad26-situations article.is-active{background:transparent!important}
+@media(min-width:901px){
+  .ad26-situations article{opacity:.34;transform:translateX(0) scale(.985);transition:opacity .35s ease,transform .5s cubic-bezier(.2,.8,.2,1),filter .35s ease!important}
+  .ad26-situations article.is-active{opacity:1;transform:translateX(26px) scale(1.018)!important;filter:none}
+  .ad26-situations article:not(.is-active){filter:blur(.15px)}
+  .ad26-situations article:after{display:none!important}
+}
+
+/* Dark diagnosis is the key conceptual scene. */
+.ad26-statement{background:linear-gradient(180deg,rgba(9,17,27,.97),rgba(12,22,34,.985))!important;overflow:hidden}
+.ad26-statement-copy,.ad26-reframe{z-index:3}
+.ad26-reframe{border-left:0!important;padding-left:0!important}
+.ad26-reframe-assumption,.ad26-reframe-question{padding:28px 0 30px!important;border-top:1px solid rgba(226,233,238,.17)!important}
+.ad26-reframe-assumption strong,.ad26-reframe-question strong{font-size:clamp(26px,2.7vw,46px)!important;line-height:1.02!important;letter-spacing:-.045em!important}
+.ad26-reframe-shift{height:62px;display:flex;align-items:center;justify-content:flex-start;color:#9fb0bd}
+.ad26-reframe-shift span{font-size:0}
+.ad26-reframe-shift span:after{content:"RE-FRAME";font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.62}
+
+/* Method turns into three states, not three slides. */
+.ad26-method{background:rgba(243,246,248,.91)!important}
+@media(min-width:901px){
+  .ad26-signature article{opacity:.30;transform:translateX(0);transition:opacity .35s ease,transform .45s cubic-bezier(.2,.8,.2,1)!important}
+  .ad26-signature article.is-active{opacity:1;transform:translateX(28px)}
+  .ad26-signature article.is-active h3{font-size:clamp(48px,4.3vw,68px)!important}
+  .ad26-signature article:not(.is-active) h3{color:rgba(15,20,27,.52)}
+}
+
+/* Decision Brief: remove card-on-card artifact and make it an interface surface. */
+.ad26-brief{background:rgba(255,255,255,.94)!important;overflow:hidden}
+.ad26-brief-product{transform:none!important;box-shadow:none!important;border:1px solid rgba(15,20,27,.18)!important;background:rgba(255,255,255,.84)!important;backdrop-filter:blur(18px);isolation:isolate;contain:paint}
+.ad26-brief-product:after{display:none!important}
+.ad26-brief-product:before{content:"DECISION BRIEF / LIVE PREVIEW"!important;display:block!important;position:static!important;padding-bottom:28px!important;margin-bottom:10px!important;border-bottom:1px solid rgba(15,20,27,.18)!important;background:none!important}
+.ad26-brief-row{grid-template-columns:120px 1fr!important;min-height:102px!important;align-items:center!important;padding:18px 0!important}
+.ad26-brief-row span{font-size:10px!important;letter-spacing:.18em!important}
+.ad26-brief-row strong{font-size:clamp(18px,1.65vw,27px)!important;line-height:1.08!important;letter-spacing:-.025em!important}
+@media(min-width:901px){
+  .ad26-brief{grid-template-columns:minmax(340px,.78fr) minmax(520px,1.22fr)!important;gap:clamp(70px,7vw,128px)!important}
+  .ad26-brief-product{min-height:610px;padding:44px 48px!important}
+}
+
+/* Case: transformation, not report layout. */
+.ad26-case{overflow:hidden;background:linear-gradient(180deg,rgba(11,21,32,.985),rgba(13,24,37,.99))!important}
+.ad26-case-title>span{font-size:15px!important;text-transform:uppercase;letter-spacing:.12em}
+.ad26-case-title h2{font-size:clamp(54px,5.2vw,84px)!important;line-height:.92!important;letter-spacing:-.058em!important}
+@media(min-width:901px){
+  .ad26-case-flow article{opacity:.30;transition:opacity .35s ease,transform .45s cubic-bezier(.2,.8,.2,1)!important}
+  .ad26-case-flow article.is-active{opacity:1;transform:translateX(18px)}
+  .ad26-case blockquote{max-width:520px}
+}
+
+/* About is a quiet reset. */
+.ad26-about{background:#f7f8f8!important}
+.ad26-about-copy{backdrop-filter:none!important;background:transparent!important}
+@media(min-width:901px){
+  .ad26-about-grid{grid-template-columns:minmax(280px,.78fr) minmax(500px,1.08fr) minmax(320px,.72fr)!important}
+  .ad26-about-portrait{min-height:82svh!important;clip-path:polygon(0 0,100% 0,94% 100%,0 100%)}
+}
+
+/* CTA resolves the field into a precise action. */
+.ad26-contact{background:linear-gradient(180deg,#0a1420,#0b1724)!important}
+.ad26-contact h2{font-weight:520!important;letter-spacing:-.055em!important}
+.ad26-contact-actions:before{width:42px!important;left:-58px!important}
+
+/* Mobile is independently art-directed and avoids desktop artefacts. */
+@media(max-width:900px){
+  .ad26-diagnostic-field,.ad26-constraint,.ad26-lens{display:none!important}
+  .ad26-nav{min-height:72px!important;padding:10px 18px!important}
+  .ad26-hero{background:#f5f7f8!important}
+  .ad26-hero-copy{padding:58px 24px 42px!important}
+  .ad26-hero h1{font-size:clamp(49px,13.2vw,68px)!important;line-height:.91!important;letter-spacing:-.06em!important}
+  .ad26-portrait{min-height:52svh!important;clip-path:polygon(0 0,100% 0,100% 94%,12% 100%,0 97%)}
+  .ad26-recognition{padding-top:78px!important}
+  .ad26-situations article{padding:26px 0!important}
+  .ad26-statement{padding:82px 24px 88px!important}
+  .ad26-reframe{margin-top:58px!important}
+  .ad26-method{padding-top:84px!important;padding-bottom:88px!important}
+  .ad26-brief{display:block!important;padding:82px 24px 92px!important;background:#fff!important}
+  .ad26-brief-copy{max-width:none!important}
+  .ad26-brief-product{margin-top:48px!important;width:100%!important;min-width:0!important;max-width:none!important;padding:26px 20px!important;border:1px solid rgba(15,20,27,.15)!important;box-shadow:none!important;overflow:hidden!important;contain:paint!important}
+  .ad26-brief-product:after{display:none!important;content:none!important}
+  .ad26-brief-product:before{padding-bottom:20px!important;margin-bottom:0!important;font-size:10px!important;letter-spacing:.17em!important}
+  .ad26-brief-row{grid-template-columns:96px minmax(0,1fr)!important;min-height:112px!important;padding:18px 0!important;clip-path:none!important;opacity:1!important;transform:none!important}
+  .ad26-brief-row strong{font-size:20px!important;line-height:1.12!important;overflow-wrap:anywhere}
+  .ad26-brief-row span{font-size:9px!important}
+  .ad26-case{padding-top:88px!important;padding-bottom:92px!important}
+  .ad26-case-title h2{font-size:clamp(44px,11.5vw,60px)!important;line-height:.95!important}
+  .ad26-about{padding-top:84px!important;padding-bottom:84px!important}
+  .ad26-about-portrait{min-height:62svh!important;clip-path:polygon(0 0,100% 0,100% 96%,8% 100%,0 98%)}
+}
+
+@media(max-width:430px){
+  .ad26-brief-product{padding:22px 16px!important}
+  .ad26-brief-row{grid-template-columns:82px minmax(0,1fr)!important;gap:10px!important}
+  .ad26-brief-row strong{font-size:18px!important}
+  .ad26-nav-cta{font-size:11px!important;padding:10px 12px!important}
+}
+
+@media print{
+  .ad26-diagnostic-field{display:none!important}
+  .ad26-brief-product{backdrop-filter:none!important;contain:none!important}
+  .ad26-brief-product:after{display:none!important}
+}
