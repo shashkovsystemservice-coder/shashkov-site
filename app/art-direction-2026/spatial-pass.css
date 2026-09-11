@@ -1,0 +1,139 @@
+/* Spatial art-direction pass: turn section stacks into a continuous digital experience. */
+
+.ad26{--stage:#f3f5f7;--stage-2:#eef1f4;--graphite:#0e141c;--steel:#697b89;--steel-2:#a4b1bb;--dark:#0b1420;--hair:rgba(14,20,28,.12)}
+
+/* Continuous site chrome / progress */
+.ad26-progress-rail{position:fixed;z-index:26;right:18px;top:50%;transform:translateY(-50%);display:grid;gap:10px;padding:12px 9px;border:1px solid rgba(14,20,28,.10);background:rgba(245,247,249,.66);backdrop-filter:blur(16px);box-shadow:0 12px 34px rgba(14,20,28,.06)}
+.ad26-progress-rail span{display:block;width:4px;height:4px;border-radius:99px;background:rgba(14,20,28,.25);transition:height .28s ease,background .28s ease,transform .28s ease}
+.ad26-progress-rail span.is-active{height:20px;background:#172330;transform:translateY(0)}
+.ad26-nav{transition:min-height .28s ease,padding .28s ease,background .28s ease,box-shadow .28s ease}
+.ad26-nav.is-scrolled{min-height:58px;padding-top:8px;padding-bottom:8px;background:rgba(245,247,249,.92);box-shadow:0 8px 28px rgba(14,20,28,.05)}
+
+/* Hero and first transition become one spatial composition. */
+.ad26-hero{position:relative;z-index:2;overflow:visible;background:var(--stage)}
+.ad26-hero-copy{position:relative;z-index:3}
+.ad26-portrait{z-index:2;box-shadow:-22px 34px 80px rgba(14,20,28,.10)}
+.ad26-hero:after{left:0;right:0;opacity:.55}
+.ad26-recognition{position:relative;z-index:1;margin-top:-8svh;padding-top:clamp(170px,17vw,250px)!important;background:linear-gradient(180deg,#eef2f5 0,#f7f8f9 26%,#f7f8f9 100%)!important}
+.ad26-recognition:after{content:"";position:absolute;left:0;right:0;top:0;height:24svh;background:linear-gradient(180deg,rgba(11,20,32,.035),transparent);pointer-events:none}
+
+/* Recognition: sticky question + sequential observations, not a slide. */
+@media(min-width:901px){
+  .ad26-recognition{display:grid!important;grid-template-columns:minmax(330px,.72fr) minmax(0,1.28fr)!important;grid-template-areas:"label label" "head list";column-gap:clamp(76px,8vw,150px);align-items:start;min-height:250svh}
+  .ad26-recognition>.ad26-section-label{grid-area:label}
+  .ad26-recognition-head{grid-area:head;position:sticky!important;top:18vh!important;display:block!important;padding-bottom:0!important;border-bottom:0!important;align-self:start}
+  .ad26-recognition-head>p{margin-top:26px!important;max-width:320px!important}
+  .ad26-situations{grid-area:list;margin-top:4vh!important}
+  .ad26-situations article{min-height:56svh!important;display:flex!important;align-items:center!important;padding:10vh 0!important;border-bottom:1px solid rgba(14,20,28,.13)!important}
+  .ad26-situations article>span{width:56px;flex:0 0 56px}
+  .ad26-situations article>div{max-width:760px}
+  .ad26-situations h3{font-size:clamp(32px,3vw,48px)!important;line-height:1.04!important;font-weight:560!important}
+  .ad26-situations p{font-size:17px!important;max-width:680px!important}
+}
+
+/* Dark pivot is a scene: copy and reframe stay in view while the idea changes. */
+.ad26-statement{position:relative;z-index:4;background:radial-gradient(circle at 75% 40%,rgba(104,126,144,.13),transparent 26%),linear-gradient(180deg,#0b1420,#0d1723)!important;border-top:1px solid rgba(255,255,255,.08)}
+@media(min-width:901px){
+  .ad26-statement{min-height:165svh!important;align-items:start!important;padding-top:18svh!important;padding-bottom:22svh!important}
+  .ad26-statement-copy,.ad26-reframe{position:sticky!important;top:17svh!important;align-self:start!important}
+  .ad26-statement-copy{max-width:860px!important}
+  .ad26-reframe{margin-top:1vh!important}
+}
+.ad26-reframe{border-left:1px solid rgba(255,255,255,.16);padding-left:34px!important}
+.ad26-reframe-assumption,.ad26-reframe-question{border-top:0!important}
+.ad26-reframe-assumption:before,.ad26-reframe-question:before{content:"";position:absolute;left:-38px;top:28px;width:7px;height:7px;border:1px solid rgba(235,240,244,.7);border-radius:50%;background:#0c1622}
+.ad26-reframe-question:before{background:#dbe3e8;border-color:#dbe3e8;box-shadow:0 0 0 7px rgba(219,227,232,.06)}
+
+/* Method: persistent thesis on left, three large scroll states on right. */
+@media(min-width:901px){
+  .ad26-method{display:grid!important;grid-template-columns:minmax(330px,.72fr) minmax(0,1.28fr)!important;grid-template-areas:"label label" "head steps" "note note";column-gap:clamp(76px,8vw,150px);align-items:start;min-height:235svh;padding-top:16svh!important;padding-bottom:18svh!important;background:linear-gradient(180deg,#f4f6f8,#eef2f5)!important}
+  .ad26-method>.ad26-section-label{grid-area:label}
+  .ad26-method-head{grid-area:head;position:sticky!important;top:17vh!important;display:block!important;align-self:start}
+  .ad26-method-head>p{margin-top:30px!important;max-width:360px!important}
+  .ad26-signature{grid-area:steps;display:block!important;margin-top:2vh!important;border:0!important}
+  .ad26-signature article,.ad26-signature article+article{display:block!important;min-height:58svh!important;padding:12vh 0 10vh 70px!important;border-left:0!important;border-bottom:1px solid rgba(14,20,28,.14)!important;background:transparent!important}
+  .ad26-signature article:before{left:0!important;opacity:.35!important}
+  .ad26-signature .ad26-step-no{left:0!important;right:auto!important;top:12vh!important}
+  .ad26-signature strong{font-size:11px!important}
+  .ad26-signature h3{margin:22px 0 16px!important;font-size:clamp(42px,4vw,62px)!important;line-height:1!important;font-weight:540!important}
+  .ad26-signature p{font-size:17px!important;max-width:620px!important}
+  .ad26-method-note{grid-area:note;margin-top:10vh!important;max-width:1100px!important}
+}
+
+/* Decision Brief floats as a product object between scenes. */
+.ad26-brief{position:relative;z-index:5;background:linear-gradient(120deg,#fff 0 64%,#eef2f4 64% 100%)!important}
+.ad26-brief-product{transform:rotate(.55deg);box-shadow:0 28px 90px rgba(14,20,28,.10)!important;border-color:rgba(14,20,28,.18)!important}
+.ad26-brief-product:after{content:"";position:absolute;inset:8px -8px -8px 8px;border:1px solid rgba(14,20,28,.08);z-index:-1;background:rgba(255,255,255,.45)}
+@media(min-width:901px){
+  .ad26-brief{min-height:112svh!important;padding-top:15svh!important;padding-bottom:15svh!important;align-items:center!important}
+  .ad26-brief-copy{position:sticky;top:18vh;align-self:start}
+  .ad26-brief-product{align-self:center;transform:translateY(3vh) rotate(.65deg)}
+}
+
+/* Case becomes an immersive proof scene, with the left question held while evidence moves. */
+.ad26-case{position:relative;background:linear-gradient(180deg,#0d1723,#101b28)!important;color:#f5f7f9!important}
+.ad26-case .ad26-section-label,.ad26-case-flow span{color:#9aabb8!important}
+.ad26-case-title>span,.ad26-case-flow p,.ad26-case blockquote small{color:#9eabb6!important}
+.ad26-case-title h2,.ad26-case-flow h3,.ad26-case blockquote{color:#f7f9fa!important}
+@media(min-width:901px){
+  .ad26-case{display:grid!important;grid-template-columns:minmax(340px,.72fr) minmax(0,1.28fr)!important;grid-template-areas:"label label" "title flow" "quote flow";column-gap:clamp(74px,8vw,144px);align-items:start;min-height:250svh;padding-top:16svh!important;padding-bottom:18svh!important}
+  .ad26-case>.ad26-section-label{grid-area:label}
+  .ad26-case-title{grid-area:title;position:sticky!important;top:17vh!important;display:block!important;align-self:start}
+  .ad26-case-title>span{display:block;margin-bottom:26px}
+  .ad26-case-title h2{font-size:clamp(48px,4.8vw,76px)!important}
+  .ad26-case-flow{grid-area:flow;display:block!important;margin-top:0!important;border:0!important}
+  .ad26-case-flow article,.ad26-case-flow article+article{display:flex!important;flex-direction:column;justify-content:center;min-height:62svh!important;padding:11vh 0 10vh 70px!important;border-left:0!important;border-bottom:1px solid rgba(255,255,255,.12)!important}
+  .ad26-case-flow:before,.ad26-case-flow:after{background:rgba(255,255,255,.14)!important}
+  .ad26-case-flow:after{background:#a8bac7!important}
+  .ad26-case-flow article:before{background:#101b28!important;border-color:#a8bac7!important}
+  .ad26-case-flow h3{font-size:clamp(30px,3vw,48px)!important;line-height:1.08!important}
+  .ad26-case-flow p{font-size:18px!important;max-width:700px!important}
+  .ad26-case blockquote{grid-area:quote;position:sticky;top:64vh;align-self:start;margin:0!important;padding-top:0!important;border-top:0!important;font-size:clamp(25px,2.2vw,36px)!important}
+}
+
+/* About feels like a photographic editorial spread, but remains business-like. */
+.ad26-about{position:relative;background:#f5f7f8!important}
+@media(min-width:901px){
+  .ad26-about{min-height:120svh;padding-top:14svh!important;padding-bottom:14svh!important}
+  .ad26-about-grid{grid-template-columns:minmax(280px,.8fr) minmax(420px,1fr) minmax(330px,.8fr)!important;gap:clamp(38px,4.5vw,78px)!important;align-items:center!important}
+  .ad26-about-portrait{min-height:78svh!important;margin-top:-3vh!important;box-shadow:0 30px 80px rgba(14,20,28,.10)}
+  .ad26-about-title{align-self:start;padding-top:4vh}
+  .ad26-about-copy{align-self:end;margin-bottom:4vh}
+}
+
+/* Final CTA is a stage, not a footer card. */
+.ad26-contact{min-height:92svh!important;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at 85% 70%,rgba(142,161,175,.16),transparent 24%),#0b1420!important}
+.ad26-contact footer{margin-top:auto!important}
+
+/* Mobile stays native and avoids desktop pinning tricks. */
+@media(max-width:900px){
+  .ad26-progress-rail{display:none}
+  .ad26-nav.is-scrolled{min-height:58px}
+  .ad26-recognition{margin-top:0;padding-top:90px!important}
+  .ad26-recognition:after{display:none}
+  .ad26-statement{padding-top:94px!important;padding-bottom:96px!important}
+  .ad26-reframe{border-left:0!important;padding-left:0!important}
+  .ad26-method{background:#f3f5f7!important}
+  .ad26-brief{background:#fff!important}
+  .ad26-brief-product{transform:none!important;box-shadow:0 18px 55px rgba(14,20,28,.07)!important}
+  .ad26-case{background:#0e1824!important;padding-top:96px!important;padding-bottom:100px!important}
+  .ad26-case-flow article,.ad26-case-flow article+article{border-bottom-color:rgba(255,255,255,.12)!important}
+  .ad26-case blockquote{border-top-color:rgba(255,255,255,.14)!important}
+  .ad26-about{background:#f5f7f8!important}
+  .ad26-contact{min-height:auto!important}
+}
+
+/* Print must ignore the spatial web choreography. */
+@media print{
+  .ad26-progress-rail{display:none!important}
+  .ad26-nav.is-scrolled{box-shadow:none!important}
+  .ad26-recognition{margin-top:0!important;padding-top:11mm!important}
+  .ad26-recognition,.ad26-method,.ad26-case,.ad26-brief,.ad26-about,.ad26-contact,.ad26-statement{min-height:0!important;background:#fff!important;color:#111!important}
+  .ad26-recognition-head,.ad26-method-head,.ad26-statement-copy,.ad26-reframe,.ad26-brief-copy,.ad26-case-title,.ad26-case blockquote{position:static!important;top:auto!important}
+  .ad26-situations article,.ad26-signature article,.ad26-case-flow article{min-height:0!important;padding-top:5mm!important;padding-bottom:5mm!important}
+  .ad26-case-title h2,.ad26-case-flow h3,.ad26-case blockquote{color:#111!important}
+  .ad26-case-title>span,.ad26-case-flow p,.ad26-case blockquote small{color:#555!important}
+  .ad26-brief-product{transform:none!important;box-shadow:none!important}
+  .ad26-brief-product:after{display:none!important}
+  .ad26-about-portrait{box-shadow:none!important}
+}
