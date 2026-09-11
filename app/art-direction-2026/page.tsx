@@ -34,6 +34,48 @@ function ReframePanel() {
   );
 }
 
+function DiagnosisField() {
+  return (
+    <div className="ad26-diagnosis-visual" aria-hidden="true">
+      <svg className="ad26-diagnosis-network" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <radialGradient id="ad26-core-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#9fb2ff" stopOpacity=".95" />
+            <stop offset="45%" stopColor="#7c98ff" stopOpacity=".34" />
+            <stop offset="100%" stopColor="#7c98ff" stopOpacity="0" />
+          </radialGradient>
+          <filter id="ad26-soft-glow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="7" />
+          </filter>
+        </defs>
+        <g className="ad26-network-lines">
+          <path pathLength="1" d="M90 110 C235 125 355 214 500 320" />
+          <path pathLength="1" d="M120 330 C250 300 370 300 500 320" />
+          <path pathLength="1" d="M170 555 C290 470 385 390 500 320" />
+          <path pathLength="1" d="M890 120 C760 145 640 235 500 320" />
+          <path pathLength="1" d="M900 470 C760 425 640 365 500 320" />
+          <path pathLength="1" d="M760 585 C680 495 600 405 500 320" />
+        </g>
+        <g className="ad26-network-orbits">
+          <circle cx="500" cy="320" r="88" />
+          <circle cx="500" cy="320" r="156" />
+          <circle cx="500" cy="320" r="232" />
+        </g>
+        <g className="ad26-network-nodes">
+          <circle className="n1" cx="90" cy="110" r="8" />
+          <circle className="n2" cx="120" cy="330" r="7" />
+          <circle className="n3" cx="170" cy="555" r="9" />
+          <circle className="n4" cx="890" cy="120" r="7" />
+          <circle className="n5" cx="900" cy="470" r="9" />
+          <circle className="n6" cx="760" cy="585" r="7" />
+        </g>
+        <circle className="ad26-network-core-halo" cx="500" cy="320" r="72" fill="url(#ad26-core-glow)" filter="url(#ad26-soft-glow)" />
+        <circle className="ad26-network-core" cx="500" cy="320" r="12" />
+      </svg>
+    </div>
+  );
+}
+
 export default function ArtDirection2026() {
   return (
     <main className="ad26" id="top">
@@ -77,22 +119,13 @@ export default function ArtDirection2026() {
 
       <section className="ad26-statement">
         <div className="ad26-statement-stage">
-          <div className="ad26-diagnosis-visual" aria-hidden="true">
-            <span className="ad26-diagnosis-trace ad26-diagnosis-trace-a" />
-            <span className="ad26-diagnosis-trace ad26-diagnosis-trace-b" />
-            <span className="ad26-diagnosis-trace ad26-diagnosis-trace-c" />
-            <span className="ad26-diagnosis-node ad26-diagnosis-node-a" />
-            <span className="ad26-diagnosis-node ad26-diagnosis-node-b" />
-            <span className="ad26-diagnosis-node ad26-diagnosis-node-c" />
-            <span className="ad26-diagnosis-core" />
-          </div>
+          <DiagnosisField />
           <div className="ad26-statement-copy">
             <p className="ad26-statement-label">Симптом ≠ причина</p>
             <h2>«Нам нужно больше заявок»<br/>ещё не значит, что нужна реклама.</h2>
             <div className="ad26-statement-foot"><p>Цена ошибки — месяцами улучшать рекламу, сайт или продажи не там, где находится реальное ограничение.</p><p className="ad26-rule">Сначала понять проблему.<br/>Потом выбирать решение.<br/>И только потом — инструмент.</p></div>
           </div>
           <ReframePanel />
-          <div className="ad26-diagnosis-meter" aria-hidden="true"><span>signal</span><i/><span>constraint</span></div>
         </div>
       </section>
 
