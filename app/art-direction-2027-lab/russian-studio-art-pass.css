@@ -1,0 +1,153 @@
+/* Russian studio art pass — sharper, proof-led, more authored. */
+.ad27{
+  --studio-blue:#2457ff;
+  --studio-black:#0a0c10;
+  --studio-paper:#f4f4f0;
+  background:var(--studio-paper);
+}
+
+/* Global authorship: stronger rules, less generic consulting softness. */
+.ad27 section{position:relative}
+.ad27-section-no{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.12em;color:#8d9299}
+.ad27-section-no::before{content:"";width:18px;height:2px;background:var(--studio-blue);display:inline-block}
+.ad27-kicker{letter-spacing:.08em}
+
+/* Navigation behaves like a publishing masthead. */
+.ad27-nav{background:rgba(244,244,240,.94);box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.ad27-brand>span{font-size:30px!important;letter-spacing:-.09em!important}
+.ad27-nav-cta{position:relative}
+.ad27-nav-cta::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--studio-blue);transform:scaleX(.45);transform-origin:left;transition:transform .2s ease}
+.ad27-nav-cta:hover::after{transform:scaleX(1)}
+
+/* Hero: stronger contrast and composition, closer to a studio manifesto than a consulting template. */
+.ad27-hero{background:#f1f1ed}
+.ad27-hero::before{content:"";position:absolute;left:var(--page-x);right:var(--page-x);top:78px;height:1px;background:rgba(17,19,24,.12)}
+.ad27-hero-copy{padding-bottom:6px!important}
+.ad27-hero .ad27-kicker{max-width:620px!important;color:#555b63!important}
+.ad27-hero h1{max-width:980px;text-wrap:balance}
+.ad27-hero h1 em{position:relative;color:var(--ink)!important}
+.ad27-hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:-.02em;height:.065em;background:var(--studio-blue)}
+.ad27-hero-lead{border-top:2px solid var(--ink)!important}
+.ad27-hero-image{isolation:isolate}
+.ad27-hero-image::after{background:linear-gradient(180deg,rgba(10,12,16,.02),transparent 55%,rgba(10,12,16,.2))!important}
+.ad27-hero-image::before{width:3px!important;background:var(--studio-blue)!important}
+
+/* Proof becomes visible evidence, not footnote metadata. */
+.ad27-proof{background:#111319!important;color:#f4f4f1;border:0!important}
+.ad27-proof article{min-height:138px!important}
+.ad27-proof article+article{border-left-color:rgba(255,255,255,.16)!important}
+.ad27-proof strong{font-size:20px!important;line-height:1.05;letter-spacing:-.035em;color:#fff}
+.ad27-proof span{font-size:13px!important;color:rgba(255,255,255,.56)!important}
+.ad27-proof article:first-child strong::before{content:"24";display:block;margin-bottom:10px;font-size:44px;line-height:.9;color:var(--studio-blue);letter-spacing:-.07em}
+
+/* Recognition: editorial index with controlled density. */
+.ad27-recognition{background:#f6f6f2}
+.ad27-situation-list{border-top:2px solid var(--ink)!important}
+.ad27-situation-list article{transition:padding-left .2s ease,background .2s ease}
+.ad27-situation-list article:hover{padding-left:12px;background:rgba(36,87,255,.035)}
+.ad27-situation-list article>span{color:var(--studio-blue)!important;font-weight:800}
+
+/* Diagnosis: fewer theatrics, stronger art direction. */
+.ad27-diagnosis{background:#0a0c10!important}
+.ad27-diagnosis-sticky{border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.1)}
+.ad27-diagnosis h2 span{color:#fff!important}
+.ad27-reframe-grid{border-top:2px solid rgba(255,255,255,.9)!important}
+.ad27-reframe-grid div:last-child{position:relative;padding-left:22px}
+.ad27-reframe-grid div:last-child::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:3px;background:var(--studio-blue)}
+
+/* Method: numbered process as an authored operating system. */
+.ad27-approach{background:#fff}
+.ad27-approach-steps{border-top:2px solid var(--ink)!important}
+.ad27-approach-steps article>span{font-size:11px!important;color:var(--studio-blue)!important;font-weight:800}
+.ad27-approach-steps strong{font-size:20px!important}
+.ad27-approach-steps article:hover strong{color:var(--studio-blue)}
+.ad27-approach-note{padding:18px 0 0;border-top:1px solid var(--line)}
+
+/* Brief: make it feel like a product/professional instrument. */
+.ad27-brief{background:#eceef2!important}
+.ad27-brief-copy .ad27-kicker{color:#4f5560}
+.ad27-brief-lines{position:relative;padding-left:22px}
+.ad27-brief-lines::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--studio-blue)}
+.ad27-brief-lines>div:first-child strong{font-size:22px!important;line-height:1.1}
+.ad27-brief-lines span{color:#6f7580!important}
+
+/* Case: magazine-like feature story, not a dark card stack. */
+.ad27-case{background:#0b0d12!important}
+.ad27-case::before{content:"CASE 01";position:absolute;right:var(--page-x);top:36px;font-size:10px;letter-spacing:.16em;color:rgba(255,255,255,.22)}
+.ad27-case-lead>p{color:rgba(255,255,255,.46)!important}
+.ad27-case-lead h2{max-width:1160px}
+.ad27-case-steps{border-top:2px solid rgba(255,255,255,.88)!important}
+.ad27-case-steps article span,.ad27-case-action>span,.ad27-artifact span{color:#7f95ff!important}
+.ad27-artifact{border-left:4px solid var(--studio-blue);padding-left:22px!important}
+.ad27-case blockquote{position:relative;padding-left:28px}
+.ad27-case blockquote::before{content:"“";position:absolute;left:-4px;top:-14px;font-size:72px;line-height:1;color:var(--studio-blue);font-family:Georgia,serif}
+
+/* Commercial continuation: visibly a choice architecture, not three generic text blocks. */
+.ad27-continuation{background:#f5f5f1}
+.ad27-continuation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink)!important}
+.ad27-continuation-grid article{min-height:360px;padding:28px 28px 34px!important;border-right:1px solid var(--line);display:flex;flex-direction:column}
+.ad27-continuation-grid article:last-child{border-right:0}
+.ad27-continuation-grid article:nth-child(2){background:#111319;color:#fff;border-top:0!important;margin-top:0!important}
+.ad27-continuation-grid article:nth-child(2) p,.ad27-continuation-grid article:nth-child(2) li{color:rgba(255,255,255,.65)}
+.ad27-continuation-grid article:nth-child(2) a{color:#fff;border-bottom-color:rgba(255,255,255,.34)}
+.ad27-continuation-grid article:nth-child(2)>span{color:#7f95ff}
+.ad27-continuation-grid h3{margin-bottom:14px}
+.ad27-continuation-grid a{margin-top:auto;align-self:flex-start}
+
+/* About: photo and text feel like one authored spread. */
+.ad27-about{background:#fff}
+.ad27-about-image{box-shadow:18px 18px 0 #e4e6e9}
+.ad27-about-foundations{border-top:2px solid var(--ink)!important}
+
+/* Projects: proof inventory, not portfolio cards. */
+.ad27-projects{background:#111319!important;color:#f4f4f1}
+.ad27-projects .ad27-section-no,.ad27-projects .ad27-kicker{color:rgba(255,255,255,.45)}
+.ad27-projects .ad27-section-no::before{background:#7f95ff}
+.ad27-project-list{border-top:2px solid rgba(255,255,255,.9)!important}
+.ad27-project-list article{border-bottom-color:rgba(255,255,255,.12)!important;transition:padding-left .2s ease}
+.ad27-project-list article:hover{padding-left:12px}
+.ad27-project-list b{color:#7f95ff!important}
+.ad27-project-list em,.ad27-project-list p{color:rgba(255,255,255,.56)!important}
+.ad27-project-list a{color:#fff;border-bottom-color:rgba(255,255,255,.28)!important}
+
+/* FAQ: cleaner, more confident. */
+.ad27-faq{background:#f7f7f3}
+.ad27-faq-list{border-top:2px solid var(--ink)!important}
+.ad27-faq-list summary::after{color:var(--studio-blue)!important;font-weight:700!important}
+
+/* Contact: final black frame with one accent line. */
+.ad27-contact{background:#0a0c10!important;border-top:4px solid var(--studio-blue)}
+.ad27-contact-grid{position:relative}
+.ad27-contact-grid::before{content:"START HERE";position:absolute;right:0;top:-44px;font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,.24)}
+.ad27-contact-form{border-top:2px solid rgba(255,255,255,.82)!important}
+.ad27-footer{border-top-color:rgba(255,255,255,.24)!important}
+
+@media(max-width:900px){
+  .ad27-hero::before{top:58px}
+  .ad27-hero h1 em::after{height:4px}
+  .ad27-hero-image::before{display:block!important;left:0!important;width:3px!important}
+  .ad27-proof article:first-child strong::before{font-size:34px}
+  .ad27-proof strong{font-size:17px!important}
+  .ad27-diagnosis-sticky{border-top:0}
+  .ad27-reframe-grid div:last-child{padding-left:16px}
+  .ad27-approach-steps strong{font-size:17px!important}
+  .ad27-brief-lines{padding-left:14px}
+  .ad27-brief-lines::before{width:3px}
+  .ad27-case::before{display:none}
+  .ad27-case blockquote{padding-left:22px}
+  .ad27-case blockquote::before{font-size:56px;top:-10px}
+  .ad27-continuation-grid{display:block}
+  .ad27-continuation-grid article{min-height:auto;padding:24px 0 28px!important;border-right:0;border-bottom:1px solid var(--line)}
+  .ad27-continuation-grid article:nth-child(2){margin-left:-20px!important;margin-right:-20px!important;padding:28px 20px 30px!important}
+  .ad27-continuation-grid article a{margin-top:20px}
+  .ad27-about-image{box-shadow:10px 10px 0 #e4e6e9}
+  .ad27-projects{margin-top:0}
+  .ad27-contact-grid::before{display:none}
+}
+
+@media(max-width:390px){
+  .ad27-brand>span{font-size:25px!important}
+  .ad27-hero h1{font-size:clamp(44px,12vw,52px)!important}
+  .ad27-proof strong{font-size:16px!important}
+  .ad27-continuation-grid article:nth-child(2){margin-left:-16px!important;margin-right:-16px!important;padding-left:16px!important;padding-right:16px!important}
+}
