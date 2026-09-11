@@ -1,0 +1,123 @@
+/* V7 QA: mobile flow, transition continuity, Safari-safe composition. */
+
+@media(max-width:900px){
+  /* The signal map is atmospheric only. It must never consume document flow. */
+  .ad26-signal-map{
+    position:absolute!important;
+    inset:74px 0 auto 0!important;
+    width:100%!important;
+    height:48svh!important;
+    max-height:440px!important;
+    margin:0!important;
+    z-index:0!important;
+    opacity:.34!important;
+    pointer-events:none!important;
+    overflow:visible!important;
+  }
+  .ad26-hero-copy,.ad26-portrait{position:relative!important;z-index:4!important}
+  .ad26-hero:after{display:none!important;content:none!important}
+
+  /* GSAP desktop timelines can leave inline values on Safari. Mobile has its own stable choreography. */
+  .ad26-portrait img,
+  .ad26-about-portrait img,
+  .ad26-statement,
+  .ad26-statement-label,
+  .ad26-statement h2,
+  .ad26-statement-foot,
+  .ad26-reframe-assumption,
+  .ad26-reframe-shift,
+  .ad26-reframe-question,
+  .ad26-case blockquote,
+  .ad26-about-portrait{
+    transform:none!important;
+    opacity:1!important;
+    filter:none!important;
+  }
+  .ad26-statement{clip-path:none!important}
+  .ad26-portrait img,.ad26-about-portrait img{scale:1!important}
+
+  /* Keep the focus lens restrained on touch devices; it should not cover content or create a jump. */
+  .ad26-lens{
+    width:42vw!important;
+    height:42vw!important;
+    max-width:190px!important;
+    max-height:190px!important;
+    opacity:.42!important;
+    pointer-events:none!important;
+  }
+
+  /* Scene boundaries are graded, not hard cuts. First pixel matches the previous scene. */
+  .ad26-recognition{
+    background:#f7f9fa!important;
+  }
+  .ad26-statement{
+    padding-top:136px!important;
+    background:linear-gradient(180deg,#f7f9fa 0,#0e1824 64px,#0e1824 100%)!important;
+  }
+  .ad26-method{
+    padding-top:134px!important;
+    background:linear-gradient(180deg,#0e1824 0,#f3f5f7 64px,#f3f5f7 100%)!important;
+  }
+  .ad26-brief{
+    background:#fff!important;
+  }
+  .ad26-case{
+    padding-top:136px!important;
+    background:linear-gradient(180deg,#fff 0,#0e1824 64px,#0e1824 100%)!important;
+  }
+  .ad26-about{
+    padding-top:134px!important;
+    background:linear-gradient(180deg,#0e1824 0,#f5f7f8 64px,#f5f7f8 100%)!important;
+  }
+  .ad26-contact{
+    padding-top:138px!important;
+    background:linear-gradient(180deg,#f5f7f8 0,#0b1420 64px,#0b1420 100%)!important;
+  }
+
+  /* Avoid decorative elements reading as accidental overlays during the boundary gradients. */
+  .ad26-statement:after,.ad26-method:after,.ad26-case:after,.ad26-contact:after{
+    opacity:.28!important;
+    mix-blend-mode:normal!important;
+  }
+
+  /* Each content group owns its vertical territory. */
+  .ad26-recognition-head,.ad26-method-head,.ad26-case-title{
+    clear:both!important;
+    isolation:isolate!important;
+  }
+  .ad26-situations,.ad26-signature,.ad26-case-flow{
+    position:relative!important;
+    z-index:4!important;
+  }
+  .ad26-situations article,.ad26-signature article,.ad26-case-flow article{
+    overflow:visible!important;
+  }
+
+  /* Prevent line boxes from touching scene boundaries on compact iPhones. */
+  .ad26-recognition-head h2,.ad26-method-head h2,.ad26-case-title h2,.ad26-contact h2{
+    text-wrap:balance!important;
+    overflow-wrap:normal!important;
+  }
+
+  /* The WebGL layer should remain atmospheric, not compete with reading. */
+  .ad26-diagnostic-field{opacity:.095!important;transition:opacity .7s ease,filter .7s ease!important}
+  .ad26[data-section*="Диагноз"] .ad26-diagnostic-field,
+  .ad26[data-section*="Кейс"] .ad26-diagnostic-field,
+  .ad26[data-section*="Следующий"] .ad26-diagnostic-field{opacity:.13!important}
+  .ad26[data-section*="Обо мне"] .ad26-diagnostic-field{opacity:.025!important}
+}
+
+@media(max-width:430px){
+  .ad26-signal-map{height:43svh!important;opacity:.28!important}
+  .ad26-lens{width:39vw!important;height:39vw!important;opacity:.34!important}
+  .ad26-statement,.ad26-method,.ad26-case,.ad26-about,.ad26-contact{padding-top:124px!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .ad26-diagnostic-field{display:none!important}
+  .ad26-lens{display:none!important}
+}
+
+@media print{
+  .ad26-signal-map{display:none!important}
+}
