@@ -15,6 +15,8 @@ uniform vec2 u_pointer;
 uniform float u_time;
 uniform float u_scroll;
 uniform float u_scene;
+uniform float u_velocity;
+uniform float u_mobile;
 
 float hash(vec2 p){
   p = fract(p * vec2(123.34,456.21));
@@ -22,7 +24,7 @@ float hash(vec2 p){
   return fract(p.x*p.y);
 }
 
-float line(float v,float width){
+float band(float v,float width){
   return 1.0-smoothstep(0.0,width,abs(v));
 }
 
@@ -33,35 +35,37 @@ void main(){
 
   vec2 pointer = u_pointer - .5;
   pointer.x *= u_resolution.x/u_resolution.y;
-  vec2 focus = mix(vec2(.28,.08), pointer, .46);
+  vec2 baseFocus = mix(vec2(.20,.10), vec2(.46,.02), smoothstep(0.0,1.0,u_scroll));
+  vec2 focus = mix(baseFocus, pointer, mix(.34,.08,u_mobile));
 
-  float t = u_time*.08;
-  float scrollWave = sin(u_scroll*6.2831)*.04;
-
+  float t = u_time*.09;
+  float velocity = min(abs(u_velocity),1.0);
   float d = length(p-focus);
   float ang = atan(p.y-focus.y,p.x-focus.x);
-  float warp = sin(ang*3.0 + t*2.0 + d*11.0)*.035;
-  float contour = line(fract((d+warp+scrollWave)*8.0)-.5,.035);
+  float warp = sin(ang*3.0 + t*2.2 + d*12.0)*(.03 + velocity*.035);
+  float contour = band(fract((d+warp+sin(u_scroll*6.2831)*.035)*8.0)-.5,.032);
 
   vec2 q = p;
-  q.y += sin(q.x*5.0+t)*.045;
-  q.x += sin(q.y*4.0-t*.7)*.025;
-  float flowA = line(sin(q.x*4.2 + q.y*2.3 + t + u_scroll*2.0), .055);
-  float flowB = line(sin(q.x*2.1 - q.y*5.1 - t*.8), .045);
+  q.y += sin(q.x*5.2+t)*(.036 + velocity*.05);
+  q.x += sin(q.y*4.1-t*.75)*(.022 + velocity*.03);
+  float flowA = band(sin(q.x*4.4 + q.y*2.25 + t + u_scroll*2.2), .052);
+  float flowB = band(sin(q.x*2.0 - q.y*5.0 - t*.8), .04);
 
-  float node = 1.0-smoothstep(.018,.03,length(p-focus));
-  float halo = 1.0-smoothstep(.04,.23,d);
-  float grain = (hash(gl_FragCoord.xy + u_time)-.5)*.055;
+  float node = 1.0-smoothstep(.015,.031,length(p-focus));
+  float halo = 1.0-smoothstep(.05,.25,d);
+  float grain = (hash(gl_FragCoord.xy + u_time)-.5)*.04;
 
-  float energy = contour*.42 + flowA*.14 + flowB*.08 + node*.75 + halo*.08;
-  energy *= smoothstep(1.15,.15,length(p));
+  float focusMask = 1.0-smoothstep(.12,.42,d);
+  float energy = contour*.46 + flowA*.16 + flowB*.09 + node*.82 + halo*.10 + focusMask*.08;
+  energy *= smoothstep(1.2,.12,length(p));
 
   float darkScene = step(1.5,u_scene) * (1.0-step(2.5,u_scene)) + step(4.5,u_scene)*(1.0-step(5.5,u_scene)) + step(6.5,u_scene);
-  vec3 lightInk = vec3(.16,.23,.30);
-  vec3 darkInk = vec3(.67,.76,.82);
+  vec3 lightInk = vec3(.10,.18,.25);
+  vec3 darkInk = vec3(.72,.81,.86);
   vec3 col = mix(lightInk,darkInk,clamp(darkScene,0.0,1.0));
 
-  float alpha = clamp(energy + grain,0.0,1.0)*.42;
+  float mobileGain = mix(1.0,.78,u_mobile);
+  float alpha = clamp(energy + grain,0.0,1.0)*.56*mobileGain;
   gl_FragColor = vec4(col,alpha);
 }`;
 
@@ -82,12 +86,12 @@ export default function DiagnosticField() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (window.matchMedia("(max-width: 900px)").matches) return;
 
     const canvas = canvasRef.current;
     const root = document.querySelector<HTMLElement>(".ad26");
     if (!canvas || !root) return;
 
+    const isMobile = window.matchMedia("(max-width: 900px)").matches;
     const gl = canvas.getContext("webgl", { alpha: true, antialias: false, powerPreference: "low-power" });
     if (!gl) return;
 
@@ -127,15 +131,19 @@ export default function DiagnosticField() {
     const timeU = gl.getUniformLocation(program, "u_time");
     const scrollU = gl.getUniformLocation(program, "u_scroll");
     const sceneU = gl.getUniformLocation(program, "u_scene");
+    const velocityU = gl.getUniformLocation(program, "u_velocity");
+    const mobileU = gl.getUniformLocation(program, "u_mobile");
 
     const pointer = { x: .68, y: .38 };
     const target = { ...pointer };
     let scene = 0;
     let raf = 0;
+    let lastScroll = window.scrollY;
+    let velocity = 0;
     const started = performance.now();
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
       const width = Math.floor(window.innerWidth * dpr);
       const height = Math.floor(window.innerHeight * dpr);
       if (canvas.width !== width || canvas.height !== height) {
@@ -148,6 +156,7 @@ export default function DiagnosticField() {
     };
 
     const onPointer = (e: PointerEvent) => {
+      if (isMobile) return;
       target.x = e.clientX / Math.max(1,window.innerWidth);
       target.y = 1 - e.clientY / Math.max(1,window.innerHeight);
     };
@@ -159,17 +168,24 @@ export default function DiagnosticField() {
 
     const render = () => {
       resize();
-      pointer.x += (target.x-pointer.x)*.045;
-      pointer.y += (target.y-pointer.y)*.045;
+      pointer.x += (target.x-pointer.x)*(isMobile ? .02 : .045);
+      pointer.y += (target.y-pointer.y)*(isMobile ? .02 : .045);
       const doc = document.documentElement;
       const max = Math.max(1,doc.scrollHeight-window.innerHeight);
-      const scroll = window.scrollY/max;
+      const scrollY = window.scrollY;
+      const scroll = scrollY/max;
+      const rawVelocity = (scrollY-lastScroll)/Math.max(1,window.innerHeight*.085);
+      velocity += (rawVelocity-velocity)*.12;
+      velocity *= .93;
+      lastScroll = scrollY;
 
       gl.uniform2f(resolution,canvas.width,canvas.height);
       gl.uniform2f(pointerU,pointer.x,pointer.y);
       gl.uniform1f(timeU,(performance.now()-started)/1000);
       gl.uniform1f(scrollU,scroll);
       gl.uniform1f(sceneU,scene);
+      gl.uniform1f(velocityU,velocity);
+      gl.uniform1f(mobileU,isMobile ? 1 : 0);
       gl.clearColor(0,0,0,0);
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.drawArrays(gl.TRIANGLES,0,6);
