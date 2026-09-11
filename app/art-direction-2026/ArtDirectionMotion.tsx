@@ -15,6 +15,17 @@ const constraintStates = [
   { d: "M80 550 C300 520 450 500 600 500 C760 500 850 500 930 500", a:[600,500], b:[930,500] },
 ] as const;
 
+const sectionMap: Array<[string, string]> = [
+  [".ad26-hero", "00 · Ввод"],
+  [".ad26-recognition", "01 · Ситуация"],
+  [".ad26-statement", "01 · Диагноз"],
+  [".ad26-method", "02 · Логика"],
+  [".ad26-brief", "02 · Decision Brief"],
+  [".ad26-case", "03 · Кейс"],
+  [".ad26-about", "04 · Обо мне"],
+  [".ad26-contact", "05 · Следующий шаг"],
+];
+
 export default function ArtDirectionMotion() {
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -27,54 +38,66 @@ export default function ArtDirectionMotion() {
     const constraintNodeA = document.querySelector<SVGCircleElement>(".ad26-constraint-node-a");
     const constraintNodeB = document.querySelector<SVGCircleElement>(".ad26-constraint-node-b");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.matchMedia("(max-width: 900px)").matches;
 
     const setConstraint = (index: number, immediate = false) => {
       const state = constraintStates[index] ?? constraintStates[0];
-      const vars = { duration: immediate ? 0 : 0.9, ease: "power3.inOut", overwrite: true };
+      const vars = { duration: immediate || reducedMotion ? 0 : (isMobile ? 0.65 : 0.9), ease: "power2.inOut", overwrite: true };
       if (constraintPath) gsap.to(constraintPath, { ...vars, attr: { d: state.d } });
       if (constraintNodeA) gsap.to(constraintNodeA, { ...vars, attr: { cx: state.a[0], cy: state.a[1] } });
       if (constraintNodeB) gsap.to(constraintNodeB, { ...vars, attr: { cx: state.b[0], cy: state.b[1] } });
+    };
+
+    const activateSection = (index: number, label: string) => {
+      root?.setAttribute("data-section", label);
+      rail.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+      setConstraint(index);
     };
 
     const onScroll = () => nav?.classList.toggle("is-scrolled", window.scrollY > 48);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    const sectionMap: Array<[string, string]> = [
-      [".ad26-hero", "00 · Ввод"],
-      [".ad26-recognition", "01 · Ситуация"],
-      [".ad26-statement", "01 · Диагноз"],
-      [".ad26-method", "02 · Логика"],
-      [".ad26-brief", "02 · Decision Brief"],
-      [".ad26-case", "03 · Кейс"],
-      [".ad26-about", "04 · Обо мне"],
-      [".ad26-contact", "05 · Следующий шаг"],
-    ];
-
-    const sectionTriggers = sectionMap.map(([selector, label], index) => {
-      const element = document.querySelector(selector);
-      if (!element) return null;
-      const activate = () => {
-        root?.setAttribute("data-section", label);
-        rail.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
-        setConstraint(index);
-      };
-      return ScrollTrigger.create({
-        trigger: element,
-        start: "top 55%",
-        end: "bottom 45%",
-        onEnter: activate,
-        onEnterBack: activate,
-      });
-    });
     root?.setAttribute("data-section", "00 · Ввод");
     rail[0]?.classList.add("is-active");
     setConstraint(0, true);
 
+    /*
+      MOBILE CONTRACT:
+      Typography and reading geometry never animate with scroll.
+      Only the atmospheric field / constraint graphic may change state.
+      IntersectionObserver is deliberately used instead of ScrollTrigger here
+      so no GSAP transform can ever be injected into mobile text nodes.
+    */
+    if (isMobile || reducedMotion) {
+      const observed = sectionMap
+        .map(([selector, label], index) => {
+          const element = document.querySelector<HTMLElement>(selector);
+          return element ? { element, label, index } : null;
+        })
+        .filter(Boolean) as Array<{ element: HTMLElement; label: string; index: number }>;
+
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => Math.abs(a.boundingClientRect.top - window.innerHeight * 0.42) - Math.abs(b.boundingClientRect.top - window.innerHeight * 0.42))[0];
+        if (!visible) return;
+        const match = observed.find((item) => item.element === visible.target);
+        if (match) activateSection(match.index, match.label);
+      }, { rootMargin: "-34% 0px -48% 0px", threshold: 0 });
+
+      observed.forEach(({ element }) => observer.observe(element));
+
+      return () => {
+        observer.disconnect();
+        window.removeEventListener("scroll", onScroll);
+      };
+    }
+
     const portrait = document.querySelector<HTMLElement>(".ad26-portrait");
     const lens = document.querySelector<HTMLElement>(".ad26-lens");
     const onPortraitMove = (event: PointerEvent) => {
-      if (!portrait || !lens || window.matchMedia("(pointer: coarse)").matches) return;
+      if (!portrait || !lens) return;
       const rect = portrait.getBoundingClientRect();
       const x = Math.max(12, Math.min(88, ((event.clientX - rect.left) / rect.width) * 100));
       const y = Math.max(10, Math.min(90, ((event.clientY - rect.top) / rect.height) * 100));
@@ -84,112 +107,89 @@ export default function ArtDirectionMotion() {
     portrait?.addEventListener("pointermove", onPortraitMove);
     portrait?.addEventListener("pointerleave", onPortraitLeave);
 
-    if (reducedMotion) {
-      return () => {
-        window.removeEventListener("scroll", onScroll);
-        portrait?.removeEventListener("pointermove", onPortraitMove);
-        portrait?.removeEventListener("pointerleave", onPortraitLeave);
-        sectionTriggers.forEach((trigger) => trigger?.kill());
-      };
-    }
+    const sectionTriggers = sectionMap.map(([selector, label], index) => {
+      const element = document.querySelector(selector);
+      if (!element) return null;
+      return ScrollTrigger.create({
+        trigger: element,
+        start: "top 55%",
+        end: "bottom 45%",
+        onEnter: () => activateSection(index, label),
+        onEnterBack: () => activateSection(index, label),
+      });
+    });
 
     const ctx = gsap.context(() => {
       const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
       heroTl
-        .from(".ad26-nav", { y: -24, opacity: 0, duration: 0.5 })
-        .from(".ad26-hero .ad26-kicker", { y: 16, opacity: 0, duration: 0.4 }, "-=.18")
-        .from(".ad26-hero h1", { yPercent: 12, opacity: 0, duration: 0.78 }, "-=.16")
-        .from(".ad26-hero-bottom", { y: 20, opacity: 0, duration: 0.55 }, "-=.34")
-        .from(".ad26-hero-proof", { y: 14, opacity: 0, duration: 0.42 }, "-=.28")
-        .from(".ad26-portrait", { clipPath: "inset(5% 6% 6% 5%)", scale: 1.035, opacity: 0, duration: 0.95 }, 0.12)
-        .from(".ad26-lens", { scale: 0.72, opacity: 0, duration: 0.7 }, 0.5);
+        .from(".ad26-nav", { y: -20, opacity: 0, duration: 0.45 })
+        .from(".ad26-hero .ad26-kicker", { y: 12, opacity: 0, duration: 0.36 }, "-=.16")
+        .from(".ad26-hero h1", { yPercent: 7, opacity: 0, duration: 0.68 }, "-=.14")
+        .from(".ad26-hero-bottom", { y: 14, opacity: 0, duration: 0.5 }, "-=.3")
+        .from(".ad26-hero-proof", { y: 10, opacity: 0, duration: 0.4 }, "-=.25")
+        .from(".ad26-portrait", { clipPath: "inset(4% 5% 5% 4%)", scale: 1.025, opacity: 0, duration: 0.85 }, 0.1)
+        .from(".ad26-lens", { scale: 0.78, opacity: 0, duration: 0.65 }, 0.45);
 
       gsap.to(".ad26-portrait img", {
-        yPercent: 9,
-        scale: 1.07,
+        yPercent: 7,
+        scale: 1.055,
         ease: "none",
-        scrollTrigger: { trigger: ".ad26-hero", start: "top top", end: "bottom top", scrub: 0.75 },
+        scrollTrigger: { trigger: ".ad26-hero", start: "top top", end: "bottom top", scrub: 0.8 },
       });
 
       gsap.to(".ad26-lens", {
         left: "49%", top: "54%",
         ease: "none",
-        scrollTrigger: { trigger: ".ad26-hero", start: "top top", end: "bottom top", scrub: 0.8 },
-      });
-
-      gsap.to(".ad26-hero-copy", {
-        yPercent: -7,
-        opacity: 0.78,
-        ease: "none",
-        scrollTrigger: { trigger: ".ad26-hero", start: "45% 45%", end: "bottom top", scrub: true },
+        scrollTrigger: { trigger: ".ad26-hero", start: "top top", end: "bottom top", scrub: 0.9 },
       });
 
       gsap.utils.toArray<HTMLElement>(".ad26-situations article").forEach((item) => {
         ScrollTrigger.create({
           trigger: item,
-          start: "top 66%",
+          start: "top 67%",
+          end: "bottom 38%",
+          onToggle: (self) => item.classList.toggle("is-active", self.isActive),
+        });
+      });
+
+      const statement = gsap.timeline({
+        scrollTrigger: { trigger: ".ad26-statement", start: "top 76%", end: "bottom 40%", scrub: 0.8 },
+      });
+      statement
+        .fromTo(".ad26-statement-label", { opacity: 0.35 }, { opacity: 1 }, 0)
+        .fromTo(".ad26-statement h2", { y: 22, opacity: 0.5 }, { y: 0, opacity: 1 }, 0)
+        .fromTo(".ad26-reframe-assumption", { opacity: 0.25 }, { opacity: 0.72 }, 0.08)
+        .fromTo(".ad26-reframe-assumption i", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.4 }, 0.2)
+        .fromTo(".ad26-reframe-question", { opacity: 0.25 }, { opacity: 1 }, 0.42)
+        .fromTo(".ad26-statement-foot", { opacity: 0.25 }, { opacity: 1 }, 0.34);
+
+      gsap.utils.toArray<HTMLElement>(".ad26-signature article").forEach((item) => {
+        ScrollTrigger.create({
+          trigger: item,
+          start: "top 62%",
           end: "bottom 40%",
           onToggle: (self) => item.classList.toggle("is-active", self.isActive),
         });
       });
 
-      gsap.fromTo(".ad26-statement", { clipPath: "inset(7% 0 0 0)" }, {
-        clipPath: "inset(0% 0 0 0)",
-        ease: "none",
-        scrollTrigger: { trigger: ".ad26-statement", start: "top 96%", end: "top 55%", scrub: 0.7 },
-      });
-
-      const statement = gsap.timeline({
-        scrollTrigger: { trigger: ".ad26-statement", start: "top 75%", end: "bottom 38%", scrub: 0.65 },
-      });
-      statement
-        .fromTo(".ad26-statement-label", { x: -16, opacity: 0.3 }, { x: 0, opacity: 1 }, 0)
-        .fromTo(".ad26-statement h2", { y: 54, opacity: 0.38 }, { y: 0, opacity: 1 }, 0)
-        .fromTo(".ad26-reframe-assumption", { y: 24, opacity: 0, "--reframe-strike": 0 }, { y: 0, opacity: 0.72, "--reframe-strike": 1, duration: 0.42 }, 0.08)
-        .fromTo(".ad26-reframe-assumption i", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.32, ease: "power2.out" }, 0.22)
-        .fromTo(".ad26-reframe-shift", { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.2 }, 0.36)
-        .fromTo(".ad26-reframe-question", { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32 }, 0.43)
-        .fromTo(".ad26-statement-foot", { y: 34, opacity: 0.15 }, { y: 0, opacity: 1 }, 0.33);
-
-      const methodItems = gsap.utils.toArray<HTMLElement>(".ad26-signature article");
-      methodItems.forEach((item, index) => {
-        ScrollTrigger.create({
-          trigger: item,
-          start: "top 60%",
-          end: "bottom 42%",
-          onToggle: (self) => {
-            item.classList.toggle("is-active", self.isActive);
-            if (self.isActive) item.parentElement?.style.setProperty("--method-progress", `${((index + 1) / methodItems.length) * 100}%`);
-          },
-        });
-      });
-
       const brief = gsap.timeline({
-        scrollTrigger: { trigger: ".ad26-brief", start: "top 80%", toggleActions: "play none none reverse" },
+        scrollTrigger: { trigger: ".ad26-brief", start: "top 82%", toggleActions: "play none none reverse" },
       });
       brief
-        .from(".ad26-brief-copy", { y: 26, opacity: 0, duration: 0.62, ease: "power3.out" })
-        .from(".ad26-brief-product", { x: 42, rotate: 2, opacity: 0, duration: 0.76, ease: "power3.out" }, "-=.4")
-        .to(".ad26-brief-row", { opacity: 1, y: 0, clipPath: "inset(0 0% 0 0)", stagger: 0.12, duration: 0.46, ease: "power2.out" }, "-=.22");
-
-      gsap.to(".ad26-brief-product", {
-        yPercent: -4,
-        rotate: 0,
-        ease: "none",
-        scrollTrigger: { trigger: ".ad26-brief", start: "top bottom", end: "bottom top", scrub: 0.8 },
-      });
+        .from(".ad26-brief-copy", { y: 18, opacity: 0, duration: 0.55, ease: "power3.out" })
+        .from(".ad26-brief-product", { x: 24, opacity: 0, duration: 0.68, ease: "power3.out" }, "-=.34")
+        .from(".ad26-brief-row", { opacity: 0, y: 8, stagger: 0.09, duration: 0.36 }, "-=.2");
 
       const caseSection = document.querySelector<HTMLElement>(".ad26-case");
       const caseItems = gsap.utils.toArray<HTMLElement>(".ad26-case-flow article");
       caseItems.forEach((item, index) => {
         ScrollTrigger.create({
           trigger: item,
-          start: "top 62%",
-          end: "bottom 42%",
+          start: "top 63%",
+          end: "bottom 40%",
           onToggle: (self) => {
             item.classList.toggle("is-active", self.isActive);
             if (self.isActive) {
-              item.parentElement?.style.setProperty("--case-progress", `${((index + 1) / caseItems.length) * 100}%`);
               caseSection?.classList.remove("is-case-1", "is-case-2", "is-case-3");
               caseSection?.classList.add(`is-case-${index + 1}`);
             }
@@ -198,47 +198,46 @@ export default function ArtDirectionMotion() {
       });
 
       gsap.from(".ad26-case blockquote", {
-        y: 30,
+        y: 18,
         opacity: 0,
-        duration: 0.7,
+        duration: 0.6,
         ease: "power3.out",
         scrollTrigger: { trigger: ".ad26-case blockquote", start: "top 82%" },
       });
 
       gsap.from(".ad26-about-portrait", {
-        clipPath: "inset(9% 16% 9% 0)",
+        clipPath: "inset(7% 12% 7% 0)",
         opacity: 0,
-        duration: 0.9,
+        duration: 0.8,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".ad26-about", start: "top 72%" },
+        scrollTrigger: { trigger: ".ad26-about", start: "top 74%" },
       });
 
       gsap.to(".ad26-about-portrait img", {
-        yPercent: 7,
-        scale: 1.055,
+        yPercent: 5,
+        scale: 1.04,
         ease: "none",
-        scrollTrigger: { trigger: ".ad26-about", start: "top bottom", end: "bottom top", scrub: 0.8 },
+        scrollTrigger: { trigger: ".ad26-about", start: "top bottom", end: "bottom top", scrub: 0.9 },
       });
 
       gsap.from(".ad26-contact h2, .ad26-contact>p, .ad26-contact-actions", {
-        y: 30,
+        y: 16,
         opacity: 0,
-        stagger: 0.09,
-        duration: 0.65,
+        stagger: 0.07,
+        duration: 0.55,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".ad26-contact", start: "top 76%" },
+        scrollTrigger: { trigger: ".ad26-contact", start: "top 78%" },
       });
 
       const buttons = gsap.utils.toArray<HTMLElement>(".ad26-primary, .ad26-nav-cta");
       buttons.forEach((button) => {
         const onMove = (event: PointerEvent) => {
-          if (window.matchMedia("(pointer: coarse)").matches) return;
           const rect = button.getBoundingClientRect();
-          const x = (event.clientX - rect.left - rect.width / 2) * 0.065;
-          const y = (event.clientY - rect.top - rect.height / 2) * 0.065;
-          gsap.to(button, { x, y, duration: 0.24, ease: "power2.out" });
+          const x = (event.clientX - rect.left - rect.width / 2) * 0.055;
+          const y = (event.clientY - rect.top - rect.height / 2) * 0.055;
+          gsap.to(button, { x, y, duration: 0.22, ease: "power2.out" });
         };
-        const onLeave = () => gsap.to(button, { x: 0, y: 0, duration: 0.42, ease: "elastic.out(1, .35)" });
+        const onLeave = () => gsap.to(button, { x: 0, y: 0, duration: 0.38, ease: "power2.out" });
         button.addEventListener("pointermove", onMove);
         button.addEventListener("pointerleave", onLeave);
         button.__motionCleanup = () => {
