@@ -6,18 +6,22 @@
 .ad26-situations article.is-active h3{letter-spacing:-.035em}
 .ad26-situations article.is-active:before{content:"";position:absolute;left:-18px;top:34px;width:4px;height:4px;border-radius:50%;background:var(--steel)}
 
-/* The dark pivot now explains a cognitive shift instead of showing abstract data-art. */
-.ad26-statement{align-items:center}
-.ad26-reframe{width:min(36vw,520px);margin-left:auto;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.12);padding:28px 0 30px;color:#f5f7f9}
-.ad26-reframe-assumption,.ad26-reframe-question{position:relative;padding:0 2px}
-.ad26-reframe span{display:block;margin-bottom:10px;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(235,240,244,.54)}
-.ad26-reframe strong{display:block;font-size:clamp(22px,2vw,31px);line-height:1.08;letter-spacing:-.035em;font-weight:540}
-.ad26-reframe-assumption strong{color:rgba(245,247,249,.55)}
-.ad26-reframe-assumption i{position:absolute;left:0;top:58%;height:1px;width:0;background:rgba(245,247,249,.72);transform-origin:left center}
-.ad26-reframe-shift{height:54px;display:flex;align-items:center;justify-content:flex-start;color:rgba(245,247,249,.42);overflow:hidden}
-.ad26-reframe-shift span{margin:0;font-size:20px;line-height:1;color:inherit;transform:translateY(-8px);opacity:0}
-.ad26-reframe-question{opacity:.22;transform:translateY(14px)}
-.ad26-reframe-question strong{color:#fff}
+/* The dark pivot explains the cognitive shift instead of showing abstract data-art. */
+.ad26-statement{grid-template-columns:minmax(0,1.08fr) minmax(360px,.68fr);gap:clamp(54px,7vw,116px);align-items:center}
+.ad26-statement-copy{max-width:980px}
+.ad26-reframe{position:relative;width:min(36vw,540px);margin-left:auto;padding:8px 0 4px;color:#f5f7f9}
+.ad26-reframe-assumption,.ad26-reframe-question{position:relative;padding:22px 0 24px;border-top:1px solid rgba(255,255,255,.15)}
+.ad26-reframe-assumption span,.ad26-reframe-question span{display:block;margin-bottom:10px;font-size:10px;line-height:1.2;letter-spacing:.14em;text-transform:uppercase;color:rgba(224,231,236,.52)}
+.ad26-reframe-assumption strong,.ad26-reframe-question strong{display:block;max-width:520px;font-size:clamp(22px,2vw,34px);line-height:1.04;letter-spacing:-.035em;font-weight:520;color:#f4f7f9}
+.ad26-reframe-assumption{opacity:.72}
+.ad26-reframe-assumption strong{color:rgba(244,247,249,.62)}
+.ad26-reframe-assumption i{position:absolute;left:0;right:10%;top:58%;height:1px;background:linear-gradient(90deg,#c8d2da,rgba(200,210,218,.05));transform-origin:left center;pointer-events:none}
+.ad26-reframe-shift{height:54px;display:flex;align-items:center;color:rgba(219,227,232,.5)}
+.ad26-reframe-shift:before{content:"";width:38px;height:1px;background:rgba(219,227,232,.24);margin-right:12px}
+.ad26-reframe-shift span{font-size:20px;line-height:1}
+.ad26-reframe-question{border-top-color:rgba(219,227,232,.35)}
+.ad26-reframe-question:after{content:"";position:absolute;right:2px;top:28px;width:8px;height:8px;border:1px solid #dbe3e8;border-radius:50%;box-shadow:0 0 0 7px rgba(219,227,232,.05)}
+.ad26-reframe-question strong{font-size:clamp(26px,2.4vw,40px)}
 
 /* Method behaves as a sequence with a living progress rail. */
 .ad26-signature{position:relative}
@@ -37,7 +41,7 @@
 .ad26-brief-row span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#707b84}
 .ad26-brief-row strong{font-size:15px;line-height:1.35;font-weight:560;color:#111821}
 .ad26-brief-row.is-active{opacity:1;transform:none}
-.ad26-brief .ad26-primary{grid-column:1;justify-self:start;margin-top:28px}
+.ad26-brief .ad26-primary{justify-self:start;margin-top:28px}
 
 /* Case study: progression, not three independent blocks. */
 .ad26-case-flow{position:relative}
@@ -49,7 +53,7 @@
 
 /* Hero is quieter but more dimensional. */
 .ad26-hero-copy:after{content:"";position:absolute;right:0;top:18%;height:64%;width:1px;background:linear-gradient(transparent,rgba(15,20,27,.16),transparent);pointer-events:none}
-.ad26-portrait{clip-path:inset(0 0 0 0)}
+.ad26-portrait{clip-path:inset(0)}
 .ad26-portrait img{transform-origin:52% 38%}
 
 @media(max-width:900px){
@@ -57,6 +61,10 @@
   .ad26-situations article.is-active:before{display:none}
   .ad26-signature:before,.ad26-signature:after{display:none}
   .ad26-signature article.is-active{transform:none}
+  .ad26-statement{display:block;padding-top:88px;padding-bottom:92px}
+  .ad26-reframe{width:100%;margin:44px 0 0;padding:0}
+  .ad26-reframe-assumption strong,.ad26-reframe-question strong{font-size:clamp(25px,6.4vw,34px)}
+  .ad26-reframe-shift{height:44px}
   .ad26-brief{display:block}
   .ad26-brief-product{margin-top:42px;padding:22px 20px 18px}
   .ad26-brief-row{grid-template-columns:92px 1fr;gap:14px;padding:14px 0}
@@ -64,19 +72,74 @@
   .ad26-case-flow:before,.ad26-case-flow:after{left:7px}
   .ad26-case-flow article.is-active{transform:none}
   .ad26-hero-copy:after{display:none}
-  .ad26-reframe{width:100%;margin:40px 0 0}
-  .ad26-reframe strong{font-size:clamp(24px,6.5vw,31px)}
 }
 
 @media(max-width:560px){
   .ad26-brief-product{margin-left:-4px;margin-right:-4px}
   .ad26-brief-row strong{font-size:14px}
-  .ad26-reframe{margin-top:32px;padding-top:22px;padding-bottom:24px}
-  .ad26-reframe-shift{height:42px}
+  .ad26-reframe-question:after{display:none}
 }
 
+/* Print is a separate editorial layout. Reset every animated state explicitly. */
 @media print{
+  @page{size:A4 portrait;margin:12mm}
+  html,body{background:#fff!important}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .ad26{background:#fff!important;color:#111!important;overflow:visible!important}
+  .ad26 *{animation:none!important;transition:none!important}
+  .ad26-nav{position:static!important;display:flex!important;min-height:0!important;padding:0 0 7mm!important;margin:0!important;background:#fff!important;border-bottom:1px solid #bbb!important;backdrop-filter:none!important}
+  .ad26-nav nav a:not(.ad26-nav-cta),.ad26-nav-cta{display:none!important}
+  .ad26-brand-copy small{display:block!important}
+
+  .ad26-hero,.ad26-recognition,.ad26-statement,.ad26-method,.ad26-brief,.ad26-case,.ad26-about,.ad26-contact{position:relative!important;width:100%!important;max-width:none!important;min-height:0!important;height:auto!important;margin:0!important;padding:11mm 0!important;overflow:visible!important;opacity:1!important;transform:none!important;clip-path:none!important;background:#fff!important;color:#111!important}
+
+  .ad26-hero{display:grid!important;grid-template-columns:1.5fr .8fr!important;column-gap:8mm!important;padding-top:10mm!important;break-after:page!important}
+  .ad26-hero-copy{position:static!important;padding:0!important;background:#fff!important;opacity:1!important;transform:none!important}
+  .ad26-hero h1{font-size:31pt!important;line-height:1!important;letter-spacing:-.04em!important;margin:5mm 0 7mm!important;color:#111!important}
+  .ad26-hero-bottom{display:block!important;margin:0!important;padding-top:5mm!important;border-top:1px solid #bbb!important}
+  .ad26-hero-bottom .ad26-primary{display:none!important}
+  .ad26-hero-proof{margin-top:7mm!important;padding-top:5mm!important;border-top:1px solid #ddd!important;color:#111!important}
+  .ad26-portrait{position:relative!important;display:block!important;min-height:0!important;height:auto!important;aspect-ratio:auto!important;margin:0!important;opacity:1!important;transform:none!important;clip-path:none!important;background:#fff!important;overflow:visible!important}
+  .ad26-portrait img{position:static!important;display:block!important;width:100%!important;height:auto!important;max-height:118mm!important;object-fit:contain!important;transform:none!important;filter:none!important}
+
+  .ad26-recognition{display:block!important;break-after:page!important}
+  .ad26-recognition-head,.ad26-method-head,.ad26-case-title{position:static!important;top:auto!important;margin:0 0 8mm!important;opacity:1!important;transform:none!important}
+  .ad26-situations,.ad26-signature,.ad26-case-flow{margin-top:7mm!important;border-top:1px solid #999!important}
+  .ad26-situations article,.ad26-signature article,.ad26-case-flow article{display:block!important;min-height:0!important;padding:5mm 0!important;opacity:1!important;transform:none!important;background:none!important;break-inside:avoid!important}
+  .ad26-situations article:before,.ad26-situations article:after,.ad26-signature:before,.ad26-signature:after,.ad26-signature article:before,.ad26-signature article:after,.ad26-case-flow:before,.ad26-case-flow:after,.ad26-case-flow article:before,.ad26-case-flow article:after{display:none!important}
+
+  .ad26-statement{display:block!important;break-after:page!important;border-top:2px solid #111!important;border-bottom:2px solid #111!important}
+  .ad26-statement-copy{max-width:none!important}
+  .ad26-statement h2{font-size:26pt!important;line-height:1.04!important;color:#111!important;opacity:1!important;transform:none!important}
+  .ad26-statement-label,.ad26-statement-foot,.ad26-rule{color:#111!important;opacity:1!important;transform:none!important}
+  .ad26-statement-foot{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8mm!important;margin-top:8mm!important}
   .ad26-reframe{display:none!important}
-  .ad26-brief-product{display:block!important;border:1px solid #bbb!important;box-shadow:none!important;margin-top:6mm!important;break-inside:avoid!important}
-  .ad26-brief-row{opacity:1!important;transform:none!important}
+
+  .ad26-method{display:block!important;break-after:page!important}
+  .ad26-method-head h2,.ad26-recognition-head h2,.ad26-case-title h2,.ad26-about-title h2{font-size:24pt!important;line-height:1.02!important;color:#111!important}
+  .ad26-method-note{margin-top:8mm!important;padding-top:6mm!important;border-top:1px solid #777!important;break-inside:avoid!important}
+
+  .ad26-brief{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8mm!important;align-items:start!important;break-after:page!important}
+  .ad26-brief-copy,.ad26-brief-product{opacity:1!important;transform:none!important;clip-path:none!important}
+  .ad26-brief-product{display:block!important;border:1px solid #999!important;box-shadow:none!important;margin:0!important;background:#fff!important;padding:6mm!important;break-inside:avoid!important}
+  .ad26-brief-row{opacity:1!important;transform:none!important;display:grid!important;grid-template-columns:28mm 1fr!important;padding:4mm 0!important}
+  .ad26-brief .ad26-primary{display:none!important}
+
+  .ad26-case{display:block!important;break-after:page!important}
+  .ad26-case blockquote{opacity:1!important;transform:none!important;margin-top:8mm!important;break-inside:avoid!important}
+
+  .ad26-about{display:block!important;break-after:page!important}
+  .ad26-about-grid{display:grid!important;grid-template-columns:1fr .72fr!important;gap:8mm!important;align-items:start!important}
+  .ad26-about-title{grid-column:1 / -1!important}
+  .ad26-about-portrait{position:relative!important;display:block!important;min-height:0!important;height:auto!important;aspect-ratio:auto!important;margin:0!important;opacity:1!important;transform:none!important;clip-path:none!important;overflow:visible!important}
+  .ad26-about-portrait img{position:static!important;display:block!important;width:100%!important;height:auto!important;max-height:105mm!important;object-fit:contain!important;transform:none!important;filter:none!important}
+  .ad26-about-copy{opacity:1!important;transform:none!important}
+
+  .ad26-contact{display:block!important;background:#fff!important;color:#111!important;padding:12mm 0 0!important;break-inside:avoid!important}
+  .ad26-contact h2,.ad26-contact>p,.ad26-contact-actions,.ad26-contact footer{opacity:1!important;transform:none!important;color:#111!important}
+  .ad26-contact-actions{display:none!important}
+  .ad26-contact footer{margin-top:8mm!important;padding-top:6mm!important;border-top:1px solid #999!important}
+
+  .ad26-section-label,.ad26-kicker,.ad26-statement-label{color:#56616b!important}
+  .ad26 p,.ad26 span,.ad26 strong,.ad26 h1,.ad26 h2,.ad26 h3{orphans:3;widows:3}
 }
