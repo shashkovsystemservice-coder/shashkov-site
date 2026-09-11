@@ -19,39 +19,19 @@ const steps = [
   ["ПРОВЕРКА", "Что проверить", "Выбрать короткую проверку, которая действительно изменит решение."],
 ] as const;
 
-function DiagnosticField() {
+function ReframePanel() {
   return (
-    <div className="ad26-diagnostic-field" aria-hidden="true">
-      <svg viewBox="0 0 640 360" role="presentation">
-        <g className="df-frame">
-          <path d="M46 64H594M46 180H594M46 296H594" />
-          <path d="M160 40V320M320 40V320M480 40V320" />
-        </g>
-        <text className="df-caption" x="70" y="44">Сигналы</text>
-        <text className="df-caption df-caption-focus" x="282" y="44">Фокус</text>
-        <text className="df-caption df-caption-output" x="502" y="44">Ограничение</text>
-        <g className="df-inputs">
-          <path className="df-route df-route-a" d="M70 82C178 84 238 112 304 171" />
-          <path className="df-route df-route-b" d="M70 180C177 180 237 180 304 180" />
-          <path className="df-route df-route-c" d="M70 278C177 274 238 245 304 189" />
-        </g>
-        <g className="df-output">
-          <path className="df-route df-route-main" d="M336 180C414 180 485 180 574 180" />
-          <path className="df-route df-route-ghost" d="M336 180C410 158 476 116 554 92" />
-          <path className="df-route df-route-ghost" d="M336 180C410 202 476 244 554 268" />
-        </g>
-        <g className="df-aperture">
-          <circle className="df-focus-halo" cx="320" cy="180" r="58" />
-          <circle className="df-focus-ring" cx="320" cy="180" r="30" />
-          <circle className="df-focus-core" cx="320" cy="180" r="9" />
-        </g>
-        <g className="df-points">
-          <circle cx="70" cy="82" r="5" />
-          <circle cx="70" cy="180" r="5" />
-          <circle cx="70" cy="278" r="5" />
-          <circle className="df-point-output" cx="574" cy="180" r="6" />
-        </g>
-      </svg>
+    <div className="ad26-reframe" aria-label="От симптома к проверяемому вопросу">
+      <div className="ad26-reframe-assumption">
+        <span>Первое объяснение</span>
+        <strong>Мало заявок = нужна реклама</strong>
+        <i aria-hidden="true" />
+      </div>
+      <div className="ad26-reframe-shift" aria-hidden="true"><span>↓</span></div>
+      <div className="ad26-reframe-question">
+        <span>Вопрос до выбора инструмента</span>
+        <strong>Где находится реальное ограничение?</strong>
+      </div>
     </div>
   );
 }
@@ -101,7 +81,7 @@ export default function ArtDirection2026() {
           <h2>«Нам нужно больше заявок»<br/>ещё не значит, что нужна реклама.</h2>
           <div className="ad26-statement-foot"><p>Цена ошибки — месяцами улучшать рекламу, сайт или продажи не там, где находится реальное ограничение.</p><p className="ad26-rule">Сначала понять проблему.<br/>Потом выбирать решение.<br/>И только потом — инструмент.</p></div>
         </div>
-        <DiagnosticField />
+        <ReframePanel />
       </section>
 
       <section className="ad26-method" id="method">
