@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./production-map.css";
 import "./top-case-reel.css";
+import "./accent-switcher.css";
 
 const topCases = [
   { label: "Промышленность", title: "От станков — к линиям", href: "/cases/integrator-model", image: "/technograv-preview.png", mark: "П" },
@@ -15,6 +16,9 @@ const topCases = [
   { label: "Wellness", title: "Новый продукт / рынок", href: "/cases/iba-wellness", image: "/fitness-report-cover.png", mark: "W" },
   { label: "B2B рост", title: "Как попадать в выбор", href: "/cases/market-choice-system", image: null, mark: "B" },
 ] as const;
+
+const accentOrder = ["blue", "red", "green"] as const;
+type Accent = (typeof accentOrder)[number];
 
 function TopCaseReel() {
   return (
@@ -36,6 +40,38 @@ function TopCaseReel() {
         })}
       </div>
     </section>
+  );
+}
+
+function AccentSwitcher() {
+  const [accent, setAccent] = useState<Accent>("blue");
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem("ad27-accent") as Accent | null;
+    if (saved && accentOrder.includes(saved)) setAccent(saved);
+  }, []);
+
+  useEffect(() => {
+    const root = document.querySelector<HTMLElement>(".ad27");
+    if (root) root.dataset.accent = accent;
+    window.localStorage.setItem("ad27-accent", accent);
+  }, [accent]);
+
+  const nextAccent = () => {
+    const index = accentOrder.indexOf(accent);
+    setAccent(accentOrder[(index + 1) % accentOrder.length]);
+  };
+
+  return (
+    <button
+      type="button"
+      className="ad27-accent-switcher"
+      onClick={nextAccent}
+      aria-label="Сменить акцентный цвет сайта"
+      title="Сменить акцентный цвет"
+    >
+      <span aria-hidden="true" />
+    </button>
   );
 }
 
@@ -112,5 +148,5 @@ export default function ArtDirection2027Motion() {
     return () => mm.revert();
   }, []);
 
-  return <TopCaseReel />;
+  return <><AccentSwitcher /><TopCaseReel /></>;
 }
