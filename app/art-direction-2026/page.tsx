@@ -3,6 +3,7 @@ import ArtDirectionMotion from "./ArtDirectionMotion";
 import DiagnosticField from "./DiagnosticField";
 import "./art-direction.css";
 import "./experience-v2.css";
+import "./experience-v3-optical.css";
 
 const situations = [
   ["01", "Продажи перестали расти", "Команда предлагает больше рекламы — но непонятно, в ней ли проблема"],
@@ -25,7 +26,6 @@ function ReframePanel() {
         <strong>Мало заявок = нужна реклама</strong>
         <i aria-hidden="true" />
       </div>
-      <div className="ad26-reframe-shift" aria-hidden="true"><span>↓</span></div>
       <div className="ad26-reframe-question">
         <span>Вопрос до выбора инструмента</span>
         <strong>Где находится реальное ограничение?</strong>
@@ -34,44 +34,14 @@ function ReframePanel() {
   );
 }
 
-function DiagnosisField() {
+function OpticalClarityField() {
   return (
-    <div className="ad26-diagnosis-visual" aria-hidden="true">
-      <svg className="ad26-diagnosis-network" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <radialGradient id="ad26-core-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#9fb2ff" stopOpacity=".95" />
-            <stop offset="45%" stopColor="#7c98ff" stopOpacity=".34" />
-            <stop offset="100%" stopColor="#7c98ff" stopOpacity="0" />
-          </radialGradient>
-          <filter id="ad26-soft-glow" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="7" />
-          </filter>
-        </defs>
-        <g className="ad26-network-lines">
-          <path pathLength="1" d="M90 110 C235 125 355 214 500 320" />
-          <path pathLength="1" d="M120 330 C250 300 370 300 500 320" />
-          <path pathLength="1" d="M170 555 C290 470 385 390 500 320" />
-          <path pathLength="1" d="M890 120 C760 145 640 235 500 320" />
-          <path pathLength="1" d="M900 470 C760 425 640 365 500 320" />
-          <path pathLength="1" d="M760 585 C680 495 600 405 500 320" />
-        </g>
-        <g className="ad26-network-orbits">
-          <circle cx="500" cy="320" r="88" />
-          <circle cx="500" cy="320" r="156" />
-          <circle cx="500" cy="320" r="232" />
-        </g>
-        <g className="ad26-network-nodes">
-          <circle className="n1" cx="90" cy="110" r="8" />
-          <circle className="n2" cx="120" cy="330" r="7" />
-          <circle className="n3" cx="170" cy="555" r="9" />
-          <circle className="n4" cx="890" cy="120" r="7" />
-          <circle className="n5" cx="900" cy="470" r="9" />
-          <circle className="n6" cx="760" cy="585" r="7" />
-        </g>
-        <circle className="ad26-network-core-halo" cx="500" cy="320" r="72" fill="url(#ad26-core-glow)" filter="url(#ad26-soft-glow)" />
-        <circle className="ad26-network-core" cx="500" cy="320" r="12" />
-      </svg>
+    <div className="ad26-optical-field" aria-hidden="true">
+      <span className="ad26-optical-plane ad26-optical-plane-a" />
+      <span className="ad26-optical-plane ad26-optical-plane-b" />
+      <span className="ad26-optical-plane ad26-optical-plane-c" />
+      <span className="ad26-optical-focus" />
+      <span className="ad26-optical-sheen" />
     </div>
   );
 }
@@ -91,14 +61,6 @@ export default function ArtDirection2026() {
       <div className="ad26-progress-rail" aria-hidden="true"><span/><span/><span/><span/><span/><span/><span/><span/></div>
 
       <section className="ad26-hero">
-        <svg className="ad26-signal-map" viewBox="0 0 720 720" aria-hidden="true">
-          <path className="signal-orbit signal-orbit-a" d="M74 433C155 273 290 187 458 197c90 6 151 42 191 107" />
-          <path className="signal-orbit signal-orbit-b" d="M86 497c137-104 265-122 383-70 63 28 111 73 145 137" />
-          <path className="signal-orbit signal-orbit-c" d="M147 228c85 39 157 102 217 190 48 69 79 139 94 211" />
-          <circle className="signal-node signal-node-a" cx="458" cy="197" r="5" />
-          <circle className="signal-node signal-node-b" cx="364" cy="418" r="7" />
-          <circle className="signal-node signal-node-c" cx="614" cy="564" r="4" />
-        </svg>
         <div className="ad26-hero-copy">
           <p className="ad26-kicker">Независимый консультант · для собственников бизнеса</p>
           <h1>Не уверены,<br/>что именно сейчас<br/>нужно менять<br/>в бизнесе?</h1>
@@ -119,7 +81,7 @@ export default function ArtDirection2026() {
 
       <section className="ad26-statement">
         <div className="ad26-statement-stage">
-          <DiagnosisField />
+          <OpticalClarityField />
           <div className="ad26-statement-copy">
             <p className="ad26-statement-label">Симптом ≠ причина</p>
             <h2>«Нам нужно больше заявок»<br/>ещё не значит, что нужна реклама.</h2>
