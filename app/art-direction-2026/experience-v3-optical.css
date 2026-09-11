@@ -1,6 +1,6 @@
-/* V3 — OPTICAL CLARITY / CINEMATIC MOTION.
-   No nodes, travelling dots, network diagrams or process-line animation.
-   Motion language: masks, image surfaces, optical misregistration, focus, depth and stabilization. */
+/* V3 — CINEMATIC SURFACES.
+   No nodes, travelling dots, network diagrams or decorative data-viz.
+   Motion language: masks, controlled depth, optical focus and scene-to-scene continuity. */
 
 .ad26-signal-map,
 .ad26-diagnosis-network,
@@ -8,224 +8,136 @@
 .ad26-situations article::before,
 .ad26-case-flow article::before{display:none!important}
 
-/* Every major reveal is mask-driven: geometry stays stable while the surface changes. */
 .ad26-situations article,
 .ad26-signature article,
 .ad26-brief-product,
 .ad26-brief-row,
 .ad26-case-title,
+.ad26-case-title h2,
 .ad26-case-flow article,
 .ad26-case blockquote,
 .ad26-about-portrait,
-.ad26-portrait{will-change:clip-path,opacity}
+.ad26-portrait{will-change:clip-path,opacity,transform,filter}
 
-/* HERO — portrait behaves like a cinematic plate, not a static card. */
+/* HERO — clean image plate, no outlined gimmick. */
 .ad26-hero{isolation:isolate;overflow:hidden}
 .ad26-hero::before{
-  content:"";
-  position:absolute;
-  inset:-8%;
-  pointer-events:none;
-  z-index:0;
-  background:
-    linear-gradient(114deg,transparent 0 36%,rgba(117,139,206,.08) 48%,rgba(255,255,255,.30) 51%,rgba(104,128,201,.06) 56%,transparent 69%),
-    radial-gradient(76% 62% at calc(75% - var(--scene-progress) * 11%) calc(32% + var(--scene-progress) * 9%),rgba(65,88,166,.13),transparent 60%);
-  opacity:.92;
-  transform:translate3d(calc(var(--scene-progress) * -3vw),calc(var(--scene-progress) * 1.5vh),0) scale(calc(1.03 + var(--scene-progress) * .03));
-  transform-origin:70% 35%;
+  content:"";position:absolute;inset:-8%;z-index:0;pointer-events:none;
+  background:radial-gradient(72% 58% at 72% 35%,rgba(57,76,128,.075),transparent 64%);
+  opacity:.8;
 }
-.ad26-portrait{overflow:hidden;box-shadow:0 34px 100px rgba(14,24,37,.12)}
+.ad26-portrait{overflow:hidden;box-shadow:0 34px 100px rgba(14,24,37,.11)}
 .ad26-portrait img{will-change:transform,filter;filter:saturate(.96) contrast(1.015)}
-.ad26-lens{
-  border:0!important;
-  box-shadow:none!important;
-  background:rgba(255,255,255,.018);
-  backdrop-filter:blur(calc(7px - var(--scene-progress) * 5px)) contrast(calc(1.01 + var(--scene-progress) * .12)) saturate(.95);
-  -webkit-backdrop-filter:blur(calc(7px - var(--scene-progress) * 5px)) contrast(calc(1.01 + var(--scene-progress) * .12)) saturate(.95);
-  opacity:.46!important;
-  mask-image:radial-gradient(ellipse,black 0 40%,rgba(0,0,0,.82) 55%,transparent 78%);
-  -webkit-mask-image:radial-gradient(ellipse,black 0 40%,rgba(0,0,0,.82) 55%,transparent 78%);
-}
+.ad26-lens{display:none!important}
 
-/* RECOGNITION — pure editorial field. Animation comes from clean mask reveals, not markers. */
-.ad26-recognition::before{display:none!important}
+/* Recognition remains editorial. */
+.ad26-recognition::before,.ad26-situations::before,.ad26-situations::after{display:none!important}
 .ad26-situations{padding-left:0!important}
-.ad26-situations::before,.ad26-situations::after{display:none!important}
 .ad26-situations article{padding-right:0!important;transform:none!important}
 
-/* DIAGNOSIS — one pinned optical environment. Visible motion is the medium itself settling. */
-.ad26-statement{min-height:230svh!important;background:#07111d!important}
+/* DIAGNOSIS — one pinned optical environment. */
+.ad26-statement{min-height:225svh!important;background:#090d13!important}
 .ad26-statement-stage{
-  position:sticky!important;
-  top:0;
-  height:100svh!important;
-  overflow:hidden!important;
-  background:
-    radial-gradient(80% 68% at calc(43% + var(--diagnosis-progress) * 10%) calc(54% - var(--diagnosis-progress) * 4%),rgba(85,111,218,calc(.055 + var(--diagnosis-progress) * .16)),transparent 62%),
-    linear-gradient(180deg,#07111d 0%,#0b1622 100%)!important;
+  position:sticky!important;top:0;height:100svh!important;overflow:hidden!important;
+  background:linear-gradient(180deg,#090d13 0%,#0c1118 100%)!important;
 }
 .ad26-statement-stage::after{display:none!important}
 .ad26-statement-stage::before{
-  content:"";
-  position:absolute;
-  inset:-18% -24%;
-  z-index:1;
-  pointer-events:none;
+  content:"";position:absolute;inset:-22% -30%;z-index:1;pointer-events:none;
   background:
-    linear-gradient(101deg,transparent 0 32%,rgba(108,130,219,.03) 42%,rgba(184,197,255,.22) 49%,rgba(104,128,216,.035) 57%,transparent 68%),
-    linear-gradient(82deg,transparent 0 38%,rgba(123,145,232,.05) 47%,rgba(205,214,255,.12) 51%,transparent 61%);
-  transform:translate3d(calc(-17vw + var(--diagnosis-progress) * 17vw),calc(8vh - var(--diagnosis-progress) * 8vh),0) skewX(calc(-9deg + var(--diagnosis-progress) * 9deg)) scale(calc(1.14 - var(--diagnosis-progress) * .14));
-  filter:blur(calc(20px - var(--diagnosis-progress) * 15px));
-  opacity:calc(.44 + var(--diagnosis-progress) * .22);
+    linear-gradient(104deg,transparent 0 37%,rgba(128,142,184,.035) 44%,rgba(217,222,236,.16) 50%,rgba(122,137,180,.03) 57%,transparent 65%),
+    radial-gradient(46% 32% at 50% 50%,rgba(118,136,198,.08),transparent 72%);
+  transform:translate3d(calc(-16vw + var(--diagnosis-progress) * 18vw),calc(6vh - var(--diagnosis-progress) * 6vh),0) skewX(calc(-7deg + var(--diagnosis-progress) * 7deg));
+  filter:blur(calc(24px - var(--diagnosis-progress) * 17px));
+  opacity:calc(.38 + var(--diagnosis-progress) * .24);
   mix-blend-mode:screen;
-  will-change:transform,filter,opacity;
 }
 .ad26-statement-copy,.ad26-reframe{position:relative;z-index:4}
-.ad26-statement-copy{
-  opacity:calc(.98 - var(--diagnosis-progress) * .52)!important;
-  filter:blur(calc(var(--diagnosis-progress) * 1.6px));
-  will-change:filter,opacity;
-}
-.ad26-statement-foot{opacity:calc(.84 - var(--diagnosis-progress) * .64)!important}
+.ad26-statement-copy{opacity:calc(.98 - var(--diagnosis-progress) * .50)!important;filter:blur(calc(var(--diagnosis-progress) * 1.4px))}
+.ad26-statement-foot{opacity:calc(.84 - var(--diagnosis-progress) * .60)!important}
 
-.ad26-optical-field{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none;isolation:isolate}
+.ad26-optical-field{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none}
 .ad26-optical-plane,.ad26-optical-focus,.ad26-optical-sheen{position:absolute;display:block;pointer-events:none}
-.ad26-optical-plane{
-  left:-18%;
-  width:136%;
-  height:38%;
-  border-radius:48%;
-  opacity:calc(.58 - var(--diagnosis-progress) * .32);
-  filter:blur(calc(34px - var(--diagnosis-progress) * 25px));
-  mix-blend-mode:screen;
-  will-change:transform,filter,opacity;
-}
-.ad26-optical-plane-a{
-  top:25%;
-  background:linear-gradient(102deg,transparent 2%,rgba(86,108,189,.09) 26%,rgba(151,169,240,.34) 49%,rgba(86,109,198,.08) 72%,transparent 97%);
-  transform:translate3d(calc(-11vw + var(--diagnosis-progress) * 11vw),calc(-5vh + var(--diagnosis-progress) * 5vh),0) rotate(calc(-7deg + var(--diagnosis-progress) * 7deg)) scaleX(calc(1.18 - var(--diagnosis-progress) * .18));
-}
-.ad26-optical-plane-b{
-  top:38%;
-  background:linear-gradient(78deg,transparent 0%,rgba(75,97,184,.07) 24%,rgba(132,156,242,.28) 52%,rgba(78,101,193,.06) 79%,transparent 100%);
-  transform:translate3d(calc(10vw - var(--diagnosis-progress) * 10vw),calc(6vh - var(--diagnosis-progress) * 6vh),0) rotate(calc(6deg - var(--diagnosis-progress) * 6deg)) scaleX(calc(.86 + var(--diagnosis-progress) * .14));
-}
-.ad26-optical-plane-c{
-  top:51%;
-  height:29%;
-  background:linear-gradient(95deg,transparent 4%,rgba(76,103,194,.06) 27%,rgba(168,184,246,.23) 51%,rgba(77,103,194,.055) 74%,transparent 96%);
-  transform:translate3d(calc(-7vw + var(--diagnosis-progress) * 7vw),calc(4vh - var(--diagnosis-progress) * 4vh),0) rotate(calc(-4deg + var(--diagnosis-progress) * 4deg));
-}
-.ad26-optical-focus{
-  left:50%;top:51%;
-  width:min(78vw,980px);height:min(48vw,620px);
-  transform:translate(-50%,-50%) scale(calc(.72 + var(--diagnosis-progress) * .28));
-  opacity:calc(.04 + var(--diagnosis-progress) * .92);
-  background:radial-gradient(ellipse at center,rgba(211,220,255,.17) 0,rgba(132,157,244,.095) 27%,rgba(50,75,126,.026) 52%,transparent 72%);
-  filter:blur(calc(22px - var(--diagnosis-progress) * 18px));
-  mask-image:radial-gradient(ellipse,black 0 34%,rgba(0,0,0,.78) 55%,transparent 80%);
-  -webkit-mask-image:radial-gradient(ellipse,black 0 34%,rgba(0,0,0,.78) 55%,transparent 80%);
-  will-change:transform,filter,opacity;
-}
-.ad26-optical-sheen{
-  left:-28%;top:50%;width:156%;height:2px;
-  background:linear-gradient(90deg,transparent 0 14%,rgba(134,156,243,.04) 31%,rgba(230,235,255,.62) 50%,rgba(133,155,242,.05) 69%,transparent 86% 100%);
-  transform:translate3d(calc(-9vw + var(--diagnosis-progress) * 18vw),calc((.5 - var(--diagnosis-progress)) * 13vh),0) scaleX(calc(.62 + var(--diagnosis-progress) * .38));
-  opacity:calc(.12 + var(--diagnosis-progress) * .62);
-  filter:blur(.6px) drop-shadow(0 0 24px rgba(117,145,248,.30));
-  will-change:transform,opacity;
-}
+.ad26-optical-plane{left:-22%;width:144%;height:40%;border-radius:50%;mix-blend-mode:screen;opacity:calc(.45 - var(--diagnosis-progress) * .24);filter:blur(calc(34px - var(--diagnosis-progress) * 23px))}
+.ad26-optical-plane-a{top:26%;background:linear-gradient(101deg,transparent 8%,rgba(138,152,197,.08) 40%,rgba(214,221,244,.22) 50%,rgba(131,146,193,.06) 61%,transparent 92%);transform:translate3d(calc(-10vw + var(--diagnosis-progress) * 10vw),calc(-4vh + var(--diagnosis-progress) * 4vh),0) rotate(calc(-5deg + var(--diagnosis-progress) * 5deg))}
+.ad26-optical-plane-b{top:40%;background:linear-gradient(79deg,transparent 8%,rgba(114,130,183,.05) 38%,rgba(197,207,240,.18) 52%,rgba(110,126,180,.05) 65%,transparent 92%);transform:translate3d(calc(9vw - var(--diagnosis-progress) * 9vw),calc(5vh - var(--diagnosis-progress) * 5vh),0) rotate(calc(5deg - var(--diagnosis-progress) * 5deg))}
+.ad26-optical-plane-c{top:53%;height:28%;background:linear-gradient(96deg,transparent 10%,rgba(112,128,181,.04) 39%,rgba(207,214,239,.14) 51%,rgba(112,128,181,.04) 64%,transparent 90%);transform:translate3d(calc(-5vw + var(--diagnosis-progress) * 5vw),calc(3vh - var(--diagnosis-progress) * 3vh),0)}
+.ad26-optical-focus{left:50%;top:51%;width:min(78vw,980px);height:min(46vw,600px);transform:translate(-50%,-50%) scale(calc(.78 + var(--diagnosis-progress) * .22));opacity:calc(.04 + var(--diagnosis-progress) * .62);background:radial-gradient(ellipse,rgba(220,225,240,.12),rgba(130,145,194,.045) 36%,transparent 72%);filter:blur(calc(20px - var(--diagnosis-progress) * 16px));mask-image:radial-gradient(ellipse,black 0 34%,rgba(0,0,0,.72) 54%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse,black 0 34%,rgba(0,0,0,.72) 54%,transparent 80%)}
+.ad26-optical-sheen{left:-24%;top:50%;width:148%;height:1px;background:linear-gradient(90deg,transparent 12%,rgba(202,210,235,.08) 39%,rgba(244,246,252,.48) 50%,rgba(192,201,231,.07) 62%,transparent 88%);transform:translate3d(calc(-8vw + var(--diagnosis-progress) * 16vw),calc(5vh - var(--diagnosis-progress) * 10vh),0);opacity:calc(.08 + var(--diagnosis-progress) * .44)}
 
-.ad26-reframe{
-  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;
-  gap:clamp(44px,7vw,120px)!important;
-  align-items:end!important;
-  border-top:1px solid rgba(255,255,255,.12)!important;
-}
-.ad26-reframe-assumption{
-  opacity:calc(.9 - var(--diagnosis-progress) * .76)!important;
-  filter:blur(calc(var(--diagnosis-progress) * 3px)) saturate(calc(1 - var(--diagnosis-progress) * .42))!important;
-}
+.ad26-reframe{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;gap:clamp(44px,7vw,120px)!important;align-items:end!important;border-top:1px solid rgba(255,255,255,.11)!important}
+.ad26-reframe-assumption{opacity:calc(.9 - var(--diagnosis-progress) * .76)!important;filter:blur(calc(var(--diagnosis-progress) * 2.6px)) saturate(calc(1 - var(--diagnosis-progress) * .38))!important}
 .ad26-reframe-assumption i{display:none!important}
-.ad26-reframe-question{
-  opacity:calc(.10 + var(--diagnosis-progress) * .90)!important;
-  filter:blur(calc((1 - var(--diagnosis-progress)) * 5px))!important;
-  clip-path:inset(calc((1 - var(--diagnosis-progress)) * 70%) 0 0 0);
-}
-.ad26-reframe-question strong{text-shadow:0 0 calc(var(--diagnosis-progress) * 28px) rgba(128,153,255,.18)!important}
+.ad26-reframe-question{opacity:calc(.12 + var(--diagnosis-progress) * .88)!important;filter:blur(calc((1 - var(--diagnosis-progress)) * 4px))!important}
+.ad26-reframe-question strong{text-shadow:none!important}
 
-/* METHOD — motion is the reveal of information, never a jump in placement. */
+/* METHOD */
 .ad26-signature article{transform:none!important}
-.ad26-signature::before{opacity:.35;box-shadow:none!important}
+.ad26-signature::before{opacity:.26;box-shadow:none!important}
 
-/* BRIEF — treated as a surface appearing from depth via mask, not as a flying card. */
-.ad26-brief-product{transform-origin:50% 100%;will-change:clip-path,opacity}
-.ad26-brief-product::after{opacity:.34}
+/* BRIEF — remove ghost typography and keep one clean decision surface. */
+.ad26-brief{position:relative;z-index:2;background:#f6f7f8!important;overflow:hidden}
+.ad26-brief::before{display:none!important}
+.ad26-brief-product{transform-origin:50% 100%;background:rgba(255,255,255,.92)!important;box-shadow:0 22px 64px rgba(17,24,33,.06)!important}
+.ad26-brief-product::after{display:none!important}
 
-/* CASE — no process line. Keep one continuous cinematic typographic reveal. */
-.ad26-case::before{display:none!important}
-.ad26-case{overflow:hidden;isolation:isolate}
-.ad26-case::after{
-  content:"";
-  position:absolute;
-  inset:-20% -10%;
-  z-index:0;
-  pointer-events:none;
-  background:linear-gradient(112deg,transparent 0 38%,rgba(99,123,215,.08) 47%,rgba(214,222,255,.10) 50%,rgba(96,121,212,.05) 54%,transparent 65%);
-  transform:translate3d(calc(-18vw + var(--case-progress) * 36vw),calc(5vh - var(--case-progress) * 9vh),0) rotate(-4deg);
-  filter:blur(26px);
-  opacity:.8;
+/* CASE — flat graphite stage. No blue fog, no moving stripe, no process-line language. */
+.ad26-case{
+  position:relative;z-index:3;overflow:hidden;isolation:isolate;
+  background:#0b0e12!important;color:#f3f4f5!important;
 }
+.ad26-case::before,.ad26-case::after{display:none!important}
 .ad26-case>*{position:relative;z-index:2}
+.ad26-case .ad26-section-label{color:rgba(232,235,240,.56)!important}
+.ad26-case-title{display:grid;gap:20px!important}
+.ad26-case-title>span{display:block;color:rgba(247,248,249,.94)!important;font-size:clamp(32px,4.7vw,72px)!important;line-height:.98!important;letter-spacing:-.045em!important;font-weight:560!important}
+.ad26-case-title h2{color:#f7f8f9!important;opacity:1!important}
+.ad26-case-flow{border-color:rgba(255,255,255,.16)!important}
+.ad26-case-flow article{border-color:rgba(255,255,255,.11)!important;opacity:1!important}
+.ad26-case-flow span{color:rgba(233,236,241,.52)!important}
+.ad26-case-flow p{color:rgba(235,238,242,.72)!important}
+.ad26-case-flow h3,.ad26-case blockquote{color:#f5f6f7!important}
+.ad26-case blockquote{border-color:rgba(255,255,255,.14)!important}
+.ad26-case blockquote small{color:rgba(235,238,242,.52)!important}
+
+/* Quiet reset after the case. */
+.ad26-about{position:relative;z-index:4}
 
 @media (max-width:900px){
   .ad26-hero{gap:12px!important}
-  .ad26-hero::before{background:radial-gradient(105% 54% at 62% 76%,rgba(76,98,181,.13),transparent 67%)}
-  .ad26-lens{width:52vw!important;height:52vw!important;max-width:210px!important;max-height:210px!important;opacity:.40!important}
-
-  .ad26-statement{min-height:215svh!important}
+  .ad26-statement{min-height:210svh!important}
   .ad26-statement-stage{top:58px!important;height:calc(100svh - 58px)!important;padding:30px 20px 24px!important}
-  .ad26-statement-stage::before{
-    inset:-10% -65%;
-    transform:translate3d(calc(-24vw + var(--diagnosis-progress) * 24vw),calc(8vh - var(--diagnosis-progress) * 8vh),0) skewX(calc(-8deg + var(--diagnosis-progress) * 8deg)) scale(calc(1.18 - var(--diagnosis-progress) * .18));
-    opacity:calc(.50 + var(--diagnosis-progress) * .28);
-  }
+  .ad26-statement-stage::before{inset:-12% -68%;transform:translate3d(calc(-24vw + var(--diagnosis-progress) * 24vw),calc(7vh - var(--diagnosis-progress) * 7vh),0) skewX(calc(-7deg + var(--diagnosis-progress) * 7deg));opacity:calc(.44 + var(--diagnosis-progress) * .24)}
   .ad26-statement-copy{max-width:100%!important}
   .ad26-statement h2{font-size:clamp(33px,8.4vw,45px)!important;line-height:1.01!important}
   .ad26-statement-foot{margin-top:17px!important;padding-top:12px!important}
   .ad26-statement-foot p{font-size:12.5px!important}
   .ad26-rule{font-size:14.5px!important}
-
-  .ad26-optical-plane{left:-70%;width:240%;height:34%;opacity:calc(.64 - var(--diagnosis-progress) * .34);filter:blur(calc(30px - var(--diagnosis-progress) * 22px))}
-  .ad26-optical-plane-a{top:29%}
-  .ad26-optical-plane-b{top:41%}
-  .ad26-optical-plane-c{top:52%;height:24%}
-  .ad26-optical-focus{top:50%;width:132vw;height:68vw;opacity:calc(.05 + var(--diagnosis-progress) * .95)}
-  .ad26-optical-sheen{top:50%;height:2px;opacity:calc(.14 + var(--diagnosis-progress) * .70)}
-
+  .ad26-optical-plane{left:-72%;width:244%;height:34%;filter:blur(calc(28px - var(--diagnosis-progress) * 20px))}
+  .ad26-optical-plane-a{top:29%}.ad26-optical-plane-b{top:41%}.ad26-optical-plane-c{top:52%;height:24%}
+  .ad26-optical-focus{top:50%;width:132vw;height:66vw}
+  .ad26-optical-sheen{top:50%}
   .ad26-reframe{grid-template-columns:1fr!important;gap:17px!important;margin-top:auto!important;padding-top:15px!important}
   .ad26-reframe span{font-size:8px!important;margin-bottom:7px!important}
   .ad26-reframe strong{font-size:clamp(22px,5.8vw,28px)!important}
-  .ad26-reframe-assumption{max-width:88%}
-  .ad26-reframe-question{max-width:100%}
+  .ad26-reframe-assumption{max-width:88%}.ad26-reframe-question{max-width:100%}
+  .ad26-statement-copy,.ad26-reframe,.ad26-reframe-assumption,.ad26-reframe-question{transform:none!important;translate:none!important;scale:1!important}
 
-  .ad26-statement-copy,.ad26-reframe,.ad26-reframe-assumption,.ad26-reframe-question{
-    transform:none!important;translate:none!important;scale:1!important;
-  }
-
+  .ad26-brief{padding-bottom:72px!important}
   .ad26-brief-product{transform:none!important}
-  .ad26-case::after{
-    inset:-10% -90%;
-    transform:translate3d(calc(-28vw + var(--case-progress) * 56vw),calc(4vh - var(--case-progress) * 8vh),0) rotate(-6deg);
-    opacity:.9;
-  }
+
+  .ad26-case{padding-top:86px!important;padding-bottom:96px!important}
+  .ad26-case-title{gap:18px!important;margin-top:34px!important}
+  .ad26-case-title>span{font-size:clamp(32px,8.8vw,44px)!important;line-height:1.02!important}
+  .ad26-case-title h2{font-size:clamp(43px,11.3vw,60px)!important;line-height:.98!important}
+  .ad26-case-flow{margin-top:54px!important}
 }
 
 @media (prefers-reduced-motion:reduce){
-  .ad26-optical-field,.ad26-lens{display:none!important}
-  .ad26-statement-stage::before,.ad26-case::after{display:none!important}
+  .ad26-optical-field{display:none!important}
+  .ad26-statement-stage::before{display:none!important}
 }
 
 @media print{
-  .ad26-optical-field,.ad26-lens,.ad26-statement-stage::before,.ad26-case::after{display:none!important}
+  .ad26-optical-field,.ad26-statement-stage::before{display:none!important}
 }
