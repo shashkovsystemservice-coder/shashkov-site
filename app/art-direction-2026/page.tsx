@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ArtDirectionMotion from "./ArtDirectionMotion";
 import ConstraintLine from "./ConstraintLine";
+import DiagnosticField from "./DiagnosticField";
 import "./art-direction.css";
 import "./high-craft-pass.css";
 import "./experience-2026.css";
@@ -8,6 +9,7 @@ import "./refinement-pass.css";
 import "./director-pass.css";
 import "./spatial-pass.css";
 import "./award-system.css";
+import "./v3-system.css";
 
 const situations = [
   ["01", "Продажи перестали расти", "Команда предлагает больше рекламы — но непонятно, в ней ли проблема"],
@@ -43,6 +45,7 @@ export default function ArtDirection2026() {
   return (
     <main className="ad26" id="top">
       <ArtDirectionMotion />
+      <DiagnosticField />
       <ConstraintLine />
       <header className="ad26-nav">
         <a href="#top" className="ad26-brand" aria-label="Владимир Шашков — маркетинг и рост бизнеса">
