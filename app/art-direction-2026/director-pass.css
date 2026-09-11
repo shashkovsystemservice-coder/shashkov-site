@@ -1,0 +1,84 @@
+.ad26{--steel:#586c7d;--steel-soft:#8fa0ad;--hair:rgba(15,20,27,.11)}
+
+/* Keep the visual system purposeful: less decoration, more state change. */
+.ad26-diagnostic-field{border:0;background:transparent;overflow:visible}
+.ad26-diagnostic-field svg{overflow:visible}
+.df-frame path{stroke:rgba(255,255,255,.045)}
+.df-route{stroke:#8193a2;stroke-width:1.35}
+.df-route-b{stroke:#9aa9b5}.df-route-c{stroke:#647685}
+.df-route-main{stroke:#dbe3e8;stroke-width:2.2}
+.df-route-ghost{stroke:rgba(219,227,232,.13)}
+.df-focus-halo{fill:none;stroke:rgba(219,227,232,.12)}
+.df-focus-ring{fill:none;stroke:rgba(219,227,232,.66)}
+.df-focus-core{fill:#dbe3e8;stroke:#fff}
+.df-scan{display:none}
+.df-points circle{fill:#0d1724;stroke:#91a1ad}
+.df-point-output{fill:#dbe3e8!important;stroke:#fff!important}
+.df-caption{font-family:inherit;font-size:13px;letter-spacing:.06em;text-transform:uppercase;fill:rgba(235,240,244,.68)}
+.df-caption-focus{fill:#fff}.df-caption-output{fill:#dbe3e8}
+
+/* Recognition becomes a selective reading surface instead of a static list. */
+.ad26-situations article{opacity:.52;transform-origin:left center;transition:opacity .35s ease,transform .35s ease,background .35s ease}
+.ad26-situations article.is-active{opacity:1;transform:translateX(8px)}
+.ad26-situations article.is-active h3{letter-spacing:-.035em}
+.ad26-situations article.is-active:before{content:"";position:absolute;left:-18px;top:34px;width:4px;height:4px;border-radius:50%;background:var(--steel)}
+
+/* Method behaves as a sequence with a living progress rail. */
+.ad26-signature{position:relative}
+.ad26-signature:before{content:"";position:absolute;left:0;top:0;width:1px;height:100%;background:var(--hair)}
+.ad26-signature:after{content:"";position:absolute;left:0;top:0;width:1px;height:var(--method-progress,0%);background:var(--steel);transition:height .28s ease}
+.ad26-signature article{opacity:.48;transition:opacity .35s ease,transform .35s ease,background .35s ease}
+.ad26-signature article.is-active{opacity:1;transform:translateX(7px);background:linear-gradient(90deg,rgba(88,108,125,.055),transparent 70%)}
+
+/* Decision Brief now previews the actual output rather than behaving as a generic CTA. */
+.ad26-brief{grid-template-columns:minmax(0,.95fr) minmax(360px,.7fr);gap:clamp(54px,7vw,112px);align-items:center}
+.ad26-brief-number{display:none}
+.ad26-brief-copy{max-width:760px}
+.ad26-brief-product{position:relative;border:1px solid rgba(15,20,27,.14);background:#fbfcfd;padding:26px 28px 22px;box-shadow:0 18px 60px rgba(15,20,27,.055)}
+.ad26-brief-product:before{content:"Decision Brief / preview";display:block;margin-bottom:26px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#78838d}
+.ad26-brief-row{display:grid;grid-template-columns:118px 1fr;gap:22px;padding:16px 0;border-top:1px solid rgba(15,20,27,.1);opacity:.42;transform:translateY(8px);transition:opacity .32s ease,transform .32s ease}
+.ad26-brief-row:first-of-type{border-top-color:rgba(15,20,27,.28)}
+.ad26-brief-row span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#707b84}
+.ad26-brief-row strong{font-size:15px;line-height:1.35;font-weight:560;color:#111821}
+.ad26-brief-row.is-active{opacity:1;transform:none}
+.ad26-brief .ad26-primary{grid-column:1;justify-self:start;margin-top:28px}
+
+/* Case study: progression, not three independent blocks. */
+.ad26-case-flow{position:relative}
+.ad26-case-flow:before{content:"";position:absolute;left:15px;top:18px;bottom:22px;width:1px;background:rgba(88,108,125,.17)}
+.ad26-case-flow:after{content:"";position:absolute;left:15px;top:18px;width:1px;height:var(--case-progress,0%);background:var(--steel);transition:height .3s ease}
+.ad26-case-flow article{opacity:.43;transition:opacity .35s ease,transform .35s ease}
+.ad26-case-flow article.is-active{opacity:1;transform:translateX(7px)}
+.ad26-case-flow article:before{z-index:2}
+
+/* Hero is quieter but more dimensional. */
+.ad26-hero-copy:after{content:"";position:absolute;right:0;top:18%;height:64%;width:1px;background:linear-gradient(transparent,rgba(15,20,27,.16),transparent);pointer-events:none}
+.ad26-portrait{clip-path:inset(0 0 0 0)}
+.ad26-portrait img{transform-origin:52% 38%}
+
+@media(max-width:900px){
+  .ad26-situations article{opacity:.72}.ad26-situations article.is-active{transform:none}
+  .ad26-situations article.is-active:before{display:none}
+  .ad26-signature:before,.ad26-signature:after{display:none}
+  .ad26-signature article.is-active{transform:none}
+  .ad26-brief{display:block}
+  .ad26-brief-product{margin-top:42px;padding:22px 20px 18px}
+  .ad26-brief-row{grid-template-columns:92px 1fr;gap:14px;padding:14px 0}
+  .ad26-brief .ad26-primary{margin-top:30px}
+  .ad26-case-flow:before,.ad26-case-flow:after{left:7px}
+  .ad26-case-flow article.is-active{transform:none}
+  .ad26-hero-copy:after{display:none}
+  .ad26-diagnostic-field{margin-top:26px}
+  .df-caption{font-size:12px}
+}
+
+@media(max-width:560px){
+  .ad26-brief-product{margin-left:-4px;margin-right:-4px}
+  .ad26-brief-row strong{font-size:14px}
+  .df-caption{font-size:11px}
+}
+
+@media print{
+  .ad26-brief-product{display:block!important;border:1px solid #bbb!important;box-shadow:none!important;margin-top:6mm!important;break-inside:avoid!important}
+  .ad26-brief-row{opacity:1!important;transform:none!important}
+}
