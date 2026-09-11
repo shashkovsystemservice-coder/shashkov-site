@@ -1,0 +1,180 @@
+/* Worldclass polish pass — preserve production content, improve hierarchy and rhythm. */
+.ad27{
+  --page-x:clamp(20px,2.15vw,34px);
+  --measure:1600px;
+  --accent:#2b59ff;
+}
+
+/* A single horizontal system: less presentation-like, more editorial. */
+.ad27-nav,
+.ad27-hero,
+.ad27-proof,
+.ad27-recognition,
+.ad27-diagnosis-sticky,
+.ad27-approach,
+.ad27-brief,
+.ad27-case,
+.ad27-continuation,
+.ad27-about,
+.ad27-projects,
+.ad27-faq,
+.ad27-contact{padding-left:var(--page-x)!important;padding-right:var(--page-x)!important}
+
+/* Brand/nav: remove the “button in a toolbar” feel. */
+.ad27-nav{height:64px;background:rgba(243,243,241,.9);border-bottom-color:rgba(17,19,24,.07)}
+.ad27-brand>span{border:0;width:auto;height:auto;place-items:start;font-family:Georgia,'Times New Roman',serif;font-size:27px;line-height:.9;letter-spacing:-.07em}
+.ad27-brand{grid-template-columns:38px auto;column-gap:14px}
+.ad27-brand strong{font-size:12px;font-weight:760}
+.ad27-brand small{font-size:9px;letter-spacing:.015em}
+.ad27-nav nav{gap:24px;color:#4f565f}
+.ad27-nav-cta{color:var(--ink);font-weight:760}
+
+/* Hero: the portrait is a visual plane, not a card. */
+.ad27-hero{min-height:min(980px,100svh);padding-top:106px!important;padding-bottom:34px!important;grid-template-columns:minmax(0,1.16fr) minmax(360px,.84fr);gap:clamp(26px,3vw,58px);align-items:end}
+.ad27-hero-copy{max-width:980px;padding-bottom:18px}
+.ad27-hero .ad27-kicker{max-width:760px;font-size:15px;line-height:1.35;letter-spacing:-.018em;text-transform:none;font-weight:720;color:#343a42}
+.ad27-hero h1{margin-top:30px;font-size:clamp(68px,7.4vw,124px);line-height:.86;letter-spacing:-.068em;font-weight:610}
+.ad27-hero h1 em{color:#7e848b;font-weight:520}
+.ad27-hero-lead{max-width:780px;margin-top:40px;grid-template-columns:1fr 1fr;gap:42px;padding-top:17px}
+.ad27-hero-lead p{font-size:16px;line-height:1.46}
+.ad27-hero-image{min-height:670px;clip-path:inset(0 0 0 0);background:#d7d9dc}
+.ad27-hero-image::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:rgba(17,19,24,.14);z-index:2}
+.ad27-hero-image img{object-position:center 28%!important;filter:saturate(.78) contrast(1.035)}
+.ad27-hero-image::after{background:linear-gradient(180deg,rgba(10,12,15,.02),transparent 45%,rgba(10,12,15,.13))}
+
+/* CTA language: one confident primary pattern, no SaaS box. */
+.ad27-action-primary,.ad27-form-submit{position:relative;min-height:40px;padding:0 44px 8px 0!important;border:0!important;border-bottom:1px solid currentColor!important;font-size:13px;font-weight:760;letter-spacing:-.015em}
+.ad27-action-primary span,.ad27-form-submit span{position:absolute;right:0;bottom:6px;font-size:19px;transition:transform .22s ease}
+.ad27-action-primary:hover span,.ad27-form-submit:hover span{transform:translateX(5px)}
+.ad27-action-primary:hover,.ad27-form-submit:hover{opacity:.78;gap:inherit}
+.ad27-action-text{padding:0 0 7px;border-bottom-color:rgba(17,19,24,.14);color:#687079}
+.ad27-action-text:hover{color:var(--ink);border-bottom-color:rgba(17,19,24,.4)}
+
+/* Proof: factual bridge, not another section. */
+.ad27-proof{display:grid;grid-template-columns:.8fr 1.35fr;gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#eeeeec}
+.ad27-proof article{min-height:118px;padding:27px 34px 24px 0!important;display:flex;flex-direction:column;justify-content:center}
+.ad27-proof article+article{padding-left:34px!important;border-left:1px solid var(--line)}
+.ad27-proof strong{font-size:15px;letter-spacing:-.015em}
+.ad27-proof span{max-width:760px;margin-top:7px;font-size:12px;line-height:1.45;color:#71777e}
+
+/* Recognition: quieter and denser. */
+.ad27-recognition{padding-top:clamp(100px,9vw,150px)!important;padding-bottom:clamp(100px,9vw,150px)!important;grid-template-columns:68px minmax(0,.92fr) minmax(520px,1.08fr);gap:36px}
+.ad27-section-no{font-variant-numeric:tabular-nums;color:#a0a4a9}
+.ad27-section-head h2{font-size:clamp(46px,5vw,78px);max-width:760px}
+.ad27-situation-list article{padding:24px 0;grid-template-columns:34px 1fr}
+.ad27-situation-list p{margin:0;max-width:690px;font-size:17px;line-height:1.38;color:#454c54}
+
+/* Diagnosis: shorter, tighter, and unmistakably about reframing. */
+.ad27-diagnosis{height:158svh}
+.ad27-diagnosis-sticky{padding-top:94px!important;padding-bottom:48px!important}
+.ad27-diagnosis h2{max-width:1240px;font-size:clamp(54px,6.8vw,108px);line-height:.92}
+.ad27-diagnosis-sticky::before{inset:-8% -8%;background:linear-gradient(105deg,transparent 0 42%,rgba(255,255,255,.028) 47%,rgba(255,255,255,.095) 50%,rgba(255,255,255,.026) 53%,transparent 58%);filter:blur(calc(13px - var(--diagnosis,0)*8px))}
+.ad27-reframe-grid{max-width:1220px;gap:70px}
+.ad27-reframe-grid strong{font-size:clamp(24px,2.6vw,42px)}
+.ad27-rule{max-width:760px;margin-top:26px;font-size:14px;line-height:1.55}
+
+/* Method + brief: authority through structure, not cards. */
+.ad27-approach{padding-top:clamp(105px,9vw,155px)!important;padding-bottom:clamp(105px,9vw,155px)!important;grid-template-columns:68px minmax(0,.9fr) minmax(500px,1.1fr);gap:36px}
+.ad27-approach h2{font-size:clamp(46px,5.1vw,80px)}
+.ad27-approach-steps article{grid-template-columns:38px minmax(170px,.7fr) 1fr;padding:28px 0}
+.ad27-approach-steps strong{text-transform:none;letter-spacing:-.018em;font-size:18px;line-height:1.15}
+.ad27-approach-steps p{font-size:16px;line-height:1.42}
+.ad27-approach-note{margin-top:28px}
+.ad27-inline-links{display:flex;gap:24px;flex-wrap:wrap;margin-top:18px}
+.ad27-brief{padding-top:clamp(100px,9vw,150px)!important;padding-bottom:clamp(100px,9vw,150px)!important;grid-template-columns:minmax(0,.82fr) minmax(520px,1.18fr);gap:clamp(50px,6vw,100px);background:#e9ebed}
+.ad27-brief h2{font-size:clamp(48px,5.2vw,82px)}
+.ad27-brief-lines{background:transparent;border:0;border-top:2px solid var(--ink);box-shadow:none}
+.ad27-brief-lines>div{padding:21px 0;grid-template-columns:115px 1fr}
+.ad27-brief-lines strong{font-size:17px;font-weight:590}
+
+/* Case: keep the strongest scene, but stop it becoming a second hero plus cards. */
+.ad27-case{padding-top:clamp(110px,10vw,165px)!important;padding-bottom:clamp(110px,10vw,165px)!important;min-height:auto}
+.ad27-case-lead{margin-top:44px}
+.ad27-case-lead>p{font-size:clamp(28px,3.7vw,56px)}
+.ad27-case-lead h2{max-width:1220px;font-size:clamp(56px,7.2vw,112px);line-height:.91}
+.ad27-case-steps{margin-top:clamp(72px,8vw,120px)!important}
+.ad27-case-action,.ad27-artifact{max-width:1220px}
+.ad27-case blockquote{max-width:980px}
+
+/* Lower half: compress reading fatigue and create a deliberate cadence. */
+.ad27-continuation{padding-top:clamp(100px,9vw,145px)!important;padding-bottom:clamp(90px,8vw,130px)!important}
+.ad27-continuation-head{max-width:900px}
+.ad27-continuation-head h2{font-size:clamp(48px,5.2vw,82px);line-height:.94;letter-spacing:-.055em}
+.ad27-continuation-grid{margin-top:54px!important;border-top:2px solid var(--ink)}
+.ad27-continuation-grid article{padding-top:24px!important;padding-bottom:30px!important}
+.ad27-continuation-grid article:nth-child(2){border-top:3px solid var(--ink);margin-top:-2px}
+.ad27-continuation-grid h3{font-size:clamp(24px,2vw,31px)!important;line-height:1.08}
+.ad27-about{padding-top:clamp(100px,9vw,145px)!important;padding-bottom:clamp(100px,9vw,145px)!important;grid-template-columns:68px minmax(0,1.08fr) minmax(340px,.62fr);gap:36px;align-items:center}
+.ad27-about h2{font-size:clamp(46px,5vw,78px)}
+.ad27-about-image{min-height:520px;max-height:680px;aspect-ratio:4/5}
+.ad27-about-image img{object-position:center 39%!important;filter:saturate(.82) contrast(1.025)}
+.ad27-projects,.ad27-faq{padding-top:clamp(90px,8vw,130px)!important;padding-bottom:clamp(90px,8vw,130px)!important;grid-template-columns:68px minmax(0,.9fr) minmax(520px,1.1fr);gap:36px}
+.ad27-projects{background:#eeeeec}
+.ad27-projects-head h2,.ad27-faq-head h2{font-size:clamp(44px,4.8vw,74px)}
+.ad27-project-list article{padding:24px 0}
+.ad27-project-list h3{font-size:clamp(21px,1.9vw,29px)}
+.ad27-faq-list summary{font-size:20px}
+
+/* Contact is a closing scene, not a form-heavy footer. */
+.ad27-contact{min-height:auto;padding-top:clamp(100px,9vw,150px)!important;padding-bottom:30px!important}
+.ad27-contact-grid{grid-template-columns:minmax(0,1.12fr) minmax(380px,.58fr);gap:clamp(60px,7vw,110px)}
+.ad27-contact-grid h2{font-size:clamp(52px,6.3vw,96px);line-height:.91;max-width:1050px}
+.ad27-contact-form{margin-top:8px}
+.ad27-contact-form textarea{min-height:86px}
+.ad27-footer{margin-top:clamp(80px,8vw,120px)}
+
+@media(max-width:900px){
+  .ad27{--page-x:20px}
+  .ad27-nav{height:58px}
+  .ad27-brand{grid-template-columns:31px auto;column-gap:10px}
+  .ad27-brand>span{font-size:23px}
+  .ad27-hero{padding-top:78px!important;padding-bottom:34px!important;gap:22px}
+  .ad27-hero-image{order:-1;min-height:48svh;width:calc(100% + 40px);margin-left:-20px}
+  .ad27-hero-image::before{display:none}
+  .ad27-hero-image img{object-position:center 25%!important}
+  .ad27-hero .ad27-kicker{font-size:13px;line-height:1.35}
+  .ad27-hero h1{font-size:clamp(48px,13.1vw,64px);line-height:.91;margin-top:20px}
+  .ad27-hero-lead{grid-template-columns:1fr;gap:8px;margin-top:26px;padding-top:13px}
+  .ad27-hero-lead p{font-size:14px}
+  .ad27-hero-actions{align-items:flex-start!important;flex-direction:column;gap:14px!important;margin-top:23px}
+  .ad27-action-primary,.ad27-action-text{font-size:12px}
+  .ad27-proof{grid-template-columns:1fr}
+  .ad27-proof article{min-height:auto;padding:22px 0!important}
+  .ad27-proof article+article{padding-left:0!important;border-left:0;border-top:1px solid var(--line)}
+  .ad27-recognition,.ad27-approach,.ad27-about,.ad27-projects,.ad27-faq{padding-top:78px!important;padding-bottom:78px!important}
+  .ad27-section-head h2,.ad27-approach h2,.ad27-about h2,.ad27-projects-head h2,.ad27-faq-head h2{font-size:clamp(40px,10.8vw,52px);line-height:.97}
+  .ad27-situation-list{margin-top:38px}
+  .ad27-situation-list article{padding:18px 0}
+  .ad27-situation-list p{font-size:15px;line-height:1.4}
+  .ad27-diagnosis{height:auto}
+  .ad27-diagnosis-sticky{min-height:auto;padding-top:76px!important;padding-bottom:72px!important;gap:38px}
+  .ad27-diagnosis h2{font-size:clamp(40px,10.8vw,52px);line-height:.97}
+  .ad27-reframe-grid{gap:22px}
+  .ad27-reframe-grid strong{font-size:26px}
+  .ad27-rule{margin-top:8px}
+  .ad27-approach-steps article{grid-template-columns:30px 1fr;gap:7px 12px;padding:20px 0}
+  .ad27-approach-steps strong{font-size:17px}
+  .ad27-approach-steps p{grid-column:2;font-size:14px}
+  .ad27-inline-links{display:grid;gap:12px}
+  .ad27-brief{padding-top:78px!important;padding-bottom:78px!important;gap:36px}
+  .ad27-brief h2{font-size:clamp(40px,10.8vw,52px);line-height:.97}
+  .ad27-brief-lines>div{grid-template-columns:74px 1fr;padding:17px 0}
+  .ad27-brief-lines strong{font-size:15px}
+  .ad27-case{padding-top:82px!important;padding-bottom:86px!important}
+  .ad27-case-lead{margin-top:36px}
+  .ad27-case-lead>p{font-size:28px}
+  .ad27-case-lead h2{font-size:clamp(44px,11.8vw,58px);line-height:.94}
+  .ad27-continuation{padding-top:78px!important;padding-bottom:72px!important}
+  .ad27-continuation-head h2{font-size:clamp(40px,10.8vw,52px);line-height:.97}
+  .ad27-continuation-grid{margin-top:38px!important}
+  .ad27-continuation-grid article:nth-child(2){border-top-width:1px;margin-top:0}
+  .ad27-about-image{min-height:64svh;max-height:none;aspect-ratio:auto;margin-top:38px}
+  .ad27-about-image img{object-position:center 36%!important}
+  .ad27-projects-head,.ad27-faq-head{margin-bottom:34px}
+  .ad27-projects,.ad27-faq{display:block}
+  .ad27-contact{padding-top:78px!important}
+  .ad27-contact-grid{grid-template-columns:1fr;gap:50px}
+  .ad27-contact-grid h2{font-size:clamp(44px,11.8vw,58px);line-height:.94}
+  .ad27-contact-actions{align-items:flex-start;flex-direction:column;gap:14px}
+  .ad27-footer{margin-top:72px}
+}
