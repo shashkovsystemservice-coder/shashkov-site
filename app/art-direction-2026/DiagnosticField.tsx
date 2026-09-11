@@ -100,7 +100,9 @@ void main(){
   field += velocityTrace;
   field *= smoothstep(1.20,.10,length(p));
 
-  float darkScene=step(1.5,s)*(1.0-step(2.5,s))+step(4.5,s)*(1.0-step(5.5,s))+step(6.5,s);
+  float darkScene = smoothstep(1.35,1.85,s)*(1.0-smoothstep(2.15,2.65,s))
+                  + smoothstep(4.35,4.85,s)*(1.0-smoothstep(5.15,5.65,s))
+                  + smoothstep(6.35,6.85,s);
   vec3 lightInk=vec3(.08,.17,.24);
   vec3 darkInk=vec3(.74,.83,.88);
   vec3 col=mix(lightInk,darkInk,clamp(darkScene,0.0,1.0));
@@ -133,12 +135,36 @@ export default function DiagnosticField(){
     const position=gl.getAttribLocation(program,"a_position");gl.enableVertexAttribArray(position);gl.vertexAttribPointer(position,2,gl.FLOAT,false,0,0);
     const U=(name:string)=>gl.getUniformLocation(program,name);
     const resolution=U("u_resolution"),pointerU=U("u_pointer"),timeU=U("u_time"),scrollU=U("u_scroll"),sceneU=U("u_scene"),velocityU=U("u_velocity"),mobileU=U("u_mobile");
-    const pointer={x:.68,y:.38},target={...pointer};let scene=0,raf=0,lastScroll=window.scrollY,velocity=0;const started=performance.now();
+    const pointer={x:.68,y:.38},target={...pointer};
+    let scene=0,targetScene=0,raf=0,lastScroll=window.scrollY,velocity=0;
+    const started=performance.now();
     const resize=()=>{const dpr=isMobile?1:Math.min(window.devicePixelRatio||1,1.5);const w=Math.floor(window.innerWidth*dpr),h=Math.floor(window.innerHeight*dpr);if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;canvas.style.width=`${window.innerWidth}px`;canvas.style.height=`${window.innerHeight}px`;gl.viewport(0,0,w,h);}};
     const onPointer=(e:PointerEvent)=>{if(isMobile)return;target.x=e.clientX/Math.max(1,window.innerWidth);target.y=1-e.clientY/Math.max(1,window.innerHeight);};
-    const syncScene=()=>{scene=sectionToScene[root.dataset.section||"00 · Ввод"]??0;};
+    const syncScene=()=>{targetScene=sectionToScene[root.dataset.section||"00 · Ввод"]??0;};
     const observer=new MutationObserver(syncScene);observer.observe(root,{attributes:true,attributeFilter:["data-section"]});syncScene();
-    const render=()=>{resize();pointer.x+=(target.x-pointer.x)*(isMobile?.02:.045);pointer.y+=(target.y-pointer.y)*(isMobile?.02:.045);const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);const sy=window.scrollY,scroll=sy/max;const rv=(sy-lastScroll)/Math.max(1,window.innerHeight*.085);velocity+=(rv-velocity)*.12;velocity*=.93;lastScroll=sy;gl.uniform2f(resolution,canvas.width,canvas.height);gl.uniform2f(pointerU,pointer.x,pointer.y);gl.uniform1f(timeU,(performance.now()-started)/1000);gl.uniform1f(scrollU,scroll);gl.uniform1f(sceneU,scene);gl.uniform1f(velocityU,velocity);gl.uniform1f(mobileU,isMobile?1:0);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.drawArrays(gl.TRIANGLES,0,6);raf=requestAnimationFrame(render);};
+    const render=()=>{
+      resize();
+      pointer.x+=(target.x-pointer.x)*(isMobile?.02:.045);
+      pointer.y+=(target.y-pointer.y)*(isMobile?.02:.045);
+      scene+=(targetScene-scene)*(isMobile?.045:.06);
+      const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+      const sy=window.scrollY,scroll=sy/max;
+      const rv=(sy-lastScroll)/Math.max(1,window.innerHeight*.085);
+      velocity+=(rv-velocity)*.12;
+      velocity*=.93;
+      lastScroll=sy;
+      gl.uniform2f(resolution,canvas.width,canvas.height);
+      gl.uniform2f(pointerU,pointer.x,pointer.y);
+      gl.uniform1f(timeU,(performance.now()-started)/1000);
+      gl.uniform1f(scrollU,scroll);
+      gl.uniform1f(sceneU,scene);
+      gl.uniform1f(velocityU,velocity);
+      gl.uniform1f(mobileU,isMobile?1:0);
+      gl.clearColor(0,0,0,0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.drawArrays(gl.TRIANGLES,0,6);
+      raf=requestAnimationFrame(render);
+    };
     window.addEventListener("pointermove",onPointer,{passive:true});window.addEventListener("resize",resize,{passive:true});raf=requestAnimationFrame(render);
     return()=>{cancelAnimationFrame(raf);observer.disconnect();window.removeEventListener("pointermove",onPointer);window.removeEventListener("resize",resize);gl.deleteProgram(program);gl.deleteShader(vs);gl.deleteShader(fs);if(buffer)gl.deleteBuffer(buffer);};
   },[]);
