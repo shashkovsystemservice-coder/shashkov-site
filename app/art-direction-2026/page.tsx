@@ -27,6 +27,14 @@ export default function ArtDirection2026() {
       </header>
 
       <section className="ad26-hero">
+        <svg className="ad26-signal-map" viewBox="0 0 720 720" aria-hidden="true">
+          <path className="signal-orbit signal-orbit-a" d="M74 433C155 273 290 187 458 197c90 6 151 42 191 107" />
+          <path className="signal-orbit signal-orbit-b" d="M86 497c137-104 265-122 383-70 63 28 111 73 145 137" />
+          <path className="signal-orbit signal-orbit-c" d="M147 228c85 39 157 102 217 190 48 69 79 139 94 211" />
+          <circle className="signal-node signal-node-a" cx="458" cy="197" r="5" />
+          <circle className="signal-node signal-node-b" cx="364" cy="418" r="7" />
+          <circle className="signal-node signal-node-c" cx="614" cy="564" r="4" />
+        </svg>
         <div className="ad26-hero-copy">
           <p className="ad26-kicker">Независимый консультант · для собственников бизнеса</p>
           <h1>Не уверены,<br/>что именно сейчас<br/>нужно менять<br/>в бизнесе?</h1>
@@ -59,7 +67,9 @@ export default function ArtDirection2026() {
       </section>
 
       <section className="ad26-brief">
-        <div className="ad26-brief-number">6</div><div className="ad26-brief-copy"><p className="ad26-kicker">Decision Brief · без звонка</p><h2>6 вопросов, чтобы понять,<br/>что проверить первым.</h2><p>Главный вопрос, недостающие факты, первый шаг и что пока рано делать. Результат можно сохранить в PDF.</p><div className="ad26-brief-output"><span>На выходе</span><strong>Вопрос → факты → первая проверка → следующий шаг</strong></div></div><a className="ad26-primary ad26-primary-dark" href="/diagnostic">Пройти 6 вопросов <span>↗</span></a>
+        <div className="ad26-brief-number">6</div>
+        <div className="ad26-brief-copy"><p className="ad26-kicker">Decision Brief · без звонка</p><h2>6 вопросов, чтобы понять,<br/>что проверить первым.</h2><p>Главный вопрос, недостающие факты, первый шаг и что пока рано делать. Результат можно сохранить в PDF.</p><div className="ad26-brief-output"><span>На выходе</span><strong>Вопрос → факты → первая проверка → следующий шаг</strong></div></div>
+        <a className="ad26-primary ad26-primary-dark" href="/diagnostic">Пройти 6 вопросов <span>↗</span></a>
       </section>
 
       <section className="ad26-case" id="case">
@@ -74,7 +84,7 @@ export default function ArtDirection2026() {
         <div className="ad26-about-grid"><div className="ad26-about-title"><h2>Смотрю на маркетинг<br/>через весь бизнес.</h2><p>Рынок → продукт → продажи → исполнение.</p></div><figure className="ad26-about-portrait"><Image src="/vladimir-photo.jpg" alt="Владимир Шашков" fill priority sizes="(max-width: 900px) 100vw, 30vw" /></figure><div className="ad26-about-copy"><p><strong>Маркетинг для меня — связь рынка, ценности, продукта, продаж и способности бизнеса выполнить обещание клиенту.</strong></p><p>Большую часть карьеры я работал внутри бизнеса — поэтому проверяю не только обещание рынку, но и способность его продать, выполнить и поддерживать.</p><div><span>24 года внутри бизнеса</span><span>Рынок → продукт</span><span>Обещание → исполнение</span></div></div></div>
       </section>
 
-      <section className="ad26-contact"><p className="ad26-kicker">Следующий шаг</p><h2>Можно начать<br/>с самой ситуации.</h2><p>Без обязательного звонка. Если вопрос пока неясный — пройти 6 вопросов. Если конкретный — просто написать.</p><div className="ad26-contact-actions"><a className="ad26-primary ad26-primary-light" href="/diagnostic">Разобрать свою ситуацию <span>↗</span></a><a href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram →</a></div><footer><strong>Владимир Шашков</strong><p>Сначала понять проблему. Потом выбирать решение. И только потом — инструмент.</p></footer></section>
+      <section className="ad26-contact"><p className="ad26-kicker">Следующий шаг</p><h2>Можно начать<br/>с самой ситуации.</h2><p>Без обязательного звонка. Если вопрос пока неясный — пройти 6 вопросов. Если конкретный — просто написать.</p><div className="ad26-contact-actions"><a className="ad26-primary ad26-primary-light" href="/diagnostic">Разобрать свою ситуацию <span>↗</span></a><a href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram →</a></div><footer><div className="ad26-footer-brand"><span className="ad26-brand-mark" aria-hidden="true">ВШ</span><strong>Владимир Шашков</strong></div><p>Сначала понять проблему. Потом выбирать решение. И только потом — инструмент.</p></footer></section>
     </main>
   );
 }
