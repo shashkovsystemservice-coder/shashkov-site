@@ -5,6 +5,7 @@ import "./high-craft-pass.css";
 import "./experience-2026.css";
 import "./refinement-pass.css";
 import "./director-pass.css";
+import "./spatial-pass.css";
 
 const situations = [
   ["01", "Продажи перестали расти", "Команда предлагает больше рекламы — но непонятно, в ней ли проблема"],
@@ -47,6 +48,7 @@ export default function ArtDirection2026() {
         </a>
         <nav><a href="#method">Подход</a><a href="#case">Кейс</a><a className="ad26-nav-cta" href="/diagnostic">Разобрать ситуацию</a></nav>
       </header>
+      <div className="ad26-progress-rail" aria-hidden="true"><span/><span/><span/><span/><span/><span/><span/><span/></div>
 
       <section className="ad26-hero">
         <svg className="ad26-signal-map" viewBox="0 0 720 720" aria-hidden="true">
