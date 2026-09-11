@@ -1,9 +1,43 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./production-map.css";
+import "./top-case-reel.css";
+
+const topCases = [
+  { label: "Промышленность", title: "От станков — к линиям", href: "/cases/integrator-model", image: "/technograv-preview.png", mark: "П" },
+  { label: "Свет", title: "Инженерное партнёрство", href: null, image: null, mark: "С", tone: "light" },
+  { label: "Ресторан", title: "Рост и модель выбора", href: null, image: null, mark: "Р", tone: "warm" },
+  { label: "Event", title: "Система для команды", href: "/cases/prime-event", image: "/marketing-system-11.png", mark: "E", tone: "event" },
+  { label: "Wellness", title: "Новый продукт / рынок", href: "/cases/iba-wellness", image: "/fitness-report-cover.png", mark: "W" },
+  { label: "B2B рост", title: "Как попадать в выбор", href: "/cases/market-choice-system", image: null, mark: "B" },
+] as const;
+
+function TopCaseReel() {
+  return (
+    <section className="ad27-topcase-reel" aria-label="Избранные кейсы">
+      <div className="ad27-topcase-head"><strong>Кейсы</strong><span>Листайте · нажмите, чтобы открыть</span></div>
+      <div className="ad27-topcase-track">
+        {topCases.map((item) => {
+          const className = [
+            "ad27-topcase-card",
+            !item.image ? "ad27-topcase-card--type" : "",
+            item.tone ? `ad27-topcase-card--${item.tone}` : "",
+            !item.href ? "ad27-topcase-card--disabled" : "",
+          ].filter(Boolean).join(" ");
+          const inner = <>
+            {item.image ? <Image src={item.image} alt="" fill sizes="(max-width: 900px) 96px, 154px" /> : null}
+            <div className="ad27-topcase-meta"><small>{item.label}</small><strong>{item.title}</strong></div>
+          </>;
+          return item.href ? <a key={item.label} className={className} href={item.href} data-mark={item.mark}>{inner}</a> : <div key={item.label} className={className} data-mark={item.mark}>{inner}</div>;
+        })}
+      </div>
+    </section>
+  );
+}
 
 export default function ArtDirection2027Motion() {
   useEffect(() => {
@@ -12,6 +46,8 @@ export default function ArtDirection2027Motion() {
 
     gsap.registerPlugin(ScrollTrigger);
     const mm = gsap.matchMedia();
+
+    gsap.from(".ad27-topcase-card", { y: 10, opacity: 0, duration: .45, stagger: .045, ease: "power2.out" });
 
     mm.add("(min-width: 901px)", () => {
       const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -78,5 +114,5 @@ export default function ArtDirection2027Motion() {
     return () => mm.revert();
   }, []);
 
-  return null;
+  return <TopCaseReel />;
 }
