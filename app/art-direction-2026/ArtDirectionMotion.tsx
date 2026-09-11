@@ -57,25 +57,36 @@ export default function ArtDirectionMotion() {
           trigger: ".ad26-statement",
           start: "top 78%",
           end: "bottom 35%",
-          scrub: 0.7,
+          scrub: 0.65,
         },
       });
       statement
         .fromTo(".ad26-statement-label", { x: -20, opacity: 0.3 }, { x: 0, opacity: 1 }, 0)
         .fromTo(".ad26-statement h2", { y: 68, opacity: 0.35 }, { y: 0, opacity: 1 }, 0)
-        .to(routes, { strokeDashoffset: 0, stagger: 0.08, duration: 0.7, ease: "none" }, 0.08)
-        .fromTo(".df-node-muted", { scale: 0, transformOrigin: "center" }, { scale: 1, stagger: 0.05, duration: 0.25 }, 0.15)
-        .fromTo(".df-node-focus", { scale: 0, transformOrigin: "center" }, { scale: 1, duration: 0.3 }, 0.48)
-        .fromTo(".df-node-ring", { scale: 0.4, opacity: 0, transformOrigin: "center" }, { scale: 1, opacity: 1, duration: 0.38 }, 0.54)
-        .fromTo(".ad26-statement-foot", { y: 42, opacity: 0.15 }, { y: 0, opacity: 1 }, 0.35);
+        .fromTo(".df-points circle:not(.df-point-output)", { scale: 0, opacity: 0, transformOrigin: "center" }, { scale: 1, opacity: 1, stagger: 0.05, duration: 0.22 }, 0.04)
+        .to(".df-inputs .df-route", { strokeDashoffset: 0, stagger: 0.08, duration: 0.55, ease: "none" }, 0.08)
+        .fromTo(".df-focus-halo", { scale: 0.55, opacity: 0, transformOrigin: "center" }, { scale: 1, opacity: 1, duration: 0.28 }, 0.33)
+        .fromTo(".df-focus-ring", { scale: 0.6, opacity: 0, transformOrigin: "center" }, { scale: 1, opacity: 1, duration: 0.25 }, 0.38)
+        .fromTo(".df-focus-core", { scale: 0, transformOrigin: "center" }, { scale: 1, duration: 0.2 }, 0.42)
+        .to(".df-output .df-route", { strokeDashoffset: 0, stagger: 0.06, duration: 0.52, ease: "none" }, 0.46)
+        .fromTo(".df-point-output", { scale: 0, opacity: 0, transformOrigin: "center" }, { scale: 1, opacity: 1, duration: 0.22 }, 0.66)
+        .fromTo(".ad26-statement-foot", { y: 42, opacity: 0.15 }, { y: 0, opacity: 1 }, 0.34);
 
-      gsap.to(".df-node-ring", {
-        scale: 1.28,
-        opacity: 0.2,
+      gsap.to(".df-scan", {
+        rotate: 360,
+        transformOrigin: "320px 180px",
+        repeat: -1,
+        duration: 7,
+        ease: "none",
+      });
+
+      gsap.to(".df-focus-ring", {
+        scale: 1.14,
+        opacity: 0.32,
         transformOrigin: "center",
         repeat: -1,
         yoyo: true,
-        duration: 1.6,
+        duration: 1.8,
         ease: "sine.inOut",
       });
 
