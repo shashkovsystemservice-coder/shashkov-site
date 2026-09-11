@@ -116,3 +116,13 @@
   .ad26-brief-product{backdrop-filter:none!important;contain:none!important}
   .ad26-brief-product:after{display:none!important}
 }
+
+/* V4 activation must come after V3 mobile fallback rules. */
+@media(max-width:900px){
+  .ad26-diagnostic-field{display:block!important;opacity:.16!important;mix-blend-mode:multiply!important}
+  .ad26-lens{display:block!important}
+  .ad26-constraint{display:none!important}
+  .ad26[data-section*="Диагноз"] .ad26-diagnostic-field,.ad26[data-section*="Кейс"] .ad26-diagnostic-field,.ad26[data-section*="Следующий"] .ad26-diagnostic-field{mix-blend-mode:screen!important;opacity:.21!important}
+  .ad26[data-section*="Обо мне"] .ad26-diagnostic-field{opacity:.035!important}
+}
+@media(max-width:430px){.ad26-diagnostic-field{opacity:.13!important}}
