@@ -1,0 +1,90 @@
+/* Award-system pass: one ownable visual grammar across the whole experience. */
+.ad26{--constraint:#6f8292;--constraint-light:#a8bac7;--constraint-dark:#182431}
+
+/* Signature line: one persistent object that changes role from section to section. */
+.ad26-constraint{position:fixed;inset:68px 0 0;z-index:12;pointer-events:none;mix-blend-mode:multiply;opacity:.48;transition:opacity .35s ease,mix-blend-mode .35s ease}
+.ad26-constraint svg{display:block;width:100%;height:100%}
+.ad26-constraint-path{fill:none;stroke:var(--constraint);stroke-width:1.1;vector-effect:non-scaling-stroke;opacity:.8}
+.ad26-constraint-node{fill:#f6f8f9;stroke:var(--constraint);stroke-width:1;vector-effect:non-scaling-stroke}
+.ad26-constraint-node-b{fill:var(--constraint)}
+.ad26[data-section*="Диагноз"] .ad26-constraint,.ad26[data-section*="Кейс"] .ad26-constraint,.ad26[data-section*="Следующий"] .ad26-constraint{mix-blend-mode:screen;opacity:.55}
+.ad26[data-section*="Диагноз"] .ad26-constraint-path,.ad26[data-section*="Кейс"] .ad26-constraint-path,.ad26[data-section*="Следующий"] .ad26-constraint-path{stroke:var(--constraint-light)}
+.ad26[data-section*="Диагноз"] .ad26-constraint-node,.ad26[data-section*="Кейс"] .ad26-constraint-node,.ad26[data-section*="Следующий"] .ad26-constraint-node{stroke:var(--constraint-light);fill:#0e1824}
+.ad26[data-section*="Диагноз"] .ad26-constraint-node-b,.ad26[data-section*="Кейс"] .ad26-constraint-node-b,.ad26[data-section*="Следующий"] .ad26-constraint-node-b{fill:var(--constraint-light)}
+
+/* Hero: diagnostic lens instead of decorative geometry. */
+.ad26-portrait{--lens-x:64%;--lens-y:38%}
+.ad26-lens{position:absolute;z-index:4;left:var(--lens-x);top:var(--lens-y);width:132px;height:132px;border-radius:50%;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.58);box-shadow:0 0 0 1px rgba(14,20,28,.08),0 16px 48px rgba(14,20,28,.12);backdrop-filter:contrast(1.12) saturate(1.08) brightness(1.025);-webkit-backdrop-filter:contrast(1.12) saturate(1.08) brightness(1.025);opacity:.74;transition:width .28s ease,height .28s ease,opacity .28s ease}
+.ad26-lens:after{content:"";position:absolute;inset:10px;border:1px solid rgba(255,255,255,.24);border-radius:inherit}
+@media(hover:hover) and (pointer:fine){.ad26-portrait:hover .ad26-lens{width:150px;height:150px;opacity:.9}}
+
+/* Recognition: reduce card/list feel and let content float around the continuous line. */
+@media(min-width:901px){
+  .ad26-situations article{position:relative;padding-left:28px!important;padding-right:28px!important;border-bottom-color:rgba(14,20,28,.09)!important}
+  .ad26-situations article.is-active{background:linear-gradient(90deg,rgba(104,124,139,.08),rgba(104,124,139,.018) 72%,transparent)!important;transform:translateX(14px) scale(1.012)}
+  .ad26-situations article.is-active:before{width:7px!important;height:7px!important;left:-3px!important;top:50%!important;transform:translateY(-50%);box-shadow:0 0 0 9px rgba(88,108,125,.06)}
+}
+
+/* Reframe: a true strike-and-pivot moment. */
+.ad26-reframe-assumption strong{position:relative;display:inline-block!important}
+.ad26-reframe-assumption strong:after{content:"";position:absolute;left:-1%;right:-1%;top:54%;height:1px;background:linear-gradient(90deg,rgba(218,228,234,.9),rgba(218,228,234,.14));transform:scaleX(var(--reframe-strike,0));transform-origin:left center}
+.ad26-reframe-question{transform:translateX(var(--reframe-shift-x,0px))}
+
+/* Method: the line becomes a logic rail. */
+.ad26-signature article{position:relative}
+.ad26-signature article .ad26-step-no{transition:color .25s ease,transform .25s ease}
+.ad26-signature article.is-active .ad26-step-no{color:#172330!important;transform:scale(1.16)}
+.ad26-signature article.is-active h3{letter-spacing:-.045em}
+
+/* Decision Brief: assembled live, not merely shown as a card. */
+.ad26-brief-product{overflow:hidden;isolation:isolate}
+.ad26-brief-product:before{position:relative;z-index:3}
+.ad26-brief-product:after{z-index:-1!important}
+.ad26-brief-product::marker{display:none}
+.ad26-brief-product .ad26-brief-row{position:relative;clip-path:inset(0 100% 0 0)}
+.ad26-brief-product .ad26-brief-row:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,var(--constraint),rgba(111,130,146,.08));transform:scaleX(var(--row-line,0));transform-origin:left center}
+.ad26-brief-product{--scan-y:-15%}
+.ad26-brief-product:focus-within{outline:none}
+.ad26-brief-product .ad26-brief-row.is-active{clip-path:inset(0 0% 0 0)}
+.ad26-brief-product .ad26-brief-row.is-active:after{--row-line:1}
+.ad26-brief-product{background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(249,251,252,.98))!important}
+.ad26-brief-product .ad26-brief-row strong{font-variation-settings:"wght" 560}
+
+/* Case: visually show the question being replaced, not just described. */
+.ad26-case-title>span{position:relative;display:inline-block;width:max-content;max-width:100%;transition:opacity .35s ease,color .35s ease}
+.ad26-case-title>span:after{content:"";position:absolute;left:0;top:52%;height:1px;width:var(--case-strike,0%);background:currentColor;opacity:.8}
+.ad26-case-title h2{opacity:var(--case-new-opacity,.42);transform:translateY(var(--case-new-y,18px));transition:opacity .35s ease,transform .35s ease}
+.ad26-case.is-case-1{--case-strike:24%;--case-new-opacity:.42;--case-new-y:16px}
+.ad26-case.is-case-2{--case-strike:72%;--case-new-opacity:.68;--case-new-y:8px}
+.ad26-case.is-case-3{--case-strike:100%;--case-new-opacity:1;--case-new-y:0px}
+.ad26-case.is-case-3 .ad26-case-title>span{opacity:.34}
+
+/* About: less boxed, more photographic. */
+@media(min-width:901px){
+  .ad26-about-grid{position:relative}
+  .ad26-about-portrait{overflow:visible!important}
+  .ad26-about-portrait:before{content:"";position:absolute;left:-22px;top:18%;bottom:18%;width:1px;background:linear-gradient(transparent,var(--constraint) 20% 80%,transparent);opacity:.4}
+  .ad26-about-copy{background:linear-gradient(90deg,rgba(245,247,248,.88),rgba(245,247,248,.56));backdrop-filter:blur(8px);padding:28px 0 28px 24px!important;margin-left:-42px;position:relative;z-index:3}
+}
+
+/* Final resolution: line ends at the action. */
+.ad26-contact-actions{position:relative}
+.ad26-contact-actions:before{content:"";position:absolute;left:-36px;top:50%;width:24px;height:1px;background:var(--constraint-light);opacity:.62}
+.ad26-contact-actions:after{content:"";position:absolute;left:-40px;top:calc(50% - 3px);width:7px;height:7px;border-radius:50%;background:var(--constraint-light);box-shadow:0 0 0 7px rgba(168,186,199,.07)}
+
+@media(max-width:900px){
+  .ad26-constraint{display:none}
+  .ad26-lens{display:none}
+  .ad26-case-title h2{opacity:1!important;transform:none!important}
+  .ad26-case-title>span:after{display:none}
+  .ad26-about-copy{margin-left:0!important;padding-left:0!important}
+  .ad26-contact-actions:before,.ad26-contact-actions:after{display:none}
+}
+
+@media print{
+  .ad26-constraint,.ad26-lens{display:none!important}
+  .ad26-case-title h2{opacity:1!important;transform:none!important}
+  .ad26-case-title>span:after{display:none!important}
+  .ad26-brief-product .ad26-brief-row{clip-path:none!important}
+  .ad26-brief-product .ad26-brief-row:after{display:none!important}
+}
