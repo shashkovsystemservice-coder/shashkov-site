@@ -76,12 +76,24 @@ export default function ArtDirection2026() {
       </section>
 
       <section className="ad26-statement">
-        <div className="ad26-statement-copy">
-          <p className="ad26-statement-label">Симптом ≠ причина</p>
-          <h2>«Нам нужно больше заявок»<br/>ещё не значит, что нужна реклама.</h2>
-          <div className="ad26-statement-foot"><p>Цена ошибки — месяцами улучшать рекламу, сайт или продажи не там, где находится реальное ограничение.</p><p className="ad26-rule">Сначала понять проблему.<br/>Потом выбирать решение.<br/>И только потом — инструмент.</p></div>
+        <div className="ad26-statement-stage">
+          <div className="ad26-diagnosis-visual" aria-hidden="true">
+            <span className="ad26-diagnosis-trace ad26-diagnosis-trace-a" />
+            <span className="ad26-diagnosis-trace ad26-diagnosis-trace-b" />
+            <span className="ad26-diagnosis-trace ad26-diagnosis-trace-c" />
+            <span className="ad26-diagnosis-node ad26-diagnosis-node-a" />
+            <span className="ad26-diagnosis-node ad26-diagnosis-node-b" />
+            <span className="ad26-diagnosis-node ad26-diagnosis-node-c" />
+            <span className="ad26-diagnosis-core" />
+          </div>
+          <div className="ad26-statement-copy">
+            <p className="ad26-statement-label">Симптом ≠ причина</p>
+            <h2>«Нам нужно больше заявок»<br/>ещё не значит, что нужна реклама.</h2>
+            <div className="ad26-statement-foot"><p>Цена ошибки — месяцами улучшать рекламу, сайт или продажи не там, где находится реальное ограничение.</p><p className="ad26-rule">Сначала понять проблему.<br/>Потом выбирать решение.<br/>И только потом — инструмент.</p></div>
+          </div>
+          <ReframePanel />
+          <div className="ad26-diagnosis-meter" aria-hidden="true"><span>signal</span><i/><span>constraint</span></div>
         </div>
-        <ReframePanel />
       </section>
 
       <section className="ad26-method" id="method">
