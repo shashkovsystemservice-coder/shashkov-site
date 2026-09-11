@@ -1,0 +1,88 @@
+.ad26{
+  --paper:#f4f6f8;
+  --paper2:#ffffff;
+  --ink:#0f141b;
+  --navy:#0d1724;
+  --accent:#4f6478;
+  --muted:#68727f;
+  --line:rgba(15,20,27,.12);
+  background:var(--paper);
+}
+
+.ad26-nav{background:rgba(244,246,248,.82);border-bottom-color:rgba(15,20,27,.08)}
+.ad26-kicker,.ad26-section-label,.ad26-statement-label,.ad26-signature strong,.ad26-case-flow span{color:#536a7d}
+.ad26-hero:before{background:linear-gradient(90deg,rgba(255,255,255,.55) 0 52%,rgba(235,239,243,.45) 52% 100%)}
+.ad26-hero-copy{background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(244,246,248,.35))}
+.ad26-portrait{background:#d9dde1}
+.ad26-portrait:after{background:linear-gradient(90deg,rgba(244,246,248,.08),transparent 16%),linear-gradient(180deg,transparent 72%,rgba(13,23,36,.12))}
+.ad26-signal-map{opacity:.45;mix-blend-mode:normal}
+.signal-orbit{stroke:rgba(79,100,120,.42)}
+.signal-orbit-b{stroke:rgba(15,20,27,.20)}
+.signal-orbit-c{stroke:rgba(15,20,27,.12)}
+.signal-node{fill:#f4f6f8;stroke:#536a7d}.signal-node-b{fill:#536a7d}
+
+.ad26-recognition{background:#fff}
+.ad26-recognition:before,.ad26-method:before,.ad26-case:before{content:"";position:absolute;pointer-events:none}
+.ad26-recognition,.ad26-method,.ad26-case{position:relative}
+.ad26-recognition:before{inset:0;background:linear-gradient(90deg,transparent 0 36%,rgba(15,20,27,.025) 36% 36.08%,transparent 36.08%)}
+.ad26-method:before{inset:0;background:linear-gradient(90deg,transparent 0 36%,rgba(15,20,27,.025) 36% 36.08%,transparent 36.08%)}
+.ad26-case:before{inset:0;background:linear-gradient(90deg,transparent 0 35%,rgba(15,20,27,.025) 35% 35.08%,transparent 35.08%)}
+
+.ad26-statement{background:radial-gradient(circle at 86% 46%,rgba(255,255,255,.035),transparent 22%),#0d1724}
+.ad26-statement:before{border-color:rgba(140,156,170,.18);box-shadow:0 0 0 90px rgba(255,255,255,.018),0 0 0 180px rgba(255,255,255,.01)}
+.ad26-statement:after{border-color:#8598a8;background:#0d1724;box-shadow:0 0 0 8px rgba(133,152,168,.08)}
+.ad26-statement-label{color:#a2b0bb}
+
+.ad26-brief{background:linear-gradient(135deg,#ffffff 0 74%,#eef2f5 74% 100%)}
+.ad26-brief:before{right:-4%;top:-38%;width:430px;height:430px;background:repeating-radial-gradient(circle at center,rgba(79,100,120,.12) 0 1px,transparent 1px 18px);mask-image:radial-gradient(circle,#000 0 52%,transparent 72%)}
+.ad26-brief .ad26-primary{background:#0f141b}
+
+.ad26-case{background:#f7f9fa}
+.ad26-case-flow article:before{border-color:#536a7d;background:#f7f9fa}
+.ad26-case-flow article:not(:last-child):after{background:linear-gradient(#536a7d,rgba(83,106,125,.12))}
+.ad26-about{background:#fff}
+.ad26-contact{background:#0d1724}
+
+.ad26-primary,.ad26-nav-cta{will-change:transform}
+.ad26-portrait,.ad26-about-portrait{will-change:clip-path,opacity,transform}
+.ad26-portrait img{will-change:transform}
+
+@media (hover:hover) and (pointer:fine){
+  .ad26-situations article,.ad26-signature article,.ad26-case-flow article{transition:background .24s ease,padding-left .24s ease,padding-right .24s ease}
+  .ad26-situations article:hover,.ad26-signature article:hover,.ad26-case-flow article:hover{background:rgba(15,20,27,.028)}
+  .ad26-situations article:hover{padding-left:12px;padding-right:12px}
+  .ad26-signature article:hover,.ad26-case-flow article:hover{padding-right:12px}
+}
+
+@media(max-width:900px){
+  .ad26{--paper:#f5f7f9;--paper2:#fff}
+  .ad26-nav{background:rgba(245,247,249,.93)}
+  .ad26-hero{background:#f5f7f9}
+  .ad26-hero:before{background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(236,240,243,.25))}
+  .ad26-signal-map{opacity:.2;right:-3%;top:44%;width:72vw;transform:none}
+  .ad26-recognition:before,.ad26-method:before,.ad26-case:before{display:none}
+  .ad26-statement:before{right:-60vw;width:120vw;height:120vw;min-width:0;min-height:0;opacity:.45}
+  .ad26-brief{background:#fff}
+}
+
+@media print{
+  @page{size:A4;margin:12mm}
+  html,body{background:#fff!important}
+  .ad26{overflow:visible!important;background:#fff!important;color:#111!important;font-family:Arial,sans-serif!important}
+  .ad26-nav{position:static!important;background:#fff!important;backdrop-filter:none!important;box-shadow:none!important}
+  .ad26-signal-map,.ad26-statement:before,.ad26-statement:after,.ad26-brief:before,.ad26-recognition:before,.ad26-method:before,.ad26-case:before{display:none!important}
+  .ad26-hero,.ad26-recognition,.ad26-method,.ad26-case,.ad26-about,.ad26-brief,.ad26-contact,.ad26-statement{display:block!important;min-height:auto!important;height:auto!important;overflow:visible!important;background:#fff!important;color:#111!important;padding:14mm 0!important;break-inside:auto!important;page-break-inside:auto!important}
+  .ad26-hero-copy,.ad26-recognition-head,.ad26-method-head,.ad26-case-title{position:static!important;padding:0!important;margin:0 0 8mm!important;transform:none!important}
+  .ad26-portrait,.ad26-about-portrait{position:relative!important;display:block!important;width:100%!important;height:92mm!important;min-height:0!important;margin:8mm 0!important;clip-path:none!important;transform:none!important;break-inside:avoid!important}
+  .ad26-portrait img,.ad26-about-portrait img{object-fit:cover!important;transform:none!important;filter:none!important}
+  .ad26-situations,.ad26-signature,.ad26-case-flow,.ad26-about-grid,.ad26-statement-foot{display:block!important;border-top:1px solid #bbb!important}
+  .ad26-situations article,.ad26-signature article,.ad26-case-flow article{display:block!important;min-height:0!important;padding:6mm 0!important;border-bottom:1px solid #ddd!important;break-inside:avoid!important;opacity:1!important;transform:none!important}
+  .ad26-statement{border-top:2px solid #111!important;border-bottom:2px solid #111!important}
+  .ad26-statement h2,.ad26-statement p,.ad26-statement-label,.ad26-rule{color:#111!important}
+  .ad26-contact a,.ad26-primary{color:#111!important;border-color:#111!important;background:#fff!important}
+  .ad26 h1{font-size:34pt!important;line-height:1!important}
+  .ad26 h2{font-size:25pt!important;line-height:1.05!important}
+  .ad26 h3{font-size:15pt!important}
+  .ad26 p{orphans:3;widows:3}
+  .ad26-contact footer{display:block!important}
+}
