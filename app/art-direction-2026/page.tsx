@@ -1,5 +1,6 @@
 import Image from "next/image";
 import "./art-direction.css";
+import "./high-craft-pass.css";
 
 const situations = [
   ["01", "Продажи перестали расти", "Команда предлагает больше рекламы — но непонятно, в ней ли проблема"],
@@ -18,7 +19,10 @@ export default function ArtDirection2026() {
   return (
     <main className="ad26" id="top">
       <header className="ad26-nav">
-        <a href="#top" className="ad26-brand"><span><strong>Владимир Шашков</strong><small>стратегический маркетинг · рост бизнеса</small></span></a>
+        <a href="#top" className="ad26-brand" aria-label="Владимир Шашков — маркетинг и рост бизнеса">
+          <span className="ad26-brand-mark" aria-hidden="true">ВШ</span>
+          <span className="ad26-brand-copy"><strong>Владимир Шашков</strong><small>Маркетинг и рост бизнеса</small></span>
+        </a>
         <nav><a href="#method">Подход</a><a href="#case">Кейс</a><a className="ad26-nav-cta" href="/diagnostic">Разобрать ситуацию</a></nav>
       </header>
 
