@@ -53,17 +53,38 @@
 .ad26-situations article{position:relative;opacity:.88}
 .ad26-situations article:before{content:"";position:absolute;left:-25px;top:37px;width:7px;height:7px;border-radius:50%;background:#b9c1cb;box-shadow:0 0 0 5px #fbfcfc}
 
-/* Diagnosis = constraint. Main signature moment: assumption loses authority, question gains it. */
-.ad26-statement{background:#0d1722;isolation:isolate}
-.ad26-statement:after{content:"≠";position:absolute;right:-.04em;top:.18em;z-index:-1;font-size:min(42vw,620px);font-weight:800;line-height:.7;color:rgba(112,143,255,.055);letter-spacing:-.08em;transform:translate3d(calc(var(--diagnosis-progress) * -2vw),calc(var(--diagnosis-progress) * 1.5vw),0) rotate(calc(var(--diagnosis-progress) * -3deg))}
-.ad26-statement-copy{position:relative;z-index:2}
-.ad26-reframe{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto 1.15fr;gap:34px;align-items:center;margin-top:58px;padding-top:28px;border-top:1px solid rgba(255,255,255,.16)}
+/* Diagnosis = first cinematic scene. The viewport stays; the model changes. */
+.ad26-statement{min-height:220svh;padding:0;background:#0d1722;color:#fff;isolation:isolate}
+.ad26-statement-stage{position:sticky;top:0;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(76px,8vw,122px) var(--pad);overflow:hidden;background:
+  radial-gradient(circle at 50% 48%,rgba(87,118,228,calc(.04 + var(--diagnosis-progress) * .11)) 0,rgba(13,23,34,0) 31%),
+  #0d1722}
+.ad26-statement-stage:after{content:"≠";position:absolute;right:-.04em;top:.16em;z-index:0;font-size:min(42vw,620px);font-weight:800;line-height:.7;color:rgba(112,143,255,.055);letter-spacing:-.08em;transform:translate3d(calc(var(--diagnosis-progress) * -2vw),calc(var(--diagnosis-progress) * 1.5vw),0) rotate(calc(var(--diagnosis-progress) * -3deg));pointer-events:none}
+.ad26-statement-copy,.ad26-reframe,.ad26-diagnosis-meter{position:relative;z-index:3}
+.ad26-statement-copy{max-width:1180px}
+.ad26-statement h2{opacity:calc(1 - var(--diagnosis-progress) * .12)}
+
+.ad26-diagnosis-visual{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.ad26-diagnosis-node,.ad26-diagnosis-core{position:absolute;border-radius:50%;background:#8fa7ff;box-shadow:0 0 0 1px rgba(143,167,255,.38),0 0 30px rgba(88,119,232,.24)}
+.ad26-diagnosis-node{width:9px;height:9px;opacity:calc(.78 - var(--diagnosis-progress) * .4)}
+.ad26-diagnosis-node-a{left:calc(13% + var(--diagnosis-progress) * 36%);top:calc(24% + var(--diagnosis-progress) * 23%)}
+.ad26-diagnosis-node-b{left:calc(78% - var(--diagnosis-progress) * 29%);top:calc(30% + var(--diagnosis-progress) * 17%)}
+.ad26-diagnosis-node-c{left:calc(25% + var(--diagnosis-progress) * 24%);top:calc(76% - var(--diagnosis-progress) * 29%)}
+.ad26-diagnosis-core{left:49%;top:47%;width:calc(10px + var(--diagnosis-progress) * 18px);height:calc(10px + var(--diagnosis-progress) * 18px);opacity:calc(.18 + var(--diagnosis-progress) * .82);transform:translate(-50%,-50%);box-shadow:0 0 0 calc(var(--diagnosis-progress) * 26px) rgba(108,139,244,.06),0 0 calc(30px + var(--diagnosis-progress) * 75px) rgba(94,126,238,.30)}
+.ad26-diagnosis-trace{position:absolute;left:49%;top:47%;width:52vw;max-width:760px;height:1px;background:linear-gradient(90deg,transparent,rgba(126,151,255,.48),transparent);transform-origin:center;opacity:calc(.18 + var(--diagnosis-progress) * .45)}
+.ad26-diagnosis-trace-a{transform:translate(-50%,-50%) rotate(calc(-26deg + var(--diagnosis-progress) * 26deg)) scaleX(calc(.5 + var(--diagnosis-progress) * .5))}
+.ad26-diagnosis-trace-b{transform:translate(-50%,-50%) rotate(calc(19deg - var(--diagnosis-progress) * 19deg)) scaleX(calc(.55 + var(--diagnosis-progress) * .45))}
+.ad26-diagnosis-trace-c{transform:translate(-50%,-50%) rotate(calc(71deg - var(--diagnosis-progress) * 71deg)) scaleX(calc(.42 + var(--diagnosis-progress) * .58))}
+
+.ad26-reframe{display:grid;grid-template-columns:1fr auto 1.15fr;gap:34px;align-items:center;margin-top:58px;padding-top:28px;border-top:1px solid rgba(255,255,255,.16)}
 .ad26-reframe span{display:block;margin-bottom:11px;color:#8fa5c0;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.13em}
 .ad26-reframe strong{display:block;color:#fff;font-size:clamp(22px,2.1vw,34px);line-height:1.08;letter-spacing:-.035em}
-.ad26-reframe-assumption{position:relative;opacity:calc(.88 - (var(--diagnosis-progress) * .48))}
-.ad26-reframe-assumption i{position:absolute;left:0;right:8%;top:58%;height:1.5px;background:#93a9ff;transform-origin:left;transform:scaleX(var(--diagnosis-progress));opacity:.9}
-.ad26-reframe-shift{font-size:28px;color:#90a6ff;opacity:.65}
-.ad26-reframe-question{filter:blur(calc((1 - var(--diagnosis-progress)) * 2.5px));opacity:calc(.55 + var(--diagnosis-progress) * .45)}
+.ad26-reframe-assumption{position:relative;opacity:calc(.96 - (var(--diagnosis-progress) * .66));filter:blur(calc(var(--diagnosis-progress) * 1.2px))}
+.ad26-reframe-assumption i{position:absolute;left:0;right:8%;top:58%;height:1.5px;background:#93a9ff;transform-origin:left;transform:scaleX(var(--diagnosis-progress));opacity:.95}
+.ad26-reframe-shift{font-size:28px;color:#90a6ff;opacity:calc(.25 + var(--diagnosis-progress) * .55)}
+.ad26-reframe-question{opacity:calc(.22 + var(--diagnosis-progress) * .78);filter:blur(calc((1 - var(--diagnosis-progress)) * 4px))}
+.ad26-reframe-question strong{text-shadow:0 0 calc(var(--diagnosis-progress) * 26px) rgba(119,147,255,.2)}
+.ad26-diagnosis-meter{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;margin-top:28px;color:#7f94ad;font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.15em}
+.ad26-diagnosis-meter i{height:1px;background:linear-gradient(90deg,rgba(132,153,186,.18),rgba(134,158,255,.9));transform:scaleX(var(--diagnosis-progress));transform-origin:left;box-shadow:0 0 12px rgba(105,137,247,.2)}
 
 /* Method = filtration: noise -> hypothesis -> test. Stable typography, animated evidence rail. */
 .ad26-method{position:relative;background:#f4f6f7}
@@ -109,7 +130,6 @@
   .ad26-hero-copy{transform:translate3d(0,calc(var(--scene-progress) * -18px),0)}
   .ad26-portrait{transform:translate3d(0,calc(var(--scene-progress) * 24px),0)}
   .ad26-portrait img{transform:scale(calc(1.035 + var(--scene-progress) * .035))}
-  .ad26-statement-copy{transform:translate3d(0,calc((1 - var(--diagnosis-progress)) * 18px),0)}
   .ad26-about-portrait img{transform:scale(calc(1.02 + var(--about-progress) * .035))}
 }
 
@@ -122,7 +142,7 @@
   .ad26-brand-copy small{display:none}
   .ad26-nav-cta{padding:9px 11px;font-size:11px!important}
 
-  .ad26-diagnostic-field{opacity:.13;mix-blend-mode:multiply}
+  .ad26-diagnostic-field{opacity:.15;mix-blend-mode:multiply}
   .ad26-hero{padding-top:42px;gap:34px}
   .ad26-signal-map{inset:4% -24% auto 20%;width:110%;opacity:.42;transform:rotate(calc(var(--scene-progress) * 7deg)) scale(calc(1 + var(--scene-progress) * .06))}
   .ad26-hero h1{font-size:clamp(46px,12.1vw,66px);line-height:.96}
@@ -140,13 +160,21 @@
   .ad26-situations article:before{left:-19px;top:31px}
   .ad26-situations h3{font-size:clamp(26px,7.3vw,35px)}
 
-  .ad26-statement{padding-top:96px;padding-bottom:96px}
-  .ad26-statement h2{font-size:clamp(44px,10.8vw,60px)}
-  .ad26-statement:after{font-size:88vw;right:-.25em;top:.31em}
-  .ad26-statement-foot{gap:22px;margin-top:42px}
-  .ad26-reframe{grid-template-columns:1fr;gap:20px;margin-top:42px}
-  .ad26-reframe-shift{transform:rotate(90deg);width:max-content}
-  .ad26-reframe strong{font-size:clamp(24px,7vw,33px)}
+  .ad26-statement{min-height:190svh}
+  .ad26-statement-stage{top:58px;min-height:calc(100svh - 58px);justify-content:flex-start;padding:46px 20px 28px}
+  .ad26-statement h2{font-size:clamp(38px,9.4vw,52px);line-height:.99}
+  .ad26-statement-stage:after{font-size:88vw;right:-.25em;top:.28em}
+  .ad26-statement-foot{gap:16px;margin-top:26px;padding-top:16px}
+  .ad26-statement-foot p{font-size:14px;line-height:1.45}
+  .ad26-rule{font-size:17px!important;line-height:1.4!important}
+  .ad26-reframe{grid-template-columns:1fr;gap:14px;margin-top:24px;padding-top:18px}
+  .ad26-reframe-shift{transform:none!important;width:max-content;font-size:20px}
+  .ad26-reframe strong{font-size:clamp(21px,5.8vw,28px)}
+  .ad26-diagnosis-trace{width:120vw;opacity:calc(.12 + var(--diagnosis-progress) * .34)}
+  .ad26-diagnosis-node-a{left:calc(8% + var(--diagnosis-progress) * 41%)}
+  .ad26-diagnosis-node-b{left:calc(88% - var(--diagnosis-progress) * 39%)}
+  .ad26-diagnosis-node-c{left:calc(18% + var(--diagnosis-progress) * 31%)}
+  .ad26-diagnosis-meter{margin-top:18px}
 
   .ad26-signature{margin-top:44px}
   .ad26-signature article{opacity:.94;background:transparent!important}
@@ -179,7 +207,6 @@
   .ad26-situations article,.ad26-signature article,.ad26-case-flow article,
   .ad26-reframe-assumption,.ad26-reframe-question,.ad26-brief-copy,.ad26-brief-product,
   .ad26-case-title,.ad26-about-title,.ad26-about-copy,.ad26-contact-actions{
-    transform:none!important;
     translate:none!important;
     scale:1!important;
     animation:none!important;
@@ -192,11 +219,15 @@
 }
 
 @media (prefers-reduced-motion:reduce){
-  .ad26-diagnostic-field,.ad26-signal-map,.ad26-lens{display:none!important}
+  .ad26-diagnostic-field,.ad26-signal-map,.ad26-lens,.ad26-diagnosis-visual{display:none!important}
+  .ad26-statement{min-height:auto!important}
+  .ad26-statement-stage{position:relative!important;top:auto!important;min-height:auto!important}
   .ad26 *{animation:none!important;transition:none!important;transform:none!important}
 }
 
 @media print{
-  .ad26-diagnostic-field,.ad26-signal-map,.ad26-lens,.ad26-progress-rail{display:none!important}
+  .ad26-diagnostic-field,.ad26-signal-map,.ad26-lens,.ad26-progress-rail,.ad26-diagnosis-visual,.ad26-diagnosis-meter{display:none!important}
+  .ad26-statement{min-height:auto!important}
+  .ad26-statement-stage{position:relative!important;top:auto!important;min-height:auto!important}
   .ad26>section{break-inside:avoid;background:#fff!important;color:#111!important}
 }
