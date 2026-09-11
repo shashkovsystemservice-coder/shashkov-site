@@ -1,0 +1,129 @@
+/* V4 signature moments: visible, meaningful, mobile-first. */
+
+/* Make the diagnostic field a real visual actor instead of barely-visible wallpaper. */
+.ad26-diagnostic-field{
+  opacity:.28!important;
+  filter:contrast(1.08) saturate(.82);
+  transition:opacity .45s ease,filter .45s ease!important;
+}
+.ad26[data-section*="Ситуация"] .ad26-diagnostic-field{opacity:.22!important}
+.ad26[data-section*="Диагноз"] .ad26-diagnostic-field{opacity:.34!important;filter:contrast(1.18) saturate(.7)}
+.ad26[data-section*="Логика"] .ad26-diagnostic-field{opacity:.24!important}
+.ad26[data-section*="Decision"] .ad26-diagnostic-field{opacity:.13!important}
+.ad26[data-section*="Кейс"] .ad26-diagnostic-field{opacity:.29!important;filter:contrast(1.14) saturate(.75)}
+.ad26[data-section*="Обо мне"] .ad26-diagnostic-field{opacity:.055!important}
+.ad26[data-section*="Следующий"] .ad26-diagnostic-field{opacity:.22!important}
+
+/* Hero: focus reveal. The portrait is intentionally less resolved outside the moving focal aperture. */
+.ad26-portrait{isolation:isolate}
+.ad26-portrait img{filter:saturate(.82) contrast(.94) brightness(.98);transition:filter .55s ease}
+.ad26-portrait:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:2;
+  background:
+    radial-gradient(circle at var(--focus-x,64%) var(--focus-y,38%), transparent 0 15%, rgba(236,241,244,.05) 23%, rgba(222,229,234,.20) 49%, rgba(210,218,224,.34) 100%),
+    linear-gradient(180deg,rgba(8,18,28,.02),rgba(8,18,28,.13));
+  backdrop-filter:blur(.7px);
+  transition:background .25s linear;
+}
+.ad26-lens{
+  position:absolute!important;
+  left:64%;top:38%;
+  width:clamp(180px,17vw,300px);height:clamp(180px,17vw,300px);
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  z-index:4;
+  pointer-events:none;
+  border:1px solid rgba(255,255,255,.5);
+  box-shadow:0 0 0 1px rgba(15,28,39,.10),0 24px 80px rgba(15,28,39,.15),inset 0 0 60px rgba(255,255,255,.08);
+  backdrop-filter:contrast(1.12) saturate(1.08);
+  mix-blend-mode:soft-light;
+}
+.ad26-lens:before,.ad26-lens:after{content:"";position:absolute;background:rgba(255,255,255,.56)}
+.ad26-lens:before{width:26px;height:1px;left:-13px;top:50%}
+.ad26-lens:after{height:26px;width:1px;top:-13px;left:50%}
+
+/* Reframe: old answer physically loses authority while the new question takes the stage. */
+.ad26-statement{min-height:130svh!important}
+.ad26-reframe-assumption{position:relative;overflow:hidden}
+.ad26-reframe-assumption strong{display:block;transform-origin:left center;transition:filter .3s ease,opacity .3s ease,transform .3s ease}
+.ad26-reframe-assumption i{
+  position:absolute;left:0;right:0;top:58%;height:2px;
+  background:linear-gradient(90deg,transparent 0,#a8bbc8 8%,#dbe4e9 52%,transparent 100%);
+  transform:scaleX(0);transform-origin:left center;
+}
+.ad26-reframe-question{position:relative}
+.ad26-reframe-question:before{
+  content:"";position:absolute;left:-22px;top:22px;bottom:22px;width:2px;
+  background:linear-gradient(180deg,transparent,#9fb4c2 18%,#dbe4e9 82%,transparent);
+  transform:scaleY(.15);transform-origin:top;transition:transform .4s ease;
+}
+.ad26-statement:hover .ad26-reframe-question:before{transform:scaleY(1)}
+.ad26-reframe-question strong{display:block;text-wrap:balance}
+
+/* Method: active state becomes materially different, not just brighter. */
+@media(min-width:901px){
+  .ad26-signature article{position:relative;padding-right:28px!important}
+  .ad26-signature article:after{
+    content:"";position:absolute;right:0;top:16%;bottom:16%;width:2px;background:#60788a;
+    transform:scaleY(0);transform-origin:top;transition:transform .4s cubic-bezier(.2,.8,.2,1)
+  }
+  .ad26-signature article.is-active:after{transform:scaleY(1)}
+}
+
+/* Decision Brief: feel assembled, not framed. */
+.ad26-brief-product{border-radius:0!important}
+.ad26-brief-row{position:relative;overflow:hidden}
+.ad26-brief-row:after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:linear-gradient(90deg,rgba(15,20,27,.24),rgba(15,20,27,.04))}
+.ad26-brief-row:last-child:after{display:none}
+.ad26-brief-product:before{letter-spacing:.22em!important;color:#556a79}
+
+/* Case: make the transformation of the question unmistakable. */
+.ad26-case-title{position:relative;overflow:visible}
+.ad26-case-title>span{
+  display:inline-block;
+  transition:opacity .5s ease,transform .55s cubic-bezier(.2,.8,.2,1),filter .5s ease,text-decoration-color .4s ease;
+  text-decoration:line-through;text-decoration-thickness:1px;text-decoration-color:transparent;
+}
+.ad26-case-title h2{
+  transition:opacity .55s ease,transform .6s cubic-bezier(.2,.8,.2,1),filter .5s ease;
+  transform-origin:left center;
+}
+.ad26-case.is-case-1 .ad26-case-title>span{opacity:1;transform:translateX(0);filter:none;text-decoration-color:transparent}
+.ad26-case.is-case-1 .ad26-case-title h2{opacity:.3;transform:translateY(26px) scale(.985);filter:blur(.3px)}
+.ad26-case.is-case-2 .ad26-case-title>span{opacity:.48;transform:translateX(16px);text-decoration-color:rgba(205,219,228,.8)}
+.ad26-case.is-case-2 .ad26-case-title h2{opacity:.72;transform:translateY(8px) scale(.995);filter:none}
+.ad26-case.is-case-3 .ad26-case-title>span{opacity:.18;transform:translateX(34px);filter:blur(.6px);text-decoration-color:rgba(205,219,228,.92)}
+.ad26-case.is-case-3 .ad26-case-title h2{opacity:1;transform:translateY(0) scale(1);filter:none}
+.ad26-case.is-case-3 .ad26-case-title h2:after{
+  content:"→ новый вопрос";display:block;margin-top:22px;font-size:10px;line-height:1;letter-spacing:.22em;text-transform:uppercase;color:#91a7b5;font-weight:600
+}
+
+/* Mobile is not a static fallback: preserve the signature field and a lighter focus reveal. */
+@media(max-width:900px){
+  .ad26-diagnostic-field{display:block!important;opacity:.16!important;mix-blend-mode:multiply!important}
+  .ad26[data-section*="Диагноз"] .ad26-diagnostic-field,.ad26[data-section*="Кейс"] .ad26-diagnostic-field,.ad26[data-section*="Следующий"] .ad26-diagnostic-field{mix-blend-mode:screen!important;opacity:.21!important}
+  .ad26[data-section*="Обо мне"] .ad26-diagnostic-field{opacity:.035!important}
+  .ad26-constraint{display:none!important}
+  .ad26-lens{display:block!important;width:46vw;height:46vw;max-width:220px;max-height:220px;border-color:rgba(255,255,255,.34);box-shadow:0 20px 60px rgba(15,28,39,.12)}
+  .ad26-portrait:after{background:radial-gradient(circle at 55% 42%,transparent 0 18%,rgba(228,234,238,.08) 29%,rgba(213,221,226,.24) 72%,rgba(205,214,220,.32) 100%)}
+  .ad26-statement{min-height:auto!important}
+  .ad26-reframe-assumption strong{font-size:clamp(30px,8.2vw,42px)!important}
+  .ad26-reframe-question strong{font-size:clamp(34px,9vw,48px)!important}
+  .ad26-reframe-question:before{left:-12px;top:20px;bottom:20px;transform:scaleY(1)}
+  .ad26-case-title>span{font-size:11px!important}
+  .ad26-case.is-case-1 .ad26-case-title h2,.ad26-case.is-case-2 .ad26-case-title h2,.ad26-case.is-case-3 .ad26-case-title h2{filter:none}
+}
+
+@media(max-width:430px){
+  .ad26-diagnostic-field{opacity:.13!important}
+  .ad26-lens{width:50vw;height:50vw}
+}
+
+@media print{
+  .ad26-diagnostic-field,.ad26-lens{display:none!important}
+  .ad26-case-title>span,.ad26-case-title h2{opacity:1!important;transform:none!important;filter:none!important;text-decoration:none!important}
+}
