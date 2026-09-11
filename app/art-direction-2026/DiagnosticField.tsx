@@ -14,6 +14,7 @@ uniform vec2 u_pointer;
 uniform float u_time;
 uniform float u_scroll;
 uniform float u_scene;
+uniform float u_diag;
 uniform float u_velocity;
 uniform float u_mobile;
 
@@ -57,11 +58,25 @@ void main(){
                    + lineSeg(p,s1,focus,.008)*.42+lineSeg(p,s2,focus,.008)*.42
                    + lineSeg(p,s3,focus,.008)*.42+lineSeg(p,s4,focus,.008)*.42;
 
-  float converge = lineSeg(p,vec2(-.58,.28),vec2(.00,.02),.009)
-                 + lineSeg(p,vec2(-.55,.02),vec2(.00,.02),.009)
-                 + lineSeg(p,vec2(-.52,-.25),vec2(.00,.02),.009)
-                 + lineSeg(p,vec2(.00,.02),vec2(.58,.02),.012)*1.35
-                 + dotf(p,vec2(.00,.02),.026)*1.2;
+  /* Diagnosis physically converges from plausible signals into one constraint. */
+  vec2 core=vec2(.00,.02);
+  vec2 d1=mix(vec2(-.58,.28),core,u_diag*.88);
+  vec2 d2=mix(vec2(-.55,.02),core,u_diag*.92);
+  vec2 d3=mix(vec2(-.52,-.25),core,u_diag*.86);
+  vec2 d4=mix(vec2(.46,.27),core,u_diag*.82);
+  float diagNoise=(
+      ring(p,vec2(-.32,.18),.16+sin(t*1.7)*.02,.008)
+     +ring(p,vec2(.27,-.18),.23+sin(t*1.2)*.025,.007)
+     +band(sin(p.x*10.0+p.y*7.0+t*2.0),.035)*.23
+    )*(1.0-u_diag)*.55;
+  float converge = lineSeg(p,d1,core,.009)
+                 + lineSeg(p,d2,core,.009)
+                 + lineSeg(p,d3,core,.009)
+                 + lineSeg(p,d4,core,.008)*.75
+                 + lineSeg(p,core,vec2(.58,.02),.012)*mix(.35,1.45,u_diag)
+                 + dotf(p,core,mix(.018,.036,u_diag))*mix(.75,1.55,u_diag)
+                 + ring(p,core,mix(.30,.12,u_diag),mix(.012,.007,u_diag))*mix(.22,.82,u_diag)
+                 + diagNoise;
 
   float x1=band(p.x+.32,.012),x2=band(p.x,.012),x3=band(p.x-.32,.012);
   float method=(x1+x2+x3)*.34
@@ -105,9 +120,12 @@ void main(){
                   + smoothstep(6.35,6.85,s);
   vec3 lightInk=vec3(.08,.17,.24);
   vec3 darkInk=vec3(.74,.83,.88);
+  vec3 diagnosisInk=vec3(.48,.62,1.0);
   vec3 col=mix(lightInk,darkInk,clamp(darkScene,0.0,1.0));
+  float diagScene=smoothstep(1.55,1.92,s)*(1.0-smoothstep(2.08,2.42,s));
+  col=mix(col,diagnosisInk,diagScene*(.18+.34*u_diag));
 
-  float gain=mix(.62,.48,u_mobile);
+  float gain=mix(.66,.52,u_mobile);
   float alpha=clamp(field+grain,0.0,1.0)*gain;
   gl_FragColor=vec4(col,alpha);
 }`;
@@ -124,6 +142,7 @@ export default function DiagnosticField(){
     if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const canvas=canvasRef.current;
     const root=document.querySelector<HTMLElement>(".ad26");
+    const diagnosis=document.querySelector<HTMLElement>(".ad26-statement");
     if(!canvas||!root) return;
     const isMobile=window.matchMedia("(max-width: 900px)").matches;
     const gl=canvas.getContext("webgl",{alpha:true,antialias:false,powerPreference:"low-power"});
@@ -134,19 +153,28 @@ export default function DiagnosticField(){
     const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
     const position=gl.getAttribLocation(program,"a_position");gl.enableVertexAttribArray(position);gl.vertexAttribPointer(position,2,gl.FLOAT,false,0,0);
     const U=(name:string)=>gl.getUniformLocation(program,name);
-    const resolution=U("u_resolution"),pointerU=U("u_pointer"),timeU=U("u_time"),scrollU=U("u_scroll"),sceneU=U("u_scene"),velocityU=U("u_velocity"),mobileU=U("u_mobile");
+    const resolution=U("u_resolution"),pointerU=U("u_pointer"),timeU=U("u_time"),scrollU=U("u_scroll"),sceneU=U("u_scene"),diagU=U("u_diag"),velocityU=U("u_velocity"),mobileU=U("u_mobile");
     const pointer={x:.68,y:.38},target={...pointer};
     let scene=0,targetScene=0,raf=0,lastScroll=window.scrollY,velocity=0;
+    let active=!document.hidden;
     const started=performance.now();
     const resize=()=>{const dpr=isMobile?1:Math.min(window.devicePixelRatio||1,1.5);const w=Math.floor(window.innerWidth*dpr),h=Math.floor(window.innerHeight*dpr);if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;canvas.style.width=`${window.innerWidth}px`;canvas.style.height=`${window.innerHeight}px`;gl.viewport(0,0,w,h);}};
     const onPointer=(e:PointerEvent)=>{if(isMobile)return;target.x=e.clientX/Math.max(1,window.innerWidth);target.y=1-e.clientY/Math.max(1,window.innerHeight);};
     const syncScene=()=>{targetScene=sectionToScene[root.dataset.section||"00 · Ввод"]??0;};
     const observer=new MutationObserver(syncScene);observer.observe(root,{attributes:true,attributeFilter:["data-section"]});syncScene();
+    const onVisibility=()=>{active=!document.hidden;};
+    const diagnosisProgress=()=>{
+      if(!diagnosis) return 0;
+      const rect=diagnosis.getBoundingClientRect();
+      const span=Math.max(1,rect.height-window.innerHeight);
+      return Math.max(0,Math.min(1,-rect.top/span));
+    };
     const render=()=>{
+      if(!active){raf=requestAnimationFrame(render);return;}
       resize();
-      pointer.x+=(target.x-pointer.x)*(isMobile?.02:.045);
-      pointer.y+=(target.y-pointer.y)*(isMobile?.02:.045);
-      scene+=(targetScene-scene)*(isMobile?.045:.06);
+      pointer.x+=(target.x-pointer.x)*(isMobile ? .02 : .045);
+      pointer.y+=(target.y-pointer.y)*(isMobile ? .02 : .045);
+      scene+=(targetScene-scene)*(isMobile ? .045 : .06);
       const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
       const sy=window.scrollY,scroll=sy/max;
       const rv=(sy-lastScroll)/Math.max(1,window.innerHeight*.085);
@@ -158,6 +186,7 @@ export default function DiagnosticField(){
       gl.uniform1f(timeU,(performance.now()-started)/1000);
       gl.uniform1f(scrollU,scroll);
       gl.uniform1f(sceneU,scene);
+      gl.uniform1f(diagU,diagnosisProgress());
       gl.uniform1f(velocityU,velocity);
       gl.uniform1f(mobileU,isMobile?1:0);
       gl.clearColor(0,0,0,0);
@@ -165,8 +194,11 @@ export default function DiagnosticField(){
       gl.drawArrays(gl.TRIANGLES,0,6);
       raf=requestAnimationFrame(render);
     };
-    window.addEventListener("pointermove",onPointer,{passive:true});window.addEventListener("resize",resize,{passive:true});raf=requestAnimationFrame(render);
-    return()=>{cancelAnimationFrame(raf);observer.disconnect();window.removeEventListener("pointermove",onPointer);window.removeEventListener("resize",resize);gl.deleteProgram(program);gl.deleteShader(vs);gl.deleteShader(fs);if(buffer)gl.deleteBuffer(buffer);};
+    window.addEventListener("pointermove",onPointer,{passive:true});
+    window.addEventListener("resize",resize,{passive:true});
+    document.addEventListener("visibilitychange",onVisibility);
+    raf=requestAnimationFrame(render);
+    return()=>{cancelAnimationFrame(raf);observer.disconnect();window.removeEventListener("pointermove",onPointer);window.removeEventListener("resize",resize);document.removeEventListener("visibilitychange",onVisibility);gl.deleteProgram(program);gl.deleteShader(vs);gl.deleteShader(fs);if(buffer)gl.deleteBuffer(buffer);};
   },[]);
   return <canvas ref={canvasRef} className="ad26-diagnostic-field" aria-hidden="true"/>;
 }
