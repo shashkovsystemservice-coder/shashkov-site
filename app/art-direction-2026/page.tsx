@@ -1,11 +1,13 @@
 import Image from "next/image";
 import ArtDirectionMotion from "./ArtDirectionMotion";
+import ConstraintLine from "./ConstraintLine";
 import "./art-direction.css";
 import "./high-craft-pass.css";
 import "./experience-2026.css";
 import "./refinement-pass.css";
 import "./director-pass.css";
 import "./spatial-pass.css";
+import "./award-system.css";
 
 const situations = [
   ["01", "Продажи перестали расти", "Команда предлагает больше рекламы — но непонятно, в ней ли проблема"],
@@ -41,6 +43,7 @@ export default function ArtDirection2026() {
   return (
     <main className="ad26" id="top">
       <ArtDirectionMotion />
+      <ConstraintLine />
       <header className="ad26-nav">
         <a href="#top" className="ad26-brand" aria-label="Владимир Шашков — маркетинг и рост бизнеса">
           <span className="ad26-brand-mark" aria-hidden="true">ВШ</span>
@@ -68,7 +71,7 @@ export default function ArtDirection2026() {
           </div>
           <div className="ad26-hero-proof"><strong>24 года внутри бизнеса</strong><span>Heidelberg · Nokian Tyres · Роснано · Росатом</span></div>
         </div>
-        <figure className="ad26-portrait"><Image src="/about-photo.webp" alt="Владимир Шашков за работой" fill priority sizes="(max-width: 900px) 100vw, 43vw" /></figure>
+        <figure className="ad26-portrait"><Image src="/about-photo.webp" alt="Владимир Шашков за работой" fill priority sizes="(max-width: 900px) 100vw, 43vw" /><span className="ad26-lens" aria-hidden="true" /></figure>
       </section>
 
       <section className="ad26-recognition" id="situations">
