@@ -10,6 +10,7 @@ import "./director-pass.css";
 import "./spatial-pass.css";
 import "./award-system.css";
 import "./v3-system.css";
+import "./v6-mobile-stability.css";
 
 const situations = [
   ["01", "Продажи перестали расти", "Команда предлагает больше рекламы — но непонятно, в ней ли проблема"],
