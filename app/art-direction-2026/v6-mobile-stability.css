@@ -1,0 +1,247 @@
+/* V6 mobile stability: award-level motion must never sacrifice legibility. */
+@media(max-width:900px){
+  /* Reset inherited desktop choreography that can leave stale inline transforms on iOS Safari. */
+  .ad26-hero-copy,
+  .ad26-recognition-head,
+  .ad26-situations article,
+  .ad26-method-head,
+  .ad26-signature article,
+  .ad26-brief-copy,
+  .ad26-brief-product,
+  .ad26-case-title,
+  .ad26-case-flow article,
+  .ad26-about-title,
+  .ad26-about-copy,
+  .ad26-contact>p,
+  .ad26-contact h2,
+  .ad26-contact-actions{
+    transform:none!important;
+    opacity:1!important;
+    filter:none!important;
+  }
+
+  /* HERO — content first, photograph second. No viewport-sized dead zone. */
+  .ad26-hero{
+    display:flex!important;
+    flex-direction:column!important;
+    min-height:0!important;
+    height:auto!important;
+    padding:0!important;
+    overflow:hidden!important;
+  }
+  .ad26-hero-copy{
+    order:1!important;
+    position:relative!important;
+    padding:58px 24px 46px!important;
+    min-height:0!important;
+    height:auto!important;
+  }
+  .ad26-hero-copy .ad26-kicker{margin:0 0 34px!important}
+  .ad26-hero h1{
+    margin:0!important;
+    font-size:clamp(48px,13vw,66px)!important;
+    line-height:.92!important;
+    letter-spacing:-.058em!important;
+    overflow-wrap:normal!important;
+  }
+  .ad26-hero-bottom{margin-top:36px!important;display:block!important}
+  .ad26-hero-bottom .ad26-primary{margin-top:28px!important}
+  .ad26-hero-proof{margin-top:38px!important}
+  .ad26-portrait{
+    order:2!important;
+    position:relative!important;
+    width:100%!important;
+    min-height:56svh!important;
+    height:56svh!important;
+    margin:0!important;
+    transform:none!important;
+  }
+  .ad26-hero:after{height:8svh!important}
+
+  /* RECOGNITION — one clean vertical reading rail. */
+  .ad26-recognition{
+    display:block!important;
+    min-height:0!important;
+    padding:84px 24px 92px!important;
+    margin:0!important;
+  }
+  .ad26-recognition>.ad26-section-label{margin-bottom:42px!important}
+  .ad26-recognition-head{
+    position:static!important;
+    display:block!important;
+    padding:0 0 44px!important;
+    margin:0!important;
+    border-bottom:1px solid rgba(14,20,28,.16)!important;
+  }
+  .ad26-recognition-head h2{
+    margin:0!important;
+    font-size:clamp(48px,12.7vw,64px)!important;
+    line-height:.94!important;
+    letter-spacing:-.055em!important;
+  }
+  .ad26-recognition-head>p{
+    position:static!important;
+    margin:22px 0 0!important;
+    max-width:none!important;
+    font-size:24px!important;
+    line-height:1.18!important;
+  }
+  .ad26-situations{display:block!important;margin:0!important;padding:0!important}
+  .ad26-situations article,
+  .ad26-situations article.is-active{
+    display:grid!important;
+    grid-template-columns:82px minmax(0,1fr)!important;
+    gap:24px!important;
+    min-height:0!important;
+    padding:34px 0!important;
+    margin:0!important;
+    align-items:start!important;
+    border-bottom:1px solid rgba(14,20,28,.13)!important;
+  }
+  .ad26-situations article>span:first-child,
+  .ad26-situations article.is-active>span:first-child{
+    position:static!important;
+    width:auto!important;
+    font-size:28px!important;
+    line-height:1!important;
+    transform:none!important;
+    opacity:.22!important;
+  }
+  .ad26-situations article>div{min-width:0!important}
+  .ad26-situations article h3,
+  .ad26-situations article.is-active h3{
+    margin:0!important;
+    transform:none!important;
+    font-size:clamp(29px,8.2vw,40px)!important;
+    line-height:1.02!important;
+    letter-spacing:-.035em!important;
+  }
+  .ad26-situations article p{margin:18px 0 0!important;font-size:18px!important;line-height:1.45!important}
+
+  /* DIAGNOSIS — preserve the concept, remove collision-prone decor. */
+  .ad26-statement{display:block!important;min-height:0!important;padding:88px 24px 94px!important}
+  .ad26-statement:after{opacity:.45!important;right:-28vw!important;top:10vh!important}
+  .ad26-statement-copy,.ad26-reframe{position:static!important;top:auto!important}
+  .ad26-statement h2{margin:0!important;font-size:clamp(47px,12.5vw,64px)!important;line-height:.96!important}
+  .ad26-statement-foot{margin-top:44px!important}
+  .ad26-reframe{margin-top:58px!important}
+  .ad26-reframe-assumption,.ad26-reframe-question{position:relative!important;padding:26px 0 30px!important}
+
+  /* METHOD — headings and steps always occupy their own flow space. */
+  .ad26-method{
+    display:block!important;
+    min-height:0!important;
+    padding:86px 24px 96px!important;
+    overflow:hidden!important;
+  }
+  .ad26-method>.ad26-section-label{margin-bottom:42px!important}
+  .ad26-method-head{
+    position:static!important;
+    display:block!important;
+    margin:0 0 46px!important;
+    padding:0!important;
+  }
+  .ad26-method-head h2{
+    margin:0!important;
+    font-size:clamp(47px,12.3vw,63px)!important;
+    line-height:.94!important;
+    letter-spacing:-.055em!important;
+  }
+  .ad26-method-head>p{position:static!important;margin:24px 0 0!important;font-size:20px!important;line-height:1.4!important}
+  .ad26-signature{display:block!important;margin:0!important;border:0!important}
+  .ad26-signature article,
+  .ad26-signature article.is-active{
+    display:grid!important;
+    grid-template-columns:88px minmax(0,1fr)!important;
+    grid-template-areas:"no code" "no title" "no copy"!important;
+    column-gap:28px!important;
+    min-height:0!important;
+    padding:34px 0 38px!important;
+    margin:0!important;
+    border-left:0!important;
+    border-bottom:1px solid rgba(14,20,28,.16)!important;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+  .ad26-signature .ad26-step-no{grid-area:no!important;position:static!important;font-size:16px!important;opacity:.8!important}
+  .ad26-signature article>strong{grid-area:code!important;margin:0 0 18px!important;font-size:12px!important}
+  .ad26-signature article h3,
+  .ad26-signature article.is-active h3{grid-area:title!important;margin:0!important;font-size:clamp(34px,9vw,46px)!important;line-height:1!important}
+  .ad26-signature article p{grid-area:copy!important;margin:18px 0 0!important;font-size:18px!important;line-height:1.45!important}
+  .ad26-method-note{margin:44px 0 0!important}
+  .ad26-method:after{opacity:.45!important}
+
+  /* DECISION BRIEF — keep the product readable and bounded. */
+  .ad26-brief{display:block!important;min-height:0!important;padding:86px 24px 96px!important}
+  .ad26-brief-product{margin-top:46px!important;overflow:hidden!important;contain:paint!important}
+  .ad26-brief-product:after{display:none!important;animation:none!important}
+  .ad26-brief-row{transform:none!important;opacity:1!important;clip-path:none!important}
+
+  /* CASE — title, proof stages and quote cannot share the same coordinates. */
+  .ad26-case{
+    display:block!important;
+    min-height:0!important;
+    padding:88px 24px 100px!important;
+    overflow:hidden!important;
+  }
+  .ad26-case>.ad26-section-label{margin-bottom:52px!important}
+  .ad26-case-title{
+    position:static!important;
+    display:block!important;
+    margin:0 0 54px!important;
+    padding:0!important;
+  }
+  .ad26-case-title>span{display:block!important;margin:0 0 28px!important;font-size:12px!important}
+  .ad26-case-title h2,
+  .ad26-case.is-case-1 .ad26-case-title h2,
+  .ad26-case.is-case-2 .ad26-case-title h2,
+  .ad26-case.is-case-3 .ad26-case-title h2{
+    margin:0!important;
+    font-size:clamp(46px,12.2vw,62px)!important;
+    line-height:.94!important;
+    letter-spacing:-.052em!important;
+    transform:none!important;
+    opacity:1!important;
+  }
+  .ad26-case-flow{display:block!important;margin:0!important;padding:0!important;border:0!important}
+  .ad26-case-flow article,
+  .ad26-case-flow article+article,
+  .ad26-case-flow article.is-active{
+    position:relative!important;
+    display:block!important;
+    min-height:0!important;
+    padding:38px 0 42px 58px!important;
+    margin:0!important;
+    transform:none!important;
+    opacity:1!important;
+    background:transparent!important;
+    border-bottom:1px solid rgba(255,255,255,.13)!important;
+  }
+  .ad26-case-flow article>span{display:block!important;margin:0 0 22px!important}
+  .ad26-case-flow h3{margin:0!important;font-size:clamp(30px,8.4vw,42px)!important;line-height:1.04!important}
+  .ad26-case-flow p{margin:0!important;font-size:18px!important;line-height:1.45!important}
+  .ad26-case blockquote{position:static!important;margin:54px 0 0!important;padding-top:34px!important}
+  .ad26-case:after{opacity:.5!important}
+
+  /* ABOUT + CTA — simple and stable after the high-motion scenes. */
+  .ad26-about{min-height:0!important;padding:86px 24px 92px!important}
+  .ad26-about-grid{display:block!important}
+  .ad26-about-title{margin-bottom:42px!important}
+  .ad26-about-portrait{margin:0 0 42px!important}
+  .ad26-contact{min-height:0!important;padding:90px 24px 42px!important;overflow:hidden!important}
+  .ad26-contact h2{margin:0!important;font-size:clamp(52px,13.5vw,70px)!important;line-height:.95!important}
+  .ad26-contact>p{margin:30px 0 0!important}
+  .ad26-contact-actions{margin-top:42px!important}
+
+  /* Safari safety: decorative pseudo-elements must never sit above content. */
+  .ad26-statement:after,.ad26-method:after,.ad26-case:after,.ad26-contact:after{z-index:0!important;pointer-events:none!important}
+  .ad26-statement>*,.ad26-method>*,.ad26-case>*,.ad26-contact>*{position:relative!important;z-index:3!important}
+}
+
+@media(max-width:430px){
+  .ad26-hero-copy{padding-left:20px!important;padding-right:20px!important}
+  .ad26-recognition,.ad26-statement,.ad26-method,.ad26-brief,.ad26-case,.ad26-about,.ad26-contact{padding-left:20px!important;padding-right:20px!important}
+  .ad26-situations article{grid-template-columns:68px minmax(0,1fr)!important;gap:16px!important}
+  .ad26-signature article{grid-template-columns:70px minmax(0,1fr)!important;column-gap:18px!important}
+  .ad26-case-flow article{padding-left:48px!important}
+}
