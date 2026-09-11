@@ -16,33 +16,25 @@ export default function ArtDirectionMotion() {
       heroTl
         .from(".ad26-nav", { y: -28, opacity: 0, duration: 0.55 })
         .from(".ad26-hero .ad26-kicker", { y: 18, opacity: 0, duration: 0.45 }, "-=.2")
-        .from(".ad26-hero h1", { yPercent: 16, opacity: 0, duration: 0.8 }, "-=.18")
+        .from(".ad26-hero h1", { yPercent: 14, opacity: 0, duration: 0.8 }, "-=.18")
         .from(".ad26-hero-bottom", { y: 24, opacity: 0, duration: 0.6 }, "-=.35")
         .from(".ad26-hero-proof", { y: 16, opacity: 0, duration: 0.45 }, "-=.3")
-        .from(".ad26-portrait", { clipPath: "inset(7% 8% 8% 7%)", scale: 1.05, opacity: 0, duration: 1.05 }, 0.15)
-        .from(".ad26-signal-map", { opacity: 0, scale: 0.82, rotate: -7, duration: 1.2 }, 0.25);
+        .from(".ad26-portrait", { clipPath: "inset(6% 7% 7% 6%)", scale: 1.045, opacity: 0, duration: 1.05 }, 0.15);
 
       gsap.to(".ad26-portrait img", {
-        yPercent: 8,
-        scale: 1.06,
-        ease: "none",
-        scrollTrigger: { trigger: ".ad26-hero", start: "top top", end: "bottom top", scrub: 0.7 },
-      });
-
-      gsap.to(".ad26-signal-map", {
-        rotate: 8,
         yPercent: 7,
+        scale: 1.055,
         ease: "none",
         scrollTrigger: { trigger: ".ad26-hero", start: "top top", end: "bottom top", scrub: 0.7 },
       });
 
-      gsap.utils.toArray<HTMLElement>(".ad26-situations article, .ad26-signature article, .ad26-case-flow article").forEach((el) => {
-        gsap.from(el, {
-          y: 42,
-          opacity: 0,
-          duration: 0.75,
-          ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 84%", toggleActions: "play none none reverse" },
+      const recognitionItems = gsap.utils.toArray<HTMLElement>(".ad26-situations article");
+      recognitionItems.forEach((item) => {
+        ScrollTrigger.create({
+          trigger: item,
+          start: "top 64%",
+          end: "bottom 40%",
+          onToggle: (self) => item.classList.toggle("is-active", self.isActive),
         });
       });
 
@@ -55,14 +47,15 @@ export default function ArtDirectionMotion() {
       const statement = gsap.timeline({
         scrollTrigger: {
           trigger: ".ad26-statement",
-          start: "top 78%",
-          end: "bottom 35%",
+          start: "top 76%",
+          end: "bottom 36%",
           scrub: 0.65,
         },
       });
       statement
-        .fromTo(".ad26-statement-label", { x: -20, opacity: 0.3 }, { x: 0, opacity: 1 }, 0)
-        .fromTo(".ad26-statement h2", { y: 68, opacity: 0.35 }, { y: 0, opacity: 1 }, 0)
+        .fromTo(".ad26-statement-label", { x: -18, opacity: 0.3 }, { x: 0, opacity: 1 }, 0)
+        .fromTo(".ad26-statement h2", { y: 58, opacity: 0.38 }, { y: 0, opacity: 1 }, 0)
+        .fromTo(".df-caption", { opacity: 0, y: 4 }, { opacity: 1, y: 0, stagger: 0.08, duration: 0.22 }, 0.02)
         .fromTo(".df-points circle:not(.df-point-output)", { scale: 0, opacity: 0, transformOrigin: "center" }, { scale: 1, opacity: 1, stagger: 0.05, duration: 0.22 }, 0.04)
         .to(".df-inputs .df-route", { strokeDashoffset: 0, stagger: 0.08, duration: 0.55, ease: "none" }, 0.08)
         .fromTo(".df-focus-halo", { scale: 0.55, opacity: 0, transformOrigin: "center" }, { scale: 1, opacity: 1, duration: 0.28 }, 0.33)
@@ -70,43 +63,65 @@ export default function ArtDirectionMotion() {
         .fromTo(".df-focus-core", { scale: 0, transformOrigin: "center" }, { scale: 1, duration: 0.2 }, 0.42)
         .to(".df-output .df-route", { strokeDashoffset: 0, stagger: 0.06, duration: 0.52, ease: "none" }, 0.46)
         .fromTo(".df-point-output", { scale: 0, opacity: 0, transformOrigin: "center" }, { scale: 1, opacity: 1, duration: 0.22 }, 0.66)
-        .fromTo(".ad26-statement-foot", { y: 42, opacity: 0.15 }, { y: 0, opacity: 1 }, 0.34);
-
-      gsap.to(".df-scan", {
-        rotate: 360,
-        transformOrigin: "320px 180px",
-        repeat: -1,
-        duration: 7,
-        ease: "none",
-      });
+        .fromTo(".ad26-statement-foot", { y: 36, opacity: 0.15 }, { y: 0, opacity: 1 }, 0.34);
 
       gsap.to(".df-focus-ring", {
-        scale: 1.14,
-        opacity: 0.32,
+        scale: 1.11,
+        opacity: 0.34,
         transformOrigin: "center",
         repeat: -1,
         yoyo: true,
-        duration: 1.8,
+        duration: 1.9,
         ease: "sine.inOut",
       });
 
       const methodItems = gsap.utils.toArray<HTMLElement>(".ad26-signature article");
-      methodItems.forEach((item) => {
+      methodItems.forEach((item, index) => {
         ScrollTrigger.create({
           trigger: item,
-          start: "top 58%",
+          start: "top 60%",
           end: "bottom 42%",
-          onToggle: (self) => item.classList.toggle("is-active", self.isActive),
+          onToggle: (self) => {
+            item.classList.toggle("is-active", self.isActive);
+            if (self.isActive) {
+              const progress = ((index + 1) / methodItems.length) * 100;
+              const parent = item.parentElement;
+              parent?.style.setProperty("--method-progress", `${progress}%`);
+            }
+          },
         });
       });
 
-      gsap.from(".ad26-brief", {
-        clipPath: "inset(7% 4% 7% 4%)",
-        scale: 0.975,
-        opacity: 0.35,
-        duration: 0.95,
+      const brief = gsap.timeline({
+        scrollTrigger: { trigger: ".ad26-brief", start: "top 80%", toggleActions: "play none none reverse" },
+      });
+      brief
+        .from(".ad26-brief-copy", { y: 28, opacity: 0, duration: 0.65, ease: "power3.out" })
+        .from(".ad26-brief-product", { x: 36, opacity: 0, duration: 0.7, ease: "power3.out" }, "-=.42")
+        .to(".ad26-brief-row", { opacity: 1, y: 0, stagger: 0.11, duration: 0.34, ease: "power2.out" }, "-=.24");
+
+      const caseItems = gsap.utils.toArray<HTMLElement>(".ad26-case-flow article");
+      caseItems.forEach((item, index) => {
+        ScrollTrigger.create({
+          trigger: item,
+          start: "top 62%",
+          end: "bottom 42%",
+          onToggle: (self) => {
+            item.classList.toggle("is-active", self.isActive);
+            if (self.isActive) {
+              const progress = ((index + 1) / caseItems.length) * 100;
+              item.parentElement?.style.setProperty("--case-progress", `${progress}%`);
+            }
+          },
+        });
+      });
+
+      gsap.from(".ad26-case blockquote", {
+        y: 32,
+        opacity: 0,
+        duration: 0.75,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".ad26-brief", start: "top 82%", toggleActions: "play none none reverse" },
+        scrollTrigger: { trigger: ".ad26-case blockquote", start: "top 82%" },
       });
 
       gsap.from(".ad26-about-portrait", {
