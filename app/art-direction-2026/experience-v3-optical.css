@@ -1,230 +1,231 @@
-/* V3 optical clarity experiment.
-   Ban: nodes, travelling dots, network diagrams, process-line animation.
-   Motion is carried by optical instability -> alignment -> clarity. */
+/* V3 — OPTICAL CLARITY / CINEMATIC MOTION.
+   No nodes, travelling dots, network diagrams or process-line animation.
+   Motion language: masks, image surfaces, optical misregistration, focus, depth and stabilization. */
 
-/* Remove the literal data-viz language everywhere it could read as SaaS/AI diagram. */
 .ad26-signal-map,
 .ad26-diagnosis-network,
 .ad26-diagnosis-visual,
 .ad26-situations article::before,
 .ad26-case-flow article::before{display:none!important}
 
-/* Hero: keep the portrait alive, but remove the outlined lens gimmick.
-   The focus zone is now borderless and reads as a local optical state. */
+/* Every major reveal is mask-driven: geometry stays stable while the surface changes. */
+.ad26-situations article,
+.ad26-signature article,
+.ad26-brief-product,
+.ad26-brief-row,
+.ad26-case-title,
+.ad26-case-flow article,
+.ad26-case blockquote,
+.ad26-about-portrait,
+.ad26-portrait{will-change:clip-path,opacity}
+
+/* HERO — portrait behaves like a cinematic plate, not a static card. */
+.ad26-hero{isolation:isolate;overflow:hidden}
 .ad26-hero::before{
   content:"";
   position:absolute;
-  inset:0;
+  inset:-8%;
   pointer-events:none;
   z-index:0;
   background:
-    radial-gradient(70% 55% at calc(76% - var(--scene-progress) * 8%) calc(31% + var(--scene-progress) * 10%),rgba(70,96,180,.095),transparent 54%),
-    linear-gradient(118deg,transparent 0 43%,rgba(255,255,255,.26) 50%,transparent 58% 100%);
-  opacity:.78;
-  transform:scale(calc(1 + var(--scene-progress) * .025));
+    linear-gradient(114deg,transparent 0 36%,rgba(117,139,206,.08) 48%,rgba(255,255,255,.30) 51%,rgba(104,128,201,.06) 56%,transparent 69%),
+    radial-gradient(76% 62% at calc(75% - var(--scene-progress) * 11%) calc(32% + var(--scene-progress) * 9%),rgba(65,88,166,.13),transparent 60%);
+  opacity:.92;
+  transform:translate3d(calc(var(--scene-progress) * -3vw),calc(var(--scene-progress) * 1.5vh),0) scale(calc(1.03 + var(--scene-progress) * .03));
   transform-origin:70% 35%;
 }
+.ad26-portrait{overflow:hidden;box-shadow:0 34px 100px rgba(14,24,37,.12)}
+.ad26-portrait img{will-change:transform,filter;filter:saturate(.96) contrast(1.015)}
 .ad26-lens{
   border:0!important;
   box-shadow:none!important;
-  background:rgba(255,255,255,.025);
-  backdrop-filter:blur(calc(5px - var(--scene-progress) * 3px)) contrast(calc(1.02 + var(--scene-progress) * .09)) saturate(.95);
-  -webkit-backdrop-filter:blur(calc(5px - var(--scene-progress) * 3px)) contrast(calc(1.02 + var(--scene-progress) * .09)) saturate(.95);
-  opacity:.42!important;
-  mask-image:radial-gradient(circle,black 0 46%,rgba(0,0,0,.82) 58%,transparent 75%);
-  -webkit-mask-image:radial-gradient(circle,black 0 46%,rgba(0,0,0,.82) 58%,transparent 75%);
+  background:rgba(255,255,255,.018);
+  backdrop-filter:blur(calc(7px - var(--scene-progress) * 5px)) contrast(calc(1.01 + var(--scene-progress) * .12)) saturate(.95);
+  -webkit-backdrop-filter:blur(calc(7px - var(--scene-progress) * 5px)) contrast(calc(1.01 + var(--scene-progress) * .12)) saturate(.95);
+  opacity:.46!important;
+  mask-image:radial-gradient(ellipse,black 0 40%,rgba(0,0,0,.82) 55%,transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse,black 0 40%,rgba(0,0,0,.82) 55%,transparent 78%);
 }
 
-/* Recognition stays editorial. No fake visual system is drawn around the list. */
-.ad26-situations article{padding-right:0!important}
+/* RECOGNITION — pure editorial field. Animation comes from clean mask reveals, not markers. */
+.ad26-recognition::before{display:none!important}
+.ad26-situations{padding-left:0!important}
+.ad26-situations::before,.ad26-situations::after{display:none!important}
+.ad26-situations article{padding-right:0!important;transform:none!important}
 
-/* Diagnosis: no diagram. The scene itself behaves like an optical medium that settles. */
-.ad26-statement{background:#08121e!important}
+/* DIAGNOSIS — one pinned optical environment. Visible motion is the medium itself settling. */
+.ad26-statement{min-height:230svh!important;background:#07111d!important}
 .ad26-statement-stage{
+  position:sticky!important;
+  top:0;
+  height:100svh!important;
+  overflow:hidden!important;
   background:
-    radial-gradient(74% 62% at calc(44% + var(--diagnosis-progress) * 8%) calc(53% - var(--diagnosis-progress) * 3%),rgba(97,124,224,calc(.035 + var(--diagnosis-progress) * .11)),transparent 63%),
-    linear-gradient(180deg,#08121e 0%,#0b1622 100%)!important;
+    radial-gradient(80% 68% at calc(43% + var(--diagnosis-progress) * 10%) calc(54% - var(--diagnosis-progress) * 4%),rgba(85,111,218,calc(.055 + var(--diagnosis-progress) * .16)),transparent 62%),
+    linear-gradient(180deg,#07111d 0%,#0b1622 100%)!important;
 }
 .ad26-statement-stage::after{display:none!important}
-
-.ad26-optical-field{
+.ad26-statement-stage::before{
+  content:"";
   position:absolute;
-  inset:0;
-  overflow:hidden;
-  pointer-events:none;
+  inset:-18% -24%;
   z-index:1;
-  isolation:isolate;
-}
-.ad26-optical-plane,
-.ad26-optical-focus,
-.ad26-optical-sheen{
-  position:absolute;
-  display:block;
   pointer-events:none;
+  background:
+    linear-gradient(101deg,transparent 0 32%,rgba(108,130,219,.03) 42%,rgba(184,197,255,.22) 49%,rgba(104,128,216,.035) 57%,transparent 68%),
+    linear-gradient(82deg,transparent 0 38%,rgba(123,145,232,.05) 47%,rgba(205,214,255,.12) 51%,transparent 61%);
+  transform:translate3d(calc(-17vw + var(--diagnosis-progress) * 17vw),calc(8vh - var(--diagnosis-progress) * 8vh),0) skewX(calc(-9deg + var(--diagnosis-progress) * 9deg)) scale(calc(1.14 - var(--diagnosis-progress) * .14));
+  filter:blur(calc(20px - var(--diagnosis-progress) * 15px));
+  opacity:calc(.44 + var(--diagnosis-progress) * .22);
+  mix-blend-mode:screen;
+  will-change:transform,filter,opacity;
 }
+.ad26-statement-copy,.ad26-reframe{position:relative;z-index:4}
+.ad26-statement-copy{
+  opacity:calc(.98 - var(--diagnosis-progress) * .52)!important;
+  filter:blur(calc(var(--diagnosis-progress) * 1.6px));
+  will-change:filter,opacity;
+}
+.ad26-statement-foot{opacity:calc(.84 - var(--diagnosis-progress) * .64)!important}
 
-/* Three large planes start deliberately misregistered. They do not represent objects;
-   they are the instability of the medium itself. */
+.ad26-optical-field{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none;isolation:isolate}
+.ad26-optical-plane,.ad26-optical-focus,.ad26-optical-sheen{position:absolute;display:block;pointer-events:none}
 .ad26-optical-plane{
-  left:-12%;
-  width:124%;
-  height:34%;
-  border-radius:50%;
-  opacity:calc(.30 - var(--diagnosis-progress) * .18);
-  filter:blur(calc(26px - var(--diagnosis-progress) * 13px));
+  left:-18%;
+  width:136%;
+  height:38%;
+  border-radius:48%;
+  opacity:calc(.58 - var(--diagnosis-progress) * .32);
+  filter:blur(calc(34px - var(--diagnosis-progress) * 25px));
   mix-blend-mode:screen;
   will-change:transform,filter,opacity;
 }
 .ad26-optical-plane-a{
-  top:28%;
-  background:linear-gradient(102deg,transparent 6%,rgba(96,118,196,.04) 28%,rgba(145,165,237,.18) 48%,rgba(92,118,207,.04) 70%,transparent 94%);
-  transform:translate3d(calc(-5vw + var(--diagnosis-progress) * 5vw),calc(-2.2vh + var(--diagnosis-progress) * 2.2vh),0) rotate(calc(-4deg + var(--diagnosis-progress) * 4deg)) scaleX(calc(1.08 - var(--diagnosis-progress) * .08));
+  top:25%;
+  background:linear-gradient(102deg,transparent 2%,rgba(86,108,189,.09) 26%,rgba(151,169,240,.34) 49%,rgba(86,109,198,.08) 72%,transparent 97%);
+  transform:translate3d(calc(-11vw + var(--diagnosis-progress) * 11vw),calc(-5vh + var(--diagnosis-progress) * 5vh),0) rotate(calc(-7deg + var(--diagnosis-progress) * 7deg)) scaleX(calc(1.18 - var(--diagnosis-progress) * .18));
 }
 .ad26-optical-plane-b{
-  top:39%;
-  background:linear-gradient(78deg,transparent 3%,rgba(88,112,196,.03) 25%,rgba(125,150,238,.15) 52%,rgba(75,102,191,.035) 77%,transparent 97%);
-  transform:translate3d(calc(4.5vw - var(--diagnosis-progress) * 4.5vw),calc(3vh - var(--diagnosis-progress) * 3vh),0) rotate(calc(3.5deg - var(--diagnosis-progress) * 3.5deg)) scaleX(calc(.94 + var(--diagnosis-progress) * .06));
+  top:38%;
+  background:linear-gradient(78deg,transparent 0%,rgba(75,97,184,.07) 24%,rgba(132,156,242,.28) 52%,rgba(78,101,193,.06) 79%,transparent 100%);
+  transform:translate3d(calc(10vw - var(--diagnosis-progress) * 10vw),calc(6vh - var(--diagnosis-progress) * 6vh),0) rotate(calc(6deg - var(--diagnosis-progress) * 6deg)) scaleX(calc(.86 + var(--diagnosis-progress) * .14));
 }
 .ad26-optical-plane-c{
-  top:49%;
-  height:24%;
-  background:linear-gradient(95deg,transparent 10%,rgba(82,111,202,.02) 31%,rgba(155,173,241,.11) 51%,rgba(87,111,200,.025) 71%,transparent 91%);
-  transform:translate3d(calc(-2.5vw + var(--diagnosis-progress) * 2.5vw),calc(1.4vh - var(--diagnosis-progress) * 1.4vh),0) rotate(calc(-2deg + var(--diagnosis-progress) * 2deg));
-}
-
-/* Clarity is expressed as a pressure/focus field, not as a circle or a node. */
-.ad26-optical-focus{
-  left:50%;
   top:51%;
-  width:min(66vw,880px);
-  height:min(42vw,540px);
-  transform:translate(-50%,-50%) scale(calc(.82 + var(--diagnosis-progress) * .18));
-  opacity:calc(.08 + var(--diagnosis-progress) * .72);
-  background:
-    radial-gradient(ellipse at center,rgba(174,190,255,.10) 0,rgba(117,144,238,.052) 29%,rgba(39,62,105,.018) 52%,transparent 72%);
-  filter:blur(calc(18px - var(--diagnosis-progress) * 13px));
-  mask-image:radial-gradient(ellipse,black 0 35%,rgba(0,0,0,.7) 55%,transparent 78%);
-  -webkit-mask-image:radial-gradient(ellipse,black 0 35%,rgba(0,0,0,.7) 55%,transparent 78%);
+  height:29%;
+  background:linear-gradient(95deg,transparent 4%,rgba(76,103,194,.06) 27%,rgba(168,184,246,.23) 51%,rgba(77,103,194,.055) 74%,transparent 96%);
+  transform:translate3d(calc(-7vw + var(--diagnosis-progress) * 7vw),calc(4vh - var(--diagnosis-progress) * 4vh),0) rotate(calc(-4deg + var(--diagnosis-progress) * 4deg));
+}
+.ad26-optical-focus{
+  left:50%;top:51%;
+  width:min(78vw,980px);height:min(48vw,620px);
+  transform:translate(-50%,-50%) scale(calc(.72 + var(--diagnosis-progress) * .28));
+  opacity:calc(.04 + var(--diagnosis-progress) * .92);
+  background:radial-gradient(ellipse at center,rgba(211,220,255,.17) 0,rgba(132,157,244,.095) 27%,rgba(50,75,126,.026) 52%,transparent 72%);
+  filter:blur(calc(22px - var(--diagnosis-progress) * 18px));
+  mask-image:radial-gradient(ellipse,black 0 34%,rgba(0,0,0,.78) 55%,transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse,black 0 34%,rgba(0,0,0,.78) 55%,transparent 80%);
+  will-change:transform,filter,opacity;
 }
 .ad26-optical-sheen{
-  left:-20%;
-  top:48%;
-  width:140%;
-  height:1px;
-  background:linear-gradient(90deg,transparent 0 20%,rgba(150,169,246,.12) 37%,rgba(202,212,255,.46) 50%,rgba(137,159,239,.10) 64%,transparent 82% 100%);
-  transform:translateY(calc((.5 - var(--diagnosis-progress)) * 10vh)) scaleX(calc(.72 + var(--diagnosis-progress) * .28));
-  opacity:calc(.10 + var(--diagnosis-progress) * .38);
-  filter:blur(.35px) drop-shadow(0 0 18px rgba(117,145,248,.18));
+  left:-28%;top:50%;width:156%;height:2px;
+  background:linear-gradient(90deg,transparent 0 14%,rgba(134,156,243,.04) 31%,rgba(230,235,255,.62) 50%,rgba(133,155,242,.05) 69%,transparent 86% 100%);
+  transform:translate3d(calc(-9vw + var(--diagnosis-progress) * 18vw),calc((.5 - var(--diagnosis-progress)) * 13vh),0) scaleX(calc(.62 + var(--diagnosis-progress) * .38));
+  opacity:calc(.12 + var(--diagnosis-progress) * .62);
+  filter:blur(.6px) drop-shadow(0 0 24px rgba(117,145,248,.30));
+  will-change:transform,opacity;
 }
 
-/* Typography does not travel. Certainty changes through optical quality and hierarchy. */
-.ad26-statement-copy{
-  opacity:calc(.97 - var(--diagnosis-progress) * .50)!important;
-  filter:blur(calc(var(--diagnosis-progress) * 1.05px));
-}
-.ad26-statement-foot{
-  opacity:calc(.82 - var(--diagnosis-progress) * .58)!important;
-}
 .ad26-reframe{
-  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)!important;
-  gap:clamp(42px,7vw,110px)!important;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;
+  gap:clamp(44px,7vw,120px)!important;
   align-items:end!important;
-  border-top:1px solid rgba(255,255,255,.13)!important;
+  border-top:1px solid rgba(255,255,255,.12)!important;
 }
 .ad26-reframe-assumption{
-  opacity:calc(.86 - var(--diagnosis-progress) * .68)!important;
-  filter:blur(calc(var(--diagnosis-progress) * 2.2px)) saturate(calc(1 - var(--diagnosis-progress) * .35))!important;
+  opacity:calc(.9 - var(--diagnosis-progress) * .76)!important;
+  filter:blur(calc(var(--diagnosis-progress) * 3px)) saturate(calc(1 - var(--diagnosis-progress) * .42))!important;
 }
-.ad26-reframe-assumption i{
-  display:none!important;
-}
+.ad26-reframe-assumption i{display:none!important}
 .ad26-reframe-question{
-  opacity:calc(.18 + var(--diagnosis-progress) * .82)!important;
-  filter:blur(calc((1 - var(--diagnosis-progress)) * 3.2px))!important;
+  opacity:calc(.10 + var(--diagnosis-progress) * .90)!important;
+  filter:blur(calc((1 - var(--diagnosis-progress)) * 5px))!important;
+  clip-path:inset(calc((1 - var(--diagnosis-progress)) * 70%) 0 0 0);
 }
-.ad26-reframe-question strong{
-  text-shadow:0 0 calc(var(--diagnosis-progress) * 24px) rgba(124,151,255,.14)!important;
-}
+.ad26-reframe-question strong{text-shadow:0 0 calc(var(--diagnosis-progress) * 28px) rgba(128,153,255,.18)!important}
 
-/* Remove leftover line/node language from the case. Keep it typographic until its own cinematic pass. */
+/* METHOD — motion is the reveal of information, never a jump in placement. */
+.ad26-signature article{transform:none!important}
+.ad26-signature::before{opacity:.35;box-shadow:none!important}
+
+/* BRIEF — treated as a surface appearing from depth via mask, not as a flying card. */
+.ad26-brief-product{transform-origin:50% 100%;will-change:clip-path,opacity}
+.ad26-brief-product::after{opacity:.34}
+
+/* CASE — no process line. Keep one continuous cinematic typographic reveal. */
 .ad26-case::before{display:none!important}
+.ad26-case{overflow:hidden;isolation:isolate}
+.ad26-case::after{
+  content:"";
+  position:absolute;
+  inset:-20% -10%;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(112deg,transparent 0 38%,rgba(99,123,215,.08) 47%,rgba(214,222,255,.10) 50%,rgba(96,121,212,.05) 54%,transparent 65%);
+  transform:translate3d(calc(-18vw + var(--case-progress) * 36vw),calc(5vh - var(--case-progress) * 9vh),0) rotate(-4deg);
+  filter:blur(26px);
+  opacity:.8;
+}
+.ad26-case>*{position:relative;z-index:2}
 
 @media (max-width:900px){
-  .ad26-hero{gap:14px!important}
-  .ad26-hero::before{
-    background:radial-gradient(95% 45% at 63% 74%,rgba(78,103,184,.08),transparent 64%);
-  }
-  .ad26-lens{
-    width:46vw!important;
-    height:46vw!important;
-    max-width:190px!important;
-    max-height:190px!important;
-    opacity:.34!important;
-  }
+  .ad26-hero{gap:12px!important}
+  .ad26-hero::before{background:radial-gradient(105% 54% at 62% 76%,rgba(76,98,181,.13),transparent 67%)}
+  .ad26-lens{width:52vw!important;height:52vw!important;max-width:210px!important;max-height:210px!important;opacity:.40!important}
 
-  .ad26-statement{min-height:205svh!important}
-  .ad26-statement-stage{
-    top:58px!important;
-    height:calc(100svh - 58px)!important;
-    padding:32px 20px 26px!important;
+  .ad26-statement{min-height:215svh!important}
+  .ad26-statement-stage{top:58px!important;height:calc(100svh - 58px)!important;padding:30px 20px 24px!important}
+  .ad26-statement-stage::before{
+    inset:-10% -65%;
+    transform:translate3d(calc(-24vw + var(--diagnosis-progress) * 24vw),calc(8vh - var(--diagnosis-progress) * 8vh),0) skewX(calc(-8deg + var(--diagnosis-progress) * 8deg)) scale(calc(1.18 - var(--diagnosis-progress) * .18));
+    opacity:calc(.50 + var(--diagnosis-progress) * .28);
   }
-  .ad26-statement-copy{
-    max-width:100%!important;
-  }
-  .ad26-statement h2{
-    font-size:clamp(33px,8.4vw,45px)!important;
-    line-height:1.01!important;
-  }
-  .ad26-statement-foot{
-    margin-top:17px!important;
-    padding-top:12px!important;
-  }
+  .ad26-statement-copy{max-width:100%!important}
+  .ad26-statement h2{font-size:clamp(33px,8.4vw,45px)!important;line-height:1.01!important}
+  .ad26-statement-foot{margin-top:17px!important;padding-top:12px!important}
   .ad26-statement-foot p{font-size:12.5px!important}
   .ad26-rule{font-size:14.5px!important}
 
-  .ad26-optical-plane{
-    left:-52%;
-    width:204%;
-    height:30%;
-    filter:blur(calc(20px - var(--diagnosis-progress) * 10px));
-  }
-  .ad26-optical-plane-a{top:31%}
+  .ad26-optical-plane{left:-70%;width:240%;height:34%;opacity:calc(.64 - var(--diagnosis-progress) * .34);filter:blur(calc(30px - var(--diagnosis-progress) * 22px))}
+  .ad26-optical-plane-a{top:29%}
   .ad26-optical-plane-b{top:41%}
-  .ad26-optical-plane-c{top:50%;height:20%}
-  .ad26-optical-focus{
-    top:49%;
-    width:112vw;
-    height:54vw;
-  }
-  .ad26-optical-sheen{top:49%}
+  .ad26-optical-plane-c{top:52%;height:24%}
+  .ad26-optical-focus{top:50%;width:132vw;height:68vw;opacity:calc(.05 + var(--diagnosis-progress) * .95)}
+  .ad26-optical-sheen{top:50%;height:2px;opacity:calc(.14 + var(--diagnosis-progress) * .70)}
 
-  .ad26-reframe{
-    grid-template-columns:1fr!important;
-    gap:17px!important;
-    margin-top:auto!important;
-    padding-top:15px!important;
-  }
-  .ad26-reframe span{
-    font-size:8px!important;
-    margin-bottom:7px!important;
-  }
+  .ad26-reframe{grid-template-columns:1fr!important;gap:17px!important;margin-top:auto!important;padding-top:15px!important}
+  .ad26-reframe span{font-size:8px!important;margin-bottom:7px!important}
   .ad26-reframe strong{font-size:clamp(22px,5.8vw,28px)!important}
   .ad26-reframe-assumption{max-width:88%}
   .ad26-reframe-question{max-width:100%}
 
-  /* Keep every reading block geometrically stable on iOS. */
   .ad26-statement-copy,.ad26-reframe,.ad26-reframe-assumption,.ad26-reframe-question{
-    transform:none!important;
-    translate:none!important;
-    scale:1!important;
+    transform:none!important;translate:none!important;scale:1!important;
+  }
+
+  .ad26-brief-product{transform:none!important}
+  .ad26-case::after{
+    inset:-10% -90%;
+    transform:translate3d(calc(-28vw + var(--case-progress) * 56vw),calc(4vh - var(--case-progress) * 8vh),0) rotate(-6deg);
+    opacity:.9;
   }
 }
 
 @media (prefers-reduced-motion:reduce){
-  .ad26-optical-field{display:none!important}
-  .ad26-lens{display:none!important}
+  .ad26-optical-field,.ad26-lens{display:none!important}
+  .ad26-statement-stage::before,.ad26-case::after{display:none!important}
 }
 
 @media print{
-  .ad26-optical-field{display:none!important}
+  .ad26-optical-field,.ad26-lens,.ad26-statement-stage::before,.ad26-case::after{display:none!important}
 }
