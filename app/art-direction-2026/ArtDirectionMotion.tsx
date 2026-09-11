@@ -7,9 +7,46 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 export default function ArtDirectionMotion() {
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
     gsap.registerPlugin(ScrollTrigger);
+
+    const root = document.querySelector<HTMLElement>(".ad26");
+    const nav = document.querySelector<HTMLElement>(".ad26-nav");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const onScroll = () => nav?.classList.toggle("is-scrolled", window.scrollY > 48);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const sectionMap: Array<[string, string]> = [
+      [".ad26-hero", "00 · Ввод"],
+      [".ad26-recognition", "01 · Ситуация"],
+      [".ad26-statement", "01 · Диагноз"],
+      [".ad26-method", "02 · Логика"],
+      [".ad26-brief", "02 · Decision Brief"],
+      [".ad26-case", "03 · Кейс"],
+      [".ad26-about", "04 · Обо мне"],
+      [".ad26-contact", "05 · Следующий шаг"],
+    ];
+
+    const sectionTriggers = sectionMap.map(([selector, label]) => {
+      const element = document.querySelector(selector);
+      if (!element) return null;
+      return ScrollTrigger.create({
+        trigger: element,
+        start: "top 55%",
+        end: "bottom 45%",
+        onEnter: () => root?.setAttribute("data-section", label),
+        onEnterBack: () => root?.setAttribute("data-section", label),
+      });
+    });
+    root?.setAttribute("data-section", "00 · Ввод");
+
+    if (reducedMotion) {
+      return () => {
+        window.removeEventListener("scroll", onScroll);
+        sectionTriggers.forEach((trigger) => trigger?.kill());
+      };
+    }
 
     const ctx = gsap.context(() => {
       const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -28,6 +65,12 @@ export default function ArtDirectionMotion() {
         scrollTrigger: { trigger: ".ad26-hero", start: "top top", end: "bottom top", scrub: 0.7 },
       });
 
+      gsap.to(".ad26-hero-copy", {
+        x: -14,
+        ease: "none",
+        scrollTrigger: { trigger: ".ad26-hero", start: "55% 55%", end: "bottom top", scrub: true },
+      });
+
       gsap.utils.toArray<HTMLElement>(".ad26-situations article").forEach((item) => {
         ScrollTrigger.create({
           trigger: item,
@@ -38,20 +81,15 @@ export default function ArtDirectionMotion() {
       });
 
       const statement = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".ad26-statement",
-          start: "top 75%",
-          end: "bottom 38%",
-          scrub: 0.65,
-        },
+        scrollTrigger: { trigger: ".ad26-statement", start: "top 75%", end: "bottom 38%", scrub: 0.65 },
       });
       statement
         .fromTo(".ad26-statement-label", { x: -16, opacity: 0.3 }, { x: 0, opacity: 1 }, 0)
         .fromTo(".ad26-statement h2", { y: 54, opacity: 0.38 }, { y: 0, opacity: 1 }, 0)
-        .fromTo(".ad26-reframe-assumption", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25 }, 0.08)
-        .fromTo(".ad26-reframe-assumption i", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.28, ease: "power2.out" }, 0.22)
-        .fromTo(".ad26-reframe-shift", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.18 }, 0.36)
-        .fromTo(".ad26-reframe-question", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3 }, 0.43)
+        .fromTo(".ad26-reframe-assumption", { y: 24, opacity: 0 }, { y: 0, opacity: 0.72, duration: 0.25 }, 0.08)
+        .fromTo(".ad26-reframe-assumption i", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.32, ease: "power2.out" }, 0.22)
+        .fromTo(".ad26-reframe-shift", { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.2 }, 0.36)
+        .fromTo(".ad26-reframe-question", { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32 }, 0.43)
         .fromTo(".ad26-statement-foot", { y: 34, opacity: 0.15 }, { y: 0, opacity: 1 }, 0.33);
 
       const methodItems = gsap.utils.toArray<HTMLElement>(".ad26-signature article");
@@ -62,9 +100,7 @@ export default function ArtDirectionMotion() {
           end: "bottom 42%",
           onToggle: (self) => {
             item.classList.toggle("is-active", self.isActive);
-            if (self.isActive) {
-              item.parentElement?.style.setProperty("--method-progress", `${((index + 1) / methodItems.length) * 100}%`);
-            }
+            if (self.isActive) item.parentElement?.style.setProperty("--method-progress", `${((index + 1) / methodItems.length) * 100}%`);
           },
         });
       });
@@ -85,9 +121,7 @@ export default function ArtDirectionMotion() {
           end: "bottom 42%",
           onToggle: (self) => {
             item.classList.toggle("is-active", self.isActive);
-            if (self.isActive) {
-              item.parentElement?.style.setProperty("--case-progress", `${((index + 1) / caseItems.length) * 100}%`);
-            }
+            if (self.isActive) item.parentElement?.style.setProperty("--case-progress", `${((index + 1) / caseItems.length) * 100}%`);
           },
         });
       });
@@ -146,6 +180,8 @@ export default function ArtDirectionMotion() {
     });
 
     return () => {
+      window.removeEventListener("scroll", onScroll);
+      sectionTriggers.forEach((trigger) => trigger?.kill());
       document.querySelectorAll<HTMLElement>(".ad26-primary, .ad26-nav-cta").forEach((el) => el.__motionCleanup?.());
       ctx.revert();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
