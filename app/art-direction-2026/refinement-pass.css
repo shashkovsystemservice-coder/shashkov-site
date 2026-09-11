@@ -1,19 +1,20 @@
 .ad26-statement{grid-template-columns:minmax(0,1.18fr) minmax(320px,.52fr);gap:clamp(54px,7vw,118px)}
 .ad26-statement-copy{max-width:1040px}
-.ad26-diagnostic-field{width:min(36vw,540px);aspect-ratio:16/9;margin-left:auto;border:1px solid rgba(255,255,255,.085);background:linear-gradient(180deg,rgba(255,255,255,.018),rgba(255,255,255,.004));box-shadow:inset 0 0 0 1px rgba(255,255,255,.018);overflow:hidden}
-.ad26-diagnostic-field:before{display:none}
-.ad26-diagnostic-field svg{display:block;width:100%;height:100%}
-.df-frame path{fill:none;stroke:rgba(255,255,255,.038);stroke-width:1;vector-effect:non-scaling-stroke}
+.ad26-diagnostic-field{position:relative;width:min(36vw,560px);aspect-ratio:16/9;margin-left:auto;border:0;background:transparent;overflow:visible;padding-top:26px}
+.ad26-diagnostic-field:before{content:"СИГНАЛЫ   →   ФОКУС   →   ОГРАНИЧЕНИЕ";display:block;position:absolute;left:0;right:0;top:0;color:rgba(213,221,227,.55);font-size:10px;font-weight:700;letter-spacing:.16em;white-space:pre;pointer-events:none}
+.ad26-diagnostic-field:after{content:"Не выбрать инструмент — найти точку, которая реально меняет решение";position:absolute;left:0;right:0;bottom:-24px;color:rgba(213,221,227,.45);font-size:10px;letter-spacing:.02em;line-height:1.35;pointer-events:none}
+.ad26-diagnostic-field svg{display:block;width:100%;height:100%;overflow:visible}
+.df-frame path{fill:none;stroke:rgba(255,255,255,.028);stroke-width:1;vector-effect:non-scaling-stroke}
 .df-route{fill:none;stroke:#8ea0af;stroke-width:1.45;vector-effect:non-scaling-stroke}
 .df-route-b{stroke:rgba(142,160,175,.58)}
 .df-route-c{stroke:rgba(142,160,175,.38)}
-.df-route-main{stroke:#d5dde3;stroke-width:2}
-.df-route-ghost{stroke:rgba(142,160,175,.16);stroke-width:1}
-.df-focus-halo{fill:rgba(213,221,227,.025);stroke:rgba(213,221,227,.12);stroke-width:1}
-.df-focus-ring{fill:rgba(213,221,227,.04);stroke:rgba(213,221,227,.58);stroke-width:1.25}
-.df-focus-core{fill:#d5dde3;stroke:#f4f7f9;stroke-width:1}
-.df-scan{fill:none;stroke:rgba(213,221,227,.72);stroke-width:1.5;stroke-linecap:round}
-.df-points circle{fill:#0d1724;stroke:rgba(185,198,207,.62);stroke-width:1.2}
+.df-route-main{stroke:#d5dde3;stroke-width:2.1}
+.df-route-ghost{stroke:rgba(142,160,175,.10);stroke-width:1}
+.df-focus-halo{fill:none!important;stroke:rgba(213,221,227,.10);stroke-width:1;transform-box:fill-box;transform-origin:center}
+.df-focus-ring{fill:none!important;stroke:rgba(213,221,227,.58);stroke-width:1.25;transform-box:fill-box;transform-origin:center}
+.df-focus-core{fill:#d5dde3!important;stroke:#f4f7f9;stroke-width:1;transform-box:fill-box;transform-origin:center}
+.df-scan{display:none!important;fill:none!important}
+.df-points circle{fill:#0d1724;stroke:rgba(185,198,207,.62);stroke-width:1.2;transform-box:fill-box;transform-origin:center}
 .df-points .df-point-output{fill:#d5dde3;stroke:#f4f7f9}
 
 .ad26-statement-copy:after{content:"";display:block;width:72px;height:1px;margin-top:42px;background:linear-gradient(90deg,rgba(255,255,255,.55),rgba(255,255,255,0))}
@@ -22,17 +23,21 @@
 .ad26-situations article:hover:after,.ad26-signature article.is-active:after,.ad26-case-flow article:hover:after{right:0}
 
 @media(max-width:900px){
-  .ad26-statement{padding-top:86px;padding-bottom:90px}
+  .ad26-statement{padding-top:86px;padding-bottom:98px}
   .ad26-statement-copy:after{margin-top:30px}
-  .ad26-diagnostic-field{width:100%;max-width:none;aspect-ratio:1.78;margin:34px 0 0}
+  .ad26-diagnostic-field{width:100%;max-width:none;aspect-ratio:1.9;margin:36px 0 0;padding-top:24px}
+  .ad26-diagnostic-field:before{font-size:9px;letter-spacing:.11em}
+  .ad26-diagnostic-field:after{font-size:9px;bottom:-22px}
   .ad26-diagnostic-field svg{transform:none}
   .ad26-statement h2{font-size:clamp(42px,10.7vw,58px);line-height:.98}
-  .ad26-statement-foot{margin-top:42px}
+  .ad26-statement-foot{margin-top:44px}
 }
 
 @media(max-width:560px){
   .ad26-statement{padding-left:22px;padding-right:22px}
-  .ad26-diagnostic-field{margin-top:28px}
+  .ad26-diagnostic-field{margin-top:30px;aspect-ratio:2.05}
+  .ad26-diagnostic-field:before{content:"СИГНАЛЫ  →  ФОКУС  →  ОГРАНИЧЕНИЕ";font-size:8px;letter-spacing:.08em}
+  .ad26-diagnostic-field:after{font-size:8px;max-width:92%}
   .ad26-statement-copy:after{width:52px}
 }
 
