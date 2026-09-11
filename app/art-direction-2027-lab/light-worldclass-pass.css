@@ -1,0 +1,141 @@
+/* Light worldclass pass: calmer hierarchy, lighter surfaces, fewer theatrical shifts. */
+.ad27{--paper:#f7f7f4;--ink:#111318;--muted:#6f747b;--dark:#17191e;--line:rgba(17,19,24,.11);--light:#f8f8f6;background:var(--paper)!important}
+.ad27 section{background:transparent}
+.ad27-nav{background:rgba(248,248,245,.94)!important;border-bottom:1px solid rgba(17,19,24,.08)!important;box-shadow:none!important}
+.ad27-brand>span{border-color:transparent!important;background:transparent!important}
+
+/* Proof rail: visual proof, but no heavy black strip. */
+.ad27-topcase-reel{background:#f0f1f2!important;color:var(--ink)!important;border-bottom:1px solid var(--line)!important}
+.ad27-topcase-head strong{color:#5d636b!important}
+.ad27-topcase-head span{color:#8a9097!important}
+.ad27-topcase-head a{color:var(--studio-blue)!important}
+.ad27-topcase-card{border-color:rgba(17,19,24,.08)!important;box-shadow:0 4px 18px rgba(20,24,30,.05)}
+
+/* Hero: editorial but lighter, smaller, calmer. */
+.ad27-hero{background:#f7f7f4!important;min-height:auto!important;padding-top:104px!important;padding-bottom:72px!important;align-items:center!important}
+.ad27-hero::before{background:rgba(17,19,24,.08)!important}
+.ad27-hero h1{font-size:clamp(62px,7vw,108px)!important;line-height:.9!important;letter-spacing:-.055em!important;max-width:900px!important}
+.ad27-hero h1 em::after{height:3px!important}
+.ad27-hero-lead{border-top:1px solid var(--line)!important;margin-top:34px!important;padding-top:16px!important}
+.ad27-hero-image{min-height:560px!important;background:#e6e7e8!important;clip-path:none!important;border-radius:0!important}
+.ad27-hero-image::after{background:linear-gradient(180deg,transparent 72%,rgba(17,19,24,.08))!important}
+
+/* Trust proof becomes white inventory rather than a dark band. */
+.ad27-proof{background:#fff!important;color:var(--ink)!important;border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
+.ad27-proof article{min-height:118px!important}
+.ad27-proof article+article{border-left-color:var(--line)!important}
+.ad27-proof strong{color:var(--ink)!important;font-size:18px!important}
+.ad27-proof span{color:#6d737b!important}
+.ad27-proof article:first-child strong::before{font-size:38px!important}
+
+/* Principle is the first strong pause, still light. */
+.ad27-principle{background:#eef0f2!important;color:var(--ink)!important;border-top:0!important;border-bottom:1px solid var(--line)!important}
+.ad27-principle-copy span,.ad27-principle-copy strong{color:var(--ink)!important}
+
+/* Unify section rhythm. */
+.ad27-recognition,.ad27-approach,.ad27-brief,.ad27-about,.ad27-values,.ad27-continuation,.ad27-projects,.ad27-faq{padding-top:clamp(88px,8vw,128px)!important;padding-bottom:clamp(88px,8vw,128px)!important}
+.ad27-section-head h2,.ad27-approach h2,.ad27-brief h2,.ad27-about h2,.ad27-values h2,.ad27-continuation h2,.ad27-projects h2,.ad27-faq h2{font-size:clamp(42px,4.8vw,72px)!important;line-height:.96!important;letter-spacing:-.045em!important}
+.ad27-kicker,.ad27-section-no,.ad27-section-head>p,.ad27-approach-intro>p{letter-spacing:.06em!important}
+
+/* Recognition: no hovering theatrics, more like a clear editorial list. */
+.ad27-recognition{background:#fff!important}
+.ad27-situation-list{border-top:1px solid var(--line)!important}
+.ad27-situation-list article{padding:22px 0!important;background:transparent!important}
+.ad27-situation-list article:hover{padding-left:0!important;background:transparent!important}
+.ad27-situation-list article>span{font-weight:700!important}
+
+/* Diagnosis: remove 210svh black cinematic scene entirely. */
+.ad27-diagnosis{height:auto!important;min-height:0!important;background:#f1f2f3!important;color:var(--ink)!important}
+.ad27-diagnosis-sticky{position:relative!important;top:auto!important;height:auto!important;min-height:0!important;padding:clamp(90px,9vw,138px) 28px!important;border:0!important;overflow:visible!important}
+.ad27-diagnosis-sticky::before{display:none!important}
+.ad27-diagnosis .ad27-kicker,.ad27-diagnosis .ad27-kicker-light{color:#757b82!important}
+.ad27-diagnosis h2{margin:20px 0 58px!important;font-size:clamp(46px,5.8vw,84px)!important;line-height:.96!important;letter-spacing:-.05em!important;color:var(--ink)!important}
+.ad27-diagnosis h2 span{color:#777d84!important;transform:none!important;opacity:1!important}
+.ad27-reframe-grid{border-top:1px solid var(--line)!important;gap:32px!important}
+.ad27-reframe-grid div{opacity:1!important}
+.ad27-reframe-grid small{color:#8a9097!important}
+.ad27-reframe-grid strong{font-size:clamp(24px,2.5vw,36px)!important;color:var(--ink)!important}
+.ad27-rule{color:#686f77!important;max-width:760px!important}
+
+/* Method: one consistent type hierarchy. */
+.ad27-approach{background:#fff!important}
+.ad27-approach-steps{border-top:1px solid var(--line)!important}
+.ad27-approach-steps strong{font-size:17px!important;text-transform:none!important;letter-spacing:-.01em!important}
+.ad27-approach-steps p{font-size:16px!important;line-height:1.45!important}
+.ad27-approach-steps article:hover strong{color:var(--ink)!important}
+
+/* Brief: soft product surface. */
+.ad27-brief{background:#f0f2f4!important}
+.ad27-brief-lines{box-shadow:none!important;border:1px solid var(--line)!important;background:#fff!important;padding-left:0!important}
+.ad27-brief-lines::before{display:none!important}
+.ad27-brief-lines>div:first-child strong{font-size:19px!important}
+
+/* Main case: keep premium contrast through typography, not a black wall. */
+.ad27-case{background:#fff!important;color:var(--ink)!important;min-height:0!important;padding-top:clamp(100px,9vw,140px)!important;padding-bottom:clamp(100px,9vw,140px)!important;border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
+.ad27-case::before{color:#a2a6ab!important}
+.ad27-case-label,.ad27-case-lead>p,.ad27-case-steps article span,.ad27-case-action>span,.ad27-artifact span,.ad27-case-status,.ad27-case blockquote small{color:#737981!important}
+.ad27-case-lead h2{font-size:clamp(50px,6.5vw,94px)!important;line-height:.92!important;letter-spacing:-.055em!important;color:var(--ink)!important}
+.ad27-case-steps{border-top:1px solid var(--line)!important}
+.ad27-case-steps article{border-bottom-color:var(--line)!important}
+.ad27-case-steps h3,.ad27-case-steps p,.ad27-case-action p,.ad27-artifact strong,.ad27-artifact p,.ad27-artifact a,.ad27-case blockquote{color:var(--ink)!important}
+.ad27-artifact{background:#f3f4f5!important;border-left:3px solid var(--studio-blue)!important}
+.ad27-case blockquote::before{opacity:.9}
+
+/* Values: clean principles list, not another manifesto wall. */
+.ad27-values{background:#f7f7f4!important;color:var(--ink)!important}
+.ad27-values-grid{border-top:1px solid var(--line)!important}
+.ad27-value{background:transparent!important;border-color:var(--line)!important}
+.ad27-value h3{font-size:clamp(24px,2.6vw,36px)!important}
+.ad27-values-close{background:#fff!important;border:1px solid var(--line)!important;color:var(--ink)!important}
+
+/* Continuation: QTIM-like large rows, not pricing cards. */
+.ad27-continuation{background:#fff!important}
+.ad27-continuation-grid{display:block!important;border-top:1px solid var(--ink)!important}
+.ad27-continuation-grid article{min-height:0!important;display:grid!important;grid-template-columns:180px minmax(0,1fr) auto;column-gap:32px!important;align-items:start;padding:28px 0!important;border-right:0!important;border-bottom:1px solid var(--line)!important;background:transparent!important;color:var(--ink)!important;margin:0!important}
+.ad27-continuation-grid article:nth-child(2){background:transparent!important;color:var(--ink)!important;margin:0!important}
+.ad27-continuation-grid article:nth-child(2) p,.ad27-continuation-grid article:nth-child(2) li,.ad27-continuation-grid article:nth-child(2) a{color:inherit!important}
+.ad27-continuation-grid article:nth-child(2)>span{color:var(--studio-blue)!important}
+.ad27-continuation-grid h3{font-size:clamp(26px,3vw,42px)!important;margin:0 0 12px!important}
+.ad27-continuation-grid article>a{margin-top:0!important;align-self:center!important;white-space:nowrap}
+
+/* About and projects: lighter, more visual, less presentation-like. */
+.ad27-about{background:#f6f7f7!important}
+.ad27-about-image{box-shadow:none!important}
+.ad27-about-foundations{border-top:1px solid var(--line)!important}
+.ad27-projects{background:#fff!important;color:var(--ink)!important}
+.ad27-projects .ad27-section-no,.ad27-projects .ad27-kicker{color:#777d84!important}
+.ad27-project-list{border-top:1px solid var(--ink)!important}
+.ad27-project-list article{border-bottom-color:var(--line)!important}
+.ad27-project-list article:hover{padding-left:0!important}
+.ad27-project-list em,.ad27-project-list p{color:#666d75!important}
+.ad27-project-list a{color:var(--ink)!important;border-bottom-color:rgba(17,19,24,.28)!important}
+
+.ad27-faq{background:#f7f7f4!important}
+.ad27-faq-list{border-top:1px solid var(--ink)!important}
+
+/* Only the ending remains deliberately dark. */
+.ad27-contact{background:#15171b!important;border-top:3px solid var(--studio-blue)!important;min-height:auto!important;padding-top:clamp(96px,10vw,140px)!important;padding-bottom:clamp(70px,8vw,110px)!important}
+.ad27-contact h2{font-size:clamp(54px,7vw,98px)!important;line-height:.92!important}
+
+@media(max-width:900px){
+  .ad27-hero{padding:76px 20px 44px!important;gap:18px!important}
+  .ad27-hero h1{font-size:clamp(42px,11.5vw,58px)!important;line-height:.94!important;margin-top:18px!important}
+  .ad27-hero-image{min-height:48svh!important}
+  .ad27-proof article{min-height:auto!important}
+  .ad27-principle{padding-top:54px!important;padding-bottom:54px!important}
+  .ad27-recognition,.ad27-approach,.ad27-brief,.ad27-about,.ad27-values,.ad27-continuation,.ad27-projects,.ad27-faq{padding-top:72px!important;padding-bottom:72px!important}
+  .ad27-diagnosis-sticky{padding:72px 20px!important}
+  .ad27-diagnosis h2{font-size:clamp(38px,10vw,50px)!important;margin-bottom:40px!important}
+  .ad27-case{padding:76px 20px 82px!important}
+  .ad27-case-lead h2{font-size:clamp(42px,11vw,58px)!important}
+  .ad27-continuation-grid article,.ad27-continuation-grid article:nth-child(2){display:block!important;padding:24px 0!important;margin:0!important;background:transparent!important;color:var(--ink)!important}
+  .ad27-continuation-grid article>a{display:inline-block!important;margin-top:18px!important}
+  .ad27-about-image{box-shadow:none!important}
+  .ad27-contact{padding:76px 20px 72px!important}
+  .ad27-contact h2{font-size:clamp(42px,11vw,58px)!important}
+}
+
+@media(max-width:390px){
+  .ad27-hero h1{font-size:42px!important}
+  .ad27-section-head h2,.ad27-approach h2,.ad27-brief h2,.ad27-about h2,.ad27-values h2,.ad27-continuation h2,.ad27-projects h2,.ad27-faq h2{font-size:38px!important}
+}
