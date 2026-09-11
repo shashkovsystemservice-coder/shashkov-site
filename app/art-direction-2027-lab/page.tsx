@@ -4,6 +4,7 @@ import "./art-direction-2027.css";
 import "./production-fidelity-pass.css";
 import "./worldclass-polish.css";
 import "./mobile-qa-fix.css";
+import "./brand-proof-pass.css";
 
 const situations = [
   "Продажи перестали расти. Команда предлагает больше рекламы — но непонятно, в ней ли проблема",
@@ -44,6 +45,8 @@ export default function ArtDirection2027Lab() {
       </section>
 
       <section className="ad27-proof" aria-label="Основания доверия"><article><strong>24 года внутри бизнеса</strong><span>маркетинговые и бизнес-решения на стыке рынка, продукта, продаж и исполнения</span></article><article><strong>Heidelberg · Nokian Tyres · Роснано · Росатом</strong><span>опыт там, где рыночное обещание нужно не только сформулировать, но и реально выполнить</span></article></section>
+
+      <section className="ad27-principle" aria-label="Принцип работы"><div className="ad27-principle-label">Принцип</div><div className="ad27-principle-copy"><span>Сначала понять проблему.</span><span>Потом выбирать решение.</span><strong>И только потом — инструмент.</strong></div></section>
 
       <section className="ad27-recognition" id="situations" data-scene="recognition">
         <div className="ad27-section-no">01</div><div className="ad27-section-head"><p>Узнали себя?</p><h2>Проблема часто звучит просто.<br/><span>Решение — уже нет.</span></h2></div>
