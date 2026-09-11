@@ -1,0 +1,164 @@
+/* Brand + proof pass: stronger authorship, clearer commercial confidence, no new claims. */
+
+/* 1. Make the top proof strip feel like evidence, not metadata. */
+.ad27-proof{
+  position:relative;
+  grid-template-columns:.72fr 1.28fr;
+  background:#ececea!important;
+}
+.ad27-proof article{min-height:132px!important}
+.ad27-proof article:first-child strong{
+  font-size:clamp(28px,2.7vw,44px)!important;
+  line-height:.95;
+  letter-spacing:-.045em!important;
+  font-weight:620;
+}
+.ad27-proof article:nth-child(2) strong{
+  max-width:880px;
+  font-size:clamp(18px,1.55vw,25px)!important;
+  line-height:1.08;
+  letter-spacing:-.03em!important;
+  font-weight:620;
+}
+.ad27-proof span{font-size:12px!important;max-width:700px}
+
+/* 2. A recurring operating principle becomes the recognizable law of the site. */
+.ad27-principle{
+  display:grid;
+  grid-template-columns:68px minmax(0,1fr);
+  gap:36px;
+  padding:72px var(--page-x) 78px;
+  border-bottom:1px solid var(--line);
+  background:var(--paper);
+}
+.ad27-principle-label{
+  padding-top:7px;
+  font-size:9px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#9aa0a6;
+}
+.ad27-principle-copy{
+  max-width:1320px;
+  font-size:clamp(38px,4.75vw,76px);
+  line-height:.96;
+  letter-spacing:-.055em;
+  font-weight:560;
+}
+.ad27-principle-copy span{display:block;color:#8a9097}
+.ad27-principle-copy strong{display:block;color:var(--ink);font-weight:660}
+
+/* 3. Recognition should feel like the principle being applied, not another section. */
+.ad27-recognition{border-bottom:1px solid var(--line)}
+.ad27-situation-list article{transition:background .2s ease,padding-left .2s ease}
+@media(hover:hover){
+  .ad27-situation-list article:hover{background:rgba(17,19,24,.025);padding-left:10px}
+}
+
+/* 4. Keep the method as the intellectual spine. */
+.ad27-approach-intro>p::after{
+  content:"  ·  от версии к проверке";
+  color:#a0a5aa;
+}
+.ad27-approach-steps article>span{font-variant-numeric:tabular-nums}
+.ad27-approach-steps article:nth-child(2){
+  border-top:2px solid var(--ink);
+  margin-top:-1px;
+}
+
+/* 5. Decision Brief: product clarity without UI-card language. */
+.ad27-brief{position:relative}
+.ad27-brief::before{
+  content:"";
+  position:absolute;
+  left:var(--page-x);
+  right:var(--page-x);
+  top:0;
+  height:1px;
+  background:rgba(17,19,24,.14);
+}
+.ad27-brief-lines>div:first-child strong{font-size:clamp(20px,1.7vw,27px);letter-spacing:-.025em}
+.ad27-brief-lines>div:first-child{padding-top:26px;padding-bottom:27px}
+
+/* 6. Case: make evidence read as evidence. */
+.ad27-case-action{
+  margin-top:54px!important;
+  padding-top:24px!important;
+  border-top:1px solid rgba(255,255,255,.16)!important;
+}
+.ad27-artifact{
+  margin-top:36px!important;
+  border-top:1px solid rgba(255,255,255,.16)!important;
+  border-bottom:1px solid rgba(255,255,255,.16)!important;
+  background:transparent!important;
+}
+.ad27-case blockquote{
+  margin-top:58px!important;
+  padding-top:24px!important;
+  border-top:1px solid rgba(255,255,255,.16)!important;
+}
+
+/* 7. Commercial clarity: the diagnostic review is the tangible paid entry point. */
+.ad27-continuation-grid article:nth-child(2){
+  position:relative;
+  background:rgba(17,19,24,.035);
+  padding-left:24px!important;
+  padding-right:24px!important;
+}
+.ad27-continuation-grid article:nth-child(2)::before{
+  content:"3 дня";
+  display:block;
+  margin-bottom:26px;
+  font-size:clamp(30px,3vw,46px);
+  line-height:.9;
+  letter-spacing:-.045em;
+  font-weight:620;
+  color:var(--ink);
+}
+.ad27-continuation-grid article:nth-child(2) li:first-child{display:none}
+
+/* 8. Projects are proof inventory: reduce card feeling, increase contrast of the business question. */
+.ad27-project-list article{position:relative}
+.ad27-project-list h3{max-width:720px;font-weight:620}
+.ad27-project-list p{max-width:680px}
+.ad27-project-list article>span{margin-bottom:2px}
+
+/* 9. About: give the portrait and operating belief equal authority. */
+.ad27-about-copy>p:first-of-type + h2{max-width:900px}
+.ad27-about-foundations strong{font-size:15px!important;letter-spacing:-.015em}
+
+/* 10. Final action: one clear primary route, Telegram secondary. */
+.ad27-contact-actions .ad27-action-primary{font-size:14px}
+.ad27-contact-actions .ad27-action-text{opacity:.82}
+.ad27-footer-brand>span{font-family:Georgia,'Times New Roman',serif;font-size:19px!important;letter-spacing:-.07em}
+
+@media(max-width:900px){
+  .ad27-proof{grid-template-columns:1fr!important}
+  .ad27-proof article{min-height:auto!important;padding-top:20px!important;padding-bottom:20px!important}
+  .ad27-proof article:first-child strong{font-size:31px!important}
+  .ad27-proof article:nth-child(2) strong{font-size:19px!important;line-height:1.12}
+  .ad27-principle{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:54px 20px 58px;
+  }
+  .ad27-principle-label{padding-top:0}
+  .ad27-principle-copy{font-size:clamp(34px,9.8vw,46px);line-height:.98}
+  .ad27-principle-copy span,.ad27-principle-copy strong{display:block}
+  .ad27-approach-intro>p::after{content:""}
+  .ad27-approach-steps article:nth-child(2){border-top:1px solid var(--line);margin-top:0}
+  .ad27-case-action{margin-top:38px!important}
+  .ad27-artifact{margin-top:28px!important}
+  .ad27-case blockquote{margin-top:40px!important}
+  .ad27-continuation-grid article:nth-child(2){padding-left:0!important;padding-right:0!important;background:transparent}
+  .ad27-continuation-grid article:nth-child(2)::before{margin-bottom:18px;font-size:32px}
+  .ad27-contact-actions .ad27-action-primary{font-size:13px}
+}
+
+@media(max-width:390px){
+  .ad27-principle{padding-top:48px;padding-bottom:52px}
+  .ad27-principle-copy{font-size:34px}
+  .ad27-proof article:first-child strong{font-size:29px!important}
+}
