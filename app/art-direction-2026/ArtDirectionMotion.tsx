@@ -35,6 +35,7 @@ export default function ArtDirectionMotion() {
     const rail = gsap.utils.toArray<HTMLElement>(".ad26-progress-rail span");
     const portrait = document.querySelector<HTMLElement>(".ad26-portrait");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.matchMedia("(max-width: 900px)").matches;
     if (!root) return;
 
     const cleanup: Array<() => void> = [];
@@ -79,8 +80,8 @@ export default function ArtDirectionMotion() {
     if (diagnosis) {
       const diagnosisTrigger = ScrollTrigger.create({
         trigger: diagnosis,
-        start: "top top",
-        end: "bottom bottom",
+        start: isMobile ? "top 82%" : "top top",
+        end: isMobile ? "bottom 18%" : "bottom bottom",
         scrub: true,
         onUpdate: (self) => root.style.setProperty("--diagnosis-progress", self.progress.toFixed(4)),
       });
