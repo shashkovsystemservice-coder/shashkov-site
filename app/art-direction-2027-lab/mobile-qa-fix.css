@@ -1,0 +1,67 @@
+/* Mobile QA correction based on real iPhone screenshots. */
+@media (max-width:900px){
+  .ad27{overflow-x:clip}
+  .ad27 *{min-width:0}
+
+  /* Decision Brief must be a single reading column on mobile. */
+  .ad27-brief{
+    display:block!important;
+    grid-template-columns:1fr!important;
+    gap:0!important;
+  }
+  .ad27-brief-copy{width:100%;max-width:none}
+  .ad27-brief-copy h2{max-width:11ch}
+  .ad27-brief-copy>p:not(.ad27-kicker){max-width:31ch;line-height:1.48}
+  .ad27-brief .ad27-action-primary{margin-top:24px}
+  .ad27-brief-lines{
+    width:100%;
+    margin-top:48px;
+    overflow:hidden;
+  }
+  .ad27-brief-lines>div{
+    grid-template-columns:68px minmax(0,1fr)!important;
+    gap:14px!important;
+    padding:16px 0!important;
+  }
+  .ad27-brief-lines span{font-size:8px;line-height:1.25;letter-spacing:.1em}
+  .ad27-brief-lines strong{font-size:15px!important;line-height:1.3;overflow-wrap:anywhere}
+
+  /* Keep the service-choice sequence compact before About. */
+  .ad27-continuation{padding-bottom:54px!important}
+  .ad27-continuation-grid{display:block!important}
+  .ad27-continuation-grid article{min-height:0!important;padding:22px 0 26px!important}
+  .ad27-continuation-grid h3{font-size:27px!important;line-height:1.08!important}
+  .ad27-continuation-grid p,.ad27-continuation-grid li{font-size:14px;line-height:1.5}
+  .ad27-continuation-grid ul{padding-left:18px;margin:18px 0}
+
+  /* Reduce the dead hand-off into About. */
+  .ad27-about{padding-top:62px!important}
+  .ad27-about .ad27-section-no{margin-bottom:24px}
+
+  /* Closing scene: authoritative, but not a five-line billboard. */
+  .ad27-contact{padding-top:68px!important}
+  .ad27-contact-grid h2{
+    max-width:12ch;
+    font-size:clamp(36px,10.2vw,44px)!important;
+    line-height:.98!important;
+    letter-spacing:-.055em!important;
+  }
+  .ad27-contact-grid>div>p:not(.ad27-kicker){font-size:14px;line-height:1.5}
+  .ad27-contact-actions{margin-top:24px;gap:12px!important}
+  .ad27-contact-form{margin-top:0;padding-top:16px}
+  .ad27-contact-grid{gap:42px!important}
+  .ad27-footer{margin-top:62px}
+
+  /* Header: preserve breathing room around the monogram/name pair. */
+  .ad27-brand{grid-template-columns:31px minmax(0,1fr)!important;column-gap:8px!important}
+  .ad27-brand strong{font-size:11px;white-space:nowrap}
+  .ad27-nav-cta{font-size:11px}
+}
+
+@media (max-width:390px){
+  .ad27{--page-x:18px}
+  .ad27-brief-copy h2{font-size:39px!important}
+  .ad27-contact-grid h2{font-size:36px!important}
+  .ad27-brief-lines>div{grid-template-columns:60px minmax(0,1fr)!important;gap:12px!important}
+  .ad27-brand strong{font-size:10.5px}
+}
