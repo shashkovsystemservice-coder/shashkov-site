@@ -11,6 +11,7 @@ export default function ArtDirectionMotion() {
 
     const root = document.querySelector<HTMLElement>(".ad26");
     const nav = document.querySelector<HTMLElement>(".ad26-nav");
+    const rail = gsap.utils.toArray<HTMLElement>(".ad26-progress-rail span");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const onScroll = () => nav?.classList.toggle("is-scrolled", window.scrollY > 48);
@@ -28,18 +29,25 @@ export default function ArtDirectionMotion() {
       [".ad26-contact", "05 · Следующий шаг"],
     ];
 
-    const sectionTriggers = sectionMap.map(([selector, label]) => {
+    const sectionTriggers = sectionMap.map(([selector, label], index) => {
       const element = document.querySelector(selector);
       if (!element) return null;
       return ScrollTrigger.create({
         trigger: element,
         start: "top 55%",
         end: "bottom 45%",
-        onEnter: () => root?.setAttribute("data-section", label),
-        onEnterBack: () => root?.setAttribute("data-section", label),
+        onEnter: () => {
+          root?.setAttribute("data-section", label);
+          rail.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+        },
+        onEnterBack: () => {
+          root?.setAttribute("data-section", label);
+          rail.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+        },
       });
     });
     root?.setAttribute("data-section", "00 · Ввод");
+    rail[0]?.classList.add("is-active");
 
     if (reducedMotion) {
       return () => {
@@ -59,16 +67,17 @@ export default function ArtDirectionMotion() {
         .from(".ad26-portrait", { clipPath: "inset(5% 6% 6% 5%)", scale: 1.035, opacity: 0, duration: 0.95 }, 0.12);
 
       gsap.to(".ad26-portrait img", {
-        yPercent: 6,
-        scale: 1.045,
+        yPercent: 9,
+        scale: 1.07,
         ease: "none",
-        scrollTrigger: { trigger: ".ad26-hero", start: "top top", end: "bottom top", scrub: 0.7 },
+        scrollTrigger: { trigger: ".ad26-hero", start: "top top", end: "bottom top", scrub: 0.75 },
       });
 
       gsap.to(".ad26-hero-copy", {
-        x: -14,
+        yPercent: -7,
+        opacity: 0.78,
         ease: "none",
-        scrollTrigger: { trigger: ".ad26-hero", start: "55% 55%", end: "bottom top", scrub: true },
+        scrollTrigger: { trigger: ".ad26-hero", start: "45% 45%", end: "bottom top", scrub: true },
       });
 
       gsap.utils.toArray<HTMLElement>(".ad26-situations article").forEach((item) => {
@@ -78,6 +87,12 @@ export default function ArtDirectionMotion() {
           end: "bottom 40%",
           onToggle: (self) => item.classList.toggle("is-active", self.isActive),
         });
+      });
+
+      gsap.fromTo(".ad26-statement", { clipPath: "inset(7% 0 0 0)" }, {
+        clipPath: "inset(0% 0 0 0)",
+        ease: "none",
+        scrollTrigger: { trigger: ".ad26-statement", start: "top 96%", end: "top 55%", scrub: 0.7 },
       });
 
       const statement = gsap.timeline({
@@ -110,8 +125,15 @@ export default function ArtDirectionMotion() {
       });
       brief
         .from(".ad26-brief-copy", { y: 26, opacity: 0, duration: 0.62, ease: "power3.out" })
-        .from(".ad26-brief-product", { x: 34, opacity: 0, duration: 0.68, ease: "power3.out" }, "-=.4")
+        .from(".ad26-brief-product", { x: 42, rotate: 2, opacity: 0, duration: 0.76, ease: "power3.out" }, "-=.4")
         .to(".ad26-brief-row", { opacity: 1, y: 0, stagger: 0.1, duration: 0.32, ease: "power2.out" }, "-=.22");
+
+      gsap.to(".ad26-brief-product", {
+        yPercent: -4,
+        rotate: 0,
+        ease: "none",
+        scrollTrigger: { trigger: ".ad26-brief", start: "top bottom", end: "bottom top", scrub: 0.8 },
+      });
 
       const caseItems = gsap.utils.toArray<HTMLElement>(".ad26-case-flow article");
       caseItems.forEach((item, index) => {
@@ -143,8 +165,8 @@ export default function ArtDirectionMotion() {
       });
 
       gsap.to(".ad26-about-portrait img", {
-        yPercent: 5,
-        scale: 1.035,
+        yPercent: 7,
+        scale: 1.055,
         ease: "none",
         scrollTrigger: { trigger: ".ad26-about", start: "top bottom", end: "bottom top", scrub: 0.8 },
       });
