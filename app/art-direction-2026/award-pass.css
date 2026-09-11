@@ -1,0 +1,310 @@
+/* Award-level refinement pass: web-native composition, quieter proprietary motif, robust print behavior. */
+
+.ad26{
+  --award-paper:#f4f1ea;
+  --award-paper-2:#fbfaf6;
+  --award-ink:#0e1420;
+  --award-navy:#0d1a2b;
+  --award-blue:#7184e8;
+  --award-blue-soft:#9eacf4;
+  --award-muted:#69717f;
+  --award-line:rgba(14,20,32,.14);
+  --award-max:1540px;
+  background:var(--award-paper);
+}
+
+/* --- Brand / navigation --- */
+.ad26-nav{
+  min-height:76px;
+  padding-inline:max(var(--pad),calc((100vw - var(--award-max))/2 + 32px));
+  background:color-mix(in srgb,var(--award-paper) 86%,transparent);
+  border-bottom:1px solid rgba(14,20,32,.08);
+}
+.ad26-brand-mark{
+  width:40px;height:40px;
+  border-color:rgba(14,20,32,.44);
+  background:rgba(255,255,255,.16);
+}
+.ad26-brand-copy strong{font-weight:650}
+.ad26-brand-copy small{color:#7e8591}
+.ad26-nav-cta{border-color:rgba(14,20,32,.34);padding:10px 16px}
+
+/* --- Hero: fewer boxes, stronger composition, real overlap --- */
+.ad26-hero{
+  max-width:var(--award-max);
+  margin:0 auto;
+  grid-template-columns:minmax(0,1.14fr) minmax(420px,.86fr);
+  min-height:calc(100svh - 76px);
+  background:
+    linear-gradient(90deg,transparent 0 61%,rgba(255,255,255,.22) 61% 100%);
+}
+.ad26-hero:before{
+  background:
+    linear-gradient(90deg,transparent 0 61%,rgba(113,132,232,.045) 61% 100%),
+    linear-gradient(180deg,transparent 72%,rgba(14,20,32,.025));
+}
+.ad26-signal-map{display:none}
+.ad26-hero-copy{
+  padding:clamp(72px,7.5vw,122px) clamp(28px,4.2vw,66px) clamp(64px,6vw,98px) max(var(--pad),32px);
+}
+.ad26-hero h1{
+  max-width:920px;
+  margin-top:34px;
+  font-size:clamp(64px,6.35vw,100px);
+  font-weight:560;
+  line-height:.93;
+  letter-spacing:-.061em;
+}
+.ad26-hero-bottom{
+  grid-template-columns:minmax(0,1fr) minmax(210px,240px);
+  margin-top:52px;
+  border-top:1px solid rgba(14,20,32,.16);
+}
+.ad26-hero-thesis{font-size:15px!important;letter-spacing:-.01em}
+.ad26-hero-proof{max-width:690px}
+.ad26-portrait{
+  min-height:calc(100svh - 76px);
+  isolation:isolate;
+}
+.ad26-portrait:before{
+  content:"";
+  position:absolute;z-index:3;
+  left:0;top:9%;bottom:9%;width:1px;
+  background:linear-gradient(transparent,rgba(14,20,32,.22) 18% 82%,transparent);
+}
+.ad26-portrait:after{
+  background:
+    linear-gradient(90deg,rgba(244,241,234,.34),transparent 14%),
+    linear-gradient(180deg,transparent 62%,rgba(13,26,43,.10));
+}
+.ad26-portrait img{filter:saturate(.82) contrast(1.025)}
+
+/* --- Recognition: editorial scanability without slide-box look --- */
+.ad26-recognition{
+  max-width:var(--award-max);margin:0 auto;
+  grid-template-columns:minmax(300px,.66fr) minmax(0,1.34fr);
+  column-gap:clamp(70px,8vw,144px);
+  padding-inline:max(var(--pad),32px);
+}
+.ad26-recognition-head h2,.ad26-method-head h2,.ad26-case-title h2,.ad26-about-title h2{
+  font-weight:560;
+}
+.ad26-situations article{
+  position:relative;
+  grid-template-columns:58px minmax(0,1fr);
+  min-height:178px;
+  padding:34px 0 38px;
+  transition:transform .28s ease,background .28s ease;
+}
+.ad26-situations article:after{
+  content:"↗";
+  position:absolute;right:2px;top:34px;
+  font-size:17px;opacity:0;transform:translate(-8px,8px);
+  transition:opacity .22s ease,transform .22s ease;
+}
+@media (hover:hover){
+  .ad26-situations article:hover{transform:translateX(8px)}
+  .ad26-situations article:hover:after{opacity:.45;transform:none}
+}
+
+/* --- Proprietary motif: diagnostic trace, not giant circles --- */
+.ad26-statement{
+  min-height:82svh;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.015),transparent 26%),
+    var(--award-navy);
+}
+.ad26-statement:before{
+  content:"";
+  position:absolute;
+  inset:10% var(--pad) 12% auto;
+  width:min(43vw,680px);
+  min-width:420px;
+  height:auto;min-height:0;
+  border:0;border-radius:0;box-shadow:none;
+  background:
+    linear-gradient(90deg,transparent 0 8%,rgba(113,132,232,.35) 8% 8.2%,transparent 8.2% 32%,rgba(255,255,255,.10) 32% 32.15%,transparent 32.15% 59%,rgba(113,132,232,.28) 59% 59.2%,transparent 59.2%),
+    linear-gradient(180deg,transparent 0 22%,rgba(255,255,255,.10) 22% 22.15%,transparent 22.15% 49%,rgba(113,132,232,.28) 49% 49.2%,transparent 49.2% 76%,rgba(255,255,255,.08) 76% 76.15%,transparent 76.15%);
+  opacity:.72;
+  transform:none;
+}
+.ad26-statement:after{
+  right:13%;top:49%;
+  width:10px;height:10px;
+  border-color:var(--award-blue-soft);
+  box-shadow:0 0 0 7px rgba(113,132,232,.10),0 0 26px rgba(113,132,232,.2);
+}
+.ad26-statement h2{max-width:1040px;font-weight:560}
+.ad26-statement-foot{max-width:1040px}
+
+/* --- Method: a web sequence, not three PowerPoint boxes --- */
+.ad26-method{
+  max-width:var(--award-max);margin:0 auto;
+  grid-template-columns:minmax(300px,.68fr) minmax(0,1.32fr);
+  column-gap:clamp(72px,8vw,144px);
+  padding-inline:max(var(--pad),32px);
+}
+.ad26-signature{border-top:1px solid rgba(14,20,32,.64)}
+.ad26-signature article{
+  grid-template-columns:78px minmax(0,1fr);
+  min-height:250px;
+  padding-block:38px 46px;
+}
+.ad26-signature article:before{
+  content:"";
+  position:absolute;
+  left:72px;top:0;bottom:0;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(113,132,232,.26) 20% 80%,transparent);
+  opacity:0;transition:opacity .25s ease;
+}
+@media (hover:hover){.ad26-signature article:hover:before{opacity:1}}
+.ad26-signature h3{font-weight:560}
+
+/* --- Decision brief: behaves like a digital product module --- */
+.ad26-brief{
+  max-width:var(--award-max);margin:0 auto;
+  padding-inline:max(var(--pad),32px);
+  background:
+    linear-gradient(90deg,#fff 0 72%,rgba(113,132,232,.055) 72% 100%);
+}
+.ad26-brief:before{
+  right:2%;top:50%;transform:translateY(-50%);
+  width:380px;height:380px;
+  background:
+    repeating-linear-gradient(0deg,rgba(14,20,32,.06) 0 1px,transparent 1px 28px),
+    repeating-linear-gradient(90deg,rgba(14,20,32,.05) 0 1px,transparent 1px 28px);
+  mask-image:linear-gradient(90deg,transparent,#000 30%);
+  opacity:.8;
+}
+.ad26-brief h2{font-weight:560}
+
+/* --- Case: continuous transformation path --- */
+.ad26-case{
+  max-width:var(--award-max);margin:0 auto;
+  grid-template-columns:minmax(300px,.63fr) minmax(0,1.37fr);
+  column-gap:clamp(74px,8vw,140px);
+  padding-inline:max(var(--pad),32px);
+}
+.ad26-case-flow article{padding-left:88px}
+.ad26-case-flow article+article{padding-left:88px}
+.ad26-case-flow article:before{left:8px;width:14px;height:14px;background:var(--award-paper-2)}
+.ad26-case-flow article:not(:last-child):after{left:15px}
+.ad26-case-flow h3{font-weight:560}
+.ad26-case blockquote{font-weight:500}
+
+/* --- About: portrait as evidence, not a centered slide image --- */
+.ad26-about{
+  max-width:var(--award-max);margin:0 auto;
+  padding-inline:max(var(--pad),32px);
+}
+.ad26-about-grid{
+  grid-template-columns:minmax(0,.9fr) minmax(320px,.65fr) minmax(0,.95fr);
+  gap:clamp(42px,5vw,78px);
+}
+.ad26-about-portrait{
+  min-height:610px;
+  transform:translateY(22px);
+}
+.ad26-about-portrait img{object-position:50% 18%}
+
+/* --- Final CTA --- */
+.ad26-contact{
+  position:relative;overflow:hidden;
+  background:var(--award-navy);
+}
+.ad26-contact:after{
+  content:"";position:absolute;right:-10vw;bottom:-16vw;
+  width:38vw;height:38vw;border-radius:50%;
+  border:1px solid rgba(113,132,232,.15);
+  box-shadow:0 0 0 70px rgba(113,132,232,.02),0 0 0 140px rgba(113,132,232,.015);
+  pointer-events:none;
+}
+.ad26-contact>*{position:relative;z-index:2}
+
+/* --- Mobile: scale, not desktop-in-a-column --- */
+@media(max-width:900px){
+  .ad26-nav{padding-inline:18px;min-height:66px}
+  .ad26-brand-copy small{display:none}
+  .ad26-brand-mark{width:34px;height:34px;font-size:15px}
+  .ad26-nav-cta{padding:9px 12px;font-size:12px!important}
+  .ad26-hero{grid-template-columns:1fr;min-height:auto;background:none}
+  .ad26-hero-copy{padding:62px 24px 44px}
+  .ad26-hero h1{font-size:clamp(52px,13vw,72px);line-height:.93;letter-spacing:-.057em}
+  .ad26-hero-bottom{grid-template-columns:1fr;margin-top:38px}
+  .ad26-primary{width:100%}
+  .ad26-hero-proof{display:grid;grid-template-columns:1fr;gap:7px}
+  .ad26-portrait{min-height:58svh;order:2}
+  .ad26-recognition,.ad26-method,.ad26-case{display:block;padding-inline:24px}
+  .ad26-recognition-head,.ad26-method-head,.ad26-case-title{position:static;top:auto;margin-top:22px}
+  .ad26-situations,.ad26-signature,.ad26-case-flow{margin-top:46px}
+  .ad26-situations article,.ad26-signature article,.ad26-case-flow article{min-height:auto}
+  .ad26-statement{min-height:auto;padding:94px 24px}
+  .ad26-statement:before{right:-48%;width:560px;min-width:0;opacity:.38}
+  .ad26-statement h2{font-size:clamp(48px,12vw,68px);line-height:.94}
+  .ad26-statement-foot{grid-template-columns:1fr;gap:28px;margin-top:52px}
+  .ad26-brief{display:block;padding:86px 24px;background:#fff}
+  .ad26-brief:before{display:none}
+  .ad26-brief .ad26-primary{margin-top:34px}
+  .ad26-case blockquote{margin-top:54px}
+  .ad26-about{padding-inline:24px}
+  .ad26-about-grid{grid-template-columns:1fr;gap:34px}
+  .ad26-about-portrait{min-height:66svh;transform:none}
+  .ad26-contact{padding-inline:24px}
+}
+
+@media(max-width:560px){
+  .ad26-hero-copy{padding-top:54px}
+  .ad26-hero h1{font-size:clamp(47px,13.7vw,62px)}
+  .ad26-kicker,.ad26-section-label,.ad26-statement-label{font-size:9px}
+  .ad26-recognition,.ad26-method,.ad26-case,.ad26-about{padding-top:84px;padding-bottom:84px}
+  .ad26-recognition-head h2,.ad26-method-head h2,.ad26-case-title h2,.ad26-about-title h2{font-size:clamp(42px,11vw,56px)}
+  .ad26-situations h3{font-size:27px}
+  .ad26-signature article{grid-template-columns:46px 1fr;padding-block:30px 34px}
+  .ad26-signature article:before{display:none}
+  .ad26-signature h3{font-size:34px}
+  .ad26-case-flow article,.ad26-case-flow article+article{padding-left:52px}
+  .ad26-case-flow article:before{left:0}
+  .ad26-case-flow article:not(:last-child):after{left:7px}
+}
+
+/* --- Print / Save-to-PDF: web and print are separate layouts by design --- */
+@media print{
+  @page{size:A4;margin:12mm}
+  html,body{background:#fff!important}
+  .ad26{overflow:visible!important;background:#fff!important;color:#111!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ad26-nav{position:static!important;display:flex!important;min-height:auto!important;padding:0 0 10mm!important;background:#fff!important;backdrop-filter:none!important;border-bottom:1px solid #bbb!important}
+  .ad26-nav nav a:not(.ad26-nav-cta){display:none!important}
+  .ad26-brand-copy small{display:block!important}
+  .ad26-signal-map,.ad26-statement:before,.ad26-statement:after,.ad26-brief:before,.ad26-contact:after{display:none!important}
+  .ad26-hero,.ad26-recognition,.ad26-method,.ad26-case,.ad26-about,.ad26-brief{display:block!important;max-width:none!important;margin:0!important;min-height:auto!important;padding:14mm 0!important;background:#fff!important;color:#111!important;overflow:visible!important}
+  .ad26-hero{padding-top:12mm!important}
+  .ad26-hero-copy{display:block!important;padding:0!important}
+  .ad26-hero h1,.ad26-statement h2,.ad26-method-head h2,.ad26-recognition-head h2,.ad26-case-title h2,.ad26-about-title h2,.ad26-contact h2{color:#111!important;break-after:avoid;page-break-after:avoid}
+  .ad26-hero h1{font-size:34pt!important;line-height:1.02!important;margin:6mm 0 8mm!important}
+  .ad26-hero-bottom{display:block!important;margin-top:0!important;padding-top:5mm!important}
+  .ad26-primary{display:inline-flex!important;width:auto!important;min-width:0!important;padding:4mm 5mm!important;background:#fff!important;color:#111!important;border:1px solid #777!important}
+  .ad26-hero-proof{display:block!important;margin-top:6mm!important}
+  .ad26-hero-proof>*{display:block;margin-top:2mm}
+  .ad26-portrait{height:86mm!important;min-height:0!important;margin-top:8mm!important;break-inside:avoid;page-break-inside:avoid}
+  .ad26-recognition-head,.ad26-method-head,.ad26-case-title{position:static!important;margin:0 0 8mm!important}
+  .ad26-situations,.ad26-signature,.ad26-case-flow{display:block!important;margin:0!important;border-top:1px solid #999!important}
+  .ad26-situations article,.ad26-signature article,.ad26-case-flow article{display:block!important;min-height:0!important;padding:5mm 0!important;border-bottom:1px solid #ddd!important;break-inside:avoid;page-break-inside:avoid}
+  .ad26-signature h3,.ad26-case-flow h3,.ad26-case-flow p{margin:2mm 0!important}
+  .ad26-statement{display:block!important;min-height:auto!important;margin:0!important;padding:14mm 0!important;background:#101c2d!important;color:#fff!important;break-inside:avoid;page-break-inside:avoid}
+  .ad26-statement h2{color:#fff!important;font-size:29pt!important;line-height:1.04!important}
+  .ad26-statement-foot{display:block!important;margin-top:8mm!important;padding-top:5mm!important}
+  .ad26-statement-foot p{color:#e3e7ef!important;margin-top:3mm!important}
+  .ad26-brief{break-inside:avoid;page-break-inside:avoid;border-top:1px solid #ccc!important;border-bottom:1px solid #ccc!important}
+  .ad26-brief h2{font-size:25pt!important}
+  .ad26-case blockquote{margin:8mm 0 0!important;padding-top:5mm!important;break-inside:avoid;page-break-inside:avoid}
+  .ad26-about-grid{display:grid!important;grid-template-columns:1fr 58mm!important;gap:10mm!important}
+  .ad26-about-portrait{grid-column:2!important;grid-row:1/3!important;height:78mm!important;min-height:0!important;transform:none!important}
+  .ad26-about-copy{grid-column:1!important}
+  .ad26-contact{margin:0!important;padding:14mm 0!important;background:#101c2d!important;color:#fff!important;break-inside:avoid;page-break-inside:avoid}
+  .ad26-contact p,.ad26-contact footer p{color:#e3e7ef!important}
+  .ad26-contact footer{display:block!important;margin-top:8mm!important}
+  .ad26-footer-brand{margin-bottom:4mm!important}
+  .ad26-contact .ad26-primary{background:#fff!important;color:#111!important}
+  .ad26-contact-actions{display:block!important}
+  .ad26-contact-actions>a{margin-right:6mm!important}
+}
