@@ -1,3 +1,5 @@
+@import "./light-worldclass-pass.css";
+
 .ad27{--studio-blue:#2457ff;--accent-soft:#7f95ff;--accent-rgb:36,87,255}
 .ad27[data-accent="red"]{--studio-blue:#e20d0d;--accent-soft:#ff6a6a;--accent-rgb:226,13,13}
 .ad27[data-accent="green"]{--studio-blue:#0a8f38;--accent-soft:#58c878;--accent-rgb:10,143,56}
@@ -8,7 +10,6 @@
 .ad27-accent-switcher span{width:11px;height:11px;border-radius:50%;background:var(--studio-blue);box-shadow:0 0 0 2px rgba(255,255,255,.85);transition:background .28s ease,transform .28s ease}
 .ad27-accent-switcher:focus-visible{outline:2px solid var(--studio-blue);outline-offset:3px}
 
-/* Keep every intentional accent tied to the selected color. */
 .ad27-case-steps article span,
 .ad27-case-action>span,
 .ad27-artifact span,
