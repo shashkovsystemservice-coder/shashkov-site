@@ -1,0 +1,166 @@
+/* V8 — mobile motion system: stable typography, continuous atmosphere, no jumpy layout states. */
+
+@media (max-width:900px){
+  /* Core rule: reading geometry never changes because an item becomes active. */
+  .ad26-situations article,
+  .ad26-situations article.is-active,
+  .ad26-signature article,
+  .ad26-signature article.is-active,
+  .ad26-case-flow article,
+  .ad26-case-flow article.is-active{
+    transform:none!important;
+    scale:1!important;
+    filter:none!important;
+    transition:opacity .55s cubic-bezier(.22,.61,.36,1),
+               color .55s cubic-bezier(.22,.61,.36,1),
+               background-color .55s cubic-bezier(.22,.61,.36,1),
+               border-color .55s cubic-bezier(.22,.61,.36,1)!important;
+  }
+
+  /* Recognition: active state is a quiet emphasis, never a re-layout. */
+  .ad26-situations article{opacity:.68!important}
+  .ad26-situations article.is-active{opacity:1!important}
+  .ad26-situations article>span:first-child,
+  .ad26-situations article.is-active>span:first-child{
+    position:static!important;
+    transform:none!important;
+    font-size:24px!important;
+    line-height:1!important;
+    opacity:.22!important;
+    transition:opacity .5s ease,color .5s ease!important;
+  }
+  .ad26-situations article h3,
+  .ad26-situations article.is-active h3{
+    transform:none!important;
+    font-size:clamp(29px,8.2vw,40px)!important;
+    line-height:1.02!important;
+    transition:color .5s ease!important;
+  }
+
+  /* Method: no jump between FACT / VERSION / TEST. */
+  .ad26-signature article{opacity:.72!important;background:transparent!important;box-shadow:none!important}
+  .ad26-signature article.is-active{opacity:1!important;background:transparent!important;box-shadow:none!important}
+  .ad26-signature article h3,
+  .ad26-signature article.is-active h3,
+  .ad26-signature .ad26-step-no,
+  .ad26-signature article>strong{
+    transform:none!important;
+    transition:color .5s ease,opacity .5s ease!important;
+  }
+
+  /* Case: the narrative changes through emphasis, not moving text. */
+  .ad26-case-title h2,
+  .ad26-case.is-case-1 .ad26-case-title h2,
+  .ad26-case.is-case-2 .ad26-case-title h2,
+  .ad26-case.is-case-3 .ad26-case-title h2,
+  .ad26-case-title>span,
+  .ad26-case.is-case-1 .ad26-case-title>span,
+  .ad26-case.is-case-2 .ad26-case-title>span,
+  .ad26-case.is-case-3 .ad26-case-title>span{
+    transform:none!important;
+    translate:none!important;
+    scale:1!important;
+    opacity:1!important;
+    text-decoration:none!important;
+    transition:color .6s ease,opacity .6s ease!important;
+  }
+  .ad26-case-flow article{opacity:.64!important}
+  .ad26-case-flow article.is-active{opacity:1!important}
+
+  /* Kill all scroll-driven inline movement on primary reading blocks. */
+  .ad26-hero-copy,
+  .ad26-hero h1,
+  .ad26-hero-bottom,
+  .ad26-hero-proof,
+  .ad26-statement-label,
+  .ad26-statement h2,
+  .ad26-statement-foot,
+  .ad26-reframe-assumption,
+  .ad26-reframe-shift,
+  .ad26-reframe-question,
+  .ad26-brief-copy,
+  .ad26-brief-product,
+  .ad26-brief-row,
+  .ad26-case-title,
+  .ad26-case blockquote,
+  .ad26-about-title,
+  .ad26-about-copy,
+  .ad26-contact h2,
+  .ad26-contact>p,
+  .ad26-contact-actions{
+    transform:none!important;
+    translate:none!important;
+    scale:1!important;
+    opacity:1!important;
+    filter:none!important;
+    clip-path:none!important;
+  }
+
+  /* Images may carry gentle motion; text may not. */
+  .ad26-portrait,
+  .ad26-about-portrait{
+    transform:none!important;
+    clip-path:none!important;
+  }
+  .ad26-portrait img,
+  .ad26-about-portrait img{
+    transform:scale(1.015)!important;
+    translate:none!important;
+    transition:transform 1.1s cubic-bezier(.22,.61,.36,1)!important;
+  }
+
+  /* Keep only one signature graphic language. Oversized background words are too noisy on phones. */
+  .ad26-method:after,
+  .ad26-case:after,
+  .ad26-contact:after{display:none!important;content:none!important}
+  .ad26-statement:after{
+    opacity:.16!important;
+    transform:none!important;
+    right:-22vw!important;
+  }
+
+  /* Reframe stays conceptual but calm: strike line grows, text itself stays fixed. */
+  .ad26-reframe-assumption i{
+    transform-origin:left center!important;
+    transition:transform .8s cubic-bezier(.22,.61,.36,1),opacity .5s ease!important;
+  }
+  .ad26-reframe-shift{opacity:.56!important}
+
+  /* Decision Brief behaves like a product surface, not a moving card. */
+  .ad26-brief-product{
+    transform:none!important;
+    animation:none!important;
+    box-shadow:0 16px 44px rgba(14,20,28,.055)!important;
+    backdrop-filter:none!important;
+  }
+  .ad26-brief-product:after{display:none!important}
+  .ad26-brief-row{
+    transition:background-color .45s ease,border-color .45s ease!important;
+  }
+
+  /* Field is the motion layer. Give it continuity while keeping copy pristine. */
+  .ad26-diagnostic-field{
+    opacity:.075!important;
+    transition:opacity 1.1s cubic-bezier(.22,.61,.36,1),filter 1.1s cubic-bezier(.22,.61,.36,1)!important;
+  }
+  .ad26[data-section*="Диагноз"] .ad26-diagnostic-field,
+  .ad26[data-section*="Кейс"] .ad26-diagnostic-field,
+  .ad26[data-section*="Следующий"] .ad26-diagnostic-field{opacity:.10!important}
+  .ad26[data-section*="Обо мне"] .ad26-diagnostic-field{opacity:.025!important}
+
+  /* No animated scene clipping on Safari. */
+  .ad26-statement,.ad26-method,.ad26-brief,.ad26-case,.ad26-about,.ad26-contact{
+    clip-path:none!important;
+    mask:none!important;
+    -webkit-mask:none!important;
+  }
+}
+
+@media (max-width:430px){
+  .ad26-situations article>span:first-child,
+  .ad26-situations article.is-active>span:first-child{font-size:22px!important}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .ad26 *{scroll-behavior:auto!important}
+}
