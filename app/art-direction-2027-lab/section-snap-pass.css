@@ -1,7 +1,7 @@
 /* Full-sheet navigation.
    One swipe = one complete semantic page. Mobile favors legibility over density. */
 .ad27{
-  height:100svh;
+  height:100dvh;
   overflow-y:auto;
   overflow-x:hidden;
   scroll-snap-type:y mandatory;
@@ -32,9 +32,9 @@
 
 /* Every main scene is literally one sheet. */
 .ra-hero,.ra-section,.ra-contact{
-  height:calc(100svh - 64px)!important;
-  min-height:calc(100svh - 64px)!important;
-  max-height:calc(100svh - 64px)!important;
+  height:calc(100dvh - 64px)!important;
+  min-height:calc(100dvh - 64px)!important;
+  max-height:calc(100dvh - 64px)!important;
   overflow:hidden;
   scroll-snap-align:start;
   scroll-snap-stop:always;
@@ -110,20 +110,25 @@
 .ra-about figure{min-height:0!important;height:100%!important}
 .ra-about figure img{object-fit:cover!important;object-position:center 20%!important}
 
-.ra-faq{grid-template-rows:auto minmax(0,1fr)!important}
+.ra-faq{grid-template-rows:auto auto auto auto!important;align-content:center!important}
 .ra-faq details{padding:12px 0!important}
 .ra-faq summary{font-size:17px!important}
-.ra-contact{display:flex!important;align-items:stretch!important;padding-top:34px!important;padding-bottom:34px!important}
+.ra-contact{display:flex!important;align-items:stretch!important;padding-top:34px!important;padding-bottom:34px!important;background:#111317!important;color:#f7f7f3!important}
 .ra-contact-inner{height:100%;align-items:center}
 
 @media(max-width:900px){
-  .ad27{scroll-snap-type:y mandatory}
-  .ra-nav{position:sticky}
+  .ad27{
+    height:100dvh;
+    scroll-snap-type:y mandatory;
+    scroll-padding-top:58px;
+  }
+  .ra-nav{position:sticky;height:58px!important}
+  .ad27-accent-switcher{display:none!important}
 
   .ra-hero,.ra-section,.ra-contact{
-    height:calc(100svh - 58px)!important;
-    min-height:calc(100svh - 58px)!important;
-    max-height:calc(100svh - 58px)!important;
+    height:calc(100dvh - 58px)!important;
+    min-height:calc(100dvh - 58px)!important;
+    max-height:calc(100dvh - 58px)!important;
     overflow:hidden!important;
     scroll-snap-align:start;
     scroll-snap-stop:always;
@@ -132,40 +137,40 @@
   .ad27-topcase-reel{padding:8px 12px 10px!important}
   .ad27-topcase-track{min-height:108px!important;max-height:108px!important;height:108px!important}
 
-  /* Hero is now one editorial statement. No cropped portrait shelf on phone. */
+  /* Hero: one statement, no cropped portrait shelf. */
   .ra-hero{
     display:flex!important;
     flex-direction:column;
     justify-content:center!important;
     gap:0!important;
-    padding:30px 20px 34px!important;
+    padding:28px 20px 32px!important;
   }
   .ra-photo{display:none!important}
   .ra-hero>div{align-self:auto!important;width:100%}
   .ra-eyebrow{font-size:11px!important;line-height:1.25!important;letter-spacing:.09em!important;max-width:30em}
-  .ra-hero h1{font-size:clamp(43px,12vw,56px)!important;line-height:.94!important;margin:18px 0 20px!important;letter-spacing:-.045em!important}
+  .ra-hero h1{font-size:clamp(42px,11.5vw,54px)!important;line-height:.94!important;margin:18px 0 20px!important;letter-spacing:-.045em!important}
   .ra-hero>div>p:not(.ra-eyebrow){font-size:16px!important;line-height:1.42!important;max-width:33em}
   .ra-actions{margin-top:24px!important;gap:12px!important;align-items:flex-start!important}
   .ra-btn{min-height:46px!important;padding:0 15px!important;font-size:14px!important}
   .ra-textlink{font-size:14px!important}
 
   .ra-section{
-    padding:24px 18px 22px!important;
+    padding:22px 18px 20px!important;
     grid-template-rows:auto minmax(0,1fr)!important;
   }
-  .ra-section-head{margin-bottom:14px!important}
+  .ra-section-head{margin-bottom:12px!important}
   .ra-section-head .ra-label,.ra-label{font-size:11px!important;line-height:1.2!important;margin-bottom:7px!important}
-  .ra-section-head h2{font-size:clamp(31px,8.7vw,40px)!important;line-height:.98!important;letter-spacing:-.035em!important}
-  .ra-section-head p{font-size:14px!important;line-height:1.38!important;margin-top:9px!important}
+  .ra-section-head h2{font-size:clamp(30px,8.3vw,38px)!important;line-height:.99!important;letter-spacing:-.035em!important}
+  .ra-section-head p{font-size:14px!important;line-height:1.38!important;margin-top:8px!important}
 
   .ra-situations{grid-template-columns:1fr!important;grid-template-rows:repeat(4,1fr)!important}
   .ra-situations article,.ra-situations article:nth-child(odd),.ra-situations article:nth-child(even){padding:8px 0!important;border-left:0!important}
   .ra-situations article span{font-size:11px!important}
   .ra-situations p{font-size:16px!important;line-height:1.24!important}
 
-  /* Work sheet shows the decision map, not microscopic methodological detail. */
+  /* Work sheet: two-column map, but no tiny methodological labels. */
   .ra-work{grid-template-columns:1fr 1fr!important;grid-template-rows:repeat(3,1fr)!important;gap:0 12px!important}
-  .ra-work article{display:flex!important;flex-direction:column;justify-content:center;padding:9px 0!important;height:100%!important}
+  .ra-work article{display:flex!important;flex-direction:column;justify-content:center;padding:8px 0!important;height:100%!important}
   .ra-work article:nth-child(even){padding-left:10px!important;border-left:1px solid var(--line)}
   .ra-work h3{font-size:17px!important;line-height:1.08!important;margin-bottom:8px!important}
   .ra-work p{font-size:13px!important;line-height:1.3!important}
@@ -186,7 +191,6 @@
   .ra-output-grid h3{font-size:19px!important;margin-bottom:6px!important}
   .ra-output-grid p{font-size:14px!important;line-height:1.34!important}
 
-  /* Internal machine: six ideas remain, explanations are deliberately concise visually. */
   #stack .ra-output-grid{grid-template-columns:1fr 1fr!important;grid-template-rows:repeat(3,1fr)!important;gap:8px!important}
   #stack .ra-output-grid article{padding:10px!important;justify-content:flex-start!important}
   #stack .ra-output-grid h3{font-size:16px!important;line-height:1.08!important;margin-bottom:6px!important}
@@ -194,7 +198,7 @@
 
   .ra-case{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto minmax(0,1fr);gap:10px!important;height:100%!important}
   .ra-case-left{justify-content:flex-start!important}
-  .ra-case h2{font-size:31px!important;line-height:.98!important;margin:6px 0 10px!important}
+  .ra-case h2{font-size:30px!important;line-height:.99!important;margin:6px 0 10px!important}
   .ra-case-left>p{font-size:14px!important;line-height:1.34!important}
   .ra-artifact{margin-top:9px!important;padding:10px!important}
   .ra-artifact p{font-size:13px!important;line-height:1.3!important;margin:5px 0!important}
@@ -212,33 +216,48 @@
   .ra-research a{font-size:13px!important}
 
   .ra-formats{grid-template-rows:repeat(3,1fr)!important}
-  .ra-formats article{display:grid!important;grid-template-columns:76px 1fr!important;grid-template-rows:auto auto;padding:9px 0!important;column-gap:10px!important}
-  .ra-formats h3{font-size:18px!important;margin-bottom:5px!important}
+  .ra-formats article{display:grid!important;grid-template-columns:92px 1fr!important;grid-template-rows:auto auto;padding:8px 0!important;column-gap:12px!important;align-items:start!important}
+  .ra-formats h3{font-size:18px!important;line-height:1.08!important;margin-bottom:5px!important}
   .ra-formats p{font-size:13px!important;line-height:1.3!important}
-  .ra-formats a{font-size:12px!important;margin-top:6px!important;grid-column:2}
+  .ra-formats a{font-size:12px!important;margin-top:6px!important;grid-column:2;justify-self:start!important}
 
   .ra-notfit{display:grid!important;grid-template-rows:auto minmax(0,1fr);gap:12px!important;height:100%!important}
-  .ra-notfit h2{font-size:32px!important;line-height:1!important}
+  .ra-notfit h2{font-size:31px!important;line-height:1!important}
   .ra-notfit ul{margin-top:0!important;justify-content:space-evenly!important}
   .ra-notfit li{padding:8px 0!important;font-size:14px!important;line-height:1.3!important}
 
-  /* About uses a contained portrait instead of a blind crop. */
-  .ra-about{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto 26svh;gap:14px!important}
+  .ra-about{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto 27dvh;gap:14px!important;align-content:center!important}
   .ra-about>div{justify-content:flex-start!important}
-  .ra-about h2{font-size:32px!important;margin-bottom:9px!important}
+  .ra-about h2{font-size:31px!important;line-height:1!important;margin-bottom:9px!important}
   .ra-about p{font-size:14px!important;line-height:1.35!important;margin:6px 0!important}
-  .ra-about figure{height:26svh!important;margin-top:0!important;background:#eceef1!important}
-  .ra-about figure img{object-fit:contain!important;object-position:center bottom!important}
+  .ra-about figure{height:27dvh!important;margin-top:0!important;background:#eceef1!important}
+  .ra-about figure img{object-fit:contain!important;object-position:center center!important}
 
-  .ra-faq{grid-template-rows:auto minmax(0,1fr)!important}
-  .ra-faq details{padding:9px 0!important}
-  .ra-faq summary{font-size:16px!important;line-height:1.2!important}
+  /* FAQ must not use the generic two-row sheet grid; that created the giant hole. */
+  .ra-faq{
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    padding-top:24px!important;
+    padding-bottom:24px!important;
+  }
+  .ra-faq .ra-section-head{margin-bottom:18px!important}
+  .ra-faq details{padding:14px 0!important;flex:0 0 auto!important}
+  .ra-faq summary{font-size:17px!important;line-height:1.25!important}
   .ra-faq p{font-size:14px!important;line-height:1.34!important}
 
-  .ra-contact{padding:24px 18px!important}
-  .ra-contact-inner{height:100%!important;display:flex!important;flex-direction:column;justify-content:center;gap:20px!important}
+  .ra-contact{
+    padding:26px 18px!important;
+    background:#111317!important;
+    color:#f7f7f3!important;
+  }
+  .ra-contact .ra-label{color:rgba(255,255,255,.55)!important}
+  .ra-contact-inner{height:100%!important;display:flex!important;flex-direction:column;justify-content:center;gap:26px!important}
   .ra-contact h2{font-size:clamp(36px,10vw,46px)!important;line-height:.98!important}
-  .ra-contact p{font-size:15px!important;line-height:1.4!important}
+  .ra-contact p{font-size:15px!important;line-height:1.4!important;color:rgba(255,255,255,.68)!important}
+  .ra-contact strong{color:#fff!important}
+  .ra-contact .ra-btn{background:#fff!important;color:#111317!important;border-color:#fff!important}
+  .ra-contact .ra-textlink{color:#fff!important;border-color:rgba(255,255,255,.45)!important}
 }
 
 @media(prefers-reduced-motion:reduce){.ad27{scroll-behavior:auto}}
