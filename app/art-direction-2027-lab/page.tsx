@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { TopCaseReel } from "./ArtDirection2027Motion";
 import "./reset-architecture.css";
 import "./section-snap-pass.css";
 import "./semantic-closure-pass.css";
@@ -58,6 +59,8 @@ export default function ArtDirection2027Lab(){
       <div className="ra-section-head"><span className="ra-label">Когда ко мне приходят</span><div><h2>Запрос уже звучит как решение. Но проблема может быть в другом месте.</h2><p>«Нужны заявки», «нужен сайт», «надо выйти на рынок» — это версии. Сначала проверяю, что на самом деле мешает росту.</p></div></div>
       <div className="ra-situations">{situations.map((x,i)=><article key={x}><span>0{i+1}</span><p>«{x}»</p></article>)}</div>
     </section>
+
+    <TopCaseReel />
 
     <section className="ra-section" id="work">
       <div className="ra-section-head"><span className="ra-label">Что именно я разбираю</span><div><h2>Проверяю шесть мест, где может теряться клиент или рост.</h2><p>Задача — не разобрать всё подряд, а найти участок, который действительно меняет результат.</p></div></div>
