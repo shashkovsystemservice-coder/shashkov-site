@@ -1,0 +1,84 @@
+/* Neutral evidence-led visual pass inspired by Friflex structure, not its brand styling.
+   Keeps the site monochrome-first: cold white surfaces, charcoal type, one restrained accent. */
+@media screen {
+  .ad27 {
+    --paper: #f6f7f6;
+    --paper-clean: #ffffff;
+    --ink: #111315;
+    --muted: #62676d;
+    --line: rgba(17, 19, 21, .14);
+    --studio-blue: #2457ff;
+    --accent-rgb: 36, 87, 255;
+    background: var(--paper-clean);
+    color: var(--ink);
+  }
+
+  .ad27 .ra-nav {
+    background: rgba(255,255,255,.94);
+    border-bottom-color: var(--line);
+    backdrop-filter: blur(14px);
+  }
+
+  /* No alternating coloured chapters: hierarchy comes from typography, proof and spacing. */
+  .ad27 .ra-hero-first,
+  .ad27 .ra-section,
+  .ad27 #situations,
+  .ad27 #work,
+  .ad27 #approach,
+  .ad27 #stack,
+  .ad27 #case,
+  .ad27 #about,
+  .ad27 .ra-faq,
+  .ad27 #case + .ra-section,
+  .ad27 #case + .ra-section + .ra-section {
+    background: var(--paper-clean);
+  }
+
+  /* One quiet tonal break for the owner's output, not a colour statement. */
+  .ad27 .ra-output {
+    background: #f1f2f1;
+  }
+
+  .ad27 .ra-output-grid article,
+  .ad27 .ra-work article,
+  .ad27 .ra-process article,
+  .ad27 .ra-formats article,
+  .ad27 .ra-situations article,
+  .ad27 .ra-case-steps article {
+    background: transparent;
+  }
+
+  /* Evidence blocks feel like documents, not UI cards. */
+  .ad27 .ra-artifact {
+    background: #f5f6f5;
+    border-left-color: var(--studio-blue);
+  }
+
+  .ad27 .ra-btn.primary {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+
+  .ad27 .ra-contact {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .ad27 .ra-contact .ra-btn {
+    background: #fff;
+    color: var(--ink);
+    border-color: #fff;
+  }
+
+  .ad27 .depth-disclosure-panel,
+  .ad27 .depth-panel,
+  .ad27 [class*="depth-"][class*="panel"] {
+    background: #fff;
+    color: var(--ink);
+  }
+
+  @media (max-width: 900px) {
+    .ad27 .ra-nav { background: rgba(255,255,255,.97); }
+  }
+}
