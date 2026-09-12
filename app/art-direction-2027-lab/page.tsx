@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ArtDirection2027Motion from "./ArtDirection2027Motion";
 import "./reset-architecture.css";
+import "./section-snap-pass.css";
 
 const situations = [
   "Продажи перестали расти. Команда предлагает больше рекламы — но непонятно, в ней ли проблема",
