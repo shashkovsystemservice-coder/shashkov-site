@@ -1,5 +1,5 @@
-/* Restrained orange-accent visual pass based on the Fittin reference screenshot.
-   Structure stays unchanged: warm neutral base, near-black type, one strong orange accent.
+/* Fittin-inspired orange accent pass.
+   Force visibility of the orange semantic accents while keeping the site neutral and editorial.
    Screen-only; print/PDF remains untouched. */
 @media screen {
   .ad27 {
@@ -10,8 +10,8 @@
     --ink: #111315;
     --muted: #62605e;
     --line: rgba(17, 19, 21, .14);
-    --studio-blue: #f06b01;
-    --accent-rgb: 240, 107, 1;
+    --studio-blue: #ff6500;
+    --accent-rgb: 255, 101, 0;
     background: var(--paper-clean);
     color: var(--ink);
   }
@@ -22,7 +22,6 @@
     backdrop-filter: blur(14px);
   }
 
-  /* Keep sheets neutral: orange is a signal, never a wallpaper. */
   .ad27 .ra-hero-first,
   .ad27 .ra-section,
   .ad27 #situations,
@@ -37,27 +36,28 @@
     background: var(--paper-clean);
   }
 
-  /* One quiet warm tonal break, sampled from the reference family. */
   .ad27 .ra-output { background: var(--paper-warm-soft); }
 
-  /* Accent on memory anchors, decision cues and selected headline phrases. */
+  /* Explicit strong orange so headline accents remain visible regardless of earlier CSS layers. */
   .ad27 .ra-hero h1 em,
   .ad27 .ra-accent-phrase,
   .ad27 .ra-label,
   .ad27 .ra-process > article > span,
   .ad27 .ra-situations > article > span,
   .ad27 .ra-case-steps small {
-    color: var(--studio-blue);
+    color: #ff6500 !important;
   }
 
-  .ad27 .ra-accent-phrase {
-    font-style: normal;
+  .ad27 .ra-accent-phrase,
+  .ad27 .ra-hero h1 em {
+    font-style: normal !important;
     font-weight: inherit;
+    -webkit-text-fill-color: #ff6500 !important;
   }
 
   .ad27 .ra-nav .cta,
   .ad27 .ra-textlink {
-    text-decoration-color: var(--studio-blue);
+    text-decoration-color: #ff6500 !important;
   }
 
   .ad27 .ra-work article,
@@ -70,11 +70,10 @@
   }
 
   .ad27 .ra-artifact {
-    background: #fffaf5;
-    border-left-color: var(--studio-blue);
+    background: #fff7f0;
+    border-left-color: #ff6500 !important;
   }
 
-  /* CTA remains black: the accent supports the hierarchy rather than competing with it. */
   .ad27 .ra-btn.primary {
     background: var(--ink);
     border-color: var(--ink);
