@@ -25,6 +25,15 @@ const process = [
   {n:"03",title:"Проверить коротким способом",text:"Выбираю проверку, которая даст больше ясности до больших затрат."},
 ] as const;
 
+const stack = [
+  {title:"Классический маркетинг",text:"Сегментация, позиционирование, ценность, продукт, цена, каналы, стратегия и рыночная логика — без подмены стратегии набором инструментов."},
+  {title:"Исследования",text:"Market mapping, интервью, Win/Loss, JTBD, конкурентный анализ, анализ спроса, причин выбора и отказа."},
+  {title:"Собственные наработки",text:"Карты фактов и гипотез, Decision Brief, логика «факт → версия → проверка», карта маркетинга и рабочие шаблоны для сложных B2B-задач."},
+  {title:"Данные и AI",text:"AI использую как исследовательский и аналитический усилитель: поиск, разбор массивов, сравнение, структурирование и проверка гипотез — не вместо решения, а до него."},
+  {title:"Бизнес-контекст",text:"Проверяю не только рыночное обещание, но и способность бизнеса продать, выполнить и поддержать его: продукт, продажи, сервис, процессы, экономика."},
+  {title:"Проверка решений",text:"Стремлюсь выбрать самый короткий способ получить новую информацию до того, как компания вкладывается в большой проект."},
+] as const;
+
 const formats = [
   {label:"Самостоятельно",title:"Decision Brief",text:"6 вопросов, чтобы сформулировать вопрос и увидеть, что стоит проверить первым.",href:"/diagnostic",link:"Пройти 6 вопросов"},
   {label:"Вместе",title:"Диагностический разбор",text:"Одна встреча + мой самостоятельный анализ. На выходе — первый шаг, что проверить и что пока не делать.",href:"/work#diagnostic-review",link:"Посмотреть формат"},
@@ -36,7 +45,7 @@ export default function ArtDirection2027Lab(){
     <ArtDirection2027Motion />
     <header className="ra-nav">
       <a className="ra-brand" href="#top"><b>ВШ</b><span>Владимир Шашков · маркетинг и рост</span></a>
-      <nav><a href="#work">Что разбираю</a><a href="#case">Кейс</a><a href="/art-direction-2027-lab/analytics">Аналитика</a><a href="#about">Обо мне</a><a className="cta" href="#contact">Написать</a></nav>
+      <nav><a href="#work">Что разбираю</a><a href="#stack">Что использую</a><a href="#case">Кейс</a><a href="/art-direction-2027-lab/analytics">Аналитика</a><a href="#about">Обо мне</a><a className="cta" href="#contact">Рассказать о проекте</a></nav>
     </header>
 
     <section className="ra-hero">
@@ -44,7 +53,7 @@ export default function ArtDirection2027Lab(){
         <p className="ra-eyebrow">Независимый консультант по маркетингу и росту · для собственников бизнеса</p>
         <h1>Не уверены, что именно сейчас <em>нужно менять</em> в бизнесе?</h1>
         <p>Помогаю собственникам понять проблему, выбрать решение и первый шаг. <strong>И понять, на что пока не стоит тратить деньги.</strong></p>
-        <div className="ra-actions"><a className="ra-btn primary" href="/diagnostic">Разобрать свою ситуацию →</a><a className="ra-textlink" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a></div>
+        <div className="ra-actions"><a className="ra-btn primary" href="#contact">Рассказать о задаче или проекте →</a><a className="ra-textlink" href="/diagnostic">Сначала пройти 6 вопросов</a></div>
       </div>
       <figure className="ra-photo"><Image src="/vladimir-photo.jpg" alt="Владимир Шашков" fill priority sizes="(max-width:900px) 100vw, 38vw" /></figure>
     </section>
@@ -57,11 +66,13 @@ export default function ArtDirection2027Lab(){
 
     <section className="ra-section" id="approach"><div className="ra-section-head"><span className="ra-label">Как работаю</span><div><h2>Сначала понять проблему. Потом выбирать решение. И только потом — инструмент.</h2><p>Три шага, которые сокращают неопределённость до того, как бизнес начинает тратить время и деньги на внедрение.</p></div></div><div className="ra-process">{process.map(x=><article key={x.n}><span>{x.n}</span><h3>{x.title}</h3><p>{x.text}</p></article>)}</div></section>
 
+    <section className="ra-section" id="stack"><div className="ra-section-head"><span className="ra-label">Что я использую в работе</span><div><h2>Показываю внутреннюю машину, а не только итоговый совет.</h2><p>Разбор собирается из академической базы маркетинга, исследований, собственных рабочих систем, данных и AI. Инструмент выбирается под вопрос, а не наоборот.</p></div></div><div className="ra-output-grid">{stack.map(x=><article key={x.title}><h3>{x.title}</h3><p>{x.text}</p></article>)}</div></section>
+
     <section className="ra-section ra-output"><div className="ra-section-head"><span className="ra-label">Что получает собственник</span><div><h2>Не презентацию ради презентации, а ясность для решения.</h2></div></div><div className="ra-output-grid"><article><h3>Главный вопрос</h3><p>Что на самом деле стоит решать сейчас — и почему.</p></article><article><h3>Недостающие факты</h3><p>Что уже известно, что остаётся гипотезой и какие данные реально нужны.</p></article><article><h3>Следующий шаг</h3><p>Что проверить или изменить первым — и что пока не делать.</p></article></div></section>
 
     <section className="ra-section" id="case"><div className="ra-case"><div className="ra-case-left"><span className="ra-label">Главный proof-кейс · проект обезличен</span><h2>Пришли за заявками. Изменился вопрос: как попадать в выбор клиента.</h2><p>Запрос был про более квалифицированные входящие заявки. В ходе разбора стало важнее понять, не находится ли ограничение раньше трафика — в моменте входа в проект, доверии и доказательствах ценности.</p><div className="ra-artifact"><strong>Фрагмент рабочего подхода</strong><p>Факт → версия → проверка. Не принимать правдоподобную гипотезу за факт.</p><a className="ra-textlink" href="/cases/market-choice-system">Открыть весь кейс →</a></div></div><div className="ra-case-right"><div className="ra-case-steps"><article><small>Запрос</small><h3>«Нам нужны более квалифицированные входящие заявки».</h3></article><article><small>Что оказалось важнее</small><p>Ограничение могло быть раньше трафика: в моменте входа в проект, доверии и доказательствах ценности.</p></article><article><small>Новый вопрос</small><h3>Как раньше попадать в выбор клиента и становиться доказуемо сильным вариантом?</h3></article><article><small>Что произошло дальше</small><p>Собственник уточнил сегментацию и ценностную логику, начал систематизировать доказательства, а найденную логику начали переводить в работу новой команды продаж.</p></article></div></div></div></section>
 
-    <section className="ra-section"><div className="ra-section-head"><span className="ra-label">Аналитика и инструменты</span><div><h2>Показываю не только выводы, но и как думаю.</h2><p>Здесь будут исследования рынков, вакансий, клиентов, отраслей и рабочие инструменты — включая карту маркетинга как визуальный артефакт.</p></div></div><div className="ra-research"><article><h3>Аналитика</h3><p>Разобранные темы, факты, выборки и выводы. Часть материалов — открыто, полные отчёты можно получать отдельно.</p><a href="/art-direction-2027-lab/analytics">Открыть аналитику →</a></article><article><h3>Карта маркетинга</h3><p>Верхний уровень системы: рынок, клиент, ценность, продукт, продажи и исполнение. Позже здесь появится полноценный интерактивный визуальный объект.</p><a href="#work">Посмотреть области работы ↑</a></article></div></section>
+    <section className="ra-section"><div className="ra-section-head"><span className="ra-label">Аналитика и инструменты</span><div><h2>Показываю не только выводы, но и как думаю.</h2><p>Исследования рынков, вакансий, клиентов, отраслей и рабочие инструменты — включая карту маркетинга как визуальный артефакт.</p></div></div><div className="ra-research"><article><h3>Аналитика</h3><p>Разобранные темы, факты, выборки и выводы. Часть материалов — открыто, полные отчёты можно получать отдельно.</p><a href="/art-direction-2027-lab/analytics">Открыть аналитику →</a></article><article><h3>Карта маркетинга</h3><p>Верхний уровень системы: рынок, клиент, ценность, продукт, продажи и исполнение.</p><a href="#work">Посмотреть области работы ↑</a></article></div></section>
 
     <section className="ra-section"><div className="ra-section-head"><span className="ra-label">Как можно продолжить</span><div><h2>Глубина работы зависит от задачи.</h2><p>Можно ограничиться одним шагом — продолжение нужно не всегда.</p></div></div><div className="ra-formats">{formats.map(x=><article key={x.title}><span className="ra-label">{x.label}</span><div><h3>{x.title}</h3><p>{x.text}</p></div><a href={x.href}>{x.link} →</a></article>)}</div></section>
 
@@ -71,6 +82,6 @@ export default function ArtDirection2027Lab(){
 
     <section className="ra-section ra-faq"><div className="ra-section-head"><span className="ra-label">Перед первым шагом</span><div><h2>Три коротких ответа.</h2></div></div><details><summary>А если маркетинговый проект вообще не нужен?</summary><p>Это нормальный результат. Задача разбора — понять, что действительно стоит менять, а не обязательно продать проект.</p></details><details><summary>Почему не решить это внутри команды или с AI?</summary><p>Команда и AI хорошо помогают искать варианты. Внешний разбор полезен, когда неясно, какой вопрос проверять и какие факты действительно меняют решение.</p></details><details><summary>Нужно заранее собрать много данных?</summary><p>Нет. Начать можно с того, что уже известно. В ходе разбора станет видно, каких фактов не хватает.</p></details></section>
 
-    <section className="ra-contact" id="contact"><div className="ra-contact-inner"><div><span className="ra-label">Следующий шаг</span><h2>Можно начать с самой ситуации — без обязательного звонка.</h2><p>Если вопрос пока неясный — пройти 6 вопросов и получить карту того, что проверить первым. Если уже конкретный — просто написать.</p><div className="ra-contact-links"><a className="ra-btn" href="/diagnostic">Пройти 6 вопросов →</a><a className="ra-textlink" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать в Telegram</a></div></div><div className="ra-contact-meta"><p>Сообщение прочитаю сам. Обязательного созвона нет.</p><p>Работаю как ИП. Договор, счёт и закрывающие документы.</p><p><strong>Сначала понять проблему. Потом выбирать решение. И только потом — инструмент.</strong></p></div></div></section>
+    <section className="ra-contact" id="contact"><div className="ra-contact-inner"><div><span className="ra-label">Следующий шаг</span><h2>Расскажите о задаче или проекте.</h2><p>Рост, новый рынок, продукт, позиционирование, продажи — можно начать с того, что уже понятно. Необязательно заранее правильно формулировать проблему.</p><div className="ra-contact-links"><a className="ra-btn" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Рассказать в Telegram →</a><a className="ra-textlink" href="/diagnostic">Сначала пройти 6 вопросов</a></div></div><div className="ra-contact-meta"><p>Сообщение прочитаю сам. Обязательного созвона нет.</p><p>Работаю как ИП. Договор, счёт и закрывающие документы.</p><p><strong>Сначала понять проблему. Потом выбирать решение. И только потом — инструмент.</strong></p></div></div></section>
   </main>
 }
