@@ -56,7 +56,7 @@
     overflow:hidden !important;
     background:#5c5958 !important;
     clip-path:none;
-    box-shadow:inset 3px 0 #ff6500;
+    border-left:3px solid #ff6500 !important;
     z-index:1;
   }
   .ad27 .ra-hero-person::before { display:none !important; }
@@ -191,9 +191,8 @@
       pointer-events:none;
       overflow:hidden !important;
       background-color:#5c5958 !important;
-      border-left:0 !important;
+      border-left:2px solid #ff6500 !important;
       clip-path:none;
-      box-shadow:inset 2px 0 #ff6500;
     }
     .ad27 .ra-hero-person img {
       object-fit:cover !important;
