@@ -6,6 +6,7 @@ import "./section-snap-pass.css";
 import "./semantic-closure-pass.css";
 import "./first-sheet-carousel.css";
 import "./information-depth-pass.css";
+import "./uplab-color-pass.css";
 
 const situations = [
   {title:"Нужны заявки",text:"Продажи не растут. Команда предлагает больше рекламы — но непонятно, в ней ли проблема."},
