@@ -1,38 +1,5 @@
-import Image from "next/image";
+import AnalyticsFilter from "./AnalyticsFilter";
 import "./analytics.css";
-
-const reports = [
-  {
-    title: "Рынок маркетинговых вакансий: какие компетенции реально требует рынок",
-    meta: "HeadHunter · анализ вакансий и кластеров компетенций",
-    image: "/hh-marketing-clusters.svg",
-    tag: "Карьера / рынок труда",
-  },
-  {
-    title: "Промышленная автоматизация: карта игроков и моделей интеграции",
-    meta: "Market mapping · конкурентное поле · продуктовые модели",
-    image: "/technograv-preview.png",
-    tag: "Промышленность",
-  },
-  {
-    title: "Wellness / fitness: рынок, продуктовые модели и зоны роста",
-    meta: "Исследование рынка · продукт · удержание",
-    image: "/fitness-report-cover.png",
-    tag: "Wellness",
-  },
-  {
-    title: "Промышленное освещение: конкурентное поле и ценностные модели",
-    meta: "Конкурентный анализ · сегменты · ценностные предложения",
-    image: null,
-    tag: "B2B / свет",
-  },
-  {
-    title: "AI в маркетинге и бизнес-процессах: рабочая карта инструментов",
-    meta: "Сценарии применения · процессы · рабочие инструменты",
-    image: "/marketing-system-11.png",
-    tag: "AI / marketing ops",
-  },
-] as const;
 
 export default function AnalyticsPage() {
   return (
@@ -45,24 +12,10 @@ export default function AnalyticsPage() {
       <section className="an27-hero">
         <p className="an27-kicker">Аналитика</p>
         <h1>Исследования, которые можно использовать в работе.</h1>
-        <p>Рынки, конкуренты, вакансии, продуктовые модели и рабочие системы. На странице — краткая версия. Полный материал можно запросить после контакта.</p>
+        <p>Рынки, конкуренты, вакансии, продуктовые модели и рабочие системы. Сначала — быстрый выбор по теме или формату. Полный материал можно запросить после контакта.</p>
       </section>
 
-      <section className="an27-list" aria-label="Исследования">
-        {reports.map((report, index) => (
-          <article className="an27-report" key={report.title}>
-            <div className="an27-cover">
-              {report.image ? <Image src={report.image} alt="" fill sizes="(max-width: 800px) 34vw, 220px" /> : <div className="an27-cover-type" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>}
-            </div>
-            <div className="an27-report-copy">
-              <span>{report.tag}</span>
-              <h2>{report.title}</h2>
-              <p>{report.meta}</p>
-              <a href="#request">Получить полный отчёт →</a>
-            </div>
-          </article>
-        ))}
-      </section>
+      <AnalyticsFilter />
 
       <section className="an27-request" id="request">
         <div>
