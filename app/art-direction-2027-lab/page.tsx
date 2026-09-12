@@ -8,6 +8,7 @@ import "./first-sheet-carousel.css";
 import "./information-depth-pass.css";
 import "./uplab-color-pass.css";
 import "./personal-about-pass.css";
+import "./hero-personal-pass.css";
 
 const situations = [
   {title:"Нужны заявки",text:"Продажи не растут. Команда предлагает больше рекламы — но непонятно, в ней ли проблема."},
@@ -62,14 +63,19 @@ export default function ArtDirection2027Lab(){
       </details>
     </header>
 
-    <section className="ra-hero ra-hero-first">
-      <TopCaseReel />
+    <section className="ra-hero ra-hero-first ra-hero-personal">
       <div className="ra-hero-copy">
         <p className="ra-eyebrow">Независимый консультант по маркетингу и росту · для собственников бизнеса</p>
         <h1>Не уверены, что именно сейчас <em>нужно менять</em> в бизнесе?</h1>
         <p>Помогаю понять, <strong>где реальная проблема, что проверить первым и на что пока не тратить деньги.</strong></p>
-        <div className="ra-actions"><a className="ra-btn primary" href="#contact">Рассказать о задаче или проекте →</a><a className="ra-textlink" href="/diagnostic">Сначала пройти 6 вопросов</a></div>
+        <div className="ra-actions"><a className="ra-btn primary" href="#contact">Обсудить мою ситуацию →</a><a className="ra-textlink" href="/diagnostic">Сначала пройти 6 вопросов</a></div>
       </div>
+      <figure className="ra-hero-person"><Image src="/about-photo.webp" alt="Владимир Шашков" fill sizes="(max-width:900px) 54vw, 38vw" priority /></figure>
+    </section>
+
+    <section className="ra-section ra-proof-reel" aria-label="Опыт и кейсы">
+      <div className="ra-proof-reel-head"><span className="ra-label">Опыт и доказательства</span><h2><span className="ra-accent-phrase">24 года</span> внутри бизнеса.</h2><p>Heidelberg · Nokian Tyres · Роснано · Росатом</p></div>
+      <TopCaseReel />
     </section>
 
     <section className="ra-section" id="situations">
