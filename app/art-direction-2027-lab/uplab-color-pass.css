@@ -40,13 +40,19 @@
   /* One quiet warm tonal break, sampled from the reference family. */
   .ad27 .ra-output { background: var(--paper-warm-soft); }
 
-  /* Accent only on memory anchors and decision cues. */
+  /* Accent on memory anchors, decision cues and selected headline phrases. */
   .ad27 .ra-hero h1 em,
+  .ad27 .ra-accent-phrase,
   .ad27 .ra-label,
   .ad27 .ra-process > article > span,
   .ad27 .ra-situations > article > span,
   .ad27 .ra-case-steps small {
     color: var(--studio-blue);
+  }
+
+  .ad27 .ra-accent-phrase {
+    font-style: normal;
+    font-weight: inherit;
   }
 
   .ad27 .ra-nav .cta,
