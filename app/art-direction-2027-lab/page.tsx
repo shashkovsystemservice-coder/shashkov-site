@@ -44,9 +44,21 @@ const formats = [
 
 export default function ArtDirection2027Lab(){
   return <main className="ad27" id="top">
-    <header className="ra-nav">
+    <header className="ra-nav ra-nav-project">
       <a className="ra-brand" href="#top"><b>ВШ</b><span>Владимир Шашков · маркетинг и рост</span></a>
-      <nav><a href="#situations">Ситуации</a><a href="#work">Что разбираю</a><a href="#approach">Как работаю</a><a href="#case">Кейс</a><a href="#about">Обо мне</a><a className="cta" href="#contact">Рассказать о проекте</a></nav>
+      <a className="ra-nav-project-cta" href="#contact">Обсудить проект</a>
+      <details className="ra-nav-menu">
+        <summary aria-label="Открыть меню"><i></i><i></i><i></i></summary>
+        <nav>
+          <a href="#situations">Ситуации</a>
+          <a href="#work">Что разбираю</a>
+          <a href="#approach">Как работаю</a>
+          <a href="#case">Кейс</a>
+          <a href="#about">Обо мне</a>
+          <a href="/art-direction-2027-lab/analytics">Аналитика</a>
+          <a href="#contact">Обсудить проект →</a>
+        </nav>
+      </details>
     </header>
 
     <section className="ra-hero ra-hero-first">
