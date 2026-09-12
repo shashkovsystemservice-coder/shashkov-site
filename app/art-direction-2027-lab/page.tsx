@@ -54,7 +54,6 @@ export default function ArtDirection2027Lab(){
         <p>Помогаю понять, <strong>где реальная проблема, что проверить первым и на что пока не тратить деньги.</strong></p>
         <div className="ra-actions"><a className="ra-btn primary" href="#contact">Рассказать о задаче или проекте →</a><a className="ra-textlink" href="/diagnostic">Сначала пройти 6 вопросов</a></div>
       </div>
-      <figure className="ra-photo"><Image src="/vladimir-photo.jpg" alt="Владимир Шашков" fill priority sizes="(max-width:900px) 100vw, 38vw" /></figure>
     </section>
 
     <section className="ra-section" id="situations">
