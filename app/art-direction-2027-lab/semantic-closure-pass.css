@@ -12,6 +12,40 @@
 .ra-case-steps h3{font-size:18px!important;line-height:1.24!important}
 .ra-case-steps p{font-size:15px!important;line-height:1.4!important}
 
+/* Case carousel is now its own completed proof sheet, after recognition. */
+.ad27>.ad27-topcase-reel{
+  height:calc(100dvh - 64px)!important;
+  min-height:calc(100dvh - 64px)!important;
+  max-height:calc(100dvh - 64px)!important;
+  margin:0!important;
+  padding:34px var(--page-x) 30px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  gap:18px!important;
+  overflow:hidden!important;
+  scroll-snap-align:start!important;
+  scroll-snap-stop:always!important;
+}
+.ad27>.ad27-topcase-reel .ad27-topcase-head{margin:0!important;flex:0 0 auto!important}
+.ad27>.ad27-topcase-reel .ad27-topcase-head strong{font-size:12px!important}
+.ad27>.ad27-topcase-reel .ad27-topcase-head span,.ad27>.ad27-topcase-reel .ad27-topcase-head a{font-size:11px!important}
+.ad27>.ad27-topcase-reel .ad27-topcase-track{
+  grid-auto-columns:minmax(210px,24vw)!important;
+  gap:14px!important;
+  min-height:52vh!important;
+  max-height:52vh!important;
+  height:52vh!important;
+  align-items:stretch!important;
+}
+.ad27>.ad27-topcase-reel .ad27-topcase-card{
+  height:52vh!important;
+  min-height:52vh!important;
+  max-height:52vh!important;
+}
+.ad27>.ad27-topcase-reel .ad27-topcase-meta strong{font-size:18px!important;line-height:1.05!important}
+.ad27>.ad27-topcase-reel .ad27-topcase-meta small{font-size:9px!important}
+
 @media(max-width:900px){
   .ra-section-head p{font-size:15px!important;line-height:1.4!important}
   .ra-situations p{font-size:16.5px!important;line-height:1.28!important}
@@ -41,6 +75,36 @@
   .ra-about p{font-size:14.5px!important;line-height:1.38!important}
   .ra-faq summary{font-size:17px!important}
   .ra-faq p{font-size:14.5px!important;line-height:1.38!important}
+
+  /* Full-screen mobile carousel: one proof stage, horizontal within the sheet. */
+  .ad27>.ad27-topcase-reel{
+    height:calc(100dvh - 58px)!important;
+    min-height:calc(100dvh - 58px)!important;
+    max-height:calc(100dvh - 58px)!important;
+    padding:24px 18px 22px!important;
+    gap:16px!important;
+  }
+  .ad27>.ad27-topcase-reel .ad27-topcase-head{height:auto!important;min-height:0!important;max-height:none!important;padding:0!important;align-items:flex-end!important}
+  .ad27>.ad27-topcase-reel .ad27-topcase-head strong{font-size:12px!important}
+  .ad27>.ad27-topcase-reel .ad27-topcase-head span{display:block!important;font-size:10px!important;text-align:right!important}
+  .ad27>.ad27-topcase-reel .ad27-topcase-head a{display:none!important}
+  .ad27>.ad27-topcase-reel .ad27-topcase-track{
+    grid-auto-columns:78vw!important;
+    gap:12px!important;
+    min-height:58dvh!important;
+    max-height:58dvh!important;
+    height:58dvh!important;
+    scroll-padding-left:0!important;
+  }
+  .ad27>.ad27-topcase-reel .ad27-topcase-card{
+    height:58dvh!important;
+    min-height:58dvh!important;
+    max-height:58dvh!important;
+  }
+  .ad27>.ad27-topcase-reel .ad27-topcase-meta{left:14px!important;right:14px!important;bottom:14px!important;gap:5px!important}
+  .ad27>.ad27-topcase-reel .ad27-topcase-meta small{font-size:9px!important}
+  .ad27>.ad27-topcase-reel .ad27-topcase-meta strong{font-size:22px!important;line-height:1.02!important}
+  .ad27>.ad27-topcase-reel .ad27-topcase-card--type::before{font-size:120px!important;right:12px!important;top:8px!important}
 
   /* Mobile visual QA: restore the hero portrait and make both portraits feel intentional. */
   .ra-hero{
