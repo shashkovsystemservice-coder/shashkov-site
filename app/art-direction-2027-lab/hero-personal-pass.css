@@ -41,8 +41,8 @@
     gap:14px !important;
   }
 
-  /* The JSX image is intentionally hidden here. The hero uses a separate portrait asset,
-     while about-photo.webp remains reserved for the About chapter. */
+  /* A dedicated vertical portrait belongs to Hero; about-photo.webp remains reserved
+     for the separate personal trust chapter. */
   .ad27 .ra-hero-person {
     grid-column:2 !important;
     grid-row:1 !important;
@@ -54,11 +54,17 @@
     min-height:560px !important;
     margin:0 !important;
     overflow:hidden !important;
-    background:#e8e5e0 url('/vladimir-photo.jpg') center 16% / cover no-repeat !important;
+    background:#5c5958 !important;
+    clip-path:polygon(12% 0,100% 0,100% 100%,0 100%,0 14%);
     z-index:1;
   }
   .ad27 .ra-hero-person::before { display:none !important; }
-  .ad27 .ra-hero-person img { display:none !important; }
+  .ad27 .ra-hero-person img {
+    display:block !important;
+    object-fit:cover !important;
+    object-position:center center !important;
+    filter:grayscale(1) contrast(1.04) !important;
+  }
 
   /* Separate proof sheet: trust first, then cases. */
   .ad27 .ra-proof-reel {
@@ -123,8 +129,7 @@
   .ad27 .ra-proof-reel .ad27-topcase-meta strong { font-size:15px !important; line-height:1.05 !important; }
 
   @media(max-width:900px) {
-    /* Mobile: keep the portrait genuinely separate from the copy and fit the complete
-       vertical image inside its right-hand column instead of cropping it to a tall strip. */
+    /* Mobile: the portrait stays in its own column. Text never sits on the image. */
     .ad27 .ra-hero-personal {
       grid-template-columns:minmax(0,1.48fr) minmax(145px,1.02fr) !important;
       grid-template-rows:1fr !important;
@@ -183,12 +188,14 @@
       margin:0 !important;
       z-index:1;
       pointer-events:none;
-      overflow:visible !important;
-      background-color:transparent !important;
-      background-size:contain !important;
-      background-repeat:no-repeat !important;
-      background-position:center bottom !important;
+      overflow:hidden !important;
+      background-color:#5c5958 !important;
       border-left:0 !important;
+      clip-path:polygon(14% 0,100% 0,100% 100%,0 100%,0 10%);
+    }
+    .ad27 .ra-hero-person img {
+      object-fit:cover !important;
+      object-position:52% center !important;
     }
 
     .ad27 .ra-proof-reel {
