@@ -188,13 +188,7 @@
     overscroll-behavior:auto!important;
   }
 
-  .ra-nav{
-    position:static!important;
-    top:auto!important;
-    height:auto!important;
-    break-after:avoid!important;
-    page-break-after:avoid!important;
-  }
+  .ra-nav,vercel-live-feedback{display:none!important}
 
   .ra-hero,.ra-section,.ra-contact{
     height:auto!important;
@@ -205,10 +199,10 @@
     scroll-snap-stop:normal!important;
     break-inside:avoid!important;
     page-break-inside:avoid!important;
-    break-after:page!important;
-    page-break-after:always!important;
-    padding-top:10mm!important;
-    padding-bottom:10mm!important;
+    break-after:auto!important;
+    page-break-after:auto!important;
+    padding-top:8mm!important;
+    padding-bottom:8mm!important;
   }
 
   .ra-contact{break-after:auto!important;page-break-after:auto!important}
@@ -224,6 +218,8 @@
     max-height:none!important;
     overflow:visible!important;
   }
+
+  .ra-section-head{margin-bottom:6mm!important}
 
   #stack .ra-output-grid,.ra-foundations{grid-template-columns:1fr 1fr!important;grid-template-rows:auto!important}
   .ra-work{grid-template-columns:1fr 1fr!important;grid-template-rows:auto!important}
@@ -244,5 +240,7 @@
   }
 
   a{color:inherit!important;text-decoration:none!important}
+  .ra-btn.primary{color:#fff!important}
+  .ra-contact .ra-btn{color:#111!important}
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
 }
