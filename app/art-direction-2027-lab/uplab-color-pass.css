@@ -1,0 +1,116 @@
+/* Cool editorial colour rhythm inspired by the freshness of Uplab,
+   without copying its decorative language. Screen-only: print/PDF stays neutral. */
+@media screen {
+  .ad27 {
+    --paper: #f4f7f8;
+    --paper-clean: #f9fbfb;
+    --ice: #e2f8f6;
+    --ice-strong: #d0f3f0;
+    --ice-soft: #edfafa;
+    --ink: #101416;
+    --muted: #5d686c;
+    --studio-blue: #0b8791;
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .ad27 .ra-nav {
+    background: rgba(249, 251, 251, 0.94);
+    border-bottom-color: rgba(16, 20, 22, 0.12);
+    backdrop-filter: blur(14px);
+  }
+
+  .ad27 .ra-nav .cta,
+  .ad27 .ra-textlink {
+    text-decoration-color: var(--studio-blue);
+  }
+
+  .ad27 .ra-hero,
+  .ad27 .ra-section,
+  .ad27 .ra-contact {
+    transition: background-color 180ms ease;
+  }
+
+  /* One-sheet / one-thought colour rhythm. */
+  .ad27 .ra-hero-first { background: var(--paper-clean); }
+  .ad27 #situations { background: var(--ice); }
+  .ad27 #work { background: var(--paper-clean); }
+  .ad27 #approach { background: var(--ice-strong); }
+  .ad27 #stack { background: var(--paper-clean); }
+  .ad27 .ra-output { background: var(--ice-soft); }
+  .ad27 #case { background: #ffffff; }
+  .ad27 #about { background: var(--ice); }
+  .ad27 .ra-faq { background: var(--paper-clean); }
+
+  /* The two unnamed sheets between case/about get a quiet alternating rhythm. */
+  .ad27 #case + .ra-section { background: var(--paper); }
+  .ad27 #case + .ra-section + .ra-section { background: var(--ice-soft); }
+
+  /* Keep the final action decisive. */
+  .ad27 .ra-contact {
+    background: var(--ink);
+    color: #f7fbfb;
+  }
+
+  .ad27 .ra-contact .ra-label,
+  .ad27 .ra-contact p,
+  .ad27 .ra-contact-meta { color: rgba(247, 251, 251, 0.72); }
+
+  .ad27 .ra-contact .ra-btn {
+    background: #f7fbfb;
+    color: var(--ink);
+    border-color: #f7fbfb;
+  }
+
+  /* Fresh accent replaces the old saturated demo-blue. */
+  .ad27 .ra-hero h1 em,
+  .ad27 .ra-label,
+  .ad27 .ra-process > article > span,
+  .ad27 .ra-situations > article > span,
+  .ad27 .ra-case-steps small {
+    color: var(--studio-blue);
+  }
+
+  .ad27 .ra-btn.primary {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+
+  /* Cards should read as editorial information, not SaaS components. */
+  .ad27 .ra-work article,
+  .ad27 .ra-output-grid article,
+  .ad27 .ra-process article,
+  .ad27 .ra-formats article,
+  .ad27 .ra-situations article,
+  .ad27 .ra-case-steps article {
+    background: transparent;
+  }
+
+  .ad27 .ra-artifact {
+    background: rgba(226, 248, 246, 0.58);
+    border-color: rgba(16, 20, 22, 0.16);
+  }
+
+  /* Overlay keeps the same visual system while remaining a second layer. */
+  .ad27 .depth-disclosure-panel,
+  .ad27 .depth-panel,
+  .ad27 [class*="depth-"][class*="panel"] {
+    background: #f6fbfb;
+    color: var(--ink);
+  }
+
+  @media (max-width: 900px) {
+    .ad27 .ra-nav { background: rgba(249, 251, 251, 0.97); }
+
+    /* Preserve large readable typography on colour fields. */
+    .ad27 #situations .ra-section-head > div > p,
+    .ad27 #work .ra-section-head > div > p,
+    .ad27 #approach .ra-section-head > div > p,
+    .ad27 #stack .ra-section-head > div > p,
+    .ad27 .ra-output .ra-section-head > div > p,
+    .ad27 #about p {
+      color: #536064;
+    }
+  }
+}
