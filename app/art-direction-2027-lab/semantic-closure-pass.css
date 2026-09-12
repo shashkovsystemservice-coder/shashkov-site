@@ -65,7 +65,7 @@
     overflow:hidden!important;
     background:#eceef1!important;
   }
-  .ra-photo img{object-fit:cover!important;object-position:center 22%!important}
+  .ra-photo img{object-fit:cover!important;object-position:center top!important}
 
   /* About portrait: no small photo floating inside a large gray shelf. */
   .ra-about{
@@ -80,7 +80,7 @@
     overflow:hidden!important;
     background:#eceef1!important;
   }
-  .ra-about figure img{object-fit:cover!important;object-position:center 42%!important}
+  .ra-about figure img{object-fit:cover!important;object-position:center 36%!important}
 
   /* Start formats: stack label/title/body/link vertically to eliminate label-title collisions. */
   .ra-formats article{
