@@ -59,7 +59,7 @@
   .ad27 #case .ra-artifact a { color:#111317 !important; }
 
   @media(max-width:900px) {
-    /* Mobile hero: text stays readable while portrait becomes a full-height vertical plane. */
+    /* Mobile hero: one composition. Portrait is tall, but starts with the message rather than before it. */
     .ad27 .ra-hero-personal {
       grid-template-columns:minmax(0,1.9fr) minmax(122px,.96fr) !important;
       gap:12px !important;
@@ -78,17 +78,17 @@
       max-width:11.7ch !important;
       font-size:clamp(34px,8.45vw,40px) !important;
       line-height:.93 !important;
-      text-wrap:balance;
+      text-wrap:normal !important;
     }
     .ad27 .ra-hero-personal > .ra-hero-copy > p:not(.ra-eyebrow) {
       max-width:25ch !important;
     }
     .ad27 .ra-hero-person {
-      align-self:stretch !important;
-      height:100% !important;
+      align-self:start !important;
+      height:84% !important;
       min-height:0 !important;
       aspect-ratio:auto !important;
-      margin-top:0 !important;
+      margin-top:8vh !important;
       margin-bottom:0 !important;
       border-left:0 !important;
       background:#5c5958 !important;
@@ -164,7 +164,10 @@
       max-width:11.4ch !important;
       font-size:clamp(32px,8.25vw,38px) !important;
     }
-    .ad27 .ra-hero-person { height:100% !important; margin-top:0 !important; }
+    .ad27 .ra-hero-person {
+      height:83% !important;
+      margin-top:8vh !important;
+    }
     .ad27 .ra-hero-person img { transform:none !important; }
     .ad27 #stack .ra-foundations--index article { padding:13px 0 !important; }
   }
