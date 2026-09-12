@@ -48,20 +48,41 @@
   .ad27 #case .ra-artifact a { color:#111317 !important; }
 
   @media(max-width:900px) {
-    /* On iPhone the message keeps roughly two thirds of the width. */
+    /* Mobile hero cleanup: preserve the two-column idea, remove accidental squeezes. */
     .ad27 .ra-hero-personal {
-      grid-template-columns:minmax(0,1.82fr) minmax(118px,.92fr) !important;
-      gap:8px !important;
+      grid-template-columns:minmax(0,1.95fr) minmax(112px,.9fr) !important;
+      gap:12px !important;
+      padding:28px 14px 26px 20px !important;
+      align-items:start !important;
+    }
+    .ad27 .ra-hero-personal > .ra-hero-copy {
+      align-self:start !important;
+      padding-top:22px !important;
+    }
+    .ad27 .ra-hero-personal .ra-eyebrow {
+      max-width:34ch !important;
+      line-height:1.2 !important;
     }
     .ad27 .ra-hero-personal h1 {
-      max-width:9.4ch !important;
-      font-size:clamp(33px,8.35vw,40px) !important;
+      max-width:11.2ch !important;
+      font-size:clamp(34px,8.6vw,41px) !important;
+      line-height:.93 !important;
+      text-wrap:balance;
+    }
+    .ad27 .ra-hero-personal > .ra-hero-copy > p:not(.ra-eyebrow) {
+      max-width:25ch !important;
     }
     .ad27 .ra-hero-person {
-      height:82% !important;
-      align-self:center !important;
+      align-self:start !important;
+      height:auto !important;
+      min-height:0 !important;
+      aspect-ratio:.56 !important;
+      margin-top:22px !important;
+      border-left:0 !important;
     }
-    .ad27 .ra-hero-person img { object-position:63% center !important; }
+    .ad27 .ra-hero-person img {
+      object-position:61% center !important;
+    }
 
     .ad27 #approach .ra-process span { font-size:25px !important; }
     .ad27 #case .ra-case h2 { color:#f7f7f3 !important; }
@@ -69,9 +90,17 @@
 
   @media(max-width:390px) {
     .ad27 .ra-hero-personal {
-      grid-template-columns:minmax(0,1.86fr) minmax(112px,.88fr) !important;
+      grid-template-columns:minmax(0,1.98fr) minmax(106px,.86fr) !important;
+      gap:10px !important;
+      padding-left:16px !important;
+      padding-right:10px !important;
     }
-    .ad27 .ra-hero-person { height:80% !important; }
+    .ad27 .ra-hero-personal > .ra-hero-copy { padding-top:18px !important; }
+    .ad27 .ra-hero-personal h1 {
+      max-width:10.8ch !important;
+      font-size:clamp(32px,8.35vw,38px) !important;
+    }
+    .ad27 .ra-hero-person { margin-top:18px !important; }
   }
 }
 
