@@ -1,0 +1,128 @@
+/* Section-snap prototype: one deliberate vertical gesture = one semantic scene.
+   The horizontal case reel remains an independent x-axis scroller. */
+.ad27{
+  height:100svh;
+  overflow-y:auto;
+  overflow-x:hidden;
+  scroll-snap-type:y mandatory;
+  scroll-behavior:smooth;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+}
+
+/* The case rail starts the first screen instead of floating below a phantom masthead. */
+.ad27-topcase-reel{
+  margin-top:0!important;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+}
+
+.ra-nav{
+  top:0;
+}
+
+/* Major semantic blocks become clear vertical scenes. Oversized scenes remain
+   naturally scrollable until their trailing edge, then snap to the next scene. */
+.ra-hero,
+.ra-section,
+.ra-contact{
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  min-height:calc(100svh - 64px);
+}
+
+.ra-hero{
+  min-height:calc(100svh - 64px);
+}
+
+/* Proof belongs to the hero transition rather than becoming a tiny snap screen. */
+.ra-proof{
+  scroll-snap-align:none;
+}
+
+/* Give compact scenes enough internal breathing room to feel like screens,
+   while not forcing long research/work sections into clipped fixed heights. */
+.ra-section:not(#work):not(#case){
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.ra-contact{
+  display:flex;
+  align-items:center;
+}
+
+/* Preserve the intended horizontal gesture on case cards. */
+.ad27-topcase-track{
+  scroll-snap-type:x mandatory;
+  overscroll-behavior-x:contain;
+  overscroll-behavior-y:none;
+  touch-action:pan-x;
+}
+
+@media(max-width:900px){
+  .ad27{
+    scroll-snap-type:y mandatory;
+  }
+
+  .ra-hero,
+  .ra-section,
+  .ra-contact{
+    min-height:calc(100svh - 58px);
+  }
+
+  /* On phone the hero becomes one composed screen rather than a long poster. */
+  .ra-hero{
+    justify-content:center;
+    gap:18px;
+    padding-top:28px;
+    padding-bottom:30px;
+  }
+  .ra-photo{
+    min-height:34svh;
+  }
+  .ra-hero h1{
+    font-size:clamp(42px,11.4vw,56px);
+    margin:12px 0 18px;
+  }
+  .ra-hero p{
+    font-size:15px;
+    line-height:1.42;
+  }
+  .ra-actions{
+    margin-top:20px;
+  }
+
+  .ra-section{
+    padding-top:62px;
+    padding-bottom:62px;
+  }
+  .ra-section-head{
+    margin-bottom:30px;
+  }
+
+  /* Long sections may exceed a viewport; snap only fixes their entry/exit,
+     not the reader's ability to move inside them. */
+  #work,
+  #case,
+  .ra-faq{
+    justify-content:flex-start;
+  }
+
+  .ra-contact{
+    min-height:100svh;
+    padding-top:64px;
+    padding-bottom:64px;
+  }
+
+  /* Horizontal case browsing must not inherit the page's vertical snap behavior. */
+  .ad27-topcase-reel{
+    min-height:150px;
+    max-height:160px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .ad27{scroll-behavior:auto}
+}
