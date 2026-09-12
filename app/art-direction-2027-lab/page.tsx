@@ -60,48 +60,48 @@ export default function ArtDirection2027Lab(){
     </section>
 
     <section className="ra-section" id="situations">
-      <div className="ra-section-head"><span className="ra-label">Когда ко мне приходят</span><div><h2>Запрос уже звучит как решение. Но проблема может быть в другом месте.</h2><p>«Нужны заявки», «нужен сайт», «надо выйти на рынок» — это ещё не диагноз.</p></div></div>
+      <div className="ra-section-head"><span className="ra-label">Когда ко мне приходят</span><div><h2>Запрос уже звучит как решение. Но проблема может быть <span className="ra-accent-phrase">в другом месте.</span></h2><p>«Нужны заявки», «нужен сайт», «надо выйти на рынок» — это ещё не диагноз.</p></div></div>
       <div className="ra-situations ra-situations--memory">{situations.map((x,i)=><article key={x.title}><span>0{i+1}</span><p>«{x.title}»</p></article>)}</div>
       <DepthDisclosure buttonLabel="Показать ситуации полностью" label="Ситуации" title="Один симптом может иметь разные причины." intro="На первом экране важнее узнать свою ситуацию. Детали нужны только если хочется сверить её точнее." items={situations} />
     </section>
 
     <section className="ra-section" id="work">
-      <div className="ra-section-head"><span className="ra-label">Что именно я разбираю</span><div><h2>Ищу место, где реально теряется рост.</h2><p>Не разбираю всё подряд. Проверяю шесть возможных зон и ищу ту, которая меняет результат.</p></div></div>
+      <div className="ra-section-head"><span className="ra-label">Что именно я разбираю</span><div><h2>Ищу место, где реально <span className="ra-accent-phrase">теряется рост.</span></h2><p>Не разбираю всё подряд. Проверяю шесть возможных зон и ищу ту, которая меняет результат.</p></div></div>
       <div className="ra-work ra-work--index">{workAreas.map(x=><article key={x.title}><h3>{x.title}</h3><p>{x.text}</p></article>)}</div>
       <DepthDisclosure buttonLabel="Как проверяю эти шесть зон" label="Что разбираю" title="Шесть зон. Но работать нужно не со всеми." intro="Сначала ищу участок, который действительно влияет на выбор клиента или на рост. Затем углубляюсь только туда." items={workAreas} />
     </section>
 
     <section className="ra-section" id="approach">
-      <div className="ra-section-head"><span className="ra-label">Как принимаю решение</span><div><h2>Сначала факты. Потом причина. И только потом — решение.</h2><p>Так меньше риск хорошо сделать сайт, рекламу или проект, который не решает главную проблему.</p></div></div>
+      <div className="ra-section-head"><span className="ra-label">Как принимаю решение</span><div><h2>Сначала факты. Потом причина. И только потом — <span className="ra-accent-phrase">решение.</span></h2><p>Так меньше риск хорошо сделать сайт, рекламу или проект, который не решает главную проблему.</p></div></div>
       <div className="ra-process">{process.map(x=><article key={x.n}><span>{x.n}</span><h3>{x.title}</h3><p>{x.text}</p></article>)}</div>
     </section>
 
     <section className="ra-section" id="stack">
-      <div className="ra-section-head"><span className="ra-label">На чём основан разбор</span><div><h2>Не на одной авторской схеме и не на AI.</h2><p>Три основания: маркетинговая база, факты и дисциплина проверки.</p></div></div>
+      <div className="ra-section-head"><span className="ra-label">На чём основан разбор</span><div><h2>Не на одной авторской схеме и <span className="ra-accent-phrase">не на AI.</span></h2><p>Три основания: маркетинговая база, факты и дисциплина проверки.</p></div></div>
       <div className="ra-output-grid ra-foundations ra-foundations--index">{foundations.map(x=><article key={x.title}><h3>{x.title}</h3><p>{x.short}</p></article>)}</div>
       <DepthDisclosure buttonLabel="Что именно использую" label="Инструменты" title="Инструмент выбирается под вопрос, а не наоборот." intro="Методы остаются во втором слое: они важны как доказательство глубины, но не должны конкурировать с главным смыслом листа." items={foundations} />
     </section>
 
     <section className="ra-section ra-output">
-      <div className="ra-section-head"><span className="ra-label">Что получает собственник</span><div><h2>Не отчёт на сто страниц. Три ответа для решения.</h2><p>Что решать сейчас, чего не хватает для уверенности и какой шаг даст новую информацию быстрее всего.</p></div></div>
+      <div className="ra-section-head"><span className="ra-label">Что получает собственник</span><div><h2>Не отчёт на сто страниц. <span className="ra-accent-phrase">Три ответа для решения.</span></h2><p>Что решать сейчас, чего не хватает для уверенности и какой шаг даст новую информацию быстрее всего.</p></div></div>
       <div className="ra-output-grid"><article><h3>Что решать</h3><p>Какая проблема сейчас важнее остальных — и почему.</p></article><article><h3>Чего не хватает</h3><p>Какие факты уже есть, а что пока остаётся гипотезой.</p></article><article><h3>Что делать первым</h3><p>Что проверить или изменить сейчас — и что пока не делать.</p></article></div>
     </section>
 
     <section className="ra-section" id="case">
-      <div className="ra-case"><div className="ra-case-left"><span className="ra-label">Proof-кейс · проект обезличен</span><h2>Пришли за заявками. Выяснилось: проблема могла быть до рекламы.</h2><p>Компания хотела больше квалифицированных лидов. Разбор показал другую точку риска: поздний вход в проект, слабые доказательства ценности и недостаток доверия.</p><div className="ra-artifact"><strong>Рабочий принцип</strong><p>Факт → версия → проверка. Правдоподобная гипотеза ещё не факт.</p><a className="ra-textlink" href="/cases/market-choice-system">Разобрать кейс подробнее →</a></div></div><div className="ra-case-right"><div className="ra-case-steps"><article><small>Было</small><h3>«Нам нужны более квалифицированные заявки».</h3></article><article><small>Стало</small><h3>Как раньше попадать в выбор клиента и доказывать ценность?</h3></article><article><small>Дальше</small><p>Собственник уточнил сегменты и ценностную логику, начал систематизировать доказательства и переводить новую логику в работу продаж.</p></article></div></div></div>
+      <div className="ra-case"><div className="ra-case-left"><span className="ra-label">Proof-кейс · проект обезличен</span><h2>Пришли за заявками. Выяснилось: проблема могла быть <span className="ra-accent-phrase">до рекламы.</span></h2><p>Компания хотела больше квалифицированных лидов. Разбор показал другую точку риска: поздний вход в проект, слабые доказательства ценности и недостаток доверия.</p><div className="ra-artifact"><strong>Рабочий принцип</strong><p>Факт → версия → проверка. Правдоподобная гипотеза ещё не факт.</p><a className="ra-textlink" href="/cases/market-choice-system">Разобрать кейс подробнее →</a></div></div><div className="ra-case-right"><div className="ra-case-steps"><article><small>Было</small><h3>«Нам нужны более квалифицированные заявки».</h3></article><article><small>Стало</small><h3>Как раньше попадать в выбор клиента и доказывать ценность?</h3></article><article><small>Дальше</small><p>Собственник уточнил сегменты и ценностную логику, начал систематизировать доказательства и переводить новую логику в работу продаж.</p></article></div></div></div>
     </section>
 
     <section className="ra-section">
-      <div className="ra-section-head"><span className="ra-label">Как можно начать</span><div><h2>Необязательно сразу заказывать большой проект.</h2><p>Выберите глубину по ситуации. Продолжение нужно только если первый шаг показал, что оно действительно имеет смысл.</p></div></div>
+      <div className="ra-section-head"><span className="ra-label">Как можно начать</span><div><h2>Необязательно сразу заказывать <span className="ra-accent-phrase">большой проект.</span></h2><p>Выберите глубину по ситуации. Продолжение нужно только если первый шаг показал, что оно действительно имеет смысл.</p></div></div>
       <div className="ra-formats ra-formats--choice">{formats.map(x=><article key={x.title}><span className="ra-label">{x.label}</span><div><h3>{x.title}</h3><p>{x.text}</p></div><a href={x.href}>{x.link} →</a></article>)}</div>
     </section>
 
     <section className="ra-section">
-      <div className="ra-notfit"><div><span className="ra-label">Когда я, скорее всего, не подойду</span><h2>Если решение уже выбрано, мой разбор может быть лишним.</h2></div><ul><li>Нужен только подрядчик на рекламу, SEO или сайт.</li><li>Решение уже принято и нужен человек, который его подтвердит.</li><li>Нельзя ставить под вопрос исходную постановку задачи.</li><li>Нельзя менять продукт, предложение или продажи, даже если факты укажут туда.</li></ul></div>
+      <div className="ra-notfit"><div><span className="ra-label">Когда я, скорее всего, не подойду</span><h2>Если <span className="ra-accent-phrase">решение уже выбрано</span>, мой разбор может быть лишним.</h2></div><ul><li>Нужен только подрядчик на рекламу, SEO или сайт.</li><li>Решение уже принято и нужен человек, который его подтвердит.</li><li>Нельзя ставить под вопрос исходную постановку задачи.</li><li>Нельзя менять продукт, предложение или продажи, даже если факты укажут туда.</li></ul></div>
     </section>
 
     <section className="ra-section" id="about">
-      <div className="ra-about"><div><span className="ra-label">Почему я смотрю шире маркетинга</span><h2>24 года я работал внутри бизнеса, а не рядом с ним.</h2><p>Управление, развитие, сервис и сложный B2B. Heidelberg · Nokian Tyres · Роснано · Росатом.</p><p>Поэтому для меня мало придумать сильное обещание рынку. Я проверяю, сможет ли бизнес его продать, выполнить и поддерживать.</p></div><figure><Image src="/about-photo.webp" alt="Владимир Шашков" fill sizes="(max-width:900px) 100vw, 34vw" /></figure></div>
+      <div className="ra-about"><div><span className="ra-label">Почему я смотрю шире маркетинга</span><h2><span className="ra-accent-phrase">24 года</span> я работал внутри бизнеса, а не рядом с ним.</h2><p>Управление, развитие, сервис и сложный B2B. Heidelberg · Nokian Tyres · Роснано · Росатом.</p><p>Поэтому для меня мало придумать сильное обещание рынку. Я проверяю, сможет ли бизнес его продать, выполнить и поддерживать.</p></div><figure><Image src="/about-photo.webp" alt="Владимир Шашков" fill sizes="(max-width:900px) 100vw, 34vw" /></figure></div>
     </section>
 
     <section className="ra-section ra-faq">
