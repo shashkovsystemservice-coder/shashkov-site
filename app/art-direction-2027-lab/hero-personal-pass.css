@@ -180,10 +180,10 @@
     .ad27 .ra-hero-person {
       grid-column:2 !important;
       grid-row:1 !important;
-      align-self:stretch !important;
+      align-self:center !important;
       justify-self:stretch !important;
       width:100% !important;
-      height:100% !important;
+      height:92% !important;
       min-height:0 !important;
       max-height:none !important;
       margin:0 !important;
@@ -191,7 +191,7 @@
       pointer-events:none;
       overflow:hidden !important;
       background-color:#5c5958 !important;
-      border-left:2px solid #ff6500 !important;
+      border-left:0 !important;
       clip-path:none;
     }
     .ad27 .ra-hero-person img {
@@ -252,7 +252,7 @@
     }
     .ad27 .ra-hero-personal h1 { font-size:clamp(31px,8.1vw,38px) !important; }
     .ad27 .ra-hero-personal > .ra-hero-copy > p:not(.ra-eyebrow) { max-width:21ch !important; }
-    .ad27 .ra-hero-person { height:100% !important; }
+    .ad27 .ra-hero-person { height:92% !important; }
     .ad27 .ra-proof-reel .ad27-topcase-card { width:46vw !important; height:46vw !important; }
   }
 }
