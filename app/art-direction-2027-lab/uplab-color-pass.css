@@ -1,22 +1,22 @@
-/* Cool editorial colour rhythm inspired by the freshness of Uplab,
-   without copying its decorative language. Screen-only: print/PDF stays neutral. */
+/* Cool editorial colour rhythm using the measured Uplab-like aqua from the reference screenshot.
+   Screen-only: print/PDF stays neutral. */
 @media screen {
   .ad27 {
-    --paper: #f4f7f8;
-    --paper-clean: #f9fbfb;
-    --ice: #e2f8f6;
-    --ice-strong: #d0f3f0;
-    --ice-soft: #edfafa;
-    --ink: #101416;
-    --muted: #5d686c;
-    --studio-blue: #0b8791;
+    --paper: #f4f6f6;
+    --paper-clean: #fbfcfc;
+    --aqua: #ccffff;
+    --aqua-soft: #eaffff;
+    --aqua-pale: #f2ffff;
+    --ink: #212121;
+    --muted: #60686a;
+    --studio-blue: #1597a3;
     background: var(--paper);
     color: var(--ink);
   }
 
   .ad27 .ra-nav {
-    background: rgba(249, 251, 251, 0.94);
-    border-bottom-color: rgba(16, 20, 22, 0.12);
+    background: rgba(251, 252, 252, 0.95);
+    border-bottom-color: rgba(33, 33, 33, 0.13);
     backdrop-filter: blur(14px);
   }
 
@@ -31,38 +31,38 @@
     transition: background-color 180ms ease;
   }
 
-  /* One-sheet / one-thought colour rhythm. */
+  /* One-sheet / one-thought colour rhythm: exact aqua is used only on key chapters. */
   .ad27 .ra-hero-first { background: var(--paper-clean); }
-  .ad27 #situations { background: var(--ice); }
+  .ad27 #situations { background: var(--aqua); }
   .ad27 #work { background: var(--paper-clean); }
-  .ad27 #approach { background: var(--ice-strong); }
+  .ad27 #approach { background: var(--aqua); }
   .ad27 #stack { background: var(--paper-clean); }
-  .ad27 .ra-output { background: var(--ice-soft); }
+  .ad27 .ra-output { background: var(--aqua-soft); }
   .ad27 #case { background: #ffffff; }
-  .ad27 #about { background: var(--ice); }
+  .ad27 #about { background: var(--aqua); }
   .ad27 .ra-faq { background: var(--paper-clean); }
 
-  /* The two unnamed sheets between case/about get a quiet alternating rhythm. */
+  /* Quiet transition sheets keep the page from becoming uniformly cyan. */
   .ad27 #case + .ra-section { background: var(--paper); }
-  .ad27 #case + .ra-section + .ra-section { background: var(--ice-soft); }
+  .ad27 #case + .ra-section + .ra-section { background: var(--aqua-pale); }
 
-  /* Keep the final action decisive. */
+  /* Final action remains decisive and editorial. */
   .ad27 .ra-contact {
     background: var(--ink);
-    color: #f7fbfb;
+    color: #ffffff;
   }
 
   .ad27 .ra-contact .ra-label,
   .ad27 .ra-contact p,
-  .ad27 .ra-contact-meta { color: rgba(247, 251, 251, 0.72); }
+  .ad27 .ra-contact-meta { color: rgba(255, 255, 255, 0.72); }
 
   .ad27 .ra-contact .ra-btn {
-    background: #f7fbfb;
+    background: #ffffff;
     color: var(--ink);
-    border-color: #f7fbfb;
+    border-color: #ffffff;
   }
 
-  /* Fresh accent replaces the old saturated demo-blue. */
+  /* Keep accent subordinate to the aqua field; charcoal remains the dominant signal. */
   .ad27 .ra-hero h1 em,
   .ad27 .ra-label,
   .ad27 .ra-process > article > span,
@@ -74,10 +74,10 @@
   .ad27 .ra-btn.primary {
     background: var(--ink);
     border-color: var(--ink);
-    color: #fff;
+    color: #ffffff;
   }
 
-  /* Cards should read as editorial information, not SaaS components. */
+  /* Cards remain editorial information, not SaaS tiles. */
   .ad27 .ra-work article,
   .ad27 .ra-output-grid article,
   .ad27 .ra-process article,
@@ -88,29 +88,28 @@
   }
 
   .ad27 .ra-artifact {
-    background: rgba(226, 248, 246, 0.58);
-    border-color: rgba(16, 20, 22, 0.16);
+    background: rgba(204, 255, 255, 0.42);
+    border-color: rgba(33, 33, 33, 0.16);
   }
 
-  /* Overlay keeps the same visual system while remaining a second layer. */
+  /* Optional detail layer follows the same palette. */
   .ad27 .depth-disclosure-panel,
   .ad27 .depth-panel,
   .ad27 [class*="depth-"][class*="panel"] {
-    background: #f6fbfb;
+    background: #f4ffff;
     color: var(--ink);
   }
 
   @media (max-width: 900px) {
-    .ad27 .ra-nav { background: rgba(249, 251, 251, 0.97); }
+    .ad27 .ra-nav { background: rgba(251, 252, 252, 0.98); }
 
-    /* Preserve large readable typography on colour fields. */
     .ad27 #situations .ra-section-head > div > p,
     .ad27 #work .ra-section-head > div > p,
     .ad27 #approach .ra-section-head > div > p,
     .ad27 #stack .ra-section-head > div > p,
     .ad27 .ra-output .ra-section-head > div > p,
     .ad27 #about p {
-      color: #536064;
+      color: #555f61;
     }
   }
 }
