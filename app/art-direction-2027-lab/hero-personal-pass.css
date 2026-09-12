@@ -123,13 +123,13 @@
   .ad27 .ra-proof-reel .ad27-topcase-meta strong { font-size:15px !important; line-height:1.05 !important; }
 
   @media(max-width:900px) {
-    /* Mobile keeps the same concept: text and a true vertical image sit side by side.
-       No overlay, no text hidden behind the portrait. */
+    /* Mobile: keep the portrait genuinely separate from the copy and fit the complete
+       vertical image inside its right-hand column instead of cropping it to a tall strip. */
     .ad27 .ra-hero-personal {
-      grid-template-columns:minmax(0,1.65fr) minmax(122px,.85fr) !important;
+      grid-template-columns:minmax(0,1.48fr) minmax(145px,1.02fr) !important;
       grid-template-rows:1fr !important;
-      gap:12px !important;
-      padding:18px 0 18px 18px !important;
+      gap:10px !important;
+      padding:18px 10px 18px 18px !important;
       align-items:stretch !important;
     }
     .ad27 .ra-hero-personal > .ra-hero-copy {
@@ -148,44 +148,47 @@
       letter-spacing:.075em !important;
     }
     .ad27 .ra-hero-personal h1 {
-      font-size:clamp(34px,8.9vw,43px) !important;
+      font-size:clamp(33px,8.5vw,41px) !important;
       line-height:.92 !important;
-      max-width:8.3ch !important;
+      max-width:8.2ch !important;
       margin:10px 0 13px !important;
     }
     .ad27 .ra-hero-personal > .ra-hero-copy > p:not(.ra-eyebrow) {
-      font-size:14px !important;
+      font-size:13.5px !important;
       line-height:1.27 !important;
-      max-width:24ch !important;
+      max-width:22ch !important;
     }
     .ad27 .ra-hero-personal .ra-actions {
-      margin-top:14px !important;
+      margin-top:13px !important;
       gap:8px !important;
       width:100% !important;
-      max-width:230px;
+      max-width:220px;
     }
     .ad27 .ra-hero-personal .ra-btn {
-      min-height:42px !important;
+      min-height:41px !important;
       padding:0 10px !important;
-      font-size:12.5px !important;
+      font-size:12px !important;
     }
-    .ad27 .ra-hero-personal .ra-textlink { font-size:12px !important; }
+    .ad27 .ra-hero-personal .ra-textlink { font-size:11.8px !important; }
 
     .ad27 .ra-hero-person {
       grid-column:2 !important;
       grid-row:1 !important;
-      align-self:stretch !important;
+      align-self:end !important;
       justify-self:stretch !important;
       width:100% !important;
-      height:100% !important;
+      height:82% !important;
       min-height:0 !important;
       max-height:none !important;
       margin:0 !important;
       z-index:1;
       pointer-events:none;
-      overflow:hidden !important;
-      background-position:center top !important;
-      border-left:1px solid rgba(17,19,21,.08);
+      overflow:visible !important;
+      background-color:transparent !important;
+      background-size:contain !important;
+      background-repeat:no-repeat !important;
+      background-position:center bottom !important;
+      border-left:0 !important;
     }
 
     .ad27 .ra-proof-reel {
@@ -234,12 +237,14 @@
 
   @media(max-width:390px) {
     .ad27 .ra-hero-personal {
-      grid-template-columns:minmax(0,1.72fr) minmax(112px,.78fr) !important;
-      gap:9px !important;
+      grid-template-columns:minmax(0,1.5fr) minmax(132px,1fr) !important;
+      gap:8px !important;
       padding-left:14px !important;
+      padding-right:8px !important;
     }
-    .ad27 .ra-hero-personal h1 { font-size:clamp(32px,8.5vw,39px) !important; }
-    .ad27 .ra-hero-personal > .ra-hero-copy > p:not(.ra-eyebrow) { max-width:22ch !important; }
+    .ad27 .ra-hero-personal h1 { font-size:clamp(31px,8.1vw,38px) !important; }
+    .ad27 .ra-hero-personal > .ra-hero-copy > p:not(.ra-eyebrow) { max-width:21ch !important; }
+    .ad27 .ra-hero-person { height:78% !important; }
     .ad27 .ra-proof-reel .ad27-topcase-card { width:46vw !important; height:46vw !important; }
   }
 }
