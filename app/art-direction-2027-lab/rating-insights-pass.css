@@ -1,0 +1,86 @@
+/* Selected patterns from strong product studios, adapted for a solo consultant:
+   immediate proof, distinct chapter character, and evidence-led case design. */
+@media screen {
+  /* Proof should feel like evidence, not another beige presentation slide. */
+  .ad27 .ra-proof-reel {
+    background:#111317 !important;
+    color:#f7f7f3 !important;
+  }
+  .ad27 .ra-proof-reel .ra-label,
+  .ad27 .ra-proof-reel-head p { color:rgba(247,247,243,.62) !important; }
+  .ad27 .ra-proof-reel-head h2 { color:#f7f7f3 !important; }
+  .ad27 .ra-proof-reel-head h2 .ra-accent-phrase { color:#ff6500 !important; }
+
+  /* Each chapter gets a recognisable editorial role while keeping one system. */
+  .ad27 #situations { background:#fffefd !important; }
+  .ad27 #work { background:#efefec !important; }
+  .ad27 #approach { background:#fffefd !important; }
+  .ad27 #stack { background:#e7e8e5 !important; }
+
+  .ad27 #approach .ra-process { border-top:2px solid #111317 !important; }
+  .ad27 #approach .ra-process span {
+    color:#ff6500 !important;
+    font-size:clamp(26px,3vw,44px) !important;
+    line-height:1 !important;
+    letter-spacing:-.05em;
+  }
+
+  /* The case is the dramatic proof chapter, not a neutral information card. */
+  .ad27 #case {
+    background:#111317 !important;
+    color:#f7f7f3 !important;
+  }
+  .ad27 #case .ra-label,
+  .ad27 #case .ra-case-left>p,
+  .ad27 #case .ra-case-steps p { color:rgba(247,247,243,.66) !important; }
+  .ad27 #case h2,
+  .ad27 #case h3 { color:#f7f7f3 !important; }
+  .ad27 #case .ra-accent-phrase,
+  .ad27 #case .ra-case-steps small { color:#ff6500 !important; }
+  .ad27 #case .ra-case-steps { border-top-color:rgba(247,247,243,.72) !important; }
+  .ad27 #case .ra-case-steps article { border-bottom-color:rgba(247,247,243,.16) !important; }
+  .ad27 #case .ra-artifact {
+    background:#f7f7f3 !important;
+    color:#111317 !important;
+    border-left:4px solid #ff6500 !important;
+  }
+  .ad27 #case .ra-artifact p,
+  .ad27 #case .ra-artifact a { color:#111317 !important; }
+
+  @media(max-width:900px) {
+    /* On iPhone the message keeps roughly two thirds of the width. */
+    .ad27 .ra-hero-personal {
+      grid-template-columns:minmax(0,1.82fr) minmax(118px,.92fr) !important;
+      gap:8px !important;
+    }
+    .ad27 .ra-hero-personal h1 {
+      max-width:9.4ch !important;
+      font-size:clamp(33px,8.35vw,40px) !important;
+    }
+    .ad27 .ra-hero-person {
+      height:82% !important;
+      align-self:center !important;
+    }
+    .ad27 .ra-hero-person img { object-position:63% center !important; }
+
+    .ad27 #approach .ra-process span { font-size:25px !important; }
+    .ad27 #case .ra-case h2 { color:#f7f7f3 !important; }
+  }
+
+  @media(max-width:390px) {
+    .ad27 .ra-hero-personal {
+      grid-template-columns:minmax(0,1.86fr) minmax(112px,.88fr) !important;
+    }
+    .ad27 .ra-hero-person { height:80% !important; }
+  }
+}
+
+@media print {
+  /* Preserve the compact PDF treatment; dark screen chapters print economically. */
+  .ad27 .ra-proof-reel,
+  .ad27 #case { background:#fff !important; color:#111317 !important; }
+  .ad27 #case h2,
+  .ad27 #case h3,
+  .ad27 #case .ra-case-left>p,
+  .ad27 #case .ra-case-steps p { color:#111317 !important; }
+}

@@ -9,6 +9,7 @@ import "./information-depth-pass.css";
 import "./uplab-color-pass.css";
 import "./personal-about-pass.css";
 import "./hero-personal-pass.css";
+import "./rating-insights-pass.css";
 
 const situations = [
   {title:"Нужны заявки",text:"Продажи не растут. Команда предлагает больше рекламы — но непонятно, в ней ли проблема."},
