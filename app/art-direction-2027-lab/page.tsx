@@ -113,7 +113,16 @@ export default function ArtDirection2027Lab(){
     </section>
 
     <section className="ra-section" id="about">
-      <div className="ra-about"><div><span className="ra-label">Почему я смотрю шире маркетинга</span><h2><span className="ra-accent-phrase">24 года</span> я работал внутри бизнеса, а не рядом с ним.</h2><p>Управление, развитие, сервис и сложный B2B. Heidelberg · Nokian Tyres · Роснано · Росатом.</p><p>Поэтому для меня мало придумать сильное обещание рынку. Я проверяю, сможет ли бизнес его продать, выполнить и поддерживать.</p></div><figure><Image src="/about-photo.webp" alt="Владимир Шашков" fill sizes="(max-width:900px) 100vw, 34vw" /></figure></div>
+      <div className="ra-about-personal">
+        <div className="ra-about-name"><span className="ra-label">Лично веду работу</span><h2>Владимир Шашков</h2></div>
+        <figure className="ra-about-portrait"><Image src="/about-photo.webp" alt="Владимир Шашков" fill sizes="(max-width:900px) 100vw, 43vw" priority={false} /></figure>
+        <div className="ra-about-story">
+          <p><strong>24 года я работал внутри бизнеса — в управлении, развитии, сервисе и сложном B2B.</strong></p>
+          <p>Поэтому не начинаю с сайта, рекламы или AI. Сначала разбираюсь, где находится реальное ограничение и что действительно стоит менять.</p>
+          <p>Я лично веду разбор и отвечаю за логику решения — от первого вопроса до следующего обоснованного шага.</p>
+          <div className="ra-about-direct"><a href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Написать Владимиру →</a><p>Сообщение приходит напрямую мне. Я сам читаю обращения и отвечаю.</p></div>
+        </div>
+      </div>
     </section>
 
     <section className="ra-section ra-faq">
