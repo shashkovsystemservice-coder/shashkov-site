@@ -1,4 +1,4 @@
-/* Personal hero experiment: one clear message + portrait, with cases moved into a separate proof chapter. */
+/* Personal hero experiment: one clear message + one portrait, with cases in a separate proof chapter. */
 @media screen {
   .ad27 .ra-hero-personal {
     display:grid !important;
@@ -52,24 +52,16 @@
     min-height:560px !important;
     margin:0 -1vw -28px 0 !important;
     overflow:hidden !important;
-    background:transparent !important;
+    background:#ece9e4 !important;
     z-index:1;
   }
 
-  .ad27 .ra-hero-person::before {
-    content:"";
-    position:absolute;
-    inset:8% 5% 0 14%;
-    background:linear-gradient(180deg,rgba(255,101,0,.06),rgba(255,101,0,.16));
-    border-radius:48% 48% 0 0;
-    z-index:0;
-  }
+  .ad27 .ra-hero-person::before { display:none !important; }
 
   .ad27 .ra-hero-person img {
     object-fit:cover !important;
     object-position:center 12% !important;
     filter:grayscale(1) contrast(1.04) !important;
-    z-index:1;
   }
 
   /* Separate proof sheet: trust first, then cases. */
@@ -137,9 +129,9 @@
   @media(max-width:900px) {
     .ad27 .ra-hero-personal {
       grid-template-columns:1fr !important;
-      grid-template-rows:minmax(0,1fr) 46% !important;
+      grid-template-rows:minmax(0,66%) minmax(0,34%) !important;
       gap:0 !important;
-      padding:18px 18px 0 !important;
+      padding:16px 18px 0 !important;
       align-items:stretch !important;
     }
     .ad27 .ra-hero-personal > .ra-hero-copy {
@@ -148,7 +140,7 @@
       align-self:start !important;
       width:100% !important;
       max-width:none !important;
-      padding:8px 0 0 !important;
+      padding:6px 0 12px !important;
       z-index:3;
     }
     .ad27 .ra-hero-personal .ra-eyebrow {
@@ -158,52 +150,48 @@
       letter-spacing:.08em !important;
     }
     .ad27 .ra-hero-personal h1 {
-      font-size:clamp(43px,11.2vw,58px) !important;
-      line-height:.91 !important;
-      max-width:9.8ch !important;
-      margin:10px 0 13px !important;
+      font-size:clamp(38px,9.7vw,46px) !important;
+      line-height:.92 !important;
+      max-width:10.5ch !important;
+      margin:10px 0 12px !important;
     }
     .ad27 .ra-hero-personal > .ra-hero-copy > p:not(.ra-eyebrow) {
-      font-size:15px !important;
-      line-height:1.3 !important;
-      max-width:27ch !important;
-      position:relative;
-      z-index:3;
+      font-size:14.5px !important;
+      line-height:1.28 !important;
+      max-width:31ch !important;
     }
     .ad27 .ra-hero-personal .ra-actions {
-      margin-top:15px !important;
-      gap:8px !important;
-      width:min(62vw,280px);
-      position:relative;
-      z-index:4;
+      margin-top:14px !important;
+      gap:7px !important;
+      width:min(82vw,330px);
     }
     .ad27 .ra-hero-personal .ra-btn {
-      min-height:43px !important;
+      min-height:42px !important;
       padding:0 12px !important;
       font-size:13px !important;
     }
     .ad27 .ra-hero-personal .ra-textlink { font-size:12.5px !important; }
 
+    /* No text/photo collision on mobile: portrait occupies its own lower band. */
     .ad27 .ra-hero-person {
       grid-column:1 !important;
-      grid-row:1 / span 2 !important;
-      align-self:end !important;
-      justify-self:end !important;
-      width:58vw !important;
-      height:58% !important;
+      grid-row:2 !important;
+      align-self:stretch !important;
+      justify-self:stretch !important;
+      width:100% !important;
+      height:100% !important;
       min-height:0 !important;
       max-height:none !important;
-      margin:0 -14px 0 0 !important;
+      margin:0 !important;
       z-index:1;
       pointer-events:none;
-    }
-    .ad27 .ra-hero-person::before {
-      inset:6% 0 0 10%;
-      border-radius:46% 0 0 0;
-      background:linear-gradient(180deg,rgba(255,101,0,.03),rgba(255,101,0,.13));
+      overflow:hidden !important;
+      background:#ece9e4 !important;
+      -webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.7) 12%,#000 24%);
+      mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.7) 12%,#000 24%);
     }
     .ad27 .ra-hero-person img {
-      object-position:center 8% !important;
+      object-position:center 18% !important;
       filter:grayscale(1) contrast(1.05) !important;
     }
 
@@ -212,9 +200,7 @@
       gap:16px !important;
       padding:24px 18px 22px !important;
     }
-    .ad27 .ra-proof-reel-head {
-      display:block;
-    }
+    .ad27 .ra-proof-reel-head { display:block; }
     .ad27 .ra-proof-reel-head h2 {
       margin:7px 0 8px !important;
       font-size:clamp(38px,10vw,48px) !important;
@@ -254,15 +240,19 @@
   }
 
   @media(max-width:390px) {
-    .ad27 .ra-hero-personal h1 { font-size:clamp(40px,10.5vw,48px) !important; }
-    .ad27 .ra-hero-personal > .ra-hero-copy > p:not(.ra-eyebrow) { max-width:24ch !important; }
-    .ad27 .ra-hero-person { width:60vw !important; }
+    .ad27 .ra-hero-personal h1 { font-size:clamp(36px,9.3vw,42px) !important; }
+    .ad27 .ra-hero-personal > .ra-hero-copy > p:not(.ra-eyebrow) { max-width:29ch !important; }
     .ad27 .ra-proof-reel .ad27-topcase-card { width:46vw !important; height:46vw !important; }
   }
 }
 
 @media print {
-  .ra-hero-person { display:none !important; }
+  .ra-hero-personal { display:block !important; }
+  .ra-hero-person,
+  .ra-hero-person img,
+  .ra-about-portrait,
+  .ra-about-portrait img { display:none !important; position:static !important; width:0 !important; height:0 !important; }
   .ra-proof-reel { display:block !important; }
   .ra-proof-reel .ad27-topcase-reel { display:none !important; }
+  #about .ra-about-personal { display:block !important; height:auto !important; min-height:0 !important; }
 }
