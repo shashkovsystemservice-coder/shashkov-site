@@ -41,6 +41,73 @@
   .ra-about p{font-size:14.5px!important;line-height:1.38!important}
   .ra-faq summary{font-size:17px!important}
   .ra-faq p{font-size:14.5px!important;line-height:1.38!important}
+
+  /* Mobile visual QA: restore the hero portrait and make both portraits feel intentional. */
+  .ra-hero{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-template-rows:auto 29dvh!important;
+    align-content:center!important;
+    gap:18px!important;
+    padding:22px 18px 18px!important;
+  }
+  .ra-hero>div{align-self:end!important}
+  .ra-hero h1{font-size:clamp(38px,10.2vw,48px)!important;line-height:.95!important;margin:14px 0 16px!important}
+  .ra-hero>div>p:not(.ra-eyebrow){font-size:15.5px!important;line-height:1.38!important}
+  .ra-actions{margin-top:18px!important}
+  .ra-photo{
+    display:block!important;
+    position:relative!important;
+    width:100%!important;
+    height:29dvh!important;
+    min-height:0!important;
+    margin:0!important;
+    overflow:hidden!important;
+    background:#eceef1!important;
+  }
+  .ra-photo img{object-fit:cover!important;object-position:center 22%!important}
+
+  /* About portrait: no small photo floating inside a large gray shelf. */
+  .ra-about{
+    grid-template-rows:auto 34dvh!important;
+    gap:16px!important;
+    align-content:center!important;
+  }
+  .ra-about figure{
+    height:34dvh!important;
+    width:100%!important;
+    margin:0!important;
+    overflow:hidden!important;
+    background:#eceef1!important;
+  }
+  .ra-about figure img{object-fit:cover!important;object-position:center 42%!important}
+
+  /* Start formats: stack label/title/body/link vertically to eliminate label-title collisions. */
+  .ra-formats article{
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    align-items:flex-start!important;
+    gap:0!important;
+    padding:9px 0!important;
+  }
+  .ra-formats article>small{
+    display:block!important;
+    width:100%!important;
+    margin:0 0 5px!important;
+    font-size:11px!important;
+    line-height:1.15!important;
+    letter-spacing:.1em!important;
+  }
+  .ra-formats h3{margin:0 0 6px!important;font-size:19px!important;line-height:1.08!important}
+  .ra-formats p{margin:0!important;font-size:14px!important;line-height:1.32!important}
+  .ra-formats a{
+    display:inline-block!important;
+    margin:8px 0 0!important;
+    font-size:13px!important;
+    line-height:1.2!important;
+    align-self:flex-start!important;
+  }
 }
 
 /* Print/PDF mode: keep the screen experience unchanged, but expose every sheet to print. */
