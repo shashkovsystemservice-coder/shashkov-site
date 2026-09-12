@@ -20,7 +20,7 @@ const topCases = [
 const accentOrder = ["blue", "red", "green"] as const;
 type Accent = (typeof accentOrder)[number];
 
-function TopCaseReel() {
+export function TopCaseReel() {
   return (
     <section className="ad27-topcase-reel" aria-label="Избранные кейсы">
       <div className="ad27-topcase-head"><strong>Кейсы</strong><span>Листайте · нажмите, чтобы открыть</span><a href="/art-direction-2027-lab/analytics">Аналитика →</a></div>
