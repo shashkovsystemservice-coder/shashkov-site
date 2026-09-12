@@ -1,0 +1,218 @@
+/* Personal trust chapter: portrait first, direct gaze, concise personal position, direct contact. */
+@media screen {
+  .ad27 #about {
+    background: #f2efea !important;
+    padding: 20px 24px 24px !important;
+    overflow: hidden !important;
+  }
+
+  .ad27 #about .ra-about-personal {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(0,.92fr) minmax(0,1.08fr);
+    grid-template-rows: auto minmax(0,1fr);
+    grid-template-areas:
+      "name name"
+      "portrait story";
+    gap: 16px 28px;
+  }
+
+  .ad27 #about .ra-about-name {
+    grid-area: name;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(17,19,21,.14);
+  }
+
+  .ad27 #about .ra-about-name h2 {
+    margin: 0;
+    font-size: clamp(42px,5.2vw,78px);
+    line-height: .9;
+    letter-spacing: -.055em;
+    font-weight: 650;
+    color: #111315;
+  }
+
+  .ad27 #about .ra-about-portrait {
+    grid-area: portrait;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+    overflow: hidden;
+    background: #dcd9d4 !important;
+    border: 1px solid rgba(17,19,21,.10);
+    box-shadow: inset 0 0 0 8px rgba(255,255,255,.58);
+  }
+
+  .ad27 #about .ra-about-portrait::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(255,255,255,.78);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .ad27 #about .ra-about-portrait img {
+    object-fit: cover !important;
+    object-position: center 12% !important;
+    filter: grayscale(1) contrast(1.06) brightness(1.02);
+    transform: scale(1.015);
+  }
+
+  .ad27 #about .ra-about-story {
+    grid-area: story;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    padding: 8px 3vw 8px 0;
+  }
+
+  .ad27 #about .ra-about-story > p {
+    margin: 0;
+    max-width: 760px;
+    font-size: clamp(17px,1.35vw,22px);
+    line-height: 1.42;
+    color: #36393d;
+  }
+
+  .ad27 #about .ra-about-story > p:first-child {
+    font-size: clamp(20px,1.75vw,29px);
+    line-height: 1.26;
+    color: #111315;
+  }
+
+  .ad27 #about .ra-about-direct {
+    margin-top: 8px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(17,19,21,.16);
+    display: grid;
+    grid-template-columns: minmax(210px,.65fr) minmax(260px,1fr);
+    align-items: center;
+    gap: 18px;
+  }
+
+  .ad27 #about .ra-about-direct > a {
+    min-height: 54px;
+    display: grid;
+    place-items: center;
+    padding: 0 20px;
+    background: #ff6500;
+    color: #fff !important;
+    text-decoration: none !important;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .ad27 #about .ra-about-direct > p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.35;
+    font-weight: 650;
+    color: #111315;
+  }
+
+  @media (max-width: 900px) {
+    .ad27 #about.ra-section {
+      display: block !important;
+      padding: 14px 14px 16px !important;
+    }
+
+    .ad27 #about .ra-about-personal {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      grid-template-rows: auto minmax(0,.98fr) minmax(0,1.02fr) !important;
+      grid-template-areas:
+        "name"
+        "portrait"
+        "story" !important;
+      gap: 10px !important;
+      height: 100% !important;
+      min-height: 0 !important;
+    }
+
+    .ad27 #about .ra-about-name {
+      align-items: end;
+      padding-bottom: 7px;
+    }
+
+    .ad27 #about .ra-about-name h2 {
+      font-size: 34px;
+      line-height: .95;
+      letter-spacing: -.045em;
+    }
+
+    .ad27 #about .ra-about-name .ra-label {
+      font-size: 10px !important;
+    }
+
+    .ad27 #about .ra-about-portrait {
+      height: 100% !important;
+      min-height: 0 !important;
+      box-shadow: inset 0 0 0 5px rgba(255,255,255,.62);
+    }
+
+    .ad27 #about .ra-about-portrait::after { inset: 5px; }
+
+    .ad27 #about .ra-about-portrait img {
+      object-position: center 10% !important;
+      transform: scale(1.01);
+    }
+
+    .ad27 #about .ra-about-story {
+      justify-content: flex-start;
+      gap: 7px;
+      padding: 0 !important;
+      overflow: hidden;
+    }
+
+    .ad27 #about .ra-about-story > p {
+      margin: 0 !important;
+      font-size: 13.5px !important;
+      line-height: 1.31 !important;
+    }
+
+    .ad27 #about .ra-about-story > p:first-child {
+      font-size: 14.5px !important;
+      line-height: 1.28 !important;
+    }
+
+    .ad27 #about .ra-about-direct {
+      margin-top: 2px;
+      padding-top: 8px;
+      grid-template-columns: 1fr auto;
+      gap: 9px;
+    }
+
+    .ad27 #about .ra-about-direct > a {
+      min-height: 40px;
+      padding: 0 13px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .ad27 #about .ra-about-direct > p {
+      max-width: 150px;
+      font-size: 10.5px;
+      line-height: 1.22;
+    }
+  }
+
+  @media (max-width: 390px) {
+    .ad27 #about .ra-about-name h2 { font-size: 31px; }
+    .ad27 #about .ra-about-story > p { font-size: 12.8px !important; }
+    .ad27 #about .ra-about-story > p:first-child { font-size: 13.7px !important; }
+    .ad27 #about .ra-about-direct > p { display:none; }
+    .ad27 #about .ra-about-direct { grid-template-columns: 1fr; }
+  }
+}
