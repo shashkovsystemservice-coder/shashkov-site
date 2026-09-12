@@ -1,6 +1,6 @@
-/* Fittin-inspired orange accent pass.
-   Force visibility of the orange semantic accents while keeping the site neutral and editorial.
-   Screen-only; print/PDF remains untouched. */
+/* Orange brand + visual chapter system for the 2027 lab.
+   Each semantic sheet gets its own restrained visual mode so scrolling feels like moving
+   through distinct chapters rather than identical slides. Screen-only: print/PDF unchanged. */
 @media screen {
   .ad27 {
     --paper: #f8f6f2;
@@ -12,7 +12,7 @@
     --line: rgba(17, 19, 21, .14);
     --studio-blue: #ff6500;
     --accent-rgb: 255, 101, 0;
-    background: var(--paper-clean);
+    background: #fffefd;
     color: var(--ink);
   }
 
@@ -22,7 +22,7 @@
     backdrop-filter: blur(14px);
   }
 
-  /* One consistent brand mark across the lab and analytics: orange tile + white initials. */
+  /* One consistent brand mark. */
   .ad27 .ra-brand b {
     width: 44px !important;
     height: 44px !important;
@@ -36,23 +36,120 @@
     -webkit-text-fill-color: #fff !important;
   }
 
+  /* ---------- visual chapters ---------- */
   .ad27 .ra-hero-first,
-  .ad27 .ra-section,
-  .ad27 #situations,
-  .ad27 #work,
-  .ad27 #approach,
-  .ad27 #stack,
-  .ad27 #case,
-  .ad27 #about,
-  .ad27 .ra-faq,
-  .ad27 #case + .ra-section,
-  .ad27 #case + .ra-section + .ra-section {
-    background: var(--paper-clean);
+  .ad27 .ra-section {
+    position: relative;
+    isolation: isolate;
   }
 
-  .ad27 .ra-output { background: var(--paper-warm-soft); }
+  /* 01 / Hero — clean editorial white. */
+  .ad27 .ra-hero-first {
+    background: #fffefd !important;
+  }
 
-  /* Explicit strong orange so headline accents remain visible regardless of earlier CSS layers. */
+  /* 02 / Recognition — warm paper: human, situational. */
+  .ad27 #situations {
+    background: #f0ebe4 !important;
+  }
+
+  /* 03 / Scope — clean white with a strong orange edge marker. */
+  .ad27 #work {
+    background: #ffffff !important;
+  }
+  .ad27 #work::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 14%;
+    width: 12px;
+    height: 32%;
+    background: #ff6500;
+  }
+
+  /* 04 / Process — technical cool grey. */
+  .ad27 #approach {
+    background: #e9edf0 !important;
+  }
+
+  /* 05 / Foundations — dark analytical chapter. */
+  .ad27 #stack {
+    background: #17191c !important;
+    color: #f8f7f4 !important;
+  }
+  .ad27 #stack h2,
+  .ad27 #stack h3,
+  .ad27 #stack p {
+    color: inherit !important;
+  }
+  .ad27 #stack .ra-section-head p,
+  .ad27 #stack .ra-foundations p {
+    color: rgba(248,247,244,.68) !important;
+  }
+  .ad27 #stack .ra-foundations article {
+    border-color: rgba(255,255,255,.16) !important;
+  }
+
+  /* 06 / Owner output — quiet warm decision sheet. */
+  .ad27 .ra-output {
+    background: #f3e7db !important;
+  }
+
+  /* 07 / Proof case — pale mineral/orange field, not a card wall. */
+  .ad27 #case {
+    background: #f7d9c6 !important;
+  }
+  .ad27 #case::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    right: 0;
+    top: 0;
+    width: min(19vw, 240px);
+    height: 18px;
+    background: #ff6500;
+  }
+
+  /* 08 / Formats — reset to white; this is a choice screen. */
+  .ad27 #case + .ra-section {
+    background: #fffefd !important;
+  }
+
+  /* 09 / Not-fit — high-contrast stop screen. */
+  .ad27 #case + .ra-section + .ra-section {
+    background: #222427 !important;
+    color: #fff !important;
+  }
+  .ad27 #case + .ra-section + .ra-section h2,
+  .ad27 #case + .ra-section + .ra-section li {
+    color: #fff !important;
+  }
+  .ad27 #case + .ra-section + .ra-section li {
+    border-color: rgba(255,255,255,.18) !important;
+  }
+
+  /* 10 / About — calm warm neutral for the portrait. */
+  .ad27 #about {
+    background: #eeeae4 !important;
+  }
+  .ad27 #about figure {
+    background: #dedbd5 !important;
+  }
+
+  /* 11 / FAQ — cool neutral reset. */
+  .ad27 #about + .ra-section,
+  .ad27 .ra-faq {
+    background: #eef1f3 !important;
+  }
+
+  /* 12 / Final action — dark close. */
+  .ad27 .ra-contact {
+    background: #111315 !important;
+    color: #fff;
+  }
+
+  /* Orange is the recurring brand signal across otherwise different chapters. */
   .ad27 .ra-hero h1 em,
   .ad27 .ra-accent-phrase,
   .ad27 .ra-label,
@@ -74,6 +171,7 @@
     text-decoration-color: #ff6500 !important;
   }
 
+  /* Keep content surfaces integrated with each chapter rather than stacking SaaS cards. */
   .ad27 .ra-work article,
   .ad27 .ra-output-grid article,
   .ad27 .ra-process article,
@@ -84,7 +182,7 @@
   }
 
   .ad27 .ra-artifact {
-    background: #fff7f0;
+    background: rgba(255,255,255,.54);
     border-left-color: #ff6500 !important;
   }
 
@@ -94,17 +192,13 @@
     color: #fff;
   }
 
-  .ad27 .ra-contact {
-    background: var(--ink);
-    color: #fff;
-  }
-
   .ad27 .ra-contact .ra-btn {
     background: #fff;
     color: var(--ink);
     border-color: #fff;
   }
 
+  /* Detail overlays remain readable and neutral regardless of underlying chapter. */
   .ad27 .depth-disclosure-panel,
   .ad27 .depth-panel,
   .ad27 [class*="depth-"][class*="panel"] {
@@ -117,6 +211,15 @@
     .ad27 .ra-brand b {
       width: 38px !important;
       height: 38px !important;
+    }
+    .ad27 #work::before {
+      width: 6px;
+      top: 18%;
+      height: 26%;
+    }
+    .ad27 #case::before {
+      width: 31vw;
+      height: 9px;
     }
   }
 }
