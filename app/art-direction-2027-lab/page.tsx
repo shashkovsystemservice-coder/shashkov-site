@@ -1,6 +1,7 @@
 import Image from "next/image";
 import "./reset-architecture.css";
 import "./section-snap-pass.css";
+import "./semantic-closure-pass.css";
 
 const situations = [
   "Продажи перестали расти. Команда предлагает больше рекламы — но непонятно, в ней ли проблема.",
