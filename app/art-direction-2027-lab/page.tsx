@@ -3,6 +3,7 @@ import { TopCaseReel } from "./ArtDirection2027Motion";
 import "./reset-architecture.css";
 import "./section-snap-pass.css";
 import "./semantic-closure-pass.css";
+import "./first-sheet-carousel.css";
 
 const situations = [
   "Продажи не растут. Команда предлагает больше рекламы — но непонятно, в ней ли проблема.",
@@ -45,8 +46,9 @@ export default function ArtDirection2027Lab(){
       <nav><a href="#situations">Ситуации</a><a href="#work">Что разбираю</a><a href="#approach">Как работаю</a><a href="#case">Кейс</a><a href="#about">Обо мне</a><a className="cta" href="#contact">Рассказать о проекте</a></nav>
     </header>
 
-    <section className="ra-hero">
-      <div>
+    <section className="ra-hero ra-hero-first">
+      <TopCaseReel />
+      <div className="ra-hero-copy">
         <p className="ra-eyebrow">Независимый консультант по маркетингу и росту · для собственников бизнеса</p>
         <h1>Не уверены, что именно сейчас <em>нужно менять</em> в бизнесе?</h1>
         <p>Помогаю понять, <strong>где реальная проблема, что проверить первым и на что пока не тратить деньги.</strong></p>
@@ -59,8 +61,6 @@ export default function ArtDirection2027Lab(){
       <div className="ra-section-head"><span className="ra-label">Когда ко мне приходят</span><div><h2>Запрос уже звучит как решение. Но проблема может быть в другом месте.</h2><p>«Нужны заявки», «нужен сайт», «надо выйти на рынок» — это версии. Сначала проверяю, что на самом деле мешает росту.</p></div></div>
       <div className="ra-situations">{situations.map((x,i)=><article key={x}><span>0{i+1}</span><p>«{x}»</p></article>)}</div>
     </section>
-
-    <TopCaseReel />
 
     <section className="ra-section" id="work">
       <div className="ra-section-head"><span className="ra-label">Что именно я разбираю</span><div><h2>Проверяю шесть мест, где может теряться клиент или рост.</h2><p>Задача — не разобрать всё подряд, а найти участок, который действительно меняет результат.</p></div></div>
