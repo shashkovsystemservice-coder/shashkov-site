@@ -46,9 +46,9 @@
   .ra-hero{
     display:grid!important;
     grid-template-columns:1fr!important;
-    grid-template-rows:auto 29dvh!important;
+    grid-template-rows:auto 26dvh!important;
     align-content:center!important;
-    gap:18px!important;
+    gap:14px!important;
     padding:22px 18px 18px!important;
   }
   .ra-hero>div{align-self:end!important}
@@ -59,7 +59,7 @@
     display:block!important;
     position:relative!important;
     width:100%!important;
-    height:29dvh!important;
+    height:26dvh!important;
     min-height:0!important;
     margin:0!important;
     overflow:hidden!important;
@@ -70,7 +70,7 @@
   /* About portrait: no small photo floating inside a large gray shelf. */
   .ra-about{
     grid-template-rows:auto 34dvh!important;
-    gap:16px!important;
+    gap:10px!important;
     align-content:center!important;
   }
   .ra-about figure{
