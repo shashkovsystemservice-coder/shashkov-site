@@ -1,4 +1,4 @@
-/* Personal hero experiment: one clear message + one portrait, with cases in a separate proof chapter. */
+/* Personal hero: message on the left, a dedicated vertical portrait on the right, cases in a separate proof chapter. */
 @media screen {
   .ad27 .ra-hero-personal {
     display:grid !important;
@@ -6,7 +6,7 @@
     grid-template-rows:1fr !important;
     gap:28px !important;
     padding:clamp(34px,5vw,72px) var(--page-x) 28px !important;
-    align-items:end !important;
+    align-items:stretch !important;
     overflow:hidden !important;
     background:#fffefd !important;
   }
@@ -19,7 +19,7 @@
     max-width:820px !important;
     position:relative;
     z-index:2;
-    padding-bottom:3vh;
+    padding-bottom:2vh;
   }
 
   .ad27 .ra-hero-personal h1 {
@@ -41,28 +41,24 @@
     gap:14px !important;
   }
 
+  /* The JSX image is intentionally hidden here. The hero uses a separate portrait asset,
+     while about-photo.webp remains reserved for the About chapter. */
   .ad27 .ra-hero-person {
     grid-column:2 !important;
     grid-row:1 !important;
     position:relative !important;
-    align-self:end !important;
-    justify-self:end !important;
-    width:min(42vw,620px) !important;
-    height:min(78vh,780px) !important;
+    align-self:stretch !important;
+    justify-self:stretch !important;
+    width:100% !important;
+    height:100% !important;
     min-height:560px !important;
-    margin:0 -1vw -28px 0 !important;
+    margin:0 !important;
     overflow:hidden !important;
-    background:#ece9e4 !important;
+    background:#e8e5e0 url('/vladimir-photo.jpg') center 16% / cover no-repeat !important;
     z-index:1;
   }
-
   .ad27 .ra-hero-person::before { display:none !important; }
-
-  .ad27 .ra-hero-person img {
-    object-fit:cover !important;
-    object-position:center 12% !important;
-    filter:grayscale(1) contrast(1.04) !important;
-  }
+  .ad27 .ra-hero-person img { display:none !important; }
 
   /* Separate proof sheet: trust first, then cases. */
   .ad27 .ra-proof-reel {
@@ -127,55 +123,57 @@
   .ad27 .ra-proof-reel .ad27-topcase-meta strong { font-size:15px !important; line-height:1.05 !important; }
 
   @media(max-width:900px) {
+    /* Mobile keeps the same concept: text and a true vertical image sit side by side.
+       No overlay, no text hidden behind the portrait. */
     .ad27 .ra-hero-personal {
-      grid-template-columns:1fr !important;
-      grid-template-rows:minmax(0,66%) minmax(0,34%) !important;
-      gap:0 !important;
-      padding:16px 18px 0 !important;
+      grid-template-columns:minmax(0,1.65fr) minmax(122px,.85fr) !important;
+      grid-template-rows:1fr !important;
+      gap:12px !important;
+      padding:18px 0 18px 18px !important;
       align-items:stretch !important;
     }
     .ad27 .ra-hero-personal > .ra-hero-copy {
       grid-column:1 !important;
       grid-row:1 !important;
-      align-self:start !important;
+      align-self:center !important;
       width:100% !important;
       max-width:none !important;
-      padding:6px 0 12px !important;
-      z-index:3;
+      padding:0 !important;
+      z-index:2;
     }
     .ad27 .ra-hero-personal .ra-eyebrow {
-      max-width:34ch;
-      font-size:9.5px !important;
-      line-height:1.18 !important;
-      letter-spacing:.08em !important;
+      max-width:30ch;
+      font-size:9px !important;
+      line-height:1.16 !important;
+      letter-spacing:.075em !important;
     }
     .ad27 .ra-hero-personal h1 {
-      font-size:clamp(38px,9.7vw,46px) !important;
+      font-size:clamp(34px,8.9vw,43px) !important;
       line-height:.92 !important;
-      max-width:10.5ch !important;
-      margin:10px 0 12px !important;
+      max-width:8.3ch !important;
+      margin:10px 0 13px !important;
     }
     .ad27 .ra-hero-personal > .ra-hero-copy > p:not(.ra-eyebrow) {
-      font-size:14.5px !important;
-      line-height:1.28 !important;
-      max-width:31ch !important;
+      font-size:14px !important;
+      line-height:1.27 !important;
+      max-width:24ch !important;
     }
     .ad27 .ra-hero-personal .ra-actions {
       margin-top:14px !important;
-      gap:7px !important;
-      width:min(82vw,330px);
+      gap:8px !important;
+      width:100% !important;
+      max-width:230px;
     }
     .ad27 .ra-hero-personal .ra-btn {
       min-height:42px !important;
-      padding:0 12px !important;
-      font-size:13px !important;
+      padding:0 10px !important;
+      font-size:12.5px !important;
     }
-    .ad27 .ra-hero-personal .ra-textlink { font-size:12.5px !important; }
+    .ad27 .ra-hero-personal .ra-textlink { font-size:12px !important; }
 
-    /* No text/photo collision on mobile: portrait occupies its own lower band. */
     .ad27 .ra-hero-person {
-      grid-column:1 !important;
-      grid-row:2 !important;
+      grid-column:2 !important;
+      grid-row:1 !important;
       align-self:stretch !important;
       justify-self:stretch !important;
       width:100% !important;
@@ -186,13 +184,8 @@
       z-index:1;
       pointer-events:none;
       overflow:hidden !important;
-      background:#ece9e4 !important;
-      -webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.7) 12%,#000 24%);
-      mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.7) 12%,#000 24%);
-    }
-    .ad27 .ra-hero-person img {
-      object-position:center 18% !important;
-      filter:grayscale(1) contrast(1.05) !important;
+      background-position:center top !important;
+      border-left:1px solid rgba(17,19,21,.08);
     }
 
     .ad27 .ra-proof-reel {
@@ -240,8 +233,13 @@
   }
 
   @media(max-width:390px) {
-    .ad27 .ra-hero-personal h1 { font-size:clamp(36px,9.3vw,42px) !important; }
-    .ad27 .ra-hero-personal > .ra-hero-copy > p:not(.ra-eyebrow) { max-width:29ch !important; }
+    .ad27 .ra-hero-personal {
+      grid-template-columns:minmax(0,1.72fr) minmax(112px,.78fr) !important;
+      gap:9px !important;
+      padding-left:14px !important;
+    }
+    .ad27 .ra-hero-personal h1 { font-size:clamp(32px,8.5vw,39px) !important; }
+    .ad27 .ra-hero-personal > .ra-hero-copy > p:not(.ra-eyebrow) { max-width:22ch !important; }
     .ad27 .ra-proof-reel .ad27-topcase-card { width:46vw !important; height:46vw !important; }
   }
 }
@@ -249,9 +247,7 @@
 @media print {
   .ra-hero-personal { display:block !important; }
   .ra-hero-person,
-  .ra-hero-person img,
-  .ra-about-portrait,
-  .ra-about-portrait img { display:none !important; position:static !important; width:0 !important; height:0 !important; }
+  .ra-hero-person img { display:none !important; position:static !important; width:0 !important; height:0 !important; background:none !important; }
   .ra-proof-reel { display:block !important; }
   .ra-proof-reel .ad27-topcase-reel { display:none !important; }
   #about .ra-about-personal { display:block !important; height:auto !important; min-height:0 !important; }
