@@ -22,6 +22,20 @@
     backdrop-filter: blur(14px);
   }
 
+  /* One consistent brand mark across the lab and analytics: orange tile + white initials. */
+  .ad27 .ra-brand b {
+    width: 44px !important;
+    height: 44px !important;
+    display: grid !important;
+    place-items: center !important;
+    background: #ff6500 !important;
+    color: #fff !important;
+    border: 0 !important;
+    line-height: 1 !important;
+    font-weight: 800 !important;
+    -webkit-text-fill-color: #fff !important;
+  }
+
   .ad27 .ra-hero-first,
   .ad27 .ra-section,
   .ad27 #situations,
@@ -100,5 +114,9 @@
 
   @media (max-width: 900px) {
     .ad27 .ra-nav { background: rgba(255,254,253,.98); }
+    .ad27 .ra-brand b {
+      width: 38px !important;
+      height: 38px !important;
+    }
   }
 }
