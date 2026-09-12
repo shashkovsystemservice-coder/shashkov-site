@@ -36,6 +36,97 @@
     -webkit-text-fill-color: #fff !important;
   }
 
+  /* AC-U-inspired header hierarchy: brand / project CTA / square menu. */
+  .ad27 .ra-nav-project {
+    display: grid !important;
+    grid-template-columns: minmax(220px,1fr) minmax(280px,520px) 64px !important;
+    align-items: stretch !important;
+    gap: 16px !important;
+    min-height: 82px !important;
+    height: 82px !important;
+    padding: 0 24px !important;
+  }
+  .ad27 .ra-nav-project .ra-brand {
+    align-self: center;
+    min-width: 0;
+  }
+  .ad27 .ra-nav-project-cta {
+    align-self: center;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border: 1.5px solid #ff6500;
+    color: var(--ink) !important;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 500;
+    text-decoration: none !important;
+    background: rgba(255,255,255,.68);
+  }
+  .ad27 .ra-nav-project-cta:hover {
+    background: #ff6500;
+    color: #fff !important;
+  }
+  .ad27 .ra-nav-menu {
+    position: relative;
+    align-self: center;
+    justify-self: end;
+    width: 56px;
+    height: 56px;
+  }
+  .ad27 .ra-nav-menu > summary {
+    list-style: none;
+    width: 56px;
+    height: 56px;
+    display: grid;
+    align-content: center;
+    gap: 6px;
+    padding: 0 14px;
+    background: #ff6500;
+    cursor: pointer;
+    user-select: none;
+  }
+  .ad27 .ra-nav-menu > summary::-webkit-details-marker { display:none; }
+  .ad27 .ra-nav-menu > summary i {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+    transition: transform .18s ease, opacity .18s ease;
+  }
+  .ad27 .ra-nav-menu[open] > summary i:nth-child(1){transform:translateY(9px) rotate(45deg)}
+  .ad27 .ra-nav-menu[open] > summary i:nth-child(2){opacity:0}
+  .ad27 .ra-nav-menu[open] > summary i:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+  .ad27 .ra-nav-menu > nav {
+    position: absolute;
+    top: calc(100% + 13px);
+    right: 0;
+    width: min(380px, calc(100vw - 32px));
+    padding: 14px;
+    display: grid !important;
+    gap: 0 !important;
+    background: #fffefd;
+    border: 1px solid rgba(17,19,21,.12);
+    box-shadow: 0 22px 52px rgba(17,19,21,.16);
+    z-index: 80;
+  }
+  .ad27 .ra-nav-menu > nav a {
+    display: block !important;
+    padding: 15px 10px !important;
+    border-bottom: 1px solid rgba(17,19,21,.10);
+    color: var(--ink) !important;
+    font-size: 16px !important;
+    line-height: 1.15 !important;
+    text-decoration: none !important;
+  }
+  .ad27 .ra-nav-menu > nav a:last-child {
+    margin-top: 10px;
+    border: 0;
+    background: #111315;
+    color: #fff !important;
+    padding: 16px !important;
+  }
+
   /* ---------- visual chapters ---------- */
   .ad27 .ra-hero-first,
   .ad27 .ra-section {
@@ -211,6 +302,37 @@
     .ad27 .ra-brand b {
       width: 38px !important;
       height: 38px !important;
+    }
+    .ad27 .ra-nav-project {
+      grid-template-columns: auto minmax(0,1fr) 48px !important;
+      gap: 8px !important;
+      height: 66px !important;
+      min-height: 66px !important;
+      padding: 0 12px !important;
+    }
+    .ad27 .ra-nav-project .ra-brand span { display:none !important; }
+    .ad27 .ra-nav-project-cta {
+      height: 44px;
+      font-size: 14px;
+      padding: 0 10px;
+      white-space: nowrap;
+    }
+    .ad27 .ra-nav-menu,
+    .ad27 .ra-nav-menu > summary {
+      width: 44px;
+      height: 44px;
+    }
+    .ad27 .ra-nav-menu > summary {
+      padding: 0 10px;
+      gap: 5px;
+    }
+    .ad27 .ra-nav-menu > summary i { height: 2px; }
+    .ad27 .ra-nav-menu[open] > summary i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .ad27 .ra-nav-menu[open] > summary i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .ad27 .ra-nav-menu > nav {
+      top: calc(100% + 11px);
+      right: 0;
+      width: min(330px, calc(100vw - 24px));
     }
     .ad27 #work::before {
       width: 6px;
