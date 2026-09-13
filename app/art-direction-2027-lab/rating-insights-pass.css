@@ -45,15 +45,22 @@
       aspect-ratio:auto !important;
       margin:0 !important;
       border:0 !important;
-      background-color:transparent !important;
-      background-image:url('https://raw.githubusercontent.com/shashkovsystemservice-coder/shashkov-site/art-direction-2027-light/public/hero-person-cutout.webp') !important;
-      background-repeat:no-repeat !important;
-      background-position:right bottom !important;
-      background-size:auto 92% !important;
+      background:transparent !important;
       overflow:visible !important;
       pointer-events:none !important;
     }
-    .ad27 .ra-hero-person img { display:none !important; }
+    .ad27 .ra-hero-person img {
+      display:block !important;
+      content:url('/hero-person-cutout.webp') !important;
+      object-fit:contain !important;
+      object-position:right bottom !important;
+      width:100% !important;
+      height:92% !important;
+      position:absolute !important;
+      inset:auto 0 0 auto !important;
+      filter:none !important;
+      transform:none !important;
+    }
     .ad27 #stack { display:flex !important; flex-direction:column !important; justify-content:center !important; padding-top:24px !important; padding-bottom:24px !important; }
     .ad27 #stack .ra-section-head { flex:0 0 auto !important; margin-bottom:18px !important; }
     .ad27 #stack .ra-foundations--index { flex:0 0 auto !important; height:auto !important; display:grid !important; grid-template-columns:1fr !important; grid-template-rows:none !important; gap:0 !important; border-top:1px solid rgba(248,247,244,.7) !important; }
@@ -69,7 +76,7 @@
     .ad27 .ra-hero-personal { grid-template-columns:minmax(0,1.92fr) minmax(116px,.92fr) !important; gap:10px !important; padding-left:16px !important; padding-right:9px !important; }
     .ad27 .ra-hero-personal > .ra-hero-copy { padding-top:0 !important; }
     .ad27 .ra-hero-personal h1 { max-width:11.4ch !important; font-size:clamp(32px,8.25vw,38px) !important; }
-    .ad27 .ra-hero-person { background-size:auto 90% !important; }
+    .ad27 .ra-hero-person img { height:90% !important; }
     .ad27 #stack .ra-foundations--index article { padding:13px 0 !important; }
   }
 }
