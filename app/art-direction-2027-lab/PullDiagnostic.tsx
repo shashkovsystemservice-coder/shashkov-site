@@ -3,8 +3,17 @@
 import {useEffect,useRef,useState} from "react";
 import {createPortal} from "react-dom";
 
-const MAX_PULL=220;
-const OPEN_THRESHOLD=104;
+const MAX_PULL=210;
+const OPEN_THRESHOLD=92;
+
+const contextualCopy=[
+  {id:"situations",label:"Проверить маркетинг"},
+  {id:"work",label:"Где у вас разрыв?"},
+  {id:"approach",label:"Проверить систему"},
+  {id:"case",label:"Сверить с кейсами"},
+  {id:"about",label:"Получить результат"},
+  {id:"contact",label:"Начать диагностику"},
+] as const;
 
 export default function PullDiagnostic(){
   const [mounted,setMounted]=useState(false);
@@ -12,24 +21,35 @@ export default function PullDiagnostic(){
   const [drag,setDrag]=useState(0);
   const [active,setActive]=useState(false);
   const [hero,setHero]=useState(true);
-  const [heroIntro,setHeroIntro]=useState(true);
-  const [demo,setDemo]=useState(false);
+  const [intro,setIntro]=useState(true);
+  const [contextLabel,setContextLabel]=useState("Диагностика");
   const start=useRef(0);
   const moved=useRef(false);
-  const demoShown=useRef(false);
+  const postHeroPeekShown=useRef(false);
 
   useEffect(()=>{
     setMounted(true);
-    const introTimer=window.setTimeout(()=>setHeroIntro(false),3800);
+    const introTimer=window.setTimeout(()=>setIntro(false),4200);
     const update=()=>{
       const onHero=window.scrollY < window.innerHeight*.72;
       setHero(onHero);
-      if(!onHero&&!demoShown.current){
-        demoShown.current=true;
-        setHeroIntro(false);
-        setDemo(true);
-        window.setTimeout(()=>setDemo(false),1500);
+      if(!onHero&&!postHeroPeekShown.current){
+        postHeroPeekShown.current=true;
+        setIntro(true);
+        window.setTimeout(()=>setIntro(false),1500);
       }
+      if(onHero){setContextLabel("Диагностика");return;}
+      const y=window.innerHeight*.48;
+      let bestLabel="Проверить маркетинг";
+      let bestDistance=Infinity;
+      contextualCopy.forEach(item=>{
+        const el=document.getElementById(item.id);
+        if(!el)return;
+        const r=el.getBoundingClientRect();
+        const d=r.top<=y&&r.bottom>=y?0:Math.min(Math.abs(r.top-y),Math.abs(r.bottom-y));
+        if(d<bestDistance){bestDistance=d;bestLabel=item.label;}
+      });
+      setContextLabel(bestLabel);
     };
     update();
     window.addEventListener("scroll",update,{passive:true});
@@ -46,8 +66,7 @@ export default function PullDiagnostic(){
     start.current=e.clientX;
     moved.current=false;
     setActive(true);
-    setHeroIntro(false);
-    setDemo(false);
+    setIntro(false);
     e.currentTarget?.setPointerCapture?.(e.pointerId);
   }
 
@@ -64,7 +83,7 @@ export default function PullDiagnostic(){
     e?.currentTarget?.releasePointerCapture?.(e.pointerId);
     if(Math.abs(drag)>=OPEN_THRESHOLD){
       setDrag(-MAX_PULL);
-      window.setTimeout(()=>{setOpen(true);setDrag(0)},150);
+      window.setTimeout(()=>{setOpen(true);setDrag(0)},140);
     }else{
       setDrag(0);
       if(!moved.current)setOpen(true);
@@ -77,7 +96,7 @@ export default function PullDiagnostic(){
   const progress=Math.min(1,Math.abs(drag)/MAX_PULL);
 
   return createPortal(
-    <aside className={`ra-diagnostic-assistant ${open?"is-open":""} ${active?"is-dragging":""} ${hero?"is-hero":"is-browsing"} ${heroIntro&&hero&&!open?"is-hero-intro":""} ${demo&&!open?"is-demo":""}`} aria-label="Экспресс-диагностика">
+    <aside className={`ra-diagnostic-assistant ${open?"is-open":""} ${active?"is-dragging":""} ${hero?"is-hero":"is-browsing"} ${intro&&!open?"is-intro":""}`} aria-label="Экспресс-диагностика">
       <button
         className="ra-diagnostic-tab"
         type="button"
@@ -89,11 +108,11 @@ export default function PullDiagnostic(){
         onPointerUp={finish}
         onPointerCancel={()=>{setActive(false);setDrag(0)}}
       >
-        <span className="ra-tab-copy">
-          <strong>{hero?"7":"Диагностика"}</strong>
-          <small>{hero?"мин":"7 мин"}</small>
+        <span className="ra-tab-main">
+          <strong>{hero?"Диагностика":contextLabel}</strong>
+          <small>7 мин</small>
         </span>
-        <span className="ra-tab-preview" style={{opacity:Math.max(hero?.1:.36,progress)}}>
+        <span className="ra-tab-reveal" style={{opacity:Math.max(.18,progress)}}>
           <b>Экспресс-диагностика</b>
           <small>15 сущностей · 6 связей</small>
         </span>
@@ -101,10 +120,10 @@ export default function PullDiagnostic(){
 
       <div className="ra-diagnostic-card">
         <button className="ra-diagnostic-close" type="button" aria-label="Свернуть" onClick={close}>×</button>
-        <small>Экспресс-диагностика · маркетинг</small>
+        <div className="ra-diagnostic-card-kicker">Экспресс-диагностика · маркетинг</div>
         <strong>Проверьте маркетинговую логику бизнеса</strong>
         <p>15 ключевых сущностей, 6 связей и понятный результат: где система собрана, где рвётся и что исправлять первым.</p>
-        <div className="ra-diagnostic-meta"><span>15 сущностей</span><span>6 связей</span><span>результат сразу</span></div>
+        <div className="ra-diagnostic-meta"><span>15 сущностей</span><span>6 связей</span><span>7–10 минут</span></div>
         <a href="/art-direction-2027-lab/express-diagnostic">Начать диагностику</a>
       </div>
     </aside>,
