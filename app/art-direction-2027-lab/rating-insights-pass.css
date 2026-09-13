@@ -32,10 +32,10 @@
   .ad27 #case .ra-artifact p,
   .ad27 #case .ra-artifact a { color:#111317 !important; }
 
-  /* Stable hero portrait: render the exact PNG asset directly as the figure background. */
+  /* Stable hero portrait: render the complete PNG asset directly as the figure background. */
   .ad27 .ra-hero-person {
     background-color:transparent !important;
-    background-image:url('/hero-person-cutout.png') !important;
+    background-image:url('/hero-person-cutout-final.png') !important;
     background-repeat:no-repeat !important;
     background-position:right bottom !important;
     background-size:contain !important;
