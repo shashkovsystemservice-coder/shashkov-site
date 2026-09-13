@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import FloatingDiagnostic from "./FloatingDiagnostic";
+import PullDiagnostic from "./PullDiagnostic";
 import "./express-diagnostic.css";
 
 type DepthItem = {
@@ -30,7 +30,7 @@ export default function DepthDisclosure({ buttonLabel, label, title, intro, item
   }, [open]);
 
   return <>
-    {label === "Ситуации" && <FloatingDiagnostic />}
+    {label === "Ситуации" && <PullDiagnostic />}
     <button className="ra-depth-trigger" type="button" onClick={() => setOpen(true)}>{buttonLabel} <span>→</span></button>
     {open && <div className="ra-depth-layer" role="dialog" aria-modal="true" aria-label={title} onMouseDown={(event) => {
       if (event.target === event.currentTarget) setOpen(false);
@@ -42,7 +42,7 @@ export default function DepthDisclosure({ buttonLabel, label, title, intro, item
         {intro && <p className="ra-depth-intro">{intro}</p>}
         <div className="ra-depth-list">
           {items.map((item, index) => <article key={item.title}>
-            <small>{String(index + 1).padStart(2, "0")}</small>
+            <small>{String(index + 1).padStart(2,"0")}</small>
             <div><h3>{item.title}</h3><p>{item.text}</p></div>
           </article>)}
         </div>
