@@ -182,3 +182,25 @@
   .ad27 #case .ra-case-left>p,
   .ad27 #case .ra-case-steps p { color:#111317 !important; }
 }
+
+/* Final mobile cutout override. The transparent WebP is a real asset in /public. */
+@media screen and (max-width:900px) {
+  .ad27 .ra-hero-person {
+    align-self:stretch !important;
+    height:100% !important;
+    margin:0 !important;
+    border:0 !important;
+    background-color:transparent !important;
+    background-image:url('/hero-person-cutout.webp') !important;
+    background-repeat:no-repeat !important;
+    background-position:right bottom !important;
+    background-size:auto 92% !important;
+    overflow:visible !important;
+    pointer-events:none !important;
+  }
+  .ad27 .ra-hero-person img { display:none !important; }
+}
+
+@media screen and (max-width:390px) {
+  .ad27 .ra-hero-person { background-size:auto 90% !important; }
+}
