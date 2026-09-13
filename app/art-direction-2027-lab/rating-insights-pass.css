@@ -32,11 +32,16 @@
   .ad27 #case .ra-artifact p,
   .ad27 #case .ra-artifact a { color:#111317 !important; }
 
-  /* Hero portrait: use the real DOM image, no pseudo-element/background layer. */
+  /* Hero portrait: plain DOM img only. No content:url, no pseudo-element, no absolute replacement. */
   .ad27 .ra-hero-personal { position:relative !important; }
   .ad27 .ra-hero-personal::after { content:none !important; display:none !important; }
   .ad27 .ra-hero-person {
     position:relative !important;
+    display:flex !important;
+    align-items:flex-end !important;
+    justify-content:flex-end !important;
+    width:100% !important;
+    height:100% !important;
     background:none !important;
     border:0 !important;
     overflow:visible !important;
@@ -44,22 +49,16 @@
   }
   .ad27 .ra-hero-person img {
     display:block !important;
-    content:url('/hero-person-cutout-final.png') !important;
-    position:absolute !important;
-    right:0 !important;
-    bottom:0 !important;
-    top:auto !important;
-    left:auto !important;
+    position:static !important;
     width:100% !important;
     height:96% !important;
-    max-width:none !important;
+    max-width:100% !important;
     object-fit:contain !important;
     object-position:right bottom !important;
     filter:none !important;
     transform:none !important;
     opacity:1 !important;
     visibility:visible !important;
-    z-index:1 !important;
   }
   .ad27 .ra-hero-copy { position:relative !important; z-index:2 !important; }
 
