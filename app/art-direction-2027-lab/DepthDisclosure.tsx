@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import "./express-diagnostic.css";
 
 type DepthItem = {
   title: string;
@@ -28,6 +29,7 @@ export default function DepthDisclosure({ buttonLabel, label, title, intro, item
   }, [open]);
 
   return <>
+    {label === "Ситуации" && <a className="ra-express-diagnostic" href="/art-direction-2027-lab/express-diagnostic"><span>Экспресс-диагностика</span><small>маркетинг · 7–10 минут</small><b>→</b></a>}
     <button className="ra-depth-trigger" type="button" onClick={() => setOpen(true)}>{buttonLabel} <span>→</span></button>
     {open && <div className="ra-depth-layer" role="dialog" aria-modal="true" aria-label={title} onMouseDown={(event) => {
       if (event.target === event.currentTarget) setOpen(false);
