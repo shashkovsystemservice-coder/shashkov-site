@@ -29,6 +29,11 @@ export default function PullDiagnostic(){
 
   useEffect(()=>{
     setMounted(true);
+    const heroLink=document.querySelector<HTMLAnchorElement>(".ra-hero-personal .ra-actions .ra-textlink");
+    if(heroLink){
+      heroLink.href="/art-direction-2027-lab/express-diagnostic";
+      heroLink.setAttribute("aria-label","Экспресс-диагностика маркетинга — 7 минут");
+    }
     const introTimer=window.setTimeout(()=>setIntro(false),4200);
     const update=()=>{
       const onHero=window.scrollY < window.innerHeight*.72;
