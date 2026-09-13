@@ -23,28 +23,34 @@ type Accent = (typeof accentOrder)[number];
 export function TopCaseReel() {
   const trackRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef({ active: false, horizontal: false, moved: false, x: 0, y: 0, scrollLeft: 0 });
-  const touchRef = useRef({ active: false, horizontal: false, moved: false, x: 0, y: 0, scrollLeft: 0 });
+  const touchRef = useRef({ active: false, horizontal: false, moved: false, x: 0, y: 0 });
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
-    const snapToNearestCard = () => {
-      const cards = Array.from(track.children) as HTMLElement[];
-      if (!cards.length) return;
-      const trackCenter = track.scrollLeft + track.clientWidth / 2;
-      let nearest = cards[0];
-      let nearestDistance = Number.POSITIVE_INFINITY;
-      cards.forEach(card => {
-        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-        const distance = Math.abs(cardCenter - trackCenter);
-        if (distance < nearestDistance) {
-          nearest = card;
-          nearestDistance = distance;
+    const cards = () => Array.from(track.children) as HTMLElement[];
+    const nearestIndex = () => {
+      const items = cards();
+      const center = track.scrollLeft + track.clientWidth / 2;
+      let index = 0;
+      let best = Number.POSITIVE_INFINITY;
+      items.forEach((card, i) => {
+        const distance = Math.abs(card.offsetLeft + card.offsetWidth / 2 - center);
+        if (distance < best) {
+          best = distance;
+          index = i;
         }
       });
-      const target = nearest.offsetLeft - (track.clientWidth - nearest.offsetWidth) / 2;
-      track.scrollTo({ left: target, behavior: "smooth" });
+      return index;
+    };
+    const goToIndex = (index: number) => {
+      const items = cards();
+      if (!items.length) return;
+      const clamped = Math.max(0, Math.min(index, items.length - 1));
+      const card = items[clamped];
+      const left = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+      track.scrollTo({ left, behavior: "smooth" });
     };
 
     const onTouchStart = (event: TouchEvent) => {
@@ -56,7 +62,6 @@ export function TopCaseReel() {
         moved: false,
         x: touch.clientX,
         y: touch.clientY,
-        scrollLeft: track.scrollLeft,
       };
     };
 
@@ -68,7 +73,7 @@ export function TopCaseReel() {
       const dy = touch.clientY - state.y;
 
       if (!state.horizontal) {
-        if (Math.abs(dx) < 7 && Math.abs(dy) < 7) return;
+        if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
         if (Math.abs(dx) <= Math.abs(dy)) {
           state.active = false;
           return;
@@ -76,16 +81,22 @@ export function TopCaseReel() {
         state.horizontal = true;
       }
 
-      state.moved = state.moved || Math.abs(dx) > 9;
+      if (Math.abs(dx) > 18) state.moved = true;
       dragRef.current.moved = state.moved;
-      track.scrollLeft = state.scrollLeft - dx;
       event.preventDefault();
     };
 
-    const onTouchEnd = () => {
+    const onTouchEnd = (event: TouchEvent) => {
       const state = touchRef.current;
-      if (state.horizontal && state.moved) snapToNearestCard();
+      if (!state.active && !state.horizontal) return;
+      const touch = event.changedTouches[0];
+      const dx = touch ? touch.clientX - state.x : 0;
+      if (state.horizontal && Math.abs(dx) >= 34) {
+        const current = nearestIndex();
+        goToIndex(current + (dx < 0 ? 1 : -1));
+      }
       state.active = false;
+      state.horizontal = false;
     };
 
     track.addEventListener("touchstart", onTouchStart, { passive: true });
