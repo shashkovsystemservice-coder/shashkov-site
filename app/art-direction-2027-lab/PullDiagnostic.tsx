@@ -3,9 +3,6 @@
 import {useEffect,useRef,useState} from "react";
 import {createPortal} from "react-dom";
 
-const MAX_PULL=210;
-const OPEN_THRESHOLD=92;
-
 const contextualCopy=[
   {id:"situations",label:"Проверить маркетинг"},
   {id:"work",label:"Где у вас разрыв?"},
@@ -18,14 +15,10 @@ const contextualCopy=[
 export default function PullDiagnostic(){
   const [mounted,setMounted]=useState(false);
   const [open,setOpen]=useState(false);
-  const [drag,setDrag]=useState(0);
-  const [active,setActive]=useState(false);
   const [hero,setHero]=useState(true);
-  const [intro,setIntro]=useState(true);
-  const [contextLabel,setContextLabel]=useState("Диагностика");
-  const start=useRef(0);
-  const moved=useRef(false);
-  const postHeroPeekShown=useRef(false);
+  const [contextLabel,setContextLabel]=useState("Экспресс-диагностика");
+  const [nudge,setNudge]=useState(false);
+  const nudgeTimer=useRef<number|null>(null);
 
   useEffect(()=>{
     setMounted(true);
@@ -34,17 +27,22 @@ export default function PullDiagnostic(){
       heroLink.href="/art-direction-2027-lab/express-diagnostic";
       heroLink.setAttribute("aria-label","Экспресс-диагностика маркетинга — 7 минут");
     }
-    const introTimer=window.setTimeout(()=>setIntro(false),4200);
+
+    const pulse=()=>{
+      setNudge(true);
+      window.setTimeout(()=>setNudge(false),1200);
+    };
+    const first=window.setTimeout(pulse,1500);
+    nudgeTimer.current=window.setInterval(pulse,9000);
+
     const update=()=>{
       const onHero=window.scrollY < window.innerHeight*.72;
       setHero(onHero);
-      if(!onHero&&!postHeroPeekShown.current){
-        postHeroPeekShown.current=true;
-        setIntro(true);
-        window.setTimeout(()=>setIntro(false),1500);
+      if(onHero){
+        setContextLabel("Экспресс-диагностика");
+        return;
       }
-      if(onHero){setContextLabel("Диагностика");return;}
-      const y=window.innerHeight*.48;
+      const y=window.innerHeight*.5;
       let bestLabel="Проверить маркетинг";
       let bestDistance=Infinity;
       contextualCopy.forEach(item=>{
@@ -56,75 +54,37 @@ export default function PullDiagnostic(){
       });
       setContextLabel(bestLabel);
     };
+
     update();
     window.addEventListener("scroll",update,{passive:true});
     window.addEventListener("resize",update);
     return()=>{
-      window.clearTimeout(introTimer);
+      window.clearTimeout(first);
+      if(nudgeTimer.current)window.clearInterval(nudgeTimer.current);
       window.removeEventListener("scroll",update);
       window.removeEventListener("resize",update);
     };
   },[]);
 
-  function begin(e:any){
-    if(open)return;
-    start.current=e.clientX;
-    moved.current=false;
-    setActive(true);
-    setIntro(false);
-    e.currentTarget?.setPointerCapture?.(e.pointerId);
-  }
-
-  function move(e:any){
-    if(!active||open)return;
-    const value=Math.max(-MAX_PULL,Math.min(0,e.clientX-start.current));
-    if(Math.abs(value)>5)moved.current=true;
-    setDrag(value);
-  }
-
-  function finish(e?:any){
-    if(!active||open)return;
-    setActive(false);
-    e?.currentTarget?.releasePointerCapture?.(e.pointerId);
-    if(Math.abs(drag)>=OPEN_THRESHOLD){
-      setDrag(-MAX_PULL);
-      window.setTimeout(()=>{setOpen(true);setDrag(0)},140);
-    }else{
-      setDrag(0);
-      if(!moved.current)setOpen(true);
-    }
-  }
-
-  function close(){setOpen(false);setDrag(0);}
-
   if(!mounted)return null;
-  const progress=Math.min(1,Math.abs(drag)/MAX_PULL);
 
   return createPortal(
-    <aside className={`ra-diagnostic-assistant ${open?"is-open":""} ${active?"is-dragging":""} ${hero?"is-hero":"is-browsing"} ${intro&&!open?"is-intro":""}`} aria-label="Экспресс-диагностика">
-      <button
-        className="ra-diagnostic-tab"
-        type="button"
-        aria-expanded={open}
-        aria-label="Открыть экспресс-диагностику"
-        style={{transform:`translate3d(${drag}px,0,0)`}}
-        onPointerDown={begin}
-        onPointerMove={move}
-        onPointerUp={finish}
-        onPointerCancel={()=>{setActive(false);setDrag(0)}}
-      >
-        <span className="ra-tab-main">
-          <strong>{hero?"Диагностика":contextLabel}</strong>
-          <small>7 мин</small>
+    <aside className={`ra-diagnostic-assistant ${open?"is-open":""} ${hero?"is-hero":"is-browsing"} ${nudge&&!open?"is-nudge":""}`} aria-label="Экспресс-диагностика">
+      <button className="ra-stopwatch-trigger" type="button" aria-expanded={open} aria-label="Открыть экспресс-диагностику, 7 минут" onClick={()=>setOpen(true)}>
+        <span className="ra-stopwatch" aria-hidden="true">
+          <i className="ra-stopwatch-knob" />
+          <i className="ra-stopwatch-hand" />
+          <b>7</b>
+          <small>мин</small>
         </span>
-        <span className="ra-tab-reveal" style={{opacity:Math.max(.18,progress)}}>
-          <b>Экспресс-диагностика</b>
-          <small>15 сущностей · 6 связей</small>
+        <span className="ra-stopwatch-copy">
+          <strong>{contextLabel}</strong>
+          <small>{hero?"Проверить маркетинговую логику":"7 минут · результат сразу"}</small>
         </span>
       </button>
 
       <div className="ra-diagnostic-card">
-        <button className="ra-diagnostic-close" type="button" aria-label="Свернуть" onClick={close}>×</button>
+        <button className="ra-diagnostic-close" type="button" aria-label="Свернуть" onClick={()=>setOpen(false)}>×</button>
         <div className="ra-diagnostic-card-kicker">Экспресс-диагностика · маркетинг</div>
         <strong>Проверьте маркетинговую логику бизнеса</strong>
         <p>15 ключевых сущностей, 6 связей и понятный результат: где система собрана, где рвётся и что исправлять первым.</p>
