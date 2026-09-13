@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./production-map.css";
@@ -21,10 +21,68 @@ const accentOrder = ["blue", "red", "green"] as const;
 type Accent = (typeof accentOrder)[number];
 
 export function TopCaseReel() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef({ active: false, horizontal: false, moved: false, x: 0, y: 0, scrollLeft: 0 });
+
+  const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    const track = trackRef.current;
+    if (!track) return;
+    dragRef.current = {
+      active: true,
+      horizontal: false,
+      moved: false,
+      x: event.clientX,
+      y: event.clientY,
+      scrollLeft: track.scrollLeft,
+    };
+    track.setPointerCapture?.(event.pointerId);
+  };
+
+  const onPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const track = trackRef.current;
+    const drag = dragRef.current;
+    if (!track || !drag.active) return;
+
+    const dx = event.clientX - drag.x;
+    const dy = event.clientY - drag.y;
+    if (!drag.horizontal) {
+      if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+      if (Math.abs(dx) <= Math.abs(dy)) {
+        drag.active = false;
+        return;
+      }
+      drag.horizontal = true;
+    }
+
+    drag.moved = drag.moved || Math.abs(dx) > 8;
+    track.scrollLeft = drag.scrollLeft - dx;
+    event.preventDefault();
+  };
+
+  const stopDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    const track = trackRef.current;
+    if (track?.hasPointerCapture?.(event.pointerId)) track.releasePointerCapture(event.pointerId);
+    dragRef.current.active = false;
+  };
+
   return (
     <section className="ad27-topcase-reel" aria-label="Избранные кейсы">
       <div className="ad27-topcase-head"><strong>Кейсы</strong><span>Листайте · нажмите, чтобы открыть</span><a href="/art-direction-2027-lab/analytics">Аналитика →</a></div>
-      <div className="ad27-topcase-track">
+      <div
+        ref={trackRef}
+        className="ad27-topcase-track"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={stopDrag}
+        onPointerCancel={stopDrag}
+        onClickCapture={(event) => {
+          if (dragRef.current.moved) {
+            event.preventDefault();
+            event.stopPropagation();
+            dragRef.current.moved = false;
+          }
+        }}
+      >
         {topCases.map((item) => {
           const className = [
             "ad27-topcase-card",
@@ -33,7 +91,7 @@ export function TopCaseReel() {
             !item.href ? "ad27-topcase-card--disabled" : "",
           ].filter(Boolean).join(" ");
           const inner = <>
-            {item.image ? <Image src={item.image} alt="" fill sizes="(max-width: 900px) 96px, 154px" /> : null}
+            {item.image ? <Image src={item.image} alt="" fill draggable={false} sizes="(max-width: 900px) 82vw, 154px" /> : null}
             <div className="ad27-topcase-meta"><small>{item.label}</small><strong>{item.title}</strong></div>
           </>;
           return item.href ? <a key={item.label} className={className} href={item.href} data-mark={item.mark}>{inner}</a> : <div key={item.label} className={className} data-mark={item.mark}>{inner}</div>;
