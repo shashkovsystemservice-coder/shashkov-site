@@ -32,16 +32,26 @@
   .ad27 #case .ra-artifact p,
   .ad27 #case .ra-artifact a { color:#111317 !important; }
 
-  /* Stable hero portrait: render the complete PNG asset directly as the figure background. */
+  /* Force the validated PNG to render as an independent hero layer. */
+  .ad27 .ra-hero-personal { position:relative !important; }
   .ad27 .ra-hero-person {
-    background-color:transparent !important;
-    background-image:url('/hero-person-cutout-final.png') !important;
-    background-repeat:no-repeat !important;
-    background-position:right bottom !important;
-    background-size:contain !important;
+    background:none !important;
+    border:0 !important;
     overflow:visible !important;
   }
   .ad27 .ra-hero-person img { display:none !important; }
+  .ad27 .ra-hero-personal::after {
+    content:"";
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:40%;
+    height:92%;
+    background:url('/hero-person-cutout-final.png') right bottom / contain no-repeat;
+    z-index:1;
+    pointer-events:none;
+  }
+  .ad27 .ra-hero-copy { position:relative !important; z-index:2 !important; }
 
   @media(max-width:900px) {
     .ad27 .ra-hero-personal { grid-template-columns:minmax(0,1.9fr) minmax(122px,.96fr) !important; gap:12px !important; padding:22px 12px 22px 18px !important; align-items:stretch !important; }
@@ -49,18 +59,14 @@
     .ad27 .ra-hero-personal .ra-eyebrow { max-width:34ch !important; line-height:1.2 !important; }
     .ad27 .ra-hero-personal h1 { max-width:11.7ch !important; font-size:clamp(34px,8.45vw,40px) !important; line-height:.93 !important; text-wrap:normal !important; }
     .ad27 .ra-hero-personal > .ra-hero-copy > p:not(.ra-eyebrow) { max-width:25ch !important; }
-    .ad27 .ra-hero-person {
-      align-self:stretch !important;
-      height:100% !important;
-      min-height:0 !important;
-      aspect-ratio:auto !important;
-      margin:0 !important;
-      border:0 !important;
-      background-color:transparent !important;
+    .ad27 .ra-hero-person { visibility:hidden !important; }
+    .ad27 .ra-hero-personal::after {
+      width:43% !important;
+      height:96% !important;
+      right:-1% !important;
+      bottom:0 !important;
+      background-size:contain !important;
       background-position:right bottom !important;
-      background-size:auto 96% !important;
-      overflow:visible !important;
-      pointer-events:none !important;
     }
     .ad27 #stack { display:flex !important; flex-direction:column !important; justify-content:center !important; padding-top:24px !important; padding-bottom:24px !important; }
     .ad27 #stack .ra-section-head { flex:0 0 auto !important; margin-bottom:18px !important; }
@@ -77,7 +83,7 @@
     .ad27 .ra-hero-personal { grid-template-columns:minmax(0,1.92fr) minmax(116px,.92fr) !important; gap:10px !important; padding-left:16px !important; padding-right:9px !important; }
     .ad27 .ra-hero-personal > .ra-hero-copy { padding-top:0 !important; }
     .ad27 .ra-hero-personal h1 { max-width:11.4ch !important; font-size:clamp(32px,8.25vw,38px) !important; }
-    .ad27 .ra-hero-person { background-size:auto 95% !important; }
+    .ad27 .ra-hero-personal::after { width:44% !important; height:95% !important; }
     .ad27 #stack .ra-foundations--index article { padding:13px 0 !important; }
   }
 }
