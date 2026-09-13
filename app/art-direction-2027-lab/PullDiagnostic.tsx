@@ -3,22 +3,35 @@
 import {useEffect,useRef,useState} from "react";
 import {createPortal} from "react-dom";
 
-const MAX_PULL=238;
-const OPEN_THRESHOLD=118;
+const MAX_PULL=220;
+const OPEN_THRESHOLD=104;
 
 export default function PullDiagnostic(){
   const [mounted,setMounted]=useState(false);
   const [open,setOpen]=useState(false);
   const [drag,setDrag]=useState(0);
   const [active,setActive]=useState(false);
-  const [demo,setDemo]=useState(true);
+  const [hero,setHero]=useState(true);
+  const [demo,setDemo]=useState(false);
   const start=useRef(0);
   const moved=useRef(false);
+  const demoShown=useRef(false);
 
   useEffect(()=>{
     setMounted(true);
-    const t=setTimeout(()=>setDemo(false),5200);
-    return()=>clearTimeout(t);
+    const update=()=>{
+      const onHero=window.scrollY < window.innerHeight*.72;
+      setHero(onHero);
+      if(!onHero&&!demoShown.current){
+        demoShown.current=true;
+        setDemo(true);
+        window.setTimeout(()=>setDemo(false),1800);
+      }
+    };
+    update();
+    window.addEventListener("scroll",update,{passive:true});
+    window.addEventListener("resize",update);
+    return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update);};
   },[]);
 
   function begin(e:any){
@@ -43,7 +56,7 @@ export default function PullDiagnostic(){
     e?.currentTarget?.releasePointerCapture?.(e.pointerId);
     if(Math.abs(drag)>=OPEN_THRESHOLD){
       setDrag(-MAX_PULL);
-      setTimeout(()=>{setOpen(true);setDrag(0)},180);
+      window.setTimeout(()=>{setOpen(true);setDrag(0)},150);
     }else{
       setDrag(0);
       if(!moved.current)setOpen(true);
@@ -53,16 +66,15 @@ export default function PullDiagnostic(){
   function close(){setOpen(false);setDrag(0);}
 
   if(!mounted)return null;
-
   const progress=Math.min(1,Math.abs(drag)/MAX_PULL);
 
   return createPortal(
-    <aside className={`ra-diagnostic-assistant ${open?"is-open":""} ${active?"is-dragging":""} ${demo&&!open?"is-demo":""}`} aria-label="Экспресс-диагностика">
+    <aside className={`ra-diagnostic-assistant ${open?"is-open":""} ${active?"is-dragging":""} ${hero?"is-hero":"is-browsing"} ${demo&&!open?"is-demo":""}`} aria-label="Экспресс-диагностика">
       <button
         className="ra-diagnostic-tab"
         type="button"
         aria-expanded={open}
-        aria-label="Потяните влево, чтобы открыть экспресс-диагностику"
+        aria-label="Открыть экспресс-диагностику"
         style={{transform:`translate3d(${drag}px,0,0)`}}
         onPointerDown={begin}
         onPointerMove={move}
@@ -70,10 +82,10 @@ export default function PullDiagnostic(){
         onPointerCancel={()=>{setActive(false);setDrag(0)}}
       >
         <span className="ra-tab-copy">
-          <strong>Потяни</strong>
-          <small>7 мин</small>
+          <strong>{hero?"7":"Диагностика"}</strong>
+          <small>{hero?"мин":"7 мин"}</small>
         </span>
-        <span className="ra-tab-preview" style={{opacity:Math.max(.18,progress)}}>
+        <span className="ra-tab-preview" style={{opacity:Math.max(hero?.1:.36,progress)}}>
           <b>Экспресс-диагностика</b>
           <small>15 сущностей · 6 связей</small>
         </span>
