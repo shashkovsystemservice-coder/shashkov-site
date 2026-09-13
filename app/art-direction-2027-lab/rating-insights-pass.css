@@ -56,6 +56,7 @@
   .ad27 .ra-hero-person img {
     display:block !important;
     position:static !important;
+    flex:0 0 auto !important;
     width:auto !important;
     height:92% !important;
     max-width:none !important;
@@ -63,7 +64,7 @@
     object-fit:contain !important;
     object-position:right bottom !important;
     filter:none !important;
-    transform:translateX(8%) !important;
+    transform:translateX(4%) !important;
     transform-origin:right bottom !important;
     opacity:1 !important;
     visibility:visible !important;
@@ -85,13 +86,14 @@
       overflow:hidden !important;
     }
     .ad27 .ra-hero-person img {
+      flex:0 0 auto !important;
       width:auto !important;
       height:88% !important;
       max-width:none !important;
       max-height:88% !important;
       object-fit:contain !important;
       object-position:right bottom !important;
-      transform:translateX(12%) !important;
+      transform:translateX(4%) !important;
     }
     .ad27 #stack { display:flex !important; flex-direction:column !important; justify-content:center !important; padding-top:24px !important; padding-bottom:24px !important; }
     .ad27 #stack .ra-section-head { flex:0 0 auto !important; margin-bottom:18px !important; }
@@ -109,7 +111,7 @@
     .ad27 .ra-hero-personal > .ra-hero-copy { padding-top:0 !important; width:66% !important; max-width:66% !important; }
     .ad27 .ra-hero-personal h1 { max-width:11.8ch !important; font-size:clamp(32px,8.25vw,38px) !important; }
     .ad27 .ra-hero-person { width:38% !important; right:-1% !important; }
-    .ad27 .ra-hero-person img { height:86% !important; max-height:86% !important; transform:translateX(14%) !important; }
+    .ad27 .ra-hero-person img { flex:0 0 auto !important; height:86% !important; max-height:86% !important; transform:translateX(5%) !important; }
     .ad27 #stack .ra-foundations--index article { padding:13px 0 !important; }
   }
 }
