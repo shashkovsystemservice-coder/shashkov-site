@@ -12,13 +12,18 @@ const contextualCopy=[
   {id:"contact",label:"Начать диагностику"},
 ] as const;
 
+type Pos={x:number;y:number}|null;
+
 export default function PullDiagnostic(){
   const [mounted,setMounted]=useState(false);
   const [open,setOpen]=useState(false);
   const [hero,setHero]=useState(true);
   const [contextLabel,setContextLabel]=useState("Экспресс-диагностика");
   const [nudge,setNudge]=useState(false);
+  const [pos,setPos]=useState<Pos>(null);
+  const [dragging,setDragging]=useState(false);
   const nudgeTimer=useRef<number|null>(null);
+  const dragRef=useRef<{id:number;startX:number;startY:number;originX:number;originY:number;moved:boolean}|null>(null);
 
   useEffect(()=>{
     setMounted(true);
@@ -29,8 +34,10 @@ export default function PullDiagnostic(){
     }
 
     const pulse=()=>{
-      setNudge(true);
-      window.setTimeout(()=>setNudge(false),1200);
+      if(!dragRef.current){
+        setNudge(true);
+        window.setTimeout(()=>setNudge(false),1200);
+      }
     };
     const first=window.setTimeout(pulse,1500);
     nudgeTimer.current=window.setInterval(pulse,9000);
@@ -66,12 +73,48 @@ export default function PullDiagnostic(){
     };
   },[]);
 
+  const beginDrag=(e:React.PointerEvent<HTMLButtonElement>)=>{
+    if(open)return;
+    const rect=e.currentTarget.getBoundingClientRect();
+    dragRef.current={id:e.pointerId,startX:e.clientX,startY:e.clientY,originX:rect.left,originY:rect.top,moved:false};
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const moveDrag=(e:React.PointerEvent<HTMLButtonElement>)=>{
+    const d=dragRef.current;
+    if(!d||d.id!==e.pointerId)return;
+    const dx=e.clientX-d.startX;
+    const dy=e.clientY-d.startY;
+    if(Math.hypot(dx,dy)>6)d.moved=true;
+    if(!d.moved)return;
+    setDragging(true);
+    const pad=8;
+    const width=e.currentTarget.getBoundingClientRect().width;
+    const height=e.currentTarget.getBoundingClientRect().height;
+    const x=Math.max(pad,Math.min(window.innerWidth-width-pad,d.originX+dx));
+    const y=Math.max(84,Math.min(window.innerHeight-height-120,d.originY+dy));
+    setPos({x,y});
+  };
+
+  const endDrag=(e:React.PointerEvent<HTMLButtonElement>)=>{
+    const d=dragRef.current;
+    if(!d||d.id!==e.pointerId)return;
+    const moved=d.moved;
+    dragRef.current=null;
+    setDragging(false);
+    if(!moved)setOpen(true);
+  };
+
   if(!mounted)return null;
 
+  const style=pos?({left:pos.x,top:pos.y,right:"auto",bottom:"auto"} as React.CSSProperties):undefined;
+
   return createPortal(
-    <aside className={`ra-diagnostic-assistant ${open?"is-open":""} ${hero?"is-hero":"is-browsing"} ${nudge&&!open?"is-nudge":""}`} aria-label="Экспресс-диагностика">
-      <button className="ra-stopwatch-trigger" type="button" aria-expanded={open} aria-label="Открыть экспресс-диагностику, 7 минут" onClick={()=>setOpen(true)}>
+    <aside style={style} className={`ra-diagnostic-assistant ${open?"is-open":""} ${hero?"is-hero":"is-browsing"} ${nudge&&!open&&!dragging?"is-nudge":""} ${dragging?"is-dragging":""}`} aria-label="Экспресс-диагностика">
+      <button className="ra-stopwatch-trigger" type="button" aria-expanded={open} aria-label="Открыть экспресс-диагностику, 7 минут. Элемент можно перетащить." onPointerDown={beginDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag}>
         <span className="ra-stopwatch" aria-hidden="true">
+          <i className="ra-stopwatch-bell ra-stopwatch-bell-left" />
+          <i className="ra-stopwatch-bell ra-stopwatch-bell-right" />
           <i className="ra-stopwatch-knob" />
           <i className="ra-stopwatch-hand" />
           <b>7</b>
@@ -80,6 +123,7 @@ export default function PullDiagnostic(){
         <span className="ra-stopwatch-copy">
           <strong>{contextLabel}</strong>
           <small>{hero?"Проверить маркетинговую логику":"7 минут · результат сразу"}</small>
+          <em>можно двигать</em>
         </span>
       </button>
 
@@ -96,4 +140,4 @@ export default function PullDiagnostic(){
   );
 }
 
-// stopwatch-v1 deployment marker
+// stopwatch-v3 draggable final preview marker
