@@ -51,7 +51,6 @@
     }
     .ad27 .ra-hero-person img {
       display:block !important;
-      content:url('/hero-person-cutout.webp') !important;
       object-fit:contain !important;
       object-position:right bottom !important;
       width:100% !important;
