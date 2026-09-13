@@ -24,25 +24,25 @@
 .ad27-topcase-card--disabled .ad27-topcase-meta small::after{content:" · скоро";opacity:.65}
 
 @media(max-width:900px){
-  .ad27-topcase-reel{margin-top:0;padding:0 0 24px;min-height:0;max-height:none;background:#111319;overflow:visible}
-  .ad27-topcase-head{margin:0 0 14px;padding:0 18px;height:auto;min-height:0;max-height:none}
-  .ad27-topcase-head strong{font-size:12px;letter-spacing:.12em}
-  .ad27-topcase-head span{display:none}
-  .ad27-topcase-head a{font-size:10px}
-  .ad27-topcase-track{grid-auto-columns:78vw;gap:12px;scroll-padding-left:18px;min-height:min(68svh,560px);max-height:none;height:min(68svh,560px);padding:0 18px 2px;align-items:stretch}
-  .ad27-topcase-card{width:78vw;height:min(68svh,560px);min-height:min(68svh,560px);max-height:none;border:0}
-  .ad27-topcase-card:hover{transform:none!important}
-  .ad27-topcase-card:hover img{transform:none}
-  .ad27-topcase-meta{left:22px;right:22px;bottom:24px;gap:8px}
-  .ad27-topcase-meta small{font-size:10px;letter-spacing:.11em}
-  .ad27-topcase-meta strong{font-size:clamp(24px,7vw,34px);line-height:.98;max-width:12ch}
-  .ad27-topcase-card--type{padding:22px}
-  .ad27-topcase-card--type::before{right:14px;top:8px;font-size:clamp(120px,36vw,180px)}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel{margin-top:0!important;padding:0 0 24px!important;min-height:0!important;max-height:none!important;height:auto!important;background:#111319!important;overflow:visible!important;contain:none!important;justify-content:flex-start!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-head{margin:0 0 14px!important;padding:0 18px!important;height:auto!important;min-height:0!important;max-height:none!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-head strong{font-size:12px!important;letter-spacing:.12em!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-head span{display:none!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-head a{font-size:10px!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-track{grid-auto-columns:78vw!important;gap:12px!important;scroll-padding-left:18px!important;min-height:min(68svh,560px)!important;max-height:none!important;height:min(68svh,560px)!important;padding:0 18px 2px!important;align-items:stretch!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-card{width:78vw!important;height:min(68svh,560px)!important;min-height:min(68svh,560px)!important;max-height:none!important;border:0!important;border-radius:28px!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-card:hover{transform:none!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-card:hover img{transform:none!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-meta{left:22px!important;right:22px!important;bottom:24px!important;gap:8px!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-meta small{font-size:10px!important;letter-spacing:.11em!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-meta strong{font-size:clamp(24px,7vw,34px)!important;line-height:.98!important;max-width:12ch!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-card--type{padding:22px!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-card--type::before{right:14px!important;top:8px!important;font-size:clamp(120px,36vw,180px)!important}
 }
 
 @media(max-width:390px){
-  .ad27-topcase-track{grid-auto-columns:80vw;gap:10px;min-height:min(64svh,520px);height:min(64svh,520px)}
-  .ad27-topcase-card{width:80vw;height:min(64svh,520px);min-height:min(64svh,520px)}
-  .ad27-topcase-meta{left:18px;right:18px;bottom:20px}
-  .ad27-topcase-meta strong{font-size:clamp(22px,7.2vw,30px)}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-track{grid-auto-columns:80vw!important;gap:10px!important;min-height:min(64svh,520px)!important;height:min(64svh,520px)!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-card{width:80vw!important;height:min(64svh,520px)!important;min-height:min(64svh,520px)!important;max-height:none!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-meta{left:18px!important;right:18px!important;bottom:20px!important}
+  .ad27 .ra-proof-reel > .ad27-topcase-reel .ad27-topcase-meta strong{font-size:clamp(22px,7.2vw,30px)!important}
 }
