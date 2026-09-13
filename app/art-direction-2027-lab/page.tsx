@@ -71,7 +71,7 @@ export default function ArtDirection2027Lab(){
         <p>Помогаю понять, <strong>где реальная проблема, что проверить первым и на что пока не тратить деньги.</strong></p>
         <div className="ra-actions"><a className="ra-btn primary" href="#contact">Обсудить мою ситуацию →</a><a className="ra-textlink" href="/diagnostic">Сначала пройти 6 вопросов</a></div>
       </div>
-      <figure className="ra-hero-person"><Image src="/hero-portrait-vertical.webp" alt="Владимир Шашков" fill sizes="(max-width:900px) 42vw, 38vw" priority /></figure>
+      <figure className="ra-hero-person"><Image src="/hero-person-cutout.webp" alt="Владимир Шашков" fill sizes="(max-width:900px) 42vw, 38vw" priority unoptimized /></figure>
     </section>
 
     <section className="ra-section ra-proof-reel" aria-label="Опыт и кейсы">
