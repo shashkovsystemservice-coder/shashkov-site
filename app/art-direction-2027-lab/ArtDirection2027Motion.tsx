@@ -23,8 +23,86 @@ type Accent = (typeof accentOrder)[number];
 export function TopCaseReel() {
   const trackRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef({ active: false, horizontal: false, moved: false, x: 0, y: 0, scrollLeft: 0 });
+  const touchRef = useRef({ active: false, horizontal: false, moved: false, x: 0, y: 0, scrollLeft: 0 });
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const snapToNearestCard = () => {
+      const cards = Array.from(track.children) as HTMLElement[];
+      if (!cards.length) return;
+      const trackCenter = track.scrollLeft + track.clientWidth / 2;
+      let nearest = cards[0];
+      let nearestDistance = Number.POSITIVE_INFINITY;
+      cards.forEach(card => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const distance = Math.abs(cardCenter - trackCenter);
+        if (distance < nearestDistance) {
+          nearest = card;
+          nearestDistance = distance;
+        }
+      });
+      const target = nearest.offsetLeft - (track.clientWidth - nearest.offsetWidth) / 2;
+      track.scrollTo({ left: target, behavior: "smooth" });
+    };
+
+    const onTouchStart = (event: TouchEvent) => {
+      if (event.touches.length !== 1) return;
+      const touch = event.touches[0];
+      touchRef.current = {
+        active: true,
+        horizontal: false,
+        moved: false,
+        x: touch.clientX,
+        y: touch.clientY,
+        scrollLeft: track.scrollLeft,
+      };
+    };
+
+    const onTouchMove = (event: TouchEvent) => {
+      const state = touchRef.current;
+      if (!state.active || event.touches.length !== 1) return;
+      const touch = event.touches[0];
+      const dx = touch.clientX - state.x;
+      const dy = touch.clientY - state.y;
+
+      if (!state.horizontal) {
+        if (Math.abs(dx) < 7 && Math.abs(dy) < 7) return;
+        if (Math.abs(dx) <= Math.abs(dy)) {
+          state.active = false;
+          return;
+        }
+        state.horizontal = true;
+      }
+
+      state.moved = state.moved || Math.abs(dx) > 9;
+      dragRef.current.moved = state.moved;
+      track.scrollLeft = state.scrollLeft - dx;
+      event.preventDefault();
+    };
+
+    const onTouchEnd = () => {
+      const state = touchRef.current;
+      if (state.horizontal && state.moved) snapToNearestCard();
+      state.active = false;
+    };
+
+    track.addEventListener("touchstart", onTouchStart, { passive: true });
+    track.addEventListener("touchmove", onTouchMove, { passive: false });
+    track.addEventListener("touchend", onTouchEnd, { passive: true });
+    track.addEventListener("touchcancel", onTouchEnd, { passive: true });
+
+    return () => {
+      track.removeEventListener("touchstart", onTouchStart);
+      track.removeEventListener("touchmove", onTouchMove);
+      track.removeEventListener("touchend", onTouchEnd);
+      track.removeEventListener("touchcancel", onTouchEnd);
+    };
+  }, []);
 
   const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "touch") return;
     const track = trackRef.current;
     if (!track) return;
     dragRef.current = {
@@ -39,6 +117,7 @@ export function TopCaseReel() {
   };
 
   const onPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "touch") return;
     const track = trackRef.current;
     const drag = dragRef.current;
     if (!track || !drag.active) return;
@@ -60,6 +139,7 @@ export function TopCaseReel() {
   };
 
   const stopDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "touch") return;
     const track = trackRef.current;
     if (track?.hasPointerCapture?.(event.pointerId)) track.releasePointerCapture(event.pointerId);
     dragRef.current.active = false;
@@ -76,10 +156,11 @@ export function TopCaseReel() {
         onPointerUp={stopDrag}
         onPointerCancel={stopDrag}
         onClickCapture={(event) => {
-          if (dragRef.current.moved) {
+          if (dragRef.current.moved || touchRef.current.moved) {
             event.preventDefault();
             event.stopPropagation();
             dragRef.current.moved = false;
+            touchRef.current.moved = false;
           }
         }}
       >
