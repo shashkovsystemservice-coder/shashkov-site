@@ -12,6 +12,7 @@ export default function PullDiagnostic(){
   const [drag,setDrag]=useState(0);
   const [active,setActive]=useState(false);
   const [hero,setHero]=useState(true);
+  const [heroIntro,setHeroIntro]=useState(true);
   const [demo,setDemo]=useState(false);
   const start=useRef(0);
   const moved=useRef(false);
@@ -19,19 +20,25 @@ export default function PullDiagnostic(){
 
   useEffect(()=>{
     setMounted(true);
+    const introTimer=window.setTimeout(()=>setHeroIntro(false),3800);
     const update=()=>{
       const onHero=window.scrollY < window.innerHeight*.72;
       setHero(onHero);
       if(!onHero&&!demoShown.current){
         demoShown.current=true;
+        setHeroIntro(false);
         setDemo(true);
-        window.setTimeout(()=>setDemo(false),1800);
+        window.setTimeout(()=>setDemo(false),1500);
       }
     };
     update();
     window.addEventListener("scroll",update,{passive:true});
     window.addEventListener("resize",update);
-    return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update);};
+    return()=>{
+      window.clearTimeout(introTimer);
+      window.removeEventListener("scroll",update);
+      window.removeEventListener("resize",update);
+    };
   },[]);
 
   function begin(e:any){
@@ -39,6 +46,7 @@ export default function PullDiagnostic(){
     start.current=e.clientX;
     moved.current=false;
     setActive(true);
+    setHeroIntro(false);
     setDemo(false);
     e.currentTarget?.setPointerCapture?.(e.pointerId);
   }
@@ -69,7 +77,7 @@ export default function PullDiagnostic(){
   const progress=Math.min(1,Math.abs(drag)/MAX_PULL);
 
   return createPortal(
-    <aside className={`ra-diagnostic-assistant ${open?"is-open":""} ${active?"is-dragging":""} ${hero?"is-hero":"is-browsing"} ${demo&&!open?"is-demo":""}`} aria-label="Экспресс-диагностика">
+    <aside className={`ra-diagnostic-assistant ${open?"is-open":""} ${active?"is-dragging":""} ${hero?"is-hero":"is-browsing"} ${heroIntro&&hero&&!open?"is-hero-intro":""} ${demo&&!open?"is-demo":""}`} aria-label="Экспресс-диагностика">
       <button
         className="ra-diagnostic-tab"
         type="button"
@@ -89,7 +97,6 @@ export default function PullDiagnostic(){
           <b>Экспресс-диагностика</b>
           <small>15 сущностей · 6 связей</small>
         </span>
-        <i className="ra-tab-glow" aria-hidden="true"/>
       </button>
 
       <div className="ra-diagnostic-card">
