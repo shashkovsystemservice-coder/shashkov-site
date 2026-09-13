@@ -140,4 +140,4 @@ export default function PullDiagnostic(){
   );
 }
 
-// stopwatch-v3 draggable deployment marker
+// stopwatch-v3 draggable clean preview marker
