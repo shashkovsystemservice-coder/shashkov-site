@@ -24,6 +24,7 @@ export function TopCaseReel() {
   const trackRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef({ active: false, horizontal: false, moved: false, x: 0, y: 0, scrollLeft: 0 });
   const touchRef = useRef({ active: false, horizontal: false, moved: false, x: 0, y: 0 });
+  const [activeCase, setActiveCase] = useState(0);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -50,19 +51,14 @@ export function TopCaseReel() {
       const clamped = Math.max(0, Math.min(index, items.length - 1));
       const card = items[clamped];
       const left = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+      setActiveCase(clamped);
       track.scrollTo({ left, behavior: "smooth" });
     };
 
     const onTouchStart = (event: TouchEvent) => {
       if (event.touches.length !== 1) return;
       const touch = event.touches[0];
-      touchRef.current = {
-        active: true,
-        horizontal: false,
-        moved: false,
-        x: touch.clientX,
-        y: touch.clientY,
-      };
+      touchRef.current = { active: true, horizontal: false, moved: false, x: touch.clientX, y: touch.clientY };
     };
 
     const onTouchMove = (event: TouchEvent) => {
@@ -71,7 +67,6 @@ export function TopCaseReel() {
       const touch = event.touches[0];
       const dx = touch.clientX - state.x;
       const dy = touch.clientY - state.y;
-
       if (!state.horizontal) {
         if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
         if (Math.abs(dx) <= Math.abs(dy)) {
@@ -80,7 +75,6 @@ export function TopCaseReel() {
         }
         state.horizontal = true;
       }
-
       if (Math.abs(dx) > 18) state.moved = true;
       dragRef.current.moved = state.moved;
       event.preventDefault();
@@ -94,36 +88,48 @@ export function TopCaseReel() {
       if (state.horizontal && Math.abs(dx) >= 34) {
         const current = nearestIndex();
         goToIndex(current + (dx < 0 ? 1 : -1));
+      } else {
+        setActiveCase(nearestIndex());
       }
       state.active = false;
       state.horizontal = false;
+    };
+
+    const onScroll = () => {
+      window.requestAnimationFrame(() => setActiveCase(nearestIndex()));
     };
 
     track.addEventListener("touchstart", onTouchStart, { passive: true });
     track.addEventListener("touchmove", onTouchMove, { passive: false });
     track.addEventListener("touchend", onTouchEnd, { passive: true });
     track.addEventListener("touchcancel", onTouchEnd, { passive: true });
+    track.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
       track.removeEventListener("touchstart", onTouchStart);
       track.removeEventListener("touchmove", onTouchMove);
       track.removeEventListener("touchend", onTouchEnd);
       track.removeEventListener("touchcancel", onTouchEnd);
+      track.removeEventListener("scroll", onScroll);
     };
   }, []);
+
+  const goToCase = (index: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const items = Array.from(track.children) as HTMLElement[];
+    const card = items[index];
+    if (!card) return;
+    const left = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+    setActiveCase(index);
+    track.scrollTo({ left, behavior: "smooth" });
+  };
 
   const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     if (event.pointerType === "touch") return;
     const track = trackRef.current;
     if (!track) return;
-    dragRef.current = {
-      active: true,
-      horizontal: false,
-      moved: false,
-      x: event.clientX,
-      y: event.clientY,
-      scrollLeft: track.scrollLeft,
-    };
+    dragRef.current = { active: true, horizontal: false, moved: false, x: event.clientX, y: event.clientY, scrollLeft: track.scrollLeft };
     track.setPointerCapture?.(event.pointerId);
   };
 
@@ -132,7 +138,6 @@ export function TopCaseReel() {
     const track = trackRef.current;
     const drag = dragRef.current;
     if (!track || !drag.active) return;
-
     const dx = event.clientX - drag.x;
     const dy = event.clientY - drag.y;
     if (!drag.horizontal) {
@@ -143,7 +148,6 @@ export function TopCaseReel() {
       }
       drag.horizontal = true;
     }
-
     drag.moved = drag.moved || Math.abs(dx) > 8;
     track.scrollLeft = drag.scrollLeft - dx;
     event.preventDefault();
@@ -154,6 +158,20 @@ export function TopCaseReel() {
     const track = trackRef.current;
     if (track?.hasPointerCapture?.(event.pointerId)) track.releasePointerCapture(event.pointerId);
     dragRef.current.active = false;
+    if (track) {
+      const items = Array.from(track.children) as HTMLElement[];
+      const center = track.scrollLeft + track.clientWidth / 2;
+      let nearest = 0;
+      let best = Number.POSITIVE_INFINITY;
+      items.forEach((card, i) => {
+        const distance = Math.abs(card.offsetLeft + card.offsetWidth / 2 - center);
+        if (distance < best) {
+          best = distance;
+          nearest = i;
+        }
+      });
+      setActiveCase(nearest);
+    }
   };
 
   return (
@@ -188,6 +206,18 @@ export function TopCaseReel() {
           </>;
           return item.href ? <a key={item.label} className={className} href={item.href} data-mark={item.mark}>{inner}</a> : <div key={item.label} className={className} data-mark={item.mark}>{inner}</div>;
         })}
+      </div>
+      <div className="ad27-topcase-dots" aria-label={`Кейс ${activeCase + 1} из ${topCases.length}`}>
+        {topCases.map((item, index) => (
+          <button
+            key={item.label}
+            type="button"
+            className={index === activeCase ? "is-active" : ""}
+            aria-label={`Перейти к кейсу ${index + 1}: ${item.title}`}
+            aria-current={index === activeCase ? "true" : undefined}
+            onClick={() => goToCase(index)}
+          />
+        ))}
       </div>
     </section>
   );
