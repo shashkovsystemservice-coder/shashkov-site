@@ -32,27 +32,34 @@
   .ad27 #case .ra-artifact p,
   .ad27 #case .ra-artifact a { color:#111317 !important; }
 
-  /* Hero portrait: plain DOM img only. No content:url, no pseudo-element, no absolute replacement. */
+  /* Hero portrait: hard-position the real DOM image so grid sizing cannot hide it. */
   .ad27 .ra-hero-personal { position:relative !important; }
   .ad27 .ra-hero-personal::after { content:none !important; display:none !important; }
   .ad27 .ra-hero-person {
-    position:relative !important;
+    position:absolute !important;
+    right:0 !important;
+    bottom:0 !important;
+    top:0 !important;
+    width:42% !important;
+    height:100% !important;
+    margin:0 !important;
     display:flex !important;
     align-items:flex-end !important;
     justify-content:flex-end !important;
-    width:100% !important;
-    height:100% !important;
     background:none !important;
     border:0 !important;
     overflow:visible !important;
     visibility:visible !important;
+    z-index:1 !important;
+    pointer-events:none !important;
   }
   .ad27 .ra-hero-person img {
     display:block !important;
     position:static !important;
-    width:100% !important;
+    width:auto !important;
     height:96% !important;
-    max-width:100% !important;
+    max-width:none !important;
+    max-height:96% !important;
     object-fit:contain !important;
     object-position:right bottom !important;
     filter:none !important;
@@ -69,17 +76,13 @@
     .ad27 .ra-hero-personal h1 { max-width:11.7ch !important; font-size:clamp(34px,8.45vw,40px) !important; line-height:.93 !important; text-wrap:normal !important; }
     .ad27 .ra-hero-personal > .ra-hero-copy > p:not(.ra-eyebrow) { max-width:25ch !important; }
     .ad27 .ra-hero-person {
-      align-self:stretch !important;
-      justify-self:stretch !important;
-      width:100% !important;
+      right:-1% !important;
+      top:0 !important;
+      bottom:0 !important;
+      width:43% !important;
       height:100% !important;
-      min-height:0 !important;
-      margin:0 !important;
-      overflow:visible !important;
-      pointer-events:none !important;
-      visibility:visible !important;
     }
-    .ad27 .ra-hero-person img { height:96% !important; }
+    .ad27 .ra-hero-person img { width:auto !important; height:96% !important; max-height:96% !important; }
     .ad27 #stack { display:flex !important; flex-direction:column !important; justify-content:center !important; padding-top:24px !important; padding-bottom:24px !important; }
     .ad27 #stack .ra-section-head { flex:0 0 auto !important; margin-bottom:18px !important; }
     .ad27 #stack .ra-foundations--index { flex:0 0 auto !important; height:auto !important; display:grid !important; grid-template-columns:1fr !important; grid-template-rows:none !important; gap:0 !important; border-top:1px solid rgba(248,247,244,.7) !important; }
@@ -95,7 +98,8 @@
     .ad27 .ra-hero-personal { grid-template-columns:minmax(0,1.92fr) minmax(116px,.92fr) !important; gap:10px !important; padding-left:16px !important; padding-right:9px !important; }
     .ad27 .ra-hero-personal > .ra-hero-copy { padding-top:0 !important; }
     .ad27 .ra-hero-personal h1 { max-width:11.4ch !important; font-size:clamp(32px,8.25vw,38px) !important; }
-    .ad27 .ra-hero-person img { height:95% !important; }
+    .ad27 .ra-hero-person { width:44% !important; }
+    .ad27 .ra-hero-person img { height:95% !important; max-height:95% !important; }
     .ad27 #stack .ra-foundations--index article { padding:13px 0 !important; }
   }
 }
