@@ -24,16 +24,20 @@
 
   /* One consistent brand mark. */
   .ad27 .ra-brand b {
-    width: 44px !important;
-    height: 44px !important;
+    width: 56px !important;
+    height: 56px !important;
     display: grid !important;
     place-items: center !important;
     background: #ff6500 !important;
     color: #fff !important;
     border: 0 !important;
+    padding: 0 3px 0 4px !important;
     line-height: 1 !important;
+    font-size: 27px !important;
+    letter-spacing: -.055em !important;
     font-weight: 800 !important;
     -webkit-text-fill-color: #fff !important;
+    transform: translateX(0) !important;
   }
 
   /* AC-U-inspired header hierarchy: brand / project CTA / square menu. */
@@ -300,16 +304,20 @@
   @media (max-width: 900px) {
     .ad27 .ra-nav { background: rgba(255,254,253,.98); }
     .ad27 .ra-brand b {
-      width: 38px !important;
-      height: 38px !important;
+      width: 44px !important;
+      height: 44px !important;
+      font-size: 22px !important;
+      letter-spacing: -.05em !important;
+      padding: 0 3px 0 4px !important;
     }
     .ad27 .ra-nav-project {
-      grid-template-columns: auto minmax(0,1fr) 48px !important;
+      grid-template-columns: 44px minmax(0,1fr) 44px !important;
       gap: 8px !important;
       height: 66px !important;
       min-height: 66px !important;
       padding: 0 12px !important;
     }
+    .ad27 .ra-nav-project .ra-brand { width:44px !important; height:44px !important; }
     .ad27 .ra-nav-project .ra-brand span { display:none !important; }
     .ad27 .ra-nav-project-cta {
       height: 44px;
