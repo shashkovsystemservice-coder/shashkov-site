@@ -1,58 +1,71 @@
 @media screen{
-/* --- Art-direction reset: one screen = one idea --- */
-.ad27 #marketing-backend{background:#fffefd!important;color:#111317!important;display:flex!important;flex-direction:column!important;justify-content:center!important;gap:0!important;padding:clamp(38px,5vw,72px) var(--page-x)!important}
-.ad27 #marketing-backend .mb-kicker{order:1;margin:0 0 22px!important;font-size:0!important;color:#ff6500!important}
-.ad27 #marketing-backend .mb-kicker:after{content:"Два уровня маркетинга";font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#ff6500}
-.ad27 #marketing-backend .mb-title{order:5;margin:30px 0 0!important;max-width:30ch!important;font-size:clamp(22px,2.4vw,34px)!important;line-height:1.13!important;letter-spacing:-.03em!important;color:#111317!important;font-weight:650!important}
-.ad27 #marketing-backend .mb-title em{font-style:normal!important;color:#111317!important}
-.ad27 #marketing-backend .mb-layer{display:grid!important;grid-template-columns:190px minmax(0,1fr)!important;gap:30px!important;align-items:center!important;padding:22px 0!important;border-top:1px solid #c9c9c4!important}
-.ad27 #marketing-backend .mb-layer span{font-size:10px!important;line-height:1.25!important;letter-spacing:.11em!important;text-transform:uppercase!important;color:#8a8d92!important}
-.ad27 #marketing-backend .mb-layer strong{position:relative!important;display:block!important;color:#111317!important;font-weight:650!important;letter-spacing:-.025em!important}
-.ad27 #marketing-backend .mb-layer:first-of-type{order:2}
-.ad27 #marketing-backend .mb-layer:first-of-type strong{font-size:0!important}
-.ad27 #marketing-backend .mb-layer:first-of-type strong:before{content:"Сайт   ·   Реклама   ·   Контент   ·   SEO   ·   Продажи";font-size:clamp(21px,2.5vw,34px);line-height:1.16;color:#777b80;font-weight:560}
-.ad27 #marketing-backend .mb-layer:first-of-type:after{content:"FRONTEND";grid-column:2;font-size:9px;letter-spacing:.16em;color:#a2a5a9;margin-top:-12px}
-.ad27 #marketing-backend .mb-layer--system{order:3;position:relative!important;border-bottom:1px solid #c9c9c4!important;padding-top:30px!important;padding-bottom:30px!important}
-.ad27 #marketing-backend .mb-layer--system:before{content:"↓";position:absolute;left:calc(190px + 30px);top:-18px;width:34px;height:34px;border-radius:50%;background:#ff6500;color:white;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700}
-.ad27 #marketing-backend .mb-layer--system strong{font-size:0!important;color:#111317!important}
-.ad27 #marketing-backend .mb-layer--system strong:before{content:"Рынок  →  Клиент  →  Ценность  →  Выбор";display:block;font-size:clamp(28px,3.7vw,52px);line-height:1.05;color:#111317;font-weight:720;letter-spacing:-.045em}
-.ad27 #marketing-backend .mb-layer--system strong:after{content:"Сегмент  ·  Позиционирование  ·  Предложение  ·  Экономика  ·  Доказательства";display:block;margin-top:15px;font-size:clamp(14px,1.45vw,19px);line-height:1.35;color:#ff6500;font-weight:650;letter-spacing:-.01em}
-.ad27 #marketing-backend .mb-close{order:4;margin:20px 0 0 calc(190px + 30px)!important;max-width:48ch!important;font-size:15px!important;line-height:1.42!important;color:#5f6368!important}
+/* Marketing backend: a real visual section, not two flat lists. */
+.ad27 #marketing-backend{position:relative!important;display:grid!important;grid-template-rows:34% 66%!important;padding:0!important;background:#fffefd!important;color:#111317!important;overflow:hidden!important;isolation:isolate}
+.ad27 #marketing-backend:after{content:"";position:absolute;left:0;right:0;bottom:0;height:66%;background:#111317;z-index:0}
+.ad27 #marketing-backend>.mb-kicker,.ad27 #marketing-backend>.mb-layer,.ad27 #marketing-backend>.mb-close,.ad27 #marketing-backend>.mb-title{position:relative;z-index:1}
 
-/* Remove every legacy backend fragment from the six-zone sheet. */
+/* Surface / what the owner sees. */
+.ad27 #marketing-backend .mb-kicker{grid-row:1;align-self:start;margin:0!important;padding:30px var(--page-x) 0!important;font-size:0!important;color:#ff6500!important}
+.ad27 #marketing-backend .mb-kicker:after{content:"ТО, ЧТО ВИДНО";font-size:11px;font-weight:850;letter-spacing:.14em;color:#ff6500}
+.ad27 #marketing-backend .mb-layer:first-of-type{grid-row:1;align-self:end;display:block!important;margin:0!important;padding:0 var(--page-x) 28px!important;border:0!important}
+.ad27 #marketing-backend .mb-layer:first-of-type span{display:none!important}
+.ad27 #marketing-backend .mb-layer:first-of-type strong{display:block!important;font-size:0!important;font-weight:600!important;color:#6f7378!important;letter-spacing:-.02em!important}
+.ad27 #marketing-backend .mb-layer:first-of-type strong:before{content:"Сайт   ·   Реклама   ·   Контент   ·   SEO   ·   Продажи";font-size:clamp(22px,2.6vw,36px);line-height:1.18;color:#70747a}
+.ad27 #marketing-backend .mb-layer:first-of-type:after{content:"ВИДИМЫЙ МАРКЕТИНГ  /  FRONTEND";position:absolute;left:var(--page-x);bottom:-13px;padding:7px 11px;background:#ff6500;color:white;font-size:9px;font-weight:850;letter-spacing:.11em;z-index:3}
+.ad27 #marketing-backend .mb-layer:first-of-type:before{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:#111317}
+
+/* Deep system. */
+.ad27 #marketing-backend .mb-layer--system{grid-row:2;align-self:start;display:block!important;margin:0!important;padding:46px var(--page-x) 0!important;border:0!important;background:transparent!important;color:#f7f7f3!important}
+.ad27 #marketing-backend .mb-layer--system:before{content:"НО РЕЗУЛЬТАТ ФОРМИРУЕТСЯ ГЛУБЖЕ";display:block!important;position:static!important;width:auto!important;height:auto!important;background:none!important;color:#ff6500!important;border-radius:0!important;margin:0 0 18px!important;font-size:11px!important;font-weight:850!important;letter-spacing:.12em!important}
+.ad27 #marketing-backend .mb-layer--system span{display:none!important}
+.ad27 #marketing-backend .mb-layer--system strong{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px 12px!important;font-size:0!important;color:#f7f7f3!important;max-width:860px!important}
+.ad27 #marketing-backend .mb-layer--system strong:before,.ad27 #marketing-backend .mb-layer--system strong:after{display:flex;align-items:flex-end;min-height:104px;padding:16px;border:1px solid rgba(255,255,255,.18);font-weight:720;letter-spacing:-.035em;line-height:1.02}
+.ad27 #marketing-backend .mb-layer--system strong:before{content:"Рынок  ·  Клиент  ·  Сегмент";font-size:clamp(27px,3.2vw,44px);color:#f7f7f3}
+.ad27 #marketing-backend .mb-layer--system strong:after{content:"Ценность  ·  Позиционирование  ·  Предложение";font-size:clamp(24px,2.8vw,39px);color:#f7f7f3}
+.ad27 #marketing-backend .mb-close{grid-row:2;align-self:end;margin:0!important;padding:0 var(--page-x) 70px!important;max-width:none!important;font-size:0!important;color:#a8aaad!important}
+.ad27 #marketing-backend .mb-close:before{content:"Экономика  ·  Доказательства";display:block;margin-bottom:12px;font-size:13px;font-weight:750;letter-spacing:.03em;color:#ff6500}
+.ad27 #marketing-backend .mb-close:after{content:"Сайт, реклама и контент — то, что видно. Я работаю с системой, которая определяет, будут ли они работать.";display:block;max-width:58ch;font-size:15px;line-height:1.42;color:#a8aaad}
+.ad27 #marketing-backend .mb-title{grid-row:2;align-self:end;margin:0!important;padding:0 var(--page-x) 28px!important;max-width:none!important;font-size:0!important;color:#f7f7f3!important}
+.ad27 #marketing-backend .mb-title:after{content:"THE MARKETING BACKEND";font-size:10px;font-weight:850;letter-spacing:.16em;color:#f7f7f3}
+.ad27 #marketing-backend .mb-title em{display:none!important}
+
+/* Clean the six-zone sheet completely. */
 .ad27 #work .ra-system-cut,.ad27 #work .ra-system-note,.ad27 #work [class*="system-cut"],.ad27 #work [class*="system-note"]{display:none!important}
 .ad27 #work .ra-work--index{margin-top:0!important}
 
-/* Final portrait override. This file is imported last, so older hero rules cannot hide it. */
+/* Hero portrait: render as the hero background layer so CSS layout cannot drop it. */
 .ad27 .ra-hero-personal{position:relative!important;overflow:hidden!important}
-.ad27 .ra-hero-personal>.ra-hero-person{display:block!important;position:absolute!important;right:0!important;top:0!important;bottom:0!important;width:43%!important;height:100%!important;margin:0!important;overflow:visible!important;background:transparent!important;border:0!important;z-index:1!important;pointer-events:none!important}
-.ad27 .ra-hero-personal>.ra-hero-person img{display:block!important;position:absolute!important;right:-3%!important;bottom:0!important;top:auto!important;width:auto!important;height:91%!important;max-width:none!important;max-height:91%!important;object-fit:contain!important;object-position:right bottom!important;filter:none!important;opacity:1!important;visibility:visible!important;transform:none!important}
+.ad27 .ra-hero-personal:before{content:""!important;display:block!important;position:absolute!important;z-index:1!important;right:-2%!important;bottom:0!important;top:auto!important;width:43%!important;height:92%!important;background-image:url('/hero-person-cutout-final.png')!important;background-repeat:no-repeat!important;background-position:right bottom!important;background-size:contain!important;pointer-events:none!important}
+.ad27 .ra-hero-personal>.ra-hero-person{display:none!important}
 .ad27 .ra-hero-personal>.ra-hero-copy{position:relative!important;z-index:2!important}
 
 @media(max-width:900px){
-.ad27 #marketing-backend{padding:30px 28px!important;justify-content:center!important}
-.ad27 #marketing-backend .mb-kicker{margin-bottom:18px!important}
+.ad27 #marketing-backend{grid-template-rows:29% 71%!important}
+.ad27 #marketing-backend:after{height:71%}
+.ad27 #marketing-backend .mb-kicker{padding:24px 24px 0!important}
 .ad27 #marketing-backend .mb-kicker:after{font-size:9px}
-.ad27 #marketing-backend .mb-layer{display:block!important;padding:17px 0!important}
-.ad27 #marketing-backend .mb-layer span{display:block!important;margin-bottom:10px!important;font-size:8.5px!important}
-.ad27 #marketing-backend .mb-layer:first-of-type strong:before{content:"Сайт · Реклама · Контент · SEO · Продажи";font-size:19px;line-height:1.25}
-.ad27 #marketing-backend .mb-layer:first-of-type:after{display:block!important;margin-top:9px;font-size:8px}
-.ad27 #marketing-backend .mb-layer--system{padding-top:25px!important;padding-bottom:22px!important}
-.ad27 #marketing-backend .mb-layer--system:before{left:0!important;top:-15px!important;width:30px;height:30px;font-size:17px}
-.ad27 #marketing-backend .mb-layer--system strong:before{content:"Рынок → Клиент → Ценность → Выбор";font-size:clamp(27px,7.2vw,34px);line-height:1.08;max-width:10.5ch}
-.ad27 #marketing-backend .mb-layer--system strong:after{content:"Сегмент · Позиционирование · Предложение\AЭкономика · Доказательства";white-space:pre-line;font-size:13.5px;line-height:1.35;margin-top:13px;max-width:28ch}
-.ad27 #marketing-backend .mb-close{margin:17px 0 0!important;font-size:13px!important;line-height:1.38!important;max-width:31ch!important}
-.ad27 #marketing-backend .mb-title{margin-top:22px!important;font-size:18px!important;line-height:1.25!important;max-width:28ch!important;color:#111317!important}
-.ad27 #marketing-backend .mb-title em{color:#ff6500!important}
+.ad27 #marketing-backend .mb-layer:first-of-type{padding:0 24px 24px!important}
+.ad27 #marketing-backend .mb-layer:first-of-type strong:before{content:"Сайт · Реклама · Контент · SEO · Продажи";font-size:19px;line-height:1.24}
+.ad27 #marketing-backend .mb-layer:first-of-type:after{left:24px;bottom:-12px;font-size:7.5px;padding:6px 9px}
+.ad27 #marketing-backend .mb-layer--system{padding:39px 24px 0!important}
+.ad27 #marketing-backend .mb-layer--system:before{font-size:8.5px!important;margin-bottom:13px!important}
+.ad27 #marketing-backend .mb-layer--system strong{grid-template-columns:1fr!important;gap:8px!important;max-width:none!important}
+.ad27 #marketing-backend .mb-layer--system strong:before,.ad27 #marketing-backend .mb-layer--system strong:after{min-height:70px;padding:12px 13px}
+.ad27 #marketing-backend .mb-layer--system strong:before{content:"Рынок · Клиент · Сегмент";font-size:25px}
+.ad27 #marketing-backend .mb-layer--system strong:after{content:"Ценность · Позиционирование · Предложение";font-size:21px;line-height:1.06}
+.ad27 #marketing-backend .mb-close{padding:0 24px 48px!important}
+.ad27 #marketing-backend .mb-close:before{font-size:11.5px;margin-bottom:8px}
+.ad27 #marketing-backend .mb-close:after{font-size:12.5px;line-height:1.36;max-width:31ch}
+.ad27 #marketing-backend .mb-title{padding:0 24px 20px!important}
+.ad27 #marketing-backend .mb-title:after{font-size:8px}
+.ad27 .ra-hero-personal:before{right:-15%!important;width:55%!important;height:82%!important}
 .ad27 .ra-hero-personal>.ra-hero-copy{width:66%!important;max-width:66%!important}
-.ad27 .ra-hero-personal>.ra-hero-person{display:block!important;right:0!important;width:46%!important;height:100%!important;top:0!important;bottom:0!important}
-.ad27 .ra-hero-personal>.ra-hero-person img{display:block!important;right:-27%!important;bottom:0!important;height:78%!important;max-height:78%!important;opacity:1!important;visibility:visible!important}
 }
 @media(max-width:390px){
-.ad27 #marketing-backend{padding-left:24px!important;padding-right:24px!important}
+.ad27 #marketing-backend .mb-layer--system strong:before{font-size:23px}
+.ad27 #marketing-backend .mb-layer--system strong:after{font-size:19px}
+.ad27 .ra-hero-personal:before{right:-18%!important;width:58%!important;height:80%!important}
 .ad27 .ra-hero-personal>.ra-hero-copy{width:67%!important;max-width:67%!important}
-.ad27 .ra-hero-personal>.ra-hero-person{width:47%!important}
-.ad27 .ra-hero-personal>.ra-hero-person img{right:-31%!important;height:76%!important;max-height:76%!important}
 }
 }
-@media print{.ad27 #marketing-backend{background:#fff!important;color:#111!important}.ad27 #marketing-backend .mb-title,.ad27 #marketing-backend .mb-layer strong{color:#111!important}}
+@media print{.ad27 #marketing-backend{display:block!important;background:#fff!important;color:#111!important}.ad27 #marketing-backend:after{display:none!important}}
