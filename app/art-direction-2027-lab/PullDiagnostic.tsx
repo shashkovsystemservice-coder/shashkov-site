@@ -3,15 +3,6 @@
 import {useEffect,useRef,useState} from "react";
 import {createPortal} from "react-dom";
 
-const contextualCopy=[
-  {id:"situations",label:"Проверить маркетинг"},
-  {id:"work",label:"Где у вас разрыв?"},
-  {id:"approach",label:"Проверить систему"},
-  {id:"case",label:"Сверить с кейсами"},
-  {id:"about",label:"Получить результат"},
-  {id:"contact",label:"Начать диагностику"},
-] as const;
-
 type Pos={x:number;y:number}|null;
 
 export default function PullDiagnostic(){
@@ -20,7 +11,6 @@ export default function PullDiagnostic(){
   const [dismissed,setDismissed]=useState(false);
   const [dismissVisible,setDismissVisible]=useState(false);
   const [hero,setHero]=useState(true);
-  const [contextLabel,setContextLabel]=useState("Экспресс-диагностика");
   const [nudge,setNudge]=useState(false);
   const [pos,setPos]=useState<Pos>(null);
   const [autoPos,setAutoPos]=useState<Pos>(null);
@@ -38,10 +28,7 @@ export default function PullDiagnostic(){
     }
 
     const pulse=()=>{
-      if(!dragRef.current){
-        setNudge(true);
-        window.setTimeout(()=>setNudge(false),1200);
-      }
+      if(!dragRef.current){setNudge(true);window.setTimeout(()=>setNudge(false),1200);}
     };
     const first=window.setTimeout(pulse,1500);
     nudgeTimer.current=window.setInterval(pulse,9000);
@@ -63,24 +50,11 @@ export default function PullDiagnostic(){
     };
 
     const update=()=>{
-      const onHero=window.scrollY < window.innerHeight*.72;
+      const heroEl=document.querySelector<HTMLElement>(".ra-hero-personal");
+      const onHero=heroEl?heroEl.getBoundingClientRect().bottom>90:window.scrollY<window.innerHeight*.72;
       setHero(onHero);
-      if(onHero){
-        setContextLabel("Экспресс-диагностика");
-        window.requestAnimationFrame(placeMobileHeroCue);
-        return;
-      }
-      const y=window.innerHeight*.5;
-      let bestLabel="Проверить маркетинг";
-      let bestDistance=Infinity;
-      contextualCopy.forEach(item=>{
-        const el=document.getElementById(item.id);
-        if(!el)return;
-        const r=el.getBoundingClientRect();
-        const d=r.top<=y&&r.bottom>=y?0:Math.min(Math.abs(r.top-y),Math.abs(r.bottom-y));
-        if(d<bestDistance){bestDistance=d;bestLabel=item.label;}
-      });
-      setContextLabel(bestLabel);
+      if(onHero)window.requestAnimationFrame(placeMobileHeroCue);
+      else setPos(null);
     };
 
     update();
@@ -88,85 +62,43 @@ export default function PullDiagnostic(){
     window.addEventListener("scroll",update,{passive:true});
     window.addEventListener("resize",update);
     return()=>{
-      window.clearTimeout(first);
-      window.clearTimeout(settle);
-      window.clearTimeout(dismissTimer);
+      window.clearTimeout(first);window.clearTimeout(settle);window.clearTimeout(dismissTimer);
       if(nudgeTimer.current)window.clearInterval(nudgeTimer.current);
-      window.removeEventListener("scroll",update);
-      window.removeEventListener("resize",update);
+      window.removeEventListener("scroll",update);window.removeEventListener("resize",update);
     };
   },[]);
 
   const beginDrag=(e:React.PointerEvent<HTMLButtonElement>)=>{
-    if(open)return;
+    if(open||!hero)return;
     const rect=e.currentTarget.getBoundingClientRect();
     dragRef.current={id:e.pointerId,startX:e.clientX,startY:e.clientY,originX:rect.left,originY:rect.top,moved:false};
     e.currentTarget.setPointerCapture(e.pointerId);
   };
-
   const moveDrag=(e:React.PointerEvent<HTMLButtonElement>)=>{
-    const d=dragRef.current;
-    if(!d||d.id!==e.pointerId)return;
-    const dx=e.clientX-d.startX;
-    const dy=e.clientY-d.startY;
-    if(Math.hypot(dx,dy)>6)d.moved=true;
-    if(!d.moved)return;
-    setDragging(true);
-    const pad=8;
-    const rect=e.currentTarget.getBoundingClientRect();
-    const width=rect.width;
-    const height=rect.height;
-    const viewportWidth=window.visualViewport?.width??window.innerWidth;
-    const viewportHeight=window.visualViewport?.height??window.innerHeight;
-    const x=Math.max(pad,Math.min(viewportWidth-width-pad,d.originX+dx));
-    const y=Math.max(pad,Math.min(viewportHeight-height-pad,d.originY+dy));
-    setPos({x,y});
+    const d=dragRef.current;if(!d||d.id!==e.pointerId||!hero)return;
+    const dx=e.clientX-d.startX,dy=e.clientY-d.startY;if(Math.hypot(dx,dy)>6)d.moved=true;if(!d.moved)return;
+    setDragging(true);const pad=8,rect=e.currentTarget.getBoundingClientRect();
+    const vw=window.visualViewport?.width??window.innerWidth,vh=window.visualViewport?.height??window.innerHeight;
+    setPos({x:Math.max(pad,Math.min(vw-rect.width-pad,d.originX+dx)),y:Math.max(pad,Math.min(vh-rect.height-pad,d.originY+dy))});
   };
-
   const endDrag=(e:React.PointerEvent<HTMLButtonElement>)=>{
-    const d=dragRef.current;
-    if(!d||d.id!==e.pointerId)return;
-    const moved=d.moved;
-    dragRef.current=null;
-    setDragging(false);
-    if(!moved)setOpen(true);
+    const d=dragRef.current;if(!d||d.id!==e.pointerId)return;const moved=d.moved;dragRef.current=null;setDragging(false);if(!moved)setOpen(true);
   };
 
   if(!mounted||dismissed)return null;
-
-  const activePos=pos??(hero?autoPos:null);
+  const activePos=hero?(pos??autoPos):null;
   const style=activePos?({left:activePos.x,top:activePos.y,right:"auto",bottom:"auto"} as React.CSSProperties):undefined;
 
   return createPortal(
-    <aside style={style} className={`ra-diagnostic-assistant ${open?"is-open":""} ${hero?"is-hero":"is-browsing"} ${nudge&&!open&&!dragging?"is-nudge":""} ${dragging?"is-dragging":""}`} aria-label="Экспресс-диагностика">
-      {dismissVisible&&<button className="ra-diagnostic-dismiss" type="button" aria-label="Убрать экспресс-диагностику" onPointerDown={e=>e.stopPropagation()} onClick={()=>setDismissed(true)}>×</button>}
-      <button className="ra-stopwatch-trigger" type="button" aria-expanded={open} aria-label="Открыть экспресс-диагностику, 7 минут. Элемент можно перетащить." onPointerDown={beginDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag}>
-        <span className="ra-stopwatch" aria-hidden="true">
-          <i className="ra-stopwatch-bell ra-stopwatch-bell-left" />
-          <i className="ra-stopwatch-bell ra-stopwatch-bell-right" />
-          <i className="ra-stopwatch-knob" />
-          <i className="ra-stopwatch-hand" />
-          <b>7</b>
-          <small>мин</small>
-        </span>
-        <span className="ra-stopwatch-copy">
-          <strong>{contextLabel}</strong>
-          <small>{hero?"Проверить маркетинговую логику":"7 минут · результат сразу"}</small>
-          <em>можно двигать</em>
-        </span>
+    <aside style={style} className={`ra-diagnostic-assistant ${open?"is-open":""} ${hero?"is-hero":"is-docked"} ${nudge&&!open&&!dragging&&hero?"is-nudge":""} ${dragging?"is-dragging":""}`} aria-label="Экспресс-диагностика">
+      {dismissVisible&&hero&&<button className="ra-diagnostic-dismiss" type="button" aria-label="Убрать экспресс-диагностику" onPointerDown={e=>e.stopPropagation()} onClick={()=>setDismissed(true)}>×</button>}
+      <button className="ra-stopwatch-trigger" type="button" aria-expanded={open} aria-label={hero?"Открыть экспресс-диагностику, 7 минут. Элемент можно перетащить.":"Открыть экспресс-диагностику, 7 минут."} onPointerDown={beginDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag} onClick={()=>{if(!hero)setOpen(true)}}>
+        <span className="ra-stopwatch" aria-hidden="true"><i className="ra-stopwatch-bell ra-stopwatch-bell-left"/><i className="ra-stopwatch-bell ra-stopwatch-bell-right"/><i className="ra-stopwatch-knob"/><i className="ra-stopwatch-hand"/><b>7</b><small>мин</small></span>
+        <span className="ra-stopwatch-copy"><strong>Экспресс-диагностика</strong><small>Проверить маркетинговую логику</small><em>можно двигать</em></span>
       </button>
-
-      <div className="ra-diagnostic-card">
-        <button className="ra-diagnostic-close" type="button" aria-label="Свернуть" onClick={()=>setOpen(false)}>×</button>
-        <div className="ra-diagnostic-card-kicker">Экспресс-диагностика · маркетинг</div>
-        <strong>Проверьте маркетинговую логику бизнеса</strong>
-        <p>15 ключевых сущностей, 6 связей и понятный результат: где система собрана, где рвётся и что исправлять первым.</p>
-        <div className="ra-diagnostic-meta"><span>15 сущностей</span><span>6 связей</span><span>7–10 минут</span></div>
-        <a href="/art-direction-2027-lab/express-diagnostic">Начать диагностику</a>
-      </div>
-    </aside>,
-    document.body
+      <div className="ra-diagnostic-card"><button className="ra-diagnostic-close" type="button" aria-label="Свернуть" onClick={()=>setOpen(false)}>×</button><div className="ra-diagnostic-card-kicker">Экспресс-диагностика · маркетинг</div><strong>Проверьте маркетинговую логику бизнеса</strong><p>15 ключевых сущностей, 6 связей и понятный результат: где система собрана, где рвётся и что исправлять первым.</p><div className="ra-diagnostic-meta"><span>15 сущностей</span><span>6 связей</span><span>7–10 минут</span></div><a href="/art-direction-2027-lab/express-diagnostic">Начать диагностику</a></div>
+    </aside>,document.body
   );
 }
 
-// stopwatch-v7 delayed dismiss control
+// stopwatch-v8 hero cue + compact header dock
