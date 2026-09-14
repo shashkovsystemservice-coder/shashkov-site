@@ -17,6 +17,7 @@ type Pos={x:number;y:number}|null;
 export default function PullDiagnostic(){
   const [mounted,setMounted]=useState(false);
   const [open,setOpen]=useState(false);
+  const [dismissed,setDismissed]=useState(false);
   const [hero,setHero]=useState(true);
   const [contextLabel,setContextLabel]=useState("Экспресс-диагностика");
   const [nudge,setNudge]=useState(false);
@@ -128,13 +129,14 @@ export default function PullDiagnostic(){
     if(!moved)setOpen(true);
   };
 
-  if(!mounted)return null;
+  if(!mounted||dismissed)return null;
 
   const activePos=pos??(hero?autoPos:null);
   const style=activePos?({left:activePos.x,top:activePos.y,right:"auto",bottom:"auto"} as React.CSSProperties):undefined;
 
   return createPortal(
     <aside style={style} className={`ra-diagnostic-assistant ${open?"is-open":""} ${hero?"is-hero":"is-browsing"} ${nudge&&!open&&!dragging?"is-nudge":""} ${dragging?"is-dragging":""}`} aria-label="Экспресс-диагностика">
+      <button className="ra-diagnostic-dismiss" type="button" aria-label="Убрать экспресс-диагностику" onPointerDown={e=>e.stopPropagation()} onClick={()=>setDismissed(true)}>×</button>
       <button className="ra-stopwatch-trigger" type="button" aria-expanded={open} aria-label="Открыть экспресс-диагностику, 7 минут. Элемент можно перетащить." onPointerDown={beginDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag}>
         <span className="ra-stopwatch" aria-hidden="true">
           <i className="ra-stopwatch-bell ra-stopwatch-bell-left" />
@@ -164,4 +166,4 @@ export default function PullDiagnostic(){
   );
 }
 
-// stopwatch-v5 full-viewport dragging
+// stopwatch-v6 dismissible full-viewport diagnostic cue
