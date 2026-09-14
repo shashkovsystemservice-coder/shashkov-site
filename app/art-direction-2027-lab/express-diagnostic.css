@@ -6,4 +6,7 @@
 /* Mobile hero: reserve the white band below the header for the diagnostic cue; keep it clear of both kicker and portrait. */
 @media(max-width:760px){.ra-diagnostic-assistant.is-hero{left:20px;right:auto;top:40px;bottom:auto}.ra-diagnostic-assistant.is-hero .ra-stopwatch{width:58px;height:58px;min-width:58px}.ra-diagnostic-assistant.is-hero .ra-stopwatch-copy{max-width:122px;padding:6px 8px;box-shadow:0 6px 16px rgba(0,0,0,.06)}}
 
-/* build marker: stopwatch-v3-mobile-white-band-composition */
+/* Dismiss control: close the floating cue without opening the diagnostic card. */
+.ra-diagnostic-dismiss{position:absolute;top:-10px;right:-8px;z-index:4;width:24px;height:24px;border:1px solid rgba(17,19,23,.16);border-radius:50%;background:rgba(255,255,255,.96);color:rgba(17,19,23,.66);font:700 17px/20px Arial,sans-serif;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 4px 12px rgba(0,0,0,.08);cursor:pointer;pointer-events:auto;-webkit-tap-highlight-color:transparent}.ra-diagnostic-dismiss:hover{color:#111317;border-color:rgba(17,19,23,.35)}.ra-diagnostic-dismiss:active{transform:scale(.94)}.ra-diagnostic-assistant.is-open .ra-diagnostic-dismiss{display:none}@media(max-width:760px){.ra-diagnostic-dismiss{top:-9px;right:-5px;width:23px;height:23px;font-size:16px}}
+
+/* build marker: stopwatch-v6-dismissible */
