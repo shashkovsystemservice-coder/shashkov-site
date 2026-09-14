@@ -18,6 +18,7 @@ export default function PullDiagnostic(){
   const [mounted,setMounted]=useState(false);
   const [open,setOpen]=useState(false);
   const [dismissed,setDismissed]=useState(false);
+  const [dismissVisible,setDismissVisible]=useState(false);
   const [hero,setHero]=useState(true);
   const [contextLabel,setContextLabel]=useState("Экспресс-диагностика");
   const [nudge,setNudge]=useState(false);
@@ -29,6 +30,7 @@ export default function PullDiagnostic(){
 
   useEffect(()=>{
     setMounted(true);
+    const dismissTimer=window.setTimeout(()=>setDismissVisible(true),20000);
     const heroLink=document.querySelector<HTMLAnchorElement>(".ra-hero-personal .ra-actions .ra-textlink");
     if(heroLink){
       heroLink.href="/art-direction-2027-lab/express-diagnostic";
@@ -88,6 +90,7 @@ export default function PullDiagnostic(){
     return()=>{
       window.clearTimeout(first);
       window.clearTimeout(settle);
+      window.clearTimeout(dismissTimer);
       if(nudgeTimer.current)window.clearInterval(nudgeTimer.current);
       window.removeEventListener("scroll",update);
       window.removeEventListener("resize",update);
@@ -136,7 +139,7 @@ export default function PullDiagnostic(){
 
   return createPortal(
     <aside style={style} className={`ra-diagnostic-assistant ${open?"is-open":""} ${hero?"is-hero":"is-browsing"} ${nudge&&!open&&!dragging?"is-nudge":""} ${dragging?"is-dragging":""}`} aria-label="Экспресс-диагностика">
-      <button className="ra-diagnostic-dismiss" type="button" aria-label="Убрать экспресс-диагностику" onPointerDown={e=>e.stopPropagation()} onClick={()=>setDismissed(true)}>×</button>
+      {dismissVisible&&<button className="ra-diagnostic-dismiss" type="button" aria-label="Убрать экспресс-диагностику" onPointerDown={e=>e.stopPropagation()} onClick={()=>setDismissed(true)}>×</button>}
       <button className="ra-stopwatch-trigger" type="button" aria-expanded={open} aria-label="Открыть экспресс-диагностику, 7 минут. Элемент можно перетащить." onPointerDown={beginDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag}>
         <span className="ra-stopwatch" aria-hidden="true">
           <i className="ra-stopwatch-bell ra-stopwatch-bell-left" />
@@ -166,4 +169,4 @@ export default function PullDiagnostic(){
   );
 }
 
-// stopwatch-v6 dismissible full-viewport diagnostic cue
+// stopwatch-v7 delayed dismiss control
