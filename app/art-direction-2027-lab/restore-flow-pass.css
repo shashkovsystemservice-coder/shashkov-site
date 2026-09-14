@@ -1,0 +1,59 @@
+/* Restore-flow experiment: preserve current components, remove the poster-per-screen feeling. */
+.ad27{scroll-snap-type:none!important;scroll-behavior:smooth!important;background:#f7f6f2!important}
+.ad27>.ra-section,.ad27>.ra-hero,.ad27>.ra-contact,.ad27>.ad27-topcase-reel{height:auto!important;min-height:0!important;max-height:none!important;scroll-snap-align:none!important;scroll-snap-stop:normal!important;overflow:visible!important}
+
+/* Keep a strong opening, then let the page read as one continuous story. */
+.ad27>.ra-hero{min-height:calc(100dvh - 64px)!important}
+.ad27>.ra-section{padding-top:clamp(64px,8vw,112px)!important;padding-bottom:clamp(64px,8vw,112px)!important}
+.ad27>.ra-section+.ra-section{border-top:1px solid rgba(17,17,17,.12)}
+
+/* Proof is evidence, not a second hero. */
+.ad27>.ra-proof-reel{padding-top:54px!important;padding-bottom:54px!important}
+.ad27>.ra-proof-reel .ra-proof-reel-head{margin-bottom:28px!important}
+.ad27>.ad27-topcase-reel{padding-top:64px!important;padding-bottom:72px!important}
+.ad27>.ad27-topcase-reel .ad27-topcase-track{height:min(520px,62vh)!important;min-height:420px!important;max-height:520px!important}
+.ad27>.ad27-topcase-reel .ad27-topcase-card{height:100%!important;min-height:0!important;max-height:none!important}
+
+/* Backend is a supporting explanation, not the site's thesis. */
+#marketing-backend{background:#f1efe9!important;color:#111!important;display:grid!important;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr)!important;gap:0!important;padding:0!important;border-top:1px solid #c9c6be!important;border-bottom:1px solid #c9c6be!important}
+#marketing-backend .mb-surface{padding:72px clamp(32px,5vw,76px)!important;background:#fff!important;border-right:1px solid #c9c6be!important}
+#marketing-backend .mb-surface:before{content:"ВИДИМО";display:block;margin-bottom:38px;font-size:12px;font-weight:800;letter-spacing:.16em;color:#8b8b88}
+#marketing-backend .mb-eyebrow{font-size:16px!important;line-height:1.35!important;color:#777!important;margin:0 0 18px!important}
+#marketing-backend .mb-surface h2{font-size:clamp(31px,3.2vw,52px)!important;line-height:1.02!important;letter-spacing:-.04em!important;margin:0!important;color:#111!important}
+#marketing-backend .mb-surface-note{display:none!important}
+#marketing-backend .mb-boundary{display:none!important}
+#marketing-backend .mb-engine{padding:72px clamp(32px,5vw,76px)!important;background:#171719!important;color:#f7f6f2!important}
+#marketing-backend .mb-engine-intro p{font-size:12px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:#9b9b9d!important;margin:0 0 26px!important}
+#marketing-backend .mb-engine-intro h3{font-size:clamp(40px,5vw,72px)!important;line-height:.98!important;letter-spacing:-.045em!important;max-width:800px!important;margin:0 0 48px!important;color:#f7f6f2!important}
+#marketing-backend .mb-engine-intro h3 em{font-style:normal!important;color:#ff6500!important}
+#marketing-backend .mb-engine-map{display:grid!important;grid-template-columns:1fr 1fr!important;gap:0!important;border-top:1px solid #555!important;border-bottom:1px solid #555!important}
+#marketing-backend .mb-core,#marketing-backend .mb-foundation{padding:24px 0!important;background:none!important;border:0!important;color:#f7f6f2!important}
+#marketing-backend .mb-core:nth-child(2){padding-left:28px!important;border-left:1px solid #555!important}
+#marketing-backend .mb-core span,#marketing-backend .mb-foundation span{display:block!important;font-size:11px!important;letter-spacing:.14em!important;color:#ff6500!important;margin-bottom:10px!important}
+#marketing-backend .mb-core strong,#marketing-backend .mb-foundation strong{font-size:21px!important;line-height:1.12!important;color:#f7f6f2!important}
+#marketing-backend .mb-core small{display:block!important;margin-top:10px!important;color:#a9a9aa!important;font-size:13px!important;line-height:1.4!important}
+#marketing-backend .mb-foundation{grid-column:1/-1!important;border-top:1px solid #555!important}
+#marketing-backend .mb-signature{margin-top:32px!important;padding-top:0!important;border:0!important}
+#marketing-backend .mb-signature p{font-size:15px!important;color:#a9a9aa!important;margin:0 0 5px!important}
+#marketing-backend .mb-signature strong{font-size:19px!important;color:#f7f6f2!important}
+
+/* Keep the conversion sequence visually related instead of alternating giant posters. */
+#situations,#work,#approach,#stack,.ra-output{background:#f7f6f2!important;color:#111!important}
+#case{background:#171719!important;color:#f7f6f2!important}
+#case .ra-label,#case small{color:#ff6500!important}
+
+@media(max-width:900px){
+  .ad27>.ra-hero{min-height:calc(100dvh - 58px)!important}
+  .ad27>.ra-section{padding:58px 30px!important}
+  .ad27>.ad27-topcase-reel{padding:56px 30px 64px!important}
+  .ad27>.ad27-topcase-reel .ad27-topcase-track{height:58dvh!important;min-height:440px!important;max-height:560px!important}
+  #marketing-backend{display:block!important}
+  #marketing-backend .mb-surface{padding:58px 32px 52px!important;border-right:0!important;border-bottom:5px solid #ff6500!important}
+  #marketing-backend .mb-surface:before{margin-bottom:26px!important}
+  #marketing-backend .mb-surface h2{font-size:38px!important;line-height:1.04!important}
+  #marketing-backend .mb-engine{padding:58px 32px 64px!important}
+  #marketing-backend .mb-engine-intro h3{font-size:46px!important;line-height:.98!important;margin-bottom:40px!important;max-width:8.5em!important}
+  #marketing-backend .mb-engine-map{grid-template-columns:1fr!important}
+  #marketing-backend .mb-core:nth-child(2){padding-left:0!important;border-left:0!important;border-top:1px solid #555!important}
+  #marketing-backend .mb-foundation{grid-column:auto!important}
+}
