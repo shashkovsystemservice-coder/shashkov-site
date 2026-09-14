@@ -1,1 +1,58 @@
-@media screen{.ad27 #marketing-backend{background:#111317!important;color:#f7f7f3!important;display:flex!important;flex-direction:column!important;justify-content:center!important;padding:34px var(--page-x)!important}.ad27 #marketing-backend .mb-kicker{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#ff6500;margin:0 0 18px}.ad27 #marketing-backend .mb-title{font-size:clamp(46px,5.8vw,84px);line-height:.93;letter-spacing:-.05em;max-width:14ch;margin:0 0 32px;color:#f7f7f3}.ad27 #marketing-backend .mb-title em{font-style:normal;color:#ff6500}.ad27 #marketing-backend .mb-layer{display:grid;grid-template-columns:minmax(180px,.38fr) minmax(0,1fr);gap:28px;align-items:start;padding:20px 0;border-top:1px solid rgba(247,247,243,.2)}.ad27 #marketing-backend .mb-layer:last-of-type{border-bottom:1px solid rgba(247,247,243,.2)}.ad27 #marketing-backend .mb-layer span{font-size:11px;line-height:1.2;letter-spacing:.11em;text-transform:uppercase;color:rgba(247,247,243,.48)}.ad27 #marketing-backend .mb-layer strong{font-size:clamp(22px,2.4vw,34px);line-height:1.16;letter-spacing:-.025em;font-weight:650;color:#f7f7f3}.ad27 #marketing-backend .mb-layer--system strong{color:#ff6500}.ad27 #marketing-backend .mb-close{margin:20px 0 0;max-width:58ch;font-size:15px;line-height:1.4;color:rgba(247,247,243,.68)}@media(max-width:900px){.ad27 #marketing-backend{padding:26px 34px!important}.ad27 #marketing-backend .mb-kicker{font-size:9px;margin-bottom:12px}.ad27 #marketing-backend .mb-title{font-size:clamp(34px,8.7vw,43px);line-height:.96;max-width:13ch;margin-bottom:24px}.ad27 #marketing-backend .mb-layer{display:block;padding:14px 0}.ad27 #marketing-backend .mb-layer span{display:block;font-size:8.5px;margin-bottom:8px}.ad27 #marketing-backend .mb-layer strong{display:block;font-size:clamp(17px,4.35vw,21px);line-height:1.28;max-width:32ch}.ad27 #marketing-backend .mb-layer--system strong{font-size:clamp(16.5px,4.15vw,20px);line-height:1.3}.ad27 #marketing-backend .mb-close{font-size:12.5px;line-height:1.35;margin-top:15px;max-width:34ch}}}@media print{.ad27 #marketing-backend{background:#fff!important;color:#111!important}.ad27 #marketing-backend .mb-title,.ad27 #marketing-backend .mb-layer strong{color:#111!important}}
+@media screen{
+/* --- Art-direction reset: one screen = one idea --- */
+.ad27 #marketing-backend{background:#fffefd!important;color:#111317!important;display:flex!important;flex-direction:column!important;justify-content:center!important;gap:0!important;padding:clamp(38px,5vw,72px) var(--page-x)!important}
+.ad27 #marketing-backend .mb-kicker{order:1;margin:0 0 22px!important;font-size:0!important;color:#ff6500!important}
+.ad27 #marketing-backend .mb-kicker:after{content:"Два уровня маркетинга";font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#ff6500}
+.ad27 #marketing-backend .mb-title{order:5;margin:30px 0 0!important;max-width:30ch!important;font-size:clamp(22px,2.4vw,34px)!important;line-height:1.13!important;letter-spacing:-.03em!important;color:#111317!important;font-weight:650!important}
+.ad27 #marketing-backend .mb-title em{font-style:normal!important;color:#111317!important}
+.ad27 #marketing-backend .mb-layer{display:grid!important;grid-template-columns:190px minmax(0,1fr)!important;gap:30px!important;align-items:center!important;padding:22px 0!important;border-top:1px solid #c9c9c4!important}
+.ad27 #marketing-backend .mb-layer span{font-size:10px!important;line-height:1.25!important;letter-spacing:.11em!important;text-transform:uppercase!important;color:#8a8d92!important}
+.ad27 #marketing-backend .mb-layer strong{position:relative!important;display:block!important;color:#111317!important;font-weight:650!important;letter-spacing:-.025em!important}
+.ad27 #marketing-backend .mb-layer:first-of-type{order:2}
+.ad27 #marketing-backend .mb-layer:first-of-type strong{font-size:0!important}
+.ad27 #marketing-backend .mb-layer:first-of-type strong:before{content:"Сайт   ·   Реклама   ·   Контент   ·   SEO   ·   Продажи";font-size:clamp(21px,2.5vw,34px);line-height:1.16;color:#777b80;font-weight:560}
+.ad27 #marketing-backend .mb-layer:first-of-type:after{content:"FRONTEND";grid-column:2;font-size:9px;letter-spacing:.16em;color:#a2a5a9;margin-top:-12px}
+.ad27 #marketing-backend .mb-layer--system{order:3;position:relative!important;border-bottom:1px solid #c9c9c4!important;padding-top:30px!important;padding-bottom:30px!important}
+.ad27 #marketing-backend .mb-layer--system:before{content:"↓";position:absolute;left:calc(190px + 30px);top:-18px;width:34px;height:34px;border-radius:50%;background:#ff6500;color:white;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700}
+.ad27 #marketing-backend .mb-layer--system strong{font-size:0!important;color:#111317!important}
+.ad27 #marketing-backend .mb-layer--system strong:before{content:"Рынок  →  Клиент  →  Ценность  →  Выбор";display:block;font-size:clamp(28px,3.7vw,52px);line-height:1.05;color:#111317;font-weight:720;letter-spacing:-.045em}
+.ad27 #marketing-backend .mb-layer--system strong:after{content:"Сегмент  ·  Позиционирование  ·  Предложение  ·  Экономика  ·  Доказательства";display:block;margin-top:15px;font-size:clamp(14px,1.45vw,19px);line-height:1.35;color:#ff6500;font-weight:650;letter-spacing:-.01em}
+.ad27 #marketing-backend .mb-close{order:4;margin:20px 0 0 calc(190px + 30px)!important;max-width:48ch!important;font-size:15px!important;line-height:1.42!important;color:#5f6368!important}
+
+/* Remove every legacy backend fragment from the six-zone sheet. */
+.ad27 #work .ra-system-cut,.ad27 #work .ra-system-note,.ad27 #work [class*="system-cut"],.ad27 #work [class*="system-note"]{display:none!important}
+.ad27 #work .ra-work--index{margin-top:0!important}
+
+/* Final portrait override. This file is imported last, so older hero rules cannot hide it. */
+.ad27 .ra-hero-personal{position:relative!important;overflow:hidden!important}
+.ad27 .ra-hero-personal>.ra-hero-person{display:block!important;position:absolute!important;right:0!important;top:0!important;bottom:0!important;width:43%!important;height:100%!important;margin:0!important;overflow:visible!important;background:transparent!important;border:0!important;z-index:1!important;pointer-events:none!important}
+.ad27 .ra-hero-personal>.ra-hero-person img{display:block!important;position:absolute!important;right:-3%!important;bottom:0!important;top:auto!important;width:auto!important;height:91%!important;max-width:none!important;max-height:91%!important;object-fit:contain!important;object-position:right bottom!important;filter:none!important;opacity:1!important;visibility:visible!important;transform:none!important}
+.ad27 .ra-hero-personal>.ra-hero-copy{position:relative!important;z-index:2!important}
+
+@media(max-width:900px){
+.ad27 #marketing-backend{padding:30px 28px!important;justify-content:center!important}
+.ad27 #marketing-backend .mb-kicker{margin-bottom:18px!important}
+.ad27 #marketing-backend .mb-kicker:after{font-size:9px}
+.ad27 #marketing-backend .mb-layer{display:block!important;padding:17px 0!important}
+.ad27 #marketing-backend .mb-layer span{display:block!important;margin-bottom:10px!important;font-size:8.5px!important}
+.ad27 #marketing-backend .mb-layer:first-of-type strong:before{content:"Сайт · Реклама · Контент · SEO · Продажи";font-size:19px;line-height:1.25}
+.ad27 #marketing-backend .mb-layer:first-of-type:after{display:block!important;margin-top:9px;font-size:8px}
+.ad27 #marketing-backend .mb-layer--system{padding-top:25px!important;padding-bottom:22px!important}
+.ad27 #marketing-backend .mb-layer--system:before{left:0!important;top:-15px!important;width:30px;height:30px;font-size:17px}
+.ad27 #marketing-backend .mb-layer--system strong:before{content:"Рынок → Клиент → Ценность → Выбор";font-size:clamp(27px,7.2vw,34px);line-height:1.08;max-width:10.5ch}
+.ad27 #marketing-backend .mb-layer--system strong:after{content:"Сегмент · Позиционирование · Предложение\AЭкономика · Доказательства";white-space:pre-line;font-size:13.5px;line-height:1.35;margin-top:13px;max-width:28ch}
+.ad27 #marketing-backend .mb-close{margin:17px 0 0!important;font-size:13px!important;line-height:1.38!important;max-width:31ch!important}
+.ad27 #marketing-backend .mb-title{margin-top:22px!important;font-size:18px!important;line-height:1.25!important;max-width:28ch!important;color:#111317!important}
+.ad27 #marketing-backend .mb-title em{color:#ff6500!important}
+.ad27 .ra-hero-personal>.ra-hero-copy{width:66%!important;max-width:66%!important}
+.ad27 .ra-hero-personal>.ra-hero-person{display:block!important;right:0!important;width:46%!important;height:100%!important;top:0!important;bottom:0!important}
+.ad27 .ra-hero-personal>.ra-hero-person img{display:block!important;right:-27%!important;bottom:0!important;height:78%!important;max-height:78%!important;opacity:1!important;visibility:visible!important}
+}
+@media(max-width:390px){
+.ad27 #marketing-backend{padding-left:24px!important;padding-right:24px!important}
+.ad27 .ra-hero-personal>.ra-hero-copy{width:67%!important;max-width:67%!important}
+.ad27 .ra-hero-personal>.ra-hero-person{width:47%!important}
+.ad27 .ra-hero-personal>.ra-hero-person img{right:-31%!important;height:76%!important;max-height:76%!important}
+}
+}
+@media print{.ad27 #marketing-backend{background:#fff!important;color:#111!important}.ad27 #marketing-backend .mb-title,.ad27 #marketing-backend .mb-layer strong{color:#111!important}}
