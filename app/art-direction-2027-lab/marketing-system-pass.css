@@ -1,4 +1,10 @@
-.ra-system-cut{margin:8px 0 48px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+#work{display:flex;flex-direction:column}
+#work>.ra-section-head{order:1}
+#work>.ra-system-cut{order:2}
+#work>.ra-system-note{order:3}
+#work>.ra-work--index{order:4}
+#work>.ra-depth-trigger{order:5}
+.ra-system-cut{margin:8px 0 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
 .ra-system-layer{display:grid;grid-template-columns:180px minmax(0,1fr);gap:36px;padding:28px 0}
 .ra-system-layer+.ra-system-layer{border-top:1px solid var(--line)}
 .ra-system-kicker{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:5px}
@@ -7,21 +13,10 @@
 .ra-system-content p span{white-space:nowrap}
 .ra-system-layer--surface{opacity:.72}
 .ra-system-layer--system{position:relative;padding-top:34px;padding-bottom:34px}
-.ra-system-layer--system:before{content:"";position:absolute;left:0;top:-1px;width:72px;height:3px;background:var(--studio-blue)}
 .ra-system-layer--system .ra-system-kicker{color:var(--studio-blue);font-weight:700}
 .ra-system-layer--system .ra-system-content h3{font-size:clamp(38px,4.6vw,64px)}
 .ra-system-note{display:grid;grid-template-columns:180px minmax(0,1fr);gap:36px;margin-top:18px}
 .ra-system-note p{grid-column:2;margin:0;max-width:760px;font-size:18px;line-height:1.5;color:var(--ink)}
 .ra-system-note small{display:block;margin-top:10px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 #work .ra-work--index{margin-top:56px}
-@media(max-width:900px){
-  .ra-system-cut{margin:0 0 34px}
-  .ra-system-layer{display:block;padding:22px 0}
-  .ra-system-kicker{display:block;margin-bottom:12px}
-  .ra-system-content h3{font-size:34px;margin-bottom:15px}
-  .ra-system-layer--system .ra-system-content h3{font-size:42px}
-  .ra-system-content p{gap:8px 14px;font-size:14px}
-  .ra-system-note{display:block;margin-top:14px}
-  .ra-system-note p{font-size:17px}
-  #work .ra-work--index{margin-top:38px}
-}
+@media(max-width:900px){.ra-system-cut{margin:0}.ra-system-layer{display:block;padding:22px 0}.ra-system-kicker{display:block;margin-bottom:12px}.ra-system-content h3{font-size:34px;margin-bottom:15px}.ra-system-layer--system .ra-system-content h3{font-size:42px}.ra-system-content p{gap:8px 14px;font-size:14px}.ra-system-note{display:block;margin-top:14px}.ra-system-note p{font-size:17px}#work .ra-work--index{margin-top:38px}}
