@@ -27,6 +27,8 @@ export default function PullDiagnostic(){
       heroLink.setAttribute("aria-label","Экспресс-диагностика маркетинга — 7 минут");
     }
 
+    const scroller=document.querySelector<HTMLElement>(".ad27");
+
     const pulse=()=>{
       if(!dragRef.current){setNudge(true);window.setTimeout(()=>setNudge(false),1200);}
     };
@@ -50,20 +52,23 @@ export default function PullDiagnostic(){
     };
 
     const update=()=>{
-      const heroEl=document.querySelector<HTMLElement>(".ra-hero-personal");
-      const onHero=heroEl?heroEl.getBoundingClientRect().bottom>90:window.scrollY<window.innerHeight*.72;
+      const sheet=window.innerHeight-(window.innerWidth<=900?58:64);
+      const scrollTop=scroller?.scrollTop??window.scrollY;
+      const onHero=scrollTop<sheet*.45;
       setHero(onHero);
       if(onHero)window.requestAnimationFrame(placeMobileHeroCue);
-      else setPos(null);
+      else{setPos(null);setAutoPos(null);}
     };
 
     update();
     const settle=window.setTimeout(placeMobileHeroCue,80);
+    scroller?.addEventListener("scroll",update,{passive:true});
     window.addEventListener("scroll",update,{passive:true});
     window.addEventListener("resize",update);
     return()=>{
       window.clearTimeout(first);window.clearTimeout(settle);window.clearTimeout(dismissTimer);
       if(nudgeTimer.current)window.clearInterval(nudgeTimer.current);
+      scroller?.removeEventListener("scroll",update);
       window.removeEventListener("scroll",update);window.removeEventListener("resize",update);
     };
   },[]);
@@ -101,4 +106,4 @@ export default function PullDiagnostic(){
   );
 }
 
-// stopwatch-v8 hero cue + compact header dock
+// stopwatch-v9 internal-scroll docking fix
