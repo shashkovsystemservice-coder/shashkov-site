@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import PullDiagnostic from "./PullDiagnostic";
 import "./express-diagnostic.css";
+import "./marketing-system-pass.css";
 
 type DepthItem = {
   title: string;
@@ -19,6 +20,7 @@ type DepthDisclosureProps = {
 
 export default function DepthDisclosure({ buttonLabel, label, title, intro, items }: DepthDisclosureProps) {
   const [open, setOpen] = useState(false);
+  const isWork = label === "Что разбираю";
 
   useEffect(() => {
     if (!open) return;
@@ -31,6 +33,25 @@ export default function DepthDisclosure({ buttonLabel, label, title, intro, item
 
   return <>
     {label === "Ситуации" && <PullDiagnostic />}
+    {isWork && <>
+      <div className="ra-system-cut" aria-label="Видимый и системный слои маркетинга">
+        <div className="ra-system-layer ra-system-layer--surface">
+          <span className="ra-system-kicker">То, что обычно пытаются менять</span>
+          <div className="ra-system-content">
+            <h3>Видимый слой</h3>
+            <p><span>Сайт</span><span>Реклама</span><span>Контент</span><span>SEO</span><span>Лиды</span><span>Продажи</span></p>
+          </div>
+        </div>
+        <div className="ra-system-layer ra-system-layer--system">
+          <span className="ra-system-kicker">То, что определяет результат</span>
+          <div className="ra-system-content">
+            <h3>Система под ним</h3>
+            <p><span>Рынок</span><span>Клиент</span><span>Сегмент</span><span>Ценность</span><span>Позиционирование</span><span>Предложение</span><span>Экономика</span><span>Доказательства</span></p>
+          </div>
+        </div>
+      </div>
+      <div className="ra-system-note"><p>Я начинаю с системы, на которой держится видимый маркетинг.<small>The Marketing Backend</small></p></div>
+    </>}
     <button className="ra-depth-trigger" type="button" onClick={() => setOpen(true)}>{buttonLabel} <span>→</span></button>
     {open && <div className="ra-depth-layer" role="dialog" aria-modal="true" aria-label={title} onMouseDown={(event) => {
       if (event.target === event.currentTarget) setOpen(false);
