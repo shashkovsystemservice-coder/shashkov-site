@@ -1,50 +1,63 @@
 @media screen{
-.ad27 #marketing-backend.mb-depth{position:relative!important;display:grid!important;grid-template-columns:94px minmax(0,1fr)!important;grid-template-rows:18svh 1fr!important;min-height:calc(100svh - 70px)!important;padding:28px 18px 34px!important;box-sizing:border-box!important;background:#f7f4ee!important;color:#111317!important;overflow:hidden!important;border-top:1px solid rgba(17,19,23,.08)!important}
+.ad27 #marketing-backend.mb-depth{position:relative!important;display:grid!important;grid-template-columns:92px minmax(0,1fr)!important;grid-template-rows:26% 74%!important;min-height:calc(100svh - 70px)!important;padding:0!important;background:#f2efea!important;color:#111315!important;overflow:hidden!important;border:0!important}
 
-/* one object: labels outside, one framed system inside */
-.ad27 #marketing-backend:after{content:""!important;position:absolute!important;left:112px!important;right:18px!important;top:28px!important;bottom:34px!important;border:1px solid rgba(17,19,23,.42)!important;pointer-events:none!important;z-index:9!important}
-
-.ad27 #marketing-backend .mb-surface{grid-column:2!important;grid-row:1!important;position:relative!important;inset:auto!important;transform:none!important;width:auto!important;min-width:0!important;aspect-ratio:auto!important;min-height:0!important;border:0!important;border-radius:0!important;background:#fff!important;box-shadow:none!important;padding:24px 18px 20px!important;box-sizing:border-box!important;display:flex!important;align-items:flex-end!important;z-index:3!important}
-.ad27 #marketing-backend .mb-surface:before{content:"FRONT\A MARKETING"!important;white-space:pre!important;position:absolute!important;right:calc(100% + 16px)!important;top:50%!important;transform:translateY(-50%)!important;width:76px!important;font:800 10px/1.08 Arial,sans-serif!important;letter-spacing:.08em!important;color:#111317!important;text-align:left!important}
-.ad27 #marketing-backend .mb-eyebrow,.ad27 #marketing-backend .mb-surface-note{display:none!important}
-.ad27 #marketing-backend .mb-surface h2{position:static!important;transform:none!important;margin:0!important;padding:0!important;min-width:0!important;max-width:100%!important;font:750 clamp(16px,4.3vw,21px)/1.15 Arial,sans-serif!important;letter-spacing:-.035em!important;color:#111317!important;text-align:left!important}
+/* The left rail names the two depths; the right side is one continuous field. */
+.ad27 #marketing-backend .mb-surface{grid-column:2!important;grid-row:1!important;position:relative!important;inset:auto!important;transform:none!important;width:auto!important;min-width:0!important;aspect-ratio:auto!important;min-height:0!important;margin:0!important;padding:30px 22px 28px!important;box-sizing:border-box!important;border:0!important;border-radius:0!important;background:#fff!important;box-shadow:none!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;gap:13px!important;z-index:2!important}
+.ad27 #marketing-backend .mb-surface:before{content:"FRONT\A MARKETING"!important;white-space:pre!important;position:absolute!important;right:calc(100% + 12px)!important;bottom:30px!important;width:70px!important;font:800 10px/1.08 Arial,sans-serif!important;letter-spacing:.09em!important;color:#111315!important;text-align:left!important}
+.ad27 #marketing-backend .mb-eyebrow{display:block!important;position:static!important;transform:none!important;margin:0!important;font:500 11px/1.3 Arial,sans-serif!important;color:#85888b!important;text-align:left!important}
+.ad27 #marketing-backend .mb-eyebrow:after{content:none!important}
+.ad27 #marketing-backend .mb-surface h2{position:static!important;transform:none!important;margin:0!important;padding:0!important;min-width:0!important;max-width:100%!important;font:720 clamp(18px,4.7vw,23px)/1.12 Arial,sans-serif!important;letter-spacing:-.04em!important;color:#111315!important;text-align:left!important}
 .ad27 #marketing-backend .mb-surface h2:before,.ad27 #marketing-backend .mb-surface h2:after,.ad27 #marketing-backend .mb-surface:after{content:none!important}
+.ad27 #marketing-backend .mb-surface-note{display:none!important}
 
-/* single decisive cut inside the same frame */
-.ad27 #marketing-backend .mb-boundary{display:block!important;position:absolute!important;left:112px!important;right:18px!important;top:calc(28px + 18svh)!important;height:3px!important;margin:0!important;padding:0!important;border:0!important;background:#ff6500!important;z-index:10!important}
+/* The cut is the only strong graphic gesture. */
+.ad27 #marketing-backend .mb-boundary{display:block!important;position:absolute!important;left:0!important;right:0!important;top:26%!important;height:4px!important;margin:0!important;padding:0!important;border:0!important;background:linear-gradient(90deg,#111315 0 92px,#ff6500 92px 100%)!important;z-index:8!important}
 .ad27 #marketing-backend .mb-boundary>*{display:none!important}
 .ad27 #marketing-backend .mb-boundary:before,.ad27 #marketing-backend .mb-boundary:after{content:none!important}
 
-.ad27 #marketing-backend .mb-engine{grid-column:2!important;grid-row:2!important;position:relative!important;inset:auto!important;transform:none!important;width:auto!important;min-width:0!important;aspect-ratio:auto!important;min-height:0!important;border:0!important;border-radius:0!important;padding:28px 18px 32px!important;box-sizing:border-box!important;background:#f0ece3!important;color:#111317!important;box-shadow:none!important;display:flex!important;flex-direction:column!important;justify-content:center!important;z-index:2!important}
-.ad27 #marketing-backend .mb-engine:before{content:"BACK\A MARKETING"!important;white-space:pre!important;position:absolute!important;right:calc(100% + 16px)!important;top:50%!important;transform:translateY(-50%)!important;width:76px!important;font:800 10px/1.08 Arial,sans-serif!important;letter-spacing:.08em!important;color:#111317!important;text-align:left!important}
-.ad27 #marketing-backend .mb-engine-intro,.ad27 #marketing-backend .mb-engine-map,.ad27 #marketing-backend .mb-core,.ad27 #marketing-backend .mb-foundation{display:none!important}
+/* BACK is not a diagram: it is a deeper editorial field. */
+.ad27 #marketing-backend .mb-engine{grid-column:2!important;grid-row:2!important;position:relative!important;inset:auto!important;transform:none!important;width:auto!important;min-width:0!important;aspect-ratio:auto!important;min-height:0!important;margin:0!important;padding:34px 22px 30px!important;box-sizing:border-box!important;border:0!important;border-radius:0!important;background:#f2efea!important;box-shadow:none!important;color:#111315!important;display:grid!important;grid-template-rows:auto 1fr auto!important;align-items:start!important;text-align:left!important;z-index:2!important}
+.ad27 #marketing-backend .mb-engine:before{content:"BACK\A MARKETING"!important;white-space:pre!important;position:absolute!important;right:calc(100% + 12px)!important;top:34px!important;width:70px!important;font:800 10px/1.08 Arial,sans-serif!important;letter-spacing:.09em!important;color:#111315!important;text-align:left!important}
+.ad27 #marketing-backend .mb-engine-intro{display:block!important;position:static!important;max-width:none!important;margin:0!important;padding:0 0 24px!important}
+.ad27 #marketing-backend .mb-engine-intro p{display:none!important}
+.ad27 #marketing-backend .mb-engine-intro h3{display:block!important;margin:0!important;max-width:13ch!important;font:650 clamp(25px,7vw,38px)/.98 Arial,sans-serif!important;letter-spacing:-.055em!important;color:#111315!important}
+.ad27 #marketing-backend .mb-engine-intro h3:before{content:"То, что определяет, "!important}
+.ad27 #marketing-backend .mb-engine-intro h3{font-size:0!important}
+.ad27 #marketing-backend .mb-engine-intro h3:before,.ad27 #marketing-backend .mb-engine-intro h3 em{font:650 clamp(25px,7vw,38px)/.98 Arial,sans-serif!important;letter-spacing:-.055em!important}
+.ad27 #marketing-backend .mb-engine-intro h3 em{font-style:normal!important;color:#ff6500!important}
+.ad27 #marketing-backend .mb-engine-intro h3 em{font-size:0!important}
+.ad27 #marketing-backend .mb-engine-intro h3 em:after{content:"сработает ли всё сверху."!important;font:650 clamp(25px,7vw,38px)/.98 Arial,sans-serif!important;letter-spacing:-.055em!important;color:#ff6500!important}
+.ad27 #marketing-backend .mb-engine-map,.ad27 #marketing-backend .mb-core,.ad27 #marketing-backend .mb-foundation{display:none!important}
 
-/* typography is the graphic field — no diagram furniture */
-.ad27 #marketing-backend .mb-signature{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;margin:0!important;padding:0!important;background:none!important;display:block!important;color:#111317!important;z-index:4!important}
-.ad27 #marketing-backend .mb-signature:before{content:"Рынок · Клиент\AЦенность · Продукт\AПозиционирование\AЭкономика\AДоказательства\AИсполнение"!important;display:block!important;white-space:pre-line!important;font:750 clamp(18px,5vw,25px)/1.65 Arial,sans-serif!important;letter-spacing:-.045em!important;color:#111317!important}
-.ad27 #marketing-backend .mb-signature:after{content:""!important;display:block!important;width:38px!important;height:4px!important;background:#ff6500!important;margin-top:28px!important}
+/* A compact typographic field, deliberately not a checklist or metro map. */
+.ad27 #marketing-backend .mb-signature{position:static!important;inset:auto!important;width:100%!important;height:auto!important;margin:0!important;padding:0!important;background:none!important;color:#111315!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px 14px!important;align-self:center!important;text-align:left!important;z-index:4!important}
+.ad27 #marketing-backend .mb-signature:before{content:"Рынок\AКлиент\AЦенность\AПродукт"!important;white-space:pre!important;display:block!important;font:700 clamp(16px,4.5vw,21px)/1.75 Arial,sans-serif!important;letter-spacing:-.035em!important;color:#111315!important}
+.ad27 #marketing-backend .mb-signature:after{content:"Позиционирование\AЭкономика\AДоказательства\AИсполнение"!important;white-space:pre!important;display:block!important;font:700 clamp(14px,4vw,19px)/1.95 Arial,sans-serif!important;letter-spacing:-.035em!important;color:#111315!important}
 .ad27 #marketing-backend .mb-signature p,.ad27 #marketing-backend .mb-signature strong{display:none!important}
+
+/* Personal role without narrowing the profession to a label. */
+.ad27 #marketing-backend .mb-engine:after{content:"МОЙ ВКЛАД — ЗДЕСЬ  →  понять, что действительно нужно менять до выбора инструмента."!important;display:block!important;align-self:end!important;margin-top:22px!important;padding-top:15px!important;border-top:1px solid rgba(17,19,21,.18)!important;font:650 11px/1.35 Arial,sans-serif!important;letter-spacing:.015em!important;color:#111315!important}
+.ad27 #marketing-backend .mb-engine:after{background:linear-gradient(90deg,#ff6500 0 42px,transparent 42px) top left/100% 3px no-repeat!important;padding-top:18px!important}
 .ad27 #work .ra-system-cut,.ad27 #work .ra-system-note,.ad27 #work [class*="system-cut"],.ad27 #work [class*="system-note"]{display:none!important}
 
 @media(min-width:901px){
-.ad27 #marketing-backend.mb-depth{grid-template-columns:minmax(170px,20%) minmax(0,1fr)!important;grid-template-rows:20% 80%!important;min-height:calc(100svh - 74px)!important;padding:46px clamp(42px,6vw,92px) 52px!important}
-.ad27 #marketing-backend:after{left:20%!important;right:clamp(42px,6vw,92px)!important;top:46px!important;bottom:52px!important}
-.ad27 #marketing-backend .mb-surface{padding:30px clamp(34px,4vw,62px)!important}
-.ad27 #marketing-backend .mb-surface:before{right:calc(100% + 32px)!important;width:150px!important;font-size:13px!important;white-space:normal!important;content:"FRONT MARKETING"!important}
-.ad27 #marketing-backend .mb-surface h2{font-size:clamp(23px,2.2vw,34px)!important}
-.ad27 #marketing-backend .mb-boundary{left:20%!important;right:clamp(42px,6vw,92px)!important;top:calc(46px + (100svh - 172px)*.20)!important;height:4px!important}
-.ad27 #marketing-backend .mb-engine{padding:clamp(44px,6vh,72px) clamp(34px,4vw,62px)!important}
-.ad27 #marketing-backend .mb-engine:before{right:calc(100% + 32px)!important;width:150px!important;font-size:13px!important;white-space:normal!important;content:"BACK MARKETING"!important}
-.ad27 #marketing-backend .mb-signature:before{font-size:clamp(30px,3.4vw,56px)!important;line-height:1.42!important;max-width:900px!important}
-.ad27 #marketing-backend .mb-signature:after{width:58px!important;height:5px!important;margin-top:36px!important}
+.ad27 #marketing-backend.mb-depth{grid-template-columns:minmax(180px,19%) minmax(0,1fr)!important;grid-template-rows:24% 76%!important;min-height:calc(100svh - 74px)!important}
+.ad27 #marketing-backend .mb-boundary{top:24%!important;background:linear-gradient(90deg,#111315 0 19%,#ff6500 19% 100%)!important;height:5px!important}
+.ad27 #marketing-backend .mb-surface{padding:42px clamp(44px,6vw,88px) 36px!important;gap:16px!important}
+.ad27 #marketing-backend .mb-surface:before{right:calc(100% + 34px)!important;bottom:40px!important;width:140px!important;white-space:normal!important;content:"FRONT MARKETING"!important;font-size:13px!important}
+.ad27 #marketing-backend .mb-eyebrow{font-size:14px!important}.ad27 #marketing-backend .mb-surface h2{font-size:clamp(25px,2.4vw,38px)!important}
+.ad27 #marketing-backend .mb-engine{padding:52px clamp(44px,6vw,88px) 42px!important;grid-template-columns:minmax(320px,.72fr) minmax(420px,1.28fr)!important;grid-template-rows:1fr auto!important;gap:30px clamp(50px,7vw,110px)!important;align-items:center!important}
+.ad27 #marketing-backend .mb-engine:before{right:calc(100% + 34px)!important;top:58px!important;width:140px!important;white-space:normal!important;content:"BACK MARKETING"!important;font-size:13px!important}
+.ad27 #marketing-backend .mb-engine-intro{grid-column:1!important;grid-row:1!important;padding:0!important;align-self:center!important}.ad27 #marketing-backend .mb-engine-intro h3{max-width:10ch!important}.ad27 #marketing-backend .mb-engine-intro h3:before,.ad27 #marketing-backend .mb-engine-intro h3 em:after{font-size:clamp(40px,4.3vw,68px)!important;line-height:.94!important}
+.ad27 #marketing-backend .mb-signature{grid-column:2!important;grid-row:1!important;gap:10px 40px!important;align-self:center!important}.ad27 #marketing-backend .mb-signature:before,.ad27 #marketing-backend .mb-signature:after{font-size:clamp(18px,1.65vw,27px)!important;line-height:1.85!important}
+.ad27 #marketing-backend .mb-engine:after{grid-column:1/3!important;grid-row:2!important;margin-top:0!important;font-size:13px!important;max-width:760px!important}
 }
 @media(max-width:390px){
-.ad27 #marketing-backend.mb-depth{grid-template-columns:84px minmax(0,1fr)!important;padding-left:14px!important;padding-right:14px!important}
-.ad27 #marketing-backend:after{left:98px!important;right:14px!important}
-.ad27 #marketing-backend .mb-boundary{left:98px!important;right:14px!important}
-.ad27 #marketing-backend .mb-surface,.ad27 #marketing-backend .mb-engine{padding-left:14px!important;padding-right:14px!important}
-.ad27 #marketing-backend .mb-surface:before,.ad27 #marketing-backend .mb-engine:before{right:calc(100% + 12px)!important;width:68px!important;font-size:9px!important}
-.ad27 #marketing-backend .mb-signature:before{font-size:17px!important}
+.ad27 #marketing-backend.mb-depth{grid-template-columns:82px minmax(0,1fr)!important}
+.ad27 #marketing-backend .mb-boundary{background:linear-gradient(90deg,#111315 0 82px,#ff6500 82px 100%)!important}
+.ad27 #marketing-backend .mb-surface,.ad27 #marketing-backend .mb-engine{padding-left:16px!important;padding-right:14px!important}
+.ad27 #marketing-backend .mb-surface:before,.ad27 #marketing-backend .mb-engine:before{right:calc(100% + 10px)!important;width:64px!important;font-size:9px!important}
+.ad27 #marketing-backend .mb-signature{gap:7px 10px!important}.ad27 #marketing-backend .mb-signature:before{font-size:15px!important}.ad27 #marketing-backend .mb-signature:after{font-size:13px!important}
 }
 }
 @media print{.ad27 #marketing-backend.mb-depth{display:block!important;background:#fff!important;color:#111!important;min-height:0!important}}
