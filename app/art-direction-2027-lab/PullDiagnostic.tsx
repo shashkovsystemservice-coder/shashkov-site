@@ -2,6 +2,7 @@
 
 import {useEffect,useRef,useState} from "react";
 import {createPortal} from "react-dom";
+import "./diagnostic-hero-fix.css";
 
 type Pos={x:number;y:number}|null;
 
