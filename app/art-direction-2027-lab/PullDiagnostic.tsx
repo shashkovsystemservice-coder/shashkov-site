@@ -109,10 +109,13 @@ export default function PullDiagnostic(){
     if(!d.moved)return;
     setDragging(true);
     const pad=8;
-    const width=e.currentTarget.getBoundingClientRect().width;
-    const height=e.currentTarget.getBoundingClientRect().height;
-    const x=Math.max(pad,Math.min(window.innerWidth-width-pad,d.originX+dx));
-    const y=Math.max(84,Math.min(window.innerHeight-height-120,d.originY+dy));
+    const rect=e.currentTarget.getBoundingClientRect();
+    const width=rect.width;
+    const height=rect.height;
+    const viewportWidth=window.visualViewport?.width??window.innerWidth;
+    const viewportHeight=window.visualViewport?.height??window.innerHeight;
+    const x=Math.max(pad,Math.min(viewportWidth-width-pad,d.originX+dx));
+    const y=Math.max(pad,Math.min(viewportHeight-height-pad,d.originY+dy));
     setPos({x,y});
   };
 
@@ -161,4 +164,4 @@ export default function PullDiagnostic(){
   );
 }
 
-// stopwatch-v4 geometry-anchored mobile hero cue
+// stopwatch-v5 full-viewport dragging
