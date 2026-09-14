@@ -21,6 +21,7 @@ export default function PullDiagnostic(){
   const [contextLabel,setContextLabel]=useState("Экспресс-диагностика");
   const [nudge,setNudge]=useState(false);
   const [pos,setPos]=useState<Pos>(null);
+  const [autoPos,setAutoPos]=useState<Pos>(null);
   const [dragging,setDragging]=useState(false);
   const nudgeTimer=useRef<number|null>(null);
   const dragRef=useRef<{id:number;startX:number;startY:number;originX:number;originY:number;moved:boolean}|null>(null);
@@ -42,11 +43,28 @@ export default function PullDiagnostic(){
     const first=window.setTimeout(pulse,1500);
     nudgeTimer.current=window.setInterval(pulse,9000);
 
+    const placeMobileHeroCue=()=>{
+      if(window.innerWidth>760){setAutoPos(null);return;}
+      const header=document.querySelector<HTMLElement>(".ra-nav-project");
+      const eyebrow=document.querySelector<HTMLElement>(".ra-hero-personal .ra-eyebrow");
+      const trigger=document.querySelector<HTMLElement>(".ra-stopwatch-trigger");
+      if(!header||!eyebrow||!trigger)return;
+      const h=header.getBoundingClientRect();
+      const e=eyebrow.getBoundingClientRect();
+      const t=trigger.getBoundingClientRect();
+      const safeTop=h.bottom+12;
+      const safeBottom=e.top-14;
+      const available=Math.max(0,safeBottom-safeTop);
+      const y=Math.max(safeTop,safeTop+(available-t.height)/2);
+      setAutoPos({x:20,y});
+    };
+
     const update=()=>{
       const onHero=window.scrollY < window.innerHeight*.72;
       setHero(onHero);
       if(onHero){
         setContextLabel("Экспресс-диагностика");
+        window.requestAnimationFrame(placeMobileHeroCue);
         return;
       }
       const y=window.innerHeight*.5;
@@ -63,10 +81,12 @@ export default function PullDiagnostic(){
     };
 
     update();
+    const settle=window.setTimeout(placeMobileHeroCue,80);
     window.addEventListener("scroll",update,{passive:true});
     window.addEventListener("resize",update);
     return()=>{
       window.clearTimeout(first);
+      window.clearTimeout(settle);
       if(nudgeTimer.current)window.clearInterval(nudgeTimer.current);
       window.removeEventListener("scroll",update);
       window.removeEventListener("resize",update);
@@ -107,7 +127,8 @@ export default function PullDiagnostic(){
 
   if(!mounted)return null;
 
-  const style=pos?({left:pos.x,top:pos.y,right:"auto",bottom:"auto"} as React.CSSProperties):undefined;
+  const activePos=pos??(hero?autoPos:null);
+  const style=activePos?({left:activePos.x,top:activePos.y,right:"auto",bottom:"auto"} as React.CSSProperties):undefined;
 
   return createPortal(
     <aside style={style} className={`ra-diagnostic-assistant ${open?"is-open":""} ${hero?"is-hero":"is-browsing"} ${nudge&&!open&&!dragging?"is-nudge":""} ${dragging?"is-dragging":""}`} aria-label="Экспресс-диагностика">
@@ -140,4 +161,4 @@ export default function PullDiagnostic(){
   );
 }
 
-// stopwatch-v3 draggable atomic preview
+// stopwatch-v4 geometry-anchored mobile hero cue
