@@ -67,6 +67,11 @@ const fields: Record<string, Array<[string,string,string]>> = {
 
 type SegmentRow = { name:string; need:string; market:string; economics:string; urgency:string; dmu:string; rightToWin:string; competition:string; evidence:string; decision:string; rationale:string };
 type GrowthRow = { source:string; segment:string; advantage:string; mechanism:string; potential:string; economics:string; evidence:string; decision:string; nonChoice:string; risk:string };
+type MarketFactRow = { fact:string; scale:string; impact:string; issue:string; choice:string; evidence:string; include:string };
+type AlternativeRow = { alternative:string; type:string; wins:string; loses:string; whyChosen:string; switching:string; evidence:string };
+type AdvantageRow = { candidate:string; customerValue:string; differentiation:string; proof:string; copyDifficulty:string; control:string; risk:string; decision:string; rationale:string };
+type InitiativeRow = { initiative:string; strategicChoice:string; kpi:string; base:string; target:string; unit:string; deadline:string; causalLink:string; effect:string; resource:string; evidence:string };
+
 
 const defaultSegments: SegmentRow[] = [
   {name:"Сегмент A",need:"",market:"",economics:"",urgency:"",dmu:"",rightToWin:"",competition:"",evidence:"",decision:"Проверить",rationale:""},
@@ -75,6 +80,15 @@ const defaultSegments: SegmentRow[] = [
 ];
 const growthSources = ["Привлечение новых клиентов","Развитие текущих клиентов","Удержание","Возвращение клиентов","Новый сегмент / рынок","Новое / изменённое предложение","Цена / пакетирование / условия","Маршрут к клиенту / партнёрства","Позиционирование / причина выбора","Клиентский опыт / touchpoints"];
 const defaultGrowth: GrowthRow[] = growthSources.map(source=>({source,segment:"",advantage:"",mechanism:"",potential:"",economics:"",evidence:"",decision:"Проверить",nonChoice:"",risk:""}));
+const defaultMarketFacts: MarketFactRow[] = [{fact:"",scale:"",impact:"",issue:"",choice:"",evidence:"",include:"Проверить"}];
+const defaultAlternatives: AlternativeRow[] = [{alternative:"",type:"Прямой конкурент",wins:"",loses:"",whyChosen:"",switching:"",evidence:""}];
+const defaultAdvantages: AdvantageRow[] = [{candidate:"",customerValue:"",differentiation:"",proof:"",copyDifficulty:"",control:"",risk:"",decision:"Проверить",rationale:""}];
+const defaultInitiatives: InitiativeRow[] = [
+ {initiative:"Инициатива 1",strategicChoice:"",kpi:"",base:"",target:"",unit:"",deadline:"",causalLink:"",effect:"",resource:"",evidence:""},
+ {initiative:"Инициатива 2",strategicChoice:"",kpi:"",base:"",target:"",unit:"",deadline:"",causalLink:"",effect:"",resource:"",evidence:""},
+ {initiative:"Инициатива 3",strategicChoice:"",kpi:"",base:"",target:"",unit:"",deadline:"",causalLink:"",effect:"",resource:"",evidence:""},
+];
+
 
 function rows<T>(v: unknown, fallback:T[]):T[]{ return Array.isArray(v) ? v as T[] : fallback; }
 
@@ -106,6 +120,8 @@ export default function StrategyTool() {
   function updateGrowth(i:number,key:keyof GrowthRow,value:string){
     const next=rows<GrowthRow>(data.growthMatrix,defaultGrowth).map((r,n)=>n===i?{...r,[key]:value}:r); patchStructured("growthMatrix",next);
   }
+  function updateRow<T extends Record<string,string>>(field:string, fallback:T[], i:number, key:keyof T, value:string){ const next=rows<T>(data[field],fallback).map((r,n)=>n===i?{...r,[key]:value}:r); patchStructured(field,next); }
+  function addRow<T>(field:string,fallback:T[],blank:T){ patchStructured(field,[...rows<T>(data[field],fallback),blank]); }
 
   async function save() {
     if (!key) { setStatus("Введите ключ тестирования."); return; }
@@ -148,16 +164,40 @@ export default function StrategyTool() {
 
     <section className={styles.card}>
       <div className={styles.blockhead}><div><span>Блок {current.n} · {current.en}</span><h2>{current.title}</h2></div><p>{current.question}</p></div>
+      {current.id==="market" && <div className={styles.structured}>
+        <div className={styles.structureHead}><div><strong>Факт → стратегическое следствие → выбор</strong><p>В стратегию попадает не факт сам по себе, а факт, который меняет решение.</p></div><button onClick={()=>addRow("marketFacts",defaultMarketFacts,{fact:"",scale:"",impact:"",issue:"",choice:"",evidence:"",include:"Проверить"})} className={styles.secondary}>+ Факт</button></div>
+        <div className={styles.tableWrap}><table><thead><tr><th>Факт / изменение</th><th>Масштаб / период</th><th>Влияние на бизнес</th><th>Проблема / возможность</th><th>Какой выбор требуется</th><th>Evidence</th><th>В стратегию?</th></tr></thead><tbody>
+        {rows<MarketFactRow>(data.marketFacts,defaultMarketFacts).map((r,i)=><tr key={i}>{(["fact","scale","impact","issue","choice","evidence"] as (keyof MarketFactRow)[]).map(k=><td key={k}><textarea value={r[k]} onChange={e=>updateRow("marketFacts",defaultMarketFacts,i,k,e.target.value)} /></td>)}<td><select value={r.include} onChange={e=>updateRow("marketFacts",defaultMarketFacts,i,"include",e.target.value)}><option>Проверить</option><option>Да</option><option>Нет</option></select></td></tr>)}
+        </tbody></table></div>
+      </div>}
       {current.id==="customers" && <div className={styles.structured}>
         <div className={styles.structureHead}><div><strong>Сравнение альтернативных сегментов</strong><p>Не суммируйте оценки механически. Матрица заставляет сохранить аргументы и Evidence по каждому варианту.</p></div><button onClick={addSegment} className={styles.secondary}>+ Сегмент</button></div>
         <div className={styles.tableWrap}><table><thead><tr><th>Сегмент</th><th>Потребность / JTBD</th><th>Рынок</th><th>Экономика</th><th>Сила потребности</th><th>Доступ к DMU</th><th>Right to Win</th><th>Конкуренция</th><th>Evidence</th><th>Решение</th><th>Почему</th></tr></thead><tbody>
         {rows<SegmentRow>(data.segmentMatrix,defaultSegments).map((r,i)=><tr key={i}>{(["name","need","market","economics","urgency","dmu","rightToWin","competition","evidence"] as (keyof SegmentRow)[]).map(k=><td key={k}><textarea value={r[k]} onChange={e=>updateSegment(i,k,e.target.value)} /></td>)}<td><select value={r.decision} onChange={e=>updateSegment(i,"decision",e.target.value)}><option>Проверить</option><option>Выбрать</option><option>Не выбирать</option></select></td><td><textarea value={r.rationale} onChange={e=>updateSegment(i,"rationale",e.target.value)} /></td></tr>)}
         </tbody></table></div>
       </div>}
+      {current.id==="value" && <div className={styles.structured}>
+        <div className={styles.structureHead}><div><strong>Реальные альтернативы клиента</strong><p>Сравниваем не только прямых конкурентов: потенциальных, substitute и status quo.</p></div><button onClick={()=>addRow("alternativeMatrix",defaultAlternatives,{alternative:"",type:"Прямой конкурент",wins:"",loses:"",whyChosen:"",switching:"",evidence:""})} className={styles.secondary}>+ Альтернатива</button></div>
+        <div className={styles.tableWrap}><table><thead><tr><th>Альтернатива</th><th>Тип</th><th>Где выигрывает</th><th>Где проигрывает</th><th>Почему выбирают</th><th>Switching cost</th><th>Evidence</th></tr></thead><tbody>
+        {rows<AlternativeRow>(data.alternativeMatrix,defaultAlternatives).map((r,i)=><tr key={i}><td><textarea value={r.alternative} onChange={e=>updateRow("alternativeMatrix",defaultAlternatives,i,"alternative",e.target.value)} /></td><td><select value={r.type} onChange={e=>updateRow("alternativeMatrix",defaultAlternatives,i,"type",e.target.value)}><option>Прямой конкурент</option><option>Потенциальный конкурент</option><option>Substitute</option><option>Status quo</option></select></td>{(["wins","loses","whyChosen","switching","evidence"] as (keyof AlternativeRow)[]).map(k=><td key={k}><textarea value={r[k]} onChange={e=>updateRow("alternativeMatrix",defaultAlternatives,i,k,e.target.value)} /></td>)}</tr>)}
+        </tbody></table></div>
+      </div>}
+      {current.id==="advantage" && <div className={styles.structured}>
+        <div className={styles.structureHead}><div><strong>Right to Win Test</strong><p>Сильная сторона становится основанием преимущества только после проверки ценности, отличия, доказуемости и устойчивости.</p></div><button onClick={()=>addRow("advantageMatrix",defaultAdvantages,{candidate:"",customerValue:"",differentiation:"",proof:"",copyDifficulty:"",control:"",risk:"",decision:"Проверить",rationale:""})} className={styles.secondary}>+ Кандидат</button></div>
+        <div className={styles.tableWrap}><table><thead><tr><th>Кандидат</th><th>Ценность клиенту</th><th>Отличие</th><th>Proof</th><th>Трудность копирования</th><th>Контроль</th><th>Риск утраты</th><th>Решение</th><th>Почему</th></tr></thead><tbody>
+        {rows<AdvantageRow>(data.advantageMatrix,defaultAdvantages).map((r,i)=><tr key={i}>{(["candidate","customerValue","differentiation","proof","copyDifficulty","control","risk"] as (keyof AdvantageRow)[]).map(k=><td key={k}><textarea value={r[k]} onChange={e=>updateRow("advantageMatrix",defaultAdvantages,i,k,e.target.value)} /></td>)}<td><select value={r.decision} onChange={e=>updateRow("advantageMatrix",defaultAdvantages,i,"decision",e.target.value)}><option>Проверить</option><option>Основа Right to Win</option><option>Поддерживающий фактор</option><option>Не использовать</option></select></td><td><textarea value={r.rationale} onChange={e=>updateRow("advantageMatrix",defaultAdvantages,i,"rationale",e.target.value)} /></td></tr>)}
+        </tbody></table></div>
+      </div>}
       {current.id==="growth" && <div className={styles.structured}>
         <div className={styles.structureHead}><div><strong>Growth Opportunity Check</strong><p>Каждый возможный источник роста проходит одну и ту же проверку до SELECT / HOLD / REJECT.</p></div></div>
         <div className={styles.tableWrap}><table><thead><tr><th>Источник роста</th><th>Сегмент</th><th>Преимущество</th><th>Механизм</th><th>Потенциал</th><th>Экономика</th><th>Evidence</th><th>Решение</th><th>Что не выбираем / почему</th><th>Риск</th></tr></thead><tbody>
         {rows<GrowthRow>(data.growthMatrix,defaultGrowth).map((r,i)=><tr key={r.source}><td className={styles.fixedCell}>{r.source}</td>{(["segment","advantage","mechanism","potential","economics","evidence"] as (keyof GrowthRow)[]).map(k=><td key={k}><textarea value={r[k]} onChange={e=>updateGrowth(i,k,e.target.value)} /></td>)}<td><select value={r.decision} onChange={e=>updateGrowth(i,"decision",e.target.value)}><option>Проверить</option><option>SELECT</option><option>HOLD</option><option>REJECT</option></select></td><td><textarea value={r.nonChoice} onChange={e=>updateGrowth(i,"nonChoice",e.target.value)} /></td><td><textarea value={r.risk} onChange={e=>updateGrowth(i,"risk",e.target.value)} /></td></tr>)}
+        </tbody></table></div>
+      </div>}
+      {current.id==="initiatives" && <div className={styles.structured}>
+        <div className={styles.structureHead}><div><strong>Стратегический выбор → инициатива → результат</strong><p>Только 3–5 инициатив. Это мост в Annual Marketing Plan, а не детальный action plan.</p></div><button onClick={()=>addRow("initiativeMatrix",defaultInitiatives,{initiative:"Новая инициатива",strategicChoice:"",kpi:"",base:"",target:"",unit:"",deadline:"",causalLink:"",effect:"",resource:"",evidence:""})} className={styles.secondary}>+ Инициатива</button></div>
+        <div className={styles.tableWrap}><table><thead><tr><th>Инициатива</th><th>Какой выбор реализует</th><th>KPI / драйвер</th><th>База</th><th>Цель</th><th>Ед.</th><th>Срок</th><th>Связь с бизнес-результатом</th><th>Ожидаемый эффект</th><th>Ключевой ресурс</th><th>Evidence</th></tr></thead><tbody>
+        {rows<InitiativeRow>(data.initiativeMatrix,defaultInitiatives).map((r,i)=><tr key={i}>{(["initiative","strategicChoice","kpi","base","target","unit","deadline","causalLink","effect","resource","evidence"] as (keyof InitiativeRow)[]).map(k=><td key={k}><textarea value={r[k]} onChange={e=>updateRow("initiativeMatrix",defaultInitiatives,i,k,e.target.value)} /></td>)}</tr>)}
         </tbody></table></div>
       </div>}
       <div className={styles.grid}>
