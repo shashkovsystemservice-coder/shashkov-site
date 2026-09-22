@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { blocks, emptyProject, type StrategyProject } from "./schema";
 import { guide } from "./methodology";
+import { exampleProject } from "./example";
 import styles from "./StrategyTool.module.css";
 
 type Dict = Record<string, unknown>;
@@ -99,11 +100,14 @@ export default function StrategyTool() {
   const [step, setStep] = useState(0);
   const [key, setKey] = useState("");
   const [status, setStatus] = useState("Черновик ещё не сохранён");
+  const [demoLoaded, setDemoLoaded] = useState(false);
   const current = blocks[step];
   const data = (project.blocks[current.id] || {}) as Dict;
 
   const completed = useMemo(() => blocks.filter(b => text((project.blocks[b.id] as Dict)?.conclusion).trim()).length, [project]);
 
+  function loadExample(){ setProject(exampleProject()); setStep(0); setDemoLoaded(true); setStatus("Загружен учебный пример — изменения пока не сохранены"); }
+  function clearExample(){ setProject(emptyProject()); setStep(0); setDemoLoaded(false); setStatus("Новый пустой проект"); }
   function patchMeta(name: "id"|"company"|"period", value: string) {
     setProject(p => ({...p, [name]: value}));
   }
@@ -154,7 +158,7 @@ export default function StrategyTool() {
       <label>Компания<input value={project.company} onChange={e=>patchMeta("company",e.target.value)} placeholder="Например, SLED Systems" /></label>
       <label>Период<input value={project.period} onChange={e=>patchMeta("period",e.target.value)} /></label>
       <label>Ключ теста<input type="password" value={key} onChange={e=>setKey(e.target.value)} placeholder="Не сохраняется" /></label>
-      <div className={styles.actions}><button onClick={load} className={styles.secondary}>Загрузить</button><button onClick={save}>Сохранить в GitHub</button></div>
+      <div className={styles.actions}><button onClick={loadExample} className={styles.example}>Загрузить пример</button>{demoLoaded&&<button onClick={clearExample} className={styles.secondary}>Очистить пример</button>}<button onClick={load} className={styles.secondary}>Загрузить проект</button><button onClick={save}>Сохранить в GitHub</button></div>
       <div className={styles.status}>{status}</div>
     </section>
 
