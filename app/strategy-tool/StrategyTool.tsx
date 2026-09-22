@@ -101,6 +101,7 @@ export default function StrategyTool() {
   const [key, setKey] = useState("");
   const [status, setStatus] = useState("Черновик ещё не сохранён");
   const [demoLoaded, setDemoLoaded] = useState(false);
+  const [showAllFields, setShowAllFields] = useState(false);
   const current = blocks[step];
   const data = (project.blocks[current.id] || {}) as Dict;
 
@@ -147,9 +148,29 @@ export default function StrategyTool() {
     setProject(json.project); setStatus("Загружено из GitHub.");
   }
 
+  const decisionSummary = [
+    {label:"Цель", value:text((project.blocks.objectives as Dict)?.conclusion)},
+    {label:"Ситуация", value:text((project.blocks.market as Dict)?.conclusion)},
+    {label:"Клиент", value:text((project.blocks.customers as Dict)?.conclusion)},
+    {label:"Ценность", value:text((project.blocks.value as Dict)?.conclusion)},
+    {label:"Right to Win", value:text((project.blocks.advantage as Dict)?.conclusion)},
+    {label:"Рост", value:text((project.blocks.growth as Dict)?.conclusion)},
+    {label:"Результат", value:text((project.blocks.initiatives as Dict)?.conclusion)},
+  ];
+  const focusFields:Record<string,string[]> = {
+    objectives:["businessObjective","businessEvidence","marketingObjective","marketingEvidence","link","conclusion"],
+    market:["marketDefinition","sources","requiredChoices","conclusion"],
+    customers:["prioritySegment","need","dmu","buyingCriteria","nonTarget","evidence","conclusion"],
+    value:["valueProposition","positioning","proof","whyUs","evidence","conclusion"],
+    advantage:["rightToWin","touchpoints","risks","conclusion"],
+    growth:["selectedGrowth","tradeoffs","offerPrinciple","pricingPrinciple","routePrinciple","communicationPrinciple","conclusion"],
+    initiatives:["causalChain","expectedResult","conclusion"],
+  };
+  const visibleFields = showAllFields ? fields[current.id] : fields[current.id].filter(([id])=>focusFields[current.id]?.includes(id));
+
   return <main className={styles.shell}>
     <header className={styles.header}>
-      <div><div className={styles.eyebrow}>MARKETING STRATEGY CREATION TOOL · α</div><h1>Стратегия как система выборов</h1><p>MASTER v1.1 перенесён в последовательный рабочий процесс: Evidence → вывод → выбор → обоснование → итоговая стратегия.</p></div>
+      <div><div className={styles.eyebrow}>MARKETING STRATEGY CREATION TOOL · α</div><h1>Стратегия как система выборов</h1><p>Не заполняйте таблицу ради таблицы. На каждом шаге: Evidence → смысл → альтернативы → выбор → обоснование. Принятые решения автоматически собираются в стратегию.</p></div>
       <div className={styles.progress}><strong>{completed}/7</strong><span>блоков имеют управленческий вывод</span></div>
     </header>
 
@@ -166,8 +187,14 @@ export default function StrategyTool() {
       {blocks.map((b,i)=><button key={b.id} onClick={()=>setStep(i)} className={i===step?styles.active:""}><span>{b.n}</span><em>{b.title}</em></button>)}
     </nav>
 
+    <section className={styles.liveStrategy}>
+      <div className={styles.liveHead}><div><span>ЖИВАЯ СТРАТЕГИЯ</span><strong>Что уже выбрано</strong></div><small>Собирается из управленческих решений по мере прохождения.</small></div>
+      <div className={styles.liveChain}>{decisionSummary.map((d,i)=><button key={d.label} onClick={()=>setStep(i)} className={d.value?styles.decided:""}><span>{i+1}</span><b>{d.label}</b><em>{d.value || "Решение ещё не принято"}</em></button>)}</div>
+    </section>
+
     <section className={styles.card}>
       <div className={styles.blockhead}><div><span>Блок {current.n} · {current.en}</span><h2>{current.title}</h2></div><p>{current.question}</p></div>
+      <div className={styles.decisionFrame}><div><span>01 · Evidence</span><p>Сначала зафиксируйте только то, что можно подтвердить.</p></div><div><span>02 · Интерпретация</span><p>Что эти факты меняют в стратегическом выборе?</p></div><div><span>03 · Альтернативы</span><p>Сравните реальные варианты, включая отказ от выбора.</p></div><div><span>04 · Решение</span><p>Зафиксируйте выбор, non-choice и обоснование.</p></div></div>
       {current.id==="market" && <div className={styles.structured}>
         <div className={styles.structureHead}><div><strong>Факт → стратегическое следствие → выбор</strong><p>В стратегию попадает не факт сам по себе, а факт, который меняет решение.</p></div><button onClick={()=>addRow("marketFacts",defaultMarketFacts,{fact:"",scale:"",impact:"",issue:"",choice:"",evidence:"",include:"Проверить"})} className={styles.secondary}>+ Факт</button></div>
         <div className={styles.tableWrap}><table><thead><tr><th>Факт / изменение</th><th>Масштаб / период</th><th>Влияние на бизнес</th><th>Проблема / возможность</th><th>Какой выбор требуется</th><th>Evidence</th><th>В стратегию?</th></tr></thead><tbody>
@@ -204,8 +231,9 @@ export default function StrategyTool() {
         {rows<InitiativeRow>(data.initiativeMatrix,defaultInitiatives).map((r,i)=><tr key={i}>{(["initiative","strategicChoice","kpi","base","target","unit","deadline","causalLink","effect","resource","evidence"] as (keyof InitiativeRow)[]).map(k=><td key={k}><textarea value={r[k]} onChange={e=>updateRow("initiativeMatrix",defaultInitiatives,i,k,e.target.value)} /></td>)}</tr>)}
         </tbody></table></div>
       </div>}
+      <div className={styles.fieldMode}><strong>Формирование решения</strong><button className={styles.secondary} onClick={()=>setShowAllFields(v=>!v)}>{showAllFields?"Скрыть рабочие поля":"Показать все рабочие поля"}</button></div>
       <div className={styles.grid}>
-        {fields[current.id].map(([id,label,hint])=>{ const g=guide[current.id]?.[id]; return <label key={id} className={id==="conclusion"||id==="selectedGrowth"||id==="tradeoffs"||id==="initiatives"||id==="causalChain"||id==="segments"||id==="keyFacts"?styles.wide:""}>
+        {visibleFields.map(([id,label,hint])=>{ const g=guide[current.id]?.[id]; return <label key={id} className={id==="conclusion"||id==="selectedGrowth"||id==="tradeoffs"||id==="initiatives"||id==="causalChain"||id==="segments"||id==="keyFacts"?styles.wide:""}>
           <span>{label}</span>
           {g ? <div className={styles.guide}><b>{g.question}</b><p><strong>Как сформировать:</strong> {g.how}</p>{g.from&&<p><strong>Опирается на:</strong> {g.from}</p>}{g.evidence&&<p><strong>Evidence:</strong> {g.evidence}</p>}{g.output&&<p><strong>Выход:</strong> {g.output}</p>}</div> : <small>{hint}</small>}
           <textarea value={text(data[id])} onChange={e=>patch(id,e.target.value)} rows={id==="conclusion"?4:3} />
@@ -215,7 +243,7 @@ export default function StrategyTool() {
     </section>
 
     <section className={styles.output}>
-      <div className={styles.blockhead}><div><span>01 Итоговая стратегия</span><h2>Стратегия в одной цепочке</h2></div><p>Здесь отображаются именно управленческие выводы семи блоков — не все исходные записи.</p></div>
+      <div className={styles.blockhead}><div><span>STRATEGY OUTPUT</span><h2>Черновик стратегии собирается автоматически</h2></div><p>Здесь отображаются именно управленческие выводы семи блоков — не все исходные записи.</p></div>
       <div className={styles.chain}>{blocks.map(b=><article key={b.id}><b>{b.n}</b><div><strong>{b.title}</strong><p>{text((project.blocks[b.id] as Dict)?.conclusion) || "Выбор ещё не зафиксирован"}</p></div></article>)}</div>
       <div className={styles.refusals}><strong>Ключевые стратегические отказы</strong><p>{text((project.blocks.growth as Dict)?.tradeoffs) || "Пока не зафиксированы."}</p></div>
     </section>
