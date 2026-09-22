@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { blocks, emptyProject, type StrategyProject } from "./schema";
+import { guide } from "./methodology";
 import styles from "./StrategyTool.module.css";
 
 type Dict = Record<string, unknown>;
@@ -125,10 +126,11 @@ export default function StrategyTool() {
     <section className={styles.card}>
       <div className={styles.blockhead}><div><span>Блок {current.n} · {current.en}</span><h2>{current.title}</h2></div><p>{current.question}</p></div>
       <div className={styles.grid}>
-        {fields[current.id].map(([id,label,hint])=><label key={id} className={id==="conclusion"||id==="selectedGrowth"||id==="tradeoffs"||id==="initiatives"||id==="causalChain"||id==="segments"||id==="keyFacts"?styles.wide:""}>
-          <span>{label}</span><small>{hint}</small>
+        {fields[current.id].map(([id,label,hint])=>{ const g=guide[current.id]?.[id]; return <label key={id} className={id==="conclusion"||id==="selectedGrowth"||id==="tradeoffs"||id==="initiatives"||id==="causalChain"||id==="segments"||id==="keyFacts"?styles.wide:""}>
+          <span>{label}</span>
+          {g ? <div className={styles.guide}><b>{g.question}</b><p><strong>Как сформировать:</strong> {g.how}</p>{g.from&&<p><strong>Опирается на:</strong> {g.from}</p>}{g.evidence&&<p><strong>Evidence:</strong> {g.evidence}</p>}{g.output&&<p><strong>Выход:</strong> {g.output}</p>}</div> : <small>{hint}</small>}
           <textarea value={text(data[id])} onChange={e=>patch(id,e.target.value)} rows={id==="conclusion"?4:3} />
-        </label>)}
+        </label>})}
       </div>
       <div className={styles.navbuttons}><button className={styles.secondary} disabled={step===0} onClick={()=>setStep(s=>Math.max(0,s-1))}>← Назад</button><button disabled={step===blocks.length-1} onClick={()=>setStep(s=>Math.min(blocks.length-1,s+1))}>Следующий блок →</button></div>
     </section>
