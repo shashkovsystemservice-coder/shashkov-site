@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ResearchConceptForm from "./ResearchConceptForm";
 
 export const metadata: Metadata = {
   title: "Investigación empresarial autónoma | Programa piloto — Vladimir Shashkov",
@@ -30,8 +31,9 @@ export default function ResearchPilotPage() {
           <p className="hero-note">El flujo de investigación autónomo y la calidad de los resultados continúan en desarrollo. Esta página presenta el proyecto; todavía no permite iniciar investigaciones directamente.</p>
         </div>
       </header>
+      <ResearchConceptForm />
       <section className="content"><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>01 / Concepto</p>
+        <p className="kicker" style={{color:"#1758b5"}}>02 / Concepto</p>
         <h2>Una entrada sencilla. Una investigación en profundidad.</h2>
         <p className="intro">La visión del producto: introducir una empresa y su página web, pulsar «Investigar» y dejar que el sistema explore fuentes públicas durante un ciclo que puede durar aproximadamente 40–90 minutos, según la tarea.</p>
         <div className="steps">
@@ -41,12 +43,12 @@ export default function ResearchPilotPage() {
         </div>
       </div></section>
       <section className="content"><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>02 / Aplicaciones</p>
+        <p className="kicker" style={{color:"#1758b5"}}>03 / Aplicaciones</p>
         <h2>Una plataforma de investigación. Distintas decisiones.</h2>
         <div className="apps">{applications.map(a=><article key={a.num} className="app"><small>{a.num}</small><h3>{a.title}</h3><strong>{a.subtitle}</strong><p style={{marginTop:15}}>{a.description}</p></article>)}</div>
       </div></section>
       <section className="content evidence"><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>03 / Experimentos reales</p>
+        <p className="kicker" style={{color:"#1758b5"}}>04 / Experimentos reales</p>
         <h2>Ya estamos contrastando resultados con empresas industriales reales.</h2>
         <p className="intro">Los estudios realizados son pruebas del enfoque, no auditorías definitivas ni productos adaptados y validados por las empresas analizadas.</p>
         <div className="cases">
@@ -55,18 +57,18 @@ export default function ResearchPilotPage() {
         </div>
       </div></section>
       <section className="content"><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>04 / Dos herramientas conectadas</p>
+        <p className="kicker" style={{color:"#1758b5"}}>05 / Dos herramientas conectadas</p>
         <h2>Investigar primero. Evaluar la estrategia después.</h2>
         <p className="intro">En paralelo se desarrolla una metodología estructurada de estrategia de marketing: partir de los objetivos de la empresa, integrar la evidencia externa con capacidades y restricciones internas, evaluar alternativas y formular prioridades.</p>
         <div className="phase"><div><h3>Investigación empresarial</h3><p>Recopilar y verificar evidencia sobre mercado, competidores y compradores. La arquitectura de investigación se prueba actualmente.</p></div><div><h3>Proceso de estrategia</h3><p>Utilizar la evidencia junto con información interna para contrastar hipótesis y fundamentar decisiones. Herramienta complementaria en desarrollo.</p></div></div>
       </div></section>
       <section className="content"><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>05 / Estado del proyecto</p>
+        <p className="kicker" style={{color:"#1758b5"}}>06 / Estado del proyecto</p>
         <h2>Un MVP que queremos adaptar a necesidades empresariales concretas.</h2>
         <div className="phase"><div><h3>Lo que ya se prueba</h3><p>Investigaciones de empresas reales, ciclos de búsqueda en profundidad, contraste de fuentes y preparación de informes. Evaluamos sus aciertos, omisiones y límites.</p></div><div><h3>Lo que seguimos construyendo</h3><p>Mayor autonomía, investigación de compradores y competidores a diferentes niveles, criterios de calidad y una experiencia de uso sencilla para las empresas.</p></div></div>
       </div></section>
       <section className="content pilot" id="piloto"><div className="wrap">
-        <p className="kicker">06 / Programa piloto</p>
+        <p className="kicker">07 / Programa piloto</p>
         <h2>Buscamos empresas industriales en España que quieran definir con nosotros qué debe investigar el producto.</h2>
         <p>Proponemos elegir una pregunta de negocio real, acordar qué evidencias y resultados serían útiles, y adaptar progresivamente la herramienta. La empresa podrá revisar y utilizar los resultados del piloto; nosotros aprenderemos de su evaluación.</p>
         <p><strong>Sin compromiso comercial.</strong> El alcance, los datos compartidos y el formato de participación se acordarán previamente. No es necesario contratar ningún servicio.</p>
