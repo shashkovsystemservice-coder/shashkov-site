@@ -57,6 +57,20 @@ const roleFindings: Record<string,string> = {
   procurement: "Proveedores alternativos, dependencias de suministro y opciones de sustitución.",
   consultant: "Competidores no evidentes, hipótesis contradictorias y preguntas para validar.",
 };
+const researchByRole: Record<string,[string,string,string]> = {
+  owner: ["Fortalezas, debilidades y activos visibles desde el mercado.","Modelos de negocio rivales, amenazas y alternativas de inversión.","Segmentos y grandes compradores que podrían abrir nuevas vías de crecimiento."],
+  ceo: ["Posición externa de la empresa y posibles brechas estratégicas.","Dónde destacan los rivales en factores críticos para competir.","Compradores, proyectos y señales que merecen atención directiva."],
+  sales: ["Productos y ventajas comprobables para argumentar las ventas.","Proveedores alternativos y condiciones con los que nos comparan.","Perfil del cliente: procesos, maquinaria, proyectos, compras y proveedores para negociar con fundamento."],
+  marketing: ["Segmentos en los que la propuesta de valor cuenta con más evidencias.","Posicionamiento, mensajes y pruebas que utilizan los competidores.","Necesidades y criterios de elección de posibles compradores."],
+  development: ["Capacidades que pueden trasladarse a mercados adyacentes.","Nuevas líneas, alianzas y modelos de negocio de otros actores.","Empresas con nuevos proyectos y necesidades potenciales."],
+  product: ["Familias de producto y aplicaciones validadas por el mercado.","Modelos, características y servicios de ofertas competidoras.","Problemas de los compradores que aún no están bien resueltos."],
+  technical: ["Capacidades y limitaciones técnicas visibles desde fuentes externas.","Tecnologías, normas y soluciones de ingeniería de los rivales.","Requisitos presentes en proyectos y especificaciones de clientes."],
+  production: ["Capacidades productivas verificables de la empresa.","Plazos, cooperación industrial y calidad de los competidores.","Volúmenes, configuraciones y plazos que podrían requerir los compradores."],
+  service: ["Red de servicio, repuestos y soporte declarados o comprobados.","Garantías, mantenimiento y servicios posventa de la competencia.","Equipos instalados que pueden necesitar mantenimiento o modernización."],
+  finance: ["Resultados financieros públicos y posibles límites de caja.","Resiliencia financiera de los rivales y capacidad inversora.","Señales públicas de inversión y compras para evaluar la demanda."],
+  procurement: ["Proveedores, componentes y dependencias de suministro.","Fabricantes y canales alternativos utilizados por competidores.","Normas y requisitos de compradores que afectan a las adquisiciones."],
+  consultant: ["Hechos verificables sobre el modelo de negocio.","Hipótesis sobre el éxito de la competencia contrastadas con fuentes.","Clientes y proyectos capaces de validar o refutar hipótesis estratégicas."],
+};
 export default function ResearchConceptForm(){
   const [company,setCompany]=useState("");
   const [website,setWebsite]=useState("");
@@ -78,7 +92,7 @@ export default function ResearchConceptForm(){
           <label>Sitio web (opcional)<input type="url" value={website} onChange={e=>{setWebsite(e.target.value);setPreview(false)}} placeholder="https://empresa.es" /></label>
         </div>
         <fieldset><legend>¿Quién leerá el informe? Puedes seleccionar varios perfiles.</legend><p className="rp-role-hint">Una misma base de evidencias. El informe destaca las conclusiones de gestión para los perfiles elegidos.</p><div className="rp-role-list">{roles.map(([v,label])=><label key={v}><input type="checkbox" name="roles" checked={selectedRoles.includes(v)} onChange={()=>toggleRole(v)}/><span>{label}</span></label>)}</div></fieldset>
-        <div className="rp-role-benefits"><h3>Qué puede revelar el estudio para los perfiles seleccionados</h3><p>Son ejemplos de posibles hallazgos, no resultados garantizados: dependen de las fuentes disponibles y verificables.</p><div className="rp-role-benefit-list">{selectedRoles.map(v=><article key={v}><strong>{roles.find(x=>x[0]===v)?.[1]}</strong><span>{roleFindings[v]}</span></article>)}</div></div>
+        <div className="rp-role-benefits"><h3>Tres ámbitos de investigación: valor para cada perfil</h3><p>Podemos analizar tu empresa desde fuera, sus competidores y compradores potenciales concretos. Cada directivo puede encontrar hallazgos diferentes. Son ejemplos sujetos a la evidencia disponible.</p><div className="rp-research-categories">{["Tu empresa","Tus competidores","Compradores potenciales"].map((heading,index)=><section key={heading} className="rp-research-category"><h4>{heading}</h4>{selectedRoles.map(v=><article key={v}><strong>{roles.find(x=>x[0]===v)?.[1]}</strong><span>{researchByRole[v][index]}</span></article>)}</section>)}</div><div className="rp-sales-callout"><strong>Llegar mejor preparado a una negociación</strong><p>El análisis de un cliente concreto puede revelar su actividad, maquinaria, tecnologías, proyectos, compras públicas, proveedores actuales y posibles necesidades. Así es posible plantear preguntas precisas, proponer soluciones relevantes y comprender sus alternativas. Lo que no se pueda verificar seguirá identificado como hipótesis.</p></div></div>
         <fieldset><legend>Objetivo principal</legend><div className="rp-options">{objectives.map(([v,label])=><label key={v}><input type="radio" name="objective" checked={objective===v} onChange={()=>{setObjective(v);setPreview(false)}}/><span>{label}</span></label>)}</div></fieldset>
         <label>¿Qué más debemos tener en cuenta?<textarea value={context} onChange={e=>{setContext(e.target.value);setPreview(false)}} placeholder="Contexto, límites, preguntas concretas…" rows={3}/></label>
         <button type="submit">Ver planteamiento de investigación →</button>
@@ -116,6 +130,15 @@ export default function ResearchConceptForm(){
   .rp .rp-role-benefits{padding:19px 20px;background:#f0f6ff;border:1px solid #d2e2f7;border-radius:12px}
   .rp .rp-role-benefits h3{font-size:19px;margin:0 0 9px;color:#15233b}
   .rp .rp-role-benefits>p{font-size:13px;color:#526982;margin:0 0 15px}
+  .rp .rp-research-categories{display:grid;gap:12px}
+  .rp .rp-research-category{padding:14px 15px;background:#fff;border:1px solid #d2e2f7;border-radius:10px;min-width:0}
+  .rp .rp-research-category h4{font-size:15px;color:#14385e;margin:0 0 12px}
+  .rp .rp-research-category article{display:grid;gap:3px;border-left:3px solid #1758b5;padding:5px 0 5px 11px;margin-top:10px}
+  .rp .rp-research-category strong{font-size:13px;color:#15233b}
+  .rp .rp-research-category span{font-size:14px;color:#34445a;line-height:1.5}
+  .rp .rp-sales-callout{margin-top:14px;padding:15px 17px;background:#14385e;color:white;border-radius:10px}
+  .rp .rp-sales-callout strong{font-size:16px}
+  .rp .rp-sales-callout p{margin:6px 0 0;font-size:14px;color:#e0eaf7;line-height:1.55}
   .rp .rp-role-benefit-list{display:grid;gap:10px}
   .rp .rp-role-benefit-list article{display:grid;gap:4px;border-left:3px solid #1758b5;padding:4px 0 5px 12px;min-width:0}
   .rp .rp-role-benefit-list strong{font-size:14px;color:#15233b}
