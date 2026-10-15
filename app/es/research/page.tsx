@@ -44,7 +44,7 @@ export default function ResearchPilotPage() {
       </div></section>
       <section className="content"><div className="wrap">
         <p className="kicker" style={{color:"#1758b5"}}>03 / Aplicaciones</p>
-        <h2>Una plataforma de investigación. Distintas decisiones.</h2>
+        <h2>Una investigación común. Distintas decisiones de gestión.</h2>
         <div className="apps">{applications.map(a=><article key={a.num} className="app"><small>{a.num}</small><h3>{a.title}</h3><strong>{a.subtitle}</strong><p style={{marginTop:15}}>{a.description}</p></article>)}</div>
       </div></section>
       <section className="content evidence"><div className="wrap">
