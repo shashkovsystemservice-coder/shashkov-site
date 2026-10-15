@@ -16,18 +16,18 @@ const objectives = [
   ["meeting","Preparar una reunión comercial"],
 ] as const;
 const angles: Record<string,string> = {
-  competition:"Se priorizarían los competidores por producto, la evidencia de rivalidad real, los clientes compartidos y las alternativas de compra.",
-  growth:"Se priorizarían segmentos, mercados adyacentes, señales de inversión, necesidades no cubiertas y restricciones de entrada.",
-  buyers:"Se priorizarían plantas, procesos productivos, instalaciones, compras verificables y señales de posible demanda, sin confundir compatibilidad con intención de compra.",
-  strategy:"Se priorizarían la posición de mercado, las opciones de desarrollo y las hipótesis que deberán contrastarse con objetivos y datos internos.",
-  meeting:"Se priorizarían el negocio del interlocutor, sus operaciones, proyectos recientes, proveedores y posibles necesidades para preparar una conversación útil.",
+  competition:"En los resultados se destacarían los competidores por producto, la evidencia de rivalidad real, los clientes compartidos y las alternativas de compra.",
+  growth:"En los resultados se destacarían segmentos, mercados adyacentes, señales de inversión, necesidades no cubiertas y restricciones de entrada.",
+  buyers:"En los resultados se destacarían plantas, procesos productivos, instalaciones, compras verificables y señales de posible demanda, sin confundir compatibilidad con intención de compra.",
+  strategy:"En los resultados se destacarían la posición de mercado, las opciones de desarrollo y las hipótesis que deberán contrastarse con objetivos y datos internos.",
+  meeting:"En los resultados se destacarían el negocio del interlocutor, sus operaciones, proyectos recientes, proveedores y posibles necesidades para preparar una conversación útil.",
 };
 const roleAngles: Record<string,string> = {
-  owner:"Las conclusiones se orientarían a decisiones de inversión, ventajas defendibles y riesgos.",
-  ceo:"Las conclusiones se orientarían a prioridades, capacidad de ejecución y decisiones de dirección.",
-  sales:"Las conclusiones se orientarían a cuentas, oportunidades y preparación comercial.",
-  marketing:"Las conclusiones se orientarían a segmentos, posicionamiento, propuesta de valor y canales.",
-  consultant:"Las conclusiones se orientarían a preguntas de diagnóstico, evidencias y áreas que requieren validación.",
+  owner:"Para este perfil se destacarían las conclusiones sobre decisiones de inversión, ventajas defendibles y riesgos.",
+  ceo:"Para este perfil se destacarían las conclusiones sobre prioridades, capacidad de ejecución y decisiones de dirección.",
+  sales:"Para este perfil se destacarían las conclusiones sobre cuentas, oportunidades y preparación comercial.",
+  marketing:"Para este perfil se destacarían las conclusiones sobre segmentos, posicionamiento, propuesta de valor y canales.",
+  consultant:"Para este perfil se destacarían las conclusiones sobre preguntas de diagnóstico, evidencias y áreas que requieren validación.",
 };
 export default function ResearchConceptForm(){
   const [company,setCompany]=useState("");
@@ -39,8 +39,8 @@ export default function ResearchConceptForm(){
   function show(e:FormEvent<HTMLFormElement>){e.preventDefault();setPreview(true);}
   return <section className="content rp-concept" id="configurar"><div className="wrap">
     <p className="kicker" style={{color:"#1758b5"}}>01 / Vista previa del producto</p>
-    <h2>Una investigación distinta para cada decisión.</h2>
-    <p className="intro">La empresa es el punto de partida. El destinatario y el objetivo determinan qué preguntas debería investigar el sistema y qué pruebas serían relevantes.</p>
+    <h2>Una investigación común. Distintas decisiones de gestión.</h2>
+    <p className="intro">La empresa y su web son el punto de partida de una investigación común y basada en evidencias. El destinatario y el objetivo ayudan a destacar las conclusiones relevantes, sin limitar el alcance de la investigación.</p>
     <div className="rp-prototype">
       <div className="rp-prototype-head"><div><strong>Configurar investigación</strong><p>Prototipo interactivo · No ejecuta búsquedas</p></div><span>CONCEPTO MVP</span></div>
       <form onSubmit={show} className="rp-prototype-form">
@@ -61,7 +61,7 @@ export default function ResearchConceptForm(){
         <p><strong>Objetivo:</strong> {objectives.find(x=>x[0]===objective)?.[1]}.</p>
         <p>{angles[objective]}</p><p>{roleAngles[role]}</p>
         {context.trim()&&<p><strong>Contexto indicado:</strong> {context}</p>}
-        <p className="rp-preview-note">Esto ilustra cómo cambiaría el enfoque. No constituye un plan de investigación ejecutado ni un informe real.</p>
+        <p className="rp-preview-note">Esto ilustra cómo cambiaría la lectura de una misma investigación. No constituye un plan de investigación ejecutado ni un informe real.</p>
       </div>}
     </div>
   </div><style>{`
