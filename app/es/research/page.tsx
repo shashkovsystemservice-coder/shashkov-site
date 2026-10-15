@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 };
 
 const applications = [
-  { num: "01", title: "Clientes potenciales", subtitle: "Preparar ventas con contexto", description: "Identificar plantas, procesos productivos, equipos, necesidades y señales de inversión. Separar una necesidad demostrada de una intención de compra aún no confirmada." },
-  { num: "02", title: "Inteligencia competitiva", subtitle: "Comprender con quién se compite", description: "Investigar competidores por separado: tecnologías, capacidades, productos, clientes y canales. Construir después un mapa competitivo basado en evidencias." },
-  { num: "03", title: "Diagnóstico externo", subtitle: "Ver la empresa desde fuera", description: "Reconstruir la actividad, las relaciones comerciales y el posicionamiento público de una empresa, identificando datos sólidos, hipótesis y preguntas pendientes." },
+  { num: "01", title: "Analizar tu propia empresa", subtitle: "Ver el negocio desde el mercado", description: "Reconstruir actividades, productos, capacidades, compradores, canales y posicionamiento. Distinguir fortalezas comprobables, limitaciones y preguntas abiertas." },
+  { num: "02", title: "Investigar a los competidores", subtitle: "Entender cómo y por qué compiten", description: "Competidores reales por segmento y producto, ofertas comparables, precios cuando existan fuentes, clientes, modelos de negocio y fuentes de ventaja." },
+  { num: "03", title: "Investigar compradores potenciales", subtitle: "Negociar con conocimiento del cliente", description: "Empresas concretas, procesos, maquinaria, proyectos, proveedores y señales de compra. Preparar preguntas y propuestas relevantes sin inventar necesidades." },
 ];
 
 export default function ResearchPilotPage() {
@@ -44,7 +44,8 @@ export default function ResearchPilotPage() {
       </div></section>
       <section className="content"><div className="wrap">
         <p className="kicker" style={{color:"#1758b5"}}>03 / Aplicaciones</p>
-        <h2>Una investigación común. Distintas decisiones de gestión.</h2>
+        <h2>Tres ámbitos de investigación. Distintas decisiones de gestión.</h2>
+        <p className="intro"><strong>Especialmente para equipos comerciales:</strong> investigar a un comprador concreto antes de reunirse permite conocer mejor su negocio, procesos, equipos, proyectos y proveedores. Así la negociación parte de preguntas y propuestas precisas, no de generalidades. Las necesidades no verificadas se mantienen como hipótesis.</p>
         <div className="apps">{applications.map(a=><article key={a.num} className="app"><small>{a.num}</small><h3>{a.title}</h3><strong>{a.subtitle}</strong><p style={{marginTop:15}}>{a.description}</p></article>)}</div>
       </div></section>
       <section className="content evidence"><div className="wrap">
