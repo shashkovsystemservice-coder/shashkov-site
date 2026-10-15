@@ -2,11 +2,18 @@
 import { useState, type FormEvent } from "react";
 
 const roles = [
-  ["owner","Собственник / акционер"],
-  ["ceo","Генеральный директор"],
-  ["sales","Коммерческий директор"],
-  ["marketing","Руководитель маркетинга"],
-  ["consultant","Внешний консультант"],
+  ["owner", "Собственник / акционер"],
+  ["ceo", "Генеральный директор"],
+  ["sales", "Коммерческий директор"],
+  ["marketing", "Директор по маркетингу"],
+  ["development", "Директор по развитию"],
+  ["product", "Директор по продукту"],
+  ["technical", "Технический директор / R&D"],
+  ["production", "Директор по производству"],
+  ["service", "Директор по сервису"],
+  ["finance", "Финансовый директор"],
+  ["procurement", "Директор по закупкам"],
+  ["consultant", "Внешний консультант"],
 ] as const;
 const objectives = [
   ["competition","Понять конкурентную позицию"],
@@ -23,16 +30,24 @@ const angles: Record<string,string> = {
   meeting:"Дополнительный акцент в результатах: бизнес собеседника, его производство, последние проекты, поставщики и возможные потребности — для подготовки содержательной встречи.",
 };
 const roleAngles: Record<string,string> = {
-  owner:"Для этой роли выделяются инвестиционные решения, устойчивые преимущества и риски.",
-  ceo:"Для этой роли выделяются стратегические приоритеты, возможности реализации и решения руководства.",
-  sales:"Для этой роли выделяются клиенты, коммерческие возможности и подготовка продаж.",
-  marketing:"Для этой роли выделяются сегменты, позиционирование, ценностное предложение и каналы.",
-  consultant:"Для этой роли выделяются вопросы диагностики, доказательства и направления дополнительной проверки.",
+  owner: "Инвестиционные решения, устойчивость преимуществ и риски.",
+  ceo: "Стратегические приоритеты, ресурсы и условия реализации.",
+  sales: "Покупатели, конкурентные предложения и возможности продаж.",
+  marketing: "Сегменты, позиционирование, ценностные предложения и каналы.",
+  development: "Смежные рынки, партнёрства, барьеры входа и направления роста.",
+  product: "Потребности клиентов, сравнение моделей, продуктовые пробелы и приоритеты разработки.",
+  technical: "Технологии, инженерные компетенции и требования к изделиям.",
+  production: "Мощности, производственные процессы, сроки и кооперация.",
+  service: "Установленная база, обслуживание, запасные части и сервисные модели.",
+  finance: "Денежные потоки, инвестиционные ограничения и экономические допущения.",
+  procurement: "Поставщики, альтернативы, условия закупок и риски цепочки поставок.",
+  consultant: "Диагностика, доказательства и вопросы для проверки.",
 };
 export default function ResearchConceptFormRu(){
   const [company,setCompany]=useState("");
   const [website,setWebsite]=useState("");
-  const [role,setRole]=useState("ceo");
+  const [selectedRoles,setSelectedRoles]=useState<string[]>(["ceo"]);
+  const toggleRole=(v:string)=>{setSelectedRoles(current=>current.includes(v)?(current.length>1?current.filter(x=>x!==v):current):[...current,v]);setPreview(false);};
   const [objective,setObjective]=useState("competition");
   const [context,setContext]=useState("");
   const [preview,setPreview]=useState(false);
@@ -48,7 +63,7 @@ export default function ResearchConceptFormRu(){
           <label>Компания<input required value={company} onChange={e=>{setCompany(e.target.value);setPreview(false)}} placeholder="Название предприятия" /></label>
           <label>Сайт компании (необязательно)<input type="url" value={website} onChange={e=>{setWebsite(e.target.value);setPreview(false)}} placeholder="https://company.ru" /></label>
         </div>
-        <fieldset><legend>Для кого готовится исследование?</legend><div className="rp-options">{roles.map(([v,label])=><label key={v}><input type="radio" name="role" checked={role===v} onChange={()=>{setRole(v);setPreview(false)}}/><span>{label}</span></label>)}</div></fieldset>
+        <fieldset><legend>Кто будет читать отчёт? Можно выбрать несколько ролей.</legend><p className="rp-role-hint">Одна общая доказательная база. Для выбранных ролей выделяются соответствующие управленческие выводы.</p><div className="rp-options">{roles.map(([v,label])=><label key={v}><input type="checkbox" name="roles" checked={selectedRoles.includes(v)} onChange={()=>toggleRole(v)}/><span>{label}</span></label>)}</div></fieldset>
         <fieldset><legend>Основная задача</legend><div className="rp-options">{objectives.map(([v,label])=><label key={v}><input type="radio" name="objective" checked={objective===v} onChange={()=>{setObjective(v);setPreview(false)}}/><span>{label}</span></label>)}</div></fieldset>
         <label>Что ещё важно учесть?<textarea value={context} onChange={e=>{setContext(e.target.value);setPreview(false)}} placeholder="Контекст, ограничения, конкретные вопросы…" rows={3}/></label>
         <button type="submit">Сформировать постановку исследования →</button>
@@ -57,9 +72,9 @@ export default function ResearchConceptFormRu(){
       {preview&&<div className="rp-preview" role="status" aria-live="polite">
         <span>ПРЕДВАРИТЕЛЬНАЯ ПОСТАНОВКА</span><h3>{company}</h3>
         {website.trim()&&<p>Сайт: {website}</p>}
-        <p><strong>Для:</strong> {roles.find(x=>x[0]===role)?.[1]}.</p>
+        <p><strong>Для:</strong> {selectedRoles.map(v=>roles.find(x=>x[0]===v)?.[1]).filter(Boolean).join(", ")}.</p>
         <p><strong>Цель:</strong> {objectives.find(x=>x[0]===objective)?.[1]}.</p>
-        <p>{angles[objective]}</p><p>{roleAngles[role]}</p>
+        <p>{angles[objective]}</p>{selectedRoles.map(v=><p key={v}><strong>{roles.find(x=>x[0]===v)?.[1]}:</strong> {roleAngles[v]}</p>)}
         {context.trim()&&<p><strong>Дополнительный контекст:</strong> {context}</p>}
         <p className="rp-preview-note">Это предварительная ролевая проекция одного исследования, а не выполненный анализ или готовый отчёт.</p>
       </div>}
@@ -77,7 +92,7 @@ export default function ResearchConceptFormRu(){
   .rp .rp-prototype-form fieldset{padding:0;margin:0;border:0;min-width:0}.rp .rp-prototype-form legend{font-weight:800;color:#15233b;margin-bottom:11px;font-size:16px}
   .rp .rp-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .rp .rp-options label{display:flex;align-items:center;gap:11px;font-weight:500;padding:10px 12px;border:1px solid #e0e6ef;border-radius:8px;cursor:pointer;font-size:14px;color:#243247}
-  .rp .rp-options input{width:17px;height:17px;accent-color:#1758b5;flex-shrink:0}
+  .rp .rp-options input{width:17px;height:17px;accent-color:#1758b5;flex-shrink:0}.rp .rp-role-hint{font-size:13px;color:#53637a;margin:0 0 12px}
   .rp .rp-prototype-form button{padding:14px 20px;background:#1758b5;color:#fff;border:0;border-radius:8px;font-weight:800;cursor:pointer;text-align:center}
   .rp .rp-prototype-disclaimer{font-size:12px;color:#66768b;margin:0}
   .rp .rp-preview{padding:24px 28px;background:#edf5ff;border-top:1px solid #cbdff8}.rp .rp-preview>span{font-size:11px;letter-spacing:.1em;font-weight:800;color:#1758b5}.rp .rp-preview h3{margin:8px 0 14px}.rp .rp-preview p{color:#33465e;font-size:15px;margin-bottom:10px}.rp .rp-preview-note{border-top:1px solid #cbdff8;padding-top:12px;margin-top:17px!important;font-size:12px!important}
