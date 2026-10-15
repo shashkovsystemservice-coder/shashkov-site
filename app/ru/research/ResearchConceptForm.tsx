@@ -63,7 +63,7 @@ export default function ResearchConceptFormRu(){
           <label>Компания<input required value={company} onChange={e=>{setCompany(e.target.value);setPreview(false)}} placeholder="Название предприятия" /></label>
           <label>Сайт компании (необязательно)<input type="url" value={website} onChange={e=>{setWebsite(e.target.value);setPreview(false)}} placeholder="https://company.ru" /></label>
         </div>
-        <fieldset><legend>Кто будет читать отчёт? Можно выбрать несколько ролей.</legend><p className="rp-role-hint">Одна общая доказательная база. Для выбранных ролей выделяются соответствующие управленческие выводы.</p><div className="rp-options">{roles.map(([v,label])=><label key={v}><input type="checkbox" name="roles" checked={selectedRoles.includes(v)} onChange={()=>toggleRole(v)}/><span>{label}</span></label>)}</div></fieldset>
+        <fieldset><legend>Кто будет читать отчёт? Можно выбрать несколько ролей.</legend><p className="rp-role-hint">Одна общая доказательная база. Для выбранных ролей выделяются соответствующие управленческие выводы.</p><div className="rp-role-list">{roles.map(([v,label])=><label key={v}><input type="checkbox" name="roles" checked={selectedRoles.includes(v)} onChange={()=>toggleRole(v)}/><span>{label}</span></label>)}</div></fieldset>
         <fieldset><legend>Основная задача</legend><div className="rp-options">{objectives.map(([v,label])=><label key={v}><input type="radio" name="objective" checked={objective===v} onChange={()=>{setObjective(v);setPreview(false)}}/><span>{label}</span></label>)}</div></fieldset>
         <label>Что ещё важно учесть?<textarea value={context} onChange={e=>{setContext(e.target.value);setPreview(false)}} placeholder="Контекст, ограничения, конкретные вопросы…" rows={3}/></label>
         <button type="submit">Сформировать постановку исследования →</button>
@@ -87,15 +87,20 @@ export default function ResearchConceptFormRu(){
   .rp .rp-prototype-form{padding:27px 28px;display:grid;gap:24px}
   .rp .rp-prototype-form label{display:grid;gap:8px;color:#34445a;font-size:15px;font-weight:700}
   .rp .rp-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .rp .rp-prototype-form input:not([type=radio]),.rp .rp-prototype-form textarea{width:100%;background:white;border:1px solid #cbd5e1;border-radius:9px;padding:12px 14px;font:inherit;color:#15233b;font-size:16px}
+  .rp .rp-prototype-form input[type="text"],.rp .rp-prototype-form input[type="url"],.rp .rp-prototype-form textarea{width:100%;background:white;border:1px solid #cbd5e1;border-radius:9px;padding:12px 14px;font:inherit;color:#15233b;font-size:16px}
   .rp .rp-prototype-form input:focus-visible,.rp .rp-prototype-form textarea:focus-visible{outline:2px solid #1758b5;outline-offset:2px}
   .rp .rp-prototype-form fieldset{padding:0;margin:0;border:0;min-width:0}.rp .rp-prototype-form legend{font-weight:800;color:#15233b;margin-bottom:11px;font-size:16px}
   .rp .rp-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .rp .rp-options label{display:flex;align-items:center;gap:11px;font-weight:500;padding:10px 12px;border:1px solid #e0e6ef;border-radius:8px;cursor:pointer;font-size:14px;color:#243247}
-  .rp .rp-options input{width:17px;height:17px;accent-color:#1758b5;flex-shrink:0}.rp .rp-role-hint{font-size:13px;color:#53637a;margin:0 0 12px}
+  .rp .rp-options input[type="radio"]{width:17px;height:17px;accent-color:#1758b5;flex-shrink:0}
+  .rp .rp-role-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .rp .rp-prototype-form .rp-role-list label{display:flex;align-items:center;justify-content:flex-start;gap:12px;min-width:0;min-height:54px;padding:12px 14px;border:1px solid #e0e6ef;border-radius:9px;background:#fff;cursor:pointer;font-size:14px;font-weight:500;line-height:1.35}
+  .rp .rp-role-list label:has(input:checked){border-color:#1758b5;background:#f0f6ff}
+  .rp .rp-prototype-form .rp-role-list input[type="checkbox"]{appearance:auto;display:block;flex:0 0 18px;width:18px;height:18px;min-width:18px;margin:0;padding:0;accent-color:#1758b5}
+  .rp .rp-role-list span{display:block;min-width:0;overflow-wrap:anywhere}.rp .rp-role-hint{font-size:13px;color:#53637a;margin:0 0 12px}
   .rp .rp-prototype-form button{padding:14px 20px;background:#1758b5;color:#fff;border:0;border-radius:8px;font-weight:800;cursor:pointer;text-align:center}
   .rp .rp-prototype-disclaimer{font-size:12px;color:#66768b;margin:0}
   .rp .rp-preview{padding:24px 28px;background:#edf5ff;border-top:1px solid #cbdff8}.rp .rp-preview>span{font-size:11px;letter-spacing:.1em;font-weight:800;color:#1758b5}.rp .rp-preview h3{margin:8px 0 14px}.rp .rp-preview p{color:#33465e;font-size:15px;margin-bottom:10px}.rp .rp-preview-note{border-top:1px solid #cbdff8;padding-top:12px;margin-top:17px!important;font-size:12px!important}
-  @media(max-width:650px){.rp .rp-fields,.rp .rp-options{grid-template-columns:1fr}.rp .rp-prototype-head,.rp .rp-prototype-form,.rp .rp-preview{padding:19px}.rp .rp-prototype-head strong{font-size:19px}}
+  @media(max-width:650px){.rp .rp-fields,.rp .rp-options,.rp .rp-role-list{grid-template-columns:1fr}.rp .rp-prototype-head,.rp .rp-prototype-form,.rp .rp-preview{padding:19px}.rp .rp-prototype-head strong{font-size:19px}}
   `}</style></section>;
 }
