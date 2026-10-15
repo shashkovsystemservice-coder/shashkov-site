@@ -57,6 +57,20 @@ const roleFindings: Record<string,string> = {
   procurement: "Альтернативных поставщиков, зависимости цепочек поставок и варианты замещения.",
   consultant: "Неожиданных игроков, противоречивые рыночные гипотезы и вопросы, требующие проверки.",
 };
+const researchByRole: Record<string,[string,string,string]> = {
+  owner: ["Какие направления и активы бизнеса выглядят сильными или уязвимыми со стороны.","Какие бизнес-модели соперников создают угрозы и инвестиционные альтернативы.","Какие новые сегменты и крупные заказчики потенциально расширяют рынок."],
+  ceo: ["Как бизнес воспринимается извне и какие стратегические пробелы видны.","В чём конкуренты превосходят компанию по важнейшим рыночным критериям.","Какие заказчики, проекты и рыночные сигналы требуют управленческого внимания."],
+  sales: ["Какие продукты и подтверждённые преимущества можно использовать в продажах.","С какими альтернативными поставщиками и условиями нас сравнивают покупатели.","Профиль конкретного клиента: производство, оборудование, проекты, закупки и текущие поставщики — для предметных переговоров."],
+  marketing: ["Для каких сегментов ценность предложения лучше подтверждена.","Как конкуренты позиционируются, что обещают и чем подкрепляют обещания.","Какие задачи и критерии выбора характерны для потенциальных покупателей."],
+  development: ["Какие компетенции и активы можно применить в соседних направлениях.","Какие партнёрства, ниши и бизнес-модели уже развивают другие игроки.","У каких конкретных организаций появляются новые проекты и потребности."],
+  product: ["Какие продуктовые семейства и применения подтверждены рынком.","Какие модели, характеристики и сервисные функции предлагают конкуренты.","Какие задачи покупателей остаются недостаточно решёнными."],
+  technical: ["Какие технические возможности и ограничения нашего предложения видны извне.","Какие технологии, стандарты и инженерные решения использует конкурентное поле.","Какие требования предъявляют реальные проекты и технические задания клиентов."],
+  production: ["Какие производственные компетенции и мощности подтверждены.","Какие сроки, решения по кооперации и качеству демонстрируют конкуренты.","Какие объёмы, комплектации и сроки могут понадобиться заказчикам."],
+  service: ["Какая сервисная сеть, запасные части и поддержка заявлены и подтверждены.","Как устроены обслуживание, гарантии и сервисные предложения конкурентов.","Где находится установленное оборудование, требующее обслуживания или модернизации."],
+  finance: ["Какие финансовые результаты и денежные ограничения доступны по открытым данным.","Насколько устойчивы финансовые модели соперников и их инвестиционные планы.","Какие публичные инвестиционные и закупочные сигналы помогают оценить спрос."],
+  procurement: ["Какие поставщики, компоненты и зависимости прослеживаются в цепочке поставок.","Какие альтернативные производители и каналы используют конкуренты.","Какие стандарты и требования конечных покупателей влияют на закупки."],
+  consultant: ["Какие факты о бизнес-модели подтверждаются внешними источниками.","Какие объяснения успеха конкурентов выдерживают проверку доказательствами.","Какие реальные покупатели и проекты способны подтвердить или опровергнуть стратегические гипотезы."],
+};
 export default function ResearchConceptFormRu(){
   const [company,setCompany]=useState("");
   const [website,setWebsite]=useState("");
@@ -78,7 +92,7 @@ export default function ResearchConceptFormRu(){
           <label>Сайт компании (необязательно)<input type="url" value={website} onChange={e=>{setWebsite(e.target.value);setPreview(false)}} placeholder="https://company.ru" /></label>
         </div>
         <fieldset><legend>Кто будет читать отчёт? Можно выбрать несколько ролей.</legend><p className="rp-role-hint">Одна общая доказательная база. Для выбранных ролей выделяются соответствующие управленческие выводы.</p><div className="rp-role-list">{roles.map(([v,label])=><label key={v}><input type="checkbox" name="roles" checked={selectedRoles.includes(v)} onChange={()=>toggleRole(v)}/><span>{label}</span></label>)}</div></fieldset>
-        <div className="rp-role-benefits"><h3>Что может обнаружить исследование для выбранных ролей</h3><p>Примеры возможных находок, а не гарантированные результаты: полнота зависит от доступных и проверяемых источников.</p><div className="rp-role-benefit-list">{selectedRoles.map(v=><article key={v}><strong>{roles.find(x=>x[0]===v)?.[1]}</strong><span>{roleFindings[v]}</span></article>)}</div></div>
+        <div className="rp-role-benefits"><h3>Три направления исследования — ценность для каждой роли</h3><p>Мы можем исследовать вашу компанию со стороны, её конкурентов и конкретных потенциальных покупателей. Для каждого руководителя полезны разные находки. Ниже — примеры возможных результатов, зависящих от доступных источников.</p><div className="rp-research-categories">{["Ваша компания","Ваши конкуренты","Потенциальные покупатели"].map((heading,index)=><section key={heading} className="rp-research-category"><h4>{heading}</h4>{selectedRoles.map(v=><article key={v}><strong>{roles.find(x=>x[0]===v)?.[1]}</strong><span>{researchByRole[v][index]}</span></article>)}</section>)}</div><div className="rp-sales-callout"><strong>Сильнее подготовиться к переговорам</strong><p>Исследование конкретного клиента может показать его деятельность, оборудование и технологии, проекты, публичные закупки, текущих поставщиков и вероятные потребности. Это позволяет прийти на встречу с предметными вопросами, предложить релевантное решение и лучше понимать альтернативы клиента. Неизвестные обстоятельства останутся гипотезами, а не выдуманными фактами.</p></div></div>
         <fieldset><legend>Основная задача</legend><div className="rp-options">{objectives.map(([v,label])=><label key={v}><input type="radio" name="objective" checked={objective===v} onChange={()=>{setObjective(v);setPreview(false)}}/><span>{label}</span></label>)}</div></fieldset>
         <label>Что ещё важно учесть?<textarea value={context} onChange={e=>{setContext(e.target.value);setPreview(false)}} placeholder="Контекст, ограничения, конкретные вопросы…" rows={3}/></label>
         <button type="submit">Сформировать постановку исследования →</button>
@@ -116,6 +130,15 @@ export default function ResearchConceptFormRu(){
   .rp .rp-role-benefits{padding:19px 20px;background:#f0f6ff;border:1px solid #d2e2f7;border-radius:12px}
   .rp .rp-role-benefits h3{font-size:19px;margin:0 0 9px;color:#15233b}
   .rp .rp-role-benefits>p{font-size:13px;color:#526982;margin:0 0 15px}
+  .rp .rp-research-categories{display:grid;gap:12px}
+  .rp .rp-research-category{padding:14px 15px;background:#fff;border:1px solid #d2e2f7;border-radius:10px;min-width:0}
+  .rp .rp-research-category h4{font-size:15px;color:#14385e;margin:0 0 12px}
+  .rp .rp-research-category article{display:grid;gap:3px;border-left:3px solid #1758b5;padding:5px 0 5px 11px;margin-top:10px}
+  .rp .rp-research-category strong{font-size:13px;color:#15233b}
+  .rp .rp-research-category span{font-size:14px;color:#34445a;line-height:1.5}
+  .rp .rp-sales-callout{margin-top:14px;padding:15px 17px;background:#14385e;color:white;border-radius:10px}
+  .rp .rp-sales-callout strong{font-size:16px}
+  .rp .rp-sales-callout p{margin:6px 0 0;font-size:14px;color:#e0eaf7;line-height:1.55}
   .rp .rp-role-benefit-list{display:grid;gap:10px}
   .rp .rp-role-benefit-list article{display:grid;gap:4px;border-left:3px solid #1758b5;padding:4px 0 5px 12px;min-width:0}
   .rp .rp-role-benefit-list strong{font-size:14px;color:#15233b}
