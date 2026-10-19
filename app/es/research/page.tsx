@@ -3,8 +3,8 @@ import Link from "next/link";
 import ResearchConceptForm from "./ResearchConceptForm";
 
 export const metadata: Metadata = {
-  title: "Proyecto startup: investigación empresarial y competitiva — Vladimir Shashkov",
-  description: "Investigación documentada de empresas, mercados, competidores, productos y compradores utilizando exclusivamente fuentes públicas de Internet. Programa piloto para empresas industriales en España.",
+  title: "Marketing Management Platform — proyecto emprendedor en España",
+  description: "Plataforma de gestión de marketing basada en evidencia para pymes. Primer módulo en desarrollo: Business & Competitive Intelligence.",
 };
 
 const applications = [
@@ -24,18 +24,38 @@ export default function ResearchPilotPage() {
       <div className="wrap nav"><Link className="brand" href="/es">VLADIMIR SHASHKOV <span style={{fontWeight:400}}> / Investigación empresarial</span></Link><div style={{display:"flex",gap:18,alignItems:"center"}}><Link className="back" href="/ru/research">RU</Link><Link className="back" href="/es">Volver a la web principal ↗</Link></div></div>
       <header className="hero">
         <div className="wrap">
-          <p className="kicker">PROYECTO STARTUP · PILOTO DE INVESTIGACIÓN · ESPAÑA</p>
-          <h1>Desarrollamos una nueva forma de investigar empresas y mercados en profundidad.</h1>
-          <p className="lead">Un proyecto startup para desarrollar una investigación profesional y reproducible de empresas, competidores y compradores potenciales. Estamos probando la metodología con casos industriales y buscamos empresas que evalúen los resultados del piloto.</p>
-          <a className="cta" href="#piloto">Conocer el programa piloto ↓</a>
-          <p className="hero-note">Estado del proyecto: ya existe una metodología y se han realizado investigaciones iniciales; seguimos validando la calidad, la utilidad y la presentación del futuro producto. Solo utilizamos información pública externa de Internet.</p>
+          <p className="kicker">PROYECTO EMPRENDEDOR · ESPAÑA · EN DESARROLLO</p>
+          <h1>Del conocimiento del mercado a mejores decisiones de marketing.</h1>
+          <p className="lead">Estamos desarrollando una futura plataforma para que las pymes conecten investigación empresarial, estrategia de marketing, planificación, presupuestos y control de resultados mediante metodologías profesionales accesibles.</p>
+          <a className="cta" href="#primer-modulo">Explorar el primer módulo ↓</a>
+          <p className="hero-note">Estado: metodologías y prototipos tabulares desarrollados; primer módulo de inteligencia empresarial y competitiva en validación metodológica. La plataforma integrada aún no está disponible.</p>
         </div>
       </header>
       <section className="content" style={{background:"#fff"}}><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>Por qué nace el proyecto</p>
-        <h2>Hay mucha información pública sobre las empresas. Comprenderla en conjunto es mucho más difícil.</h2>
-        <p className="intro">La información sobre negocios, competidores y demanda está dispersa entre sitios web, catálogos, registros, documentación técnica, licitaciones y publicaciones. Compararla y verificarla requiere trabajo; las relaciones importantes entre empresas, productos y compradores pueden pasar inadvertidas.</p>
-        <p className="intro">Queremos comprobar si es posible convertir ese trabajo en una investigación sistemática y reproducible, sin renunciar a la profundidad profesional ni a la trazabilidad de las fuentes.</p>
+        <p className="kicker" style={{color:"#1758b5"}}>El problema</p>
+        <h2>Las pymes necesitan conectar la información, la estrategia y la ejecución.</h2>
+        <p className="intro">Muchas empresas disponen de información sobre mercados, clientes y competidores, pero no siempre cuentan con procesos o recursos especializados para convertirla en decisiones estratégicas.</p><p className="intro">Nuestra visión es reducir la separación entre investigación, estrategia, acciones, presupuestos y resultados: cada decisión debe poder relacionarse con los datos y las hipótesis que la fundamentan.</p>
+      </div></section>
+      <section className="content" style={{background:"#fff"}}><div className="wrap">
+        <p className="kicker" style={{color:"#1758b5"}}>Visión de la plataforma</p>
+        <h2>Cinco componentes de una futura plataforma de gestión de marketing.</h2><p className="intro">Un único proceso de gestión, desde las evidencias del mercado hasta la revisión de las decisiones. Los módulos tienen diferentes grados de madurez; no se presentan como software comercial disponible.</p>
+        <div className="steps" style={{gridTemplateColumns:"repeat(auto-fit,minmax(250px,1fr))"}}><article className="step"><small>01 / EN VALIDACIÓN METODOLÓGICA</small><h3>Business & Competitive Intelligence</h3><p>Investigación estructurada de la propia empresa, mercados, competidores y compradores potenciales con fuentes verificables.</p></article>
+          <article className="step"><small>02 / PROTOTIPO METODOLÓGICO</small><h3>Marketing Strategy</h3><p>Objetivos, segmentos, necesidades, propuesta de valor, posicionamiento, ventajas competitivas y alternativas estratégicas.</p></article>
+          <article className="step"><small>03 / PROTOTIPO METODOLÓGICO</small><h3>Annual Marketing Plan</h3><p>Conversión de elecciones estratégicas en programas, acciones, prioridades y recursos.</p></article>
+          <article className="step"><small>04 / PROTOTIPO TABULAR</small><h3>Marketing Budget</h3><p>Asignación de recursos, costes, escenarios y compromisos económicos vinculados al plan.</p></article>
+          <article className="step"><small>05 / DISEÑO CONCEPTUAL</small><h3>Management Control</h3><p>Indicadores, resultados, desviaciones, previsiones y revisión de las decisiones.</p></article></div>
+      </div></section>
+      <section className="content evidence" id="primer-modulo"><div className="wrap">
+        <p className="kicker" style={{color:"#1758b5"}}>Primer módulo · desarrollo activo</p>
+        <h2>El primer módulo activo: inteligencia empresarial y competitiva.</h2><p className="intro">Estamos desarrollando y comprobando la metodología de investigación mediante estudios de empresas industriales españolas. Ya existen estructuras de informes, criterios de evidencia y casos de trabajo. Todavía no es un módulo de software comercial ni un agente autónomo.</p><p className="intro">El análisis contempla tres perspectivas: la propia empresa, sus competidores y compradores potenciales. Distingue hechos documentados, declaraciones, indicios, estimaciones, hipótesis y cuestiones no verificadas.</p>
+      </div></section>
+      <section className="content" style={{background:"#fff"}}><div className="wrap">
+        <p className="kicker" style={{color:"#1758b5"}}>De la evidencia a la decisión</p>
+        <h2>La investigación es el punto de partida, no el producto completo.</h2><p className="intro">La evidencia obtenida en una investigación puede ayudar a elegir segmentos, evaluar alternativas competitivas y fundamentar iniciativas. La visión futura es relacionar esa información con Strategy → Annual Plan → Budget → Management Control, preservando su origen y sus límites.</p>
+      </div></section>
+      <section className="content" style={{background:"#eaf0f7"}}><div className="wrap">
+        <p className="kicker" style={{color:"#1758b5"}}>Mercado y desarrollo</p>
+        <h2>Mercado inicial y posible modelo de negocio</h2><p className="intro">El segmento inicial propuesto son las pymes B2B españolas, especialmente industriales. La hipótesis comercial futura contempla una plataforma por suscripción con módulos especializados y, durante la validación, proyectos piloto asistidos. La demanda, los precios y la escalabilidad aún requieren pruebas.</p>
       </div></section>
       <section className="content" style={{background:"#eaf0f7"}}><div className="wrap">
         <p className="kicker" style={{color:"#1758b5"}}>Estado de la startup</p>
