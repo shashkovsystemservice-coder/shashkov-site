@@ -58,7 +58,8 @@ export default function StartupHome(){return <main className="unified rp">
 .unified .rp-product-preview{background:#fff!important}.unified .rp-product-preview .wrap{max-width:1150px}.unified .rp-product-preview .intro{color:#526784}
 @media(max-width:940px){.unified .hero-layout,.unified .pilot-grid{grid-template-columns:1fr}.unified .preview-panel{max-width:620px}.unified .subjects{grid-template-columns:repeat(2,1fr)}.unified .navinner{flex-wrap:wrap;padding:12px 0;gap:7px}.unified .links{width:100%;overflow-x:auto;flex-wrap:nowrap}.unified .links a{white-space:nowrap;padding:8px}}
 @media(max-width:640px){.unified .wrap{width:calc(100% - 32px)}.unified .hero{padding:53px 0 62px}.unified .section{padding:60px 0}.unified .feature-grid,.unified .subjects{grid-template-columns:1fr}.unified .feature{padding:22px}.unified .preview-panel{padding:17px}.unified .pilot-steps{padding:15px}.unified .links a{font-size:12px}}
-`}.unified .early-pilot{background:#fff9e8;border-top:1px solid #eadba8;border-bottom:1px solid #eadba8;padding:38px 0;scroll-margin-top:82px}
+
+.unified .early-pilot{background:#fff9e8;border-top:1px solid #eadba8;border-bottom:1px solid #eadba8;padding:38px 0;scroll-margin-top:82px}
 .unified .early-pilot-grid{display:grid;grid-template-columns:1.5fr .8fr;gap:34px;align-items:center}
 .unified .early-eyebrow{font-size:11px;font-weight:850;letter-spacing:.09em;color:#876019}
 .unified .early-pilot h2{font-size:clamp(25px,3vw,37px);margin:9px 0 12px}
@@ -70,7 +71,7 @@ export default function StartupHome(){return <main className="unified rp">
 .unified .case-use{background:#edf5ff;border-radius:8px;padding:15px 17px;color:#254e7d;font-size:15px;font-weight:700}
 .unified .research-case .research-other{font-size:13px;margin-top:20px}
 @media(max-width:750px){.unified .early-pilot-grid{grid-template-columns:1fr;gap:18px}.unified .early-pilot{padding:30px 0}}
-</style>
+`}</style>
 <nav className="navbar" aria-label="Меню разделов"><div className="wrap navinner">
 <a className="brand" href="#inicio">SHASHKOV <span>/ STARTUP</span></a>
 <div className="links"><a href="#proyecto">Проект</a><a href="#sistema">Маркетинговая система</a><a href="#inteligencia">Конкурентная разведка</a><a href="#piloto">Пилот</a><Link className="lang" href="/es/startup">ES ↗</Link></div>
