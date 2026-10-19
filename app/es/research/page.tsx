@@ -63,7 +63,29 @@ export default function ResearchPilotPage() {
 .rp .rp-status{border-radius:9px}.rp section.content:nth-of-type(even){background-color:#f7f9fc}
 @media(max-width:950px){.rp .rp-hero-layout{grid-template-columns:1fr}.rp .rp-hero-visual{transform:none;max-width:640px}.rp .rp-hero-new h1{max-width:850px}}
 @media(max-width:550px){.rp .rp-hero-layout{gap:33px}.rp .rp-hero-visual{padding:15px}.rp .rp-hero-actions{align-items:flex-start;flex-direction:column}.rp .rp-visual-grid{gap:6px}.rp .rp-visual-grid>div{padding:12px}.rp .rp-invite a{margin-top:7px}}
-      `}</style>
+      
+.rp .rp-hero-new{padding:96px 0 110px;background:radial-gradient(circle at 80% 25%,#244572,#0a1830 63%)}.rp .rp-hero-new h1{letter-spacing:-.065em}
+.rp .rp-hero-visual{border-radius:18px;border:1px solid #97b6e2;box-shadow:0 33px 80px rgba(0,0,0,.35);background:#f8fbff}
+.rp .rp-hero-actions .cta{background:#d8f6ad;border-radius:7px;color:#19352a;box-shadow:0 8px 24px rgba(0,0,0,.14)}
+.rp .rp-value-section{padding:88px 0;background:#fff}.rp .rp-section-intro{max-width:820px}
+.rp .rp-section-intro .kicker{color:#245bd5}.rp .rp-section-intro h2{font-size:clamp(35px,4.5vw,57px);letter-spacing:-.055em}
+.rp .rp-section-intro>p:last-child{font-size:19px;max-width:730px;color:#52637a}
+.rp .rp-value-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:37px}
+.rp .rp-value-grid article{border-radius:12px;border:1px solid #dfe8f5;background:#f7faff;padding:30px;min-height:205px}
+.rp .rp-value-grid small{color:#245bd5;font-weight:800;font-size:13px}
+.rp .rp-value-grid h3{font-size:25px;margin:15px 0 11px}.rp .rp-value-grid p{font-size:16px;color:#53637a}
+.rp .rp-pilot-feature{background:#edf4ff;border-top:1px solid #dbe6f7;padding:85px 0}
+.rp .rp-pilot-layout{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.rp .rp-pilot-feature .kicker{color:#245bd5}.rp .rp-pilot-feature h2{font-size:clamp(32px,3.7vw,49px);letter-spacing:-.05em}
+.rp .rp-pilot-feature p{font-size:18px;color:#53637a;max-width:620px}
+.rp .rp-pilot-button{display:inline-block;background:#245bd5;color:white;text-decoration:none;padding:15px 22px;border-radius:7px;font-weight:800;margin-top:17px}
+.rp .rp-pilot-card{background:white;border:1px solid #d9e4f3;border-radius:15px;padding:30px;box-shadow:0 23px 48px rgba(17,32,56,.08)}
+.rp .rp-pilot-card>small{font-size:12px;letter-spacing:.09em;font-weight:800;color:#245bd5}
+.rp .rp-pilot-card>div{padding:18px 0;border-bottom:1px solid #e2e8f0;display:flex;gap:20px}
+.rp .rp-pilot-card b{color:#245bd5;font-size:14px}.rp .rp-pilot-card strong{font-size:19px}
+.rp .rp-pilot-card p{margin:20px 0 0;font-size:14px;color:#53637a}
+@media(max-width:850px){.rp .rp-pilot-layout{grid-template-columns:1fr}.rp .rp-value-grid{grid-template-columns:1fr}.rp .rp-value-grid article{min-height:0}}
+`}</style>
       <div className="rp-invite"><div className="wrap rp-invite-inner"><span className="rp-invite-label">● INVITACIÓN A EMPRESAS B2B EN ESPAÑA</span><strong>Participe en la validación de nuestra herramienta de inteligencia competitiva.</strong><a href="#piloto">Conocer el programa piloto →</a></div></div>
       <div className="wrap nav"><Link className="brand" href="/es">VLADIMIR SHASHKOV <span style={{fontWeight:400}}> / Investigación empresarial</span></Link><div style={{display:"flex",gap:18,alignItems:"center"}}><Link className="back" href="/ru/research">RU</Link><Link className="back" href="/es">Volver a la web principal ↗</Link></div></div>
       <header className="hero rp-hero-new"><div className="wrap rp-hero-layout"><div className="rp-hero-copy"><p className="kicker">STARTUP DIGITAL · ESPAÑA · EN DESARROLLO</p><h1>De la estrategia de marketing a decisiones que se convierten en acción.</h1><p className="lead">Desarrollamos una plataforma interactiva para ayudar a las pymes a comprender el mercado, elegir una estrategia, planificar acciones y gestionar resultados.</p><div className="rp-hero-actions"><a className="cta" href="#interfaz">Explorar el concepto del producto ↗</a><a className="rp-ghost-cta" href="#piloto">Participar en el piloto de investigación →</a></div><p className="hero-note">Ahora: validamos la metodología de inteligencia competitiva mediante estudios de empresas industriales. La plataforma digital es nuestro producto futuro.</p></div><div className="rp-hero-visual" aria-label="Esquema del futuro sistema de gestión de marketing"><div className="rp-visual-head"><span>MARKETING MANAGEMENT SYSTEM</span><span>● CONCEPT</span></div><div className="rp-visual-title">Un espacio de trabajo conectado</div><div className="rp-visual-core"><small>01 · STRATEGY</small><strong>Decisión estratégica</strong><span>Mercado → segmentos → posicionamiento</span></div><div className="rp-visual-grid"><div><small>02 · PLAN</small><strong>Acciones</strong></div><div><small>03 · BUDGET</small><strong>Recursos</strong></div></div><div className="rp-visual-final"><small>04 · CONTROL</small><strong>Resultados → nuevas decisiones</strong></div><div className="rp-visual-evidence"><span>● COMPETITIVE INTELLIGENCE</span><small>Investigación para fundamentar la estrategia</small></div></div></div></header>
