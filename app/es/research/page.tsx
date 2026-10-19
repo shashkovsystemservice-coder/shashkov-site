@@ -3,8 +3,8 @@ import Link from "next/link";
 import ResearchConceptForm from "./ResearchConceptForm";
 
 export const metadata: Metadata = {
-  title: "Marketing Management Platform — proyecto emprendedor en España",
-  description: "Plataforma de gestión de marketing basada en evidencia para pymes. Primer módulo en desarrollo: Business & Competitive Intelligence.",
+  title: "Cuatro herramientas conectadas para dirigir el marketing",
+  description: "Cuatro herramientas. Un proceso de decisión conectado. Marketing Strategy. ● Investigación actual: inteligencia competitiva.",
 };
 
 const applications = [
@@ -22,19 +22,49 @@ export default function ResearchPilotPage() {
         @media(max-width:750px){.rp .hero{padding:60px 0 70px}.rp section.content{padding:60px 0}.rp .steps,.rp .apps,.rp .cases,.rp .phase{grid-template-columns:1fr}.rp .app{min-height:0}.rp .nav{flex-wrap:wrap}}
       `}</style>
       <div className="wrap nav"><Link className="brand" href="/es">VLADIMIR SHASHKOV <span style={{fontWeight:400}}> / Investigación empresarial</span></Link><div style={{display:"flex",gap:18,alignItems:"center"}}><Link className="back" href="/ru/research">RU</Link><Link className="back" href="/es">Volver a la web principal ↗</Link></div></div>
-      <header className="hero">
-        <div className="wrap">
-          <p className="kicker">STARTUP EN DESARROLLO · ESPAÑA · MARKETING INTELLIGENCE & MANAGEMENT</p><h1>La inteligencia de las grandes empresas. Al alcance de las pymes.</h1><p className="lead">Investigación del mercado, decisiones estratégicas y gestión de marketing conectadas. Estamos convirtiendo metodologías profesionales en herramientas más accesibles para pequeñas y medianas empresas.</p><a className="cta" href="#primer-modulo">Explorar el módulo en desarrollo ↓</a><p className="hero-note">Primera línea de desarrollo: Business & Competitive Intelligence. Ya contamos con metodología, herramientas y casos de investigación; la plataforma digital integrada es nuestra visión de producto.</p>
-        </div>
-      </header>
-      <section className="content" style={{background:"#fff"}}><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>VISTA DEL PRODUCTO</p><h2>No faltan datos. Falta convertirlos en decisiones conectadas.</h2><p className="intro">¿A qué clientes dirigirnos? ¿Contra quién competimos? ¿Qué propuesta de valor merece inversión? ¿Cómo convertimos estas respuestas en un plan y comprobamos sus resultados?</p><p className="intro">Las pymes no necesitan cinco documentos inconexos. Necesitan un proceso comprensible que conecte investigación, elecciones, recursos y resultados.</p></div></section>
- <section className="content evidence"><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>VISTA DEL PRODUCTO</p><h2>De la evidencia a una decisión que se pueda ejecutar.</h2><div className="steps" style={{gridTemplateColumns:"repeat(auto-fit,minmax(235px,1fr))"}}><article className="step"><small>01</small><h3>Comprender el mercado</h3><p>Empresas, compradores, necesidades y alternativas verificables.</p></article>
-<article className="step"><small>02</small><h3>Elegir una estrategia</h3><p>Segmentos, propuesta de valor, ventajas y prioridades.</p></article>
-<article className="step"><small>03</small><h3>Planificar e invertir</h3><p>Programas, acciones y presupuesto relacionado con la estrategia.</p></article>
-<article className="step"><small>04</small><h3>Medir y corregir</h3><p>Indicadores, resultados y decisiones de ajuste.</p></article></div></div></section>
- <section className="content" id="primer-modulo" style={{background:"#fff"}}><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>BUSINESS & COMPETITIVE INTELLIGENCE · 01</p><h2>Nuestro primer foco: investigar empresas y competencia con profundidad.</h2><p className="intro">El primer componente en desarrollo metodológico es Business & Competitive Intelligence: estudiar tu propia empresa, tus competidores y potenciales compradores a partir de fuentes contrastables. Estamos perfeccionando el método con casos industriales españoles. Aún no existe un agente ni una plataforma comercial.</p><div className="apps"><article className="app"><small>01 / TU EMPRESA</small><h3>Conocer tu negocio desde fuera</h3><p>Productos, capacidades observables, segmentos, posición y límites documentados.</p></article><article className="app"><small>02 / COMPETIDORES</small><h3>Entender con quién compites</h3><p>Ofertas comparables, clientes, canales, precios públicos y diferencias relevantes.</p></article><article className="app"><small>03 / COMPRADORES</small><h3>Preparar oportunidades comerciales</h3><p>Empresas, instalaciones, proyectos, compras y necesidades por verificar.</p></article></div></div></section>
- <section className="content" style={{background:"#eaf0f7"}}><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>MARKETING MANAGEMENT PLATFORM</p><h2>Una visión de producto. Cinco capacidades conectadas.</h2><p className="intro">La inteligencia empresarial alimenta una futura secuencia de estrategia, plan anual, presupuesto y control. Ya existen herramientas metodológicas y prototipos en hojas de cálculo; aún no están integrados en una aplicación.</p><div className="steps" style={{gridTemplateColumns:"repeat(auto-fit,minmax(230px,1fr))"}}><article className="step"><small>02 / Prototipo metodológico</small><h3>Marketing Strategy</h3></article><article className="step"><small>03 / Prototipo metodológico</small><h3>Annual Marketing Plan</h3></article><article className="step"><small>04 / Prototipo tabular</small><h3>Marketing Budget</h3></article><article className="step"><small>05 / Diseño conceptual</small><h3>Management Control</h3></article></div><p className="intro" style={{marginTop:25}}>Lo que ya podemos mostrar: metodología de investigación, criterios de verificación y casos aplicados. Lo que estamos evaluando: utilidad real para empresas B2B y futura implementación digital.</p></div></section>
- <ResearchConceptForm />
+      <header className="hero"><div className="wrap">
+<p className="kicker">IDEA DE NEGOCIO · 4 HERRAMIENTAS CONECTADAS · ESPAÑA</p><h1>Una estrategia de marketing que se convierte en plan, presupuesto y decisiones de gestión.</h1><p className="lead">Nuestra idea de negocio es facilitar a las pymes cuatro herramientas profesionales conectadas. La principal permite formular la estrategia de marketing; las demás convierten las decisiones estratégicas en acciones, recursos y control de resultados.</p>
+<a className="cta" href="#cuatro-herramientas">Cómo funcionan las cuatro herramientas ↓</a>
+<p className="hero-note">El proyecto parte de metodologías tabulares en desarrollo. La inteligencia competitiva es una línea actual de investigación que busca alimentar la estrategia con evidencias verificables.</p>
+</div></header>
+<section className="content" id="cuatro-herramientas" style={{background:"#fff"}}><div className="wrap">
+<p className="kicker" style={{color:"#1758b5"}}>MARKETING MANAGEMENT SYSTEM</p>
+<h2>Cuatro herramientas. Un proceso de decisión conectado.</h2><p className="intro">No son cuatro plantillas independientes. Las decisiones de cada herramienta sirven de base a la siguiente. Su integración futura en una plataforma digital es una etapa posterior.</p>
+<div className="rp-toolchain">
+<article className="rp-tool rp-tool-first"><small>01 · CORE / STRATEGY</small><h3>Marketing Strategy</h3><p>La herramienta principal. Relaciona objetivos empresariales, mercados, clientes y competencia con la selección de segmentos, propuesta de valor, posicionamiento, ventajas competitivas y alternativas de crecimiento. Conduce a una elección estratégica fundamentada.</p></article>
+<div className="rp-chain-arrow" aria-hidden="true">↓</div>
+<article className="rp-tool"><small>02 · PLAN</small><h3>Annual Marketing Plan</h3><p>Transforma iniciativas estratégicas en programas anuales, acciones, plazos, prioridades y responsabilidades.</p></article>
+<div className="rp-chain-arrow" aria-hidden="true">↓</div>
+<article className="rp-tool"><small>03 · BUDGET</small><h3>Marketing Budget</h3><p>Relaciona acciones con recursos y costes; permite comparar escenarios y decidir las inversiones posibles.</p></article>
+<div className="rp-chain-arrow" aria-hidden="true">↓</div>
+<article className="rp-tool"><small>04 · CONTROL</small><h3>Marketing Management Report</h3><p>Compara objetivos, KPI y resultados, identifica desviaciones y permite revisar la estrategia y el plan. Esta cuarta herramienta sigue en fase de diseño.</p></article>
+<div className="rp-chain-arrow" aria-hidden="true">↺</div>
+<p className="intro"><strong>La conexión es el núcleo del producto: objetivo → decisión estratégica → programa → acción → recurso → KPI → resultado → revisión.</strong></p>
+</div></div></section>
+<section className="content evidence" id="primer-modulo"><div className="wrap">
+<h2>Qué estamos desarrollando ahora</h2>
+<div className="rp-statuses">
+<article className="rp-status rp-status-green"><span className="rp-status-tag">✓ En desarrollo: herramientas de gestión</span><p>Ya existen versiones tabulares de Strategy, Annual Plan y Budget. La cuarta herramienta, Management Report, se encuentra en diseño. Todavía no existe una aplicación web integrada.</p></article>
+<article className="rp-status rp-status-yellow"><span className="rp-status-tag">● Investigación actual: inteligencia competitiva</span><p>Metodología en desarrollo para investigar la propia empresa, competidores y compradores potenciales. Sus resultados pretenden aportar evidencias a la primera y principal herramienta: Marketing Strategy. Todavía no es un módulo de software ni un agente autónomo.</p><a href="#configurar">Explorar la investigación aplicada ↓</a></article>
+</div></div></section>
+<style>{`
+.rp .rp-toolchain{max-width:890px;margin-top:32px}
+.rp .rp-tool{background:#fff;border:1px solid #dce5ef;padding:24px 29px;border-left:5px solid #7898bc}
+.rp .rp-tool-first{background:#eef5ff;border:2px solid #1758b5;border-left:8px solid #1758b5;padding:30px}
+.rp .rp-tool small{font-weight:800;font-size:12px;color:#1758b5;letter-spacing:.06em}
+.rp .rp-tool h3{margin:8px 0 11px}.rp .rp-tool p{margin:0;color:#53637a}
+.rp .rp-chain-arrow{color:#1758b5;font-weight:800;font-size:29px;text-align:center;line-height:1.45}
+.rp .rp-statuses{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:30px}
+.rp .rp-status{background:#fff;padding:27px;border:1px solid #dce5ef}
+.rp .rp-status-green{border-top:5px solid #21966a;background:#f0fbf4}
+.rp .rp-status-yellow{border-top:5px solid #d79a13;background:#fff9e9}
+.rp .rp-status-tag{display:inline-block;font-weight:800;font-size:14px;color:#174b37}
+.rp .rp-status-yellow .rp-status-tag{color:#785100}
+.rp .rp-status p{font-size:16px;color:#405064;margin:14px 0}
+.rp .rp-status a{font-weight:700;color:#1758b5;font-size:15px}
+@media(max-width:750px){.rp .rp-statuses{grid-template-columns:1fr}.rp .rp-tool{padding:20px}.rp .rp-tool-first{padding:24px}}
+`}</style>
+<ResearchConceptForm />
       <section className="content"><div className="wrap">
         <p className="kicker" style={{color:"#1758b5"}}>02 / Metodología</p>
         <h2>Una investigación integral. Evidencia antes que conclusiones.</h2>
