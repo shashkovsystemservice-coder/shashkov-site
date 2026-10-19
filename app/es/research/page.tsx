@@ -27,7 +27,17 @@ export default function ResearchPilotPage() {
         .rp .rp-invite strong{font-size:15px;flex:1;min-width:220px}
         .rp .rp-invite a{font-size:14px;font-weight:800;color:#725000;text-decoration:underline;text-underline-offset:3px;white-space:normal}
         @media(max-width:750px){.rp .rp-invite-inner{gap:6px;padding:13px 0;align-items:flex-start;flex-direction:column}.rp .rp-invite strong{min-width:0;font-size:15px}}
-       `}</style>
+ 
+.rp .rp-example-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:30px}
+.rp .rp-example-item{padding:25px;border:1px solid #dce5ef;background:#fff}
+.rp .rp-example-primary{border:2px solid #1758b5;background:#eef5ff}
+.rp .rp-example-item small{color:#1758b5;font-weight:800;font-size:12px}
+.rp .rp-example-item h3{margin:10px 0}.rp .rp-example-item p{font-size:16px;color:#53637a}
+.rp .rp-details{border:1px solid #dce5ef;background:#fff;padding:24px}
+.rp .rp-details summary{font-weight:800;font-size:22px;cursor:pointer;line-height:1.3}
+.rp .rp-details .apps{margin-top:20px}
+@media(max-width:750px){.rp .rp-example-steps{grid-template-columns:1fr}.rp .rp-details{padding:18px}}
+      `}</style>
       <div className="rp-invite"><div className="wrap rp-invite-inner"><span className="rp-invite-label">● INVITACIÓN A EMPRESAS B2B EN ESPAÑA</span><strong>Participe en la validación de nuestra herramienta de inteligencia competitiva.</strong><a href="#piloto">Conocer el programa piloto →</a></div></div>
       <div className="wrap nav"><Link className="brand" href="/es">VLADIMIR SHASHKOV <span style={{fontWeight:400}}> / Investigación empresarial</span></Link><div style={{display:"flex",gap:18,alignItems:"center"}}><Link className="back" href="/ru/research">RU</Link><Link className="back" href="/es">Volver a la web principal ↗</Link></div></div>
       <header className="hero"><div className="wrap">
@@ -49,6 +59,7 @@ export default function ResearchPilotPage() {
 <div className="rp-chain-arrow" aria-hidden="true">↺</div>
 <p className="intro"><strong>La conexión es el núcleo del producto: objetivo → decisión estratégica → programa → acción → recurso → KPI → resultado → revisión.</strong></p>
 </div></div></section>
+<section className="content" id="ejemplo-estrategia" style={{background:"#fff"}}><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>EJEMPLO DE UNA DECISIÓN CONECTADA</p><h2>Cómo una decisión empresarial atraviesa las cuatro herramientas</h2><p className="intro">Ejemplo ilustrativo: una empresa industrial estudia entrar en un nuevo segmento. Esta secuencia muestra la lógica del método, no resultados de una implementación real.</p><div className="rp-example-steps"><article className="rp-example-item rp-example-primary"><small>01 / HERRAMIENTA CENTRAL</small><h3>Marketing Strategy</h3><p>Comparamos segmentos, demanda observable, competidores y capacidades de la empresa. Elegimos el segmento objetivo, la propuesta de valor y una dirección estratégica. Registramos evidencias, alternativas y opciones descartadas.</p></article><article className="rp-example-item"><small>02 / PROGRAMA</small><h3>Annual Marketing Plan</h3><p>Convertimos la iniciativa elegida en un programa de entrada: investigar compradores, adaptar la oferta, realizar contactos comerciales y probar canales y plazos.</p></article><article className="rp-example-item"><small>03 / RECURSOS</small><h3>Marketing Budget</h3><p>Relacionamos esas acciones con recursos y costes, comparamos escenarios factibles y elegimos una asignación viable.</p></article><article className="rp-example-item"><small>04 / RETROALIMENTACIÓN</small><h3>Management Report</h3><p>Contrastamos objetivos e indicadores con resultados reales. Si la hipótesis del segmento no se confirma, revisamos la estrategia. La cuarta herramienta continúa en diseño.</p></article></div><p className="intro" style={{marginTop:26}}><strong>La investigación de la empresa, el mercado, los competidores y los compradores aporta evidencia sobre todo a la herramienta nº 1. La inteligencia competitiva no sustituye a la estrategia: contribuye a fundamentarla.</strong></p></div></section>
 <section className="content evidence" id="primer-modulo"><div className="wrap">
 <h2>Qué estamos desarrollando ahora</h2>
 <div className="rp-statuses">
@@ -73,7 +84,7 @@ export default function ResearchPilotPage() {
 @media(max-width:750px){.rp .rp-statuses{grid-template-columns:1fr}.rp .rp-tool{padding:20px}.rp .rp-tool-first{padding:24px}}
 `}</style>
 <ResearchConceptForm />
-      <section className="content"><div className="wrap">
+      <section className="content" style={{background:"#fff"}}><div className="wrap"><details className="rp-details"><summary>Metodología completa de inteligencia competitiva: 7 ámbitos</summary><p className="intro" style={{marginTop:20}}>Conservamos aquí los detalles del método para quienes quieran examinar la estructura del informe. La idea principal de la startup se explica antes mediante las cuatro herramientas.</p>
         <p className="kicker" style={{color:"#1758b5"}}>02 / Metodología</p>
         <h2>Una investigación integral. Evidencia antes que conclusiones.</h2>
         <p className="intro">El nombre de la empresa y su sitio web permiten definir el objeto de estudio. A partir de ahí se analizan fuentes públicas externas, se contrastan datos y explicaciones, se comparan alternativas y se identifican los límites de lo que puede demostrarse.</p>
@@ -104,11 +115,11 @@ export default function ResearchPilotPage() {
             ["07","Síntesis y decisiones","Hallazgos clave, cuadro cuantitativo, implicaciones, supuestos críticos y cuestiones abiertas."]
           ].map(([n,title,description])=><article className="app" key={n}><small>{n}</small><h3>{title}</h3><p>{description}</p></article>)}
         </div>
-      </div></section>
-      <section className="content evidence"><div className="wrap">
+      </details></div></section>
+<section className="content evidence"><div className="wrap">
         <p className="kicker" style={{color:"#1758b5"}}>05 / Investigaciones realizadas</p>
-        <h2>Empresas reales. Preguntas concretas. Evidencia comprobable.</h2>
-        <p className="intro">Los casos muestran el trabajo de investigación que ayuda a construir el método; no son testimonios, encargos ni validaciones de las empresas analizadas.</p>
+        <h2>Ejemplo de resultados de investigación</h2>
+        <p className="intro">Los estudios de CURVASER, FAYMASA, SEHER y FERBESOL permiten probar el método: actividades, ofertas, competencia, compradores y fuentes documentales. Su investigación pública no implica participación de estas empresas en el piloto.</p>
         <div className="cases">
           <article className="case"><span className="tag">Caso de investigación · España</span><h3>CURVASER</h3><p>Actividad y tecnologías industriales, alternativas competitivas, compradores, proyectos y señales de demanda. Las relaciones documentadas se contrastan con sus fuentes; indicios y compras confirmadas se mantienen separados.</p></article>
           <article className="case"><span className="tag">Pruebas sectoriales · España</span><h3>FAYMASA · SEHER · FERBESOL</h3><p>Investigaciones de negocios industriales españoles para contrastar productos, posición competitiva y oportunidades sin confundir declaraciones, hechos e hipótesis.</p></article>
@@ -124,14 +135,7 @@ export default function ResearchPilotPage() {
           <article className="step"><small>LÍMITES</small><h3>Sin falsa certeza</h3><p>Una oferta no es una venta. Un proyecto mencionado no prueba una compra. La ausencia de datos públicos no demuestra que una actividad no exista.</p></article>
         </div>
       </div></section>
-      <section className="content pilot" id="piloto"><div className="wrap">
-        <p className="kicker">07 / Programa piloto en España</p>
-        <h2>Buscamos empresas industriales en España para evaluar la utilidad de una investigación competitiva completa.</h2>
-        <p>Proponemos seleccionar una empresa o ámbito competitivo, acordar el alcance de una investigación basada en fuentes públicas y compartir los resultados para recibir una evaluación crítica de su utilidad, integridad y claridad.</p>
-        <p><strong>Sin compromiso comercial.</strong> El alcance y el formato de participación se acordarán previamente. No se requieren datos internos ni información confidencial. No es necesario contratar ningún servicio.</p>
-        <a className="cta" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Hablar sobre el piloto ↗</a>
-        <p style={{marginTop:16,fontSize:14}}>Contacto directo con Vladimir Shashkov por Telegram.</p>
-      </div></section>
+      <section className="content pilot" id="piloto"><div className="wrap"><p className="kicker">INVITACIÓN A VALIDAR LA HERRAMIENTA</p><h2>¿Ha recibido un estudio? Le invitamos a evaluar su precisión y utilidad.</h2><p>Estamos desarrollando una herramienta de inteligencia competitiva e invitamos a responsables de empresas B2B españolas a valorar una investigación de su negocio, competidores o compradores potenciales. Queremos conocer su evaluación crítica: qué es correcto, qué falta y qué hallazgos pueden contribuir a decisiones reales.</p><p>El proceso: acordamos el objeto del análisis → preparamos o facilitamos el informe → usted lo revisa → si lo desea, comparte observaciones. El alcance y la forma de participación se acuerdan individualmente; no implica comprometerse al desarrollo de software.</p><p><strong>Sin compromiso comercial. No se requieren documentos confidenciales.</strong></p><a className="cta" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Hablar sobre el estudio y el piloto ↗</a></div></section>
       <footer><div className="wrap">Vladimir Shashkov · Estrategia, marketing y desarrollo de negocio · <Link href="/es">Sitio principal</Link></div></footer>
     </main>
   );
