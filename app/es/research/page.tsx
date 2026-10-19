@@ -3,8 +3,8 @@ import Link from "next/link";
 import ResearchConceptForm from "./ResearchConceptForm";
 
 export const metadata: Metadata = {
-  title: "Investigación empresarial autónoma | Programa piloto — Vladimir Shashkov",
-  description: "Proyecto internacional en fase MVP. Investigamos competidores, clientes y mercados. Buscamos empresas industriales en España para un programa piloto sin compromiso comercial.",
+  title: "Investigación empresarial y competitiva en profundidad — Vladimir Shashkov",
+  description: "Investigación documentada de empresas, mercados, competidores, productos y compradores utilizando exclusivamente fuentes públicas de Internet. Programa piloto para empresas industriales en España.",
 };
 
 const applications = [
@@ -21,58 +21,73 @@ export default function ResearchPilotPage() {
         .rp *{box-sizing:border-box}.rp a{text-decoration:none}.rp .wrap{width:min(1160px,calc(100% - 48px));margin:auto}.rp .nav{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:25px 0}.rp .nav a{color:inherit;font-size:14px}.rp .nav .brand{font-weight:800;letter-spacing:-.02em}.rp .nav .back{border-bottom:1px solid #97a9bc}.rp .hero{background:var(--n);color:white;padding:85px 0 93px}.rp .kicker{text-transform:uppercase;font-size:12px;font-weight:800;letter-spacing:.15em;color:#86b9f5;margin-bottom:20px}.rp h1{font-size:clamp(43px,6vw,78px);line-height:1.02;letter-spacing:-.055em;max-width:950px;margin:0 0 27px}.rp .lead{font-size:clamp(18px,2.2vw,24px);max-width:820px;color:#d6e1ef}.rp .hero-note{color:#a9c2da;font-size:15px;max-width:850px;margin-top:25px}.rp .cta{display:inline-block;background:#d6e9ff;color:#122d52;padding:14px 20px;font-weight:800;margin-top:24px;border-radius:3px}.rp section.content{padding:83px 0;border-bottom:1px solid var(--l)}.rp h2{font-size:clamp(32px,3.6vw,49px);letter-spacing:-.04em;line-height:1.12;margin:0 0 24px;max-width:850px}.rp p{margin:0 0 16px}.rp .intro{max-width:850px;color:var(--m);font-size:19px}.rp .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}.rp .step,.rp .app,.rp .case{padding:27px;background:white;border:1px solid var(--l)}.rp .step small,.rp .app small{color:var(--a);font-weight:800;font-size:13px}.rp h3{font-size:23px;line-height:1.2;letter-spacing:-.025em;margin:14px 0}.rp .step p,.rp .app p,.rp .case p{font-size:16px;color:var(--m)}.rp .apps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}.rp .app{min-height:282px}.rp .app strong{font-size:13px;color:var(--a)}.rp .evidence{background:#eaf0f7}.rp .cases{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:30px}.rp .case .tag{font-size:11px;letter-spacing:.11em;text-transform:uppercase;font-weight:800;color:var(--a)}.rp .case h3{font-size:25px}.rp .case ul{padding-left:20px;color:var(--m);font-size:15px}.rp .phase{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:28px}.rp .phase>div{border-top:2px solid var(--i);padding-top:18px}.rp .pilot{background:var(--n);color:white}.rp .pilot p{max-width:830px;color:#d1dded}.rp .pilot h2{color:#fff}.rp .pilot .cta{margin-top:15px}.rp footer{padding:32px 0;color:var(--m);font-size:13px}.rp footer a{color:var(--a)}
         @media(max-width:750px){.rp .hero{padding:60px 0 70px}.rp section.content{padding:60px 0}.rp .steps,.rp .apps,.rp .cases,.rp .phase{grid-template-columns:1fr}.rp .app{min-height:0}.rp .nav{flex-wrap:wrap}}
       `}</style>
-      <div className="wrap nav"><Link className="brand" href="/es">VLADIMIR SHASHKOV <span style={{fontWeight:400}}> / Startup</span></Link><Link className="back" href="/es">Volver a la web principal ↗</Link></div>
+      <div className="wrap nav"><Link className="brand" href="/es">VLADIMIR SHASHKOV <span style={{fontWeight:400}}> / Investigación empresarial</span></Link><Link className="back" href="/es">Volver a la web principal ↗</Link></div>
       <header className="hero">
         <div className="wrap">
-          <p className="kicker">Proyecto internacional · MVP en desarrollo · Programa piloto España</p>
-          <h1>Investigar una empresa a fondo debería empezar con su nombre y su web.</h1>
-          <p className="lead">Estamos desarrollando una herramienta que investiga de forma autónoma empresas, competidores y clientes potenciales, y organiza sus hallazgos en informes con fuentes verificables.</p>
+          <p className="kicker">Investigación empresarial y competitiva · Fuentes públicas verificables</p>
+          <h1>Comprender una empresa. Su mercado. Sus competidores. Sus oportunidades.</h1>
+          <p className="lead">Investigamos empresas y su entorno competitivo en profundidad: mercados, modelos de negocio, productos, alternativas, compradores, proyectos y relaciones comerciales. Elaboramos informes documentados con comparaciones, cifras verificables y conclusiones fundamentadas.</p>
           <a className="cta" href="#piloto">Conocer el programa piloto ↓</a>
-          <p className="hero-note">El flujo de investigación autónomo y la calidad de los resultados continúan en desarrollo. Esta página presenta el proyecto; todavía no permite iniciar investigaciones directamente.</p>
+          <p className="hero-note">El proyecto se encuentra en fase de validación con casos industriales. El trabajo se basa exclusivamente en información disponible en fuentes públicas de Internet; los límites de esa evidencia se explican en el informe.</p>
         </div>
       </header>
       <ResearchConceptForm />
       <section className="content"><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>02 / Concepto</p>
-        <h2>Una entrada sencilla. Una investigación en profundidad.</h2>
-        <p className="intro">La visión del producto: introducir una empresa y su página web, pulsar «Investigar» y dejar que el sistema explore fuentes públicas durante un ciclo que puede durar aproximadamente 40–90 minutos, según la tarea.</p>
+        <p className="kicker" style={{color:"#1758b5"}}>02 / Metodología</p>
+        <h2>Una investigación integral. Evidencia antes que conclusiones.</h2>
+        <p className="intro">El nombre de la empresa y su sitio web permiten definir el objeto de estudio. A partir de ahí se analizan fuentes públicas externas, se contrastan datos y explicaciones, se comparan alternativas y se identifican los límites de lo que puede demostrarse.</p>
         <div className="steps">
-          <article className="step"><small>ENTRADA</small><h3>Nombre + sitio web</h3><p>El punto de partida es mínimo; la profundidad y los criterios de calidad dependen de la pregunta empresarial.</p></article>
-          <article className="step"><small>PROCESO</small><h3>Investigación autónoma</h3><p>Búsqueda iterativa, comprobación de fuentes, contraste de hipótesis y exploración de nuevos indicios.</p></article>
-          <article className="step"><small>RESULTADO</small><h3>Informe documentado</h3><p>Empresas, relaciones, capacidades y oportunidades; hechos separados de interpretaciones y aspectos sin verificar.</p></article>
+          <article className="step"><small>01 / ALCANCE</small><h3>Empresa y entorno</h3><p>La empresa, los mercados y segmentos relevantes delimitan la investigación; no se reduce la cobertura a un único cargo o pregunta.</p></article>
+          <article className="step"><small>02 / ANÁLISIS</small><h3>Fuentes y contrastes</h3><p>Documentos corporativos, registros, ofertas, contratos, proyectos, publicaciones y otras fuentes públicas; comprobación cruzada y análisis de hipótesis.</p></article>
+          <article className="step"><small>03 / RESULTADO</small><h3>Informe documentado</h3><p>Hallazgos, comparaciones por segmento, indicadores cuantitativos, conclusiones, identificadores de evidencia y cuestiones no verificadas.</p></article>
         </div>
       </div></section>
       <section className="content"><div className="wrap">
         <p className="kicker" style={{color:"#1758b5"}}>03 / Aplicaciones</p>
-        <h2>Tres ámbitos de investigación. Distintas decisiones de gestión.</h2>
-        <p className="intro"><strong>Especialmente para equipos comerciales:</strong> investigar a un comprador concreto antes de reunirse permite conocer mejor su negocio, procesos, equipos, proyectos y proveedores. Así la negociación parte de preguntas y propuestas precisas, no de generalidades. Las necesidades no verificadas se mantienen como hipótesis.</p>
+        <h2>Tres objetos de investigación. Una metodología completa.</h2>
+        <p className="intro">El mismo enfoque puede aplicarse a la propia empresa, a sus competidores o a compradores potenciales. El informe conserva su alcance analítico: no se simplifica ni se convierte en un documento distinto en función del puesto del lector.</p>
         <div className="apps">{applications.map(a=><article key={a.num} className="app"><small>{a.num}</small><h3>{a.title}</h3><strong>{a.subtitle}</strong><p style={{marginTop:15}}>{a.description}</p></article>)}</div>
       </div></section>
+      <section className="content"><div className="wrap">
+        <p className="kicker" style={{color:"#1758b5"}}>04 / Contenido del informe</p>
+        <h2>Siete ámbitos conectados. Una visión integral del negocio.</h2>
+        <p className="intro">La estructura se adapta a la actividad investigada, sin omitir cuestiones importantes por atender a un único perfil directivo.</p>
+        <div className="apps">
+          {[
+            ["01","Mercados y compradores","Segmentos, demanda, alternativas, estructura competitiva y condiciones de acceso."],
+            ["02","Empresa y modelo de negocio","Entidades, actividades, recursos observables, capacidades y dependencias."],
+            ["03","Productos y propuestas","Catálogo, comparaciones técnicas, arquitectura de precio, servicio y coste de uso cuando puede calcularse."],
+            ["04","Canales y posicionamiento","Distribución, servicio, alcance comercial, comunicación y señales verificables de confianza."],
+            ["05","Compradores, proyectos y compras","Clientes identificados, proyectos, licitaciones, suministros y recurrencia observable."],
+            ["06","Posición competitiva","Ventajas y limitaciones comparadas, cambios, amenazas e hipótesis alternativas."],
+            ["07","Síntesis y decisiones","Hallazgos clave, cuadro cuantitativo, implicaciones, supuestos críticos y cuestiones abiertas."]
+          ].map(([n,title,description])=><article className="app" key={n}><small>{n}</small><h3>{title}</h3><p>{description}</p></article>)}
+        </div>
+      </div></section>
       <section className="content evidence"><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>04 / Experimentos reales</p>
-        <h2>Ya estamos contrastando resultados con empresas industriales reales.</h2>
-        <p className="intro">Los estudios realizados son pruebas del enfoque, no auditorías definitivas ni productos adaptados y validados por las empresas analizadas.</p>
+        <p className="kicker" style={{color:"#1758b5"}}>05 / Investigaciones realizadas</p>
+        <h2>Casos utilizados para poner a prueba la metodología.</h2>
+        <p className="intro">Los casos son investigaciones de fuentes públicas, no auditorías internas ni trabajos encargados o validados por las empresas estudiadas. Cada afirmación relevante debe poder rastrearse hasta una fuente.</p>
         <div className="cases">
           <article className="case"><span className="tag">Caso de investigación · España</span><h3>CURVASER</h3><p>Investigación de actividad, tecnologías, competencia y demanda industrial. La documentación pública permitió rastrear relaciones con Navantia y un proyecto de Metalmalla con VARO.</p><p><strong>Cuestión abierta:</strong> determinar qué partes son realmente útiles para sus responsables y qué profundidad necesitan.</p></article>
           <article className="case"><span className="tag">Pruebas sectoriales · España</span><h3>FAYMASA · SEHER · FERBESOL</h3><p>Otros casos de análisis externos empleados para desarrollar el método y aprender a distinguir capacidades verificables, competencia real y oportunidades que requieren validación.</p><p><strong>Estado:</strong> pruebas de investigación; la participación en el programa piloto no se presume.</p></article>
         </div>
       </div></section>
       <section className="content"><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>05 / Dos herramientas conectadas</p>
-        <h2>Investigar primero. Evaluar la estrategia después.</h2>
-        <p className="intro">En paralelo se desarrolla una metodología estructurada de estrategia de marketing: partir de los objetivos de la empresa, integrar la evidencia externa con capacidades y restricciones internas, evaluar alternativas y formular prioridades.</p>
-        <div className="phase"><div><h3>Investigación empresarial</h3><p>Recopilar y verificar evidencia sobre mercado, competidores y compradores. La arquitectura de investigación se prueba actualmente.</p></div><div><h3>Proceso de estrategia</h3><p>Utilizar la evidencia junto con información interna para contrastar hipótesis y fundamentar decisiones. Herramienta complementaria en desarrollo.</p></div></div>
-      </div></section>
-      <section className="content"><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>06 / Estado del proyecto</p>
-        <h2>Un MVP que queremos adaptar a necesidades empresariales concretas.</h2>
-        <div className="phase"><div><h3>Lo que ya se prueba</h3><p>Investigaciones de empresas reales, ciclos de búsqueda en profundidad, contraste de fuentes y preparación de informes. Evaluamos sus aciertos, omisiones y límites.</p></div><div><h3>Lo que seguimos construyendo</h3><p>Mayor autonomía, investigación de compradores y competidores a diferentes niveles, criterios de calidad y una experiencia de uso sencilla para las empresas.</p></div></div>
+        <p className="kicker" style={{color:"#1758b5"}}>06 / Calidad de la evidencia</p>
+        <h2>Lo que sabemos, lo que inferimos y lo que todavía no se puede demostrar.</h2>
+        <p className="intro">El objetivo no es llenar todas las casillas a cualquier precio, sino alcanzar la máxima cobertura verificable con información pública externa. El informe diferencia hechos, cálculos, estimaciones y cuestiones sin respuesta.</p>
+        <div className="steps">
+          <article className="step"><small>TRAZABILIDAD</small><h3>Fuentes identificables</h3><p>Los hallazgos importantes se vinculan con fuentes, fechas y contexto; las citas repetidas no se confunden con confirmaciones independientes.</p></article>
+          <article className="step"><small>COMPARABILIDAD</small><h3>Cifras interpretables</h3><p>Periodos, unidades, perímetro societario, segmentos y condiciones técnicas explícitos antes de comparar compañías o productos.</p></article>
+          <article className="step"><small>LÍMITES</small><h3>Sin falsa certeza</h3><p>Una oferta no es una venta. Un proyecto mencionado no prueba una compra. La ausencia de datos públicos no demuestra que una actividad no exista.</p></article>
+        </div>
       </div></section>
       <section className="content pilot" id="piloto"><div className="wrap">
-        <p className="kicker">07 / Programa piloto</p>
-        <h2>Buscamos empresas industriales en España que quieran definir con nosotros qué debe investigar el producto.</h2>
-        <p>Proponemos elegir una pregunta de negocio real, acordar qué evidencias y resultados serían útiles, y adaptar progresivamente la herramienta. La empresa podrá revisar y utilizar los resultados del piloto; nosotros aprenderemos de su evaluación.</p>
-        <p><strong>Sin compromiso comercial.</strong> El alcance, los datos compartidos y el formato de participación se acordarán previamente. No es necesario contratar ningún servicio.</p>
+        <p className="kicker">07 / Programa piloto en España</p>
+        <h2>Buscamos empresas industriales en España para evaluar la utilidad de una investigación competitiva completa.</h2>
+        <p>Proponemos seleccionar una empresa o ámbito competitivo, acordar el alcance de una investigación basada en fuentes públicas y compartir los resultados para recibir una evaluación crítica de su utilidad, integridad y claridad.</p>
+        <p><strong>Sin compromiso comercial.</strong> El alcance y el formato de participación se acordarán previamente. No se requieren datos internos ni información confidencial. No es necesario contratar ningún servicio.</p>
         <a className="cta" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Hablar sobre el piloto ↗</a>
         <p style={{marginTop:16,fontSize:14}}>Contacto directo con Vladimir Shashkov por Telegram.</p>
       </div></section>
