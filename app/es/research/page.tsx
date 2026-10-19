@@ -84,39 +84,8 @@ export default function ResearchPilotPage() {
 @media(max-width:750px){.rp .rp-statuses{grid-template-columns:1fr}.rp .rp-tool{padding:20px}.rp .rp-tool-first{padding:24px}}
 `}</style>
 <ResearchConceptForm />
-      <section className="content" style={{background:"#fff"}}><div className="wrap"><details className="rp-details"><summary>Metodología completa de inteligencia competitiva: 7 ámbitos</summary><p className="intro" style={{marginTop:20}}>Conservamos aquí los detalles del método para quienes quieran examinar la estructura del informe. La idea principal de la startup se explica antes mediante las cuatro herramientas.</p>
-        <p className="kicker" style={{color:"#1758b5"}}>02 / Metodología</p>
-        <h2>Una investigación integral. Evidencia antes que conclusiones.</h2>
-        <p className="intro">El nombre de la empresa y su sitio web permiten definir el objeto de estudio. A partir de ahí se analizan fuentes públicas externas, se contrastan datos y explicaciones, se comparan alternativas y se identifican los límites de lo que puede demostrarse.</p>
-        <div className="steps">
-          <article className="step"><small>01 / ALCANCE</small><h3>Empresa y entorno</h3><p>La empresa, los mercados y segmentos relevantes delimitan la investigación; no se reduce la cobertura a un único cargo o pregunta.</p></article>
-          <article className="step"><small>02 / ANÁLISIS</small><h3>Fuentes y contrastes</h3><p>Documentos corporativos, registros, ofertas, contratos, proyectos, publicaciones y otras fuentes públicas; comprobación cruzada y análisis de hipótesis.</p></article>
-          <article className="step"><small>03 / RESULTADO</small><h3>Informe documentado</h3><p>Hallazgos, comparaciones por segmento, indicadores cuantitativos, conclusiones, identificadores de evidencia y cuestiones no verificadas.</p></article>
-        </div>
-      </div></section>
-      <section className="content"><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>03 / Aplicaciones</p>
-        <h2>Tres objetos de investigación. Una metodología completa.</h2>
-        <p className="intro">El mismo enfoque puede aplicarse a la propia empresa, a sus competidores o a compradores potenciales. El informe conserva su alcance analítico: no se simplifica ni se convierte en un documento distinto en función del puesto del lector.</p>
-        <div className="apps">{applications.map(a=><article key={a.num} className="app"><small>{a.num}</small><h3>{a.title}</h3><strong>{a.subtitle}</strong><p style={{marginTop:15}}>{a.description}</p></article>)}</div>
-      </div></section>
-      <section className="content"><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>04 / Contenido del informe</p>
-        <h2>Siete ámbitos conectados. Una visión integral del negocio.</h2>
-        <p className="intro">La estructura se adapta a la actividad investigada, sin omitir cuestiones importantes por atender a un único perfil directivo.</p>
-        <div className="apps">
-          {[
-            ["01","Mercados y compradores","Segmentos, demanda, alternativas, estructura competitiva y condiciones de acceso."],
-            ["02","Empresa y modelo de negocio","Entidades, actividades, recursos observables, capacidades y dependencias."],
-            ["03","Productos y propuestas","Catálogo, comparaciones técnicas, arquitectura de precio, servicio y coste de uso cuando puede calcularse."],
-            ["04","Canales y posicionamiento","Distribución, servicio, alcance comercial, comunicación y señales verificables de confianza."],
-            ["05","Compradores, proyectos y compras","Clientes identificados, proyectos, licitaciones, suministros y recurrencia observable."],
-            ["06","Posición competitiva","Ventajas y limitaciones comparadas, cambios, amenazas e hipótesis alternativas."],
-            ["07","Síntesis y decisiones","Hallazgos clave, cuadro cuantitativo, implicaciones, supuestos críticos y cuestiones abiertas."]
-          ].map(([n,title,description])=><article className="app" key={n}><small>{n}</small><h3>{title}</h3><p>{description}</p></article>)}
-        </div>
-      </details></div></section>
-<section className="content evidence"><div className="wrap">
+      <section className="content" style={{background:"#fff"}}><div className="wrap"><details className="rp-details"><summary>Metodología de inteligencia competitiva: 7 ámbitos</summary><p className="intro" style={{marginTop:20}}>La metodología examina mercados y compradores, modelo de negocio, productos y precios, canales, proyectos y adquisiciones, posición competitiva, conclusiones y evidencias. Los hallazgos se contrastan con fuentes; lo desconocido se identifica expresamente.</p></details></div></section>
+      <section className="content evidence"><div className="wrap">
         <p className="kicker" style={{color:"#1758b5"}}>05 / Investigaciones realizadas</p>
         <h2>Ejemplo de resultados de investigación</h2>
         <p className="intro">Los estudios de CURVASER, FAYMASA, SEHER y FERBESOL permiten probar el método: actividades, ofertas, competencia, compradores y fuentes documentales. Su investigación pública no implica participación de estas empresas en el piloto.</p>
