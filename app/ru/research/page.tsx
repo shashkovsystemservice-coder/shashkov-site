@@ -3,8 +3,8 @@ import Link from "next/link";
 import ResearchConceptFormRu from "./ResearchConceptForm";
 
 export const metadata: Metadata = {
-  title: "Платформа маркетингового управления — стартап в Испании",
-  description: "Будущая платформа управления маркетингом для малого и среднего бизнеса. Первый модуль в разработке: бизнес-аналитика и конкурентная разведка.",
+  title: "Четыре связанные таблицы — основа маркетингового управления",
+  description: "Четыре таблицы. Одна последовательность управленческих решений. Маркетинговая стратегия. ● Сейчас исследуем: конкурентная разведка.",
 };
 
 const applications = [
@@ -22,19 +22,49 @@ export default function ResearchPilotPageRu() {
         @media(max-width:750px){.rp .hero{padding:60px 0 70px}.rp section.content{padding:60px 0}.rp .steps,.rp .apps,.rp .cases,.rp .phase{grid-template-columns:1fr}.rp .app{min-height:0}.rp .nav{flex-wrap:wrap}}
       `}</style>
       <div className="wrap nav"><Link className="brand" href="/">ВЛАДИМИР ШАШКОВ <span style={{fontWeight:400}}> / Исследование бизнеса</span></Link><div style={{display:"flex",gap:18,alignItems:"center"}}><Link className="back" href="/es/research">ES</Link><Link className="back" href="/">Вернуться на основной сайт ↗</Link></div></div>
-      <header className="hero">
-        <div className="wrap">
-          <p className="kicker">СТАРТАП В РАЗРАБОТКЕ · ИСПАНИЯ · MARKETING INTELLIGENCE & MANAGEMENT</p><h1>Возможности профессионального маркетинга — для малого и среднего бизнеса.</h1><p className="lead">Исследование рынка, стратегические решения и управление маркетингом — в одной последовательной системе. Мы превращаем профессиональные методологии в доступные инструменты для компаний.</p><a className="cta" href="#primer-modulo">Посмотреть первый модуль ↓</a><p className="hero-note">Первое направление разработки — бизнес-аналитика и конкурентная разведка. Уже есть методология, инструменты и исследовательские кейсы; единая цифровая платформа пока остаётся продуктовой концепцией.</p>
-        </div>
-      </header>
-      <section className="content" style={{background:"#fff"}}><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>ЛОГИКА БУДУЩЕГО ПРОДУКТА</p><h2>Проблема не в нехватке информации. Проблема — в переходе к решениям.</h2><p className="intro">На каких покупателей ориентироваться? С кем и как конкурировать? В какую ценность инвестировать? Как превратить выбранную стратегию в план и оценить результат?</p><p className="intro">Малым и средним компаниям нужны не пять разрозненных документов, а понятный процесс, связывающий исследование, выбор, действия, ресурсы и результаты.</p></div></section>
- <section className="content evidence"><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>ЛОГИКА БУДУЩЕГО ПРОДУКТА</p><h2>От проверенных сведений — к исполнимым решениям.</h2><div className="steps" style={{gridTemplateColumns:"repeat(auto-fit,minmax(235px,1fr))"}}><article className="step"><small>01</small><h3>Понять рынок</h3><p>Компании, покупатели, потребности и проверяемые альтернативы.</p></article>
-<article className="step"><small>02</small><h3>Выбрать стратегию</h3><p>Сегменты, ценность, преимущества и приоритеты.</p></article>
-<article className="step"><small>03</small><h3>Спланировать и инвестировать</h3><p>Программы, действия и бюджет, связанный со стратегией.</p></article>
-<article className="step"><small>04</small><h3>Измерять и корректировать</h3><p>Показатели, результаты и новые управленческие решения.</p></article></div></div></section>
- <section className="content" id="primer-modulo" style={{background:"#fff"}}><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>BUSINESS & COMPETITIVE INTELLIGENCE · 01</p><h2>Первое направление — глубокое исследование бизнеса и конкуренции.</h2><p className="intro">Сейчас мы развиваем Business & Competitive Intelligence: исследование собственной компании, её конкурентов и потенциальных покупателей по проверяемым открытым источникам. Методика отрабатывается на испанских промышленных кейсах. Готового агента и коммерческой платформы пока нет.</p><div className="apps"><article className="app"><small>01 / СВОЯ КОМПАНИЯ</small><h3>Увидеть бизнес со стороны</h3><p>Продукты, подтверждаемые возможности, рынки, позиция и ограничения.</p></article><article className="app"><small>02 / КОНКУРЕНТЫ</small><h3>Понять, с кем конкурируем</h3><p>Сопоставимые предложения, покупатели, каналы, открытые цены и отличия.</p></article><article className="app"><small>03 / ПОКУПАТЕЛИ</small><h3>Подготовиться к продажам</h3><p>Предприятия, производственные объекты, проекты, закупки и гипотезы потребностей.</p></article></div></div></section>
- <section className="content" style={{background:"#eaf0f7"}}><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>MARKETING MANAGEMENT PLATFORM</p><h2>Один будущий продукт. Пять связанных возможностей.</h2><p className="intro">Бизнес-аналитика и конкурентная разведка должны обеспечивать доказательную основу стратегии, годового плана, бюджета и контроля. Для ряда компонентов уже созданы методологические и табличные прототипы, но единого приложения пока нет.</p><div className="steps" style={{gridTemplateColumns:"repeat(auto-fit,minmax(230px,1fr))"}}><article className="step"><small>02 / Методологический прототип</small><h3>Маркетинговая стратегия</h3></article><article className="step"><small>03 / Методологический прототип</small><h3>Годовой маркетинговый план</h3></article><article className="step"><small>04 / Табличный прототип</small><h3>Маркетинговый бюджет</h3></article><article className="step"><small>05 / Концептуальное проектирование</small><h3>Контроль маркетинга</h3></article></div><p className="intro" style={{marginTop:25}}>Что уже можно показать: исследовательская методология, правила проверки и прикладные кейсы. Что предстоит проверить: коммерческая полезность для B2B-компаний и будущая цифровая реализация.</p></div></section>
- <ResearchConceptFormRu />
+      <header className="hero"><div className="wrap">
+<p className="kicker">БИЗНЕС-ИДЕЯ · 4 СВЯЗАННЫХ ИНСТРУМЕНТА · ИСПАНИЯ</p><h1>Маркетинговая стратегия, которая превращается в план, бюджет и управленческие решения.</h1><p className="lead">Наша бизнес-идея — дать малым и средним компаниям четыре связанных инструмента профессионального маркетинга. Главный — разработка маркетинговой стратегии. Остальные превращают стратегический выбор в действия, деньги и контроль результата.</p>
+<a className="cta" href="#cuatro-herramientas">Как работают четыре таблицы ↓</a>
+<p className="hero-note">В основе проекта — уже разрабатываемые табличные методики. Конкурентная разведка — отдельный текущий исследовательский процесс, который поможет наполнять стратегию проверенными данными.</p>
+</div></header>
+<section className="content" id="cuatro-herramientas" style={{background:"#fff"}}><div className="wrap">
+<p className="kicker" style={{color:"#1758b5"}}>MARKETING MANAGEMENT SYSTEM</p>
+<h2>Четыре таблицы. Одна последовательность управленческих решений.</h2><p className="intro">Не четыре отдельных шаблона, а одна связанная система: выводы из первой таблицы становятся исходными решениями для следующей. Переход к общей цифровой платформе — следующий возможный этап.</p>
+<div className="rp-toolchain">
+<article className="rp-tool rp-tool-first"><small>01 · CORE / STRATEGY</small><h3>Маркетинговая стратегия</h3><p>Главный инструмент. Определяем бизнес-цель, анализируем рынок, клиентов и конкурентов, выбираем сегменты, ценность, позиционирование, конкурентные преимущества и стратегию роста. Проверяем альтернативы и фиксируем осознанный стратегический выбор.</p></article>
+<div className="rp-chain-arrow" aria-hidden="true">↓</div>
+<article className="rp-tool"><small>02 · PLAN</small><h3>Годовой маркетинговый план</h3><p>Переводит выбранные стратегические инициативы в годовые программы, конкретные действия, сроки, приоритеты и ответственных.</p></article>
+<div className="rp-chain-arrow" aria-hidden="true">↓</div>
+<article className="rp-tool"><small>03 · BUDGET</small><h3>Маркетинговый бюджет</h3><p>Соотносит действия с затратами и ресурсами, помогает сравнивать сценарии и выбирать, во что реально инвестировать.</p></article>
+<div className="rp-chain-arrow" aria-hidden="true">↓</div>
+<article className="rp-tool"><small>04 · CONTROL</small><h3>Отчёт об управлении маркетингом</h3><p>Сопоставляет цели, KPI и фактические результаты, выявляет отклонения и возвращает решения на пересмотр стратегии и плана. Этот компонент ещё проектируется.</p></article>
+<div className="rp-chain-arrow" aria-hidden="true">↺</div>
+<p className="intro"><strong>Именно связь делает систему продуктом: цель → стратегический выбор → программа → действие → ресурс → KPI → результат → новое решение.</strong></p>
+</div></div></section>
+<section className="content evidence" id="primer-modulo"><div className="wrap">
+<h2>Что мы разрабатываем сейчас</h2>
+<div className="rp-statuses">
+<article className="rp-status rp-status-green"><span className="rp-status-tag">✓ В работе: создание и проверка инструментов</span><p>Для стратегии, годового плана и бюджета уже созданы табличные версии. Четвёртая таблица — управленческий отчёт — находится на стадии проектирования. Единое веб-приложение ещё не создано.</p></article>
+<article className="rp-status rp-status-yellow"><span className="rp-status-tag">● Сейчас исследуем: конкурентная разведка</span><p>Отдельная развивающаяся методология глубокого исследования собственной компании, конкурентов и потенциальных покупателей. Её результаты должны предоставлять доказательную основу для первой, главной таблицы — маркетинговой стратегии. Это пока не готовый программный модуль и не запущенный автономный агент.</p><a href="#configurar">Посмотреть исследовательский инструмент ↓</a></article>
+</div></div></section>
+<style>{`
+.rp .rp-toolchain{max-width:890px;margin-top:32px}
+.rp .rp-tool{background:#fff;border:1px solid #dce5ef;padding:24px 29px;border-left:5px solid #7898bc}
+.rp .rp-tool-first{background:#eef5ff;border:2px solid #1758b5;border-left:8px solid #1758b5;padding:30px}
+.rp .rp-tool small{font-weight:800;font-size:12px;color:#1758b5;letter-spacing:.06em}
+.rp .rp-tool h3{margin:8px 0 11px}.rp .rp-tool p{margin:0;color:#53637a}
+.rp .rp-chain-arrow{color:#1758b5;font-weight:800;font-size:29px;text-align:center;line-height:1.45}
+.rp .rp-statuses{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:30px}
+.rp .rp-status{background:#fff;padding:27px;border:1px solid #dce5ef}
+.rp .rp-status-green{border-top:5px solid #21966a;background:#f0fbf4}
+.rp .rp-status-yellow{border-top:5px solid #d79a13;background:#fff9e9}
+.rp .rp-status-tag{display:inline-block;font-weight:800;font-size:14px;color:#174b37}
+.rp .rp-status-yellow .rp-status-tag{color:#785100}
+.rp .rp-status p{font-size:16px;color:#405064;margin:14px 0}
+.rp .rp-status a{font-weight:700;color:#1758b5;font-size:15px}
+@media(max-width:750px){.rp .rp-statuses{grid-template-columns:1fr}.rp .rp-tool{padding:20px}.rp .rp-tool-first{padding:24px}}
+`}</style>
+<ResearchConceptFormRu />
       <section className="content"><div className="wrap">
         <p className="kicker" style={{color:"#1758b5"}}>02 / Методология</p>
         <h2>Полное исследование. Сначала доказательства — затем выводы.</h2>
