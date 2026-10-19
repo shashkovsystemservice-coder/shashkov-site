@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ProductInterfacePreview from "../research/ProductInterfacePreview";
 export const metadata: Metadata = { title: "Маркетинговая система и конкурентная разведка | SHASHKOV Startup", description: "Единая концепция стартапа: интерактивная система маркетингового управления и методология конкурентной разведки. Приглашение испанским B2B-компаниям к пилоту." };
-export default function StartupHome(){return <main className="unified">
+export default function StartupHome(){return <main className="unified rp">
 <style>{`
 .unified{--ink:#15233b;--blue:#285fd4;--muted:#526784;background:#f5f8fd;color:var(--ink);font:16px/1.55 Arial,Helvetica,sans-serif}
 .unified *{box-sizing:border-box}.unified a{text-decoration:none}.unified .wrap{max-width:1150px;width:calc(100% - 44px);margin:auto}
