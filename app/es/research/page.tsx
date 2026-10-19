@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ProductInterfacePreview from "./ProductInterfacePreview";
 import ResearchConceptForm from "./ResearchConceptForm";
 
 export const metadata: Metadata = {
-  title: "Cuatro herramientas conectadas para dirigir el marketing",
-  description: "Cuatro herramientas. Un proceso de decisión conectado. Marketing Strategy. ● Investigación actual: inteligencia competitiva.",
+  title: "Plataforma interactiva de gestión de marketing para pymes",
+  description: "Concepto de plataforma interactiva: estrategia, plan anual, presupuesto y control. En desarrollo: herramienta de inteligencia competitiva.",
 };
 
 const applications = [
@@ -40,25 +41,9 @@ export default function ResearchPilotPage() {
       `}</style>
       <div className="rp-invite"><div className="wrap rp-invite-inner"><span className="rp-invite-label">● INVITACIÓN A EMPRESAS B2B EN ESPAÑA</span><strong>Participe en la validación de nuestra herramienta de inteligencia competitiva.</strong><a href="#piloto">Conocer el programa piloto →</a></div></div>
       <div className="wrap nav"><Link className="brand" href="/es">VLADIMIR SHASHKOV <span style={{fontWeight:400}}> / Investigación empresarial</span></Link><div style={{display:"flex",gap:18,alignItems:"center"}}><Link className="back" href="/ru/research">RU</Link><Link className="back" href="/es">Volver a la web principal ↗</Link></div></div>
-      <header className="hero"><div className="wrap">
-<p className="kicker">IDEA DE NEGOCIO · 4 HERRAMIENTAS CONECTADAS · ESPAÑA</p><h1>Una estrategia de marketing que se convierte en plan, presupuesto y decisiones de gestión.</h1><p className="lead">Nuestra idea de negocio es facilitar a las pymes cuatro herramientas profesionales conectadas. La principal permite formular la estrategia de marketing; las demás convierten las decisiones estratégicas en acciones, recursos y control de resultados.</p>
-<a className="cta" href="#cuatro-herramientas">Cómo funcionan las cuatro herramientas ↓</a>
-<p className="hero-note">El proyecto parte de metodologías tabulares en desarrollo. La inteligencia competitiva es una línea actual de investigación que busca alimentar la estrategia con evidencias verificables.</p>
-</div></header>
-<section className="content" id="cuatro-herramientas" style={{background:"#fff"}}><div className="wrap">
-<p className="kicker" style={{color:"#1758b5"}}>MARKETING MANAGEMENT SYSTEM</p>
-<h2>Cuatro herramientas. Un proceso de decisión conectado.</h2><p className="intro">No son cuatro plantillas independientes. Las decisiones de cada herramienta sirven de base a la siguiente. Su integración futura en una plataforma digital es una etapa posterior.</p>
-<div className="rp-toolchain">
-<article className="rp-tool rp-tool-first"><small>01 · CORE / STRATEGY</small><h3>Marketing Strategy</h3><p>La herramienta principal. Relaciona objetivos empresariales, mercados, clientes y competencia con la selección de segmentos, propuesta de valor, posicionamiento, ventajas competitivas y alternativas de crecimiento. Conduce a una elección estratégica fundamentada.</p></article>
-<div className="rp-chain-arrow" aria-hidden="true">↓</div>
-<article className="rp-tool"><small>02 · PLAN</small><h3>Annual Marketing Plan</h3><p>Transforma iniciativas estratégicas en programas anuales, acciones, plazos, prioridades y responsabilidades.</p></article>
-<div className="rp-chain-arrow" aria-hidden="true">↓</div>
-<article className="rp-tool"><small>03 · BUDGET</small><h3>Marketing Budget</h3><p>Relaciona acciones con recursos y costes; permite comparar escenarios y decidir las inversiones posibles.</p></article>
-<div className="rp-chain-arrow" aria-hidden="true">↓</div>
-<article className="rp-tool"><small>04 · CONTROL</small><h3>Marketing Management Report</h3><p>Compara objetivos, KPI y resultados, identifica desviaciones y permite revisar la estrategia y el plan. Esta cuarta herramienta sigue en fase de diseño.</p></article>
-<div className="rp-chain-arrow" aria-hidden="true">↺</div>
-<p className="intro"><strong>La conexión es el núcleo del producto: objetivo → decisión estratégica → programa → acción → recurso → KPI → resultado → revisión.</strong></p>
-</div></div></section>
+      <header className="hero"><div className="wrap"><p className="kicker">STARTUP · CONCEPTO DE PRODUCTO DIGITAL · ESPAÑA</p><h1>Una plataforma interactiva para gestionar el marketing de las pymes.</h1><p className="lead">Desarrollamos un futuro entorno de trabajo digital en el que una empresa pueda formular su estrategia de marketing, convertir las decisiones en planes y presupuestos y evaluar los resultados. El fundamento es una metodología profesional de decisión.</p><a className="cta" href="#interfaz">Explorar el concepto de interfaz ↓</a><p className="hero-note">Existen prototipos metodológicos en hojas de cálculo para estrategia, plan y presupuesto. La aplicación interactiva integrada es el producto futuro. Actualmente investigamos una herramienta de inteligencia competitiva.</p></div></header>
+<section className="content" id="cuatro-herramientas" style={{background:"#fff"}}><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>MARKETING MANAGEMENT SYSTEM</p><h2>Cuatro áreas de trabajo conectadas. No cuatro archivos independientes.</h2><p className="intro">La futura interfaz guiará al usuario por un único proceso: elección estratégica → plan anual → recursos → resultados y revisión. Las hojas de cálculo actuales sirven para probar la metodología, no para definir el formato final del producto.</p></div></section>
+<ProductInterfacePreview />
 <section className="content" id="ejemplo-estrategia" style={{background:"#fff"}}><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>EJEMPLO DE UNA DECISIÓN CONECTADA</p><h2>Cómo una decisión empresarial atraviesa las cuatro herramientas</h2><p className="intro">Ejemplo ilustrativo: una empresa industrial estudia entrar en un nuevo segmento. Esta secuencia muestra la lógica del método, no resultados de una implementación real.</p><div className="rp-example-steps"><article className="rp-example-item rp-example-primary"><small>01 / HERRAMIENTA CENTRAL</small><h3>Marketing Strategy</h3><p>Comparamos segmentos, demanda observable, competidores y capacidades de la empresa. Elegimos el segmento objetivo, la propuesta de valor y una dirección estratégica. Registramos evidencias, alternativas y opciones descartadas.</p></article><article className="rp-example-item"><small>02 / PROGRAMA</small><h3>Annual Marketing Plan</h3><p>Convertimos la iniciativa elegida en un programa de entrada: investigar compradores, adaptar la oferta, realizar contactos comerciales y probar canales y plazos.</p></article><article className="rp-example-item"><small>03 / RECURSOS</small><h3>Marketing Budget</h3><p>Relacionamos esas acciones con recursos y costes, comparamos escenarios factibles y elegimos una asignación viable.</p></article><article className="rp-example-item"><small>04 / RETROALIMENTACIÓN</small><h3>Management Report</h3><p>Contrastamos objetivos e indicadores con resultados reales. Si la hipótesis del segmento no se confirma, revisamos la estrategia. La cuarta herramienta continúa en diseño.</p></article></div><p className="intro" style={{marginTop:26}}><strong>La investigación de la empresa, el mercado, los competidores y los compradores aporta evidencia sobre todo a la herramienta nº 1. La inteligencia competitiva no sustituye a la estrategia: contribuye a fundamentarla.</strong></p></div></section>
 <section className="content evidence" id="primer-modulo"><div className="wrap">
 <h2>Qué estamos desarrollando ahora</h2>
