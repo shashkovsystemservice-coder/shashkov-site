@@ -27,7 +27,17 @@ export default function ResearchPilotPageRu() {
         .rp .rp-invite strong{font-size:15px;flex:1;min-width:220px}
         .rp .rp-invite a{font-size:14px;font-weight:800;color:#725000;text-decoration:underline;text-underline-offset:3px;white-space:normal}
         @media(max-width:750px){.rp .rp-invite-inner{gap:6px;padding:13px 0;align-items:flex-start;flex-direction:column}.rp .rp-invite strong{min-width:0;font-size:15px}}
-       `}</style>
+ 
+.rp .rp-example-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:30px}
+.rp .rp-example-item{padding:25px;border:1px solid #dce5ef;background:#fff}
+.rp .rp-example-primary{border:2px solid #1758b5;background:#eef5ff}
+.rp .rp-example-item small{color:#1758b5;font-weight:800;font-size:12px}
+.rp .rp-example-item h3{margin:10px 0}.rp .rp-example-item p{font-size:16px;color:#53637a}
+.rp .rp-details{border:1px solid #dce5ef;background:#fff;padding:24px}
+.rp .rp-details summary{font-weight:800;font-size:22px;cursor:pointer;line-height:1.3}
+.rp .rp-details .apps{margin-top:20px}
+@media(max-width:750px){.rp .rp-example-steps{grid-template-columns:1fr}.rp .rp-details{padding:18px}}
+      `}</style>
       <div className="rp-invite"><div className="wrap rp-invite-inner"><span className="rp-invite-label">● ПРИГЛАШАЕМ B2B-КОМПАНИИ ИСПАНИИ</span><strong>Участвуйте в проверке инструмента конкурентной разведки.</strong><a href="#piloto">Условия участия в пилоте →</a></div></div>
       <div className="wrap nav"><Link className="brand" href="/">ВЛАДИМИР ШАШКОВ <span style={{fontWeight:400}}> / Исследование бизнеса</span></Link><div style={{display:"flex",gap:18,alignItems:"center"}}><Link className="back" href="/es/research">ES</Link><Link className="back" href="/">Вернуться на основной сайт ↗</Link></div></div>
       <header className="hero"><div className="wrap">
@@ -49,6 +59,7 @@ export default function ResearchPilotPageRu() {
 <div className="rp-chain-arrow" aria-hidden="true">↺</div>
 <p className="intro"><strong>Именно связь делает систему продуктом: цель → стратегический выбор → программа → действие → ресурс → KPI → результат → новое решение.</strong></p>
 </div></div></section>
+<section className="content" id="ejemplo-estrategia" style={{background:"#fff"}}><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>ПРИМЕР ПРОХОЖДЕНИЯ РЕШЕНИЯ</p><h2>Как одна бизнес-задача проходит через все четыре инструмента</h2><p className="intro">Иллюстративный пример: промышленная компания рассматривает выход в новый сегмент. Это демонстрация логики методологии, а не результат реального внедрения.</p><div className="rp-example-steps"><article className="rp-example-item rp-example-primary"><small>01 / ГЛАВНАЯ ТАБЛИЦА</small><h3>Маркетинговая стратегия</h3><p>Сравниваем сегменты, реальный спрос, предложения конкурентов и возможности предприятия. Выбираем целевой сегмент, ценностное предложение и стратегическое направление. Фиксируем доказательства, альтернативы и отказ от других вариантов.</p></article><article className="rp-example-item"><small>02 / ПРОГРАММА</small><h3>Годовой маркетинговый план</h3><p>Превращаем выбранную инициативу в программу выхода на сегмент: изучить покупателей, адаптировать предложение, провести целевые переговоры, проверить каналы и сроки.</p></article><article className="rp-example-item"><small>03 / РЕСУРСЫ</small><h3>Маркетинговый бюджет</h3><p>Для тех же действий определяем затраты и ресурсы, сравниваем реалистичные сценарии и утверждаем доступный вариант.</p></article><article className="rp-example-item"><small>04 / ОБРАТНАЯ СВЯЗЬ</small><h3>Управленческий отчёт</h3><p>Сравниваем плановые показатели с фактическими. Если гипотеза о сегменте не подтверждается, возвращаемся к стратегическому выбору. Четвёртая таблица пока проектируется.</p></article></div><p className="intro" style={{marginTop:26}}><strong>Исследование компании, рынка, конкурентов и потенциальных покупателей поставляет доказательства прежде всего для таблицы №1. Конкурентная разведка не заменяет стратегию — она помогает сделать её обоснованной.</strong></p></div></section>
 <section className="content evidence" id="primer-modulo"><div className="wrap">
 <h2>Что мы разрабатываем сейчас</h2>
 <div className="rp-statuses">
@@ -73,7 +84,7 @@ export default function ResearchPilotPageRu() {
 @media(max-width:750px){.rp .rp-statuses{grid-template-columns:1fr}.rp .rp-tool{padding:20px}.rp .rp-tool-first{padding:24px}}
 `}</style>
 <ResearchConceptFormRu />
-      <section className="content"><div className="wrap">
+      <section className="content" style={{background:"#fff"}}><div className="wrap"><details className="rp-details"><summary>Полная методология конкурентной разведки: 7 исследовательских направлений</summary><p className="intro" style={{marginTop:20}}>Здесь сохранены подробности метода для тех, кто хочет изучить структуру отчёта. Для понимания самого стартапа достаточно схемы четырёх инструментов выше.</p>
         <p className="kicker" style={{color:"#1758b5"}}>02 / Методология</p>
         <h2>Полное исследование. Сначала доказательства — затем выводы.</h2>
         <p className="intro">Название компании и её сайт помогают определить объект исследования. Далее изучаются внешние публичные источники, проверяются сведения и альтернативные объяснения, сопоставляются предложения и фиксируются границы доказуемого.</p>
@@ -104,11 +115,11 @@ export default function ResearchPilotPageRu() {
             ["07","Синтез и выводы","Главные открытия, количественная сводка, последствия, критические допущения и открытые вопросы."]
           ].map(([n,title,description])=><article className="app" key={n}><small>{n}</small><h3>{title}</h3><p>{description}</p></article>)}
         </div>
-      </div></section>
-      <section className="content evidence"><div className="wrap">
+      </details></div></section>
+<section className="content evidence"><div className="wrap">
         <p className="kicker" style={{color:"#1758b5"}}>05 / Исследовательские кейсы</p>
-        <h2>Реальные предприятия. Конкретные вопросы. Проверяемые сведения.</h2>
-        <p className="intro">Кейсы демонстрируют исследовательскую работу, на основе которой совершенствуется метод. Они не являются отзывами, заказами или подтверждением со стороны изучаемых компаний.</p>
+        <h2>Фрагмент исследовательского результата</h2>
+        <p className="intro">На примерах CURVASER, FAYMASA, SEHER и FERBESOL проверяется метод: сопоставление деятельности, продуктов, конкурентного поля, покупателей и документальных свидетельств. Публичное исследование не означает участия этих компаний в пилоте.</p>
         <div className="cases">
           <article className="case"><span className="tag">Исследовательский кейс · Испания</span><h3>CURVASER</h3><p>Промышленная деятельность и технологии, конкурентные альтернативы, покупатели, проекты и признаки спроса. Связи проверяются по источникам; косвенные признаки не выдаются за подтверждённые закупки.</p></article>
           <article className="case"><span className="tag">Отраслевые исследования · Испания</span><h3>FAYMASA · SEHER · FERBESOL</h3><p>Исследования испанского промышленного бизнеса для изучения продуктов, конкурентной позиции и возможностей с чётким различением фактов, заявлений и гипотез.</p></article>
@@ -124,14 +135,7 @@ export default function ResearchPilotPageRu() {
           <article className="step"><small>ОГРАНИЧЕНИЯ</small><h3>Без ложной определённости</h3><p>Предложение не равно продаже, упоминание проекта не доказывает закупку, отсутствие публикации не означает отсутствие деятельности.</p></article>
         </div>
       </div></section>
-      <section className="content pilot" id="piloto"><div className="wrap">
-        <p className="kicker">07 / Пилотная программа в Испании</p>
-        <h2>Приглашаю промышленные компании Испании стать участниками пилота и оценить результаты исследования.</h2>
-        <p>Предлагаю выбрать компанию или конкурентное направление, согласовать объём исследования по публичным интернет-источникам и оценить полезность, полноту и понятность полученных результатов.</p>
-        <p><strong>Без коммерческих обязательств.</strong> Объём и формат участия согласовываются заранее. Внутренние документы и конфиденциальные сведения не требуются. Покупать услуги не обязательно.</p>
-        <a className="cta" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Обсудить участие в пилоте ↗</a>
-        <p style={{marginTop:16,fontSize:14}}>Связаться со мной напрямую в Telegram.</p>
-      </div></section>
+      <section className="content pilot" id="piloto"><div className="wrap"><p className="kicker">ПРИГЛАШЕНИЕ К ПРОВЕРКЕ ИНСТРУМЕНТА</p><h2>Получили исследование? Приглашаем оценить его точность и практическую ценность.</h2><p>Мы разрабатываем инструмент конкурентной разведки и предлагаем руководителям испанских B2B-компаний ознакомиться с исследованием своего бизнеса, конкурентов или потенциальных покупателей. Нам важна критическая оценка: что точно, чего не хватает и какие выводы действительно помогают принимать решения.</p><p>Как это работает: согласуем предмет исследования → подготовим или предоставим исследовательский отчёт → вы изучите его в удобном формате → при желании сообщите замечания. Формат и объём обратной связи согласуются индивидуально; это не обязательство участвовать в разработке программного обеспечения.</p><p><strong>Без коммерческих обязательств. Конфиденциальные документы не требуются.</strong></p><a className="cta" href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Обсудить исследование и участие ↗</a></div></section>
       <footer><div className="wrap">Vladimir Shashkov · Стратегия, маркетинг и развитие бизнеса · <Link href="/es">Основной сайт</Link></div></footer>
     </main>
   );
