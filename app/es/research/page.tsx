@@ -24,49 +24,17 @@ export default function ResearchPilotPage() {
       <div className="wrap nav"><Link className="brand" href="/es">VLADIMIR SHASHKOV <span style={{fontWeight:400}}> / Investigación empresarial</span></Link><div style={{display:"flex",gap:18,alignItems:"center"}}><Link className="back" href="/ru/research">RU</Link><Link className="back" href="/es">Volver a la web principal ↗</Link></div></div>
       <header className="hero">
         <div className="wrap">
-          <p className="kicker">PROYECTO EMPRENDEDOR · ESPAÑA · EN DESARROLLO</p>
-          <h1>Del conocimiento del mercado a mejores decisiones de marketing.</h1>
-          <p className="lead">Estamos desarrollando una futura plataforma para que las pymes conecten investigación empresarial, estrategia de marketing, planificación, presupuestos y control de resultados mediante metodologías profesionales accesibles.</p>
-          <a className="cta" href="#primer-modulo">Explorar el primer módulo ↓</a>
-          <p className="hero-note">Estado: metodologías y prototipos tabulares desarrollados; primer módulo de inteligencia empresarial y competitiva en validación metodológica. La plataforma integrada aún no está disponible.</p>
+          <p className="kicker">STARTUP EN DESARROLLO · ESPAÑA · MARKETING INTELLIGENCE & MANAGEMENT</p><h1>La inteligencia de las grandes empresas. Al alcance de las pymes.</h1><p className="lead">Investigación del mercado, decisiones estratégicas y gestión de marketing conectadas. Estamos convirtiendo metodologías profesionales en herramientas más accesibles para pequeñas y medianas empresas.</p><a className="cta" href="#primer-modulo">Explorar el módulo en desarrollo ↓</a><p className="hero-note">Primera línea de desarrollo: Business & Competitive Intelligence. Ya contamos con metodología, herramientas y casos de investigación; la plataforma digital integrada es nuestra visión de producto.</p>
         </div>
       </header>
-      <section className="content" style={{background:"#fff"}}><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>El problema</p>
-        <h2>Las pymes necesitan conectar la información, la estrategia y la ejecución.</h2>
-        <p className="intro">Muchas empresas disponen de información sobre mercados, clientes y competidores, pero no siempre cuentan con procesos o recursos especializados para convertirla en decisiones estratégicas.</p><p className="intro">Nuestra visión es reducir la separación entre investigación, estrategia, acciones, presupuestos y resultados: cada decisión debe poder relacionarse con los datos y las hipótesis que la fundamentan.</p>
-      </div></section>
-      <section className="content" style={{background:"#fff"}}><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>Visión de la plataforma</p>
-        <h2>Cinco componentes de una futura plataforma de gestión de marketing.</h2><p className="intro">Un único proceso de gestión, desde las evidencias del mercado hasta la revisión de las decisiones. Los módulos tienen diferentes grados de madurez; no se presentan como software comercial disponible.</p>
-        <div className="steps" style={{gridTemplateColumns:"repeat(auto-fit,minmax(250px,1fr))"}}><article className="step"><small>01 / EN VALIDACIÓN METODOLÓGICA</small><h3>Business & Competitive Intelligence</h3><p>Investigación estructurada de la propia empresa, mercados, competidores y compradores potenciales con fuentes verificables.</p></article>
-          <article className="step"><small>02 / PROTOTIPO METODOLÓGICO</small><h3>Marketing Strategy</h3><p>Objetivos, segmentos, necesidades, propuesta de valor, posicionamiento, ventajas competitivas y alternativas estratégicas.</p></article>
-          <article className="step"><small>03 / PROTOTIPO METODOLÓGICO</small><h3>Annual Marketing Plan</h3><p>Conversión de elecciones estratégicas en programas, acciones, prioridades y recursos.</p></article>
-          <article className="step"><small>04 / PROTOTIPO TABULAR</small><h3>Marketing Budget</h3><p>Asignación de recursos, costes, escenarios y compromisos económicos vinculados al plan.</p></article>
-          <article className="step"><small>05 / DISEÑO CONCEPTUAL</small><h3>Management Control</h3><p>Indicadores, resultados, desviaciones, previsiones y revisión de las decisiones.</p></article></div>
-      </div></section>
-      <section className="content evidence" id="primer-modulo"><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>Primer módulo · desarrollo activo</p>
-        <h2>El primer módulo activo: inteligencia empresarial y competitiva.</h2><p className="intro">Estamos desarrollando y comprobando la metodología de investigación mediante estudios de empresas industriales españolas. Ya existen estructuras de informes, criterios de evidencia y casos de trabajo. Todavía no es un módulo de software comercial ni un agente autónomo.</p><p className="intro">El análisis contempla tres perspectivas: la propia empresa, sus competidores y compradores potenciales. Distingue hechos documentados, declaraciones, indicios, estimaciones, hipótesis y cuestiones no verificadas.</p>
-      </div></section>
-      <section className="content" style={{background:"#fff"}}><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>De la evidencia a la decisión</p>
-        <h2>La investigación es el punto de partida, no el producto completo.</h2><p className="intro">La evidencia obtenida en una investigación puede ayudar a elegir segmentos, evaluar alternativas competitivas y fundamentar iniciativas. La visión futura es relacionar esa información con Strategy → Annual Plan → Budget → Management Control, preservando su origen y sus límites.</p>
-      </div></section>
-      <section className="content" style={{background:"#eaf0f7"}}><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>Mercado y desarrollo</p>
-        <h2>Mercado inicial y posible modelo de negocio</h2><p className="intro">El segmento inicial propuesto son las pymes B2B españolas, especialmente industriales. La hipótesis comercial futura contempla una plataforma por suscripción con módulos especializados y, durante la validación, proyectos piloto asistidos. La demanda, los precios y la escalabilidad aún requieren pruebas.</p>
-      </div></section>
-      <section className="content" style={{background:"#eaf0f7"}}><div className="wrap">
-        <p className="kicker" style={{color:"#1758b5"}}>Estado de la startup</p>
-        <h2>Qué hemos construido. Qué estamos validando.</h2>
-        <div className="steps">
-          <article className="step"><small>DESARROLLADO</small><h3>Metodología e informe</h3><p>Existe una estructura de investigación con siete ámbitos, comparaciones cuantitativas y anexos de evidencias.</p></article>
-          <article className="step"><small>EN PRUEBAS</small><h3>Investigaciones de empresas</h3><p>Estamos estudiando casos industriales reales para detectar aciertos, omisiones, límites y oportunidades de mejora.</p></article>
-          <article className="step"><small>POR VALIDAR</small><h3>Utilidad para las empresas</h3><p>Queremos comprender qué hallazgos aportan valor, cómo presentar el resultado y en qué situaciones una empresa lo utilizaría.</p></article>
-        </div>
-      </div></section>
-      <ResearchConceptForm />
+      <section className="content" style={{background:"#fff"}}><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>VISTA DEL PRODUCTO</p><h2>No faltan datos. Falta convertirlos en decisiones conectadas.</h2><p className="intro">¿A qué clientes dirigirnos? ¿Contra quién competimos? ¿Qué propuesta de valor merece inversión? ¿Cómo convertimos estas respuestas en un plan y comprobamos sus resultados?</p><p className="intro">Las pymes no necesitan cinco documentos inconexos. Necesitan un proceso comprensible que conecte investigación, elecciones, recursos y resultados.</p></div></section>
+ <section className="content evidence"><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>VISTA DEL PRODUCTO</p><h2>De la evidencia a una decisión que se pueda ejecutar.</h2><div className="steps" style={{gridTemplateColumns:"repeat(auto-fit,minmax(235px,1fr))"}}><article className="step"><small>01</small><h3>Comprender el mercado</h3><p>Empresas, compradores, necesidades y alternativas verificables.</p></article>
+<article className="step"><small>02</small><h3>Elegir una estrategia</h3><p>Segmentos, propuesta de valor, ventajas y prioridades.</p></article>
+<article className="step"><small>03</small><h3>Planificar e invertir</h3><p>Programas, acciones y presupuesto relacionado con la estrategia.</p></article>
+<article className="step"><small>04</small><h3>Medir y corregir</h3><p>Indicadores, resultados y decisiones de ajuste.</p></article></div></div></section>
+ <section className="content" id="primer-modulo" style={{background:"#fff"}}><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>BUSINESS & COMPETITIVE INTELLIGENCE · 01</p><h2>Nuestro primer foco: investigar empresas y competencia con profundidad.</h2><p className="intro">El primer componente en desarrollo metodológico es Business & Competitive Intelligence: estudiar tu propia empresa, tus competidores y potenciales compradores a partir de fuentes contrastables. Estamos perfeccionando el método con casos industriales españoles. Aún no existe un agente ni una plataforma comercial.</p><div className="apps"><article className="app"><small>01 / TU EMPRESA</small><h3>Conocer tu negocio desde fuera</h3><p>Productos, capacidades observables, segmentos, posición y límites documentados.</p></article><article className="app"><small>02 / COMPETIDORES</small><h3>Entender con quién compites</h3><p>Ofertas comparables, clientes, canales, precios públicos y diferencias relevantes.</p></article><article className="app"><small>03 / COMPRADORES</small><h3>Preparar oportunidades comerciales</h3><p>Empresas, instalaciones, proyectos, compras y necesidades por verificar.</p></article></div></div></section>
+ <section className="content" style={{background:"#eaf0f7"}}><div className="wrap"><p className="kicker" style={{color:"#1758b5"}}>MARKETING MANAGEMENT PLATFORM</p><h2>Una visión de producto. Cinco capacidades conectadas.</h2><p className="intro">La inteligencia empresarial alimenta una futura secuencia de estrategia, plan anual, presupuesto y control. Ya existen herramientas metodológicas y prototipos en hojas de cálculo; aún no están integrados en una aplicación.</p><div className="steps" style={{gridTemplateColumns:"repeat(auto-fit,minmax(230px,1fr))"}}><article className="step"><small>02 / Prototipo metodológico</small><h3>Marketing Strategy</h3></article><article className="step"><small>03 / Prototipo metodológico</small><h3>Annual Marketing Plan</h3></article><article className="step"><small>04 / Prototipo tabular</small><h3>Marketing Budget</h3></article><article className="step"><small>05 / Diseño conceptual</small><h3>Management Control</h3></article></div><p className="intro" style={{marginTop:25}}>Lo que ya podemos mostrar: metodología de investigación, criterios de verificación y casos aplicados. Lo que estamos evaluando: utilidad real para empresas B2B y futura implementación digital.</p></div></section>
+ <ResearchConceptForm />
       <section className="content"><div className="wrap">
         <p className="kicker" style={{color:"#1758b5"}}>02 / Metodología</p>
         <h2>Una investigación integral. Evidencia antes que conclusiones.</h2>
@@ -101,11 +69,11 @@ export default function ResearchPilotPage() {
       </div></section>
       <section className="content evidence"><div className="wrap">
         <p className="kicker" style={{color:"#1758b5"}}>05 / Investigaciones realizadas</p>
-        <h2>Casos utilizados para poner a prueba la metodología.</h2>
-        <p className="intro">Los casos son investigaciones de fuentes públicas, no auditorías internas ni trabajos encargados o validados por las empresas estudiadas. Cada afirmación relevante debe poder rastrearse hasta una fuente.</p>
+        <h2>Empresas reales. Preguntas concretas. Evidencia comprobable.</h2>
+        <p className="intro">Los casos muestran el trabajo de investigación que ayuda a construir el método; no son testimonios, encargos ni validaciones de las empresas analizadas.</p>
         <div className="cases">
-          <article className="case"><span className="tag">Caso de investigación · España</span><h3>CURVASER</h3><p>Investigación de actividad, tecnologías, competencia y demanda industrial. La documentación pública permitió rastrear relaciones con Navantia y un proyecto de Metalmalla con VARO.</p><p><strong>Cuestión abierta:</strong> determinar qué partes son realmente útiles para sus responsables y qué profundidad necesitan.</p></article>
-          <article className="case"><span className="tag">Pruebas sectoriales · España</span><h3>FAYMASA · SEHER · FERBESOL</h3><p>Otros casos de análisis externos empleados para desarrollar el método y aprender a distinguir capacidades verificables, competencia real y oportunidades que requieren validación.</p><p><strong>Estado:</strong> pruebas de investigación; la participación en el programa piloto no se presume.</p></article>
+          <article className="case"><span className="tag">Caso de investigación · España</span><h3>CURVASER</h3><p>Actividad y tecnologías industriales, alternativas competitivas, compradores, proyectos y señales de demanda. Las relaciones documentadas se contrastan con sus fuentes; indicios y compras confirmadas se mantienen separados.</p></article>
+          <article className="case"><span className="tag">Pruebas sectoriales · España</span><h3>FAYMASA · SEHER · FERBESOL</h3><p>Investigaciones de negocios industriales españoles para contrastar productos, posición competitiva y oportunidades sin confundir declaraciones, hechos e hipótesis.</p></article>
         </div>
       </div></section>
       <section className="content"><div className="wrap">
