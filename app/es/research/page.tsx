@@ -3,7 +3,7 @@ import Link from "next/link";
 import ResearchConceptForm from "./ResearchConceptForm";
 
 export const metadata: Metadata = {
-  title: "Investigación empresarial y competitiva en profundidad — Vladimir Shashkov",
+  title: "Proyecto startup: investigación empresarial y competitiva — Vladimir Shashkov",
   description: "Investigación documentada de empresas, mercados, competidores, productos y compradores utilizando exclusivamente fuentes públicas de Internet. Programa piloto para empresas industriales en España.",
 };
 
@@ -24,13 +24,28 @@ export default function ResearchPilotPage() {
       <div className="wrap nav"><Link className="brand" href="/es">VLADIMIR SHASHKOV <span style={{fontWeight:400}}> / Investigación empresarial</span></Link><div style={{display:"flex",gap:18,alignItems:"center"}}><Link className="back" href="/ru/research">RU</Link><Link className="back" href="/es">Volver a la web principal ↗</Link></div></div>
       <header className="hero">
         <div className="wrap">
-          <p className="kicker">Investigación empresarial y competitiva · Fuentes públicas verificables</p>
-          <h1>Comprender una empresa. Su mercado. Sus competidores. Sus oportunidades.</h1>
-          <p className="lead">Investigamos empresas y su entorno competitivo en profundidad: mercados, modelos de negocio, productos, alternativas, compradores, proyectos y relaciones comerciales. Elaboramos informes documentados con comparaciones, cifras verificables y conclusiones fundamentadas.</p>
+          <p className="kicker">PROYECTO STARTUP · PILOTO DE INVESTIGACIÓN · ESPAÑA</p>
+          <h1>Desarrollamos una nueva forma de investigar empresas y mercados en profundidad.</h1>
+          <p className="lead">Un proyecto startup para desarrollar una investigación profesional y reproducible de empresas, competidores y compradores potenciales. Estamos probando la metodología con casos industriales y buscamos empresas que evalúen los resultados del piloto.</p>
           <a className="cta" href="#piloto">Conocer el programa piloto ↓</a>
-          <p className="hero-note">El proyecto se encuentra en fase de validación con casos industriales. El trabajo se basa exclusivamente en información disponible en fuentes públicas de Internet; los límites de esa evidencia se explican en el informe.</p>
+          <p className="hero-note">Estado del proyecto: ya existe una metodología y se han realizado investigaciones iniciales; seguimos validando la calidad, la utilidad y la presentación del futuro producto. Solo utilizamos información pública externa de Internet.</p>
         </div>
       </header>
+      <section className="content" style={{background:"#fff"}}><div className="wrap">
+        <p className="kicker" style={{color:"#1758b5"}}>Por qué nace el proyecto</p>
+        <h2>Hay mucha información pública sobre las empresas. Comprenderla en conjunto es mucho más difícil.</h2>
+        <p className="intro">La información sobre negocios, competidores y demanda está dispersa entre sitios web, catálogos, registros, documentación técnica, licitaciones y publicaciones. Compararla y verificarla requiere trabajo; las relaciones importantes entre empresas, productos y compradores pueden pasar inadvertidas.</p>
+        <p className="intro">Queremos comprobar si es posible convertir ese trabajo en una investigación sistemática y reproducible, sin renunciar a la profundidad profesional ni a la trazabilidad de las fuentes.</p>
+      </div></section>
+      <section className="content" style={{background:"#eaf0f7"}}><div className="wrap">
+        <p className="kicker" style={{color:"#1758b5"}}>Estado de la startup</p>
+        <h2>Qué hemos construido. Qué estamos validando.</h2>
+        <div className="steps">
+          <article className="step"><small>DESARROLLADO</small><h3>Metodología e informe</h3><p>Existe una estructura de investigación con siete ámbitos, comparaciones cuantitativas y anexos de evidencias.</p></article>
+          <article className="step"><small>EN PRUEBAS</small><h3>Investigaciones de empresas</h3><p>Estamos estudiando casos industriales reales para detectar aciertos, omisiones, límites y oportunidades de mejora.</p></article>
+          <article className="step"><small>POR VALIDAR</small><h3>Utilidad para las empresas</h3><p>Queremos comprender qué hallazgos aportan valor, cómo presentar el resultado y en qué situaciones una empresa lo utilizaría.</p></article>
+        </div>
+      </div></section>
       <ResearchConceptForm />
       <section className="content"><div className="wrap">
         <p className="kicker" style={{color:"#1758b5"}}>02 / Metodología</p>
