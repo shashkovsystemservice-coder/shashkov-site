@@ -18,7 +18,7 @@ export default function PersonalProfile({locale}: {locale:Locale}) {
    years:"25+ años",yearsD:"en gestión y desarrollo empresarial",
    domains:"Industria y tecnología",domainsD:"equipos industriales, integración y desarrollo de negocio",
    studies:"Executive MBA",studiesD:"dirección empresarial · estudios de operaciones en HKUST",
-   portfolio:"Proyectos",portfolioTitle:"Lo que estoy construyendo y explorando",
+   portfolio:"Proyectos",portfolioTitle:"Investigaciones, metodologías y proyectos",
    stateA:"En desarrollo",stateB:"Investigación y prototipos",stateC:"Línea de exploración",
    p1:"SHASHKOV — herramientas de estrategia para pymes",
    d1:"Un sistema digital para acercar investigación de mercados, elección estratégica, planificación y seguimiento a empresas que no pueden mantener grandes departamentos especializados.",
@@ -46,7 +46,7 @@ export default function PersonalProfile({locale}: {locale:Locale}) {
    years:"25+ лет",yearsD:"в управлении и развитии бизнеса",
    domains:"Промышленность и технологии",domainsD:"оборудование, интеграция, развитие направлений",
    studies:"Executive MBA",studiesD:"управление бизнесом · операционный менеджмент HKUST",
-   portfolio:"Проекты",portfolioTitle:"Над чем я работаю и что исследую",
+   portfolio:"Проекты",portfolioTitle:"Исследования, методологии и проекты",
    stateA:"В разработке",stateB:"Исследования и прототипы",stateC:"Направление поиска",
    p1:"SHASHKOV — стратегические инструменты для МСП",
    d1:"Цифровая система, призванная сделать исследование рынков, стратегический выбор, планирование и контроль доступными компаниям без крупных специализированных подразделений.",
@@ -62,10 +62,15 @@ export default function PersonalProfile({locale}: {locale:Locale}) {
    email:"Написать мне",startup:"Посмотреть стартап SHASHKOV",copyright:"Личная страница Владимира Шашкова"
  };
  const projects=[
-  {num:"01",tag:t.stateA,title:t.p1,desc:t.d1,url:es?"/es/startup-next":"/ru/startup-next"},
+  {num:"01",tag:t.stateB,title:es?"Trayectoria empresarial e industrial":"Управленческий и промышленный опыт",desc:es?"Más de 25 años en gestión técnica, desarrollo de negocios, integración de equipos industriales, productos, procesos, calidad y dirección de equipos.":"Более 25 лет в техническом руководстве, развитии B2B-бизнеса, промышленном оборудовании, продуктовых направлениях, процессах, качестве и управлении командами.",url:null},
   {num:"02",tag:t.stateB,title:t.p2,desc:t.d2,url:es?"/es/startup-next#primer-resultado":"/ru/startup-next#primer-resultado"},
   {num:"03",tag:t.stateB,title:t.p3,desc:t.d3,url:null},
-  {num:"04",tag:t.stateC,title:t.p4,desc:t.d4,url:null}
+  {num:"04",tag:t.stateB,title:es?"Libro y arquitectura del marketing":"Книга и архитектура маркетинга",desc:es?"Trabajo sobre una visión integral del marketing: escuelas, clásicos, leyes empíricas, funciones, conceptos y relaciones entre métodos. Manuscritos y síntesis en desarrollo.":"Работа над целостной картой маркетинга: школы, классики, эмпирические закономерности, функции, понятия и связи методов. Рукописи и исследовательские синтезы в работе.",url:null},
+  {num:"05",tag:t.stateB,title:es?"Metodologías propias y sistemas de decisión":"Авторские методологии и системы решений",desc:es?"Arquitectura de conocimiento de marketing, un estándar de gestión y algoritmos para relacionar misión, mercado, valor, posicionamiento, naming, oferta, estrategia y métricas.":"Архитектура маркетинговых знаний, положение о системе маркетинга и алгоритмы связанного формирования миссии, ценности, позиционирования, нейминга, предложения, стратегии и метрик.",url:null},
+  {num:"06",tag:t.stateB,title:es?"PBOS — identidad y reputación profesional":"PBOS — личный бренд, идентичность и репутация",desc:es?"Estudio interdisciplinar de libros y escuelas sobre identidad, marca personal, reputación y transformación profesional. Diseño de una metodología y laboratorio experimental.":"Исследование научных и профессиональных источников о личном бренде, идентичности и репутации. Создание методологии Personal Brand Operating System и экспериментальной лаборатории.",url:null},
+  {num:"07",tag:t.stateB,title:es?"SEO, demanda y arquitectura web":"SEO, семантическое ядро и поисковая выдача",desc:es?"Investigación de la demanda con Wordstat, agrupación semántica, intención de búsqueda, análisis de posiciones SERP, arquitectura de páginas y auditoría técnica. Casos prácticos B2B.":"Wordstat, поисковый спрос и язык клиента, семантические ядра, SERP и позиции, структура посадочных страниц, каннибализация, технический SEO-аудит и задания на внедрение.",url:null},
+  {num:"08",tag:t.stateB,title:es?"Investigación aplicada y casos de empresas":"Прикладные исследования и бизнес-кейсы",desc:es?"Estudios de empresas industriales y de servicios en Rusia y España: competidores, clientes, compras, productos y decisiones estratégicas, distinguiendo hechos de hipótesis.":"Исследования предприятий в России и Испании: рынки, конкуренты, покупатели, закупки, продуктовые направления и стратегические возможности; факты отдельно от гипотез.",url:null},
+  {num:"09",tag:t.stateA,title:t.p1,desc:t.d1,url:es?"/es/startup-next":"/ru/startup-next"}
  ];
  return <main className="pp">
    <header className="pp-nav"><div className="pp-wrap pp-nav-inner"><a href="#top" className="pp-logo">VLADIMIR <span>SHASHKOV</span><small>PERSONAL / PROJECTS</small></a><nav aria-label="Navigation"><a href="#experience">{t.exp}</a><a href="#projects">{t.portfolio}</a><a href="#contact">{t.connect}</a><Link href={t.langUrl}>{t.lang}</Link></nav></div></header>
