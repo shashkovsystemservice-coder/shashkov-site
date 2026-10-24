@@ -99,3 +99,39 @@
 .pp .pp-work:nth-child(4) .pp-visual-main{max-width:235px}
 .pp .pp-work:hover .pp-visual-line{background:#245a3a}
 @media(max-width:750px){.pp .pp-work-visual{padding:23px 18px}.pp .pp-visual-main{font-size:23px}.pp .pp-visual-line{left:18px;width:calc(100% - 36px)}}
+
+/* Differentiated miniatures based on actual portfolio topics, not invented document screenshots. */
+.pp .pp-work-visual{height:258px;padding:24px 23px}
+.pp .pp-visual-content{gap:5px;padding:0}
+.pp .pp-visual-type{font-size:9px}
+.pp .pp-visual-main{font-size:clamp(18px,1.9vw,24px)}
+.pp .pp-visual-detail{font-size:10px}
+.pp .pp-artifact-window{height:110px;width:100%;display:flex;align-items:center;justify-content:center;margin-bottom:auto;position:relative;margin-top:12px}
+.pp .pp-artifact-pages{display:flex;align-items:flex-end;gap:7px;height:90px}
+.pp .pp-artifact-pages span{width:46px;height:76px;background:#fffefa;box-shadow:0 4px 14px #143a2b18;border-top:5px solid #366a50;display:flex;align-items:flex-start;padding:11px;font-family:Georgia,serif;font-size:13px}
+.pp .pp-artifact-pages span:nth-child(2){height:91px}
+.pp .pp-artifact-pages span:nth-child(3){height:65px}
+.pp .pp-artifact-node-map{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap;font-size:11px;width:100%}
+.pp .pp-artifact-node-map span{border:1px solid #738e74;padding:8px;background:#ffffffbc;font-weight:700}
+.pp .pp-artifact-node-map b{font-size:19px;transform:rotate(-90deg);color:#427151}
+.pp .pp-artifact-dual{display:flex;align-items:center;gap:8px;font-family:Georgia,serif;font-size:13px;flex-wrap:wrap;justify-content:center}
+.pp .pp-artifact-dual span{border-radius:50%;border:1px solid #648873;width:104px;height:77px;display:flex;align-items:center;justify-content:center;text-align:center;padding:7px;background:#ffffff8f}
+.pp .pp-artifact-dual b{font-size:26px}
+.pp .pp-artifact-case{display:flex;flex-direction:column;width:100%;padding:13px 15px;background:#ffffffd9;border-left:4px solid #376b55;gap:7px;box-shadow:0 3px 12px #142e2614}
+.pp .pp-artifact-case strong{font-family:Georgia,serif;font-size:27px;letter-spacing:-.04em}
+.pp .pp-artifact-case span,.pp .pp-artifact-case small{font-size:11px;line-height:1.25}
+.pp .pp-artifact-search{background:white;border:1px solid #91a698;border-radius:5px;width:95%;padding:11px 15px;font-size:11px;display:flex;flex-direction:column;gap:7px}
+.pp .pp-artifact-search div{display:grid;gap:6px}
+.pp .pp-artifact-search i{height:5px;width:85%;background:#aac6af;border-radius:3px}
+.pp .pp-artifact-search i:nth-child(2){width:65%}.pp .pp-artifact-search i:nth-child(3){width:75%}
+.pp .pp-artifact-evidence{display:flex;align-items:center;justify-content:center;gap:5px;font-size:9px;font-weight:850;flex-wrap:wrap}
+.pp .pp-artifact-evidence span{background:#ffffffd9;border:1px solid #92aa9b;padding:10px 6px}
+.pp .pp-artifact-evidence b{font-size:18px}
+.pp .pp-visual-line{display:none}
+@media(max-width:750px){.pp .pp-work-visual{height:240px}.pp .pp-artifact-dual span{width:86px;height:69px}.pp .pp-artifact-window{height:105px}}
+@media print{
+ .pp,.pp .pp-hero,.pp .pp-photo,.pp .pp-photo img,.pp .pp-photo figcaption{background-color:#fff!important}
+ .pp .pp-photo img{box-shadow:none!important;filter:none!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ .pp .pp-photo{break-inside:avoid}
+ .pp .pp-work{break-inside:avoid}
+}
