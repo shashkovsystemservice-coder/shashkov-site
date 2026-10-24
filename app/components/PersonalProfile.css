@@ -16,3 +16,73 @@
 @media(max-width:750px){.pp-wrap{width:calc(100% - 36px)}.pp-nav-inner{min-height:69px}.pp-nav nav a:not(.pp-language){display:none}.pp-logo{font-size:15px}.pp-hero{padding:45px 0 65px}.pp-hero-grid{grid-template-columns:1fr;gap:46px}.pp-role{font-size:15px;margin-top:24px!important}.pp-hero h1{font-size:clamp(42px,9vw,68px)}.pp-lead{font-size:17px;margin-top:23px!important}.pp-hero-index{margin-top:40px!important}.pp-photo{max-width:580px}.pp-photo img{height:auto;aspect-ratio:4/5;box-shadow:13px 15px 0 #dce7dc}.pp-metrics{padding:55px 0}.pp-metric-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 18px;margin-top:30px}.pp-metric strong{font-size:35px}.pp-section{padding:75px 0}.pp-section-grid,.pp-principle-grid,.pp-contact-grid{grid-template-columns:1fr;gap:24px}.pp-side{justify-content:flex-start;gap:18px;padding-top:0}.pp-main h2,.pp-principle-grid h2,.pp-contact h2{font-size:clamp(36px,8vw,52px)}.pp-section-intro{font-size:17px;margin-top:20px!important}.pp-era{grid-template-columns:96px 1fr;gap:13px}.pp-era h3{font-size:19px}.pp-era p{font-size:14px}.pp-education{grid-template-columns:1fr;gap:7px}.pp-idea-list,.pp-venture-list{margin:38px 0 0}.pp-idea{grid-template-columns:48px 1fr;gap:14px;padding:35px 0}.pp-idea-number{font-size:55px}.pp-idea h3{font-size:32px}.pp-idea p{font-size:16px;margin-top:16px}.pp-work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pp-work-visual{height:170px}.pp-work-body{padding:20px}.pp-work-body h3{font-size:21px}.pp-work-body p{font-size:14px}.pp-principles{padding:70px 0}.pp-principle-grid p{font-size:17px}.pp-venture{padding:28px 25px}.pp-venture h3{font-size:34px}.pp-venture p{font-size:16px}.pp-contact{padding:75px 0}.pp-contact p{font-size:17px}}
 @media(max-width:480px){.pp-kicker{font-size:9px}.pp-hero h1{font-size:43px}.pp-metric strong{font-size:29px}.pp-metric span{font-size:13px}.pp-metric small{font-size:11px}.pp-era{grid-template-columns:1fr;gap:6px}.pp-era time{padding-top:0}.pp-work-grid{grid-template-columns:1fr}.pp-work-visual{height:200px}.pp-venture-bottom{align-items:start;flex-direction:column}.pp-footer-inner{flex-wrap:wrap}.pp-idea{grid-template-columns:36px 1fr;gap:12px}.pp-idea-number{font-size:46px}.pp-idea h3{font-size:29px}}
 @media(prefers-reduced-motion:reduce){.pp *{transition:none!important;scroll-behavior:auto!important}}
+
+
+/* Spanish founder profile — visual refinement, 2026-10-25.
+   Explicitly scoped to .pp-es; Russian profile and section/project order unchanged. */
+.pp-es { --cream:#fafaf5; --paper:#ffffff; --ink:#152b23; --forest:#174936; --line:#d9e1d9; }
+.pp-es .pp-nav { background:#fafaf5; color:var(--ink); border-bottom:1px solid var(--line); }
+.pp-es .pp-logo { font-size:15px; letter-spacing:.07em; }
+.pp-es .pp-logo span { color:#276748; }
+.pp-es .pp-logo small { color:#728a78; }
+.pp-es .pp-nav nav a { color:#325442; }
+.pp-es .pp-nav nav a:hover { color:#008651; }
+.pp-es .pp-nav .pp-language { border-color:#91a999; }
+.pp-es .pp-hero { background:var(--cream); padding:64px 0 75px; }
+.pp-es .pp-hero-grid { grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr); gap:clamp(24px,4.8vw,78px); align-items:center; }
+.pp-es .pp-kicker { letter-spacing:.14em; }
+.pp-es .pp-role { font-size:clamp(16px,1.7vw,22px); margin-top:22px!important; margin-bottom:16px!important; color:#286148; }
+.pp-es .pp-hero h1 { font-size:clamp(48px,5.3vw,82px); line-height:1.035; letter-spacing:-.058em; }
+.pp-es .pp-lead { font-size:clamp(17px,1.55vw,20px); line-height:1.55; margin-top:24px!important; max-width:600px; color:#435d4d; }
+.pp-es .pp-actions { margin-top:28px; }
+.pp-es .pp-btn { border-radius:2px; }
+.pp-es .pp-photo img { height:min(49vw,620px); min-height:440px; object-position:50% 27%; filter:none; box-shadow:14px 14px 0 #d9e7dc; }
+.pp-es .pp-photo figcaption { text-align:left; margin-top:28px; color:#607b68; }
+.pp-es .pp-hero-index { margin-top:48px!important; }
+.pp-es .pp-metrics { background:#eaf0e9; padding:60px 0 72px; }
+.pp-es .pp-metric-grid { margin-top:34px; }
+.pp-es .pp-section { padding:95px 0; }
+.pp-es .pp-section-intro { line-height:1.55; margin-top:20px!important; }
+.pp-es .pp-venture-list { gap:16px; margin-top:44px; }
+.pp-es .pp-venture { border:1px solid #d2ddd2; border-left:4px solid #85ab92; background:#f6f8f4; padding:32px 38px; transition:background .2s,border-color .2s,transform .2s; }
+.pp-es .pp-venture:first-child { background:#e7f1e7; border-left-color:#235d3d; }
+.pp-es .pp-venture:hover { background:#edf3eb; transform:translateX(4px); border-color:#9eb9a7; }
+.pp-es .pp-venture h3 { margin:20px 0 14px; }
+.pp-es .pp-venture p { line-height:1.55; }
+.pp-es .pp-idea-list { margin-top:44px; }
+.pp-es .pp-idea { padding:39px 0; }
+.pp-es .pp-idea p { line-height:1.6; margin-top:18px; }
+.pp-es .pp-work-grid { gap:17px; margin-top:44px; }
+.pp-es .pp-work { border-color:#d8e3d9; }
+.pp-es .pp-work:nth-child(1) .pp-work-visual { background:#d8e9dd; }
+.pp-es .pp-work:nth-child(2) .pp-work-visual { background:#e6e9d4; }
+.pp-es .pp-work:nth-child(3) .pp-work-visual { background:#d1e0dc; }
+.pp-es .pp-work:nth-child(4) .pp-work-visual { background:#e7e3d5; }
+.pp-es .pp-work:nth-child(5) .pp-work-visual { background:#dbe5dd; }
+.pp-es .pp-work:nth-child(6) .pp-work-visual { background:#d7e3d8; }
+.pp-es .pp-work:hover { transform:translateY(-6px); box-shadow:0 14px 28px rgba(18,57,47,.08); }
+.pp-es .pp-work-visual { height:184px; }
+.pp-es .pp-work-body { padding:23px; }
+.pp-es .pp-principles { padding:95px 0; }
+.pp-es .pp-contact { padding:88px 0; }
+@media(max-width:750px){
+ .pp-es .pp-hero { padding:35px 0 58px; }
+ .pp-es .pp-hero-grid { grid-template-columns:1fr; gap:32px; }
+ .pp-es .pp-hero h1 { font-size:clamp(44px,10vw,68px); }
+ .pp-es .pp-lead { font-size:17px; }
+ .pp-es .pp-hero-index { margin-top:30px!important; }
+ .pp-es .pp-photo img { height:auto; min-height:0; aspect-ratio:1.1; object-position:50% 28%; }
+ .pp-es .pp-photo figcaption { margin-top:20px; }
+ .pp-es .pp-section { padding:70px 0; }
+ .pp-es .pp-venture-list,.pp-es .pp-idea-list { margin:32px 0 0; }
+ .pp-es .pp-venture { padding:25px 24px; }
+ .pp-es .pp-work-grid { gap:13px; }
+}
+@media(max-width:480px){
+ .pp-es .pp-hero h1 { font-size:43px; }
+ .pp-es .pp-work-visual { height:170px; }
+ .pp-es .pp-venture h3 { font-size:32px; }
+}
+@media(prefers-reduced-motion:reduce){
+ .pp-es .pp-venture,.pp-es .pp-work { transform:none!important; }
+}
