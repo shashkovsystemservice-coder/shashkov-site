@@ -107,7 +107,7 @@ const content:Record<Locale,Lang>={
 export default function PersonalProfile({locale}:{locale:Locale}) {
  const t=content[locale],es=locale==="es",startup=es?"/es/startup-next":"/ru/startup-next";
  const metrics=["25+","~1 млрд ₽","5 → 30 %","~5 000"];
- return <main className="pp" id="top">
+ return <main className={"pp pp-"+locale} id="top">
   <header className="pp-nav"><div className="pp-wrap pp-nav-inner">
    <a className="pp-logo" href="#top" aria-label="Vladimir Shashkov">VLADIMIR <span>SHASHKOV</span><small>FOUNDER / RESEARCHER</small></a>
    <nav aria-label={es?"Navegación":"Навигация"}><a href="#experience">{t.navExperience}</a><a href="#ventures">{t.navVentures}</a><a href="#ideas">{t.navIdeas}</a><a href="#works">{t.navWorks}</a><a href="#contact">{t.navContact}</a><Link className="pp-language" href={es?"/about":"/es/about"} hrefLang={es?"ru":"es"}>{es?"RU":"ES"} ↗</Link></nav>
