@@ -84,3 +84,27 @@
 .rd .rd-history-content h3{font-size:31px}
 .rd .rd-history-content p{font-size:15px}
 }
+
+/* Three differentiated, content-led project illustrations. Clearly conceptual, no fake product screenshots. */
+.rd .rd-art-updated{position:relative;z-index:2}
+.rd .rd-art-updated>span:first-child,.rd .rd-art-pretitle{font-size:10px;letter-spacing:.16em;font-weight:850}
+.rd .rd-marketing.rd-art-updated{justify-content:space-between;padding-top:42px}
+.rd .rd-marketing.rd-art-updated strong{font-family:Georgia,serif;font-weight:400;letter-spacing:-.065em;font-size:clamp(38px,4vw,68px)}
+.rd .rd-marketing.rd-art-updated strong i{color:#294c38}
+.rd .rd-marketing.rd-art-updated .rd-market-lines{margin:10px 0}
+.rd .rd-art-footnote{font-size:10px;font-weight:800;letter-spacing:.12em}
+.rd .rd-research.rd-art-updated{justify-content:space-around;gap:15px}
+.rd .rd-evidence-path{display:flex;flex-direction:column;gap:10px;margin:27px 0}
+.rd .rd-evidence-path>div{border:1px solid #95aca6;display:flex;align-items:center;gap:25px;padding:17px 18px;max-width:390px;transform:rotate(-1deg)}
+.rd .rd-evidence-path>div:nth-child(2){margin-left:23px;transform:rotate(1deg);background:#35564e}
+.rd .rd-evidence-path>div:nth-child(3){margin-left:49px}
+.rd .rd-evidence-path span{color:#b2d8c1;font-weight:850;font-size:12px}
+.rd .rd-evidence-path b{letter-spacing:.12em;font-size:clamp(12px,1.3vw,17px)}
+.rd .rd-research.rd-art-updated p{font-family:Georgia,serif;font-size:clamp(20px,2vw,30px);line-height:1.2}
+.rd .rd-persona.rd-art-updated{justify-content:space-between;padding:35px 0 20px}
+.rd .rd-persona-duality{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.rd .rd-persona-duality>div{border-top:2px solid #735f59;border-bottom:1px solid #a27d74;min-height:170px;padding:20px 0;display:flex;flex-direction:column;justify-content:space-between}
+.rd .rd-persona-duality span{font-size:10px;letter-spacing:.12em;font-weight:850}
+.rd .rd-persona-duality b{font-family:Georgia,serif;font-size:clamp(24px,2.2vw,35px);font-weight:400;letter-spacing:-.055em;overflow-wrap:anywhere}
+.rd .rd-persona.rd-art-updated small{position:static;font-size:10px}
+@media(max-width:700px){.rd .rd-persona-duality>div{min-height:135px}.rd .rd-evidence-path>div{padding:13px 12px}.rd .rd-evidence-path>div:nth-child(3){margin-left:30px}.rd .rd-marketing.rd-art-updated strong{font-size:47px}}
