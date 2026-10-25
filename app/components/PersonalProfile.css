@@ -120,3 +120,27 @@
  .pp .pp-hero-v3-bottom{font-size:9px;align-items:start}
 }
 @media print{.pp .pp-hero-v3-body{break-inside:avoid}.pp .pp-hero-v3-portrait img{height:540px}}
+
+/* V4 – Editorial manifesto: a conflict, the person, and a direction. */
+.pp .pp-hero-v4{padding:0;background:#edece5;color:#1d261f;overflow:hidden}
+.pp .pp-v4-inner{width:min(calc(100% - 76px),1400px)}
+.pp .pp-v4-overline{display:flex;justify-content:space-between;gap:24px;padding:22px 0;border-bottom:1px solid #778579;font:700 10px/1.4 Arial,sans-serif;letter-spacing:.11em}
+.pp .pp-v4-stage{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.95fr) minmax(168px,.35fr);gap:0;min-height:680px;position:relative}
+.pp .pp-v4-question{padding:65px 25px 55px 0;z-index:2;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start}
+.pp .pp-v4-count{font:700 11px Arial,sans-serif;letter-spacing:.17em}
+.pp .pp-v4-question h1{font-family:Arial,Helvetica,sans-serif;font-size:clamp(52px,6.9vw,113px);letter-spacing:-.09em;font-weight:900;line-height:.94;max-width:800px;position:relative;z-index:3;transform:translateX(0)}
+.pp .pp-v4-question h1 i{font-family:Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.075em;color:#34624b}
+.pp .pp-v4-subhead{max-width:430px;font:400 clamp(19px,1.8vw,26px)/1.25 Georgia,serif;letter-spacing:-.027em}
+.pp .pp-v4-photo{position:relative;margin:0;align-self:stretch;min-height:640px;overflow:hidden;background:#bbc4b6}
+.pp .pp-v4-photo img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:center 25%}
+.pp .pp-v4-photo figcaption{position:absolute;bottom:18px;left:18px;right:18px;display:flex;justify-content:space-between;color:white;text-shadow:0 1px 5px #111;font-size:10px;letter-spacing:.1em;font-weight:800}
+.pp .pp-v4-side{padding:60px 0 50px 20px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.pp .pp-v4-side-mark{font:900 clamp(45px,5vw,79px)/1 Arial,sans-serif;letter-spacing:-.1em;writing-mode:vertical-rl}
+.pp .pp-v4-side-mark span{color:#34624b}
+.pp .pp-v4-side p{font-size:14px;line-height:1.55;color:#39473b;max-width:205px}
+.pp .pp-v4-side a{font-size:12px;font-weight:800;border-top:1px solid #667969;padding-top:15px;display:flex;gap:10px;justify-content:space-between}
+.pp .pp-v4-ticker{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #7a857a;padding:27px 0;font:800 clamp(11px,1.3vw,19px)/1.2 Arial,sans-serif;letter-spacing:.035em}
+.pp .pp-v4-symbol{color:#3a6a53;font-size:26px}
+@media (max-width:1100px){.pp .pp-v4-stage{grid-template-columns:minmax(0,1fr) minmax(0,.9fr);min-height:600px}.pp .pp-v4-question h1{font-size:clamp(53px,7.6vw,85px)}.pp .pp-v4-side{grid-column:1 / -1;flex-direction:row;align-items:center;padding:16px 0;border-top:1px solid #bbc4b6}.pp .pp-v4-side-mark{writing-mode:initial;font-size:40px}.pp .pp-v4-side p{max-width:420px}.pp .pp-v4-side a{min-width:150px}.pp .pp-v4-photo{min-height:575px}}
+@media (max-width:700px){.pp .pp-v4-inner{width:calc(100% - 34px)}.pp .pp-v4-overline{padding:18px 0;font-size:9px}.pp .pp-v4-overline span:last-child{display:none}.pp .pp-v4-stage{display:flex;flex-direction:column;min-height:0}.pp .pp-v4-question{padding:30px 0 24px;gap:25px}.pp .pp-v4-question h1{font-size:clamp(54px,13.4vw,82px);line-height:.97;letter-spacing:-.09em}.pp .pp-v4-subhead{font-size:21px;max-width:360px}.pp .pp-v4-photo{height:112vw;max-height:590px;min-height:370px}.pp .pp-v4-side{padding:20px 0;gap:20px;flex-wrap:wrap}.pp .pp-v4-side-mark{font-size:38px}.pp .pp-v4-side p{font-size:13px;flex:1;min-width:195px}.pp .pp-v4-side a{width:100%;font-size:13px}.pp .pp-v4-ticker{flex-wrap:wrap;justify-content:flex-start;padding:20px 0;gap:12px;font-size:10px}.pp .pp-v4-symbol{font-size:17px}}
+@media(prefers-reduced-motion:no-preference){.pp .pp-v4-question h1{animation:pp-v4-rise .8s both}.pp .pp-v4-photo img{animation:pp-v4-reveal 1s both}@keyframes pp-v4-rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}@keyframes pp-v4-reveal{from{opacity:.5;transform:scale(1.04)}to{opacity:1;transform:scale(1)}}}
