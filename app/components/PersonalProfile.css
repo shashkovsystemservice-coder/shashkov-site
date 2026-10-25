@@ -96,3 +96,24 @@
  .pp .pp-art-persona strong{font-size:76px}
 }
 @media print{.pp .pp-hero-primary{min-height:590px}.pp .pp-hero-copy{min-height:590px}.pp .pp-hero-photo{min-height:0}}
+
+/* Mobile hero correction after real iPhone screenshot: one composed first viewport. */
+@media screen and (max-width:700px){
+ .pp .pp-hero-primary{position:relative!important;display:block!important;min-height:680px!important;height:min(790px,calc(100svh - 69px))!important;max-height:none;overflow:hidden;background:#17241e}
+ .pp .pp-hero-photo{position:absolute!important;inset:0!important;order:initial!important;width:100%!important;height:100%!important;max-height:none!important;min-height:0!important}
+ .pp .pp-hero-photo img{object-position:48% 23%;height:100%!important;width:100%!important}
+ .pp .pp-hero-photo::after{background:linear-gradient(to bottom,rgba(18,31,24,.04) 0%,rgba(18,31,24,.04) 29%,rgba(18,31,24,.48) 47%,rgba(18,31,24,.91) 67%,#15211d 100%)!important}
+ .pp .pp-hero-photo figcaption{display:none}
+ .pp .pp-hero-copy{position:absolute!important;z-index:4;inset:auto 0 0!important;order:initial!important;width:100%!important;height:auto!important;min-height:0!important;padding:24px 22px 27px!important;display:flex;gap:0;align-items:flex-start;justify-content:flex-end;background:none!important}
+ .pp .pp-index{font-size:9px!important;letter-spacing:.09em;margin:0 0 12px!important;color:#e3ede3}
+ .pp .pp-intro{font-size:15px!important;margin:0 0 8px!important}
+ .pp .pp-hero h1{font-size:clamp(35px,8.3vw,51px)!important;line-height:1.0!important;letter-spacing:-.07em!important;max-width:100%}
+ .pp .pp-hero-lead{font-size:13px!important;line-height:1.38!important;max-width:100%;margin:12px 0 18px!important}
+ .pp .pp-link-primary{font-size:12px!important;padding:12px 17px!important;min-width:210px!important}
+ .pp .pp-hero-chapters a{padding:13px 10px!important}
+}
+@media screen and (max-width:370px){
+ .pp .pp-hero-primary{height:calc(100svh - 65px)!important}
+ .pp .pp-hero h1{font-size:34px!important}
+ .pp .pp-hero-lead{font-size:12px!important}
+}
