@@ -112,9 +112,19 @@ export default function PersonalProfile({locale}:{locale:Locale}) {
    <a className="pp-logo" href="#top" aria-label="Vladimir Shashkov">VLADIMIR <span>SHASHKOV</span><small>FOUNDER / RESEARCHER</small></a>
    <nav aria-label={es?"Navegación":"Навигация"}><a href="#experience">{t.navExperience}</a><a href="#ventures">{t.navVentures}</a><a href="#ideas">{t.navIdeas}</a><a href="#works">{t.navWorks}</a><a href="#contact">{t.navContact}</a><Link className="pp-language" href={es?"/about":"/es/about"} hrefLang={es?"ru":"es"}>{es?"RU":"ES"} ↗</Link></nav>
   </div></header>
-  <section className="pp-hero"><div className="pp-wrap pp-hero-grid">
-   <div className="pp-hero-copy"><div className="pp-hero-name">Vladimir<br/>Shashkov<span className="pp-name-period">.</span></div><div className="pp-kicker"><span className="pp-dot"/> {t.eyebrow}</div><p className="pp-role">{t.role}</p><h1>{t.hero}</h1><p className="pp-lead">{t.lead}</p><div className="pp-actions"><a href="#ventures" className="pp-btn">{t.heroAction} <span aria-hidden="true">↗</span></a><a href="#experience" className="pp-under">{t.heroSecondary} ↓</a></div><p className="pp-hero-index">VLADIMIR SHASHKOV <span>—</span> 2026</p></div>
-   <figure className="pp-photo"><img src="/about-photo.webp" alt={t.photo} width="580" height="680" fetchPriority="high"/><figcaption><span>{es?"PERSONAS. IDEAS. EMPRESAS.":"ЛЮДИ. ИДЕИ. КОМПАНИИ."}</span><span>© VLADIMIR SHASHKOV</span></figcaption></figure>
+  <section className="pp-hero pp-hero-v3" aria-labelledby="founder-name"><div className="pp-wrap pp-hero-stage">
+    <div className="pp-hero-v3-top"><span>{es?"EMPRENDEDOR · INVESTIGADOR · AUTOR":"ПРЕДПРИНИМАТЕЛЬ · ИССЛЕДОВАТЕЛЬ · АВТОР"}</span><span>01 / VLADIMIR SHASHKOV</span></div>
+    <div className="pp-hero-v3-body">
+      <div className="pp-hero-v3-message">
+        <p className="pp-hero-v3-hello">{es?"Hola, soy":"Привет, я"}</p>
+        <h1 id="founder-name">Vladimir <span>Shashkov.</span></h1>
+        <p className="pp-hero-v3-deck">{t.hero}</p>
+        <p className="pp-hero-v3-description">{t.lead}</p>
+        <div className="pp-hero-v3-actions"><a href="#ventures">{t.heroAction}<span aria-hidden="true">↗</span></a><a href="#experience">{t.heroSecondary}<span aria-hidden="true">↓</span></a></div>
+      </div>
+      <figure className="pp-hero-v3-portrait"><img src="/about-photo.webp" alt={t.photo} width="580" height="680" fetchPriority="high"/><figcaption><span>{es?"PERSONAS · IDEAS · EMPRESAS":"ЛЮДИ · ИДЕИ · КОМПАНИИ"}</span><span>2026</span></figcaption></figure>
+    </div>
+    <div className="pp-hero-v3-bottom"><span>{es?"EXPERIENCIA REAL. NUEVOS PROYECTOS.":"РЕАЛЬНЫЙ ОПЫТ. НОВЫЕ ПРОЕКТЫ."}</span><a href="#experience">{es?"Conocer mi historia":"Моя история"} <span aria-hidden="true">↘</span></a></div>
   </div></section>
   <section className="pp-metrics" aria-label={t.metricsLabel}><div className="pp-wrap"><div className="pp-overline">{t.metricsLabel}</div><h2>{t.metricsTitle}</h2><div className="pp-metric-grid">{metrics.map((value,i)=><article className="pp-metric" key={value}><strong>{i===1?(es?"~1.000 M ₽":value):value}</strong><span>{t.metricLabels[i]}</span><small>{t.metricNotes[i]}</small></article>)}</div></div></section>
   <section className="pp-section pp-experience" id="experience"><div className="pp-wrap pp-section-grid"><div className="pp-side"><span>{t.experienceLabel}</span><small>01 — 06</small></div><div className="pp-main"><h2>{t.experienceTitle}</h2><p className="pp-section-intro">{t.experienceLead}</p><div className="pp-timeline">{t.eras.map(e=><div className="pp-era" key={e.date}><time>{e.date}</time><div><h3>{e.title}</h3><p>{e.copy}</p></div></div>)}</div><div className="pp-education"><strong>{t.education}</strong><p>{t.educationDetail}</p></div><div className="pp-company-line">{t.experienceFoot}</div></div></div></section>
