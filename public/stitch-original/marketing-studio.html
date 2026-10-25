@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+
+<html lang="ru"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary-container":"#fedeb2","primary":"#00140c","border-hairline":"#E2DCD5","secondary-fixed":"#fedeb2","on-surface":"#1c1b1b","on-tertiary":"#ffffff","on-tertiary-fixed-variant":"#2f4d40","on-tertiary-fixed":"#012016","on-secondary":"#ffffff","canvas-cream":"#FBF9F5","on-secondary-container":"#78603e","outline-variant":"#c1c8c3","background":"#fcf9f8","surface-container-highest":"#e5e2e1","surface-sage-tint":"#E5ECE7","on-primary":"#ffffff","border-subtle":"#D3DDD6","status-wip":"#8A5A36","on-error":"#ffffff","primary-fixed":"#caeada","inverse-primary":"#afcdbe","surface-container":"#f0eded","surface-container-high":"#eae7e7","surface-dim":"#dcd9d9","surface-bright":"#fcf9f8","inverse-on-surface":"#f3f0ef","surface-container-lowest":"#ffffff","surface-tint":"#486458","text-charcoal":"#2C3531","error-container":"#ffdad6","error":"#ba1a1a","surface-linen":"#F3EFEA","tertiary-container":"#0b2a1f","on-primary-container":"#759385","forest-deep":"#0E2A20","on-primary-fixed":"#042017","text-muted":"#6E7772","primary-fixed-dim":"#afcdbe","on-surface-variant":"#424845","secondary-fixed-dim":"#e0c298","surface-variant":"#e5e2e1","on-secondary-fixed":"#281800","on-tertiary-container":"#739384","tertiary-fixed":"#c8ead9","on-secondary-fixed-variant":"#584323","on-error-container":"#93000a","forest-surface":"#15382B","inverse-surface":"#313030","surface":"#fcf9f8","on-background":"#1c1b1b","outline":"#727974","surface-container-low":"#f6f3f2","tertiary-fixed-dim":"#adcebe","tertiary":"#00130c","primary-container":"#0e2a20","secondary":"#725b38","on-primary-fixed-variant":"#314c41"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"margin-md":"3rem","space-xl":"2.5rem","gutter":"1.5rem","margin-lg":"5rem","space-lg":"1.5rem","space-md":"1rem","gutter-lg":"2.5rem","space-xs":"0.25rem","space-2xl":"4rem","space-sm":"0.5rem","space-3xl":"6rem","margin":"1.25rem"},"fontFamily":{"display-xl-mobile":["Newsreader"],"body-md":["Plus Jakarta Sans"],"label-eyebrow":["Space Grotesk"],"label-mono":["Space Grotesk"],"body-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"metric-display":["Newsreader"],"headline-lg-mobile":["Newsreader"],"display-xl":["Newsreader"],"headline-sm":["Newsreader"],"headline-lg":["Newsreader"],"headline-md":["Newsreader"]},"fontSize":{"display-xl-mobile":["36px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"500"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}],"label-eyebrow":["11px",{"lineHeight":"16px","letterSpacing":"0.12em","fontWeight":"600"}],"label-mono":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"500"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"metric-display":["48px",{"lineHeight":"52px","letterSpacing":"-0.02em","fontWeight":"400"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"500"}],"display-xl":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"500"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"600"}],"headline-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.015em","fontWeight":"500"}],"headline-md":["26px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"500"}]}}}}</script></head><body class="bg-canvas-cream font-body-md text-text-charcoal antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-canvas-cream/90 backdrop-blur-md"><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between"><div class="flex items-baseline gap-3"><a class="font-label-mono text-label-mono tracking-wider uppercase font-semibold text-primary hover:text-forest-surface transition-colors" data-path="projects" href="#">ВЛАДИМИР ШАШКОВ</a><span class="hidden sm:inline font-label-mono text-label-mono text-text-muted">/ Founder · Researcher · Venture Builder</span></div><nav class="hidden md:flex items-center gap-7" data-active-classes="text-primary font-medium"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="projects" href="#">Проекты</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="experience" href="#">Опыт</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="research" href="#">Исследования</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="works" href="#">Работы</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#">Контакт</a></nav><div class="flex items-center gap-4"><a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors py-1 px-2 hover:bg-surface-sage-tint" href="/es/about">[ES ↗]</a><a class="hidden sm:inline-flex items-center font-label-mono text-label-mono bg-forest-deep text-canvas-cream px-4 py-2 hover:bg-forest-surface transition-colors" href="#contact">Написать ↗</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-canvas-cream"><div class="flex flex-col w-full">
+<!-- Monograph Header / Meta Rail -->
+<section class="w-full bg-canvas-cream pt-10 pb-8 px-6 lg:px-12">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6">
+<div class="flex flex-wrap items-center gap-3">
+<a class="font-label-mono text-label-mono text-text-muted hover:text-primary transition-colors flex items-center gap-1.5" href="#">
+<span class="material-symbols-outlined text-[16px]">cloud_upload</span>
+          Все проекты
+        </a>
+<span class="font-label-mono text-label-mono text-text-muted">/</span>
+<span class="font-label-mono text-label-mono text-text-muted">Венчурный инкубатор</span>
+<span class="font-label-mono text-label-mono text-text-muted">/</span>
+<span class="font-label-mono text-label-mono text-primary font-semibold">01 Marketing Studio</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-2 px-3 py-1 bg-surface-sage-tint text-forest-deep font-label-mono text-label-mono rounded-none">
+<span class="w-2 h-2 rounded-full bg-status-wip animate-pulse"></span>
+          ПРОТОТИП · СТАДИЯ ПОЛЕВЫХ ИСПЫТАНИЙ
+        </span>
+<span class="font-label-mono text-label-mono text-text-muted px-2.5 py-1 bg-surface-linen">
+          [REF: MKT-STUDIO-v26]
+        </span>
+</div>
+</div>
+</section>
+<!-- Hero Section -->
+<section class="w-full bg-canvas-cream px-6 lg:px-12 pb-20">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-8 flex flex-col space-y-8">
+<div class="space-y-4">
+<div class="font-label-eyebrow text-label-eyebrow uppercase tracking-widest text-text-muted">
+              МЕТОДОЛОГИЯ СТРАТЕГИЧЕСКОГО АНАЛИЗА ДЛЯ SME
+            </div>
+<h1 class="font-display-xl text-display-xl text-primary leading-tight">
+              Стратегические возможности крупного бизнеса — для небольших компаний.
+            </h1>
+</div>
+<p class="font-body-lg text-body-lg text-text-charcoal leading-relaxed max-w-3xl">
+            Как малому и среднему бизнесу получить точность рыночного анализа, структурированное понимание конкурентов и выверенный стратегический выбор без издержек на содержание громоздких штатов аналитиков.
+          </p>
+<!-- Context Blockquote Box -->
+<div class="p-6 md:p-8 bg-surface-linen border-l-2 border-forest-deep space-y-3">
+<div class="font-label-eyebrow text-label-eyebrow text-forest-deep uppercase tracking-wider">
+              Контекст и методологический генезис
+            </div>
+<p class="font-headline-sm text-headline-sm text-primary font-normal italic leading-snug">
+              «В корпорациях стратегический маркетинг опирается на онтологическую строгость, формализацию ограничений и гигиену данных. Задача Marketing Studio — перевести эту индустриальную культуру в воспроизводимый, компактный инструментарий для растущих компаний».
+            </p>
+<div class="font-label-mono text-label-mono text-text-muted pt-2">
+              Владимир Шашков · Из рабочих записок исследовательской программы
+            </div>
+</div>
+<!-- CTAs -->
+<div class="flex flex-wrap items-center gap-4 pt-2">
+<a class="inline-flex items-center justify-center font-label-mono text-label-mono bg-forest-deep text-canvas-cream px-6 py-3.5 hover:bg-forest-surface transition-colors gap-2" href="#architecture">
+<span>Изучить архитектуру модулей</span>
+<span>↓</span>
+</a>
+<a class="inline-flex items-center justify-center font-label-mono text-label-mono bg-surface-linen text-primary px-6 py-3.5 hover:bg-surface-sage-tint transition-colors gap-2" href="#pilot">
+<span>Обсудить пилотное внедрение</span>
+<span>↗</span>
+</a>
+<a class="inline-flex items-center justify-center font-label-mono text-label-mono text-text-muted hover:text-primary px-4 py-3.5 transition-colors" href="#blueprint">
+              Схема рабочего цикла [5 фаз]
+            </a>
+</div>
+</div>
+<!-- Meta Rail / Spec Sheet -->
+<div class="lg:col-span-4 flex flex-col space-y-6">
+<div class="bg-surface-linen p-6 space-y-6">
+<div class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider flex items-center justify-between pb-3 border-b border-border-hairline">
+<span>Паспорт инициативы</span>
+<span class="text-text-muted">01 / 03</span>
+</div>
+<div class="space-y-4">
+<div>
+<div class="font-label-eyebrow text-label-eyebrow uppercase text-text-muted">Целевой контур</div>
+<div class="font-body-md text-body-md text-primary mt-0.5">SME-фаундеры, B2B-производства, операционные директора, лидеры роста</div>
+</div>
+<div>
+<div class="font-label-eyebrow text-label-eyebrow uppercase text-text-muted">Текущая фаза</div>
+<div class="font-body-md text-body-md text-primary mt-0.5">Полевая апробация на 3 партнерских проектах (Россия / Испания)</div>
+</div>
+<div>
+<div class="font-label-eyebrow text-label-eyebrow uppercase text-text-muted">Ключевая парадигма</div>
+<div class="font-body-md text-body-md text-primary mt-0.5">Разделение фактов рынка и рекламных иллюзий через канонические карты</div>
+</div>
+<div>
+<div class="font-label-eyebrow text-label-eyebrow uppercase text-text-muted">Архитектурный стек</div>
+<div class="font-label-mono text-label-mono text-text-charcoal mt-1 bg-surface-sage-tint p-2.5">
+                  Semantic Taxonomy · Graph Extraction · Value-Matrix Engine · Sales Handoff
+                </div>
+</div>
+</div>
+<div class="pt-4 border-t border-border-hairline flex items-center justify-between text-text-muted">
+<span class="font-label-mono text-label-mono">Обновление: Октябрь 2024</span>
+<span class="font-label-mono text-label-mono">Ver 0.4.1b</span>
+</div>
+</div>
+<!-- Quick Metric Pill -->
+<div class="bg-surface-sage-tint p-5 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-forest-deep text-canvas-cream flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+</div>
+<div>
+<div class="font-label-mono text-label-mono text-primary font-semibold">120+ часов глубинных интервью</div>
+<div class="font-body-sm text-body-sm text-text-muted">Синтезировано в алгоритмические карты факторов выбора</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Problem Statement: 3 Systemic Disconnects -->
+<section class="w-full bg-surface-linen py-20 px-6 lg:px-12">
+<div class="max-w-7xl mx-auto space-y-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-border-subtle">
+<div class="space-y-2">
+<div class="font-label-eyebrow text-label-eyebrow uppercase tracking-widest text-text-muted">
+            ДИАГНОСТИКА СИТУАЦИИ
+          </div>
+<h2 class="font-headline-lg text-headline-lg text-primary">
+            Анатомия разрыва: почему маркетинг среднего бизнеса сбоит
+          </h2>
+</div>
+<div class="max-w-md font-body-sm text-body-sm text-text-muted">
+          Малые компании тратят критические ресурсы на поверхностные инструменты, не решив фундаментальные вопросы позиционирования и ограничений.
+        </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Disconnect 01 -->
+<div class="bg-canvas-cream p-8 flex flex-col justify-between space-y-6 shadow-sm">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-forest-deep bg-surface-sage-tint px-2.5 py-1">
+                ДЕФЕКТ 01
+              </span>
+<span class="material-symbols-outlined text-text-muted text-[22px]">campaign</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">
+              «Иллюзия рекламы»
+            </h3>
+<p class="font-body-md text-body-md text-text-charcoal leading-relaxed">
+              Бизнес покупает трафик, когда узкое горлышко лежит в неясности ценностного предложения или банальной недифференцированности. Деньги сжигаются в каналах привлечения вместо калибровки ответа на вопрос: «Почему клиент должен выбрать именно нас, если конкурент ближе и дешевле?».
+            </p>
+</div>
+<div class="pt-4 border-t border-border-hairline font-label-mono text-label-mono text-status-wip">
+            Следствие: рост CAC до 400% без удержания
+          </div>
+</div>
+<!-- Disconnect 02 -->
+<div class="bg-canvas-cream p-8 flex flex-col justify-between space-y-6 shadow-sm">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-forest-deep bg-surface-sage-tint px-2.5 py-1">
+                ДЕФЕКТ 02
+              </span>
+<span class="material-symbols-outlined text-text-muted text-[22px]">account_balance</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">
+              «Барьер консалтинга»
+            </h3>
+<p class="font-body-md text-body-md text-text-charcoal leading-relaxed">
+              Классические консалтинговые гиганты требуют бюджеты от 5–10 млн рублей за многомесячные абстрактные презентации. Малые агентства, наоборот, сразу скатываются в операционку и раздачу лидов низкого качества. Средний бизнес остается в методологическом вакууме.
+            </p>
+</div>
+<div class="pt-4 border-t border-border-hairline font-label-mono text-label-mono text-status-wip">
+            Следствие: паралич принятия решений
+          </div>
+</div>
+<!-- Disconnect 03 -->
+<div class="bg-canvas-cream p-8 flex flex-col justify-between space-y-6 shadow-sm">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-forest-deep bg-surface-sage-tint px-2.5 py-1">
+                ДЕФЕКТ 03
+              </span>
+<span class="material-symbols-outlined text-text-muted text-[22px]">schema</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">
+              «Хаос и разрыв цепи»
+            </h3>
+<p class="font-body-md text-body-md text-text-charcoal leading-relaxed">
+              Стратегия живет в голове основателя, сайт делает сторонний фрилансер, а сейлз-команда импровизирует на звонках. Нет непрерывной онтологической цепочки: «Исследование рынка → Продуктовая упаковка → Аргументы для коммерческого отдела».
+            </p>
+</div>
+<div class="pt-4 border-t border-border-hairline font-label-mono text-label-mono text-status-wip">
+            Следствие: слив лидов на этапе квалификации
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Metric Band -->
+<section class="w-full bg-canvas-cream py-16 px-6 lg:px-12 border-y border-border-hairline">
+<div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="space-y-2">
+<div class="font-metric-display text-metric-display text-forest-deep">4</div>
+<div class="font-label-eyebrow text-label-eyebrow text-primary uppercase">Базовых модуля</div>
+<div class="font-body-sm text-body-sm text-text-muted">Сквозной процесс от анализа данных до коммерческих скриптов</div>
+</div>
+<div class="space-y-2">
+<div class="font-metric-display text-metric-display text-forest-deep">21 день</div>
+<div class="font-label-eyebrow text-label-eyebrow text-primary uppercase">Диагностический спринт</div>
+<div class="font-body-sm text-body-sm text-text-muted">Формирование канонической карты и выявление скрытых ограничений</div>
+</div>
+<div class="space-y-2">
+<div class="font-metric-display text-metric-display text-forest-deep">100%</div>
+<div class="font-label-eyebrow text-label-eyebrow text-primary uppercase">Доказуемость утверждений</div>
+<div class="font-body-sm text-body-sm text-text-muted">Никаких предположений: каждый тезис подкреплен рыночным фактом</div>
+</div>
+<div class="space-y-2">
+<div class="font-metric-display text-metric-display text-forest-deep">0 руб.</div>
+<div class="font-label-eyebrow text-label-eyebrow text-primary uppercase">Раздутого штата</div>
+<div class="font-body-sm text-body-sm text-text-muted">Инструменты и регламенты работают силами существующей команды</div>
+</div>
+</div>
+</section>
+<!-- Interactive Workflow / Schematic Blueprint -->
+<section class="w-full bg-canvas-cream py-20 px-6 lg:px-12" id="blueprint">
+<div class="max-w-7xl mx-auto space-y-12">
+<div class="space-y-3">
+<div class="font-label-eyebrow text-label-eyebrow uppercase tracking-widest text-text-muted">
+          СИСТЕМНЫЙ ПАЙПЛАЙН · BLUEPRINT
+        </div>
+<h2 class="font-headline-lg text-headline-lg text-primary">
+          Сквозной цикл операционализации стратегии
+        </h2>
+<p class="font-body-md text-body-md text-text-muted max-w-2xl">
+          Каждый этап является строгим логическим продолжением предыдущего. Ошибки на шаге 1 делают бесполезным шаг 5.
+        </p>
+</div>
+<!-- Architectural Node Diagram -->
+<div class="w-full bg-surface-linen p-8 md:p-12 border border-border-hairline">
+<div class="grid grid-cols-1 md:grid-cols-5 gap-6 relative">
+<!-- Node 1 -->
+<div class="flex flex-col space-y-3 p-5 bg-canvas-cream border border-border-hairline relative">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-forest-deep font-semibold">ФАЗА 01</span>
+<span class="w-2 h-2 rounded-full bg-forest-deep"></span>
+</div>
+<div class="font-headline-sm text-[18px] leading-snug text-primary font-medium">
+              Исследование рынка и фактов
+            </div>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Сбор поисковой семантики, интервью с отказниками, анализ закупочных тендеров.
+            </p>
+<div class="mt-auto pt-3 font-label-mono text-[11px] text-text-charcoal border-t border-border-subtle">
+              ВЫХОД: Датасет сырых фактов
+            </div>
+</div>
+<!-- Node 2 -->
+<div class="flex flex-col space-y-3 p-5 bg-canvas-cream border border-border-hairline relative">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-forest-deep font-semibold">ФАЗА 02</span>
+<span class="w-2 h-2 rounded-full bg-forest-deep"></span>
+</div>
+<div class="font-headline-sm text-[18px] leading-snug text-primary font-medium">
+              Формализация ограничений
+            </div>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Выявление реальных барьеров: логистика, доверие, технологический регламент, цена ошибки.
+            </p>
+<div class="mt-auto pt-3 font-label-mono text-[11px] text-text-charcoal border-t border-border-subtle">
+              ВЫХОД: Матрица нерешенных болей
+            </div>
+</div>
+<!-- Node 3 -->
+<div class="flex flex-col space-y-3 p-5 bg-surface-sage-tint border border-border-subtle relative">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-forest-deep font-semibold">ФАЗА 03 [ЯДРО]</span>
+<span class="w-2 h-2 rounded-full bg-status-wip"></span>
+</div>
+<div class="font-headline-sm text-[18px] leading-snug text-primary font-medium">
+              Синтез ценностного оффера
+            </div>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Проектирование связки: «Конкретная боль → Неотразимое решение → Твердые пруфы».
+            </p>
+<div class="mt-auto pt-3 font-label-mono text-[11px] text-text-charcoal border-t border-border-subtle">
+              ВЫХОД: Value Proposition Canon
+            </div>
+</div>
+<!-- Node 4 -->
+<div class="flex flex-col space-y-3 p-5 bg-canvas-cream border border-border-hairline relative">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-forest-deep font-semibold">ФАЗА 04</span>
+<span class="w-2 h-2 rounded-full bg-forest-deep"></span>
+</div>
+<div class="font-headline-sm text-[18px] leading-snug text-primary font-medium">
+              Спринт тестирования
+            </div>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Качественные тесты на реальных ЛПР за 7 дней. Замер резонанса без многомесячных строек.
+            </p>
+<div class="mt-auto pt-3 font-label-mono text-[11px] text-text-charcoal border-t border-border-subtle">
+              ВЫХОД: Валидированный месседж
+            </div>
+</div>
+<!-- Node 5 -->
+<div class="flex flex-col space-y-3 p-5 bg-canvas-cream border border-border-hairline relative">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-forest-deep font-semibold">ФАЗА 05</span>
+<span class="w-2 h-2 rounded-full bg-forest-deep"></span>
+</div>
+<div class="font-headline-sm text-[18px] leading-snug text-primary font-medium">
+              Внедрение в коммерцию
+            </div>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Перевод в скрипты квалификации, структуру коммерческих предложений и сайт.
+            </p>
+<div class="mt-auto pt-3 font-label-mono text-[11px] text-text-charcoal border-t border-border-subtle">
+              ВЫХОД: Регламенты сейлз-команды
+            </div>
+</div>
+</div>
+<!-- Inline SVG Schematic Trace -->
+<div class="mt-8 pt-6 border-t border-border-hairline flex flex-col md:flex-row items-center justify-between gap-4 text-text-muted font-label-mono text-label-mono">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-forest-deep text-[20px]">hub</span>
+<span>Структура сквозной онтологии: от формулировки гипотезы до закрытия первой сделки</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-block w-2 h-2 bg-forest-deep rounded-full"></span>
+<span>Цикл итерации: 14 рабочих дней</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4 Core Modules Detailed -->
+<section class="w-full bg-surface-linen py-20 px-6 lg:px-12" id="architecture">
+<div class="max-w-7xl mx-auto space-y-16">
+<div class="space-y-3">
+<div class="font-label-eyebrow text-label-eyebrow uppercase tracking-widest text-text-muted">
+          СТРУКТУРНЫЕ КОМПОНЕНТЫ СИСТЕМЫ
+        </div>
+<h2 class="font-headline-lg text-headline-lg text-primary">
+          Четыре базовых модуля Marketing Studio
+        </h2>
+<p class="font-body-md text-body-md text-text-muted max-w-2xl">
+          Каждый модуль представляет собой законченный набор протоколов, шаблонов и алгоритмов анализа.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Module 01 -->
+<div class="bg-canvas-cream p-8 md:p-10 flex flex-col justify-between space-y-8 border border-border-hairline">
+<div class="space-y-6">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-mono text-label-mono text-forest-deep font-semibold">МОДУЛЬ 01 / ИНЖЕНЕРИЯ</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">
+                  Онтология и Каноническая карта рынка
+                </h3>
+</div>
+<span class="font-label-mono text-headline-sm text-text-muted">01</span>
+</div>
+<p class="font-body-md text-body-md text-text-charcoal leading-relaxed">
+              Построение строгого семантического словаря компании. В большинстве команд маркетолог, собственник и руководитель продаж используют одни и те же слова в противоположных значениях. Модуль фиксирует каноническую иерархию факторов выбора покупателя.
+            </p>
+<div class="bg-surface-linen p-5 space-y-3">
+<div class="font-label-mono text-label-mono text-forest-deep font-semibold uppercase">Ключевые артефакты:</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-text-muted">
+<li class="flex items-start gap-2">
+<span class="font-label-mono text-forest-deep">―</span>
+<span><strong>Словарь понятий:</strong> строгое разделение фактов рынка, гипотез и эмоциональных суждений.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="font-label-mono text-forest-deep">―</span>
+<span><strong>Иерархия драйверов:</strong> что на самом деле покупает клиент (безопасность, скорость, статус, снижение риска штрафов).</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="font-label-mono text-forest-deep">―</span>
+<span><strong>Семантическое ядро интентов:</strong> 1 000+ живых поисковых запросов, сгруппированных по стадии готовности к сделке.</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-4 border-t border-border-hairline flex items-center justify-between font-label-mono text-label-mono text-text-muted">
+<span>Статус: Методика стандартизирована</span>
+<span class="text-forest-deep">Протокол ONTO-01</span>
+</div>
+</div>
+<!-- Module 02 -->
+<div class="bg-canvas-cream p-8 md:p-10 flex flex-col justify-between space-y-8 border border-border-hairline">
+<div class="space-y-6">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-mono text-label-mono text-forest-deep font-semibold">МОДУЛЬ 02 / РАЗВЕДКА</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">
+                  Конкурентная разведка и аудит ограничений
+                </h3>
+</div>
+<span class="font-label-mono text-headline-sm text-text-muted">02</span>
+</div>
+<p class="font-body-md text-body-md text-text-charcoal leading-relaxed">
+              Отказ от чтения хвалебных самопрезентаций конкурентов. Глубокий аудит открытых источников: судебных реестров, отзывов уволенных сотрудников, претензий клиентов в отраслевых чатах и реальных условий коммерческих предложений.
+            </p>
+<div class="bg-surface-linen p-5 space-y-3">
+<div class="font-label-mono text-label-mono text-forest-deep font-semibold uppercase">Ключевые артефакты:</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-text-muted">
+<li class="flex items-start gap-2">
+<span class="font-label-mono text-forest-deep">―</span>
+<span><strong>Матрица слабых мест:</strong> реальные ограничения ключевых игроков отрасли (сроки, сервис, брак).</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="font-label-mono text-forest-deep">―</span>
+<span><strong>Анализ оттока клиентов:</strong> почему клиенты уходят от лидеров ниши и что является триггером смены поставщика.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="font-label-mono text-forest-deep">―</span>
+<span><strong>Карта ценовой эластичности:</strong> где рынок готов переплачивать за надежность, а где демпингует.</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-4 border-t border-border-hairline flex items-center justify-between font-label-mono text-label-mono text-text-muted">
+<span>Статус: Методика стандартизирована</span>
+<span class="text-forest-deep">Протокол INTEL-02</span>
+</div>
+</div>
+<!-- Module 03 -->
+<div class="bg-canvas-cream p-8 md:p-10 flex flex-col justify-between space-y-8 border border-border-hairline">
+<div class="space-y-6">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-mono text-label-mono text-forest-deep font-semibold">МОДУЛЬ 03 / ПОЗИЦИОНИРОВАНИЕ</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">
+                  Ценностная архитектура и упаковка
+                </h3>
+</div>
+<span class="font-label-mono text-headline-sm text-text-muted">03</span>
+</div>
+<p class="font-body-md text-body-md text-text-charcoal leading-relaxed">
+              Формулирование рыночного обещания, которое невозможно сымитировать пустыми лозунгами. Модуль исключает общие фразы («индивидуальный подход», «высокое качество») и связывает каждую выгоду с проверяемыми техническими или контрактными гарантиями.
+            </p>
+<div class="bg-surface-linen p-5 space-y-3">
+<div class="font-label-mono text-label-mono text-forest-deep font-semibold uppercase">Ключевые артефакты:</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-text-muted">
+<li class="flex items-start gap-2">
+<span class="font-label-mono text-forest-deep">―</span>
+<span><strong>Канон ценности:</strong> формулировка «Рыночная проблема → Наш инженерный ответ → Твердое подтверждение».</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="font-label-mono text-forest-deep">―</span>
+<span><strong>Реестр пруфов:</strong> фактологическая база (кейсы, регламенты, допуски, метрики безотказности).</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="font-label-mono text-forest-deep">―</span>
+<span><strong>Информационная архитектура сайта:</strong> структура конверсионных экранов без шаблонного «мусора».</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-4 border-t border-border-hairline flex items-center justify-between font-label-mono text-label-mono text-text-muted">
+<span>Статус: Тестирование на пилотах</span>
+<span class="text-status-wip">Протокол VALUE-03</span>
+</div>
+</div>
+<!-- Module 04 -->
+<div class="bg-canvas-cream p-8 md:p-10 flex flex-col justify-between space-y-8 border border-border-hairline">
+<div class="space-y-6">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-mono text-label-mono text-forest-deep font-semibold">МОДУЛЬ 04 / КОММЕРЦИЯ</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">
+                  Операционализация в продажи и регламенты
+                </h3>
+</div>
+<span class="font-label-mono text-headline-sm text-text-muted">04</span>
+</div>
+<p class="font-body-md text-body-md text-text-charcoal leading-relaxed">
+              Мост между стратегическим замыслом и реальной практикой звонков и переговоров. Если сейлз не понимает позиционирование или не умеет квалифицировать клиента по критериям канона — стратегия остается мертвым документом.
+            </p>
+<div class="bg-surface-linen p-5 space-y-3">
+<div class="font-label-mono text-label-mono text-forest-deep font-semibold uppercase">Ключевые артефакты:</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-text-muted">
+<li class="flex items-start gap-2">
+<span class="font-label-mono text-forest-deep">―</span>
+<span><strong>Скрипт квалификационной беседы:</strong> выявление истинной готовности клиента за 4 ключевых вопроса.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="font-label-mono text-forest-deep">―</span>
+<span><strong>Конструктор КП:</strong> блочная система коммерческих предложений под конкретный профиль заказчика.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="font-label-mono text-forest-deep">―</span>
+<span><strong>Книга контраргументов:</strong> методичка работы с сомнениями по цене и альтернативным поставщикам.</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-4 border-t border-border-hairline flex items-center justify-between font-label-mono text-label-mono text-text-muted">
+<span>Статус: Тестирование на пилотах</span>
+<span class="text-status-wip">Протокол OPS-04</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Real Cases & Pilot Application -->
+<section class="w-full bg-canvas-cream py-20 px-6 lg:px-12">
+<div class="max-w-7xl mx-auto space-y-12">
+<div class="space-y-3 pb-6 border-b border-border-hairline">
+<div class="font-label-eyebrow text-label-eyebrow uppercase tracking-widest text-text-muted">
+          ПОЛЕВАЯ АПРОБАЦИЯ · КЕЙСЫ
+        </div>
+<h2 class="font-headline-lg text-headline-lg text-primary">
+          Где методология уже проходит испытания
+        </h2>
+<p class="font-body-md text-body-md text-text-muted max-w-2xl">
+          Практика применения фреймворка Marketing Studio на реальных бизнесах в разных географиях и индустриях.
+        </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Case 1 -->
+<div class="bg-surface-linen p-8 flex flex-col justify-between space-y-6">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-[11px] text-text-muted uppercase">Индустрия / B2B</span>
+<span class="font-label-mono text-[11px] text-forest-deep font-semibold">РФ · ПРОМЫШЛЕННОСТЬ</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">
+              Промышленное оборудование: от продажи станков к интеграционным линиям
+            </h3>
+<p class="font-body-sm text-body-sm text-text-charcoal leading-relaxed">
+<strong>Проблема:</strong> Компания торговала китайскими металлообрабатывающими станками и сталкивалась с постоянным ценовым демпингом мелких перекупщиков.<br/><br/>
+<strong>Решение Marketing Studio:</strong> Пересборка онтологии. Смещение позиционирования с «продажи железа» на «контрактный ввод узла в эксплуатацию с гарантией OEE и SLA по запчастям 48 часов».<br/><br/>
+<strong>Результат:</strong> Средний чек контракта вырос в 2.4 раза, выход из конкуренции с импортерами-однодневками.
+            </p>
+</div>
+<div class="pt-4 border-t border-border-subtle font-label-mono text-label-mono text-text-muted flex items-center justify-between">
+<span>Цикл проекта: 2 мес.</span>
+<span class="text-forest-deep">Успешно внедрено</span>
+</div>
+</div>
+<!-- Case 2 -->
+<div class="bg-surface-linen p-8 flex flex-col justify-between space-y-6">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-[11px] text-text-muted uppercase">Wellness / B2C Premium</span>
+<span class="font-label-mono text-[11px] text-forest-deep font-semibold">ИСПАНИЯ · ЕВРОПА</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">
+              Спортивный клуб: позиционирование на стыке бокса и биорегенерации
+            </h3>
+<p class="font-body-sm text-body-sm text-text-charcoal leading-relaxed">
+<strong>Проблема:</strong> Риск затеряться среди сотен стандартных фитнес-залов в Валенсии и Мадриде, высокая стоимость привлечения экспат-аудитории.<br/><br/>
+<strong>Решение Marketing Studio:</strong> Исследование глубинных паттернов топ-менеджеров и IT-предпринимателей. Фокус на эмоциональной декомпрессии через аутентичный бокс и крио-восстановление.<br/><br/>
+<strong>Результат:</strong> Sold-out клубных карт первого пула еще до официального открытия дверей, органический CAC снижен на 65%.
+            </p>
+</div>
+<div class="pt-4 border-t border-border-subtle font-label-mono text-label-mono text-text-muted flex items-center justify-between">
+<span>Цикл проекта: 6 недель</span>
+<span class="text-forest-deep">Запуск пилота</span>
+</div>
+</div>
+<!-- Case 3 -->
+<div class="bg-surface-linen p-8 flex flex-col justify-between space-y-6">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-[11px] text-text-muted uppercase">Digital &amp; E-Commerce</span>
+<span class="font-label-mono text-[11px] text-forest-deep font-semibold">КРОСС-БОРДЕР</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">
+              Рыночный спрос и поисковая семантика для рынков Испании и РФ
+            </h3>
+<p class="font-body-sm text-body-sm text-text-charcoal leading-relaxed">
+<strong>Проблема:</strong> Прямой перевод рекламных кампаний с русского на испанский давал нулевую конверсию из-за несовпадения ментальных моделей выбора.<br/><br/>
+<strong>Решение Marketing Studio:</strong> Полная ресемантизация каталога с учетом локальных правовых норм, культурных паттернов доверия и местных платежных шлюзов.<br/><br/>
+<strong>Результат:</strong> Конверсия органического перехода в целевой лид выросла с 0.8% до 3.6% без увеличения бюджета.
+            </p>
+</div>
+<div class="pt-4 border-t border-border-subtle font-label-mono text-label-mono text-text-muted flex items-center justify-between">
+<span>Цикл проекта: ongoing</span>
+<span class="text-forest-deep">Масштабирование</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Open Disclosure & Manifesto -->
+<section class="w-full bg-surface-sage-tint py-16 px-6 lg:px-12">
+<div class="max-w-4xl mx-auto space-y-6">
+<div class="font-label-eyebrow text-label-eyebrow text-forest-deep uppercase tracking-widest">
+        ПРИНЦИПИАЛЬНАЯ ПОЗИЦИЯ АВТОРА
+      </div>
+<h3 class="font-headline-lg text-headline-lg text-primary">
+        «Мы не строим SaaS-комбайн для всех подряд. Мы возвращаем маркетингу статус точной управленческой дисциплины».
+      </h3>
+<div class="space-y-4 font-body-md text-body-md text-text-charcoal leading-relaxed">
+<p>
+          Marketing Studio не стремится стать еще одним шаблонным сервисом с кнопкой «сделать красиво за 990 рублей в месяц». Современный софт полон бесполезных функций, потому что создатели пытаются автоматизировать хаос. 
+        </p>
+<p>
+          Наша задача на текущем этапе — <strong>стандартизировать методологию</strong>. Мы проводим глубокие пилотные проекты вручную, полируя каждый протокол, чтобы в будущем превратить его в отказоустойчивую операционную систему стратегического управления для бизнеса.
+        </p>
+</div>
+</div>
+</section>
+<!-- Inverted Forest Chapter: Pilot Invitation & Collaboration -->
+<section class="w-full bg-forest-deep text-canvas-cream py-24 px-6 lg:px-12" id="pilot">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-7 flex flex-col space-y-8">
+<div class="space-y-4">
+<div class="font-label-eyebrow text-label-eyebrow uppercase tracking-widest text-on-primary-container">
+              ПРИГЛАШЕНИЕ К ПИЛОТУ
+            </div>
+<h2 class="font-headline-lg text-headline-lg text-canvas-cream">
+              Приглашение к пилотному исследованию для собственников бизнеса
+            </h2>
+</div>
+<p class="font-body-lg text-body-lg text-border-subtle leading-relaxed">
+            Если ваша компания столкнулась со стеклянным потолком в продажах, потерей эффективности рекламы или выходом в новую нишу — мы готовы рассмотреть участие в исследовательской когорте.
+          </p>
+<div class="space-y-4 pt-2">
+<div class="font-label-mono text-label-mono text-on-primary-container uppercase">Критерии отбора партнерских проектов:</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-4 bg-forest-surface border border-forest-surface/80 space-y-1">
+<div class="font-label-mono text-label-mono text-canvas-cream font-semibold">1. Твердый продукт</div>
+<div class="font-body-sm text-body-sm text-border-subtle">Наличие реальных клиентов и опыта завершенных поставок / услуг.</div>
+</div>
+<div class="p-4 bg-forest-surface border border-forest-surface/80 space-y-1">
+<div class="font-label-mono text-label-mono text-canvas-cream font-semibold">2. Доступ к ЛПР</div>
+<div class="font-body-sm text-body-sm text-border-subtle">Готовность основателя уделить время для 3 глубинных сессий.</div>
+</div>
+<div class="p-4 bg-forest-surface border border-forest-surface/80 space-y-1">
+<div class="font-label-mono text-label-mono text-canvas-cream font-semibold">3. Честность данных</div>
+<div class="font-body-sm text-body-sm text-border-subtle">Открытость к изучению отказных клиентов и причин потерь.</div>
+</div>
+<div class="p-4 bg-forest-surface border border-forest-surface/80 space-y-1">
+<div class="font-label-mono text-label-mono text-canvas-cream font-semibold">4. Рыночный масштаб</div>
+<div class="font-body-sm text-body-sm text-border-subtle">B2B, промышленность, сложные услуги, интернациональные запуски.</div>
+</div>
+</div>
+</div>
+<div class="pt-6 flex flex-wrap items-center gap-4">
+<a class="inline-flex items-center justify-center font-label-mono text-label-mono bg-canvas-cream text-forest-deep px-6 py-3.5 hover:bg-surface-sage-tint transition-colors gap-2" href="https://t.me/ShashkovVlad" rel="noopener" target="_blank">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>Написать напрямую в Telegram</span>
+<span>↗</span>
+</a>
+<a class="inline-flex items-center justify-center font-label-mono text-label-mono border border-border-subtle/40 text-canvas-cream px-6 py-3.5 hover:border-canvas-cream transition-colors" href="mailto:contact@vshashkov.com?subject=Marketing Studio Pilot Inquiry">
+              Запрос на email
+            </a>
+</div>
+</div>
+<!-- Pilot Request Spec Card -->
+<div class="lg:col-span-5 bg-forest-surface p-8 border border-border-hairline/20 space-y-6">
+<div class="font-label-mono text-label-mono text-canvas-cream font-semibold uppercase tracking-wider pb-3 border-b border-border-hairline/20 flex items-center justify-between">
+<span>Формат пилотного спринта</span>
+<span class="text-on-primary-container">3 Недели</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="font-label-mono text-on-primary-container text-[14px]">W1</span>
+<div>
+<div class="font-label-mono text-label-mono text-canvas-cream font-medium">Глубинный аудит и семантика</div>
+<div class="font-body-sm text-body-sm text-border-subtle">Выгрузка реальных клиентских запросов, аудит конкурентов, фиксация ограничений.</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="font-label-mono text-on-primary-container text-[14px]">W2</span>
+<div>
+<div class="font-label-mono text-label-mono text-canvas-cream font-medium">Синтез ценностного канона</div>
+<div class="font-body-sm text-body-sm text-border-subtle">Разработка матрицы доказательств, проектирование нового рыночного оффера.</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="font-label-mono text-on-primary-container text-[14px]">W3</span>
+<div>
+<div class="font-label-mono text-label-mono text-canvas-cream font-medium">Передача в коммерческий отдел</div>
+<div class="font-body-sm text-body-sm text-border-subtle">Составление скриптов квалификации, регламента КП и структуры посадочных страниц.</div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-forest-deep/60 border border-border-hairline/10 space-y-2">
+<div class="font-label-eyebrow text-label-eyebrow text-on-primary-container uppercase">Ограничение набора</div>
+<div class="font-body-sm text-body-sm text-border-subtle">
+              В текущем квартале доступно не более 2 слотов для сохранения качества исследовательской работы.
+            </div>
+</div>
+<div class="pt-2 text-center">
+<a class="font-label-mono text-label-mono text-on-primary-container hover:text-canvas-cream transition-colors" href="#">
+              ← Назад к портфелю монографий Владимира Шашкова
+            </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-linen"><div class="max-w-7xl mx-auto px-6 lg:px-12 py-16"><div class="grid grid-cols-1 md:grid-cols-12 gap-10"><div class="md:col-span-5 flex flex-col justify-between space-y-6"><div><div class="font-headline-sm text-headline-sm text-primary mb-2">Владимир Шашков</div><p class="font-body-sm text-body-sm text-text-muted max-w-sm">Независимый исследователь, предприниматель и создатель венчурных продуктов. Фокус на стыке системной инженерии, стратегии и цифровых монографий.</p></div><div class="font-label-mono text-label-mono text-text-muted">© 2024 Владимир Шашков · Все права защищены</div></div><div class="md:col-span-3 flex flex-col space-y-3"><div class="font-label-eyebrow text-label-eyebrow uppercase text-text-muted tracking-widest mb-2">Навигация</div><a class="font-body-sm text-body-sm text-text-charcoal hover:text-primary transition-colors" data-path="projects" href="#">01 / Проекты</a><a class="font-body-sm text-body-sm text-text-charcoal hover:text-primary transition-colors" data-path="experience" href="#">02 / Опыт и вехи</a><a class="font-body-sm text-body-sm text-text-charcoal hover:text-primary transition-colors" data-path="research" href="#">03 / Исследования</a><a class="font-body-sm text-body-sm text-text-charcoal hover:text-primary transition-colors" data-path="works" href="#">04 / Избранные работы</a><a class="font-body-sm text-body-sm text-text-charcoal hover:text-primary transition-colors" data-path="contact" href="#">05 / Контактная палата</a></div><div class="md:col-span-4 flex flex-col space-y-3"><div class="font-label-eyebrow text-label-eyebrow uppercase text-text-muted tracking-widest mb-2">Связь и издания</div><a class="font-body-sm text-body-sm text-text-charcoal hover:text-primary transition-colors flex items-center justify-between" href="https://t.me/" rel="noopener" target="_blank"><span>Telegram прямой канал</span><span class="font-label-mono text-label-mono text-text-muted">↗</span></a><a class="font-body-sm text-body-sm text-text-charcoal hover:text-primary transition-colors flex items-center justify-between" href="mailto:contact@vshashkov.com"><span>Почта / Запросы</span><span class="font-label-mono text-label-mono text-text-muted">↗</span></a><a class="font-body-sm text-body-sm text-text-charcoal hover:text-primary transition-colors flex items-center justify-between" href="/es/about"><span>Edición en español [ES]</span><span class="font-label-mono text-label-mono text-text-muted">↗</span></a><div class="pt-4 font-label-mono text-label-mono text-text-muted">Архитектура: Monograph Light · UTC+3</div></div></div></div></footer></body></html>
