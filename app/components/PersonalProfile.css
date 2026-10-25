@@ -55,3 +55,32 @@
 .rd .rd-project:last-child{grid-column:auto}.rd .rd-project-picture{height:330px}
 .rd .rd-project-info h3{font-size:35px}.rd .rd-project-info{padding:22px}
 }
+
+/* Accessibility, legibility and editorial refinement after PDF review. */
+.rd .rd-proof-numbers p{color:#f6f5ef!important;opacity:1!important;font-size:14px}
+.rd .rd-proof-numbers small{color:#d3e3d5!important;opacity:1!important;font-size:12px}
+.rd .rd-proof-top>p{color:#e5eee6!important}
+.rd .rd-contact>div>p{color:#f3f5ef!important;opacity:1!important}
+.rd .rd-work-item-2 p,.rd .rd-work-item-2 .rd-caption{color:#f7f9f3!important;opacity:1!important}
+.rd .rd-project-info small{color:#394b40!important}
+.rd .rd-project-info p{color:#202b25!important}
+.rd .rd-history-list{position:relative}
+.rd .rd-history-list article{display:grid;grid-template-columns:minmax(135px,.3fr) minmax(0,1fr);gap:clamp(30px,6vw,90px);min-height:200px;padding:32px 0;border-color:#b5c0b3}
+.rd .rd-history-marker{display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid #bac7b9;padding-right:25px}
+.rd .rd-history-marker span{font-size:clamp(24px,3.2vw,47px);font-weight:900;letter-spacing:-.07em;line-height:1.1;color:#375c43}
+.rd .rd-history-marker b{font:italic 400 28px Georgia,serif;color:#809586}
+.rd .rd-history-content small{font-size:10px;letter-spacing:.13em;font-weight:800;color:#5a7460}
+.rd .rd-history-content h3{font-family:Georgia,serif;font-size:clamp(28px,3vw,48px);font-weight:400;letter-spacing:-.055em;line-height:1.12;margin:12px 0 17px}
+.rd .rd-history-content p{font-size:16px;max-width:760px}
+.rd .rd-project-picture{transition:filter .3s ease}
+.rd .rd-project:hover .rd-project-picture{filter:saturate(1.13)}
+.rd .rd-project-1 .rd-project-picture{background:linear-gradient(145deg,#d6e4cf,#a5c9b6)}
+.rd .rd-project-2 .rd-project-picture{background:radial-gradient(circle at 85% 25%,#436b64,#202a33 62%)}
+.rd .rd-project-3 .rd-project-picture{background:linear-gradient(160deg,#ecd7c9,#cfb0b6)}
+@media(max-width:700px){
+.rd .rd-history-list article{grid-template-columns:1fr;gap:15px;padding:28px 0}
+.rd .rd-history-marker{flex-direction:row;align-items:baseline;border-right:0;padding-right:0}
+.rd .rd-history-marker span{font-size:30px}
+.rd .rd-history-content h3{font-size:31px}
+.rd .rd-history-content p{font-size:15px}
+}
