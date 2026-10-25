@@ -75,3 +75,48 @@
 .pp .pp-source-excerpt em{font:500 12px Arial,sans-serif;font-style:normal;color:#556156}
 .pp .pp-work:nth-child(4) .pp-work-visual{background:#e7e3db}
 @media(max-width:700px){.pp .pp-venture-proof{margin:19px 0}.pp .pp-live-project iframe{height:220px}.pp .pp-case-proof,.pp .pp-persona-proof{padding:26px 20px;min-height:235px}.pp .pp-work-visual{height:208px!important;padding:22px!important}.pp .pp-source-excerpt strong{font-size:27px}}
+
+/* Self-contained editorial hero v3 — replaces the former overlapping name/photo composition. */
+.pp .pp-hero-v3{background:#f4f2eb;color:#252925;padding:0}
+.pp .pp-hero-v3 .pp-hero-stage{width:min(calc(100% - 80px),1360px)}
+.pp .pp-hero-v3-top,.pp .pp-hero-v3-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:11px;font-weight:750;letter-spacing:.08em;text-transform:uppercase}
+.pp .pp-hero-v3-top{min-height:76px;border-bottom:1px solid #bfc5bd}
+.pp .pp-hero-v3-body{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(18px,4vw,65px);align-items:stretch;padding:28px 0 30px}
+.pp .pp-hero-v3-message{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;position:relative;padding:22px 0;min-width:0}
+.pp .pp-hero-v3-hello{font-family:Georgia,serif;font-style:italic;font-size:clamp(22px,2.4vw,34px);color:#335e4a;margin-bottom:15px!important}
+.pp .pp-hero-v3-message h1{font-family:Arial,Helvetica,sans-serif;font-size:clamp(58px,7.2vw,109px);font-weight:900;letter-spacing:-.085em;line-height:.88;color:#202622;max-width:none;overflow-wrap:normal}
+.pp .pp-hero-v3-message h1 span{display:block;color:#335e4a}
+.pp .pp-hero-v3-deck{font-family:Georgia,serif;font-weight:400;font-size:clamp(25px,2.4vw,38px);line-height:1.16;letter-spacing:-.045em;max-width:560px;margin-top:34px!important}
+.pp .pp-hero-v3-description{font-size:clamp(14px,1.23vw,17px);line-height:1.6;max-width:520px;color:#59615a;margin-top:17px!important}
+.pp .pp-hero-v3-actions{display:flex;align-items:center;flex-wrap:wrap;gap:14px;margin-top:30px}
+.pp .pp-hero-v3-actions a{display:inline-flex;gap:34px;justify-content:space-between;align-items:center;padding:13px 19px;min-height:44px;font-size:13px;font-weight:750;border:1px solid #243b2e}
+.pp .pp-hero-v3-actions a:first-child{background:#243b2e;color:white}
+.pp .pp-hero-v3-actions a:hover{background:#dce4da;color:#1f3227}
+.pp .pp-hero-v3-actions a:first-child:hover{background:#395d49;color:white}
+.pp .pp-hero-v3-portrait{min-width:0;position:relative;align-self:stretch}
+.pp .pp-hero-v3-portrait img{display:block;width:100%;height:clamp(570px,54vw,750px);object-fit:cover;object-position:50% 28%;filter:none;box-shadow:none}
+.pp .pp-hero-v3-portrait figcaption{display:flex;justify-content:space-between;gap:10px;font-size:10px;font-weight:750;letter-spacing:.06em;margin-top:10px;color:#525c53}
+.pp .pp-hero-v3-bottom{padding:23px 0 27px;border-top:1px solid #bfc5bd}
+.pp .pp-hero-v3-bottom a{border-bottom:1px solid #526a59;padding-bottom:3px}
+@media(max-width:900px){
+ .pp .pp-hero-v3 .pp-hero-stage{width:calc(100% - 48px)}
+ .pp .pp-hero-v3-body{grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:24px}
+ .pp .pp-hero-v3-message h1{font-size:clamp(53px,7vw,75px)}
+ .pp .pp-hero-v3-deck{font-size:clamp(24px,2.9vw,32px)}
+ .pp .pp-hero-v3-portrait img{height:620px}
+}
+@media(max-width:700px){
+ .pp .pp-hero-v3 .pp-hero-stage{width:calc(100% - 36px)}
+ .pp .pp-hero-v3-top{min-height:56px;font-size:9px;gap:12px}
+ .pp .pp-hero-v3-top span:last-child{white-space:nowrap}
+ .pp .pp-hero-v3-body{display:flex;flex-direction:column;gap:14px;padding:14px 0 28px}
+ .pp .pp-hero-v3-portrait{order:1}
+ .pp .pp-hero-v3-portrait img{height:min(105vw,530px);object-position:50% 29%}
+ .pp .pp-hero-v3-message{order:2;padding:22px 0 0}
+ .pp .pp-hero-v3-hello{font-size:24px;margin-bottom:9px!important}
+ .pp .pp-hero-v3-message h1{font-size:clamp(58px,14vw,89px)}
+ .pp .pp-hero-v3-deck{font-size:clamp(27px,7vw,39px);margin-top:24px!important}
+ .pp .pp-hero-v3-description{font-size:16px;line-height:1.55}
+ .pp .pp-hero-v3-bottom{font-size:9px;align-items:start}
+}
+@media print{.pp .pp-hero-v3-body{break-inside:avoid}.pp .pp-hero-v3-portrait img{height:540px}}
