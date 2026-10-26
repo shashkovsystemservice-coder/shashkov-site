@@ -146,7 +146,32 @@
 .sn .startup-section[id="plataforma"] .proofs-items{grid-template-columns:repeat(3,minmax(0,1fr))}
 .sn .startup-section[id="plataforma"] .vision-note{color:#466858;line-height:1.65;margin:24px 0 0}
 
+
+/* Marketing Management: four linked tools, each with concrete inputs and outputs */
+.sn .sn-management{background:#eaf0e9}
+.sn .sn-management-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:18px;align-items:stretch}
+.sn .sn-management-list{display:grid;gap:10px}
+.sn .sn-management-step{appearance:none;border:1px solid #c8d6c9;background:#fff;padding:21px;display:grid;grid-template-columns:33px 1fr 17px;align-items:center;gap:12px;text-align:left;color:#153d30;cursor:pointer;font:inherit}
+.sn .sn-management-step.active,.sn .sn-management-step:hover{border-color:#287851;background:#deeadf}
+.sn .sn-management-step:focus-visible{outline:3px solid #3b8b69;outline-offset:2px}
+.sn .sn-management-step strong{font-size:clamp(17px,1.6vw,21px);line-height:1.25;display:block}
+.sn .sn-management-step small{font-size:13px;display:block;color:#516b58;margin-top:7px}
+.sn .sn-management-index{font-size:13px;font-weight:800;color:#32805b}
+.sn .sn-management-detail{background:#123b30;color:white;padding:clamp(24px,3.1vw,44px);display:flex;flex-direction:column;min-height:470px}
+.sn .sn-management-detail-top{display:flex;justify-content:space-between;gap:16px;font-size:12px;letter-spacing:.075em;font-weight:750;color:#c2ddb7}
+.sn .sn-management-detail h3{font-size:clamp(29px,2.8vw,39px);color:#fff;margin:20px 0 23px}
+.sn .sn-management-io{display:grid;gap:20px}
+.sn .sn-management-io>div{border-left:3px solid #80b795;padding-left:15px}
+.sn .sn-management-io span,.sn .sn-management-handoff strong{display:block;font-size:12px;letter-spacing:.055em;color:#c5e5bf;margin-bottom:8px}
+.sn .sn-management-io p,.sn .sn-management-handoff p{font-size:16px;line-height:1.55;color:#edf5ed}
+.sn .sn-management-handoff{margin-top:24px;padding-top:18px;border-top:1px solid #527769}
+.sn .sn-management-status{font-size:13px;margin-top:auto;padding-top:23px;color:#c5e5bf!important}
+.sn .sn-management-disclaimer{font-size:13px;margin-top:19px;color:#4f6a5d}
+
 @media(max-width:900px){
+ .sn .sn-management-grid{grid-template-columns:1fr}
+ .sn .sn-management-detail{min-height:0}
+
  .sn .startup-section[id="plataforma"] .proofs-items{grid-template-columns:1fr}
  .sn .sn-map-demo-layout{grid-template-columns:1fr}
 
@@ -162,6 +187,10 @@
  .sn .startup-section{padding:72px 0}
 }
 @media(max-width:640px){
+ .sn .sn-management-step{padding:18px 15px}
+ .sn .sn-management-detail{padding:25px 21px}
+ .sn .sn-management-io p{font-size:15px}
+
  .sn .sn-map-choice{padding:18px 16px}
  .sn .sn-map-answer{min-height:0;padding:27px 23px}
  .sn .sn-map-answer p{font-size:16px}
