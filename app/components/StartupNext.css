@@ -319,3 +319,13 @@
 .sn .sn-management-bridge strong{font-size:20px}
 .sn .sn-management-bridge p{font-size:15px}
 }
+
+.sn .sn-authentic-outline{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:0}
+.sn .sn-authentic-outline li{display:flex;gap:14px;align-items:baseline;border-bottom:1px solid #dde8dd;padding:11px 3px;font-size:15px;color:#214733;line-height:1.35}
+.sn .sn-authentic-outline li span{font-size:11px;font-weight:800;color:#367857;min-width:24px}
+.sn .sn-workspace-cta{background:#e0efe3;border:1px solid #abcab3;display:flex;align-items:center;justify-content:space-between;gap:25px;padding:24px 27px;margin-top:20px}
+.sn .sn-workspace-cta strong{font-size:20px}
+.sn .sn-workspace-cta p{margin-top:7px;font-size:14px;max-width:660px}
+.sn .sn-workspace-cta a{flex:none;background:#145a40!important;color:white!important;text-decoration:none!important;font-weight:800;padding:15px 20px;border-radius:3px;white-space:nowrap;font-size:14px}
+.sn .sn-workspace-cta a:hover{background:#0d3e2d!important}
+@media(max-width:800px){.sn .sn-workspace-cta{flex-direction:column;align-items:stretch}.sn .sn-workspace-cta a{text-align:center;white-space:normal}}
