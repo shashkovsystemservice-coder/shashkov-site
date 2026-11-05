@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "An integrated technology system connecting business research, Marketing Map and marketing management tools for small and medium-sized enterprises.",
   alternates: {
-    canonical: "https://shashkov-site.vercel.app/en/startup-next",
+    canonical: "https://vshashkov.ru/en/startup-next",
   },
   openGraph: {
     title: "Marketing Studio | Professional Marketing Management for SMEs",
