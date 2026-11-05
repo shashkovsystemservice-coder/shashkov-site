@@ -90,7 +90,7 @@ export default function StartupEnglish() {
 
       <header className="startup-hero en-hero" id="intro">
         <div className="wrap">
-          <a className="founder-intro" href="/es/about" aria-label="About the founder Vladimir Shashkov">
+          <a className="founder-intro" href="#founder" aria-label="About the founder Vladimir Shashkov">
             <Image src="/about-photo.webp" alt="Vladimir Shashkov" width={80} height={80} />
             <span>
               <strong>Vladimir Shashkov</strong>
@@ -302,7 +302,7 @@ export default function StartupEnglish() {
         </div>
       </section>
 
-      <section className="startup-section en-founder-section">
+      <section className="startup-section en-founder-section" id="founder">
         <div className="wrap founder-editorial">
           <Image src="/about-photo.webp" alt="Vladimir Shashkov, founder of Marketing Studio" width={640} height={800} />
           <div>
