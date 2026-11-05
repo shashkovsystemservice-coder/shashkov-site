@@ -299,6 +299,12 @@ export default function StartupEnglish() {
             <article><span className="en-stage-mark">03</span><h3>Integrated product</h3><p>Connecting research, Marketing Map and management tools into one company-specific workflow, with reusable data and consistent decisions.</p><b>In development</b></article>
             <article><span className="en-stage-mark">04</span><h3>Commercial validation</h3><p>Customer discovery, pilot testing, willingness-to-pay research and refinement of the business model with Chilean SMEs.</p><b>Next validation stage</b></article>
           </div>
+          <div className="en-company-book en-commercial-model">
+            <strong>Product-led commercial model</strong>
+            <p>
+              The commercial model is being validated. Current hypotheses include paid individual research outputs, access to defined digital workflows and recurring access for businesses with ongoing needs. The objective is to scale through reusable software and methodology rather than primarily selling customized consulting hours.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -349,7 +355,7 @@ export default function StartupEnglish() {
       <footer className="en-footer">
         <div className="wrap">
           <a className="brand" href="#top"><strong>MARKETING STUDIO</strong><span>Professional marketing management for SMEs</span></a>
-          <div><a href="mailto:vladimir.v.shashkov@gmail.com">Email</a><a href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Telegram</a><a href="/es">Founder website</a></div>
+          <div><a href="mailto:vladimir.v.shashkov@gmail.com">Email</a><a href="https://t.me/ShashkovVlad" target="_blank" rel="noreferrer">Telegram</a><a href="#founder">Founder profile</a></div>
           <small>Vladimir Shashkov · Marketing Studio · Project in development</small>
         </div>
       </footer>
