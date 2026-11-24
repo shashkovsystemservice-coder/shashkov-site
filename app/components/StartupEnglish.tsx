@@ -35,21 +35,21 @@ const managementTools = [
     question: "Where should the company compete, and how?",
     detail: "Assess the business situation, markets, customers, value, positioning and strategic alternatives before choosing priorities.",
     result: "A reasoned strategic direction, priorities and initiatives.",
-    stage: "Methodological framework developed; digital implementation is in progress.",
+    stage: "Separate tool developed; automated integration is pending.",
   },
   {
     name: "Annual plan",
     question: "What must happen during the year?",
     detail: "Translate strategic choices into objectives, initiatives, activities, responsibilities, timing, resources and measurable outcomes.",
     result: "An annual programme connected to strategic priorities.",
-    stage: "Methodological framework developed; digital implementation is in progress.",
+    stage: "Separate tool developed; automated integration is pending.",
   },
   {
     name: "Budget",
     question: "What resources will the plan require?",
     detail: "Connect planned activities with quantities, costs, internal capacity, external spending and financial constraints.",
     result: "A resource plan and budget linked to activities.",
-    stage: "Methodological model in development.",
+    stage: "Separate budget tool developed; selected calculations tested. Integration is pending.",
   },
   {
     name: "Management & control",
@@ -81,6 +81,7 @@ export default function StartupEnglish() {
               <a href="#architecture">Product</a>
               <a href="#map">Marketing Map</a>
               <a href="#management">Management</a>
+              <a href="#demo">Demo</a>
               <a href="#stage">Development stage</a>
               <a href="#pilot">Pilot</a>
             </div>
@@ -114,7 +115,7 @@ export default function StartupEnglish() {
               <div className="new-proposition-label">ONE INTEGRATED SYSTEM · THREE CONNECTED CAPABILITIES</div>
               <h2>From a business question to informed marketing decisions.</h2>
               <p>
-                Marketing Studio is being developed as a technology system that applies professional marketing methodologies to the specific context of each company — connecting research, marketing knowledge, strategy, planning and management.
+                Marketing Studio is being developed to organize professional marketing work around a company's specific business question or self-assessment. Owners need not choose the methods themselves: the planned system connects research, evidence, decisions, plans and budgets, while owners retain control.
               </p>
               <div className="founder-action">
                 <a className="founder-primary" href="#pilot">Discuss a pilot <span aria-hidden="true">→</span></a>
@@ -155,7 +156,7 @@ export default function StartupEnglish() {
               <div className="eyebrow">MARKETING MAP</div>
               <h3>Professional knowledge and company model</h3>
               <p>
-                A connected structure of marketing concepts, methods, metrics and dependencies, applied to the specific entities of a company: its markets, segments, customers, products, value propositions and positioning.
+                A connected model of 13 marketing domains and 185 entities, applied to the specific context of a company: its markets, segments, customers, products, value propositions and positioning.
               </p>
               <div className="en-output"><strong>Output</strong><span>A structured, evolving model of the company's marketing — not just a set of separate documents.</span></div>
             </article>
@@ -170,9 +171,9 @@ export default function StartupEnglish() {
             </article>
           </div>
           <div className="en-architecture-note">
-            <strong>The connecting principle</strong>
+            <strong>MASTER · the methodological core</strong>
             <p>
-              Research findings become reusable company knowledge. That knowledge informs strategic choices. Strategy shapes plans and budgets. Results and new evidence can trigger a review of earlier assumptions and decisions.
+              MASTER defines 21 professional operations with inputs, dependencies and quality gates. The planned execution engine will select relevant work, track facts, hypotheses and evidence, withhold unsupported conclusions and identify dependent decisions for review when evidence changes. The integrated engine is not yet operational.
             </p>
           </div>
         </div>
@@ -240,6 +241,17 @@ export default function StartupEnglish() {
         </div>
       </section>
 
+      <section className="startup-section en-evidence-section" id="demo">
+        <div className="wrap">
+          <div className="sectionhead">
+            <div className="eyebrow">PRODUCT DEMONSTRATION</div>
+            <h2>Start with a business question or a self-assessment.</h2>
+            <p>The working web self-assessment prototype guides initial checks through five business scenarios or a general review of 13 marketing areas. It uses predefined routes and questions, not automated verification of external evidence. The separate research, strategy, annual planning and budget tools illustrate the components to be integrated during Build.</p>
+          </div>
+          <div className="en-architecture-note"><strong>See the prototype demonstration</strong><p><a href="https://youtu.be/WuPbN0Qzgqk" target="_blank" rel="noreferrer">Watch the product demonstration on YouTube →</a></p><p>The video demonstrates preliminary components and concepts, not a finished integrated SaaS product.</p></div>
+        </div>
+      </section>
+
       <section className="startup-section en-evidence-section">
         <div className="wrap">
           <div className="sectionhead">
@@ -294,15 +306,15 @@ export default function StartupEnglish() {
             </p>
           </div>
           <div className="en-stage-grid">
-            <article><span className="en-stage-mark">01</span><h3>Methodological foundations</h3><p>Structured marketing strategy and annual planning methods, professional knowledge sources, analytical procedures and validation rules.</p><b>Developed / documented</b></article>
-            <article><span className="en-stage-mark">02</span><h3>Research and analytical experiments</h3><p>Research Harness workflows, structured report architecture, source traceability principles and experimental company research runs.</p><b>Developed / tested experimentally</b></article>
+            <article><span className="en-stage-mark">01</span><h3>Methodological foundations</h3><p>Marketing Map, MASTER, separate strategy, annual planning and budget tools, and a working web self-assessment prototype. Technical audits verified selected calculations and identified integration gaps.</p><b>Developed / documented</b></article>
+            <article><span className="en-stage-mark">02</span><h3>Research and analytical experiments</h3><p>Ten simulated cases tested the methodology. Research Harness experiments on real companies revealed evidence gaps. An independent industrial B2B marketing expert reviewed research outputs and product concepts; feedback informed improvements.</p><b>Developed / tested experimentally</b></article>
             <article><span className="en-stage-mark">03</span><h3>Integrated product</h3><p>Connecting research, Marketing Map and management tools into one company-specific workflow, with reusable data and consistent decisions.</p><b>In development</b></article>
             <article><span className="en-stage-mark">04</span><h3>Commercial validation</h3><p>Customer discovery, pilot testing, willingness-to-pay research and refinement of the business model with Chilean SMEs.</p><b>Next validation stage</b></article>
           </div>
           <div className="en-company-book en-commercial-model">
             <strong>Product-led commercial model</strong>
             <p>
-              The commercial model is being validated. Current hypotheses include paid individual research outputs, access to defined digital workflows and recurring access for businesses with ongoing needs. The objective is to scale through reusable software and methodology rather than primarily selling customized consulting hours.
+              The primary business-model hypothesis is a B2B software subscription. Reusable methods and accumulated company knowledge are intended to support repeat use without assigning a consultant to every company. Pricing, demand, human effort and delivery costs still need validation. There are no paying software customers or Chilean pilots yet.
             </p>
           </div>
         </div>
@@ -321,6 +333,9 @@ export default function StartupEnglish() {
               <div>25+ years in business development, marketing and management</div>
               <div>Executive MBA · Graduate School of Management, Saint Petersburg State University</div>
               <div>Operations Management · HKUST Business School, Hong Kong</div>
+              <div>Engineering degree with honours · Software for Computer and Automated Systems</div>
+              <div>Project management (PMBOK 7), quality management and organizational change</div>
+              <div>Experience leading multidisciplinary teams, selecting suppliers and managing external delivery quality</div>
               <div>Experience across industrial, technology, consumer and service businesses</div>
             </div>
             <div className="founder-name">Vladimir Shashkov <span>· Founder</span></div>
@@ -337,7 +352,7 @@ export default function StartupEnglish() {
               <h2>Help test professional marketing tools against real SME challenges.</h2>
             </div>
             <p>
-              We are interested in speaking with Chilean business owners, SME managers, marketing professionals, consultants and potential technology partners. The goal is to understand real workflows, test selected product capabilities and learn where the system creates practical value.
+              We are interested in speaking with Chilean business owners, SME managers, marketing professionals, consultants and potential technology partners. The Build plan is to interview 20 Chilean SMEs, implement one integrated workflow and test it with 3–5 pilot firms. We will compare decision quality and human effort against alternatives, test the impact of changed evidence and assess willingness to pay. These are planned targets, not achieved results.
             </p>
           </div>
           <div className="en-pilot-grid">
