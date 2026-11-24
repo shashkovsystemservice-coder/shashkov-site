@@ -246,7 +246,7 @@ export default function StartupEnglish() {
           <div className="sectionhead">
             <div className="eyebrow">PRODUCT PROGRESS</div>
             <h2>Start with a business question or a self-assessment.</h2>
-            <p>The working web self-assessment prototype guides initial checks through five business scenarios or a general review of 13 marketing areas. It uses predefined routes and questions, not automated verification of external evidence. The separate research, strategy, annual planning and budget tools illustrate the components to be integrated during Build.</p>
+            <p>The working web self-assessment prototype guides initial checks through five business scenarios or a general review of 13 marketing areas. It uses predefined routes and questions, not automated verification of external evidence. The separate research, strategy, annual planning and budget tools illustrate the components to be integrated during the next development stage.</p>
           </div>
           <div className="en-architecture-note"><strong>Current product status</strong><p>The existing components are preliminary tools and prototypes. The integrated software platform is not yet operational.</p></div>
         </div>
@@ -309,12 +309,12 @@ export default function StartupEnglish() {
             <article><span className="en-stage-mark">01</span><h3>Methodological foundations</h3><p>Marketing Map, MASTER, separate strategy, annual planning and budget tools, and a working web self-assessment prototype. Technical audits verified selected calculations and identified integration gaps.</p><b>Developed / documented</b></article>
             <article><span className="en-stage-mark">02</span><h3>Research and analytical experiments</h3><p>Ten simulated cases tested the methodology. Research Harness experiments on real companies revealed evidence gaps. An independent industrial B2B marketing expert reviewed research outputs and product concepts; feedback informed improvements.</p><b>Developed / tested experimentally</b></article>
             <article><span className="en-stage-mark">03</span><h3>Integrated product</h3><p>Connecting research, Marketing Map and management tools into one company-specific workflow, with reusable data and consistent decisions.</p><b>In development</b></article>
-            <article><span className="en-stage-mark">04</span><h3>Commercial validation</h3><p>Customer discovery, pilot testing, willingness-to-pay research and refinement of the business model with Chilean SMEs.</p><b>Next validation stage</b></article>
+            <article><span className="en-stage-mark">04</span><h3>Commercial validation</h3><p>Customer discovery, pilot testing, willingness-to-pay research and refinement of the business model with SMEs.</p><b>Next validation stage</b></article>
           </div>
           <div className="en-company-book en-commercial-model">
             <strong>Product-led commercial model</strong>
             <p>
-              The primary business-model hypothesis is a B2B software subscription. Reusable methods and accumulated company knowledge are intended to support repeat use without assigning a consultant to every company. Pricing, demand, human effort and delivery costs still need validation. There are no paying software customers or Chilean pilots yet.
+              The primary business-model hypothesis is a B2B software subscription. Reusable methods and accumulated company knowledge are intended to support repeat use without assigning a consultant to every company. Pricing, demand, human effort and delivery costs still need validation. There are no paying software customers or confirmed pilots yet.
             </p>
           </div>
         </div>
@@ -339,7 +339,7 @@ export default function StartupEnglish() {
               <div>Experience across industrial, technology, consumer and service businesses</div>
             </div>
             <div className="founder-name">Vladimir Shashkov <span>· Founder</span></div>
-            <a href="mailto:vladimir.v.shashkov@gmail.com?subject=Marketing%20Studio%20-%20Chile%20pilot">Contact the founder →</a>
+            <a href="mailto:vladimir.v.shashkov@gmail.com?subject=Marketing%20Studio%20-%20SME%20pilot">Contact the founder →</a>
           </div>
         </div>
       </section>
@@ -348,17 +348,17 @@ export default function StartupEnglish() {
         <div className="wrap">
           <div className="collab-intro">
             <div>
-              <div className="eyebrow">CHILE · PILOT COLLABORATION</div>
+              <div className="eyebrow">PILOT COLLABORATION</div>
               <h2>Help test professional marketing tools against real SME challenges.</h2>
             </div>
             <p>
-              We are interested in speaking with Chilean business owners, SME managers, marketing professionals, consultants and potential technology partners. The Build plan is to interview 20 Chilean SMEs, implement one integrated workflow and test it with 3–5 pilot firms. We will compare decision quality and human effort against alternatives, test the impact of changed evidence and assess willingness to pay. These are planned targets, not achieved results.
+              We are interested in speaking with business owners, SME managers, marketing professionals, consultants and potential technology partners. The next validation stage aims to interview 20 SMEs, implement one integrated workflow and test it with 3–5 pilot firms. We will compare decision quality and human effort against alternatives, test the impact of changed evidence and assess willingness to pay. These are planned targets, not achieved results.
             </p>
           </div>
           <div className="en-pilot-grid">
             <article><span>01 / SMEs</span><h3>For business owners and managers</h3><p>Bring a real marketing or business question. Help assess whether the research and decision process is useful for your company.</p><a href="mailto:vladimir.v.shashkov@gmail.com?subject=Marketing%20Studio%20-%20SME%20pilot">Discuss an SME pilot →</a></article>
             <article><span>02 / PROFESSIONALS</span><h3>For marketers and consultants</h3><p>Review the methodology, challenge the analytical logic and identify what would be needed for professional use.</p><a href="mailto:vladimir.v.shashkov@gmail.com?subject=Marketing%20Studio%20-%20Professional%20feedback">Share professional feedback →</a></article>
-            <article><span>03 / PARTNERS</span><h3>For ecosystem and technology partners</h3><p>Explore collaboration around product development, access to SMEs, research and market validation in Chile.</p><a href="mailto:vladimir.v.shashkov@gmail.com?subject=Marketing%20Studio%20-%20Partnership">Explore collaboration →</a></article>
+            <article><span>03 / PARTNERS</span><h3>For ecosystem and technology partners</h3><p>Explore collaboration around product development, access to SMEs, research and market validation.</p><a href="mailto:vladimir.v.shashkov@gmail.com?subject=Marketing%20Studio%20-%20Partnership">Explore collaboration →</a></article>
           </div>
           <div className="en-pilot-footer">
             <strong>Start with one real business question.</strong>
