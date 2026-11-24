@@ -81,7 +81,7 @@ export default function StartupEnglish() {
               <a href="#architecture">Product</a>
               <a href="#map">Marketing Map</a>
               <a href="#management">Management</a>
-              <a href="#demo">Demo</a>
+              <a href="#progress">Progress</a>
               <a href="#stage">Development stage</a>
               <a href="#pilot">Pilot</a>
             </div>
@@ -241,14 +241,14 @@ export default function StartupEnglish() {
         </div>
       </section>
 
-      <section className="startup-section en-evidence-section" id="demo">
+      <section className="startup-section en-evidence-section" id="progress">
         <div className="wrap">
           <div className="sectionhead">
-            <div className="eyebrow">PRODUCT DEMONSTRATION</div>
+            <div className="eyebrow">PRODUCT PROGRESS</div>
             <h2>Start with a business question or a self-assessment.</h2>
             <p>The working web self-assessment prototype guides initial checks through five business scenarios or a general review of 13 marketing areas. It uses predefined routes and questions, not automated verification of external evidence. The separate research, strategy, annual planning and budget tools illustrate the components to be integrated during Build.</p>
           </div>
-          <div className="en-architecture-note"><strong>See the prototype demonstration</strong><p><a href="https://youtu.be/WuPbN0Qzgqk" target="_blank" rel="noreferrer">Watch the product demonstration on YouTube →</a></p><p>The video demonstrates preliminary components and concepts, not a finished integrated SaaS product.</p></div>
+          <div className="en-architecture-note"><strong>Current product status</strong><p>The existing components are preliminary tools and prototypes. The integrated software platform is not yet operational.</p></div>
         </div>
       </section>
 
